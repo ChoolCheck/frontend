@@ -7,14 +7,17 @@ import {
 } from "react-router-dom";
 import { redirect } from "react-router-dom";
 import React, { useState } from "react";
-import Login from "./page/login";
+import Login from "./page/login/Login";
+import Signup from "./page/signup/Signup";
 const AppRouter = () => {
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Login />} />
-          {/* <Route path="/" element={<Todo />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/*" element={<Login />} />
+          {/* 
             <Route
               path="/"
               element={

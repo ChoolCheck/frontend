@@ -1,4 +1,4 @@
-@import "../static/reset.css";
+@import "../../static/reset.css";
 
 body {
   background-color: rgba(157, 157, 157);
@@ -11,7 +11,7 @@ body {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -60%);
+  transform: translate(-50%, -50%);
 
   width: 400px;
   height: 400px;
@@ -47,7 +47,7 @@ body {
 
 .loginButton,
 .signupButton {
-  width: 200px;
+  width: 220px;
   padding: 10px;
   background-color: rgb(255, 255, 255);
   border-radius: 15px;

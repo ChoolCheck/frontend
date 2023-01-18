@@ -1,0 +1,71 @@
+@import "../../static/reset.css";
+
+body {
+  background-color: rgba(157, 157, 157);
+}
+.Signup-Top-Container {
+}
+
+.Signup-inputContainer {
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 450px;
+  height: 450px;
+  border-radius: 20px;
+  background-color: rgba(238, 238, 238);
+  font-family: "nanum-regular";
+  font-weight: 700;
+}
+.Signup-TopHeader {
+  font-size: 25px;
+  padding: 50px 0 40px 0;
+  font-family: "nanum-extraBold";
+}
+.Signup-Header {
+  text-align: left;
+  font-size: 20px;
+  margin: 0 0 30px 60px;
+}
+.Signup-inputContainer > p {
+  display: flex;
+  height: 60px;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.Signup-EmailHeader,
+.Signup-PasswordHeader,
+.Signup-StoreNameHeader {
+  font-size: 17px;
+  width: 100px;
+}
+
+.Signup-inputEmail,
+.Signup-inputPassword {
+  width: 250px;
+  padding: 13px;
+  border: 1px solid rgb(255, 255, 255, 0);
+  border-radius: 20px;
+}
+
+.Signup-cancleButton,
+.Signup-signupButton {
+  float: right;
+  width: 70px;
+  margin-top: 40px;
+  padding: 10px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 15px;
+}
+
+.Signup-cancleButton {
+  margin-right: 20px;
+}
+.Signup-signupButton {
+  margin-right: 40px;
+}
