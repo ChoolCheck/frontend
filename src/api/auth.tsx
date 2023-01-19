@@ -48,3 +48,36 @@ export async function SignupApi({
       console.log(err);
     });
 }
+
+export async function LogoutApi() {
+  const navigate = useNavigate();
+  console.log("로그아웃");
+
+  // await axios({
+  //   method: "Get",
+  //   url: `${config.api}/signup`,
+  //   headers: {
+  //     "Content-Type": `application/json`,
+  //   },
+  // })
+  //   .then((res) => {
+  //     window.alert("로그아웃 되었습니다.");
+  //     navigate("/login");
+  //   })
+  //   .catch((err) => {
+  //     window.alert("로그아웃에 실패했습니다.");
+  //     console.log(err);
+  //   });
+}
+
+export async function IsTokenExpiredApi() {
+  const navigate = useNavigate();
+
+  const token = await localStorage.getItem("token");
+  if (token == undefined || token == null) {
+    window.alert("토큰이 만료되었습니다. 다시 로그인해주세요.");
+    navigate("/login");
+    return false;
+  }
+  return true;
+}

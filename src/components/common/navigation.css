@@ -1,0 +1,29 @@
+@import "../../static/reset.css";
+
+.Navigation-top-container {
+  height: 80px;
+  background-color: rgb(185, 188, 189);
+  display: flex;
+  align-items: center;
+}
+.Navigation-logo {
+  background-color: rgb(255, 255, 255, 0);
+
+  font-size: 30px;
+  font-weight: 700;
+  padding: 10px;
+  margin-left: 20px;
+}
+.Navigation-menu {
+  width: 100%;
+  text-align: right;
+  margin-right: 50px;
+}
+
+.Navigation-menu > button {
+  background-color: rgb(255, 255, 255, 0);
+
+  font-size: 20px;
+  padding: 10px;
+  margin: 0 30px 0 10px;
+}

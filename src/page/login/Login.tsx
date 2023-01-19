@@ -2,8 +2,11 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import LoginView from "./LoginView";
 import { LoginApi } from "../../api/auth";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
+
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -36,7 +39,9 @@ const Login = () => {
     if (email == "") window.alert("이메일을 입력해주세요");
     else if (password == "") window.alert("비밀번호를 입력해주세요");
     else {
-      LoginApi(form);
+      // LoginApi(form);
+      localStorage.setItem("token", "dkanrjsksnfmsrjek");
+      navigate("/calendar");
     }
   };
 

@@ -1,0 +1,15 @@
+/* @import "@fullcalendar/core/main.css";
+@import "@fullcalendar/daygrid/main.css"; */
+
+body {
+  background-color: white;
+}
+
+.Calendar-container {
+  width: 900px;
+  height: 40%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -90%);
+}
