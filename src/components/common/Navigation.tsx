@@ -17,7 +17,7 @@ const Navigation = () => {
           className="Navigation-logo"
           onClick={() => navigate("/calendar")}
         >
-          choolcheck
+          Choolcheck
         </button>
         <div className="Navigation-menu">
           <button onClick={() => navigate("/schedule")}>스케줄</button>

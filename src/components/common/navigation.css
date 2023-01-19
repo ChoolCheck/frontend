@@ -2,17 +2,16 @@
 
 .Navigation-top-container {
   height: 80px;
-  background-color: rgb(185, 188, 189);
+  background-color: #cdcdcd;
   display: flex;
   align-items: center;
 }
 .Navigation-logo {
   background-color: rgb(255, 255, 255, 0);
-
   font-size: 30px;
-  font-weight: 700;
   padding: 10px;
   margin-left: 20px;
+  font-family: "nanum-extraBold";
 }
 .Navigation-menu {
   width: 100%;

@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
-import "./calendar.css";
-import CalendarView from "./CalendarView";
+import "./calendar.scss";
 
 function Calendar() {
   const dataList = [
@@ -27,15 +26,34 @@ function Calendar() {
   ];
   return (
     <div className="Home-top-container">
+      {/* <div className="Home-button-container">
+        <button> 출근부 작성하기</button>
+        <button> 메모 작성하기</button>
+      </div> */}
+
       <div className="Calendar-container">
         <FullCalendar
           plugins={[dayGridPlugin]}
+          customButtons={{
+            createWorkCheck: {
+              text: "출근부 작성하기",
+              click: function () {
+                console.log("출근부 작성하기");
+              },
+            },
+            createMemo: {
+              text: "메모 작성하기",
+              click: function () {
+                console.log("메모 작성하기");
+              },
+            },
+          }}
           events={dataList}
           themeSystem="Simplex"
           headerToolbar={{
-            left: "",
-            center: "prev,title,next",
-            right: "today",
+            left: "prev",
+            center: "createWorkCheck,createMemo,title",
+            right: "next",
           }}
         ></FullCalendar>
       </div>
