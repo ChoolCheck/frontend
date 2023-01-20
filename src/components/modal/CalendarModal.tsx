@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 function CalendarModal() {
-  return <div className="CalendarModal-top-container"></div>;
+  return <></>;
 }
 
 export default CalendarModal;

@@ -15,6 +15,7 @@
 }
 .Navigation-menu {
   width: 100%;
+  min-width: 650px;
   text-align: right;
   margin-right: 50px;
 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 function ReadModal() {
-  return <div className="ReadModal-top-container"></div>;
+  return <></>;
 }
 
 export default ReadModal;

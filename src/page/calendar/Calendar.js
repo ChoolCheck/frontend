@@ -26,11 +26,6 @@ function Calendar() {
   ];
   return (
     <div className="Home-top-container">
-      {/* <div className="Home-button-container">
-        <button> 출근부 작성하기</button>
-        <button> 메모 작성하기</button>
-      </div> */}
-
       <div className="Calendar-container">
         <FullCalendar
           plugins={[dayGridPlugin]}
