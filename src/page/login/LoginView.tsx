@@ -11,7 +11,6 @@ const LoginView = ({
   onSubmitForm,
 }: type.loginProps) => {
   const navigate = useNavigate();
-
   return (
     <div className="Login-Top-Container">
       <div className="login inputContainer">
