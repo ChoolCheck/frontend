@@ -22,7 +22,6 @@ const AppRouter = () => {
   return (
     <>
       <BrowserRouter>
-        <Navigation />
         <Routes>
           <Route path="/login" element={<Login />} />
 
