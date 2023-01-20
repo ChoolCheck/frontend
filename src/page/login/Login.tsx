@@ -17,7 +17,7 @@ const Login = () => {
   useEffect(() => {
     axios({
       method: "GET",
-      url: `${config}/hello`,
+      url: `${config.api}/hello`,
     })
       .then((res) => {
         console.log("성공" + res);
