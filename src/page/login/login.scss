@@ -1,7 +1,7 @@
 @import "../../static/reset.css";
 
 body {
-  background-color: rgba(157, 157, 157);
+  background-color: rgb(157, 157, 157);
 }
 .Login-Top-Container {
 }
@@ -16,7 +16,7 @@ body {
   width: 400px;
   height: 400px;
   border-radius: 20px;
-  background-color: rgba(238, 238, 238);
+  background-color: rgb(238, 238, 238);
 }
 .Login-Header {
   font-size: 25px;
@@ -41,7 +41,7 @@ body {
   width: 250px;
   padding: 15px;
   margin: 5px;
-  border: 1px solid rgb(255, 255, 255, 0);
+  // border: 1px solid rgb(255, 255, 255, 0);
   border-radius: 20px;
 }
 

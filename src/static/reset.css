@@ -115,6 +115,7 @@ textarea {
 button {
   border: none;
 }
+
 @font-face {
   font-family: "nanum-regular";
   src: url("./font/NanumGothic-Regular.ttf");
@@ -146,4 +147,14 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+} */
+
+/* :root {
+  --fc-button-text-color: black;
+  --fc-button-bg-color: rgb(0, 0, 0, 0);
+  --fc-button-border-color: rgb(0, 0, 0, 0);
+  --fc-button-hover-bg-color: rgb(0, 0, 0, 0);
+  --fc-button-hover-border-color: rgb(0, 0, 0, 0);
+  --fc-button-active-bg-color: rgb(0, 0, 0, 0);
+  --fc-button-active-border-color: rgb(0, 0, 0, 0);
 } */

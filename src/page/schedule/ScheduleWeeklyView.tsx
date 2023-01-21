@@ -39,8 +39,8 @@ const ScheduleWeeklyView = () => {
       day: "금요일",
       date: "01/06",
       schedule: [
-        { name: "옥수수", time: "10:00-14:00", backgroundColor: "a0c4ff" },
-        { name: "감자밭", time: "13:00-18:00", backgroundColor: "bdb2ff" },
+        { name: "옥수수", time: "10:00-14:00", backgroundColor: "#a0c4ff" },
+        { name: "감자밭", time: "13:00-18:00", backgroundColor: "#bdb2ff" },
       ],
     },
     {
@@ -70,8 +70,21 @@ const ScheduleWeeklyView = () => {
       <div className="card-container">
         {scheduleWeekly.map((item) => (
           <div className="card">
-            <p>
+            <p className="card-title">
               {item.day}({item.date})
+              <ul className="card-ul">
+                {item.schedule.map((listItem) => (
+                  <li className="card-li">
+                    <span
+                      className="card-li-name"
+                      style={{ backgroundColor: listItem.backgroundColor }}
+                    >
+                      {listItem.name}
+                    </span>
+                    <span className="card-li-time">{listItem.time}</span>
+                  </li>
+                ))}
+              </ul>
             </p>
           </div>
         ))}

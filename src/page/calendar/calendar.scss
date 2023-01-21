@@ -1,3 +1,5 @@
+@import "../../static/reset.css";
+
 * body {
   background-color: white;
 }
@@ -18,32 +20,33 @@
   width: 200px;
   margin-right: 10px;
 }
-:root {
-  --fc-button-text-color: black;
-  --fc-button-bg-color: rgb(0, 0, 0, 0);
-  --fc-button-border-color: rgb(0, 0, 0, 0);
-  --fc-button-hover-bg-color: rgb(0, 0, 0, 0);
-  --fc-button-hover-border-color: rgb(0, 0, 0, 0);
-  --fc-button-active-bg-color: rgb(0, 0, 0, 0);
-  --fc-button-active-border-color: rgb(0, 0, 0, 0);
 
-  // header custom
-  .fc-header-toolbar :nth-child(2) {
-    width: 100%;
-    padding: 20px;
-    h2 {
-      display: inline;
-      font-family: "nanum-extraBold";
-      padding: 0 30px 0 30px;
-    }
-    .fc-createWorkCheck-button,
-    .fc-createMemo-button {
-      background-color: #e7e7e7;
-      padding: 5px;
-      width: 200px;
-      border-radius: 20px;
-      margin: 0 10px 0 10px;
-    }
+.fc-header-toolbar :nth-child(1) > .fc-prev-button,
+.fc-header-toolbar :nth-child(3) > .fc-next-button {
+  background-color: white;
+  border: none;
+  color: black;
+}
+// header custom
+
+.fc-header-toolbar :nth-child(2) {
+  width: 100%;
+  padding: 20px;
+  .fc-createWorkCheck-button,
+  .fc-createMemo-button {
+    float: left;
+    background-color: #e7e7e7;
+    padding: 5px;
+    width: 200px;
+    border-radius: 20px;
+    margin: 0 10px 0 10px;
+    color: black;
+    border: none;
+  }
+  h2 {
+    display: inline;
+    font-family: "nanum-extraBold";
+    padding: 0 40px 0 40px;
   }
 }
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "./login.css";
+import "./login.scss";
 import * as type from "./type";
 
 const LoginView = ({

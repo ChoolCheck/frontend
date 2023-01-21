@@ -20,8 +20,6 @@ import PublicLayout from "../page/layout/PulicLayout";
 import { IsTokenExpiredApi } from "../api/auth";
 
 const AppRouter = () => {
-  // const token = IsTokenExpiredApi();
-  console.log(localStorage.getItem("token"));
   return (
     <>
       <BrowserRouter>
