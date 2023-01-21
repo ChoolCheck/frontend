@@ -7,25 +7,23 @@ const ToggleButton = ({
 }: type.toggleButtonPrpos) => {
   return (
     <>
-      <LeftToggleButton className="seleted">{leftButtonTitle}</LeftToggleButton>
-      <RightToggleButton>{rightButtonTitle}</RightToggleButton>
+      <LeftToggleButton className="seleted page-top-button">
+        {leftButtonTitle}
+      </LeftToggleButton>
+      <RightToggleButton className=" page-top-button">
+        {rightButtonTitle}
+      </RightToggleButton>
     </>
   );
 };
 
 const LeftToggleButton = styled.button`
-  background-color: #f5f5f5;
-  color: black;
-  border-radius: 10px 0 0 10px;
-  padding: 15px;
-  width: 130px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 `;
 const RightToggleButton = styled.button`
-  background-color: #f5f5f5;
-  color: black;
-  border-radius: 0 10px 10px 0;
-  padding: 15px;
-  width: 130px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 `;
 
 export default ToggleButton;

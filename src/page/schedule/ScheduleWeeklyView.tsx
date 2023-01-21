@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ToggleButton from "../../components/button/ToggleButton";
-
+import "./schedule-weekly.scss";
 const ScheduleWeeklyView = () => {
   const scheduleWeekly = [
     {
@@ -66,26 +66,28 @@ const ScheduleWeeklyView = () => {
         leftButtonTitle="이번주스케줄"
         rightButtonTitle="전체스케줄"
       ></ToggleButton>
-      <button className="add-Schedule-button">스케줄추가</button>
+      <button className="add-Schedule-button page-top-button">
+        스케줄추가
+      </button>
       <div className="card-container">
         {scheduleWeekly.map((item) => (
           <div className="card">
             <p className="card-title">
               {item.day}({item.date})
-              <ul className="card-ul">
-                {item.schedule.map((listItem) => (
-                  <li className="card-li">
-                    <span
-                      className="card-li-name"
-                      style={{ backgroundColor: listItem.backgroundColor }}
-                    >
-                      {listItem.name}
-                    </span>
-                    <span className="card-li-time">{listItem.time}</span>
-                  </li>
-                ))}
-              </ul>
-            </p>
+            </p>{" "}
+            <ul className="card-ul">
+              {item.schedule.map((listItem) => (
+                <li className="card-li">
+                  <span
+                    className="card-li-name"
+                    style={{ backgroundColor: listItem.backgroundColor }}
+                  >
+                    {listItem.name}
+                  </span>
+                  <span className="card-li-time">{listItem.time}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         ))}
       </div>

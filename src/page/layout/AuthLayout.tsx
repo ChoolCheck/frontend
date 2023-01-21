@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { Link } from "react-router-dom";
 import { useNavigate, useLocation, Outlet } from "react-router-dom";
-import { LogoutApi } from "../../api/auth";
-import { config } from "../../static/config";
+import "./authlayout.scss";
 
 const AuthLayout = () => {
   const navigate = useNavigate();
@@ -18,7 +15,7 @@ const AuthLayout = () => {
   }, []);
 
   return (
-    <div>
+    <div className="AuthLayout-container">
       <Outlet />
     </div>
   );

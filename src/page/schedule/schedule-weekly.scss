@@ -1,0 +1,84 @@
+@import "../../static/reset.css";
+@import "../../static/mixin";
+
+.ScheduleWeeklyView-top-container {
+  //   background-color: aquamarine;
+  .add-Schedule-button {
+    float: right;
+  }
+
+  .card-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    .card {
+      text-align: center;
+      background-color: rgb(245, 245, 245);
+      border-radius: 20px;
+      min-width: 200px;
+      max-width: 250px;
+      height: 250px;
+      margin: 10px;
+
+      .card-title {
+        padding: 25px;
+        font-size: 24px;
+        font-family: "nanum-bold";
+      }
+      .card-ul {
+        font-size: 17px;
+        .card-li {
+          align-items: center;
+          padding: 10px;
+          .card-li-name {
+            padding: 5px;
+            border-radius: 10px;
+          }
+          .card-li-time {
+            padding: 5px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include tablet {
+  .ScheduleWeeklyView-top-container {
+    .card-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      .card {
+        text-align: center;
+        background-color: rgb(245, 245, 245);
+        border-radius: 20px;
+        min-width: 200px;
+        max-width: 200px;
+        height: 230px;
+        margin: 10px;
+
+        .card-title {
+          padding: 20px;
+          font-size: 18px;
+          font-family: "nanum-bold";
+        }
+        .card-ul {
+          font-size: 15px;
+          .card-li {
+            align-items: center;
+            padding: 10px;
+            .card-li-name {
+              padding: 5px;
+              border-radius: 10px;
+            }
+            .card-li-time {
+              padding: 3px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include mobile {
+}
