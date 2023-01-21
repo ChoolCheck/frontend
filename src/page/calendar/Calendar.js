@@ -25,7 +25,7 @@ function Calendar() {
     },
   ];
   return (
-    <div className="Home-top-container">
+    <div className="Calendar-top-container">
       <div className="Calendar-container">
         <FullCalendar
           plugins={[dayGridPlugin]}
@@ -47,7 +47,7 @@ function Calendar() {
           themeSystem="Simplex"
           headerToolbar={{
             left: "prev",
-            center: "createWorkCheck,createMemo,title",
+            center: "createWorkCheck,title,createMemo",
             right: "next",
           }}
         ></FullCalendar>

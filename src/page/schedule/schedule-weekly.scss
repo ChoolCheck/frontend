@@ -2,11 +2,6 @@
 @import "../../static/mixin";
 
 .ScheduleWeeklyView-top-container {
-  .add-Schedule-button {
-    // margin-right: 50px;
-    float: right;
-  }
-
   .card-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -46,25 +41,8 @@
   .ScheduleWeeklyView-top-container {
     .card-container {
       grid-template-columns: 1fr 1fr 1fr;
-
       .card {
-        min-width: 200px;
-        max-width: 200px;
-        height: 230px;
-
-        .card-title {
-          padding: 15px;
-          font-size: 15px;
-        }
-        .card-ul {
-          font-size: 15px;
-          .card-li {
-            padding: 10px;
-            .card-li-time {
-              padding: 3px;
-            }
-          }
-        }
+        margin: 20px;
       }
     }
   }
@@ -75,22 +53,15 @@
     .card-container {
       grid-template-columns: 1fr 1fr;
       .card {
-        min-width: 60px;
-        max-width: 200px;
-        height: 230px;
+        min-width: 200px;
+        max-width: 300px;
+        margin: 20px;
 
         .card-title {
-          padding: 3vw;
-          font-size: 14px;
+          font-size: 25px;
         }
         .card-ul {
-          font-size: 13px;
-          .card-li {
-            padding: 10px 0 10px 0;
-            .card-li-time {
-              padding: 3px;
-            }
-          }
+          font-size: 20px;
         }
       }
     }
