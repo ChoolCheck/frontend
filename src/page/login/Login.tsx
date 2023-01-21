@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import LoginView from "./LoginView";
 import { LoginApi } from "../../api/auth";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { config } from "../../static/config";
 const Login = () => {
   const navigate = useNavigate();

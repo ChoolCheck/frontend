@@ -8,8 +8,18 @@ import { config } from "../../static/config";
 
 const Navigation = () => {
   const navigate = useNavigate();
-  if (window.location.href == `${config.api}/login`) return <></>;
-
+  //개발환경
+  if (
+    window.location.href == `http://localhost:3000/login` ||
+    window.location.href == `http://localhost:3000/signup`
+  )
+    return <></>;
+  //배포환경
+  else if (
+    window.location.href == `${config.client}/login` ||
+    window.location.href == `${config.client}/signup`
+  )
+    return <></>;
   return (
     <div className="Navigation-top-container">
       <button className="Navigation-logo" onClick={() => navigate("/calendar")}>

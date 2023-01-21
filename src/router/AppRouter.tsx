@@ -15,21 +15,31 @@ import WorkCheck from "../page/workCheck/WorkCheck";
 import Statistics from "../page/statistics/Statistics";
 import Manage from "../page/manage/Manage";
 import Navigation from "../components/common/Navigation";
+import AuthLayout from "../page/layout/AuthLayout";
+import PublicLayout from "../page/layout/PulicLayout";
+import { IsTokenExpiredApi } from "../api/auth";
 
 const AppRouter = () => {
+  // const token = IsTokenExpiredApi();
+  console.log(localStorage.getItem("token"));
   return (
     <>
       <BrowserRouter>
         <Navigation />
 
         <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/calendar" element={<Calendar />} />
-          <Route path="/statistics" element={<Statistics />} />
-          <Route path="/workcheck" element={<WorkCheck />} />
-          <Route path="/schedule" element={<Schedule />} />
-          <Route path="/manage" element={<Manage />} />
+          <Route element={<PublicLayout />}>
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+          </Route>
+
+          <Route element={<AuthLayout />}>
+            <Route path="/calendar" element={<Calendar />} />
+            <Route path="/statistics" element={<Statistics />} />
+            <Route path="/workcheck" element={<WorkCheck />} />
+            <Route path="/schedule" element={<Schedule />} />
+            <Route path="/manage" element={<Manage />} />
+          </Route>
 
           <Route
             path="/*"
