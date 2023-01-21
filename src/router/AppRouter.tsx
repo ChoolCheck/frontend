@@ -15,35 +15,33 @@ import WorkCheck from "../page/workCheck/WorkCheck";
 import Statistics from "../page/statistics/Statistics";
 import Manage from "../page/manage/Manage";
 import Navigation from "../components/common/Navigation";
-// import { IsTokenExpiredApi } from "../api/auth";
-import { useNavigate } from "react-router-dom";
 
 const AppRouter = () => {
   return (
     <>
       <BrowserRouter>
+        <Navigation />
+
         <Routes>
           <Route path="/login" element={<Login />} />
-
           <Route path="/signup" element={<Signup />} />
           <Route path="/calendar" element={<Calendar />} />
           <Route path="/statistics" element={<Statistics />} />
           <Route path="/workcheck" element={<WorkCheck />} />
           <Route path="/schedule" element={<Schedule />} />
           <Route path="/manage" element={<Manage />} />
-          <Route path="/*" element={<Login />} />
-          {/* 
-            <Route
-              path="/"
-              element={
-                localStorage.getItem("access_token") != null &&
-                localStorage.getItem("access_token") != undefined ? (
-                  <Navigate to="/" replace={true} />
-                ) : (
-                  <Navigate to="/auth" replace={true} />
-                )
-              }
-            /> */}
+
+          <Route
+            path="/*"
+            element={
+              localStorage.getItem("token") == null &&
+              localStorage.getItem("token") == undefined ? (
+                <Navigate to="/login" replace={true} />
+              ) : (
+                <Navigate to="/calendar" replace={true} />
+              )
+            }
+          />
         </Routes>
       </BrowserRouter>
     </>

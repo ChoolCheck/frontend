@@ -3,10 +3,12 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import "./navigation.css";
 import { useNavigate } from "react-router-dom";
-import { LogoutApi, IsTokenExpiredApi } from "../../api/auth";
+import { LogoutApi } from "../../api/auth";
+import { config } from "../../static/config";
 
 const Navigation = () => {
   const navigate = useNavigate();
+  if (window.location.href == `${config.api}/login`) return <></>;
 
   return (
     <div className="Navigation-top-container">
