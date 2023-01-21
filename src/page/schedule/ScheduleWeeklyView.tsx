@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import ToggleButton from "../../components/button/ToggleButton";
 import "./schedule-weekly.scss";
 const ScheduleWeeklyView = () => {
   const scheduleWeekly = [
@@ -62,13 +61,6 @@ const ScheduleWeeklyView = () => {
   ];
   return (
     <div className="ScheduleWeeklyView-top-container">
-      <ToggleButton
-        leftButtonTitle="이번주스케줄"
-        rightButtonTitle="전체스케줄"
-      ></ToggleButton>
-      <button className="add-Schedule-button page-top-button">
-        스케줄추가
-      </button>
       <div className="card-container">
         {scheduleWeekly.map((item) => (
           <div className="card">

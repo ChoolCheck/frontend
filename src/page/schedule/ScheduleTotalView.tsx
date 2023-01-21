@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import ToggleButton from "../../components/button/ToggleButton";
 
-const ScheduleWeeklyView = () => {
+const ScheduleTotalView = () => {
   const scheduleWeekly = [
     {
       day: "월요일",
@@ -61,12 +60,7 @@ const ScheduleWeeklyView = () => {
     },
   ];
   return (
-    <div className="ScheduleWeeklyView-top-container">
-      <ToggleButton
-        leftButtonTitle="이번주스케줄"
-        rightButtonTitle="전체스케줄"
-      ></ToggleButton>
-    </div>
+    <div className="ScheduleTotalView-top-container">ScheduleTotalView</div>
   );
 };
-export default ScheduleWeeklyView;
+export default ScheduleTotalView;

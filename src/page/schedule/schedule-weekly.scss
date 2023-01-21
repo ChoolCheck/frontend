@@ -1,9 +1,9 @@
-@import "../../static/reset.css";
+@import "../../static/reset.scss";
 @import "../../static/mixin";
 
 .ScheduleWeeklyView-top-container {
-  //   background-color: aquamarine;
   .add-Schedule-button {
+    // margin-right: 50px;
     float: right;
   }
 
@@ -21,11 +21,11 @@
 
       .card-title {
         padding: 25px;
-        font-size: 24px;
+        font-size: 20px;
         font-family: "nanum-bold";
       }
       .card-ul {
-        font-size: 17px;
+        font-size: 16px;
         .card-li {
           align-items: center;
           padding: 10px;
@@ -45,31 +45,21 @@
 @include tablet {
   .ScheduleWeeklyView-top-container {
     .card-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+
       .card {
-        text-align: center;
-        background-color: rgb(245, 245, 245);
-        border-radius: 20px;
         min-width: 200px;
         max-width: 200px;
         height: 230px;
-        margin: 10px;
 
         .card-title {
-          padding: 20px;
-          font-size: 18px;
-          font-family: "nanum-bold";
+          padding: 15px;
+          font-size: 15px;
         }
         .card-ul {
           font-size: 15px;
           .card-li {
-            align-items: center;
             padding: 10px;
-            .card-li-name {
-              padding: 5px;
-              border-radius: 10px;
-            }
             .card-li-time {
               padding: 3px;
             }
@@ -81,4 +71,28 @@
 }
 
 @include mobile {
+  .ScheduleWeeklyView-top-container {
+    .card-container {
+      grid-template-columns: 1fr 1fr;
+      .card {
+        min-width: 60px;
+        max-width: 200px;
+        height: 230px;
+
+        .card-title {
+          padding: 3vw;
+          font-size: 14px;
+        }
+        .card-ul {
+          font-size: 13px;
+          .card-li {
+            padding: 10px 0 10px 0;
+            .card-li-time {
+              padding: 3px;
+            }
+          }
+        }
+      }
+    }
+  }
 }

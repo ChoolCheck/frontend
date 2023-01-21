@@ -1,4 +1,4 @@
-@import "../../static/reset.css";
+@import "../../static/reset.scss";
 
 body {
   background-color: rgba(157, 157, 157);

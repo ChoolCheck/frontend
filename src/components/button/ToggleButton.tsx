@@ -1,29 +1,48 @@
 import React, { useState } from "react";
 import * as type from "./type";
-import styled from "styled-components";
+import "./togglebutton.scss";
+
 const ToggleButton = ({
   leftButtonTitle,
   rightButtonTitle,
+  leftOrRight,
+  setLeftOrRight,
 }: type.toggleButtonPrpos) => {
+  const [selectedButton, setSelectedButton] = useState<String>("이번주스케줄");
+
+  const onToggleButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    const button: HTMLButtonElement = event.currentTarget;
+    const ButtonList = document.querySelectorAll(".toggleButton");
+
+    // active되어있는 버튼을 탐색하여 active 해제 후 클릭된 버튼에 active 할당 후 state 변경
+    if (selectedButton != button.innerText) {
+      for (let i = 0; i < 2; i++) {
+        if (ButtonList[i].classList.contains("selected"))
+          ButtonList[i].classList.remove("selected");
+      }
+      button.classList.add("selected");
+      setSelectedButton(button.innerText);
+      setLeftOrRight(!leftOrRight);
+    }
+  };
+
   return (
-    <>
-      <LeftToggleButton className="seleted page-top-button">
+    <div className="togglebutton-container">
+      <button
+        className="toggleButton selected page-header-button"
+        onClick={onToggleButtonClick}
+      >
         {leftButtonTitle}
-      </LeftToggleButton>
-      <RightToggleButton className=" page-top-button">
+      </button>
+      <button
+        className="toggleButton page-header-button"
+        onClick={onToggleButtonClick}
+      >
         {rightButtonTitle}
-      </RightToggleButton>
-    </>
+      </button>
+    </div>
   );
 };
-
-const LeftToggleButton = styled.button`
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-`;
-const RightToggleButton = styled.button`
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-`;
 
 export default ToggleButton;

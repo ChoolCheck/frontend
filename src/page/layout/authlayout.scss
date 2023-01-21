@@ -1,6 +1,24 @@
-@import "../../static/reset.css";
+@import "../../static/reset.scss";
+@import "../../static/mixin";
+
 .AuthLayout-container {
-  min-width: 1024px;
   // background-color: antiquewhite;
-  padding: 50px 10vw 50px 10vw;
+  padding: 50px 0 50px 0;
+  margin: 0 auto;
+}
+
+@include tablet {
+  .AuthLayout-container {
+    margin: 0 auto;
+    padding: 50px 0 50px 0;
+    min-width: 758;
+  }
+}
+
+@include mobile {
+  .AuthLayout-container {
+    margin: 0 auto;
+    padding: 50px 0 50px 0;
+    min-width: 335px;
+  }
 }

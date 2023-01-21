@@ -1,0 +1,43 @@
+@import "../../static/reset.scss";
+@import "../../static/mixin";
+
+.Schedule-top-container {
+  width: 70%;
+  min-width: 890px;
+  margin: 0 auto;
+
+  .Schedule-Header-container {
+    display: flex;
+    justify-content: center;
+
+    .Schedule-Header-right {
+      margin-left: auto;
+    }
+
+    .add-Schedule-button {
+      margin-right: 3vw;
+    }
+  }
+}
+
+@include tablet {
+  .Schedule-top-container {
+    min-width: 680px;
+    .add-Schedule-button {
+    }
+  }
+}
+
+@include mobile {
+  .Schedule-top-container {
+    min-width: 330px;
+    width: 60%;
+
+    .Schedule-Header-container {
+      min-width: none;
+      .add-Schedule-button {
+        margin: 0;
+      }
+    }
+  }
+}
