@@ -1,11 +1,13 @@
 import axios from "axios";
 import { config } from "../static/config";
-import { useNavigate } from "react-router-dom";
+import { NavigateFunction, useNavigate } from "react-router-dom";
 import * as type from "./type";
 
-export async function LoginApi({ email, password }: type.apiLoginProps) {
-  const navigate = useNavigate();
-
+export async function LoginApi({
+  email,
+  password,
+  navigate,
+}: type.apiLoginProps) {
   await axios({
     method: "POST",
     url: `${config.api}/login`,
@@ -15,8 +17,9 @@ export async function LoginApi({ email, password }: type.apiLoginProps) {
     data: { email: email, password: password },
   })
     .then((res) => {
-      localStorage.setItem("access_token", res.data.token);
-      navigate("/");
+      localStorage.setItem("token", "dkanrjsksnfmsrjek");
+      // localStorage.setItem("access_token", res.data.token);
+      navigate("/calendar");
     })
     .catch((err) => {
       window.alert("로그인에 실패했습니다.");
@@ -28,9 +31,8 @@ export async function SignupApi({
   email,
   password,
   storeName,
+  navigate,
 }: type.apiSignupProps) {
-  const navigate = useNavigate();
-
   await axios({
     method: "POST",
     url: `${config.api}/signup`,
@@ -49,8 +51,7 @@ export async function SignupApi({
     });
 }
 
-export async function LogoutApi() {
-  const navigate = useNavigate();
+export async function LogoutApi(navigate: NavigateFunction) {
   console.log("로그아웃");
 
   // await axios({
@@ -70,9 +71,7 @@ export async function LogoutApi() {
   //   });
 }
 
-export async function IsTokenExpiredApi() {
-  const navigate = useNavigate();
-
+export async function IsTokenExpiredApi(navigate: NavigateFunction) {
   const token = localStorage.getItem("token");
   if (token == undefined || token == null) {
     console.log("토큰이 만료되었습니다. 다시 로그인해주세요.");

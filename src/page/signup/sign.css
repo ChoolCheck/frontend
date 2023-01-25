@@ -14,7 +14,7 @@ body {
   transform: translate(-50%, -50%);
 
   width: 450px;
-  height: 450px;
+  height: 500px;
   border-radius: 20px;
   background-color: rgba(238, 238, 238);
   font-family: "nanum-regular";
@@ -30,29 +30,51 @@ body {
   font-size: 20px;
   margin: 0 0 30px 60px;
 }
-.Signup-inputContainer > p {
-  display: flex;
-  height: 60px;
+
+.Signup-Email,
+.Signup-Password,
+.Signup-StoreName {
+  height: 80px;
+  width: 70%;
   margin: 0 auto;
   justify-content: center;
   align-items: center;
+}
+.Signup-Email > p,
+.Signup-Password > p,
+.Signup-StoreName > p {
 }
 
 .Signup-EmailHeader,
 .Signup-PasswordHeader,
 .Signup-StoreNameHeader {
-  font-size: 17px;
-  width: 100px;
+  font-size: 14px;
+  text-align: left;
+  width: 60px;
 }
 
 .Signup-inputEmail,
-.Signup-inputPassword {
-  width: 250px;
+.Signup-inputPassword,
+.Signup-inputStoreName {
+  width: 300px;
   padding: 13px;
   border: 1px solid rgb(255, 255, 255, 0);
   border-radius: 20px;
 }
 
+.message-success {
+  padding: 3px;
+
+  font-size: 13px;
+  color: rgb(146, 146, 146);
+  width: 300px;
+}
+.message-error {
+  padding: 3px;
+  font-size: 12px;
+  color: rgb(214, 29, 29);
+  width: 100%;
+}
 .Signup-cancleButton,
 .Signup-signupButton {
   float: right;

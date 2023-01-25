@@ -39,9 +39,7 @@ const Login = () => {
     if (email == "") window.alert("이메일을 입력해주세요");
     else if (password == "") window.alert("비밀번호를 입력해주세요");
     else {
-      // LoginApi(form);
-      localStorage.setItem("token", "dkanrjsksnfmsrjek");
-      navigate("/calendar");
+      LoginApi({ email, password, navigate });
     }
   };
 

@@ -6,9 +6,17 @@ const SignupView = ({
   email,
   password,
   storeName,
+  emailMessage,
+  passwordMessage,
+  storeNameMessage,
+  isEmail,
+  isPassword,
+  isStoreName,
   onCancleSignup,
-  onChangeForm,
   onSubmitForm,
+  onChangeEmail,
+  onChangePassword,
+  onChangeStoreName,
 }: type.signupProps) => {
   const navigate = useNavigate();
 
@@ -17,36 +25,46 @@ const SignupView = ({
       <div className="Signup-inputContainer">
         <h1 className="Signup-TopHeader">Choolcheck</h1>
         <h2 className="Signup-Header">회원가입</h2>
-        <p>
-          <span className="Signup-EmailHeader">이메일</span>
+        <div className="Signup-Email">
+          <p className="Signup-EmailHeader">이메일</p>
           <input
             className="Signup-inputEmail"
             placeholder="이메일 입력해주세요"
-            onChange={onChangeForm}
+            onChange={onChangeEmail}
             name="email"
             type="email"
           />
-        </p>
-        <p>
-          <span className="Signup-PasswordHeader">비밀번호</span>
+
+          <p className={`message-${isEmail ? "success" : "error"}`}>
+            {emailMessage}
+          </p>
+        </div>
+        <div className="Signup-Password">
+          <p className="Signup-PasswordHeader">비밀번호</p>
           <input
             className="Signup-inputPassword"
             placeholder="비밀번호를 입력해주세요(8자리 이상)"
-            onChange={onChangeForm}
+            onChange={onChangePassword}
             name="password"
             type="password"
           />
-        </p>
-        <p>
-          <span className="Signup-StoreNameHeader">가게명</span>
+          <p className={`message-${isPassword ? "success" : "error"}`}>
+            {passwordMessage}
+          </p>
+        </div>
+        <div className="Signup-StoreName">
+          <p className="Signup-StoreNameHeader">가게명</p>
           <input
-            className="Signup-inputPassword"
+            className="Signup-inputStoreName"
             placeholder="가게명을 입력해주세요"
-            onChange={onChangeForm}
+            onChange={onChangeStoreName}
             name="storeName"
             type="text"
           />
-        </p>
+          <p className={`message-${isStoreName ? "success" : "error"}`}>
+            {storeNameMessage}
+          </p>
+        </div>
         <button
           type="button"
           className="Signup-signupButton"
