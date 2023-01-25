@@ -17,8 +17,7 @@ export async function LoginApi({
     data: { email: email, password: password },
   })
     .then((res) => {
-      localStorage.setItem("token", "dkanrjsksnfmsrjek");
-      // localStorage.setItem("access_token", res.data.token);
+      localStorage.setItem("access_token", res.data.token);
       navigate("/calendar");
     })
     .catch((err) => {

@@ -14,19 +14,6 @@ const Login = () => {
 
   const { email, password } = form;
 
-  useEffect(() => {
-    axios({
-      method: "GET",
-      url: `${config.api}/hello`,
-    })
-      .then((res) => {
-        console.log("성공" + res);
-      })
-      .catch((err) => {
-        console.log("실패" + err);
-      });
-  }, []);
-
   const onChangeForm = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setForm({
@@ -39,7 +26,9 @@ const Login = () => {
     if (email == "") window.alert("이메일을 입력해주세요");
     else if (password == "") window.alert("비밀번호를 입력해주세요");
     else {
-      LoginApi({ email, password, navigate });
+      localStorage.setItem("token", "dkanrjsksnfmsrjek");
+      navigate("/calendar");
+      // LoginApi({ email, password, navigate });
     }
   };
 

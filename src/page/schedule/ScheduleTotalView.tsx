@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "./schedule-total.scss";
 
 const ScheduleTotalView = () => {
   const scheduleTotal = {
@@ -71,7 +72,7 @@ const ScheduleTotalView = () => {
         name: "옥수수",
         time: "10:00-14:00",
         totalWorkTime: "4",
-        backgroundColor: "a0c4ff",
+        backgroundColor: "#a0c4ff",
       },
       {
         day: "금",
@@ -79,7 +80,7 @@ const ScheduleTotalView = () => {
         name: "감자밭",
         time: "13:00-18:00",
         totalWorkTime: "5",
-        backgroundColor: "bdb2ff",
+        backgroundColor: "#bdb2ff",
       },
 
       {
@@ -119,7 +120,7 @@ const ScheduleTotalView = () => {
     employee: [
       { name: "김어진", backgroundColor: "#ffd6a5" },
       { name: "이예빈", backgroundColor: "#ffadad" },
-      { name: "감자밭", backgroundColor: "#a0c4ff" },
+      { name: "감자밭", backgroundColor: "#bdb2ff" },
       { name: "고구마", backgroundColor: "#fdffb6" },
       { name: "옥수수", backgroundColor: "#a0c4ff" },
     ],
@@ -128,20 +129,21 @@ const ScheduleTotalView = () => {
     <div className="ScheduleTotalView-top-container">
       <div className="ScheduleTotalView-left-container">
         <ul className="employee-list-ul">
+          <h2>직원별로 보기</h2>
           {scheduleTotal.employee.map((item) => (
             <li className="employee-list-li">
               <span
                 className="employee-list-li-color"
                 style={{ backgroundColor: item.backgroundColor }}
               >
-                &nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;
               </span>
               <span className="employee-list-li-name"> {item.name}</span>
             </li>
           ))}
         </ul>
       </div>
-      <div className="ScheduleTotalView-rigt-container">
+      <div className="ScheduleTotalView-right-container">
         <ul className="totalList-ul">
           {scheduleTotal.totalList.map((item) => (
             <li className="totalList-li">
