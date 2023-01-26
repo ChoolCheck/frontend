@@ -1,136 +1,18 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./schedule-total.scss";
-
-const ScheduleTotalView = () => {
-  const scheduleTotal = {
-    totalList: [
-      {
-        day: "월",
-        date: "01/02",
-        name: "김어진",
-        time: "10:00-14:00",
-        totalWorkTime: "4",
-        backgroundColor: "#ffd6a5",
-      },
-      {
-        day: "월",
-        date: "01/02",
-        name: "이예빈",
-        time: "13:00-18:00",
-        totalWorkTime: "5",
-        backgroundColor: "#ffadad",
-      },
-
-      {
-        day: "화",
-        date: "01/03",
-        name: "김어진",
-        time: "10:00-14:00",
-        totalWorkTime: "4",
-
-        backgroundColor: "#ffd6a5",
-      },
-      {
-        day: "화",
-        date: "01/03",
-        name: "이예빈",
-        time: "13:00-18:00",
-        totalWorkTime: "5",
-        backgroundColor: "#ffadad",
-      },
-
-      {
-        day: "수",
-        date: "01/04",
-        name: "김어진",
-        time: "10:00-14:00",
-        totalWorkTime: "4",
-        backgroundColor: "#ffd6a5",
-      },
-
-      {
-        day: "목",
-        date: "01/05",
-        name: "고구마",
-        time: "10:00-14:00",
-        totalWorkTime: "4",
-        backgroundColor: "#fdffb6",
-      },
-      {
-        day: "목",
-        date: "01/05",
-        name: "이예빈",
-        time: "13:00-18:00",
-        totalWorkTime: "5",
-        backgroundColor: "#ffadad",
-      },
-
-      {
-        day: "금",
-        date: "01/06",
-        name: "옥수수",
-        time: "10:00-14:00",
-        totalWorkTime: "4",
-        backgroundColor: "#a0c4ff",
-      },
-      {
-        day: "금",
-        date: "01/06",
-        name: "감자밭",
-        time: "13:00-18:00",
-        totalWorkTime: "5",
-        backgroundColor: "#bdb2ff",
-      },
-
-      {
-        day: "토",
-        date: "01/07",
-        name: "감자밭",
-        time: "10:00-14:00",
-        totalWorkTime: "4",
-        backgroundColor: "#a0c4ff",
-      },
-      {
-        day: "토",
-        date: "01/07",
-        name: "고구마",
-        time: "13:00-18:00",
-        totalWorkTime: "5",
-        backgroundColor: "#fdffb6",
-      },
-
-      {
-        day: "일",
-        date: "01/08",
-        name: "고구마",
-        time: "10:00-14:00",
-        totalWorkTime: "4",
-        backgroundColor: "#fdffb6",
-      },
-      {
-        day: "일",
-        date: "01/08",
-        name: "이예빈",
-        time: "13:00-18:00",
-        totalWorkTime: "5",
-        backgroundColor: "#ffadad",
-      },
-    ],
-    employee: [
-      { name: "김어진", backgroundColor: "#ffd6a5" },
-      { name: "이예빈", backgroundColor: "#ffadad" },
-      { name: "감자밭", backgroundColor: "#bdb2ff" },
-      { name: "고구마", backgroundColor: "#fdffb6" },
-      { name: "옥수수", backgroundColor: "#a0c4ff" },
-    ],
-  };
+import * as type from "./type";
+const ScheduleTotalView = ({
+  onShowNameButtonClick,
+  onShowTotalButtonClick,
+  scheduleTotalList,
+}: type.scheduleTotalProps) => {
   return (
     <div className="ScheduleTotalView-top-container">
       <div className="ScheduleTotalView-left-container">
+        <h2>직원별로 보기</h2>
         <ul className="employee-list-ul">
-          <h2>직원별로 보기</h2>
-          {scheduleTotal.employee.map((item) => (
+          {scheduleTotalList.employee.map((item) => (
             <li className="employee-list-li">
               <span
                 className="employee-list-li-color"
@@ -138,14 +20,22 @@ const ScheduleTotalView = () => {
               >
                 &nbsp;&nbsp;&nbsp;
               </span>
-              <span className="employee-list-li-name"> {item.name}</span>
+              <button
+                className="employee-list-li-name"
+                onClick={() => onShowNameButtonClick(item.name)}
+              >
+                {item.name}
+              </button>
             </li>
           ))}
         </ul>
+        <button className="employee-totalView" onClick={onShowTotalButtonClick}>
+          전체보기
+        </button>
       </div>
       <div className="ScheduleTotalView-right-container">
         <ul className="totalList-ul">
-          {scheduleTotal.totalList.map((item) => (
+          {scheduleTotalList.totalList.map((item) => (
             <li className="totalList-li">
               <span className="totalList-li-date">
                 {item.date}({item.day})

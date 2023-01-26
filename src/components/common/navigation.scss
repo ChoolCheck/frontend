@@ -60,7 +60,7 @@ $opacity-zero: 0;
 @include mobile {
   .Navigation-top-container {
     width: 100%;
-    min-width: 1100px;
+    // min-width: 1100px;
     height: 80px;
     background-color: #cdcdcd;
     display: flex;
