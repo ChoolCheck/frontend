@@ -1,0 +1,187 @@
+@import "../../static/reset.scss";
+@import "../../static/mixin.scss";
+
+.WorkCheckView-top-container {
+  // scroll bar custom
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: #e4e4e4;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #c5c5c5;
+    border-radius: 10px;
+  }
+
+  margin: 10px;
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+
+  .WorkCheckView-left-container,
+  .WorkCheckView-right-container {
+    min-height: 400px;
+    font-size: 18px;
+    max-height: 450px;
+    background-color: rgb(238, 238, 238);
+    border-radius: 20px;
+    text-align: center;
+  }
+
+  .WorkCheckView-left-container {
+    margin-right: auto;
+    min-width: 200px;
+    margin: 10px;
+    h2 {
+      padding: 40px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .employee-list-ul {
+      .employee-list-li {
+        overflow-y: auto;
+
+        height: 50px;
+        .employee-list-li-color {
+          padding: 3px 5px 3px 5px;
+          border-radius: 8px;
+        }
+
+        .employee-list-li-name {
+          padding: 5px;
+        }
+      }
+    }
+    .employee-totalView {
+      font-size: 16px;
+      font-weight: 700;
+      padding: 10px 20px 10px 20px;
+      margin: 30px 0 30px 0;
+      border-radius: 20px;
+      background-color: #d2d2d2;
+    }
+  }
+
+  .WorkCheckView-right-container {
+    margin-left: auto;
+    min-width: 700px;
+    margin: 10px;
+    overflow-y: auto;
+
+    .totalList-ul {
+      padding: 20px;
+      .totalList-li {
+        padding: 30px;
+        border-bottom: #d2d2d2 1px solid;
+        .totalList-li-date {
+          margin: 0 40px 0 0;
+        }
+        .totalList-li-time,
+        .totalList-li-name {
+          margin: 0 40px 0 40px;
+        }
+        .totalList-li-totalWorkTime {
+          margin: 0 0 0 40px;
+        }
+        .totalList-li-name {
+          padding: 10px;
+          border-radius: 15px;
+        }
+      }
+    }
+  }
+}
+
+@include tablet {
+  .WorkCheckView-top-container {
+    margin: 10px;
+    display: block;
+    // margin: 0 auto;
+
+    .WorkCheckView-left-container {
+      min-width: 700px;
+      margin: 0 auto;
+      min-height: 100px;
+
+      margin: 10px;
+      h2 {
+        padding: 30px;
+        font-size: 20px;
+      }
+      .employee-list-ul {
+        padding: 10px;
+        display: flex;
+        // background-color: aqua;
+        .employee-list-li {
+          margin: 0 auto;
+          max-height: 120px;
+          overflow-y: auto;
+          .employee-list-li-name {
+            padding: 10px;
+          }
+        }
+      }
+      .employee-totalView {
+        margin: 20px;
+      }
+    }
+    .WorkCheckView-right-container {
+      max-height: 700px;
+    }
+  }
+}
+
+@include mobile {
+  .WorkCheckView-top-container {
+    margin: 10px;
+    display: block;
+    margin: 0 auto;
+
+    .WorkCheckView-left-container {
+      margin: 0 auto;
+      min-height: 100px;
+      margin: 10px;
+      h2 {
+        padding: 30px;
+        font-size: 20px;
+      }
+      .employee-list-ul {
+        padding: 10px;
+        display: flex;
+        .employee-list-li {
+          margin: 0 auto;
+          max-height: 120px;
+          overflow-y: auto;
+          .employee-list-li-name {
+            padding: 10px;
+          }
+        }
+      }
+      .employee-totalView {
+        margin: 20px;
+      }
+    }
+
+    .WorkCheckView-right-container {
+      min-width: 600px;
+      max-height: 700px;
+
+      .totalList-ul {
+        .totalList-li {
+          .totalList-li-date {
+            margin: 0 35px 0 0;
+          }
+          .totalList-li-time,
+          .totalList-li-name {
+            margin: 0 35px 0 35px;
+          }
+          .totalList-li-totalWorkTime {
+            margin: 0 0 0 35px;
+          }
+        }
+      }
+    }
+  }
+}

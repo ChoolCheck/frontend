@@ -1,0 +1,51 @@
+@import "../../static/reset.scss";
+@import "../../static/mixin";
+
+.WorkCheck-top-container {
+  width: 70%;
+  min-width: 890px;
+  margin: 0 auto;
+  .WorkCheck-Header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .WorkCheck-Header {
+      padding: 0 10px 0 10px;
+      font-weight: 600;
+    }
+    .WorkCheck-getResultButton,
+    .getFileButton {
+      padding: 10px;
+      border-radius: 15px;
+      background-color: rgb(238, 238, 238);
+    }
+    form {
+      .WorkCheck-startInput {
+        margin: 0 10px 0 10px;
+      }
+      .WorkCheck-endInput {
+        margin: 0 10px 0 10px;
+      }
+      .WorkCheck-getResultButton {
+        margin: 0 10px 0 10px;
+      }
+    }
+    .getFileButton {
+    }
+  }
+}
+
+@include tablet {
+  .WorkCheck-top-container {
+    width: 70%;
+    min-width: 650px;
+  }
+}
+
+@include mobile {
+  .WorkCheck-top-container {
+    width: 60%;
+    min-width: 500px;
+  }
+}
