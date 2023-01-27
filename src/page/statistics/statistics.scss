@@ -1,0 +1,80 @@
+@import "../../static/reset.scss";
+@import "../../static/mixin";
+
+.Statistics-top-container {
+  width: 70%;
+  min-width: 890px;
+  margin: 0 auto;
+  .Statistics-top-Header {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 22px;
+    font-weight: 600;
+
+    .prevButton,
+    .nextButton {
+      background-color: rgb(255, 255, 255);
+      font-size: 20px;
+      padding: 0 20px 0 20px;
+      color: rgb(167, 167, 167);
+    }
+    .prevButton {
+    }
+    .dateToShow {
+    }
+    .nextButton {
+    }
+  }
+  .Statistics-mid-Header {
+    display: flex;
+
+    .Statistics-LeftHeader-container {
+      display: flex;
+      margin-right: auto;
+      margin-left: 30px;
+      align-items: center;
+
+      .Statistics-LeftHeader {
+        padding: 0 10px 0 10px;
+        font-weight: 600;
+      }
+      form {
+        .Statistics-startInput,
+        .Statistics-endInput,
+        .Statistics-getResultButton {
+          margin: 0 10px 0 10px;
+        }
+      }
+      .Statistics-getResultButton {
+        padding: 10px 15px 10px 15px;
+        border-radius: 20px;
+        background-color: rgb(238, 238, 238);
+      }
+    }
+
+    .Statistics-RightHeader-container {
+      margin-left: auto;
+      margin-right: 30px;
+
+      .get-thismonth-statistics {
+        padding: 10px 15px 10px 15px;
+        border-radius: 20px;
+        background-color: rgb(238, 238, 238);
+      }
+    }
+  }
+}
+
+@include tablet {
+  .Statistics-top-container {
+    width: 70%;
+    min-width: 650px;
+  }
+}
+
+@include mobile {
+  .Statistics-top-container {
+    width: 70%;
+    min-width: 650px;
+  }
+}

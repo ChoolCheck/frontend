@@ -1,0 +1,58 @@
+@import "../../static/reset.scss";
+@import "../../static/mixin.scss";
+
+.StatisticsView-top-container {
+  position: relative;
+
+  margin: 0 auto;
+  justify-content: center;
+  max-height: 430px;
+  min-height: 400px;
+  display: flex;
+
+  font-size: 18px;
+  padding: 10px 20px 10px 20px;
+  margin: 20px;
+  background-color: rgb(238, 238, 238);
+  border-radius: 20px;
+  text-align: right;
+  overflow-y: auto;
+
+  // .employee-list-ul {
+  //   margin-right: -100px;
+  //   padding: 15px;
+  //   .employee-list-li {
+  //     padding: 16px;
+
+  //     .employee-list-li-name {
+  //       margin: 0 10px 0 10px;
+  //       padding: 10px;
+  //       border-radius: 15px;
+  //     }
+  //     .employee-list-li-color {
+  //       padding: 2px 5px 2px 5px;
+  //       border-radius: 8px;
+  //     }
+  //   }
+  // }
+  .StatisticsView-Chart-Container {
+    padding: 10px 0 10px 0;
+    width: 80%;
+    canvas {
+      position: absolute;
+      overflow-y: auto;
+    }
+  }
+}
+
+@include tablet {
+  .StatisticsView-top-container {
+    max-height: 700px;
+  }
+}
+
+@include mobile {
+  .StatisticsView-top-container {
+    max-height: 700px;
+  }
+}

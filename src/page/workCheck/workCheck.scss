@@ -22,40 +22,11 @@
     }
 
     form {
-      //input date custom
-      input[type="date"] {
-        position: relative;
-        border: 1px solid #ddd;
-        font-size: 15px;
-        padding: 5px;
-        width: 120px;
-        text-align: center;
-      }
-
-      input[type="date"]::-webkit-clear-button,
-      input[type="date"]::-webkit-inner-spin-button {
-        display: none;
-      }
-      input[type="date"]::-webkit-calendar-picker-indicator {
-        color: rgba(0, 0, 0, 0); //숨긴다
-        opacity: 1;
-        display: block;
-        background: url(https://cdn.icon-icons.com/icons2/3691/PNG/512/year_month_date_calendar_icon_229493.png)
-          center/100% no-repeat white;
-        width: 20px;
-        height: 20px;
-      }
-      .WorkCheck-startInput {
-        margin: 0 10px 0 10px;
-      }
-      .WorkCheck-endInput {
-        margin: 0 10px 0 10px;
-      }
+      .WorkCheck-startInput,
+      .WorkCheck-endInput,
       .WorkCheck-getResultButton {
         margin: 0 10px 0 10px;
       }
-    }
-    .getFileButton {
     }
   }
 }

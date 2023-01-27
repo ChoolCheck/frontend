@@ -5,7 +5,7 @@ export interface workCheckProps {
   onShowTotalButtonClick: (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => void;
-  scheduleTotalList: {
+  workCheckTotalList: {
     totalList: {
       day: string;
       date: string;

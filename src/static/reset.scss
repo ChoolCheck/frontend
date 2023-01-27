@@ -154,6 +154,41 @@ h1 {
   width: 150px;
 }
 
+// scroll bar custom
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background-color: #e4e4e4;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #c5c5c5;
+  border-radius: 10px;
+}
+
+//input date custom
+input[type="date"] {
+  position: relative;
+  border: 1px solid #ddd;
+  font-size: 15px;
+  padding: 5px;
+  width: 120px;
+  text-align: center;
+}
+
+input[type="date"]::-webkit-clear-button,
+input[type="date"]::-webkit-inner-spin-button {
+  display: none;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  display: block;
+  background: url(https://cdn.icon-icons.com/icons2/3691/PNG/512/year_month_date_calendar_icon_229493.png)
+    center/100% no-repeat white;
+  width: 20px;
+  height: 20px;
+}
+
 @include tablet {
   .page-header-button {
   }

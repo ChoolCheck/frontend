@@ -5,14 +5,14 @@ import * as type from "./type";
 const WorkCheckView = ({
   onShowNameButtonClick,
   onShowTotalButtonClick,
-  scheduleTotalList,
+  workCheckTotalList,
 }: type.workCheckProps) => {
   return (
     <div className="WorkCheckView-top-container">
       <div className="WorkCheckView-left-container">
         <h2>직원별로 보기</h2>
         <ul className="employee-list-ul">
-          {scheduleTotalList.employee.map((item) => (
+          {workCheckTotalList.employee.map((item) => (
             <li className="employee-list-li">
               <span
                 className="employee-list-li-color"
@@ -35,7 +35,7 @@ const WorkCheckView = ({
       </div>
       <div className="WorkCheckView-right-container">
         <ul className="totalList-ul">
-          {scheduleTotalList.totalList.map((item) => (
+          {workCheckTotalList.totalList.map((item) => (
             <li className="totalList-li">
               <span className="totalList-li-date">
                 {item.date}({item.day})

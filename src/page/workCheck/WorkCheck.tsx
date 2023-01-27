@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import WorkCheckView from "./WorkCheckView";
 import "./workCheck.scss";
 const WorkCheck = () => {
-  const scheduleTotal = {
+  const workCheckTotal = {
     totalList: [
       {
         day: "월",
@@ -125,7 +125,7 @@ const WorkCheck = () => {
     ],
   };
 
-  const [scheduleTotalList, setScheduleTotalList] = useState(scheduleTotal);
+  const [workCheckTotalList, setWorkCheckTotalList] = useState(workCheckTotal);
 
   const [startInput, setStartInput] = useState("");
   const [endInput, setEndInput] = useState("");
@@ -147,14 +147,14 @@ const WorkCheck = () => {
 
   const filterTotalList = (name: string) => {
     if (name == "total") {
-      setScheduleTotalList(scheduleTotal);
+      setWorkCheckTotalList(workCheckTotal);
     } else {
-      const filteredList = scheduleTotal.totalList.filter((item) => {
+      const filteredList = workCheckTotal.totalList.filter((item) => {
         if (item.name == name) {
           return true;
         }
       });
-      setScheduleTotalList({ ...scheduleTotal, totalList: filteredList });
+      setWorkCheckTotalList({ ...workCheckTotal, totalList: filteredList });
     }
   };
 
@@ -207,7 +207,7 @@ const WorkCheck = () => {
       </div>
 
       <WorkCheckView
-        scheduleTotalList={scheduleTotalList}
+        workCheckTotalList={workCheckTotalList}
         onShowNameButtonClick={onShowNameButtonClick}
         onShowTotalButtonClick={onShowTotalButtonClick}
       ></WorkCheckView>
