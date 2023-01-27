@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import WorkCheckView from "./WorkCheckView";
 import "./workCheck.scss";
 const WorkCheck = () => {
@@ -140,6 +139,7 @@ const WorkCheck = () => {
   };
 
   const onGetResultClick = () => {
+    //조회 로직 : startInput, endInput 서버에 넘겨주고 결과 list 받기
     return (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
       event.preventDefault();
     };
@@ -184,12 +184,16 @@ const WorkCheck = () => {
             className="WorkCheck-startInput"
             onChange={onChageStartInput}
             type="date"
+            required
+            aria-required="true"
           ></input>
-          ~
+          -
           <input
             className="WorkCheck-endInput"
             onChange={onChageEndInput}
             type="date"
+            required
+            aria-required="true"
           ></input>
           <button
             className="WorkCheck-getResultButton"
