@@ -14,40 +14,40 @@ const Signup = () => {
 
   const { email, password, storeName } = form;
 
+  const [passwordCheck, setPasswordCheck] = useState("");
+
   //오류메시지 상태저장
   const [storeNameMessage, setStoreNameMessage] = useState("");
   const [emailMessage, setEmailMessage] = useState("");
   const [passwordMessage, setPasswordMessage] = useState("");
+  const [passwordCheckMessage, setPasswordCheckMessage] = useState("");
 
   // 유효성 검사
   const [isStoreName, setIsStoreName] = useState(false);
   const [isEmail, setIsEmail] = useState(false);
   const [isPassword, setIsPassword] = useState(false);
+  const [isPasswordCheck, setIsPasswordCheck] = useState(false);
 
   const emailRegex =
     /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
   const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
+  var spaceRegex = /\s/; // 공백체크
 
   const onChangeForm = (name: string, value: string) => {
-    // console.log(form + name + ":name " + value + " : value");
-    console.log(form);
-
     setForm({
       ...form,
       [name]: value,
     });
   };
 
-  // 이메일
   const onChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChangeForm(e.target.name, e.target.value);
     console.log(form);
-
     if (!emailRegex.test(e.target.value)) {
       setEmailMessage("이메일 형식이 틀렸습니다.");
       setIsEmail(false);
     } else {
-      setEmailMessage("올바른 이메일 형식이에요 : )");
+      setEmailMessage("");
       setIsEmail(true);
     }
   };
@@ -61,19 +61,33 @@ const Signup = () => {
       );
       setIsPassword(false);
     } else {
-      setPasswordMessage("안전한 비밀번호입니다 :)");
+      setPasswordMessage("안전한 비밀번호입니다.");
       setIsPassword(true);
     }
   };
 
-  // 이름
+  const onChangePasswordCheck = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const passwordCheckNow = e.target.value;
+
+    if (password === passwordCheckNow) {
+      setPasswordCheckMessage("동일한 비밀번호입니다.");
+      setIsPasswordCheck(true);
+    } else {
+      setPasswordCheckMessage("비밀번호가 일치하지 않습니다.");
+      setIsPasswordCheck(false);
+    }
+  };
+
   const onChangeStoreName = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChangeForm(e.target.name, e.target.value);
-    if (e.target.value.length < 2 || e.target.value.length > 5) {
-      setStoreNameMessage("2글자 이상 5글자 미만으로 입력해주세요.");
+    if (e.target.value.length < 2 || e.target.value.length > 10) {
+      setStoreNameMessage("공백없이 2글자 이상 20글자 미만으로 입력해주세요.");
+      setIsStoreName(false);
+    } else if (spaceRegex.exec(e.target.value)) {
+      setStoreNameMessage("공백이 포함되어있습니다.");
       setIsStoreName(false);
     } else {
-      setStoreNameMessage("올바른 이름 형식입니다 :)");
+      setStoreNameMessage("올바른 이름 형식입니다.");
       setIsStoreName(true);
     }
   };
@@ -101,13 +115,16 @@ const Signup = () => {
       storeNameMessage={storeNameMessage}
       emailMessage={emailMessage}
       passwordMessage={passwordMessage}
+      passwordCheckMessage={passwordCheckMessage}
       isEmail={isEmail}
       isPassword={isPassword}
+      isPasswordCheck={isPasswordCheck}
       isStoreName={isStoreName}
       onCancleSignup={onCancleSignup}
       onSubmitForm={onSubmitForm}
       onChangeEmail={onChangeEmail}
       onChangePassword={onChangePassword}
+      onChangePasswordCheck={onChangePasswordCheck}
       onChangeStoreName={onChangeStoreName}
     ></SignupView>
   );

@@ -13,8 +13,8 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
 
-  width: 450px;
-  height: 500px;
+  width: 500px;
+  height: 600px;
   border-radius: 20px;
   background-color: rgba(238, 238, 238);
   font-family: "nanum-regular";
@@ -33,41 +33,38 @@ body {
 
 .Signup-Email,
 .Signup-Password,
+.Signup-PasswordCheck,
 .Signup-StoreName {
-  height: 80px;
+  height: 90px;
   width: 70%;
   margin: 0 auto;
   justify-content: center;
   align-items: center;
 }
-.Signup-Email > p,
-.Signup-Password > p,
-.Signup-StoreName > p {
-}
 
 .Signup-EmailHeader,
 .Signup-PasswordHeader,
+.Signup-PasswordCheckHeader,
 .Signup-StoreNameHeader {
   font-size: 14px;
   text-align: left;
-  width: 60px;
 }
 
 .Signup-inputEmail,
 .Signup-inputPassword,
+.Signup-inputPasswordCheck,
 .Signup-inputStoreName {
-  width: 300px;
+  width: 350px;
   padding: 13px;
+  margin-top: 10px;
   border: 1px solid rgb(255, 255, 255, 0);
   border-radius: 20px;
 }
 
 .message-success {
   padding: 3px;
-
   font-size: 13px;
   color: rgb(146, 146, 146);
-  width: 300px;
 }
 .message-error {
   padding: 3px;
@@ -79,7 +76,7 @@ body {
 .Signup-signupButton {
   float: right;
   width: 70px;
-  margin-top: 40px;
+  margin-top: 20px;
   padding: 10px;
   background-color: rgb(255, 255, 255);
   border-radius: 15px;

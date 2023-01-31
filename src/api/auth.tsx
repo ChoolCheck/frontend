@@ -10,7 +10,7 @@ export async function LoginApi({
 }: type.apiLoginProps) {
   await axios({
     method: "POST",
-    url: `${config.api}/login`,
+    url: `${config.api}/user/login`,
     headers: {
       "Content-Type": `application/json`,
     },
@@ -34,7 +34,7 @@ export async function SignupApi({
 }: type.apiSignupProps) {
   await axios({
     method: "POST",
-    url: `${config.api}/signup`,
+    url: `${config.api}/user/signup`,
     headers: {
       "Content-Type": `application/json`,
     },
