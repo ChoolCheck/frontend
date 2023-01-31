@@ -14,18 +14,18 @@ body {
   transform: translate(-50%, -50%);
 
   width: 400px;
-  height: 400px;
+  height: 450px;
   border-radius: 20px;
   background-color: rgb(238, 238, 238);
 }
 .Login-Header {
   font-size: 25px;
-  padding: 50px;
+  padding: 60px 0 50px 0;
   font-family: "nanum-extraBold";
 }
 .inputContainer > p {
   display: flex;
-  height: 60px;
+  height: 70px;
   margin: 0 auto;
   justify-content: center;
   align-items: center;
@@ -34,14 +34,13 @@ body {
 .EmailHeader,
 .PasswordHeader {
   font-size: 30px;
+  margin: 20px 0 20px 0;
 }
 
 .inputEmail,
 .inputPassword {
   width: 250px;
   padding: 15px;
-  margin: 5px;
-  // border: 1px solid rgb(255, 255, 255, 0);
   border-radius: 20px;
 }
 
