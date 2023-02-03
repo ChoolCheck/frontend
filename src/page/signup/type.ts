@@ -1,12 +1,8 @@
 export interface signupProps {
-  email: string;
-  password: string;
-  storeName: string;
-  storeNameMessage: string;
-
   emailMessage: string;
   passwordMessage: string;
   passwordCheckMessage: string;
+  storeNameMessage: string;
 
   isEmail: boolean;
   isPassword: boolean;

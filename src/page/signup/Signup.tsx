@@ -109,9 +109,6 @@ const Signup = () => {
 
   return (
     <SignupView
-      email={email}
-      password={password}
-      storeName={storeName}
       storeNameMessage={storeNameMessage}
       emailMessage={emailMessage}
       passwordMessage={passwordMessage}

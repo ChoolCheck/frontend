@@ -30,7 +30,7 @@ const Navigation = () => {
         <button onClick={() => navigate("/workcheck")}>출근부</button>
         <button onClick={() => navigate("/Statistics")}>근무통계</button>
         <button onClick={() => navigate("/manage")}>관리</button>
-        <button onClick={() => LogoutApi(navigate)}>로그아웃</button>
+        <button onClick={() => LogoutApi({ navigate })}>로그아웃</button>
       </div>
     </div>
   );

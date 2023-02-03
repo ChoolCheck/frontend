@@ -10,7 +10,7 @@ export async function LoginApi({
 }: type.apiLoginProps) {
   await axios({
     method: "POST",
-    url: `${config.api}/user/login`,
+    url: `${config.client}/user/login`,
     headers: {
       "Content-Type": `application/json`,
     },
@@ -34,7 +34,7 @@ export async function SignupApi({
 }: type.apiSignupProps) {
   await axios({
     method: "POST",
-    url: `${config.api}/user/signup`,
+    url: `${config.client}/user/signup`,
     headers: {
       "Content-Type": `application/json`,
     },
@@ -50,12 +50,12 @@ export async function SignupApi({
     });
 }
 
-export async function LogoutApi(navigate: NavigateFunction) {
+export async function LogoutApi({ navigate }: type.apiLogoutProps) {
   console.log("로그아웃");
 
   // await axios({
   //   method: "Get",
-  //   url: `${config.api}/signup`,
+  //   url: `${config.client}/logout`,
   //   headers: {
   //     "Content-Type": `application/json`,
   //   },

@@ -3,9 +3,6 @@ import "./signView.css";
 import * as type from "./type";
 
 const SignupView = ({
-  email,
-  password,
-  storeName,
   emailMessage,
   passwordMessage,
   passwordCheckMessage,

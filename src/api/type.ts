@@ -12,3 +12,7 @@ export interface apiSignupProps {
   storeName: string;
   navigate: NavigateFunction;
 }
+
+export interface apiLogoutProps {
+  navigate: NavigateFunction;
+}
