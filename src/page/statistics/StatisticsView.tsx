@@ -59,7 +59,7 @@ const StatisticsView = ({ statisticsList }: type.statisticsProps) => {
       <div className="StatisticsView-Chart-Container">
         <Bar
           data={statisticsData}
-          width={700}
+          width={600}
           height={chartHeight}
           options={{
             responsive: false,

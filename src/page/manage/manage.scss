@@ -1,0 +1,26 @@
+@import "../../static/reset.scss";
+@import "../../static/mixin";
+
+.Manage-top-container {
+  width: 70%;
+  min-width: 890px;
+  margin: 0 auto;
+  .Manage-Header-container {
+    display: flex;
+    justify-content: left;
+  }
+}
+
+@include tablet {
+  .Manage-top-container {
+    width: 70%;
+    min-width: 650px;
+  }
+}
+
+@include mobile {
+  .Manage-top-container {
+    width: 60%;
+    min-width: 500px;
+  }
+}

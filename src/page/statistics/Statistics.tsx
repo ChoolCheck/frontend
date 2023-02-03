@@ -54,6 +54,13 @@ const Statistics = () => {
     }
   };
 
+  const onGetThismonthClick = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    setYearToShow(date.getFullYear());
+    setMonthToShow(date.getMonth() + 1);
+  };
+
   // useEffect(() => {
   // }, []);
 
@@ -99,7 +106,10 @@ const Statistics = () => {
           </form>
         </div>
         <div className="Statistics-RightHeader-container">
-          <button className="get-thismonth-statistics">
+          <button
+            className="get-thismonth-statistics"
+            onClick={onGetThismonthClick}
+          >
             이번달 근무 통계 조회
           </button>
         </div>

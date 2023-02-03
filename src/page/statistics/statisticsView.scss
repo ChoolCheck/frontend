@@ -19,7 +19,7 @@
 
   .StatisticsView-Chart-Container {
     padding: 10px 0 10px 0;
-    width: 80%;
+    width: 90%;
     canvas {
       position: absolute;
       overflow-y: auto;
@@ -29,10 +29,12 @@
 
 @include tablet {
   .StatisticsView-top-container {
+    min-height: 700px;
   }
 }
 
 @include mobile {
   .StatisticsView-top-container {
+    min-height: 700px;
   }
 }
