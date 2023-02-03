@@ -52,27 +52,17 @@ const StatisticsView = ({ statisticsList }: type.statisticsProps) => {
     ],
   };
 
+  const chartHeight = statisticsList.length * 80;
+
   return (
     <div className="StatisticsView-top-container">
-      {/* <ul className="employee-list-ul">
-        {statisticsList.map((item) => (
-          <li className="employee-list-li">
-            <span
-              className="employee-list-li-color"
-              style={{ backgroundColor: item.backgroundColor }}
-            >
-              &nbsp;&nbsp;&nbsp;
-            </span>
-          </li>
-        ))}
-      </ul> */}
-
       <div className="StatisticsView-Chart-Container">
         <Bar
           data={statisticsData}
-          width={80}
-          height={100}
+          width={700}
+          height={chartHeight}
           options={{
+            responsive: false,
             plugins: {
               legend: {
                 display: false,
@@ -99,7 +89,6 @@ const StatisticsView = ({ statisticsList }: type.statisticsProps) => {
                     size: 18,
                   },
                   color: "black",
-                  padding: 20,
                 },
                 grid: {
                   display: false,
