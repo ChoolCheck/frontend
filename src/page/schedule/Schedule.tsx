@@ -15,6 +15,7 @@ const Schedule = () => {
         name: "김어진",
         time: "10:00-14:00",
         totalWorkTime: "4",
+        workType : "직원",
         backgroundColor: "#ffd6a5",
       },
       {
@@ -22,7 +23,8 @@ const Schedule = () => {
         date: "01/02",
         name: "이예빈",
         time: "13:00-18:00",
-        totalWorkTime: "5",
+        totalWorkTime: "5",        workType : "직원",
+
         backgroundColor: "#ffadad",
       },
 
