@@ -4,12 +4,10 @@
   background-color: white;
 }
 
-.Calendar-top-container {
+.CalendarView-container {
   margin-top: 10px;
-  // width: 100%;
-  // height: 100%;
 }
-// header custom
+/* header custom */
 .fc-header-toolbar {
   display: flex;
 }
@@ -42,7 +40,7 @@
   }
 }
 
-// calendar custom
+/* calendar custom */
 .fc-scrollgrid {
   border-radius: 10px;
 

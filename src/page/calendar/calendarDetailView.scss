@@ -1,0 +1,54 @@
+@import "../../static/reset.scss";
+
+.CalendarDetailView-top-container {
+  .CalendarDetailView-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 400px;
+    background-color: rgb(146, 146, 146);
+    margin: 0 auto;
+    border-radius: 30px;
+    .close-button {
+    }
+
+    .checkedWorkList-container {
+      .checkedWorkList-ul {
+      }
+      .checkedWorkList-li {
+      }
+      .checkedWorkList-li-color {
+      }
+      .checkedWorkList-li-name {
+      }
+      .checkedWorkList-li-time {
+      }
+      .checkedWorkList-li-totalWorkTime {
+      }
+    }
+
+    .scheduleList-container {
+      .scheduleList-ul {
+      }
+      .scheduleList-li {
+      }
+      .scheduleList-li-color {
+      }
+      .scheduleList-li-name {
+      }
+      .scheduleList-li-tiem {
+      }
+    }
+
+    .memo-container {
+      .memo-container-header {
+      }
+      .memo-container-content {
+      }
+      .add-work-button {
+      }
+    }
+  }
+}
