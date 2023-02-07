@@ -20,8 +20,8 @@ const ManageWorkView = ({ workFormList }: type.manageWorkProps) => {
               x
             </button>
           </li>
-        ))}{" "}
-      </ul>{" "}
+        ))}
+      </ul>
       <div className="button-container">
         <button className="workFormList-addButton">근무추가</button>
       </div>

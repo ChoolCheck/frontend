@@ -30,14 +30,12 @@ const Calendar = () => {
         name: "옥수수판매합니다",
         time: "09-13",
         date: "2023-02-18",
-        textColor: "#727272",
         backgroundColor: "#a0c4ff",
       },
       {
         name: "이예빈",
         time: "12-17",
         date: "2023-02-18",
-        textColor: "#727272",
         backgroundColor: "#ffd6a5",
       },
     ],
@@ -47,7 +45,6 @@ const Calendar = () => {
         time: "09-13",
         totalWorkTime: "4",
         date: "2023-02-18",
-        textColor: "#727272",
         backgroundColor: "#ffadad",
       },
       {
@@ -55,7 +52,6 @@ const Calendar = () => {
         time: "12-18",
         totalWorkTime: "6",
         date: "2023-02-18",
-        textColor: "#727272",
         backgroundColor: "#fdffb6",
       },
       {
@@ -63,7 +59,6 @@ const Calendar = () => {
         time: "12-18",
         totalWorkTime: "6",
         date: "2023-02-12",
-        textColor: "#727272",
         backgroundColor: "#bdb2ff",
       },
     ],

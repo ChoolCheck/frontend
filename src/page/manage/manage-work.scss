@@ -17,6 +17,8 @@
 
   .workFormList-ul {
     width: 60%;
+    height: 320px;
+    overflow-y: auto;
     .workFormList-ul-col {
       margin: 50px 0 50px 0;
       display: flex;

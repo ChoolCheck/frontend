@@ -14,7 +14,6 @@ export interface calendarDetailViewProps {
       name: string;
       time: string;
       date: string;
-      textColor: string;
       backgroundColor: string;
     }[];
     checkedWorkList: {
@@ -22,7 +21,6 @@ export interface calendarDetailViewProps {
       time: string;
       totalWorkTime: string;
       date: string;
-      textColor: string;
       backgroundColor: string;
     }[];
     memo: string;
