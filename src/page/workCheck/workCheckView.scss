@@ -9,7 +9,6 @@
 
   .WorkCheckView-left-container,
   .WorkCheckView-right-container {
-    min-height: 400px;
     font-size: 18px;
     max-height: 450px;
     background-color: rgb(238, 238, 238);
@@ -21,15 +20,16 @@
     margin-right: auto;
     min-width: 200px;
     margin: 10px;
+
     h2 {
       padding: 40px;
       font-size: 18px;
       font-weight: 700;
     }
     .employee-list-ul {
+      height: 250px;
+      overflow-y: auto;
       .employee-list-li {
-        overflow-y: auto;
-
         height: 50px;
         .employee-list-li-color {
           padding: 3px 5px 3px 5px;
@@ -56,6 +56,7 @@
     min-width: 700px;
     margin: 10px;
     overflow-y: auto;
+    min-height: 400px;
 
     .totalList-ul {
       padding: 20px;

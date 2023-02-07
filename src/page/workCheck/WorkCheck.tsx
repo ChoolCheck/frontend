@@ -122,6 +122,11 @@ const WorkCheck = () => {
       { name: "감자밭", backgroundColor: "#bdb2ff" },
       { name: "고구마", backgroundColor: "#fdffb6" },
       { name: "옥수수", backgroundColor: "#a0c4ff" },
+      { name: "김어진", backgroundColor: "#ffd6a5" },
+      { name: "이예빈", backgroundColor: "#ffadad" },
+      { name: "감자밭", backgroundColor: "#bdb2ff" },
+      { name: "고구마", backgroundColor: "#fdffb6" },
+      { name: "옥수수", backgroundColor: "#a0c4ff" },
     ],
   };
 
