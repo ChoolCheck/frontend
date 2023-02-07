@@ -27,11 +27,11 @@ const Calendar = () => {
   const calendarDetailData = {
     scheduleList: [
       {
-        name: "김어진",
+        name: "옥수수판매합니다",
         time: "09-13",
         date: "2023-02-18",
         textColor: "#727272",
-        backgroundColor: "#ffadad",
+        backgroundColor: "#a0c4ff",
       },
       {
         name: "이예빈",
@@ -51,15 +51,23 @@ const Calendar = () => {
         backgroundColor: "#ffadad",
       },
       {
-        name: "이예빈",
+        name: "고구마",
         time: "12-18",
         totalWorkTime: "6",
         date: "2023-02-18",
         textColor: "#727272",
-        backgroundColor: "#ffd6a5",
+        backgroundColor: "#fdffb6",
+      },
+      {
+        name: "감자밭",
+        time: "12-18",
+        totalWorkTime: "6",
+        date: "2023-02-12",
+        textColor: "#727272",
+        backgroundColor: "#bdb2ff",
       },
     ],
-    memo: "오늘 7시에 10명 단체 예약 있어요.",
+    memo: "오늘 7시에 10명 단체 예약 있어요. 금요일 마감 알바 대타 구합니다",
   };
 
   const [detailModalOpen, setDetailModalOpen] = useState(false);
@@ -77,10 +85,6 @@ const Calendar = () => {
   };
   return (
     <div className="Calendar-top-container">
-      <CalendarView
-        calendarData={calendarData}
-        onCalendarClick={onCalendarClick}
-      ></CalendarView>
       {detailModalOpen && (
         <CalendarDetailView
           calendarDetailData={calendarDetailData}
@@ -88,6 +92,10 @@ const Calendar = () => {
           setDetailModalOpen={setDetailModalOpen}
         ></CalendarDetailView>
       )}
+      <CalendarView
+        calendarData={calendarData}
+        onCalendarClick={onCalendarClick}
+      ></CalendarView>
     </div>
   );
 };

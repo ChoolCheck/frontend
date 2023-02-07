@@ -1,55 +1,125 @@
 @import "../../static/reset.scss";
+$color-none: #000000;
+$opacity-zero: 0.3;
 
 .CalendarDetailView-top-container {
-  background-color: rgb(110, 110, 110);
+  z-index: 200;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba($color-none, $opacity-zero);
+
+  display: block;
+  font-size: 20px;
+
   .CalendarDetailView-container {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 600px;
-    height: 400px;
-    background-color: rgb(255, 188, 188);
+
+    width: 650px;
+    height: 450px;
+    background-color: rgb(255, 255, 255);
     margin: 0 auto;
     border-radius: 30px;
+    padding: 40px 30px 40px 30px;
+
     .close-button {
+      float: right;
+      background-color: white;
     }
 
-    .checkedWorkList-container {
-      .checkedWorkList-ul {
+    .list-top-container {
+      margin: 40px 20px 20px 20px;
+      overflow-y: auto;
+      height: 250px;
+
+      .checkedWorkList-container {
+        text-align: center;
+        padding: 0 20px 20px 20px;
+        .checkedWorkList-ul {
+          .checkedWorkList-li {
+            justify-content: left;
+            display: flex;
+            align-items: center;
+            height: 45px;
+          }
+
+          .checkedWorkList-li-color {
+            margin: 0 20px 0 20px;
+            padding: 4px 5px 4px 5px;
+            border-radius: 10px;
+          }
+
+          .checkedWorkList-li-name,
+          .checkedWorkList-li-time,
+          .checkedWorkList-li-totalWorkTime {
+            padding: 0 10px 0 0;
+            width: 100px;
+          }
+          .checkedWorkList-li-name {
+          }
+          .checkedWorkList-li-time {
+          }
+          .checkedWorkList-li-totalWorkTime {
+          }
+        }
       }
-      .checkedWorkList-li {
-      }
-      .checkedWorkList-li-color {
-      }
-      .checkedWorkList-li-name {
-      }
-      .checkedWorkList-li-time {
-      }
-      .checkedWorkList-li-totalWorkTime {
+
+      .scheduleList-container {
+        text-align: center;
+        margin: 0 20px 0px 20px;
+        padding-top: 20px;
+        border-top: 1px solid rgb(208, 208, 208);
+
+        .scheduleList-ul {
+          .scheduleList-li {
+            justify-content: left;
+            display: flex;
+            align-items: center;
+            height: 45px;
+          }
+          .scheduleList-li-color {
+            margin: 0 20px 0 20px;
+            padding: 4px 5px 4px 5px;
+            border-radius: 10px;
+          }
+          .scheduleList-li-name,
+          .scheduleList-li-time {
+            padding: 0 10px 0 0;
+            width: 100px;
+          }
+
+          .scheduleList-li-name {
+          }
+          .scheduleList-li-time {
+          }
+        }
       }
     }
-
-    .scheduleList-container {
-      .scheduleList-ul {
-      }
-      .scheduleList-li {
-      }
-      .scheduleList-li-color {
-      }
-      .scheduleList-li-name {
-      }
-      .scheduleList-li-tiem {
-      }
-    }
-
     .memo-container {
+      margin: 0 40px 20px 40px;
+      padding-top: 20px;
+
+      border-top: 1px solid rgb(208, 208, 208);
+
       .memo-container-header {
+        font-weight: 600;
+        font-family: "nanum";
+        padding: 0 0 10px 0;
       }
       .memo-container-content {
+        height: 50px;
+        overflow-y: auto;
+        color: rgb(100, 100, 100);
       }
-      .add-work-button {
-      }
+    }
+    .add-work-button {
+      float: right;
+      background-color: white;
     }
   }
 }

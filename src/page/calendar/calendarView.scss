@@ -5,7 +5,8 @@
 }
 
 .CalendarView-container {
-  margin: 10px 50px 0 50px;
+  z-index: 100;
+  margin: 10px 70px 0 70px;
 }
 /* header custom */
 .fc-header-toolbar {
