@@ -80,7 +80,7 @@ const Signup = () => {
 
   const onChangeStoreName = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChangeForm(e.target.name, e.target.value);
-    if (e.target.value.length < 2 || e.target.value.length > 10) {
+    if (e.target.value.length < 2 || e.target.value.length > 20) {
       setStoreNameMessage("공백없이 2글자 이상 20글자 미만으로 입력해주세요.");
       setIsStoreName(false);
     } else if (spaceRegex.exec(e.target.value)) {

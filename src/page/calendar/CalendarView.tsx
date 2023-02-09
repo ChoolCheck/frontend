@@ -7,6 +7,8 @@ import * as type from "./type";
 const CalendarView = ({
   calendarData,
   onCalendarClick,
+  onCreateWorkcheckClick,
+  onCreateMemoClick,
 }: type.calendarViewProps) => {
   return (
     <div className="CalendarView-container">
@@ -16,9 +18,7 @@ const CalendarView = ({
         customButtons={{
           createWorkCheck: {
             text: "출근부 작성하기",
-            click: function () {
-              console.log("출근부 작성하기");
-            },
+            click: onCreateWorkcheckClick,
           },
           createMemo: {
             text: "메모 작성하기",

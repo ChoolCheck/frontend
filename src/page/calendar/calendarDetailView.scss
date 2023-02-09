@@ -56,7 +56,8 @@ $opacity-zero: 0.3;
 
           .checkedWorkList-li-name,
           .checkedWorkList-li-time,
-          .checkedWorkList-li-totalWorkTime {
+          .checkedWorkList-li-totalWorkTime,
+          .checkedWorkList-li-workType {
             padding: 0 10px 0 0;
             width: 100px;
           }
@@ -88,7 +89,8 @@ $opacity-zero: 0.3;
             border-radius: 10px;
           }
           .scheduleList-li-name,
-          .scheduleList-li-time {
+          .scheduleList-li-time,
+          .scheduleList-li-workType {
             padding: 0 10px 0 0;
             width: 100px;
           }

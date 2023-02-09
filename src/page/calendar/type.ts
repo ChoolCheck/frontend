@@ -6,6 +6,8 @@ export interface calendarViewProps {
     backgroundColor: string;
   }[];
   onCalendarClick: any;
+  onCreateWorkcheckClick: (ev: MouseEvent, element: HTMLElement) => void;
+  onCreateMemoClick: (ev: MouseEvent, element: HTMLElement) => void;
 }
 
 export interface calendarDetailViewProps {
@@ -14,6 +16,7 @@ export interface calendarDetailViewProps {
       name: string;
       time: string;
       date: string;
+      workType?: string;
       backgroundColor: string;
     }[];
     checkedWorkList: {
@@ -21,6 +24,7 @@ export interface calendarDetailViewProps {
       time: string;
       totalWorkTime: string;
       date: string;
+      workType?: string;
       backgroundColor: string;
     }[];
     memo: string;
