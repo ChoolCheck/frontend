@@ -86,28 +86,37 @@
   .WorkCheckView-top-container {
     margin: 10px;
     display: block;
-    // margin: 0 auto;
 
     .WorkCheckView-left-container {
       min-width: 700px;
       margin: 0 auto;
-      min-height: 100px;
-
       margin: 10px;
       h2 {
-        padding: 30px;
+        padding: 40px 0 40px 0;
         font-size: 20px;
       }
       .employee-list-ul {
-        padding: 10px;
-        display: flex;
-        // background-color: aqua;
+        padding: 0 50px 0 50px;
+        height: 100px;
+        margin: 0 auto;
+
+        width: 70%;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+
         .employee-list-li {
-          margin: 0 auto;
-          max-height: 120px;
-          overflow-y: auto;
+          display: flex;
+          width: 120px;
+          align-items: center;
+
+          .employee-list-li-color {
+            padding: 0 5px 0 5px;
+            border-radius: 8px;
+            height: 25px;
+          }
           .employee-list-li-name {
             padding: 10px;
+            width: 80px;
           }
         }
       }
@@ -125,25 +134,37 @@
   .WorkCheckView-top-container {
     margin: 10px;
     display: block;
-    margin: 0 auto;
 
     .WorkCheckView-left-container {
+      min-width: 700px;
       margin: 0 auto;
-      min-height: 100px;
       margin: 10px;
       h2 {
-        padding: 30px;
+        padding: 40px 0 40px 0;
         font-size: 20px;
       }
       .employee-list-ul {
-        padding: 10px;
-        display: flex;
+        padding: 0 50px 0 50px;
+        height: 100px;
+        margin: 0 auto;
+
+        width: 70%;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+
         .employee-list-li {
-          margin: 0 auto;
-          max-height: 120px;
-          overflow-y: auto;
+          display: flex;
+          width: 120px;
+          align-items: center;
+
+          .employee-list-li-color {
+            padding: 0 5px 0 5px;
+            border-radius: 8px;
+            height: 25px;
+          }
           .employee-list-li-name {
             padding: 10px;
+            width: 80px;
           }
         }
       }
@@ -151,25 +172,8 @@
         margin: 20px;
       }
     }
-
     .WorkCheckView-right-container {
-      min-width: 600px;
       max-height: 700px;
-
-      .totalList-ul {
-        .totalList-li {
-          .totalList-li-date {
-            margin: 0 35px 0 0;
-          }
-          .totalList-li-time,
-          .totalList-li-name {
-            margin: 0 35px 0 35px;
-          }
-          .totalList-li-totalWorkTime {
-            margin: 0 0 0 35px;
-          }
-        }
-      }
     }
   }
 }

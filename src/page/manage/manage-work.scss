@@ -3,48 +3,52 @@
 
 .ManageWorkView-top-container {
   position: relative;
-  display: flex;
+  display: block;
   justify-content: center;
   text-align: center;
 
-  min-height: 400px;
-  max-height: 450px;
+  height: 450px;
+
   font-size: 20px;
   background-color: rgb(238, 238, 238);
   border-radius: 20px;
   margin: 10px;
-  overflow-y: auto;
 
-  .workFormList-ul {
-    width: 60%;
-    height: 320px;
-    overflow-y: auto;
-    .workFormList-ul-col {
-      margin: 50px 0 50px 0;
-      display: flex;
-      justify-content: space-between;
+  .workTypeList-ul-col {
+    margin: 0 auto;
+    padding: 50px 0 40px 0;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
 
-      .workFormList-ul-col-workForm,
-      .workFormList-ul-col-time,
-      .workFormList-ul-col-delete {
-        padding: 0 50px 0 50px;
-        font-weight: 600;
-      }
+    .workTypeList-ul-col-workForm,
+    .workTypeList-ul-col-time,
+    .workTypeList-ul-col-delete {
+      padding: 0 50px 0 50px;
+      font-weight: 600;
     }
-    .workFormList-li {
+  }
+  .workTypeList-ul {
+    margin: 0 auto;
+    padding: 0px 0 20px 0;
+    width: 80%;
+    height: 250px;
+    overflow-y: auto;
+
+    .workTypeList-li {
       height: 50px;
       margin: 20px;
       align-items: center;
       display: flex;
       justify-content: space-between;
 
-      .workFormList-li-workForm {
+      .workTypeList-li-workForm {
         width: 100px;
       }
-      .workFormList-li-time {
+      .workTypeList-li-time {
         width: 120px;
       }
-      .workFormList-li-delete {
+      .workTypeList-li-delete {
         width: 20px;
       }
     }
@@ -53,28 +57,33 @@
   .button-container {
     position: absolute;
     font-weight: 600;
-
     bottom: 0;
     right: 0;
-    .workFormList-addButton {
-      padding: 20px;
-      margin: 20px;
+    .workTypeList-addButton {
+      margin: 0 30px 30px 0;
     }
   }
 }
 
 @include tablet {
   .ManageEmployeeView-top-container {
-    min-width: 700px;
-    max-height: 700px;
+    height: 700px;
     margin: 10px;
+
+    .workTypeList-ul {
+      overflow-y: auto;
+      height: 500px;
+    }
   }
 }
 
 @include mobile {
   .ManageEmployeeView-top-container {
-    min-width: 700px;
-    max-height: 700px;
+    height: 700px;
     margin: 10px;
+    .workTypeList-ul {
+      overflow-y: auto;
+      height: 500px;
+    }
   }
 }

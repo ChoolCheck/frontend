@@ -17,10 +17,7 @@ function WriteModal(props: writeModalProps) {
 
   return (
     <div className="modal-background">
-      <div className="modal-container">
-        <button onClick={() => setWriteModal(false)}>닫기</button>
-        {props.children}
-      </div>
+      <div className="modal-container">{props.children}</div>
     </div>
   );
 }

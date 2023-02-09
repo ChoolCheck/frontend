@@ -1,9 +1,9 @@
-import "./createWorkCheck.scss";
+import "./createSchedule.scss";
 import React, { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
 
-const CreateWorkCheck = () => {
+const CreateSchedule = () => {
   const dispatch = useDispatch();
 
   const setWriteModal = useCallback(
@@ -19,7 +19,7 @@ const CreateWorkCheck = () => {
     } else return;
   };
 
-  const [workCheckForm, setWorkCheckForm] = useState({
+  const [scheduleForm, setWorkCheckForm] = useState({
     employee: "",
     date: "",
     workType: "",
@@ -28,15 +28,11 @@ const CreateWorkCheck = () => {
 
   return (
     <div className="CreateWorkCheck-container">
-      <h3>출근부 작성</h3>
+      <h3>스케줄 추가</h3>
       <div className="CreateWorkCheck-content">
         <p className="modal-employee">
           <span>직원</span>
-          <select>
-            <option>김어진</option>
-            <option>이예빈</option>
-            <option>고구마</option>
-          </select>
+          <input></input>
         </p>
         <p className="modal-date">
           <span>날짜</span>
@@ -48,9 +44,8 @@ const CreateWorkCheck = () => {
         </p>
         <p className="modal-time">
           <span>시간</span>
-          <input className="modal-time-start" type="time"></input>
-          {" ~ "}
-          <input className="modal-time-end" type="time"></input>
+          <input type="time"></input>
+          <input type="time"></input>
         </p>
       </div>
       <div className="modal-write-button-container">
@@ -66,4 +61,4 @@ const CreateWorkCheck = () => {
   );
 };
 
-export default CreateWorkCheck;
+export default CreateSchedule;

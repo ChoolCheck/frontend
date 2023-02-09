@@ -22,21 +22,28 @@ const CreateMemo = () => {
     <div className="CreateWorkCheck-container">
       <h3>메모 작성</h3>
       <div className="CreateWorkCheck-content">
-        <p>
+        <p className="modal-employee">
           <span>직원</span>
           <input></input>
         </p>
-        <p>
+        <p className="modal-date">
           <span>날짜</span>
           <input type="date"></input>
         </p>
-        <p>
+        <p className="modal-content">
           <span>내용</span>
           <textarea></textarea>
         </p>
       </div>
-      <button onClick={onClickCancelOnModal}>취소</button>
-      <button>완료</button>
+      <div className="modal-write-button-container">
+        <button
+          className="modal-write-close-button"
+          onClick={onClickCancelOnModal}
+        >
+          취소
+        </button>
+        <button>완료</button>
+      </div>
     </div>
   );
 };

@@ -12,7 +12,6 @@ $opacity-zero: 0.3;
   background-color: rgba($color-none, $opacity-zero);
 
   display: block;
-  font-size: 20px;
 
   .modal-container {
     position: absolute;
@@ -20,11 +19,82 @@ $opacity-zero: 0.3;
     left: 50%;
     transform: translate(-50%, -50%);
 
-    width: 400px;
-    height: 400px;
+    max-width: 450px;
+    max-height: 400px;
     background-color: rgb(255, 255, 255);
     margin: 0 auto;
     border-radius: 30px;
-    padding: 40px 30px 40px 30px;
+    padding: 50px 20px 40px 20px;
+
+    h3 {
+      text-align: center;
+      margin: 0px 0 40px 0;
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    p {
+      height: 50px;
+      padding: 0 20px 0 20px;
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+
+      span {
+        margin-right: 20px;
+        width: 80px;
+        font-size: 20px;
+        text-align: right;
+      }
+      input,
+      select {
+        font-size: 18px;
+        border: 1px solid rgb(161, 161, 161);
+        border-radius: 10px;
+        padding: 5px;
+      }
+    }
+
+    .modal-employee > select {
+      text-align: center;
+      width: 70%;
+    }
+
+    .modal-date > input {
+      width: 70%;
+    }
+    .modal-worktype > input {
+    }
+
+    .modal-color {
+    }
+
+    .modal-content {
+    }
+    .modal-time > input {
+      width: 120px;
+      text-align: center;
+      font-size: 17px;
+    }
+
+    .modal-time-start {
+      margin-right: 5px;
+    }
+
+    .modal-time-end {
+      margin-left: 5px;
+    }
+
+    .modal-read-close-button {
+      float: right;
+    }
+
+    .modal-write-button-container {
+      float: right;
+      button {
+        background-color: white;
+        margin: 20px 10px 0 10px;
+      }
+    }
   }
 }

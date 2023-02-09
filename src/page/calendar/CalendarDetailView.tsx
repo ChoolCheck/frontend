@@ -1,12 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import * as type from "./type";
 import "./calendarDetailView.scss";
+import { useDispatch } from "react-redux";
+import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
 
 const CalendarDetailView = ({
   calendarDetailData,
   detailModalOpen,
   setDetailModalOpen,
 }: type.calendarDetailViewProps) => {
+  const dispatch = useDispatch();
+
+  const setWriteModal = useCallback(
+    (readModalState: boolean) => dispatch(setWriteModalOpen(readModalState)),
+    [dispatch]
+  );
   return (
     <div className="CalendarDetailView-top-container">
       <div className="CalendarDetailView-container">
@@ -66,7 +74,15 @@ const CalendarDetailView = ({
           <p className="memo-container-content"> {calendarDetailData.memo}</p>
         </div>
 
-        <button className="add-work-button">출근부 작성</button>
+        <button
+          className="add-work-button"
+          onClick={() => {
+            setDetailModalOpen(false);
+            setWriteModal(true);
+          }}
+        >
+          출근부 작성
+        </button>
       </div>
     </div>
   );

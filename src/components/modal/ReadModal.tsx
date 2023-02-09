@@ -17,7 +17,12 @@ function ReadModal(props: readModalProps) {
   return (
     <div className="modal-background">
       <div className="modal-container">
-        <button onClick={() => setReadModal(false)}>닫기</button>
+        <button
+          className="modal-read-close-button"
+          onClick={() => setReadModal(false)}
+        >
+          닫기
+        </button>
         {props.children}
       </div>
     </div>

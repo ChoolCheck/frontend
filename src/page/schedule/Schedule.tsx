@@ -1,10 +1,27 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useEffect, useState, useCallback } from "react";
+import { useDispatch } from "react-redux";
+import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
+import { useSelector } from "react-redux";
+import { RootState } from "../../Redux/Reducers/rootReducer";
+
 import ScheduleWeeklyView from "./ScheduleWeeklyView";
 import ScheduleTotalView from "./ScheduleTotalView";
 import ToggleButton from "../../components/button/ToggleButton";
+import CreateSchedule from "./CreateSchedule";
+import WriteModal from "../../components/modal/WriteModal";
 import "./schedule.scss";
+
 const Schedule = () => {
+  const dispatch = useDispatch();
+
+  const writeModalState = useSelector(
+    (state: RootState) => state.WriteModalReducer.writeModalState
+  );
+
+  const setWriteModal = useCallback(
+    (readModalState: boolean) => dispatch(setWriteModalOpen(readModalState)),
+    [dispatch]
+  );
   const [leftOrRight, setLeftOrRight] = useState(true);
 
   const scheduleTotal = {
@@ -15,7 +32,7 @@ const Schedule = () => {
         name: "김어진",
         time: "10:00-14:00",
         totalWorkTime: "4",
-        workType : "직원",
+        workType: "직원",
         backgroundColor: "#ffd6a5",
       },
       {
@@ -23,7 +40,8 @@ const Schedule = () => {
         date: "01/02",
         name: "이예빈",
         time: "13:00-18:00",
-        totalWorkTime: "5",        workType : "직원",
+        totalWorkTime: "5",
+        workType: "직원",
 
         backgroundColor: "#ffadad",
       },
@@ -236,11 +254,20 @@ const Schedule = () => {
           ></ToggleButton>
         </div>
         <div className="Schedule-Header-right">
-          <button className="add-Schedule-button page-header-button">
+          <button
+            className="add-Schedule-button page-header-button"
+            onClick={() => setWriteModal(true)}
+          >
             스케줄추가
           </button>
         </div>
       </div>
+
+      {writeModalState && (
+        <WriteModal>
+          <CreateSchedule></CreateSchedule>
+        </WriteModal>
+      )}
 
       {leftOrRight ? (
         <ScheduleWeeklyView
