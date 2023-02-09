@@ -2,7 +2,7 @@
 $color-none: #000000;
 $opacity-zero: 0.3;
 
-.ReadModal-background {
+.modal-background {
   z-index: 200;
   position: fixed;
   top: 0;
@@ -14,7 +14,7 @@ $opacity-zero: 0.3;
   display: block;
   font-size: 20px;
 
-  .ReadModal-container {
+  .modal-container {
     position: absolute;
     top: 50%;
     left: 50%;

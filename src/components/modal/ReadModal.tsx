@@ -1,11 +1,12 @@
 import React, { useCallback } from "react";
-import "./readModal.scss";
+import "./modal.scss";
 import { useDispatch } from "react-redux";
 import { setReadModalOpen } from "../../Redux/Actions/handleReadModal";
 
 type readModalProps = {
   children: React.ReactNode;
 };
+
 function ReadModal(props: readModalProps) {
   const dispatch = useDispatch();
 
@@ -14,8 +15,8 @@ function ReadModal(props: readModalProps) {
     [dispatch]
   );
   return (
-    <div className="ReadModal-background">
-      <div className="ReadModal-container">
+    <div className="modal-background">
+      <div className="modal-container">
         <button onClick={() => setReadModal(false)}>닫기</button>
         {props.children}
       </div>

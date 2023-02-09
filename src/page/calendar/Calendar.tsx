@@ -1,25 +1,28 @@
 import React, { useEffect, useState, useCallback } from "react";
 import CalendarView from "./CalendarView";
 import CalendarDetailView from "./CalendarDetailView";
-import ReadModal from "../../components/modal/ReadModal";
+import WriteModal from "../../components/modal/WriteModal";
+import CreateWorkCheck from "../workCheck/CreateWorkCheck";
+import CreateMemo from "../memo/CreateMemo";
 import { useDispatch } from "react-redux";
-import { setReadModalOpen } from "../../Redux/Actions/handleReadModal";
-import * as type from "../../Redux/Types";
+import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
 import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/Reducers/rootReducer";
 
 const Calendar = () => {
   const dispatch = useDispatch();
 
-  const readModalState = useSelector(
-    (state: RootState) => state.ReadModalReducer.readModalState
+  const writeModalState = useSelector(
+    (state: RootState) => state.WriteModalReducer.writeModalState
   );
 
-  const setReadModal = useCallback(
-    (readModalState: boolean) => dispatch(setReadModalOpen(readModalState)),
+  const setWriteModal = useCallback(
+    (readModalState: boolean) => dispatch(setWriteModalOpen(readModalState)),
     [dispatch]
   );
   const [detailModalOpen, setDetailModalOpen] = useState(false);
+
+  const [selectedModal, setSelectedModal] = useState<string>("");
   const calendarData = [
     {
       title: "김어진 11-14",
@@ -96,11 +99,12 @@ const Calendar = () => {
     );
   };
   const onCreateWorkcheckClick = (ev: MouseEvent, element: HTMLElement) => {
-    setReadModal(true);
-    console.log("출석부");
+    setWriteModal(true);
+    setSelectedModal("workcheck");
   };
   const onCreateMemoClick = (ev: MouseEvent, element: HTMLElement) => {
-    setReadModal(true);
+    setWriteModal(true);
+    setSelectedModal("memo");
   };
 
   return (
@@ -113,10 +117,14 @@ const Calendar = () => {
         ></CalendarDetailView>
       )}
 
-      {readModalState && (
-        <ReadModal>
-          <button>수정</button>
-        </ReadModal>
+      {writeModalState && (
+        <WriteModal>
+          {selectedModal == "workcheck" ? (
+            <CreateWorkCheck></CreateWorkCheck>
+          ) : (
+            <CreateMemo></CreateMemo>
+          )}
+        </WriteModal>
       )}
       <CalendarView
         calendarData={calendarData}

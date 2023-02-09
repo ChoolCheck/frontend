@@ -22,9 +22,7 @@ const CalendarView = ({
           },
           createMemo: {
             text: "메모 작성하기",
-            click: function () {
-              console.log("메모 작성하기");
-            },
+            click: onCreateMemoClick,
           },
         }}
         events={calendarData}
