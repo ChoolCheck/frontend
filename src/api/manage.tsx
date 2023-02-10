@@ -7,16 +7,9 @@ import { useDispatch } from "react-redux";
 import { setWriteModalOpen } from "../Redux/Actions/handleWriteModal";
 
 export async function CreateWorktype({
-  title,
-  startTime,
-  endTime,
+  worktypeForm,
+  setWriteModal,
 }: type.createWorktypeProps) {
-  const dispatch = useDispatch();
-
-  const setWriteModal = useCallback(
-    (readModalState: boolean) => dispatch(setWriteModalOpen(readModalState)),
-    [dispatch]
-  );
   await axios({
     method: "POST",
     url: `${config.api}/hours`,
@@ -24,7 +17,11 @@ export async function CreateWorktype({
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
-    data: { title: title, startTime: startTime, endTime: endTime },
+    data: {
+      title: worktypeForm.title,
+      startTime: worktypeForm.startTime,
+      endTime: worktypeForm.endTime,
+    },
   })
     .then((res) => {
       setWriteModal(false);

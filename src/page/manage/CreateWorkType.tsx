@@ -72,7 +72,9 @@ const CreateWorkType = () => {
         >
           취소
         </button>
-        <button onClick={() => CreateWorktype(worktypeForm)}>완료</button>
+        <button onClick={() => CreateWorktype({ worktypeForm, setWriteModal })}>
+          완료
+        </button>
       </div>
     </div>
   );
