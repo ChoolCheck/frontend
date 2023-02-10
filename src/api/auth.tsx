@@ -17,7 +17,8 @@ export async function LoginApi({
     data: { email: email, password: password },
   })
     .then((res) => {
-      localStorage.setItem("access_token", res.data.token);
+      localStorage.setItem("token", res.data.accessToken);
+      localStorage.setItem("refreshToken", res.data.refreshToken);
       navigate("/calendar");
     })
     .catch((err) => {
@@ -33,21 +34,34 @@ export async function SignupApi({
   navigate,
 }: type.apiSignupProps) {
   await axios({
-    method: "POST",
+    method: "GET",
     url: `${config.client}/user/signup`,
     headers: {
       "Content-Type": `application/json`,
     },
-    data: { email: email, password: password, storeName },
   })
     .then((res) => {
-      window.alert("회원가입이 완료되었습니다.");
-      navigate("/login");
+      window.alert("회원가입이 get요청 성공");
     })
     .catch((err) => {
-      window.alert("회원가입에 실패했습니다.");
-      console.log(err);
+      window.alert("회원가입이 get요청 실패" + err);
     });
+  // await axios({
+  //   method: "POST",
+  //   url: `${config.client}/user/signup`,
+  //   headers: {
+  //     "Content-Type": `application/json`,
+  //   },
+  //   data: { email: email, password: password, storeName },
+  // })
+  //   .then((res) => {
+  //     window.alert("회원가입이 완료되었습니다.");
+  //     navigate("/login");
+  //   })
+  //   .catch((err) => {
+  //     window.alert("회원가입에 실패했습니다.");
+  //     console.log(err);
+  //   });
 }
 
 export async function LogoutApi({ navigate }: type.apiLogoutProps) {

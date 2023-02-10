@@ -14,8 +14,6 @@ const Signup = () => {
 
   const { email, password, storeName } = form;
 
-  const [passwordCheck, setPasswordCheck] = useState("");
-
   //오류메시지 상태저장
   const [storeNameMessage, setStoreNameMessage] = useState("");
   const [emailMessage, setEmailMessage] = useState("");

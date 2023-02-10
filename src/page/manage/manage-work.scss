@@ -66,15 +66,15 @@
 
   .workTypeList-notexist {
     height: 100%;
-    background-color: aliceblue;
     p {
+      padding-top: 150px;
       width: 100%;
-
       margin: 0 auto;
     }
 
     button {
-      font-size: 20px;
+      height: 80px;
+      font-size: 22px;
       font-weight: 600;
       width: 100%;
     }

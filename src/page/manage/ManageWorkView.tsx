@@ -65,7 +65,10 @@ const ManageWorkView = ({ workTypeList }: type.manageWorkProps) => {
           <p className="workTypeList-notexist-content">
             설정한 근무시간이 아직 없습니다.
           </p>
-          <button className="workTypeList-notexist-addButton">
+          <button
+            className="workTypeList-notexist-addButton"
+            onClick={() => setWriteModal(true)}
+          >
             근무 시간 추가하기
           </button>
         </div>
