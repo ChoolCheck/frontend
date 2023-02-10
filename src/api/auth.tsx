@@ -10,7 +10,7 @@ export async function LoginApi({
 }: type.apiLoginProps) {
   await axios({
     method: "POST",
-    url: `${config.client}/user/login`,
+    url: `${config.api}/user/login`,
     headers: {
       "Content-Type": `application/json`,
     },
@@ -34,40 +34,27 @@ export async function SignupApi({
   navigate,
 }: type.apiSignupProps) {
   await axios({
-    method: "GET",
-    url: `${config.client}/user/signup`,
+    method: "POST",
+    url: `${config.api}/user/signup`,
     headers: {
       "Content-Type": `application/json`,
     },
+    data: { email: email, password: password, storeName },
   })
     .then((res) => {
-      window.alert("회원가입이 get요청 성공");
+      window.alert("회원가입이 완료되었습니다.");
+      navigate("/login");
     })
     .catch((err) => {
-      window.alert("회원가입이 get요청 실패" + err);
+      window.alert("회원가입에 실패했습니다.");
+      console.log(err);
     });
-  // await axios({
-  //   method: "POST",
-  //   url: `${config.client}/user/signup`,
-  //   headers: {
-  //     "Content-Type": `application/json`,
-  //   },
-  //   data: { email: email, password: password, storeName },
-  // })
-  //   .then((res) => {
-  //     window.alert("회원가입이 완료되었습니다.");
-  //     navigate("/login");
-  //   })
-  //   .catch((err) => {
-  //     window.alert("회원가입에 실패했습니다.");
-  //     console.log(err);
-  //   });
 }
 
 export async function LogoutApi({ navigate }: type.apiLogoutProps) {
   await axios({
     method: "Get",
-    url: `${config.client}/user/logout`,
+    url: `${config.api}/user/logout`,
     headers: {
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,

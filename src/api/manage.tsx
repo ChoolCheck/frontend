@@ -19,7 +19,7 @@ export async function CreateWorktype({
   );
   await axios({
     method: "POST",
-    url: `${config.client}/hours`,
+    url: `${config.api}/hours`,
     headers: {
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -37,7 +37,7 @@ export async function CreateWorktype({
 export async function GetWorktype({ setWorkTypeList }: type.getWorktypeProps) {
   await axios({
     method: "GET",
-    url: `${config.client}/hours`,
+    url: `${config.api}/hours`,
     headers: {
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,
