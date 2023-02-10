@@ -13,3 +13,8 @@ export interface worktypeProps {
 export interface manageWorkProps {
   workTypeList: worktypeProps[] | undefined;
 }
+export interface employeeForm {
+  name: string;
+  role: string;
+  color: string;
+}
