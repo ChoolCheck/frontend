@@ -5,17 +5,11 @@ export interface manageEmployeeProps {
     rank: string;
   }[];
 }
-
-export interface manageWorkProps {
-  workTypeList: {
-    workType: string;
-    startTime: string;
-    endTime: string;
-  }[];
-}
-
 export interface worktypeProps {
-  workType: string;
+  title: string;
   startTime: string;
   endTime: string;
+}
+export interface manageWorkProps {
+  workTypeList: worktypeProps[] | undefined;
 }

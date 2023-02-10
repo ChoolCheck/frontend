@@ -4,8 +4,13 @@ export interface createWorktypeProps {
   endTime: string;
 }
 
+export interface worktypeProps {
+  title: string;
+  startTime: string;
+  endTime: string;
+}
 export interface getWorktypeProps {
   setWorkTypeList: React.Dispatch<
-    React.SetStateAction<createWorktypeProps[] | undefined>
+    React.SetStateAction<worktypeProps[] | undefined>
   >;
 }

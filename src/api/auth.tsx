@@ -51,23 +51,23 @@ export async function SignupApi({
 }
 
 export async function LogoutApi({ navigate }: type.apiLogoutProps) {
-  console.log("로그아웃");
-
-  // await axios({
-  //   method: "Get",
-  //   url: `${config.client}/logout`,
-  //   headers: {
-  //     "Content-Type": `application/json`,
-  //   },
-  // })
-  //   .then((res) => {
-  //     window.alert("로그아웃 되었습니다.");
-  //     navigate("/login");
-  //   })
-  //   .catch((err) => {
-  //     window.alert("로그아웃에 실패했습니다.");
-  //     console.log(err);
-  //   });
+  await axios({
+    method: "Get",
+    url: `${config.client}/user/logout`,
+    headers: {
+      "Content-Type": `application/json`,
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  })
+    .then((res) => {
+      localStorage.removeItem("token");
+      window.alert("로그아웃 되었습니다.");
+      navigate("/login");
+    })
+    .catch((err) => {
+      window.alert("로그아웃에 실패했습니다.");
+      console.log(err);
+    });
 }
 
 export async function IsTokenExpiredApi(navigate: NavigateFunction) {

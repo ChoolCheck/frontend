@@ -4,8 +4,8 @@ import ManageEmployeeView from "./ManageEmployeeView";
 import ManageWorkView from "./ManageWorkView";
 import ToggleButton from "../../components/button/ToggleButton";
 import { GetWorktype } from "../../api/manage";
-import "./manage.scss";
 import * as type from "./type";
+import "./manage.scss";
 const Manage = () => {
   const [leftOrRight, setLeftOrRight] = useState(true);
 
@@ -24,11 +24,12 @@ const Manage = () => {
   ];
 
   const [employeeList, setEmployeeList] = useState(employee);
-  const [workTypeList, setWorkTypeList] = useState<type.worktypeProps[]>();
+  const [workTypeList, setWorkTypeList] = useState<
+    type.worktypeProps[] | undefined
+  >();
 
   useEffect(() => {
-    GetWorktype(setWorkTypeList);
-    //scheduleTotalList(scheduleTotal);
+    GetWorktype({ setWorkTypeList });
   }, []);
 
   return (

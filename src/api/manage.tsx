@@ -44,7 +44,11 @@ export async function GetWorktype({ setWorkTypeList }: type.getWorktypeProps) {
     },
   })
     .then((res) => {
-      setWorkTypeList(res.data);
+      return {
+        title: res.data.title,
+        startTime: res.data.startTime,
+        endTime: res.data.endTime,
+      };
     })
     .catch((err) => {
       window.alert("근무 형태 조회에 실패했습니다.");

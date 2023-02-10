@@ -28,31 +28,48 @@ const ManageWorkView = ({ workTypeList }: type.manageWorkProps) => {
           <CreateWorkType></CreateWorkType>
         </WriteModal>
       )}
-      <p className="workTypeList-ul-col">
-        <span className="workTypeList-ul-col-workForm">근무형태</span>
-        <span className="workTypeList-ul-col-time">시간</span>
-        <span className="workTypeList-ul-col-delete"></span>
-      </p>
-      <ul className="workTypeList-ul">
-        {workTypeList.map((item) => (
-          <li className="workTypeList-li">
-            <span className="workTypeList-li-workForm">{item.workType}</span>
-            <span className="workTypeList-li-time">{item.startTime}</span>
-            <span className="workTypeList-li-time">{item.endTime}</span>
-            <button className="workTypeList-li-delete" onClick={onDeleteClick}>
-              x
+
+      {workTypeList ? (
+        <div className="workTypeList-exist">
+          <p className="workTypeList-ul-col">
+            <span className="workTypeList-ul-col-workForm">근무형태</span>
+            <span className="workTypeList-ul-col-time">시간</span>
+            <span className="workTypeList-ul-col-delete"></span>
+          </p>
+          <ul className="workTypeList-ul">
+            {workTypeList.map((item) => (
+              <li className="workTypeList-li">
+                <span className="workTypeList-li-workForm">{item.title}</span>
+                <span className="workTypeList-li-time">{item.startTime}</span>
+                <span className="workTypeList-li-time">{item.endTime}</span>
+                <button
+                  className="workTypeList-li-delete"
+                  onClick={onDeleteClick}
+                >
+                  x
+                </button>
+              </li>
+            ))}
+          </ul>
+          <div className="button-container">
+            <button
+              className="workTypeList-addButton"
+              onClick={() => setWriteModal(true)}
+            >
+              근무추가
             </button>
-          </li>
-        ))}
-      </ul>
-      <div className="button-container">
-        <button
-          className="workTypeList-addButton"
-          onClick={() => setWriteModal(true)}
-        >
-          근무추가
-        </button>
-      </div>
+          </div>
+        </div>
+      ) : (
+        <div className="workTypeList-notexist">
+          <p className="workTypeList-notexist-content">
+            설정한 근무시간이 아직 없습니다.
+          </p>
+          <button className="workTypeList-notexist-addButton">
+            근무 시간 추가하기
+          </button>
+        </div>
+      )}
     </div>
   );
 };
