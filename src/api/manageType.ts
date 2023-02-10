@@ -24,3 +24,16 @@ export interface getWorktypeProps {
     React.SetStateAction<worktypeProps[] | undefined>
   >;
 }
+
+export interface createEmployeeProps {
+  employeeForm: {
+    name: string;
+    role: string;
+    color: string;
+  };
+
+  setWriteModal: (readModalState: boolean) => {
+    type: "handleWriteodal/SETWRITEMODAL";
+    payload: boolean;
+  };
+}

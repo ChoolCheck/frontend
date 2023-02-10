@@ -1,15 +1,12 @@
 import axios from "axios";
 import { config } from "../static/config";
-import { NavigateFunction, useNavigate } from "react-router-dom";
 import * as type from "./manageType";
-import React, { useCallback, useState } from "react";
-import { useDispatch } from "react-redux";
-import { setWriteModalOpen } from "../Redux/Actions/handleWriteModal";
 
 export async function CreateWorktype({
   worktypeForm,
   setWriteModal,
 }: type.createWorktypeProps) {
+  console.log(worktypeForm);
   await axios({
     method: "POST",
     url: `${config.api}/hours`,
@@ -45,5 +42,30 @@ export async function GetWorktype({ setWorkTypeList }: type.getWorktypeProps) {
     })
     .catch((err) => {
       window.alert("근무 형태 조회에 실패했습니다.");
+    });
+}
+
+export async function CreateEmployee({
+  employeeForm,
+  setWriteModal,
+}: type.createEmployeeProps) {
+  await axios({
+    method: "POST",
+    url: `${config.api}/employee`,
+    headers: {
+      "Content-Type": `application/json`,
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+    data: {
+      name: employeeForm.name,
+      role: employeeForm.role,
+      color: employeeForm.color,
+    },
+  })
+    .then((res) => {
+      setWriteModal(false);
+    })
+    .catch((err) => {
+      window.alert("직원 추가에 실패했습니다.");
     });
 }

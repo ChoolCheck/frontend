@@ -44,7 +44,7 @@ $opacity-zero: 0.3;
         margin-right: 20px;
         width: 80px;
         font-size: 20px;
-        text-align: right;
+        text-align: center;
       }
       input,
       select {
@@ -67,6 +67,18 @@ $opacity-zero: 0.3;
     }
 
     .modal-color {
+      align-items: start;
+      text-align: left;
+      height: 110px;
+      .color-button-container {
+        width: 200px;
+        button {
+          margin: 0 10px 10px 10px;
+          width: 30px;
+          height: 30px;
+          border-radius: 10px;
+        }
+      }
     }
 
     .modal-content {

@@ -25,7 +25,6 @@ const CreateWorkType = () => {
       ...worktypeForm,
       [e.target.name]: e.target.value,
     });
-    console.log(e.target.value);
   };
 
   const onClickCancelOnModal = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -43,6 +42,7 @@ const CreateWorkType = () => {
         <p className="modal-worktype">
           <span>근무명</span>
           <input
+            name="title"
             placeholder="ex)오픈,미들,마감"
             onChange={onChangeForm}
           ></input>
