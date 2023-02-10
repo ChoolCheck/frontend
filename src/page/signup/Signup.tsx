@@ -42,7 +42,6 @@ const Signup = () => {
 
   const onChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChangeForm(e.target.name, e.target.value);
-    console.log(form);
     if (!emailRegex.test(e.target.value)) {
       setEmailMessage("이메일 형식이 틀렸습니다.");
       setIsEmail(false);
@@ -54,7 +53,6 @@ const Signup = () => {
 
   const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChangeForm(e.target.name, e.target.value);
-
     if (!passwordRegex.test(e.target.value)) {
       setPasswordMessage(
         "숫자+영문자+특수문자 조합으로 8자리 이상 입력해주세요."
@@ -68,7 +66,6 @@ const Signup = () => {
 
   const onChangePasswordCheck = (e: React.ChangeEvent<HTMLInputElement>) => {
     const passwordCheckNow = e.target.value;
-
     if (password === passwordCheckNow) {
       setPasswordCheckMessage("동일한 비밀번호입니다.");
       setIsPasswordCheck(true);
@@ -99,6 +96,7 @@ const Signup = () => {
   };
 
   const onSubmitForm = () => {
+    console.log(form);
     if (email == "") window.alert("이메일을 입력해주세요");
     else if (password == "") window.alert("비밀번호를 입력해주세요");
     else if (storeName == "") window.alert("가게명을 입력해주세요");

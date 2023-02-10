@@ -44,8 +44,9 @@ const CreateSchedule = () => {
         </p>
         <p className="modal-time">
           <span>시간</span>
-          <input type="time"></input>
-          <input type="time"></input>
+          <input className="modal-time-start" type="time"></input>
+          {" ~ "}
+          <input className="modal-time-end" type="time"></input>
         </p>
       </div>
       <div className="modal-write-button-container">

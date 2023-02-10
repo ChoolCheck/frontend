@@ -18,8 +18,6 @@ const SignupView = ({
   onChangePasswordCheck,
   onChangeStoreName,
 }: type.signupProps) => {
-  const navigate = useNavigate();
-
   return (
     <div className="Signup--Top-Container">
       <div className="Signup-inputContainer">

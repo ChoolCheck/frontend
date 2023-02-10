@@ -3,7 +3,9 @@ import axios from "axios";
 import ManageEmployeeView from "./ManageEmployeeView";
 import ManageWorkView from "./ManageWorkView";
 import ToggleButton from "../../components/button/ToggleButton";
+import { GetWorktype } from "../../api/manage";
 import "./manage.scss";
+import * as type from "./type";
 const Manage = () => {
   const [leftOrRight, setLeftOrRight] = useState(true);
 
@@ -21,14 +23,11 @@ const Manage = () => {
     { name: "옥수수", backgroundColor: "#a0c4ff", rank: "알바" },
   ];
 
-  const work = [
-    { workForm: "오픈", time: "9:00-13:00" },
-    { workForm: "마감", time: "19:00-23:00" },
-  ];
   const [employeeList, setEmployeeList] = useState(employee);
-  const [workFormList, setWorkFormatList] = useState(work);
+  const [workTypeList, setWorkTypeList] = useState<type.worktypeProps[]>();
 
   useEffect(() => {
+    GetWorktype(setWorkTypeList);
     //scheduleTotalList(scheduleTotal);
   }, []);
 
@@ -46,7 +45,7 @@ const Manage = () => {
       {leftOrRight ? (
         <ManageEmployeeView employeeList={employeeList}></ManageEmployeeView>
       ) : (
-        <ManageWorkView workFormList={workFormList}></ManageWorkView>
+        <ManageWorkView workTypeList={workTypeList}></ManageWorkView>
       )}
     </div>
   );

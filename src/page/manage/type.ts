@@ -7,8 +7,15 @@ export interface manageEmployeeProps {
 }
 
 export interface manageWorkProps {
-  workFormList: {
-    workForm: string;
-    time: string;
+  workTypeList: {
+    workType: string;
+    startTime: string;
+    endTime: string;
   }[];
+}
+
+export interface worktypeProps {
+  workType: string;
+  startTime: string;
+  endTime: string;
 }

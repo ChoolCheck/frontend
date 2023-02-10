@@ -2,7 +2,7 @@ import "./createWorkType.scss";
 import React, { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
-
+import { CreateWorktype } from "../../api/manage";
 const CreateWorkType = () => {
   const dispatch = useDispatch();
 
@@ -10,6 +10,22 @@ const CreateWorkType = () => {
     (readModalState: boolean) => dispatch(setWriteModalOpen(readModalState)),
     [dispatch]
   );
+
+  const [worktypeForm, setWorktypeForm] = useState({
+    title: "",
+    startTime: "",
+    endTime: "",
+  });
+
+  const { title, startTime, endTime } = worktypeForm;
+
+  const onChangeForm = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setWorktypeForm({
+      ...worktypeForm,
+      [e.target.name]: e.target.value,
+    });
+    console.log(e.target.value);
+  };
 
   const onClickCancelOnModal = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -25,11 +41,27 @@ const CreateWorkType = () => {
       <div className="CreateWorkCheck-content">
         <p className="modal-worktype">
           <span>근무명</span>
-          <input placeholder="ex)오픈,미들,마감"></input>
+          <input
+            placeholder="ex)오픈,미들,마감"
+            onChange={onChangeForm}
+          ></input>
         </p>
         <p className="modal-time">
           <span>시간</span>
-          <input type="time"></input>
+
+          <input
+            className="modal-time-start"
+            name="startTime"
+            type="time"
+            onChange={onChangeForm}
+          ></input>
+          {" ~ "}
+          <input
+            className="modal-time-end"
+            name="endTime"
+            type="time"
+            onChange={onChangeForm}
+          ></input>
         </p>
       </div>
       <div className="modal-write-button-container">
@@ -39,7 +71,7 @@ const CreateWorkType = () => {
         >
           취소
         </button>
-        <button>완료</button>
+        <button onClick={() => CreateWorktype(worktypeForm)}>완료</button>
       </div>
     </div>
   );

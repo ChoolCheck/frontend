@@ -1,7 +1,7 @@
 import axios from "axios";
 import { config } from "../static/config";
 import { NavigateFunction, useNavigate } from "react-router-dom";
-import * as type from "./type";
+import * as type from "./authType";
 
 export async function LoginApi({
   email,

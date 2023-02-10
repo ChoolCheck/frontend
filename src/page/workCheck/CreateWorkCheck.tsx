@@ -48,9 +48,13 @@ const CreateWorkCheck = () => {
         </p>
         <p className="modal-time">
           <span>시간</span>
-          <input className="modal-time-start" type="time"></input>
+          <input
+            className="modal-time-start"
+            name="startTime"
+            type="time"
+          ></input>
           {" ~ "}
-          <input className="modal-time-end" type="time"></input>
+          <input className="modal-time-end" name="endTime" type="time"></input>
         </p>
       </div>
       <div className="modal-write-button-container">

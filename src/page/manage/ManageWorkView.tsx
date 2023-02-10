@@ -9,7 +9,7 @@ import { RootState } from "../../Redux/Reducers/rootReducer";
 import "./manage-work.scss";
 import * as type from "./type";
 
-const ManageWorkView = ({ workFormList }: type.manageWorkProps) => {
+const ManageWorkView = ({ workTypeList }: type.manageWorkProps) => {
   const dispatch = useDispatch();
 
   const writeModalState = useSelector(
@@ -34,10 +34,11 @@ const ManageWorkView = ({ workFormList }: type.manageWorkProps) => {
         <span className="workTypeList-ul-col-delete"></span>
       </p>
       <ul className="workTypeList-ul">
-        {workFormList.map((item) => (
+        {workTypeList.map((item) => (
           <li className="workTypeList-li">
-            <span className="workTypeList-li-workForm">{item.workForm}</span>
-            <span className="workTypeList-li-time">{item.time}</span>
+            <span className="workTypeList-li-workForm">{item.workType}</span>
+            <span className="workTypeList-li-time">{item.startTime}</span>
+            <span className="workTypeList-li-time">{item.endTime}</span>
             <button className="workTypeList-li-delete" onClick={onDeleteClick}>
               x
             </button>
