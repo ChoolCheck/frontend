@@ -9,6 +9,8 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/Reducers/rootReducer";
 import { GetEmployeeApi } from "../../api/manage";
 
+import { roleInfo } from "../../static/role";
+
 const ManageEmployeeView = () => {
   const dispatch = useDispatch();
 
@@ -31,7 +33,7 @@ const ManageEmployeeView = () => {
     <div className="ManageEmployeeView-top-container">
       {writeModalState && (
         <WriteModal>
-          <CreateEmployee></CreateEmployee>
+          <CreateEmployee setEmployeeList={setEmployeeList}></CreateEmployee>
         </WriteModal>
       )}
 

@@ -42,6 +42,9 @@ export interface createEmployeeProps {
   name: string;
   role: string;
   color: string;
+  setEmployeeList: React.Dispatch<
+    React.SetStateAction<employeeProps[] | undefined>
+  >;
 
   setWriteModal: (readModalState: boolean) => {
     type: "handleWriteodal/SETWRITEMODAL";

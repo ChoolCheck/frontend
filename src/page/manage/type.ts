@@ -9,6 +9,12 @@ export interface employeeProps {
   role: string;
   color: string;
 }
+export interface createEmployeeProps {
+  setEmployeeList: React.Dispatch<
+    React.SetStateAction<employeeProps[] | undefined>
+  >;
+}
+
 export interface createWorktypeProps {
   setWorkTypeList: React.Dispatch<
     React.SetStateAction<worktypeProps[] | undefined>

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { config } from "../static/config";
 import * as type from "./manageType";
+import { roleInfo } from "../static/role";
 
 export async function CreateWorktypeApi({
   worktypeForm,
@@ -55,6 +56,7 @@ export async function CreateEmployeeApi({
   role,
   color,
   setWriteModal,
+  setEmployeeList,
 }: type.createEmployeeProps) {
   await axios({
     method: "POST",
@@ -70,8 +72,10 @@ export async function CreateEmployeeApi({
     },
   })
     .then((res) => {
+      GetEmployeeApi({ setEmployeeList });
+    })
+    .then((res) => {
       setWriteModal(false);
-      console.log(res);
     })
     .catch((err) => {
       window.alert("직원 추가에 실패했습니다.");
@@ -90,7 +94,17 @@ export async function GetEmployeeApi({
     },
   })
     .then((res) => {
-      setEmployeeList(res.data);
+      for (let i = 0; i < res.data.length; i++) {
+        if (res.data[i].role == roleInfo[0].roleName) {
+          res.data[i].role = roleInfo[0].roleValue;
+        } else if (res.data[i].role == roleInfo[1].roleName) {
+          res.data[i].role = roleInfo[1].roleValue;
+        } else res.data[i].role = roleInfo[2].roleValue;
+      }
+      return res.data;
+    })
+    .then((res) => {
+      setEmployeeList(res);
     })
     .catch((err) => {
       window.alert("근무 형태 조회에 실패했습니다.");
