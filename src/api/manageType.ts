@@ -1,5 +1,8 @@
-import { Dispatch } from "react";
-import {} from "react-router-dom";
+export interface worktypeProps {
+  title: string;
+  startTime: string;
+  endTime: string;
+}
 
 export interface createWorktypeProps {
   worktypeForm: {
@@ -17,14 +20,21 @@ export interface createWorktypeProps {
   };
 }
 
-export interface worktypeProps {
-  title: string;
-  startTime: string;
-  endTime: string;
-}
 export interface getWorktypeProps {
   setWorkTypeList: React.Dispatch<
     React.SetStateAction<worktypeProps[] | undefined>
+  >;
+}
+
+export interface employeeProps {
+  name: string;
+  role: string;
+  color: string;
+}
+
+export interface getEmployeeProps {
+  setEmployeeList: React.Dispatch<
+    React.SetStateAction<employeeProps[] | undefined>
   >;
 }
 

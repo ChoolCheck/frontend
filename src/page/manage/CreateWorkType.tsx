@@ -1,4 +1,3 @@
-import "./createWorkType.scss";
 import * as type from "./type";
 import React, { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";

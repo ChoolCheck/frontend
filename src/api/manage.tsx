@@ -77,3 +77,22 @@ export async function CreateEmployeeApi({
       window.alert("직원 추가에 실패했습니다.");
     });
 }
+
+export async function GetEmployeeApi({
+  setEmployeeList,
+}: type.getEmployeeProps) {
+  await axios({
+    method: "GET",
+    url: `${config.api}/employee`,
+    headers: {
+      "Content-Type": `application/json`,
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  })
+    .then((res) => {
+      setEmployeeList(res.data);
+    })
+    .catch((err) => {
+      window.alert("근무 형태 조회에 실패했습니다.");
+    });
+}

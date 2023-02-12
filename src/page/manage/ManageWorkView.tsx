@@ -5,14 +5,18 @@ import { useDispatch } from "react-redux";
 import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
 import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/Reducers/rootReducer";
-
-import "./manage-work.scss";
+import { GetWorktypeApi } from "../../api/manage";
+import "./style/manage-work.scss";
 import * as type from "./type";
 
-const ManageWorkView = ({
-  workTypeList,
-  setWorkTypeList,
-}: type.manageWorkProps) => {
+const ManageWorkView = () => {
+  const [workTypeList, setWorkTypeList] = useState<
+    type.worktypeProps[] | undefined
+  >();
+
+  useEffect(() => {
+    GetWorktypeApi({ setWorkTypeList });
+  }, []);
   const dispatch = useDispatch();
 
   const writeModalState = useSelector(
