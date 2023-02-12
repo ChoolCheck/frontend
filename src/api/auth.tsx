@@ -53,7 +53,7 @@ export async function SignupApi({
 
 export async function LogoutApi({ navigate }: type.apiLogoutProps) {
   await axios({
-    method: "Get",
+    method: "Post",
     url: `${config.api}/user/logout`,
     headers: {
       "Content-Type": `application/json`,
