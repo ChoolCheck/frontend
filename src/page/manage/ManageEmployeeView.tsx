@@ -35,8 +35,8 @@ const ManageEmployeeView = () => {
         </WriteModal>
       )}
 
-      {employeeList && employeeList.length > 0 && (
-        <div>
+      {employeeList && employeeList.length > 0 ? (
+        <div className="employeeList-exist">
           <div className="employeeList-ul-col">
             <span className="employeeList-ul-col-name">이름</span>
             <span className="employeeList-ul-col-rank">직급</span>
@@ -64,6 +64,16 @@ const ManageEmployeeView = () => {
               직원추가
             </button>
           </div>
+        </div>
+      ) : (
+        <div className="employeeList-notexist">
+          <p className="employeeList-notexist-content">직원이 아직 없습니다.</p>
+          <button
+            className="employeeList-notexist-addButton"
+            onClick={() => setWriteModal(true)}
+          >
+            직원 추가하기
+          </button>
         </div>
       )}
     </div>
