@@ -5,7 +5,7 @@ import { CreateEmployeeApi } from "../../api/manage";
 import * as type from "./type";
 
 import { colorInfo } from "../../static/color";
-import { rankInfo } from "../../static/role";
+import { roleInfo } from "../../static/role";
 
 const CreateEmployee = ({ setEmployeeList }: type.createEmployeeProps) => {
   const dispatch = useDispatch();
@@ -24,11 +24,11 @@ const CreateEmployee = ({ setEmployeeList }: type.createEmployeeProps) => {
   };
 
   const onChangeRole = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setRole(rankInfo[e.target.options.selectedIndex].rankName);
+    setRole(roleInfo[e.target.options.selectedIndex].roleName);
   };
 
   const onCreateClick = () => {
-    if (name == "") {
+    if (name == "" || name.length < 2) {
       window.alert("이름을 2글자 이상 입력해주세요");
     } else {
       CreateEmployeeApi({ name, role, color, setWriteModal, setEmployeeList });
@@ -76,8 +76,8 @@ const CreateEmployee = ({ setEmployeeList }: type.createEmployeeProps) => {
         <p className="modal-employee">
           <span>직급</span>
           <select name="role" onChange={onChangeRole}>
-            {rankInfo.map((item) => (
-              <option>{item.rankValue}</option>
+            {roleInfo.map((item) => (
+              <option>{item.roleValue}</option>
             ))}
           </select>
         </p>
