@@ -36,7 +36,10 @@ const Manage = () => {
       {leftOrRight ? (
         <ManageEmployeeView employeeList={employeeList}></ManageEmployeeView>
       ) : (
-        <ManageWorkView workTypeList={workTypeList}></ManageWorkView>
+        <ManageWorkView
+          workTypeList={workTypeList}
+          setWorkTypeList={setWorkTypeList}
+        ></ManageWorkView>
       )}
     </div>
   );

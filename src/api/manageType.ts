@@ -7,6 +7,9 @@ export interface createWorktypeProps {
     startTime: string;
     endTime: string;
   };
+  setWorkTypeList: React.Dispatch<
+    React.SetStateAction<worktypeProps[] | undefined>
+  >;
 
   setWriteModal: (readModalState: boolean) => {
     type: "handleWriteodal/SETWRITEMODAL";

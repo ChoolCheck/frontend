@@ -1,10 +1,11 @@
 import "./createWorkType.scss";
+import * as type from "./type";
 import React, { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
 import { CreateWorktypeApi } from "../../api/manage";
 
-const CreateWorkType = () => {
+const CreateWorkType = ({ setWorkTypeList }: type.createWorktypeProps) => {
   const dispatch = useDispatch();
 
   const setWriteModal = useCallback(
@@ -73,7 +74,9 @@ const CreateWorkType = () => {
           취소
         </button>
         <button
-          onClick={() => CreateWorktypeApi({ worktypeForm, setWriteModal })}
+          onClick={() =>
+            CreateWorktypeApi({ worktypeForm, setWriteModal, setWorkTypeList })
+          }
         >
           완료
         </button>

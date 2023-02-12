@@ -5,8 +5,8 @@ import * as type from "./manageType";
 export async function CreateWorktypeApi({
   worktypeForm,
   setWriteModal,
+  setWorkTypeList,
 }: type.createWorktypeProps) {
-  console.log(worktypeForm);
   await axios({
     method: "POST",
     url: `${config.api}/hours`,
@@ -20,6 +20,9 @@ export async function CreateWorktypeApi({
       endTime: worktypeForm.endTime,
     },
   })
+    .then((res) => {
+      GetWorktypeApi({ setWorkTypeList });
+    })
     .then((res) => {
       setWriteModal(false);
     })
@@ -68,6 +71,7 @@ export async function CreateEmployeeApi({
   })
     .then((res) => {
       setWriteModal(false);
+      console.log(res);
     })
     .catch((err) => {
       window.alert("직원 추가에 실패했습니다.");

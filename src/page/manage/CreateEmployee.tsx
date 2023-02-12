@@ -50,7 +50,7 @@ const CreateEmployee = () => {
     setRole(e.target.value);
   };
 
-  const onClickColor = (idx: number) => {
+  const onClickColor = () => {
     return (e: React.MouseEvent<HTMLButtonElement>) => {
       const selectedButton = e.currentTarget;
       let prevNode = selectedButton.previousElementSibling;
@@ -101,7 +101,7 @@ const CreateEmployee = () => {
             {buttonInfo.map((item, idx) => (
               <button
                 name={item.color}
-                onClick={onClickColor(idx)}
+                onClick={onClickColor()}
                 style={{ backgroundColor: `#${item.color}` }}
               >
                 &nbsp;

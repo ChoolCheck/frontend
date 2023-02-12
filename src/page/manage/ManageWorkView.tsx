@@ -9,7 +9,10 @@ import { RootState } from "../../Redux/Reducers/rootReducer";
 import "./manage-work.scss";
 import * as type from "./type";
 
-const ManageWorkView = ({ workTypeList }: type.manageWorkProps) => {
+const ManageWorkView = ({
+  workTypeList,
+  setWorkTypeList,
+}: type.manageWorkProps) => {
   const dispatch = useDispatch();
 
   const writeModalState = useSelector(
@@ -25,11 +28,11 @@ const ManageWorkView = ({ workTypeList }: type.manageWorkProps) => {
     <div className="ManageWorkView-top-container">
       {writeModalState && (
         <WriteModal>
-          <CreateWorkType></CreateWorkType>
+          <CreateWorkType setWorkTypeList={setWorkTypeList}></CreateWorkType>
         </WriteModal>
       )}
 
-      {workTypeList ? (
+      {workTypeList && workTypeList.length > 0 ? (
         <div className="workTypeList-exist">
           <p className="workTypeList-ul-col">
             <span className="workTypeList-ul-col-workForm">근무형태</span>
