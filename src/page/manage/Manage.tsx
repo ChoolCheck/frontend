@@ -3,7 +3,7 @@ import axios from "axios";
 import ManageEmployeeView from "./ManageEmployeeView";
 import ManageWorkView from "./ManageWorkView";
 import ToggleButton from "../../components/button/ToggleButton";
-import { GetWorktype } from "../../api/manage";
+import { GetWorktypeApi } from "../../api/manage";
 import * as type from "./type";
 import "./manage.scss";
 const Manage = () => {
@@ -19,7 +19,7 @@ const Manage = () => {
   >();
 
   useEffect(() => {
-    GetWorktype({ setWorkTypeList });
+    GetWorktypeApi({ setWorkTypeList });
   }, []);
 
   return (

@@ -78,6 +78,9 @@ $opacity-zero: 0.3;
           height: 30px;
           border-radius: 10px;
         }
+        .selected {
+          border: 1px solid black;
+        }
       }
     }
 

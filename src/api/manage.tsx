@@ -2,7 +2,7 @@ import axios from "axios";
 import { config } from "../static/config";
 import * as type from "./manageType";
 
-export async function CreateWorktype({
+export async function CreateWorktypeApi({
   worktypeForm,
   setWriteModal,
 }: type.createWorktypeProps) {
@@ -28,7 +28,9 @@ export async function CreateWorktype({
     });
 }
 
-export async function GetWorktype({ setWorkTypeList }: type.getWorktypeProps) {
+export async function GetWorktypeApi({
+  setWorkTypeList,
+}: type.getWorktypeProps) {
   await axios({
     method: "GET",
     url: `${config.api}/hours`,
@@ -45,8 +47,10 @@ export async function GetWorktype({ setWorkTypeList }: type.getWorktypeProps) {
     });
 }
 
-export async function CreateEmployee({
-  employeeForm,
+export async function CreateEmployeeApi({
+  name,
+  role,
+  color,
   setWriteModal,
 }: type.createEmployeeProps) {
   await axios({
@@ -57,9 +61,9 @@ export async function CreateEmployee({
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
     data: {
-      name: employeeForm.name,
-      role: employeeForm.role,
-      color: employeeForm.color,
+      name: name,
+      role: role,
+      color: color,
     },
   })
     .then((res) => {

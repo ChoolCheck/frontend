@@ -2,6 +2,7 @@ import "./createEmployee.scss";
 import React, { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
+import { CreateEmployeeApi } from "../../api/manage";
 
 const CreateEmployee = () => {
   const dispatch = useDispatch();
@@ -24,18 +25,16 @@ const CreateEmployee = () => {
   };
 
   const buttonInfo = [
-    { color: colors.RED, isSelected: true },
-    { color: colors.ORANGE, isSelected: false },
-    { color: colors.YELLOW, isSelected: false },
-    { color: colors.GREEN, isSelected: false },
-    { color: colors.LIGHT_BLUE, isSelected: false },
-    { color: colors.BLUE, isSelected: false },
-    { color: colors.PURPLE, isSelected: false },
-    { color: colors.PINK, isSelected: false },
-    { color: colors.GRAY, isSelected: false },
+    { color: colors.RED },
+    { color: colors.ORANGE },
+    { color: colors.YELLOW },
+    { color: colors.GREEN },
+    { color: colors.LIGHT_BLUE },
+    { color: colors.BLUE },
+    { color: colors.PURPLE },
+    { color: colors.PINK },
+    { color: colors.GRAY },
   ];
-
-  const [selectedIdx, setSelectedIdx] = useState(0);
 
   const rank = { MANAGER: "매니저", PART_TIME: "알바", FULL_TIME: "직원" };
 
@@ -53,10 +52,21 @@ const CreateEmployee = () => {
 
   const onClickColor = (idx: number) => {
     return (e: React.MouseEvent<HTMLButtonElement>) => {
-      e.currentTarget.classList.add("selected");
+      const selectedButton = e.currentTarget;
+      let prevNode = selectedButton.previousElementSibling;
+      let nextNode = selectedButton.nextElementSibling;
+      selectedButton.classList.add("selected");
+      while (prevNode) {
+        if (prevNode.className == "selected") {
+          prevNode.classList.remove("selected");
+        } else prevNode = prevNode.previousElementSibling;
+      }
+      while (nextNode) {
+        if (nextNode.className == "selected") {
+          nextNode.classList.remove("selected");
+        } else nextNode = nextNode.nextElementSibling;
+      }
 
-      buttonInfo[selectedIdx].isSelected = false;
-      buttonInfo[idx].isSelected = true;
       setColor(e.currentTarget.name);
     };
   };
@@ -107,7 +117,13 @@ const CreateEmployee = () => {
         >
           취소
         </button>
-        <button>완료</button>
+        <button
+          onClick={() =>
+            CreateEmployeeApi({ name, role, color, setWriteModal })
+          }
+        >
+          완료
+        </button>
       </div>
     </div>
   );
