@@ -11,42 +11,42 @@ const CreateEmployee = () => {
     [dispatch]
   );
 
-  const colors = {
-    RED: "FFADAD",
-    ORANGE: "FFD6A5",
-    YELLOW: "FDFFB6",
-    GREEN: "CAFFBF",
-    LIGHT_BLUE: "9BF6FF",
-    BLUE: "A0C4FF",
-    PURPLE: "BDB2FF",
-    PINK: "FFC6FF",
-    GRAY: "DEDEDE",
-  };
-
   const buttonInfo = [
-    { color: colors.RED },
-    { color: colors.ORANGE },
-    { color: colors.YELLOW },
-    { color: colors.GREEN },
-    { color: colors.LIGHT_BLUE },
-    { color: colors.BLUE },
-    { color: colors.PURPLE },
-    { color: colors.PINK },
-    { color: colors.GRAY },
+    { colorName: "RED", colorCode: "FFADAD" },
+    { colorName: "ORANGE", colorCode: "FFD6A5" },
+    { colorName: "YELLOW", colorCode: "FDFFB6" },
+    { colorName: "GREEN", colorCode: "CAFFBF" },
+    { colorName: "LIGHT_BLUE", colorCode: "9BF6FF" },
+    { colorName: "BLUE", colorCode: "A0C4FF" },
+    { colorName: "PURPLE", colorCode: "BDB2FF" },
+    { colorName: "PINK", colorCode: "FFC6FF" },
+    { colorName: "GRAY", colorCode: "DEDEDE" },
   ];
 
-  const rank = { MANAGER: "매니저", PART_TIME: "알바", FULL_TIME: "직원" };
+  const rankInfo = [
+    { rankName: "MANAGER", rankValue: "매니저" },
+    { rankName: "PART_TIME", rankValue: "알바" },
+    { rankName: "FULL_TIME", rankValue: "직원" },
+  ];
 
   const [name, setName] = useState("");
-  const [role, setRole] = useState("");
-  const [color, setColor] = useState("");
+  const [role, setRole] = useState("매니저");
+  const [color, setColor] = useState("RED");
 
   const onChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
   };
 
   const onChangeRole = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setRole(e.target.value);
+    setRole(rankInfo[e.target.options.selectedIndex].rankName);
+  };
+
+  const onCreateClick = () => {
+    if (name == "") {
+      window.alert("이름을 2글자 이상 입력해주세요");
+    } else {
+      CreateEmployeeApi({ name, role, color, setWriteModal });
+    }
   };
 
   const onClickColor = () => {
@@ -54,7 +54,9 @@ const CreateEmployee = () => {
       const selectedButton = e.currentTarget;
       let prevNode = selectedButton.previousElementSibling;
       let nextNode = selectedButton.nextElementSibling;
+
       selectedButton.classList.add("selected");
+
       while (prevNode) {
         if (prevNode.className == "selected") {
           prevNode.classList.remove("selected");
@@ -65,7 +67,6 @@ const CreateEmployee = () => {
           nextNode.classList.remove("selected");
         } else nextNode = nextNode.nextElementSibling;
       }
-
       setColor(e.currentTarget.name);
     };
   };
@@ -89,9 +90,9 @@ const CreateEmployee = () => {
         <p className="modal-employee">
           <span>직급</span>
           <select name="role" onChange={onChangeRole}>
-            <option>{rank.MANAGER}</option>
-            <option>{rank.FULL_TIME}</option>
-            <option>{rank.PART_TIME}</option>
+            {rankInfo.map((item) => (
+              <option>{item.rankValue}</option>
+            ))}
           </select>
         </p>
         <p className="modal-color">
@@ -99,9 +100,9 @@ const CreateEmployee = () => {
           <div className="color-button-container">
             {buttonInfo.map((item, idx) => (
               <button
-                name={item.color}
+                name={item.colorName}
                 onClick={onClickColor()}
-                style={{ backgroundColor: `#${item.color}` }}
+                style={{ backgroundColor: `#${item.colorCode}` }}
               >
                 &nbsp;
               </button>
@@ -116,13 +117,7 @@ const CreateEmployee = () => {
         >
           취소
         </button>
-        <button
-          onClick={() =>
-            CreateEmployeeApi({ name, role, color, setWriteModal })
-          }
-        >
-          완료
-        </button>
+        <button onClick={onCreateClick}>완료</button>
       </div>
     </div>
   );
