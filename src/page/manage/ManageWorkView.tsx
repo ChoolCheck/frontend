@@ -47,8 +47,9 @@ const ManageWorkView = () => {
             {workTypeList.map((item) => (
               <li className="workTypeList-li">
                 <span className="workTypeList-li-workForm">{item.title}</span>
-                <span className="workTypeList-li-time">{item.startTime}</span>
-                <span className="workTypeList-li-time">{item.endTime}</span>
+                <span className="workTypeList-li-time">
+                  {item.startTime}-{item.endTime}
+                </span>
                 <button
                   className="workTypeList-li-delete"
                   onClick={onDeleteClick}
