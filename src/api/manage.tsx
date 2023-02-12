@@ -94,6 +94,7 @@ export async function GetEmployeeApi({
     },
   })
     .then((res) => {
+      console.log(res);
       for (let i = 0; i < res.data.length; i++) {
         if (res.data[i].role == roleInfo[0].roleName) {
           res.data[i].role = roleInfo[0].roleValue;
