@@ -210,6 +210,7 @@ export async function GetEmployeeDetailApi({
     },
   })
     .then((res) => {
+      console.log(res);
       let newEmployeeDetail = res.data;
       if (newEmployeeDetail.role == roleInfo[0].roleName) {
         newEmployeeDetail.role = roleInfo[0].roleValue;
