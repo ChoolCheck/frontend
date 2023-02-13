@@ -83,11 +83,11 @@ const UpdateEmployee = ({
 
   return (
     <div className="CreateWorkCheck-container">
-      <h3>직원 추가</h3>
+      <h3>직원 수정</h3>
       <div className="CreateWorkCheck-content">
         <p className="modal-name">
           <span>이름</span>
-          <input name="name" onChange={onChangeName}></input>
+          <input name="name" value={name} onChange={onChangeName}></input>
         </p>
         <p className="modal-employee">
           <span>직급</span>
