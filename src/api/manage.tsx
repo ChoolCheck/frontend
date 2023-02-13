@@ -44,8 +44,6 @@ export async function GetWorktypeApi({
     },
   })
     .then((res) => {
-      console.log(res.data);
-
       setWorkTypeList(res.data);
     })
     .catch((err) => {
@@ -73,7 +71,7 @@ export async function DeleteWorktypeApi({
       setWorkTypeList(res);
     })
     .catch((err) => {
-      window.alert("근무 형태 삭제에 실패했습니다.");
+      window.alert("근무 삭제에 실패했습니다.");
     });
 }
 
@@ -108,6 +106,62 @@ export async function CreateEmployeeApi({
     });
 }
 
+export async function UpdateEmployeeApi({
+  id,
+  name,
+  role,
+  color,
+  setWriteModal,
+  setEmployeeList,
+}: type.updateEmployeeProps) {
+  await axios({
+    method: "Patch",
+    url: `${config.api}/employee${id}`,
+    headers: {
+      "Content-Type": `application/json`,
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+    data: {
+      name: name,
+      role: role,
+      color: color,
+    },
+  })
+    .then((res) => {
+      GetEmployeeApi({ setEmployeeList });
+    })
+    .then((res) => {
+      setWriteModal(false);
+    })
+    .catch((err) => {
+      window.alert("직원 수정에 실패했습니다.");
+    });
+}
+
+export async function DeleteEmployeeApi({
+  setWriteModal,
+  employeeList,
+  setEmployeeList,
+  id,
+}: type.deleteEmployeeProps) {
+  await axios({
+    method: "Delete",
+    url: `${config.api}/employee/${id}`,
+    headers: {
+      "Content-Type": `application/json`,
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  })
+    .then((res) => {
+      return employeeList?.filter((item) => item.id !== id);
+    })
+    .then((res) => {
+      setEmployeeList(res);
+    })
+    .catch((err) => {
+      window.alert("직원 삭제에 실패했습니다.");
+    });
+}
 export async function GetEmployeeApi({
   setEmployeeList,
 }: type.getEmployeeProps) {
@@ -135,5 +189,39 @@ export async function GetEmployeeApi({
     })
     .catch((err) => {
       window.alert("직원 조회에 실패했습니다.");
+    });
+}
+
+export async function GetEmployeeDetailApi({
+  setEmployeeDetail,
+  setReadModal,
+  id,
+}: type.getEmployeeDetailProps) {
+  await axios({
+    method: "GET",
+    url: `${config.api}/employee${id}`,
+    headers: {
+      "Content-Type": `application/json`,
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  })
+    .then((res) => {
+      let newEmployeeDetail = res.data;
+      if (newEmployeeDetail.role == roleInfo[0].roleName) {
+        newEmployeeDetail.role = roleInfo[0].roleValue;
+      } else if (newEmployeeDetail.role == roleInfo[1].roleName) {
+        newEmployeeDetail.role = roleInfo[1].roleValue;
+      } else newEmployeeDetail.role = roleInfo[2].roleValue;
+
+      return newEmployeeDetail;
+    })
+    .then((res) => {
+      setEmployeeDetail(res);
+    })
+    .then((res) => {
+      setReadModal(true);
+    })
+    .catch((err) => {
+      window.alert("직원 상세 조회에 실패했습니다.");
     });
 }

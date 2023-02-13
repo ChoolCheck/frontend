@@ -1,13 +1,16 @@
 import React, { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
-import { CreateEmployeeApi } from "../../api/manage";
+import { UpdateEmployeeApi } from "../../api/manage";
 import * as type from "./type";
 
 import { colorInfo } from "../../static/color";
 import { roleInfo } from "../../static/role";
 
-const CreateEmployee = ({ setEmployeeList }: type.createEmployeeProps) => {
+const UpdateEmployee = ({
+  employeeDetail,
+  setEmployeeList,
+}: type.updateEmployeeProps) => {
   const dispatch = useDispatch();
 
   const setWriteModal = useCallback(
@@ -15,9 +18,11 @@ const CreateEmployee = ({ setEmployeeList }: type.createEmployeeProps) => {
     [dispatch]
   );
 
-  const [name, setName] = useState("");
-  const [role, setRole] = useState("매니저");
-  const [color, setColor] = useState("RED");
+  const [name, setName] = useState(employeeDetail ? employeeDetail.name : "");
+  const [role, setRole] = useState(employeeDetail ? employeeDetail.role : "");
+  const [color, setColor] = useState(
+    employeeDetail ? employeeDetail.color : ""
+  );
 
   const onChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
@@ -27,11 +32,20 @@ const CreateEmployee = ({ setEmployeeList }: type.createEmployeeProps) => {
     setRole(roleInfo[e.target.options.selectedIndex].roleName);
   };
 
-  const onCreateClick = () => {
-    if (name == "" || name.length < 2) {
+  const onCreateClick = (id: number) => {
+    if (name == "" || (name && name.length < 2)) {
       window.alert("이름을 2글자 이상 입력해주세요");
     } else {
-      CreateEmployeeApi({ name, role, color, setWriteModal, setEmployeeList });
+      if (employeeDetail !== undefined) {
+        UpdateEmployeeApi({
+          id,
+          name,
+          role,
+          color,
+          setWriteModal,
+          setEmployeeList,
+        });
+      }
     }
   };
 
@@ -61,8 +75,7 @@ const CreateEmployee = ({ setEmployeeList }: type.createEmployeeProps) => {
     e.preventDefault();
     if (window.confirm("정말로 작성을 취소하시겠습니까?")) {
       setWriteModal(false);
-      window.alert("작성이 취소되었습니다.");
-    } else return;
+    } else window.alert("작성이 취소되었습니다.");
   };
 
   return (
@@ -104,10 +117,14 @@ const CreateEmployee = ({ setEmployeeList }: type.createEmployeeProps) => {
         >
           취소
         </button>
-        <button onClick={onCreateClick}>완료</button>
+        <button
+          onClick={() => onCreateClick(employeeDetail ? employeeDetail.id : 0)}
+        >
+          완료
+        </button>
       </div>
     </div>
   );
 };
 
-export default CreateEmployee;
+export default UpdateEmployee;

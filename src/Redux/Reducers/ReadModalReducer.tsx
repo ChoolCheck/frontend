@@ -13,7 +13,6 @@ const readModalState = createReducer<type.readModal, type.handleReadModal>(
   {
     [SETREADMODAL]: (state, action) =>
       produce(state, (draft) => {
-        console.log(action.payload);
         draft.readModalState = action.payload;
       }),
   }

@@ -6,7 +6,6 @@ import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
 
 const CalendarDetailView = ({
   calendarDetailData,
-  detailModalOpen,
   setDetailModalOpen,
 }: type.calendarDetailViewProps) => {
   const dispatch = useDispatch();
@@ -15,6 +14,7 @@ const CalendarDetailView = ({
     (readModalState: boolean) => dispatch(setWriteModalOpen(readModalState)),
     [dispatch]
   );
+
   return (
     <div className="CalendarDetailView-top-container">
       <div className="CalendarDetailView-container">

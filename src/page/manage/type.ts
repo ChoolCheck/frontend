@@ -11,7 +11,22 @@ export interface employeeProps {
   color: string;
   id: number;
 }
+
+export interface employeeDetailProps {
+  employeeDetail: employeeProps | undefined;
+  employeeList: employeeProps[] | undefined;
+  setEmployeeList: React.Dispatch<
+    React.SetStateAction<employeeProps[] | undefined>
+  >;
+}
 export interface createEmployeeProps {
+  setEmployeeList: React.Dispatch<
+    React.SetStateAction<employeeProps[] | undefined>
+  >;
+}
+
+export interface updateEmployeeProps {
+  employeeDetail: employeeProps | undefined;
   setEmployeeList: React.Dispatch<
     React.SetStateAction<employeeProps[] | undefined>
   >;

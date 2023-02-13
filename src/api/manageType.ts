@@ -48,10 +48,51 @@ export interface getEmployeeProps {
   >;
 }
 
+export interface getEmployeeDetailProps {
+  setEmployeeDetail: React.Dispatch<
+    React.SetStateAction<employeeProps | undefined>
+  >;
+  setReadModal: (readModalState: boolean) => {
+    type: "handleReadModal/SETREADMODAL";
+    payload: boolean;
+  };
+  id: number;
+}
+
 export interface createEmployeeProps {
   name: string;
   role: string;
   color: string;
+
+  setEmployeeList: React.Dispatch<
+    React.SetStateAction<employeeProps[] | undefined>
+  >;
+
+  setWriteModal: (readModalState: boolean) => {
+    type: "handleWriteodal/SETWRITEMODAL";
+    payload: boolean;
+  };
+}
+export interface updateEmployeeProps {
+  id: number;
+  name: string;
+  role: string;
+  color: string;
+
+  setEmployeeList: React.Dispatch<
+    React.SetStateAction<employeeProps[] | undefined>
+  >;
+
+  setWriteModal: (readModalState: boolean) => {
+    type: "handleWriteodal/SETWRITEMODAL";
+    payload: boolean;
+  };
+}
+
+export interface deleteEmployeeProps {
+  id: number;
+
+  employeeList: employeeProps[] | undefined;
 
   setEmployeeList: React.Dispatch<
     React.SetStateAction<employeeProps[] | undefined>

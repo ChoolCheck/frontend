@@ -29,6 +29,5 @@ export interface calendarDetailViewProps {
     }[];
     memo: string;
   };
-  detailModalOpen: boolean;
   setDetailModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }

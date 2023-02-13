@@ -112,7 +112,6 @@ const Calendar = () => {
       {detailModalOpen && (
         <CalendarDetailView
           calendarDetailData={calendarDetailData}
-          detailModalOpen={detailModalOpen}
           setDetailModalOpen={setDetailModalOpen}
         ></CalendarDetailView>
       )}
