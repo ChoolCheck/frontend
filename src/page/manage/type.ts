@@ -18,9 +18,10 @@ export interface employeeDetailProps {
   setEmployeeList: React.Dispatch<
     React.SetStateAction<employeeProps[] | undefined>
   >;
-  setEmployeeDetail: React.Dispatch<
-    React.SetStateAction<employeeProps | undefined>
-  >;
+  infoToShow: {
+    color: string;
+    role: string;
+  };
 }
 export interface createEmployeeProps {
   setEmployeeList: React.Dispatch<
@@ -32,9 +33,6 @@ export interface updateEmployeeProps {
   employeeDetail: employeeProps | undefined;
   setEmployeeList: React.Dispatch<
     React.SetStateAction<employeeProps[] | undefined>
-  >;
-  setEmployeeDetail: React.Dispatch<
-    React.SetStateAction<employeeProps | undefined>
   >;
 }
 

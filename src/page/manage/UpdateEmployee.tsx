@@ -1,6 +1,8 @@
 import React, { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
+import { setReadModalOpen } from "../../Redux/Actions/handleReadModal";
+
 import { UpdateEmployeeApi } from "../../api/manage";
 import * as type from "./type";
 
@@ -10,9 +12,13 @@ import { roleInfo } from "../../static/role";
 const UpdateEmployee = ({
   employeeDetail,
   setEmployeeList,
-  setEmployeeDetail,
 }: type.updateEmployeeProps) => {
   const dispatch = useDispatch();
+
+  const setReadModal = useCallback(
+    (readModalState: boolean) => dispatch(setReadModalOpen(readModalState)),
+    [dispatch]
+  );
 
   const setWriteModal = useCallback(
     (readModalState: boolean) => dispatch(setWriteModalOpen(readModalState)),
@@ -45,7 +51,7 @@ const UpdateEmployee = ({
           color,
           setWriteModal,
           setEmployeeList,
-          setEmployeeDetail,
+          setReadModal,
         });
       }
     }

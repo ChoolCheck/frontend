@@ -87,10 +87,10 @@ export interface updateEmployeeProps {
     type: "handleWriteodal/SETWRITEMODAL";
     payload: boolean;
   };
-
-  setEmployeeDetail: React.Dispatch<
-    React.SetStateAction<employeeProps | undefined>
-  >;
+  setReadModal: (readModalState: boolean) => {
+    type: "handleReadModal/SETREADMODAL";
+    payload: boolean;
+  };
 }
 
 export interface deleteEmployeeProps {

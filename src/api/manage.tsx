@@ -113,7 +113,7 @@ export async function UpdateEmployeeApi({
   color,
   setWriteModal,
   setEmployeeList,
-  setEmployeeDetail,
+  setReadModal,
 }: type.updateEmployeeProps) {
   await axios({
     method: "Patch",
@@ -129,12 +129,11 @@ export async function UpdateEmployeeApi({
     },
   })
     .then((res) => {
-      console.log(res);
-      // setEmployeeDetail(res);
       GetEmployeeApi({ setEmployeeList });
     })
     .then((res) => {
       setWriteModal(false);
+      setReadModal(false);
     })
     .catch((err) => {
       window.alert("직원 수정에 실패했습니다.");

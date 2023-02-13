@@ -15,6 +15,9 @@ import { setReadModalOpen } from "../../Redux/Actions/handleReadModal";
 import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/Reducers/rootReducer";
 
+import { roleInfo } from "../../static/role";
+import { colorInfo } from "../../static/color";
+
 const ManageEmployeeView = () => {
   const dispatch = useDispatch();
 
@@ -43,10 +46,25 @@ const ManageEmployeeView = () => {
     GetEmployeeApi({ setEmployeeList });
   }, []);
 
+  const [infoToShow, setInfoToShow] = useState({ color: "", role: "" });
+
+  for (let i = 0; i < colorInfo.length; i++) {
+    if (employeeDetail && colorInfo[i].colorName == employeeDetail.color) {
+      setInfoToShow({ ...infoToShow, color: colorInfo[i].colorCode });
+      break;
+    }
+  }
+
+  for (let i = 0; i < roleInfo.length; i++) {
+    if (employeeDetail && roleInfo[i].roleName == employeeDetail.role) {
+      setInfoToShow({ ...infoToShow, role: roleInfo[i].roleValue });
+      break;
+    }
+  }
+
   const onClickDetail = (id: number) => {
     GetEmployeeDetailApi({ id, setEmployeeDetail, setReadModal });
   };
-
   return (
     <div className="ManageEmployeeView-top-container">
       {writeModalState && (
@@ -60,7 +78,7 @@ const ManageEmployeeView = () => {
             employeeList={employeeList}
             employeeDetail={employeeDetail}
             setEmployeeList={setEmployeeList}
-            setEmployeeDetail={setEmployeeDetail}
+            infoToShow={infoToShow}
           ></EmployeeDetailView>
         </ReadModal>
       )}
@@ -79,11 +97,11 @@ const ManageEmployeeView = () => {
                 onClick={() => onClickDetail(item.id)}
               >
                 <span className="employeeList-li-name">{item.name}</span>
-                <span className="employeeList-li-rank">{item.role}</span>
+                <span className="employeeList-li-rank">{infoToShow.role}</span>
                 <span className="employeeList-li-color">
                   <span
                     className="employeeList-li-color-content"
-                    style={{ backgroundColor: item.color }}
+                    style={{ backgroundColor: infoToShow.color }}
                   ></span>
                 </span>
               </li>

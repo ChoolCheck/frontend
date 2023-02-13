@@ -1,9 +1,10 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import * as type from "./type";
+import { roleInfo } from "../../static/role";
+import { colorInfo } from "../../static/color";
 
 import WriteModal from "../../components/modal/WriteModal";
 import UpdateEmployee from "./UpdateEmployee";
-import { roleInfo } from "../../static/role";
 
 import { DeleteEmployeeApi } from "../../api/manage";
 import { useDispatch } from "react-redux";
@@ -15,12 +16,10 @@ import { RootState } from "../../Redux/Reducers/rootReducer";
 const EmployeeDetailView = ({
   employeeDetail,
   employeeList,
-  setEmployeeDetail,
   setEmployeeList,
+  infoToShow,
 }: type.employeeDetailProps) => {
   const dispatch = useDispatch();
-
-  console.log(employeeDetail);
 
   const setWriteModal = useCallback(
     (writeModalState: boolean) => dispatch(setWriteModalOpen(writeModalState)),
@@ -56,7 +55,6 @@ const EmployeeDetailView = ({
       {writeModalState && (
         <WriteModal>
           <UpdateEmployee
-            setEmployeeDetail={setEmployeeDetail}
             employeeDetail={employeeDetail}
             setEmployeeList={setEmployeeList}
           ></UpdateEmployee>
@@ -70,13 +68,13 @@ const EmployeeDetailView = ({
         </p>
         <p className="modal-role">
           <span className="info-title">직급</span>
-          <span className="info-content-role"> {employeeDetail?.role}</span>
+          <span className="info-content-role"> {infoToShow.role}</span>
         </p>
-        <p className="modal-name-color">
+        <p className="modal-color">
           <span className="info-title">색상</span>
           <span
             className="info-content-title"
-            style={{ backgroundColor: employeeDetail?.color }}
+            style={{ backgroundColor: infoToShow.color }}
           >
             &nbsp;
           </span>
