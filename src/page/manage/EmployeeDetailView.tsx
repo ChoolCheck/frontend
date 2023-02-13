@@ -35,12 +35,16 @@ const EmployeeDetailView = ({
   };
 
   const onDeleteClick = (id: number) => {
-    DeleteEmployeeApi({
-      setReadModal,
-      employeeList,
-      setEmployeeList,
-      id,
-    });
+    if (window.confirm("직원 정보를 정말로 삭제하시겠습니까?")) {
+      DeleteEmployeeApi({
+        setReadModal,
+        employeeList,
+        setEmployeeList,
+        id,
+      });
+    } else {
+      window.alert("직원 삭제가 취소되었습니다.");
+    }
   };
 
   return (

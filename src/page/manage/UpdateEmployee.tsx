@@ -24,6 +24,9 @@ const UpdateEmployee = ({
     employeeDetail ? employeeDetail.color : ""
   );
 
+  console.log(employeeDetail);
+  console.log({ name, role, color });
+
   const onChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
   };
