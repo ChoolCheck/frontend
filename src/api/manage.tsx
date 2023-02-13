@@ -113,6 +113,7 @@ export async function UpdateEmployeeApi({
   color,
   setWriteModal,
   setEmployeeList,
+  setEmployeeDetail,
 }: type.updateEmployeeProps) {
   await axios({
     method: "Patch",
@@ -128,6 +129,7 @@ export async function UpdateEmployeeApi({
     },
   })
     .then((res) => {
+      setEmployeeDetail(res.data);
       GetEmployeeApi({ setEmployeeList });
     })
     .then((res) => {

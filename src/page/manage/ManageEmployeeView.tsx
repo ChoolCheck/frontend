@@ -60,6 +60,7 @@ const ManageEmployeeView = () => {
             employeeList={employeeList}
             employeeDetail={employeeDetail}
             setEmployeeList={setEmployeeList}
+            setEmployeeDetail={setEmployeeDetail}
           ></EmployeeDetailView>
         </ReadModal>
       )}

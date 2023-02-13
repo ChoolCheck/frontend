@@ -3,6 +3,8 @@ import * as type from "./type";
 
 import WriteModal from "../../components/modal/WriteModal";
 import UpdateEmployee from "./UpdateEmployee";
+import { roleInfo } from "../../static/role";
+
 import { DeleteEmployeeApi } from "../../api/manage";
 import { useDispatch } from "react-redux";
 import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
@@ -13,9 +15,12 @@ import { RootState } from "../../Redux/Reducers/rootReducer";
 const EmployeeDetailView = ({
   employeeDetail,
   employeeList,
+  setEmployeeDetail,
   setEmployeeList,
 }: type.employeeDetailProps) => {
   const dispatch = useDispatch();
+
+  console.log(employeeDetail);
 
   const setWriteModal = useCallback(
     (writeModalState: boolean) => dispatch(setWriteModalOpen(writeModalState)),
@@ -30,7 +35,6 @@ const EmployeeDetailView = ({
   );
 
   const onUpdateClick = () => {
-    // setReadModal(false);
     setWriteModal(true);
   };
 
@@ -52,6 +56,7 @@ const EmployeeDetailView = ({
       {writeModalState && (
         <WriteModal>
           <UpdateEmployee
+            setEmployeeDetail={setEmployeeDetail}
             employeeDetail={employeeDetail}
             setEmployeeList={setEmployeeList}
           ></UpdateEmployee>

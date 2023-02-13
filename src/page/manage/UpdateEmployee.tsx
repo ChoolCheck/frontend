@@ -10,10 +10,10 @@ import { roleInfo } from "../../static/role";
 const UpdateEmployee = ({
   employeeDetail,
   setEmployeeList,
+  setEmployeeDetail,
 }: type.updateEmployeeProps) => {
   const dispatch = useDispatch();
 
-  console.log("직원수정");
   const setWriteModal = useCallback(
     (readModalState: boolean) => dispatch(setWriteModalOpen(readModalState)),
     [dispatch]
@@ -45,6 +45,7 @@ const UpdateEmployee = ({
           color,
           setWriteModal,
           setEmployeeList,
+          setEmployeeDetail,
         });
       }
     }

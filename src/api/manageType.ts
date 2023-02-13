@@ -87,6 +87,10 @@ export interface updateEmployeeProps {
     type: "handleWriteodal/SETWRITEMODAL";
     payload: boolean;
   };
+
+  setEmployeeDetail: React.Dispatch<
+    React.SetStateAction<employeeProps | undefined>
+  >;
 }
 
 export interface deleteEmployeeProps {
