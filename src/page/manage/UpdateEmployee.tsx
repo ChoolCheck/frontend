@@ -25,9 +25,6 @@ const UpdateEmployee = ({
     employeeDetail ? employeeDetail.color : ""
   );
 
-  console.log(employeeDetail);
-  console.log({ name, role, color });
-
   const onChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
   };
@@ -92,9 +89,9 @@ const UpdateEmployee = ({
         </p>
         <p className="modal-employee">
           <span>직급</span>
-          <select name="role" onChange={onChangeRole}>
+          <select name="role" onChange={onChangeRole} value={role}>
             {roleInfo.map((item) => (
-              <option>{item.roleValue}</option>
+              <option value={item.roleName}>{item.roleValue}</option>
             ))}
           </select>
         </p>

@@ -210,17 +210,7 @@ export async function GetEmployeeDetailApi({
     },
   })
     .then((res) => {
-      let newEmployeeDetail = res.data;
-      if (newEmployeeDetail.role == roleInfo[0].roleName) {
-        newEmployeeDetail.role = roleInfo[0].roleValue;
-      } else if (newEmployeeDetail.role == roleInfo[1].roleName) {
-        newEmployeeDetail.role = roleInfo[1].roleValue;
-      } else newEmployeeDetail.role = roleInfo[2].roleValue;
-
-      return newEmployeeDetail;
-    })
-    .then((res) => {
-      setEmployeeDetail(res);
+      setEmployeeDetail(res.data);
       return true;
     })
     .then((res) => {
