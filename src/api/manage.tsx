@@ -210,7 +210,6 @@ export async function GetEmployeeDetailApi({
     },
   })
     .then((res) => {
-      console.log(res);
       let newEmployeeDetail = res.data;
       if (newEmployeeDetail.role == roleInfo[0].roleName) {
         newEmployeeDetail.role = roleInfo[0].roleValue;
@@ -221,12 +220,11 @@ export async function GetEmployeeDetailApi({
       return newEmployeeDetail;
     })
     .then((res) => {
-      console.log(res);
       setEmployeeDetail(res);
       return true;
     })
     .then((res) => {
-      setReadModal(true);
+      setReadModal(res);
     })
     .catch((err) => {
       window.alert("직원 상세 조회에 실패했습니다.");

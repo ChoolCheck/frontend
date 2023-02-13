@@ -9,6 +9,7 @@ type readModalProps = {
 
 const ReadModal = (props: readModalProps) => {
   const dispatch = useDispatch();
+  console.log("read modal open");
 
   const setReadModal = useCallback(
     (readModalState: boolean) => dispatch(setReadModalOpen(readModalState)),
