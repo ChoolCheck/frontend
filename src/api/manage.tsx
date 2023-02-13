@@ -54,21 +54,26 @@ export async function GetWorktypeApi({
 }
 
 export async function DeleteWorktypeApi({
+  workTypeList,
   setWorkTypeList,
-}: type.getWorktypeProps) {
+  id,
+}: type.deleteWorktypeProps) {
   await axios({
     method: "Delete",
-    url: `${config.api}/hours`,
+    url: `${config.api}/hours/${id}`,
     headers: {
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
   })
     .then((res) => {
-      setWorkTypeList(res.data);
+      return workTypeList?.filter((item) => item.id !== id);
+    })
+    .then((res) => {
+      setWorkTypeList(res);
     })
     .catch((err) => {
-      window.alert("근무 형태 조회에 실패했습니다.");
+      window.alert("근무 형태 삭제에 실패했습니다.");
     });
 }
 

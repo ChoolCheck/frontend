@@ -2,6 +2,7 @@ export interface worktypeProps {
   title: string;
   startTime: string;
   endTime: string;
+  id: number;
 }
 
 export interface createWorktypeProps {
@@ -26,10 +27,19 @@ export interface getWorktypeProps {
   >;
 }
 
+export interface deleteWorktypeProps {
+  workTypeList: worktypeProps[] | undefined;
+  setWorkTypeList: React.Dispatch<
+    React.SetStateAction<worktypeProps[] | undefined>
+  >;
+  id: number;
+}
+
 export interface employeeProps {
   name: string;
   role: string;
   color: string;
+  id: number;
 }
 
 export interface getEmployeeProps {
@@ -42,6 +52,7 @@ export interface createEmployeeProps {
   name: string;
   role: string;
   color: string;
+
   setEmployeeList: React.Dispatch<
     React.SetStateAction<employeeProps[] | undefined>
   >;

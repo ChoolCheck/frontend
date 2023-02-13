@@ -6,6 +6,7 @@ import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
 import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/Reducers/rootReducer";
 import { GetWorktypeApi } from "../../api/manage";
+import { DeleteWorktypeApi } from "../../api/manage";
 import "./style/manage-work.scss";
 import * as type from "./type";
 
@@ -17,6 +18,7 @@ const ManageWorkView = () => {
   useEffect(() => {
     GetWorktypeApi({ setWorkTypeList });
   }, []);
+
   const dispatch = useDispatch();
 
   const writeModalState = useSelector(
@@ -27,7 +29,13 @@ const ManageWorkView = () => {
     (readModalState: boolean) => dispatch(setWriteModalOpen(readModalState)),
     [dispatch]
   );
-  const onDeleteClick = () => {};
+
+  const onDeleteClick = (id: number) => {
+    if (window.confirm("정말로 근무시간을 삭제하시겠습니까?")) {
+      DeleteWorktypeApi({ id, workTypeList, setWorkTypeList });
+    } else window.alert("근무시간 삭제가 취소되었습니다.");
+  };
+
   return (
     <div className="ManageWorkView-top-container">
       {writeModalState && (
@@ -52,7 +60,7 @@ const ManageWorkView = () => {
                 </span>
                 <button
                   className="workTypeList-li-delete"
-                  onClick={onDeleteClick}
+                  onClick={() => onDeleteClick(item.id)}
                 >
                   x
                 </button>
