@@ -221,7 +221,9 @@ export async function GetEmployeeDetailApi({
       return newEmployeeDetail;
     })
     .then((res) => {
+      console.log(res);
       setEmployeeDetail(res);
+      return true;
     })
     .then((res) => {
       setReadModal(true);

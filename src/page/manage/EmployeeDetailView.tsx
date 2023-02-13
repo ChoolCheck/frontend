@@ -61,7 +61,7 @@ const EmployeeDetailView = ({
         </p>
         <p>
           <span className="info-title">직급</span>
-          <span> className="info-content"{employeeDetail?.role}</span>
+          <span className="info-content"> {employeeDetail?.role}</span>
         </p>
         <p>
           <span className="info-title">색상</span>

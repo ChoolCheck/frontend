@@ -7,7 +7,7 @@ type readModalProps = {
   children: React.ReactNode;
 };
 
-function ReadModal(props: readModalProps) {
+const ReadModal = (props: readModalProps) => {
   const dispatch = useDispatch();
 
   const setReadModal = useCallback(
@@ -27,6 +27,6 @@ function ReadModal(props: readModalProps) {
       </div>
     </div>
   );
-}
+};
 
 export default ReadModal;
