@@ -129,7 +129,8 @@ export async function UpdateEmployeeApi({
     },
   })
     .then((res) => {
-      setEmployeeDetail(res.data);
+      console.log(res);
+      // setEmployeeDetail(res);
       GetEmployeeApi({ setEmployeeList });
     })
     .then((res) => {
