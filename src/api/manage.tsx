@@ -51,6 +51,25 @@ export async function GetWorktypeApi({
     });
 }
 
+export async function DeleteWorktypeApi({
+  setWorkTypeList,
+}: type.getWorktypeProps) {
+  await axios({
+    method: "Delete",
+    url: `${config.api}/hours`,
+    headers: {
+      "Content-Type": `application/json`,
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  })
+    .then((res) => {
+      setWorkTypeList(res.data);
+    })
+    .catch((err) => {
+      window.alert("근무 형태 조회에 실패했습니다.");
+    });
+}
+
 export async function CreateEmployeeApi({
   name,
   role,
@@ -94,6 +113,7 @@ export async function GetEmployeeApi({
     },
   })
     .then((res) => {
+      console.log(res.data);
       let newEmployeeList = res.data;
       for (let i = 0; i < newEmployeeList.length; i++) {
         if (newEmployeeList[i].role == roleInfo[0].roleName) {

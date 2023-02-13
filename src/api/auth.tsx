@@ -75,7 +75,7 @@ export async function IsTokenExpiredApi(navigate: NavigateFunction) {
   const token = localStorage.getItem("token");
   if (token == undefined || token == null) {
     console.log("토큰이 만료되었습니다. 다시 로그인해주세요.");
-    navigate("/login");
+    LogoutApi({ navigate });
     return false;
   }
   return true;

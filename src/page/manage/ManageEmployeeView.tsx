@@ -9,8 +9,6 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/Reducers/rootReducer";
 import { GetEmployeeApi } from "../../api/manage";
 
-import { roleInfo } from "../../static/role";
-
 const ManageEmployeeView = () => {
   const dispatch = useDispatch();
 
