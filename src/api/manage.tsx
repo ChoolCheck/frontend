@@ -44,6 +44,8 @@ export async function GetWorktypeApi({
     },
   })
     .then((res) => {
+      console.log(res.data);
+
       setWorkTypeList(res.data);
     })
     .catch((err) => {
@@ -113,7 +115,6 @@ export async function GetEmployeeApi({
     },
   })
     .then((res) => {
-      console.log(res.data);
       let newEmployeeList = res.data;
       for (let i = 0; i < newEmployeeList.length; i++) {
         if (newEmployeeList[i].role == roleInfo[0].roleName) {
