@@ -59,27 +59,30 @@ const EmployeeDetailView = ({
       )}
       <h3>직원 정보</h3>
       <div className="detail-info">
-        <p>
+        <p className="modal-name">
           <span className="info-title">이름</span>
-          <span className="info-content">{employeeDetail?.name}</span>
+          <span className="info-content-name">{employeeDetail?.name}</span>
         </p>
-        <p>
+        <p className="modal-role">
           <span className="info-title">직급</span>
-          <span className="info-content"> {employeeDetail?.role}</span>
+          <span className="info-content-role"> {employeeDetail?.role}</span>
         </p>
-        <p>
+        <p className="modal-name-color">
           <span className="info-title">색상</span>
           <span
-            className="info-content"
+            className="info-content-title"
             style={{ backgroundColor: employeeDetail?.color }}
           >
             &nbsp;
           </span>
         </p>
       </div>
-      <div className="button-container">
-        <button onClick={() => onUpdateClick()}>직원 수정</button>
+      <div className="modal-button-container">
+        <button className="update-button" onClick={() => onUpdateClick()}>
+          직원 수정
+        </button>
         <button
+          className="delete-button"
           onClick={() => onDeleteClick(employeeDetail ? employeeDetail.id : 0)}
         >
           직원 삭제

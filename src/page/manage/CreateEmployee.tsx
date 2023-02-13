@@ -97,7 +97,7 @@ const CreateEmployee = ({ setEmployeeList }: type.createEmployeeProps) => {
           </div>
         </p>
       </div>
-      <div className="modal-write-button-container">
+      <div className="modal-button-container">
         <button
           className="modal-write-close-button"
           onClick={onClickCancelOnModal}

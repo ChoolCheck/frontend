@@ -13,6 +13,7 @@ const UpdateEmployee = ({
 }: type.updateEmployeeProps) => {
   const dispatch = useDispatch();
 
+  console.log("직원수정");
   const setWriteModal = useCallback(
     (readModalState: boolean) => dispatch(setWriteModalOpen(readModalState)),
     [dispatch]
@@ -35,7 +36,7 @@ const UpdateEmployee = ({
     setRole(roleInfo[e.target.options.selectedIndex].roleName);
   };
 
-  const onCreateClick = (id: number) => {
+  const onUpdateClick = (id: number) => {
     if (name == "" || (name && name.length < 2)) {
       window.alert("이름을 2글자 이상 입력해주세요");
     } else {
@@ -121,7 +122,7 @@ const UpdateEmployee = ({
           취소
         </button>
         <button
-          onClick={() => onCreateClick(employeeDetail ? employeeDetail.id : 0)}
+          onClick={() => onUpdateClick(employeeDetail ? employeeDetail.id : 0)}
         >
           완료
         </button>

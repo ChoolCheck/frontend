@@ -49,6 +49,11 @@ const ManageEmployeeView = () => {
 
   return (
     <div className="ManageEmployeeView-top-container">
+      {writeModalState && (
+        <WriteModal>
+          <CreateEmployee setEmployeeList={setEmployeeList}></CreateEmployee>
+        </WriteModal>
+      )}
       {readModalState && (
         <ReadModal>
           <EmployeeDetailView
@@ -57,12 +62,6 @@ const ManageEmployeeView = () => {
             setEmployeeList={setEmployeeList}
           ></EmployeeDetailView>
         </ReadModal>
-      )}
-
-      {writeModalState && (
-        <WriteModal>
-          <CreateEmployee setEmployeeList={setEmployeeList}></CreateEmployee>
-        </WriteModal>
       )}
 
       {employeeList && employeeList.length > 0 ? (
