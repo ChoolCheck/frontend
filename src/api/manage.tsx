@@ -221,11 +221,11 @@ export async function GetEmployeeDetailApi({
     })
     .then((res) => {
       setEmployeeDetail(res);
-      setReadModal(true);
+      return true;
     })
-    // .then((res) => {
-    //   setReadModal(res);
-    // })
+    .then((res) => {
+      setReadModal(res);
+    })
     .catch((err) => {
       window.alert("직원 상세 조회에 실패했습니다.");
     });

@@ -23,7 +23,7 @@ const ManageEmployeeView = () => {
   );
 
   const readModalState = useSelector(
-    (state: RootState) => state.WriteModalReducer.writeModalState
+    (state: RootState) => state.ReadModalReducer.readModalState
   );
 
   const setWriteModal = useCallback(

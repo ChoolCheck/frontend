@@ -8,7 +8,7 @@ const CreateWorkType = ({ setWorkTypeList }: type.createWorktypeProps) => {
   const dispatch = useDispatch();
 
   const setWriteModal = useCallback(
-    (readModalState: boolean) => dispatch(setWriteModalOpen(readModalState)),
+    (writeModalState: boolean) => dispatch(setWriteModalOpen(writeModalState)),
     [dispatch]
   );
 
