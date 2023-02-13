@@ -98,8 +98,8 @@ export interface deleteEmployeeProps {
     React.SetStateAction<employeeProps[] | undefined>
   >;
 
-  setWriteModal: (readModalState: boolean) => {
-    type: "handleWriteodal/SETWRITEMODAL";
+  setReadModal: (readModalState: boolean) => {
+    type: "handleReadModal/SETREADMODAL";
     payload: boolean;
   };
 }

@@ -116,7 +116,7 @@ export async function UpdateEmployeeApi({
 }: type.updateEmployeeProps) {
   await axios({
     method: "Patch",
-    url: `${config.api}/employee${id}`,
+    url: `${config.api}/employee/${id}`,
     headers: {
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -139,7 +139,7 @@ export async function UpdateEmployeeApi({
 }
 
 export async function DeleteEmployeeApi({
-  setWriteModal,
+  setReadModal,
   employeeList,
   setEmployeeList,
   id,
@@ -157,6 +157,10 @@ export async function DeleteEmployeeApi({
     })
     .then((res) => {
       setEmployeeList(res);
+      return true;
+    })
+    .then((res) => {
+      setReadModal(false);
     })
     .catch((err) => {
       window.alert("직원 삭제에 실패했습니다.");
@@ -199,7 +203,7 @@ export async function GetEmployeeDetailApi({
 }: type.getEmployeeDetailProps) {
   await axios({
     method: "GET",
-    url: `${config.api}/employee${id}`,
+    url: `${config.api}/employee/${id}`,
     headers: {
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,

@@ -36,7 +36,7 @@ const EmployeeDetailView = ({
 
   const onDeleteClick = (id: number) => {
     DeleteEmployeeApi({
-      setWriteModal,
+      setReadModal,
       employeeList,
       setEmployeeList,
       id,
