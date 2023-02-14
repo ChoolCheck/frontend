@@ -24,8 +24,8 @@ refreshAPI.interceptors.response.use(
       config,
       response: { status },
     } = error;
+    console.log("config : " + config);
     if (status === 401) {
-      console.log("config : " + config);
       if (error.response.data.message === "만료된 JWT 토큰입니다.") {
         const originalRequest = config;
         const refreshToken = await localStorage.getItem("refreshToken");
