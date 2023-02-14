@@ -5,6 +5,7 @@ import "./navigation.scss";
 import { useNavigate } from "react-router-dom";
 import { LogoutApi } from "../../api/auth";
 import { config } from "../../static/config";
+import userIcon from "../../static/icon/user.png";
 
 const Navigation = () => {
   const navigate = useNavigate();
@@ -20,6 +21,7 @@ const Navigation = () => {
     window.location.href == `${config.client}/signup`
   )
     return <></>;
+
   return (
     <div className="Navigation-top-container">
       <button className="Navigation-logo" onClick={() => navigate("/calendar")}>
@@ -31,6 +33,9 @@ const Navigation = () => {
         <button onClick={() => navigate("/Statistics")}>근무통계</button>
         <button onClick={() => navigate("/manage")}>관리</button>
         <button onClick={() => LogoutApi({ navigate })}>로그아웃</button>
+        <button onClick={() => navigate("/mypage")}>
+          <img className="userIcon" src={userIcon} />
+        </button>
       </div>
     </div>
   );

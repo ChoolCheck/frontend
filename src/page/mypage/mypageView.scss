@@ -1,0 +1,80 @@
+@import "../../static/reset.scss";
+@import "../../static/mixin";
+
+.mypageview-top-container {
+  position: relative;
+  display: block;
+  justify-content: center;
+  text-align: center;
+
+  height: 450px;
+
+  font-size: 20px;
+  background-color: rgb(238, 238, 238);
+  border-radius: 20px;
+  margin: 10px;
+
+  .mypageview-header {
+    text-align: left;
+    height: 100px;
+    align-items: center;
+    display: flex;
+    padding-left: 70px;
+
+    font-size: 22px;
+    font-weight: 600;
+  }
+
+  .mypageview-content {
+    text-align: left;
+    width: 70%;
+    margin: 0 auto;
+    height: 280px;
+
+    .mypageview-email,
+    .mypageview-storename,
+    .mypageview-joindate {
+      height: 60px;
+      display: flex;
+      align-items: center;
+
+      .email-title,
+      .storename-title,
+      .joindate-title {
+        font-weight: 600;
+        font-family: "nanum-bold";
+        padding: 0 30px 0 30px;
+      }
+      .email-content,
+      .storename-content,
+      .joindate-content,
+      input {
+        width: 350px;
+      }
+      input {
+        color: rgb(82, 82, 82);
+        border-radius: 10px;
+        padding: 10px;
+      }
+    }
+  }
+  .button-container {
+    text-align: right;
+    margin-right: 60px;
+    button {
+      margin-left: 20px;
+    }
+  }
+}
+
+@include tablet {
+  .mypageview-top-container {
+    margin: 10px;
+  }
+}
+
+@include mobile {
+  .mypageview-top-container {
+    margin: 10px;
+  }
+}

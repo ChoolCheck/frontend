@@ -1,0 +1,22 @@
+@import "../../static/reset.scss";
+@import "../../static/mixin";
+
+.mypage-top-container {
+  width: 70%;
+  min-width: 890px;
+  margin: 0 auto;
+}
+
+@include tablet {
+  .mypage-top-container {
+    width: 70%;
+    min-width: 650px;
+  }
+}
+
+@include mobile {
+  .mypage-top-container {
+    width: 60%;
+    min-width: 500px;
+  }
+}

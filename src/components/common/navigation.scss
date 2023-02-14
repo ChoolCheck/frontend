@@ -21,10 +21,12 @@ $opacity-zero: 0;
   margin-left: 20px;
 }
 .Navigation-menu {
+  display: flex;
+  justify-content: end;
+  align-items: center;
   font-size: 30px;
   width: 100%;
-  min-width: 650px;
-  text-align: right;
+  min-width: 600px;
   margin-right: 50px;
 }
 
@@ -33,6 +35,9 @@ $opacity-zero: 0;
   font-size: 20px;
   padding: 10px;
   margin: 0 10px 0 10px;
+  .userIcon {
+    width: 30px;
+  }
 }
 
 @include tablet {

@@ -17,6 +17,8 @@ import Manage from "../page/manage/Manage";
 import Navigation from "../components/common/Navigation";
 import AuthLayout from "../page/layout/AuthLayout";
 import PublicLayout from "../page/layout/PulicLayout";
+import Mypage from "../page/mypage/Mypage";
+import UpdateUser from "../page/mypage/UpdateUser";
 import { IsTokenExpiredApi } from "../api/auth";
 
 const AppRouter = () => {
@@ -37,6 +39,8 @@ const AppRouter = () => {
             <Route path="/workcheck" element={<WorkCheck />} />
             <Route path="/schedule" element={<Schedule />} />
             <Route path="/manage" element={<Manage />} />
+            <Route path="/mypage" element={<Mypage />} />
+            <Route path="/updateUserInfo" element={<UpdateUser />} />
           </Route>
 
           <Route
