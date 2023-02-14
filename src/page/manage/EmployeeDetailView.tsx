@@ -17,7 +17,6 @@ const EmployeeDetailView = ({
   employeeDetail,
   employeeList,
   setEmployeeList,
-  infoToShow,
 }: type.employeeDetailProps) => {
   const dispatch = useDispatch();
 
@@ -68,13 +67,13 @@ const EmployeeDetailView = ({
         </p>
         <p className="modal-role">
           <span className="info-title">직급</span>
-          <span className="info-content-role"> {infoToShow.role}</span>
+          <span className="info-content-role"> {employeeDetail?.role}</span>
         </p>
         <p className="modal-color">
           <span className="info-title">색상</span>
           <span
             className="info-content-title"
-            style={{ backgroundColor: infoToShow.color }}
+            style={{ backgroundColor: employeeDetail?.color }}
           >
             &nbsp;
           </span>

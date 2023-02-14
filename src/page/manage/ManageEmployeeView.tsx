@@ -46,25 +46,10 @@ const ManageEmployeeView = () => {
     GetEmployeeApi({ setEmployeeList });
   }, []);
 
-  const [infoToShow, setInfoToShow] = useState({ color: "", role: "" });
-
-  for (let i = 0; i < colorInfo.length; i++) {
-    if (employeeDetail && colorInfo[i].colorName == employeeDetail.color) {
-      setInfoToShow({ ...infoToShow, color: colorInfo[i].colorCode });
-      break;
-    }
-  }
-
-  for (let i = 0; i < roleInfo.length; i++) {
-    if (employeeDetail && roleInfo[i].roleName == employeeDetail.role) {
-      setInfoToShow({ ...infoToShow, role: roleInfo[i].roleValue });
-      break;
-    }
-  }
-
   const onClickDetail = (id: number) => {
     GetEmployeeDetailApi({ id, setEmployeeDetail, setReadModal });
   };
+
   return (
     <div className="ManageEmployeeView-top-container">
       {writeModalState && (
@@ -78,7 +63,6 @@ const ManageEmployeeView = () => {
             employeeList={employeeList}
             employeeDetail={employeeDetail}
             setEmployeeList={setEmployeeList}
-            infoToShow={infoToShow}
           ></EmployeeDetailView>
         </ReadModal>
       )}
@@ -97,11 +81,11 @@ const ManageEmployeeView = () => {
                 onClick={() => onClickDetail(item.id)}
               >
                 <span className="employeeList-li-name">{item.name}</span>
-                <span className="employeeList-li-rank">{infoToShow.role}</span>
+                <span className="employeeList-li-rank">{item.role}</span>
                 <span className="employeeList-li-color">
                   <span
                     className="employeeList-li-color-content"
-                    style={{ backgroundColor: infoToShow.color }}
+                    style={{ backgroundColor: item.color }}
                   ></span>
                 </span>
               </li>
