@@ -7,13 +7,14 @@ import { createStore } from "redux";
 import rootReducer from "./Redux/Reducers/rootReducer";
 import axios from "axios";
 import { config } from "./static/config";
+import { LogoutApi } from "./api/auth";
 
 const refreshAPI = axios.create({
   baseURL: `${config.api}`,
   headers: { "Content-type": "application/json" }, // data type
 });
 
-axios.interceptors.response.use(
+refreshAPI.interceptors.response.use(
   function (response) {
     console.log("get response", response);
     return response;
@@ -24,6 +25,7 @@ axios.interceptors.response.use(
       response: { status },
     } = error;
     if (status === 401) {
+      console.log("config : " + config);
       if (error.response.data.message === "만료된 JWT 토큰입니다.") {
         const originalRequest = config;
         const refreshToken = await localStorage.getItem("refreshToken");
