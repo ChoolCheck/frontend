@@ -1,6 +1,5 @@
 import axios from "axios";
 import { config } from "../static/config";
-import { NavigateFunction, useNavigate } from "react-router-dom";
 import * as type from "./authType";
 
 export async function LoginApi({
@@ -69,14 +68,4 @@ export async function LogoutApi({ navigate }: type.apiLogoutProps) {
       window.alert("로그아웃에 실패했습니다.");
       console.log(err);
     });
-}
-
-export async function IsTokenExpiredApi(navigate: NavigateFunction) {
-  const token = localStorage.getItem("token");
-  if (token == undefined || token == null) {
-    console.log("토큰이 만료되었습니다. 다시 로그인해주세요.");
-    LogoutApi({ navigate });
-    return false;
-  }
-  return true;
 }

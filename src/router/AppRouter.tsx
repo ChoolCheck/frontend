@@ -19,7 +19,6 @@ import AuthLayout from "../page/layout/AuthLayout";
 import PublicLayout from "../page/layout/PulicLayout";
 import Mypage from "../page/mypage/Mypage";
 import UpdateUser from "../page/mypage/UpdateUser";
-import { IsTokenExpiredApi } from "../api/auth";
 
 const AppRouter = () => {
   return (
