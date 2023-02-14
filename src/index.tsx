@@ -11,7 +11,7 @@ import { LogoutApi } from "./api/auth";
 
 const refreshAPI = axios.create({
   baseURL: `${config.api}`,
-  headers: { "Content-type": "application/json" }, // data type
+  // headers: { "Content-type": "application/json" }, // data type
 });
 
 refreshAPI.interceptors.response.use(
@@ -20,15 +20,12 @@ refreshAPI.interceptors.response.use(
     return response;
   },
   async (error) => {
-    const {
-      config,
-      response: { status },
-    } = error;
-    console.log("config : " + config);
-    if (status === 401) {
+    const originalRequest = error.config;
+    console.log(error);
+
+    if (error.response && error.response.status === 401) {
       if (error.response.data.message === "만료된 JWT 토큰입니다.") {
-        const originalRequest = config;
-        const refreshToken = await localStorage.getItem("refreshToken");
+        const refreshToken = localStorage.getItem("refreshToken");
 
         // token refresh 요청
         const { data } = await axios.post(
