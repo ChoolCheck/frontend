@@ -13,7 +13,7 @@ const refreshAPI = axios.create({
   headers: { "Content-type": "application/json" }, // data type
 });
 
-refreshAPI.interceptors.response.use(
+axios.interceptors.response.use(
   function (response) {
     console.log("get response", response);
     return response;
