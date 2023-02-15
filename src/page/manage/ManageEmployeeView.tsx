@@ -90,7 +90,7 @@ const ManageEmployeeView = () => {
                     style={{
                       backgroundColor: `#${
                         type.enumColor[
-                          item?.color as keyof typeof type.enumColor
+                          item.color as keyof typeof type.enumColor
                         ]
                       }`,
                     }}
