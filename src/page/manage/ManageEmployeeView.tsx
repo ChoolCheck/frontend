@@ -85,7 +85,13 @@ const ManageEmployeeView = () => {
                 <span className="employeeList-li-color">
                   <span
                     className="employeeList-li-color-content"
-                    style={{ backgroundColor: item.color }}
+                    style={{
+                      backgroundColor: `#${
+                        type.enumColor[
+                          employeeDetail?.color as keyof typeof type.enumColor
+                        ]
+                      }`,
+                    }}
                   ></span>
                 </span>
               </li>

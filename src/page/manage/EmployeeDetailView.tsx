@@ -73,7 +73,13 @@ const EmployeeDetailView = ({
           <span className="info-title">색상</span>
           <span
             className="info-content-title"
-            style={{ backgroundColor: employeeDetail?.color }}
+            style={{
+              backgroundColor: `#${
+                type.enumColor[
+                  employeeDetail?.color as keyof typeof type.enumColor
+                ]
+              }`,
+            }}
           >
             &nbsp;
           </span>

@@ -1,3 +1,15 @@
+export const enumColor = {
+  RED: "FFDAD",
+  ORANGE: "FFD6A5",
+  YELLOW: "FDFFB6",
+  GREEN: "CAFFBF",
+  LIGHT_BLUE: "9BF6FF",
+  BLUE: "A0C4FF",
+  PURPLE: "BDB2FF",
+  PINK: "FFC6FF",
+  GRAY: "DEDEDE",
+} as const;
+
 export interface worktypeProps {
   title: string;
   startTime: string;
