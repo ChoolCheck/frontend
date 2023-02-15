@@ -180,18 +180,7 @@ export async function GetEmployeeApi({
     },
   })
     .then((res) => {
-      let newEmployeeList = res.data;
-      for (let i = 0; i < newEmployeeList.length; i++) {
-        if (newEmployeeList[i].role == roleInfo[0].roleName) {
-          newEmployeeList[i].role = roleInfo[0].roleValue;
-        } else if (newEmployeeList[i].role == roleInfo[1].roleName) {
-          newEmployeeList[i].role = roleInfo[1].roleValue;
-        } else newEmployeeList[i].role = roleInfo[2].roleValue;
-      }
-      return newEmployeeList;
-    })
-    .then((res) => {
-      setEmployeeList(res);
+      setEmployeeList(res.data);
     })
     .catch((err) => {
       window.alert("직원 조회에 실패했습니다.");

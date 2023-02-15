@@ -15,9 +15,6 @@ import { setReadModalOpen } from "../../Redux/Actions/handleReadModal";
 import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/Reducers/rootReducer";
 
-import { roleInfo } from "../../static/role";
-import { colorInfo } from "../../static/color";
-
 const ManageEmployeeView = () => {
   const dispatch = useDispatch();
 
@@ -81,7 +78,7 @@ const ManageEmployeeView = () => {
                 onClick={() => onClickDetail(item.id)}
               >
                 <span className="employeeList-li-name">{item.name}</span>
-                <span className="employeeList-li-rank">
+                <span className="employeeList-li-role">
                   {type.enumRole[item.role as keyof typeof type.enumRole]}
                 </span>
                 <span className="employeeList-li-color">

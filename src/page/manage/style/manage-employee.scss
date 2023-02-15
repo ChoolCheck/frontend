@@ -21,7 +21,7 @@
     display: flex;
     justify-content: space-between;
     .employeeList-ul-col-name,
-    .employeeList-ul-col-rank,
+    .employeeList-ul-col-role,
     .employeeList-ul-col-color {
       width: 150px;
       font-weight: 600;
@@ -46,7 +46,7 @@
       .employeeList-li-name {
         width: 150px;
       }
-      .employeeList-li-rank {
+      .employeeList-li-role {
         width: 150px;
       }
       .employeeList-li-color {
