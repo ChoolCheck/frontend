@@ -10,6 +10,12 @@ export const enumColor = {
   GRAY: "DEDEDE",
 } as const;
 
+export const enumRole = {
+  FULL_TIME: "직원",
+  PART_TIME: "알바",
+  MANAGER: "매니저",
+} as const;
+
 export interface worktypeProps {
   title: string;
   startTime: string;

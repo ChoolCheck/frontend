@@ -67,7 +67,9 @@ const EmployeeDetailView = ({
         </p>
         <p className="modal-role">
           <span className="info-title">직급</span>
-          <span className="info-content-role"> {employeeDetail?.role}</span>
+          <span className="info-content-role">
+            {type.enumRole[employeeDetail?.role as keyof typeof type.enumRole]}
+          </span>
         </p>
         <p className="modal-color">
           <span className="info-title">색상</span>

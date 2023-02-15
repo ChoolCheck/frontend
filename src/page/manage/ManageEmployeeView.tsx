@@ -81,7 +81,9 @@ const ManageEmployeeView = () => {
                 onClick={() => onClickDetail(item.id)}
               >
                 <span className="employeeList-li-name">{item.name}</span>
-                <span className="employeeList-li-rank">{item.role}</span>
+                <span className="employeeList-li-rank">
+                  {type.enumRole[item.role as keyof typeof type.enumRole]}
+                </span>
                 <span className="employeeList-li-color">
                   <span
                     className="employeeList-li-color-content"
