@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import * as type from "./type";
-import "./updatePasswordView.scss";
+import "./style/updatePasswordView.scss";
 
 const UpdatePasswordView = ({
   isPassword,

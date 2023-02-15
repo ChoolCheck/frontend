@@ -20,3 +20,11 @@ export interface updatePasswordProps {
   passwordCheckMessage: string;
   onUpdateClick: React.MouseEventHandler<HTMLButtonElement>;
 }
+
+export interface updateUserProps {
+  userInfo: userInfoProps;
+  storeName: string;
+  onChangeName: React.ChangeEventHandler<HTMLInputElement>;
+  onCancelClick: React.MouseEventHandler<HTMLButtonElement>;
+  onUpdateClick: React.MouseEventHandler<HTMLButtonElement>;
+}

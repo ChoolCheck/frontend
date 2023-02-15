@@ -1,27 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import * as type from "./type";
-import "./mypageView.scss";
-import { UpdateUserInfoApi } from "../../api/mypage";
+import "./style/mypageView.scss";
 
-const UpdateUserView = ({ userInfo }: type.updateUserProps) => {
-  const navigate = useNavigate();
-
-  const [storeName, setStorename] = useState(userInfo.storeName);
-
-  const onChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setStorename(e.currentTarget.value);
-  };
-
-  const onCancelClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (window.confirm("회원정보 수정을 취소하시겠습니까?")) {
-      navigate("/mypage");
-    }
-  };
-
-  const onUpdateClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    UpdateUserInfoApi({ storeName, navigate });
-  };
+const UpdateUserView = ({
+  userInfo,
+  storeName,
+  onChangeName,
+  onCancelClick,
+  onUpdateClick,
+}: type.updateUserProps) => {
   return (
     <div className="mypageview-top-container">
       <h3 className="mypageview-header">회원정보 수정</h3>

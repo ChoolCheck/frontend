@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import * as type from "./type";
 import UpdatePasswordView from "./UpdatePasswordView";
 import { UpdatePasswordApi } from "../../api/mypage";
-import "./updatePassword.scss";
+import "./style/updatePassword.scss";
 
 const UpdatePassword = () => {
   const navigate = useNavigate();
