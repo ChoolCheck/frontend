@@ -1,7 +1,7 @@
 @import "../../static/reset.scss";
 
 body {
-  background-color: rgba(157, 157, 157);
+  background-color: rgb(157, 157, 157);
 }
 .Signup-Top-Container {
 }
@@ -16,7 +16,7 @@ body {
   width: 500px;
   height: 600px;
   border-radius: 20px;
-  background-color: rgba(238, 238, 238);
+  background-color: rgb(238, 238, 238);
   font-family: "nanum-regular";
   font-weight: 700;
 }
@@ -57,7 +57,7 @@ body {
   width: 350px;
   padding: 13px;
   margin-top: 10px;
-  border: 1px solid rgb(255, 255, 255, 0);
+  /*  border: 1px solid rgb(255, 255, 255);*/
   border-radius: 20px;
 }
 

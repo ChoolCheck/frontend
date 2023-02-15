@@ -12,11 +12,11 @@ export interface updateUserProps {
 }
 
 export interface updatePasswordProps {
-  onChangePassword: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChangePassword: React.ChangeEventHandler<HTMLInputElement>;
   isPassword: boolean;
   passwordMessage: string;
-  onChangePasswordCheck: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChangePasswordCheck: React.ChangeEventHandler<HTMLInputElement>;
   isPasswordCheck: boolean;
   passwordCheckMessage: string;
-  onUpdateClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onUpdateClick: React.MouseEventHandler<HTMLButtonElement>;
 }

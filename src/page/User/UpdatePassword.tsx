@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import * as type from "./type";
 import UpdatePasswordView from "./UpdatePasswordView";
 import { UpdatePasswordApi } from "../../api/mypage";
+import "./updatePassword.scss";
+
 const UpdatePassword = () => {
   const navigate = useNavigate();
 
@@ -20,6 +22,7 @@ const UpdatePassword = () => {
 
   const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.currentTarget.value);
+    console.log(e.currentTarget.value);
     if (!passwordRegex.test(e.target.value)) {
       setPasswordMessage(
         "숫자+영문자+특수문자 조합으로 8자리 이상 입력해주세요."
@@ -46,7 +49,7 @@ const UpdatePassword = () => {
     UpdatePasswordApi({ password, mailToken, navigate });
   };
   return (
-    <div className="mypageview-top-container">
+    <div className="updatepassword-top-container">
       <UpdatePasswordView
         isPassword={isPassword}
         isPasswordCheck={isPasswordCheck}

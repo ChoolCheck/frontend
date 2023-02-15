@@ -19,9 +19,10 @@ const Mypage = () => {
   useEffect(() => {
     GetUserInfoApi({ setUserInfo });
   }, []);
+
   return (
     <div className="mypage-top-container">
-      <MypageView></MypageView>
+      <MypageView userInfo={userInfo}></MypageView>
     </div>
   );
 };

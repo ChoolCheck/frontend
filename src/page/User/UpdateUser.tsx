@@ -4,6 +4,7 @@ import UpdateUserView from "./UpdateUserView";
 import "./mypage.scss";
 import { useLocation, useNavigate } from "react-router-dom";
 import { config } from "../../static/config";
+
 const UpdateUser = () => {
   const { state } = useLocation();
   console.log(state);
