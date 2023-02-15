@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import * as type from "./type";
+import "../signup/signView.scss";
+import "./updatePassword.scss";
 
 const UpdatePasswordView = ({
   isPassword,
@@ -12,8 +14,8 @@ const UpdatePasswordView = ({
   onUpdateClick,
 }: type.updatePasswordProps) => {
   return (
-    <div className="mypageview-top-container">
-      <h3 className="mypageview-header">비밀번호 수정</h3>
+    <div className="updatepassword-top-container">
+      <h3 className="updatepassword-header">비밀번호 수정</h3>
 
       <div className="Signup-Password">
         <p className="Signup-PasswordHeader">비밀번호</p>
