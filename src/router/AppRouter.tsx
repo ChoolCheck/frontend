@@ -17,8 +17,9 @@ import Manage from "../page/manage/Manage";
 import Navigation from "../components/common/Navigation";
 import AuthLayout from "../page/layout/AuthLayout";
 import PublicLayout from "../page/layout/PulicLayout";
-import Mypage from "../page/mypage/Mypage";
-import UpdateUser from "../page/mypage/UpdateUser";
+import Mypage from "../page/User/Mypage";
+import UpdateUser from "../page/User/UpdateUser";
+import UpdatePassword from "../page/User/UpdatePassword";
 
 const AppRouter = () => {
   return (
@@ -40,6 +41,7 @@ const AppRouter = () => {
             <Route path="/manage" element={<Manage />} />
             <Route path="/mypage" element={<Mypage />} />
             <Route path="/updateUserInfo" element={<UpdateUser />} />
+            <Route path="/updatePassword" element={<UpdatePassword />} />
           </Route>
 
           <Route

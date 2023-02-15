@@ -2,20 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./mypageView.scss";
 import * as type from "./type";
-import { GetUserInfoApi } from "../../api/mypage";
 
-const MypageView = () => {
+const MypageView = ({ userInfo }: type.mypageViewProps) => {
   const navigate = useNavigate();
-
-  const [userInfo, setUserInfo] = useState<type.userInfoProps>({
-    email: "",
-    storeName: "",
-    createdDate: "",
-  });
-
-  useEffect(() => {
-    GetUserInfoApi({ setUserInfo });
-  }, []);
 
   return (
     <div className="mypageview-top-container">

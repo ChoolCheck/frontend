@@ -39,3 +39,29 @@ export async function UpdateUserInfoApi({
       window.alert("사용자 정보 조회에 실패했습니다.");
     });
 }
+
+export async function UpdatePasswordApi({
+  password,
+  mailToken,
+  navigate,
+}: type.updatePasswordProps) {
+  await axios({
+    method: "Patch",
+    url: `${config.api}/user/password`,
+    headers: {
+      "Content-Type": `application/json`,
+      Authorization: `Bearer ${mailToken}`,
+    },
+    //헤더 메일에서 받은 토큰으로 수정
+    data: { password: password },
+  })
+    .then((res) => {
+      window.alert(
+        "비밀번호가 초기화되었습니다. 서비스 이용을 위해서는 로그인이 필요합니다."
+      );
+      navigate("/login");
+    })
+    .catch((err) => {
+      window.alert("비밀번호 수정에 실패했습니다.");
+    });
+}

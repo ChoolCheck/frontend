@@ -6,6 +6,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { config } from "../../static/config";
 const UpdateUser = () => {
   const { state } = useLocation();
+  console.log(state);
 
   return (
     <div className="mypage-top-container">

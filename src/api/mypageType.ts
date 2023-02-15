@@ -14,3 +14,9 @@ export interface updateUserInfoProps {
   storeName: string;
   navigate: NavigateFunction;
 }
+
+export interface updatePasswordProps {
+  password: string;
+  mailToken: string;
+  navigate: NavigateFunction;
+}
