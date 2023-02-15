@@ -5,11 +5,11 @@ import "./mypage.scss";
 import { useLocation, useNavigate } from "react-router-dom";
 import { config } from "../../static/config";
 const UpdateUser = () => {
-  const navigate = useNavigate();
+  const { state } = useLocation();
 
   return (
     <div className="mypage-top-container">
-      <UpdateUserView></UpdateUserView>
+      <UpdateUserView userInfo={state}></UpdateUserView>
     </div>
   );
 };
