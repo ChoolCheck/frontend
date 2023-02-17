@@ -47,11 +47,12 @@ const UpdateEmployee = ({
         if (employeeDetail !== undefined) {
           const colorCode =
             type.enumColor[color as keyof typeof type.enumColor];
+          const roleCode = type.enumRole[role as keyof typeof type.enumRole];
 
           UpdateEmployeeApi({
             id,
             name,
-            role,
+            roleCode,
             colorCode,
             setWriteModal,
             setEmployeeList,

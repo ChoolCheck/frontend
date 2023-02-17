@@ -8,7 +8,7 @@ type writeModalProps = {
 const WriteModal = (props: writeModalProps) => {
   return (
     <div className="modal-background">
-      <div className="modal-container">{props.children}</div>
+      <div className="writemodal-container">{props.children}</div>
     </div>
   );
 };

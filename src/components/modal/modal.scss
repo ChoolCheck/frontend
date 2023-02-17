@@ -13,7 +13,15 @@ $opacity-zero: 0.3;
 
   display: block;
 
-  .modal-container {
+  .readmodal-container {
+    padding: 20px 20px 40px 20px;
+  }
+  .writemodal-container {
+    padding: 50px 20px 40px 20px;
+  }
+
+  .readmodal-container,
+  .writemodal-container {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -24,7 +32,6 @@ $opacity-zero: 0.3;
     background-color: rgb(255, 255, 255);
     margin: 0 auto;
     border-radius: 30px;
-    padding: 50px 20px 40px 20px;
 
     .modal-read-close-button {
       float: right;
@@ -125,6 +132,10 @@ $opacity-zero: 0.3;
     }
 
     .detail-color {
+      margin: 0 10px 10px 10px;
+      width: 30px;
+      height: 30px;
+      border-radius: 10px;
     }
 
     .detail-content-title {

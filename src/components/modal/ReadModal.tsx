@@ -16,7 +16,7 @@ const ReadModal = (props: readModalProps) => {
   );
   return (
     <div className="modal-background">
-      <div className="modal-container">
+      <div className="readmodal-container">
         <button
           className="modal-read-close-button"
           onClick={() => setReadModal(false)}
