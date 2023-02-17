@@ -12,6 +12,8 @@ const UpdateUser = () => {
   const [storeName, setStorename] = useState(state.storeName);
 
   const onChangeStorename = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target.value);
+    console.log(e.currentTarget.value);
     setStorename(e.target.value);
   };
   const onCancelClick = (e: React.MouseEvent<HTMLButtonElement>) => {
