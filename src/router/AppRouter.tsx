@@ -5,8 +5,6 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
-import { redirect } from "react-router-dom";
-import React, { useState } from "react";
 import Login from "../page/login/Login";
 import Signup from "../page/signup/Signup";
 import Calendar from "../page/calendar/Calendar";
@@ -17,9 +15,9 @@ import Manage from "../page/manage/Manage";
 import Navigation from "../components/common/Navigation";
 import AuthLayout from "../page/layout/AuthLayout";
 import PublicLayout from "../page/layout/PulicLayout";
-import Mypage from "../page/user/Mypage";
-import UpdateUser from "../page/user/UpdateUser";
-import UpdatePassword from "../page/user/UpdatePassword";
+import Mypage from "../page/User/Mypage";
+import UpdateUser from "../page/User/UpdateUser";
+import UpdatePassword from "../page/User/UpdatePassword";
 
 const AppRouter = () => {
   return (
