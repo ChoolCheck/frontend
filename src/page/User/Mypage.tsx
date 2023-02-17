@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import MypageView from "./MypageView";
 import "./style/mypage.scss";
 import { useLocation, useNavigate } from "react-router-dom";
-import { config } from "../../static/config";
 import * as type from "./type";
 import { GetUserInfoApi } from "../../api/mypage";
 
