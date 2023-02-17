@@ -19,7 +19,7 @@ const CreateEmployee = ({ setEmployeeList }: type.createEmployeeProps) => {
 
   const [name, setName] = useState("");
   const [role, setRole] = useState("매니저");
-  const [color, setColor] = useState("RED");
+  const [color, setColor] = useState("FFADAD");
 
   const onChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
@@ -33,13 +33,13 @@ const CreateEmployee = ({ setEmployeeList }: type.createEmployeeProps) => {
     if (name == "" || name.length < 2) {
       window.alert("이름을 2글자 이상 입력해주세요");
     } else {
-      const colorCode = type.enumColor[color as keyof typeof type.enumColor];
-      const roleCode = type.enumRole[role as keyof typeof type.enumRole];
+      const colorName = type.enumColor[color as keyof typeof type.enumColor];
+      const roleName = type.enumRole[role as keyof typeof type.enumRole];
 
       CreateEmployeeApi({
         name,
-        roleCode,
-        colorCode,
+        colorName,
+        roleName,
         setWriteModal,
         setEmployeeList,
       });

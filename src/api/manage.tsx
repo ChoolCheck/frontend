@@ -77,8 +77,8 @@ export async function DeleteWorktypeApi({
 
 export async function CreateEmployeeApi({
   name,
-  roleCode,
-  colorCode,
+  roleName,
+  colorName,
   setWriteModal,
   setEmployeeList,
 }: type.createEmployeeProps) {
@@ -91,8 +91,8 @@ export async function CreateEmployeeApi({
     },
     data: {
       name: name,
-      role: roleCode,
-      color: colorCode,
+      role: roleName,
+      color: colorName,
     },
   })
     .then((res) => {
@@ -109,8 +109,8 @@ export async function CreateEmployeeApi({
 export async function UpdateEmployeeApi({
   id,
   name,
-  roleCode,
-  colorCode,
+  roleName,
+  colorName,
   setWriteModal,
   setEmployeeList,
   setReadModal,
@@ -124,8 +124,8 @@ export async function UpdateEmployeeApi({
     },
     data: {
       name: name,
-      role: roleCode,
-      color: colorCode,
+      role: roleName,
+      color: colorName,
     },
   })
     .then((res) => {

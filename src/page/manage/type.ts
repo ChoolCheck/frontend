@@ -1,5 +1,5 @@
 export const enumColor = {
-  RED: "FFDAD",
+  RED: "FFADAD",
   ORANGE: "FFD6A5",
   YELLOW: "FDFFB6",
   GREEN: "CAFFBF",

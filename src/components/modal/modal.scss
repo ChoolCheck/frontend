@@ -65,6 +65,29 @@ $opacity-zero: 0.3;
         border-radius: 10px;
         padding: 5px;
       }
+
+      /*read modal style*/
+      .detail-title {
+      }
+
+      .detail-content-name {
+      }
+
+      .detail-role {
+      }
+
+      .detail-content-role {
+      }
+
+      .detail-color {
+        margin: 0 10px 10px 10px;
+        width: 30px;
+        height: 30px;
+        border-radius: 10px;
+      }
+
+      .detail-content-title {
+      }
     }
 
     .modal-employee > select {
@@ -116,29 +139,6 @@ $opacity-zero: 0.3;
         background-color: white;
         margin: 20px 10px 0 10px;
       }
-    }
-
-    /*read modal style*/
-    .detail-title {
-    }
-
-    .detail-content-name {
-    }
-
-    .detail-role {
-    }
-
-    .detail-content-role {
-    }
-
-    .detail-color {
-      margin: 0 10px 10px 10px;
-      width: 30px;
-      height: 30px;
-      border-radius: 10px;
-    }
-
-    .detail-content-title {
     }
   }
 }
