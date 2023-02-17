@@ -20,3 +20,7 @@ export interface updatePasswordProps {
   mailToken: string;
   navigate: NavigateFunction;
 }
+
+export interface sendEmailProps {
+  navigate: NavigateFunction;
+}

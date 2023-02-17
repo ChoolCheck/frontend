@@ -71,7 +71,6 @@ export interface updateEmployeeProps {
 }
 
 export interface updateEmployeeViewProps {
-  employeeDetail: employeeProps | undefined;
   onChangeName: React.ChangeEventHandler<HTMLInputElement>;
   onChangeRole: React.ChangeEventHandler<HTMLSelectElement>;
   onUpdateClick: React.MouseEventHandler<HTMLButtonElement>;

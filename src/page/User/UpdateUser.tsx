@@ -8,12 +8,11 @@ const UpdateUser = () => {
   const navigate = useNavigate();
 
   const { state } = useLocation();
-  console.log(state);
 
   const [storeName, setStorename] = useState(state.storeName);
 
   const onChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setStorename(e.currentTarget.value);
+    setStorename(e.target.value);
   };
 
   const onCancelClick = (e: React.MouseEvent<HTMLButtonElement>) => {

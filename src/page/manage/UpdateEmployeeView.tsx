@@ -4,7 +4,6 @@ import { colorInfo } from "../../static/color";
 import { roleInfo } from "../../static/role";
 
 const UpdateEmployeeView = ({
-  employeeDetail,
   onChangeName,
   onChangeRole,
   onUpdateClick,

@@ -23,7 +23,10 @@ const MypageView = ({ userInfo }: type.mypageViewProps) => {
         </p>
       </div>
       <div className="button-container">
-        <button>비밀번호 변경</button>
+        <button onClick={() => navigate("/checkToSendEmail")}>
+          비밀번호 변경
+        </button>
+
         <button
           onClick={() => navigate("/updateUserInfo", { state: userInfo })}
         >

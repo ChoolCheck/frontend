@@ -28,7 +28,7 @@ const UpdateEmployee = ({
   const [name, setName] = useState(employeeDetail ? employeeDetail.name : "");
   const [role, setRole] = useState(employeeDetail ? employeeDetail.role : "");
   const [color, setColor] = useState(
-    employeeDetail ? employeeDetail.color : "RED"
+    employeeDetail ? employeeDetail.color : ""
   );
 
   const onChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -88,7 +88,6 @@ const UpdateEmployee = ({
   return (
     <div className="updateEmployee-container">
       <UpdateEmployeeView
-        employeeDetail={employeeDetail}
         name={name}
         role={role}
         color={color}

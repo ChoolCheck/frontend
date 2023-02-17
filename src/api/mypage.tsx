@@ -65,3 +65,21 @@ export async function UpdatePasswordApi({
       window.alert("비밀번호 수정에 실패했습니다.");
     });
 }
+
+export async function SendEmailApi({ navigate }: type.sendEmailProps) {
+  await axios({
+    method: "POST",
+    url: `${config.api}/user/password`,
+    headers: {
+      "Content-Type": `application/json`,
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  })
+    .then((res) => {
+      window.alert("메일이 전송되었습니다. 메일함을 확인해주세요.");
+      navigate("/updateUserInfo");
+    })
+    .catch((err) => {
+      window.alert("메일 전송에 실패했습니다.");
+    });
+}

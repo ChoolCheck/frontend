@@ -18,6 +18,7 @@ import PublicLayout from "../page/layout/PulicLayout";
 import Mypage from "../page/User/Mypage";
 import UpdateUser from "../page/User/UpdateUser";
 import UpdatePassword from "../page/User/UpdatePassword";
+import CheckToSendEmail from "../page/User/CheckToSendEmail";
 
 const AppRouter = () => {
   return (
@@ -40,6 +41,7 @@ const AppRouter = () => {
             <Route path="/mypage" element={<Mypage />} />
             <Route path="/updateUserInfo" element={<UpdateUser />} />
             <Route path="/updatePassword" element={<UpdatePassword />} />
+            <Route path="/checkToSendEmail" element={<CheckToSendEmail />} />
           </Route>
 
           <Route

@@ -6,8 +6,11 @@ import "./style/updatePassword.scss";
 
 const UpdatePassword = () => {
   const navigate = useNavigate();
+  const params = new URLSearchParams(location.search).get("");
 
-  const [mailToken, setMailToken] = useState("");
+  const [mailToken, setMailToken] = useState(
+    new URLSearchParams(location.search).get("mailToken") || ""
+  );
 
   const [password, setPassword] = useState("");
   const [passwordMessage, setPasswordMessage] = useState("");
