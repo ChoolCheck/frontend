@@ -13,9 +13,9 @@ $opacity-zero: 0.3;
   background-color: rgba($color-none, $opacity-zero);
 
   .readmodal-container {
-    padding: 20px;
+    padding: 30px 30px 40px 30px;
     h3 {
-      margin: 40px 0 20px 0;
+      margin: 40px 0 40px 0;
     }
   }
   .writemodal-container {
@@ -71,13 +71,18 @@ $opacity-zero: 0.3;
 
       /*read modal style*/
       .detail-title {
+        height: 50px;
         margin-right: 20px;
-        width: 80px;
+        width: 110px;
         font-size: 20px;
         text-align: center;
       }
 
       .detail-content {
+        height: 50px;
+        width: 150px;
+        display: flex;
+        justify-content: center;
       }
 
       .detail-color {

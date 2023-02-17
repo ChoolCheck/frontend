@@ -17,9 +17,9 @@ import Manage from "../page/manage/Manage";
 import Navigation from "../components/common/Navigation";
 import AuthLayout from "../page/layout/AuthLayout";
 import PublicLayout from "../page/layout/PulicLayout";
-import Mypage from "../page/User/Mypage";
-import UpdateUser from "../page/User/UpdateUser";
-import UpdatePassword from "../page/User/UpdatePassword";
+import Mypage from "../page/user/Mypage";
+import UpdateUser from "../page/user/UpdateUser";
+import UpdatePassword from "../page/user/UpdatePassword";
 
 const AppRouter = () => {
   return (

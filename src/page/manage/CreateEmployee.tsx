@@ -47,10 +47,11 @@ const CreateEmployee = ({ setEmployeeList }: type.createEmployeeProps) => {
   };
 
   const onClickColor = () => {
+    console.log(color);
+
     return (e: React.MouseEvent<HTMLButtonElement>) => {
       const selectedButton = e.currentTarget;
       console.log(e.currentTarget.name);
-      console.log(color);
       let prevNode = selectedButton.previousElementSibling;
       let nextNode = selectedButton.nextElementSibling;
 

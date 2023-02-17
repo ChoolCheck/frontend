@@ -9,6 +9,10 @@ import axios from "axios";
 import { config } from "./static/config";
 import { LogoutApi } from "./api/auth";
 
+import { useNavigate } from "react-router-dom";
+
+const navigate = useNavigate();
+
 const refreshAPI = axios.create({
   baseURL: `${config.api}`,
   // headers: { "Content-type": "application/json" }, // data type
@@ -37,10 +41,10 @@ refreshAPI.interceptors.response.use(
             },
           });
           if (res) {
+            window.alert("토큰이 만료되어 자동으로 로그아웃 됩니다.");
             localStorage.setItem("token", res.data.accessToken);
             localStorage.setItem("refreshToken", res.data.refreshToken);
-
-            return await refreshAPI.request(originalRequest);
+            return await LogoutApi({ navigate });
           }
         } catch (err) {
           console.log("토큰 갱신 에러");

@@ -42,17 +42,19 @@ const EmployeeDetailView = ({
         </p>
         <p className="modal-color">
           <span className="detail-title">색상</span>
-          <span
-            className="detail-content detail-color"
-            style={{
-              backgroundColor: `#${
-                type.enumColor[
-                  employeeDetail?.color as keyof typeof type.enumColor
-                ]
-              }`,
-            }}
-          >
-            &nbsp;
+          <span className="detail-content">
+            <div
+              className="detail-color"
+              style={{
+                backgroundColor: `#${
+                  type.enumColor[
+                    employeeDetail?.color as keyof typeof type.enumColor
+                  ]
+                }`,
+              }}
+            >
+              &nbsp;
+            </div>
           </span>
         </p>
       </div>
