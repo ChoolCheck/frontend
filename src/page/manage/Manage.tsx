@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import ManageEmployeeView from "./ManageEmployeeView";
 import ManageWorkView from "./ManageWorkView";
 import ToggleButton from "../../components/button/ToggleButton";
