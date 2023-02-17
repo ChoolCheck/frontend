@@ -45,15 +45,11 @@ const UpdateEmployee = ({
         window.alert("이름을 2글자 이상 입력해주세요");
       } else {
         if (employeeDetail !== undefined) {
-          const colorName =
-            type.enumColor[color as keyof typeof type.enumColor];
-          const roleName = type.enumRole[role as keyof typeof type.enumRole];
-
           UpdateEmployeeApi({
             id,
             name,
-            colorName,
-            roleName,
+            color,
+            role,
             setWriteModal,
             setEmployeeList,
             setReadModal,

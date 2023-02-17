@@ -33,13 +33,10 @@ const CreateEmployee = ({ setEmployeeList }: type.createEmployeeProps) => {
     if (name == "" || name.length < 2) {
       window.alert("이름을 2글자 이상 입력해주세요");
     } else {
-      const colorName = type.enumColor[color as keyof typeof type.enumColor];
-      const roleName = type.enumRole[role as keyof typeof type.enumRole];
-
       CreateEmployeeApi({
         name,
-        colorName,
-        roleName,
+        color,
+        role,
         setWriteModal,
         setEmployeeList,
       });
