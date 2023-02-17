@@ -7,9 +7,11 @@ import "./style/updatePassword.scss";
 const UpdatePassword = () => {
   const navigate = useNavigate();
 
-  const [mailToken, setMailToken] = useState(
-    new URLSearchParams(window.location.search).get("mailToken") || ""
-  );
+  const mailtoken = new URLSearchParams(window.location.search).get("token");
+
+  const [mailToken, setMailToken] = useState(mailtoken ? mailtoken : "");
+
+  console.log(mailToken);
 
   const [password, setPassword] = useState("");
   const [passwordMessage, setPasswordMessage] = useState("");
@@ -23,7 +25,6 @@ const UpdatePassword = () => {
 
   const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.currentTarget.value);
-    console.log(e.currentTarget.value);
     if (!passwordRegex.test(e.target.value)) {
       setPasswordMessage(
         "숫자+영문자+특수문자 조합으로 8자리 이상 입력해주세요."

@@ -56,13 +56,12 @@ export async function UpdatePasswordApi({
     data: { password: password },
   })
     .then((res) => {
-      window.alert(
-        "비밀번호가 초기화되었습니다. 서비스 이용을 위해서는 로그인이 필요합니다."
-      );
-      navigate("/login");
+      window.alert("비밀번호가 수정되었습니다.");
+      navigate("/mypage");
     })
     .catch((err) => {
       window.alert("비밀번호 수정에 실패했습니다.");
+      navigate("/mypage");
     });
 }
 
@@ -77,7 +76,7 @@ export async function SendEmailApi({ navigate }: type.sendEmailProps) {
   })
     .then((res) => {
       window.alert("메일이 전송되었습니다. 메일함을 확인해주세요.");
-      navigate("/updateUserInfo");
+      navigate("/mypage");
     })
     .catch((err) => {
       window.alert("메일 전송에 실패했습니다.");

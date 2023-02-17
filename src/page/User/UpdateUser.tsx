@@ -11,10 +11,9 @@ const UpdateUser = () => {
 
   const [storeName, setStorename] = useState(state.storeName);
 
-  const onChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeStorename = (e: React.ChangeEvent<HTMLInputElement>) => {
     setStorename(e.target.value);
   };
-
   const onCancelClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (window.confirm("회원정보 수정을 취소하시겠습니까?")) {
       navigate("/mypage");
@@ -30,7 +29,7 @@ const UpdateUser = () => {
       <UpdateUserView
         userInfo={state}
         storeName={storeName}
-        onChangeName={onChangeName}
+        onChangeStorename={onChangeStorename}
         onCancelClick={onCancelClick}
         onUpdateClick={onUpdateClick}
       ></UpdateUserView>

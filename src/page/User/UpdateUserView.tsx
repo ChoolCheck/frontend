@@ -4,7 +4,7 @@ import "./style/mypageView.scss";
 const UpdateUserView = ({
   userInfo,
   storeName,
-  onChangeName,
+  onChangeStorename,
   onCancelClick,
   onUpdateClick,
 }: type.updateUserProps) => {
@@ -21,7 +21,7 @@ const UpdateUserView = ({
           <input
             className="storename-content-input"
             value={storeName}
-            onChange={onChangeName}
+            onChange={onChangeStorename}
           ></input>
         </p>
         <p className="mypageview-joindate">

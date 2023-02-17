@@ -24,7 +24,7 @@ export interface updatePasswordProps {
 export interface updateUserProps {
   userInfo: userInfoProps;
   storeName: string;
-  onChangeName: React.ChangeEventHandler<HTMLInputElement>;
+  onChangeStorename: React.ChangeEventHandler<HTMLInputElement>;
   onCancelClick: React.MouseEventHandler<HTMLButtonElement>;
   onUpdateClick: React.MouseEventHandler<HTMLButtonElement>;
 }
