@@ -24,23 +24,22 @@ refreshAPI.interceptors.response.use(
     console.log(error);
 
     if (error.response && error.response.status === 401) {
-      if (error.response.data.message === "만료된 JWT 토큰입니다.") {
+      if (error.response.data.message === "expired") {
         const refreshToken = localStorage.getItem("refreshToken");
 
         // token refresh 요청
         try {
-          const data = await axios({
+          const res = await axios({
             url: `${config.api}/user/reissue`,
             method: "Post",
             headers: {
               Authorization: refreshToken,
             },
           });
-          if (data) {
-            localStorage.setItem(
-              "token",
-              JSON.stringify(data.data, ["accessToken", "refreshToken"])
-            );
+          if (res) {
+            localStorage.setItem("token", res.data.accessToken);
+            localStorage.setItem("refreshToken", res.data.refreshToken);
+
             return await refreshAPI.request(originalRequest);
           }
         } catch (err) {
