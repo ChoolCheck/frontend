@@ -44,7 +44,7 @@ const EmployeeDetail = ({
   };
 
   return (
-    <div className="employee-detail-container">
+    <div className="employeeDetail-container">
       <EmployeeDetailView
         onUpdateClick={onUpdateClick}
         onDeleteClick={onDeleteClick}

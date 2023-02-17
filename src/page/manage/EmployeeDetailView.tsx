@@ -1,4 +1,3 @@
-import React, { useCallback, useState } from "react";
 import * as type from "./type";
 
 import WriteModal from "../../components/modal/WriteModal";
@@ -18,7 +17,7 @@ const EmployeeDetailView = ({
   );
 
   return (
-    <div className="employee-detail-container">
+    <div className="employeeDetailView-container">
       {writeModalState && (
         <WriteModal>
           <UpdateEmployee
@@ -30,19 +29,19 @@ const EmployeeDetailView = ({
       <h3>직원 정보</h3>
       <div className="detail-info">
         <p className="modal-name">
-          <span className="info-title">이름</span>
-          <span className="info-content-name">{employeeDetail?.name}</span>
+          <span className="detail-title">이름</span>
+          <span className="detail-content-name">{employeeDetail?.name}</span>
         </p>
         <p className="modal-role">
-          <span className="info-title">직급</span>
-          <span className="info-content-role">
+          <span className="detail-role">직급</span>
+          <span className="detail-content-role">
             {type.enumRole[employeeDetail?.role as keyof typeof type.enumRole]}
           </span>
         </p>
         <p className="modal-color">
-          <span className="info-title">색상</span>
+          <span className="detail-color">색상</span>
           <span
-            className="info-content-title"
+            className="detail-content-title"
             style={{
               backgroundColor: `#${
                 type.enumColor[

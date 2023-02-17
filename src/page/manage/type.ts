@@ -70,6 +70,20 @@ export interface updateEmployeeProps {
   >;
 }
 
+export interface updateEmployeeViewProps {
+  employeeDetail: employeeProps | undefined;
+  onChangeName: React.ChangeEventHandler<HTMLInputElement>;
+  onChangeRole: React.ChangeEventHandler<HTMLSelectElement>;
+  onUpdateClick: (
+    id: number
+  ) => (e: React.MouseEventHandler<HTMLButtonElement>) => void;
+  onClickColor: React.MouseEventHandler<HTMLButtonElement>;
+  onClickCancelOnModal: React.MouseEventHandler<HTMLButtonElement>;
+  name: string;
+  role: string;
+  color: string;
+}
+
 export interface createWorktypeProps {
   setWorkTypeList: React.Dispatch<
     React.SetStateAction<worktypeProps[] | undefined>

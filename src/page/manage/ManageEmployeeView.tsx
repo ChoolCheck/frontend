@@ -4,7 +4,6 @@ import React, { useEffect, useState, useCallback } from "react";
 import CreateEmployee from "./CreateEmployee";
 import EmployeeDetail from "./EmployDetail";
 
-import EmployeeDetailView from "./EmployeeDetailView";
 import WriteModal from "../../components/modal/WriteModal";
 import ReadModal from "../../components/modal/ReadModal";
 

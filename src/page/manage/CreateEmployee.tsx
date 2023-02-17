@@ -33,13 +33,22 @@ const CreateEmployee = ({ setEmployeeList }: type.createEmployeeProps) => {
     if (name == "" || name.length < 2) {
       window.alert("이름을 2글자 이상 입력해주세요");
     } else {
-      CreateEmployeeApi({ name, role, color, setWriteModal, setEmployeeList });
+      const colorCode = type.enumColor[color as keyof typeof type.enumColor];
+      CreateEmployeeApi({
+        name,
+        role,
+        colorCode,
+        setWriteModal,
+        setEmployeeList,
+      });
     }
   };
 
   const onClickColor = () => {
     return (e: React.MouseEvent<HTMLButtonElement>) => {
       const selectedButton = e.currentTarget;
+      console.log(e.currentTarget.name);
+      console.log(color);
       let prevNode = selectedButton.previousElementSibling;
       let nextNode = selectedButton.nextElementSibling;
 
@@ -68,7 +77,7 @@ const CreateEmployee = ({ setEmployeeList }: type.createEmployeeProps) => {
   };
 
   return (
-    <div className="CreateWorkCheck-container">
+    <div className="createEmplyee-container">
       <CreateEmployeeView
         color={color}
         onChangeName={onChangeName}

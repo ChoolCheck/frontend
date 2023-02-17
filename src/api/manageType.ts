@@ -62,7 +62,7 @@ export interface getEmployeeDetailProps {
 export interface createEmployeeProps {
   name: string;
   role: string;
-  color: string;
+  colorCode: string;
 
   setEmployeeList: React.Dispatch<
     React.SetStateAction<employeeProps[] | undefined>
@@ -77,7 +77,7 @@ export interface updateEmployeeProps {
   id: number;
   name: string;
   role: string;
-  color: string;
+  colorCode: string;
 
   setEmployeeList: React.Dispatch<
     React.SetStateAction<employeeProps[] | undefined>

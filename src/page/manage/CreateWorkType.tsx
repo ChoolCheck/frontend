@@ -36,9 +36,9 @@ const CreateWorkType = ({ setWorkTypeList }: type.createWorktypeProps) => {
   };
 
   return (
-    <div className="CreateWorkCheck-container">
+    <div className="createWorkType-container">
       <h3>근무 시간 추가</h3>
-      <div className="CreateWorkCheck-content">
+      <div className="createWorkType-content">
         <p className="modal-worktype">
           <span>근무명</span>
           <input

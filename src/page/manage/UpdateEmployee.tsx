@@ -4,9 +4,9 @@ import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
 import { setReadModalOpen } from "../../Redux/Actions/handleReadModal";
 
 import { UpdateEmployeeApi } from "../../api/manage";
-import * as type from "./type";
+import UpdateEmployeeView from "./UpdateEmployeeVIew";
 
-import { colorInfo } from "../../static/color";
+import * as type from "./type";
 import { roleInfo } from "../../static/role";
 
 const UpdateEmployee = ({
@@ -40,21 +40,26 @@ const UpdateEmployee = ({
   };
 
   const onUpdateClick = (id: number) => {
-    if (name == "" || (name && name.length < 2)) {
-      window.alert("이름을 2글자 이상 입력해주세요");
-    } else {
-      if (employeeDetail !== undefined) {
-        UpdateEmployeeApi({
-          id,
-          name,
-          role,
-          color,
-          setWriteModal,
-          setEmployeeList,
-          setReadModal,
-        });
+    return (e: React.MouseEventHandler<HTMLButtonElement>) => {
+      if (name == "" || (name && name.length < 2)) {
+        window.alert("이름을 2글자 이상 입력해주세요");
+      } else {
+        if (employeeDetail !== undefined) {
+          const colorCode =
+            type.enumColor[color as keyof typeof type.enumColor];
+
+          UpdateEmployeeApi({
+            id,
+            name,
+            role,
+            colorCode,
+            setWriteModal,
+            setEmployeeList,
+            setReadModal,
+          });
+        }
       }
-    }
+    };
   };
 
   const onClickColor = () => {
@@ -87,47 +92,18 @@ const UpdateEmployee = ({
   };
 
   return (
-    <div className="CreateWorkCheck-container">
-      <h3>직원 수정</h3>
-      <div className="CreateWorkCheck-content">
-        <p className="modal-name">
-          <span>이름</span>
-          <input name="name" value={name} onChange={onChangeName}></input>
-        </p>
-        <p className="modal-employee">
-          <span>직급</span>
-          <select name="role" onChange={onChangeRole} value={role}>
-            {roleInfo.map((item) => (
-              <option value={item.roleName}>{item.roleValue}</option>
-            ))}
-          </select>
-        </p>
-        <p className="modal-color">
-          <span>색상</span>
-          <div className="color-button-container">
-            {colorInfo.map((item, idx) => (
-              <button
-                className={item.colorName == color ? "selected" : ""}
-                name={item.colorName}
-                onClick={onClickColor()}
-                style={{ backgroundColor: `#${item.colorCode}` }}
-              >
-                &nbsp;
-              </button>
-            ))}
-          </div>
-        </p>
-      </div>
-      <div className="modal-button-container">
-        <button className="modal-close-button" onClick={onClickCancelOnModal}>
-          취소
-        </button>
-        <button
-          onClick={() => onUpdateClick(employeeDetail ? employeeDetail.id : 0)}
-        >
-          완료
-        </button>
-      </div>
+    <div className="updateEmployee-container">
+      <UpdateEmployeeView
+        employeeDetail={employeeDetail}
+        name={name}
+        role={role}
+        color={color}
+        onChangeName={onChangeName}
+        onChangeRole={onChangeRole}
+        onUpdateClick={onUpdateClick}
+        onClickColor={onClickColor}
+        onClickCancelOnModal={onClickCancelOnModal}
+      ></UpdateEmployeeView>
     </div>
   );
 };
