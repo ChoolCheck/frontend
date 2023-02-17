@@ -11,8 +11,6 @@ import { LogoutApi } from "./api/auth";
 
 import { useNavigate } from "react-router-dom";
 
-const navigate = useNavigate();
-
 const refreshAPI = axios.create({
   baseURL: `${config.api}`,
   // headers: { "Content-type": "application/json" }, // data type
@@ -24,6 +22,7 @@ refreshAPI.interceptors.response.use(
     return response;
   },
   async (error) => {
+    const navigate = useNavigate();
     const originalRequest = error.config;
     console.log(error);
 
