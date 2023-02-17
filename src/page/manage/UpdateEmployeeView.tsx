@@ -50,11 +50,7 @@ const UpdateEmployeeView = ({
         <button className="modal-close-button" onClick={onClickCancelOnModal}>
           취소
         </button>
-        <button
-          onClick={() => onUpdateClick(employeeDetail ? employeeDetail.id : 0)}
-        >
-          완료
-        </button>
+        <button onClick={onUpdateClick}>완료</button>
       </div>
     </div>
   );

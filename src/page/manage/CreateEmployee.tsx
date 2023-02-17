@@ -43,29 +43,27 @@ const CreateEmployee = ({ setEmployeeList }: type.createEmployeeProps) => {
     }
   };
 
-  const onClickColor = () => {
+  const onClickColor = (e: React.MouseEvent<HTMLButtonElement>) => {
     console.log(color);
 
-    return (e: React.MouseEvent<HTMLButtonElement>) => {
-      const selectedButton = e.currentTarget;
-      console.log(e.currentTarget.name);
-      let prevNode = selectedButton.previousElementSibling;
-      let nextNode = selectedButton.nextElementSibling;
+    const selectedButton = e.currentTarget;
+    console.log(e.currentTarget.name);
+    let prevNode = selectedButton.previousElementSibling;
+    let nextNode = selectedButton.nextElementSibling;
 
-      selectedButton.classList.add("selected");
+    selectedButton.classList.add("selected");
 
-      while (prevNode) {
-        if (prevNode.className == "selected") {
-          prevNode.classList.remove("selected");
-        } else prevNode = prevNode.previousElementSibling;
-      }
-      while (nextNode) {
-        if (nextNode.className == "selected") {
-          nextNode.classList.remove("selected");
-        } else nextNode = nextNode.nextElementSibling;
-      }
-      setColor(e.currentTarget.name);
-    };
+    while (prevNode) {
+      if (prevNode.className == "selected") {
+        prevNode.classList.remove("selected");
+      } else prevNode = prevNode.previousElementSibling;
+    }
+    while (nextNode) {
+      if (nextNode.className == "selected") {
+        nextNode.classList.remove("selected");
+      } else nextNode = nextNode.nextElementSibling;
+    }
+    setColor(e.currentTarget.name);
   };
 
   const onClickCancelOnModal = (e: React.MouseEvent<HTMLButtonElement>) => {

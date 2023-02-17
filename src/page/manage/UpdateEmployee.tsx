@@ -39,46 +39,43 @@ const UpdateEmployee = ({
     setRole(roleInfo[e.target.options.selectedIndex].roleName);
   };
 
-  const onUpdateClick = (id: number) => {
-    return (e: React.MouseEventHandler<HTMLButtonElement>) => {
-      if (name == "" || (name && name.length < 2)) {
-        window.alert("이름을 2글자 이상 입력해주세요");
-      } else {
-        if (employeeDetail !== undefined) {
-          UpdateEmployeeApi({
-            id,
-            name,
-            color,
-            role,
-            setWriteModal,
-            setEmployeeList,
-            setReadModal,
-          });
-        }
+  const onUpdateClick = () => {
+    if (name == "" || (name && name.length < 2)) {
+      window.alert("이름을 2글자 이상 입력해주세요");
+    } else {
+      if (employeeDetail !== undefined) {
+        const id = employeeDetail ? employeeDetail.id : 0;
+        UpdateEmployeeApi({
+          id,
+          name,
+          color,
+          role,
+          setWriteModal,
+          setEmployeeList,
+          setReadModal,
+        });
       }
-    };
+    }
   };
 
-  const onClickColor = () => {
-    return (e: React.MouseEvent<HTMLButtonElement>) => {
-      const selectedButton = e.currentTarget;
-      let prevNode = selectedButton.previousElementSibling;
-      let nextNode = selectedButton.nextElementSibling;
+  const onClickColor = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const selectedButton = e.currentTarget;
+    let prevNode = selectedButton.previousElementSibling;
+    let nextNode = selectedButton.nextElementSibling;
 
-      selectedButton.classList.add("selected");
+    selectedButton.classList.add("selected");
 
-      while (prevNode) {
-        if (prevNode.className == "selected") {
-          prevNode.classList.remove("selected");
-        } else prevNode = prevNode.previousElementSibling;
-      }
-      while (nextNode) {
-        if (nextNode.className == "selected") {
-          nextNode.classList.remove("selected");
-        } else nextNode = nextNode.nextElementSibling;
-      }
-      setColor(e.currentTarget.name);
-    };
+    while (prevNode) {
+      if (prevNode.className == "selected") {
+        prevNode.classList.remove("selected");
+      } else prevNode = prevNode.previousElementSibling;
+    }
+    while (nextNode) {
+      if (nextNode.className == "selected") {
+        nextNode.classList.remove("selected");
+      } else nextNode = nextNode.nextElementSibling;
+    }
+    setColor(e.currentTarget.name);
   };
 
   const onClickCancelOnModal = (e: React.MouseEvent<HTMLButtonElement>) => {
