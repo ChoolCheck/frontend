@@ -18,8 +18,8 @@ const CreateEmployee = ({ setEmployeeList }: type.createEmployeeProps) => {
   );
 
   const [name, setName] = useState("");
-  const [role, setRole] = useState("매니저");
-  const [color, setColor] = useState("FFADAD");
+  const [role, setRole] = useState("MANAGER");
+  const [color, setColor] = useState("RED");
 
   const onChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
