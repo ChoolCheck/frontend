@@ -4,6 +4,8 @@ import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
 import { CreateEmployeeApi } from "../../api/manage";
 import * as type from "./type";
 
+import CreateEmployeeView from "./CreateEmployeeView";
+
 import { colorInfo } from "../../static/color";
 import { roleInfo } from "../../static/role";
 
@@ -67,42 +69,14 @@ const CreateEmployee = ({ setEmployeeList }: type.createEmployeeProps) => {
 
   return (
     <div className="CreateWorkCheck-container">
-      <h3>직원 추가</h3>
-      <div className="CreateWorkCheck-content">
-        <p className="modal-name">
-          <span>이름</span>
-          <input name="name" onChange={onChangeName}></input>
-        </p>
-        <p className="modal-employee">
-          <span>직급</span>
-          <select name="role" onChange={onChangeRole}>
-            {roleInfo.map((item) => (
-              <option>{item.roleValue}</option>
-            ))}
-          </select>
-        </p>
-        <p className="modal-color">
-          <span>색상</span>
-          <div className="color-button-container">
-            {colorInfo.map((item, idx) => (
-              <button
-                className={item.colorName == color ? "selected" : ""}
-                name={item.colorName}
-                onClick={onClickColor()}
-                style={{ backgroundColor: `#${item.colorCode}` }}
-              >
-                &nbsp;
-              </button>
-            ))}
-          </div>
-        </p>
-      </div>
-      <div className="modal-button-container">
-        <button className="modal-close-button" onClick={onClickCancelOnModal}>
-          취소
-        </button>
-        <button onClick={onCreateClick}>완료</button>
-      </div>
+      <CreateEmployeeView
+        color={color}
+        onChangeName={onChangeName}
+        onChangeRole={onChangeRole}
+        onCreateClick={onCreateClick}
+        onClickColor={onClickColor}
+        onClickCancelOnModal={onClickCancelOnModal}
+      ></CreateEmployeeView>
     </div>
   );
 };

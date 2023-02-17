@@ -37,10 +37,30 @@ export interface employeeDetailProps {
     React.SetStateAction<employeeProps[] | undefined>
   >;
 }
+export interface employeeDetailViewProps {
+  onUpdateClick: React.MouseEventHandler<HTMLButtonElement>;
+  onDeleteClick: (
+    id: number
+  ) => (e: React.MouseEvent<HTMLButtonElement>) => void;
+  employeeDetail: employeeProps | undefined;
+  setEmployeeList: React.Dispatch<
+    React.SetStateAction<employeeProps[] | undefined>
+  >;
+}
+
 export interface createEmployeeProps {
   setEmployeeList: React.Dispatch<
     React.SetStateAction<employeeProps[] | undefined>
   >;
+}
+
+export interface createEmployeeViewProps {
+  onChangeName: React.ChangeEventHandler<HTMLInputElement>;
+  onChangeRole: React.ChangeEventHandler<HTMLSelectElement>;
+  onClickColor: React.MouseEventHandler<HTMLButtonElement>;
+  onClickCancelOnModal: React.MouseEventHandler<HTMLButtonElement>;
+  onCreateClick: React.MouseEventHandler<HTMLButtonElement>;
+  color: string;
 }
 
 export interface updateEmployeeProps {
