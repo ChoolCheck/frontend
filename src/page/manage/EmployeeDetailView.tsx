@@ -30,18 +30,20 @@ const EmployeeDetailView = ({
       <div className="detail-info">
         <p className="modal-name">
           <span className="detail-title">이름</span>
-          <span className="detail-content-name">{employeeDetail?.name}</span>
+          <span className="detail-content detail-name">
+            {employeeDetail?.name}
+          </span>
         </p>
         <p className="modal-role">
-          <span className="detail-role">직급</span>
-          <span className="detail-content-role">
+          <span className="detail-title">직급</span>
+          <span className="detail-content detail-role">
             {type.enumRole[employeeDetail?.role as keyof typeof type.enumRole]}
           </span>
         </p>
         <p className="modal-color">
-          <span className="detail-color">색상</span>
+          <span className="detail-title">색상</span>
           <span
-            className="detail-content-title"
+            className="detail-content detail-color"
             style={{
               backgroundColor: `#${
                 type.enumColor[
