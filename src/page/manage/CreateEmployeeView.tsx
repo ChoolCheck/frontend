@@ -34,7 +34,7 @@ const CreateEmployeeView = ({
               <button
                 className={item.colorName == color ? "selected" : ""}
                 name={item.colorName}
-                onClick={() => onClickColor}
+                onClick={onClickColor}
                 style={{ backgroundColor: `#${item.colorCode}` }}
               >
                 &nbsp;

@@ -6,7 +6,6 @@ import * as type from "./type";
 
 import CreateEmployeeView from "./CreateEmployeeView";
 
-import { colorInfo } from "../../static/color";
 import { roleInfo } from "../../static/role";
 
 const CreateEmployee = ({ setEmployeeList }: type.createEmployeeProps) => {
@@ -44,10 +43,7 @@ const CreateEmployee = ({ setEmployeeList }: type.createEmployeeProps) => {
   };
 
   const onClickColor = (e: React.MouseEvent<HTMLButtonElement>) => {
-    console.log(color);
-
     const selectedButton = e.currentTarget;
-    console.log(e.currentTarget.name);
     let prevNode = selectedButton.previousElementSibling;
     let nextNode = selectedButton.nextElementSibling;
 

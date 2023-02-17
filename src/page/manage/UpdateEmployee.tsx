@@ -28,7 +28,7 @@ const UpdateEmployee = ({
   const [name, setName] = useState(employeeDetail ? employeeDetail.name : "");
   const [role, setRole] = useState(employeeDetail ? employeeDetail.role : "");
   const [color, setColor] = useState(
-    employeeDetail ? employeeDetail.color : ""
+    employeeDetail ? employeeDetail.color : "RED"
   );
 
   const onChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
