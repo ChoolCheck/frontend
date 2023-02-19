@@ -61,6 +61,8 @@ export async function LogoutApi({ navigate }: type.apiLogoutProps) {
   })
     .then((res) => {
       localStorage.removeItem("token");
+      localStorage.removeItem("refreshToken");
+
       window.alert("로그아웃 되었습니다.");
       navigate("/login");
     })
