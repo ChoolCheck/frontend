@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./schedule-total.scss";
+import "./style/schedule-total.scss";
 import * as type from "./type";
 const ScheduleTotalView = ({
   onShowNameButtonClick,

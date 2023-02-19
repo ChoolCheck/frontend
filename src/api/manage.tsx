@@ -1,6 +1,6 @@
 import axios from "axios";
 import { config } from "../static/config";
-import * as type from "./manageType";
+import * as type from "./type/manageType";
 import { roleInfo } from "../static/role";
 
 export async function CreateWorktypeApi({

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { config } from "../static/config";
-import * as type from "./mypageType";
+import * as type from "./type/mypageType";
 
 export async function GetUserInfoApi({ setUserInfo }: type.setUserInfoProps) {
   await axios({

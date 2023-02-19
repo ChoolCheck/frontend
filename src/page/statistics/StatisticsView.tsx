@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./statisticsView.scss";
+import "./style/statisticsView.scss";
 import * as type from "./type";
 import { Bar } from "react-chartjs-2";
 import {

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { config } from "../static/config";
-import * as type from "./authType";
+import * as type from "./type/authType";
 
 export async function LoginApi({
   email,

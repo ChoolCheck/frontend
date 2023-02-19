@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./schedule-weekly.scss";
+import "./style/schedule-weekly.scss";
 import * as type from "./type";
 
 const ScheduleWeeklyView = ({

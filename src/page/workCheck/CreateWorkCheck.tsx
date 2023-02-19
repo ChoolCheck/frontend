@@ -1,4 +1,4 @@
-import "./createWorkCheck.scss";
+import "./style/createWorkCheck.scss";
 import React, { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";

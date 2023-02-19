@@ -9,7 +9,7 @@ import ScheduleTotalView from "./ScheduleTotalView";
 import ToggleButton from "../../components/button/ToggleButton";
 import CreateSchedule from "./CreateSchedule";
 import WriteModal from "../../components/modal/WriteModal";
-import "./schedule.scss";
+import "./style/schedule.scss";
 
 const Schedule = () => {
   const dispatch = useDispatch();

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./statistics.scss";
+import "./style/statistics.scss";
 import StatisticsView from "./StatisticsView";
 const Statistics = () => {
   const statisticsList = [

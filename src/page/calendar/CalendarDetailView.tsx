@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import * as type from "./type";
-import "./calendarDetailView.scss";
+import "./style/calendarDetailView.scss";
 import { useDispatch } from "react-redux";
 import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
 

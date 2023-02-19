@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import WorkCheckView from "./WorkCheckView";
-import "./workCheck.scss";
+import "./style/workCheck.scss";
 const WorkCheck = () => {
   const workCheckTotal = {
     totalList: [

@@ -1,7 +1,7 @@
-import "./createSchedule.scss";
 import React, { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
+import "./style/createSchedule.scss";
 
 const CreateSchedule = () => {
   const dispatch = useDispatch();
