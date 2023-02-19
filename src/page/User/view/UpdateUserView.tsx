@@ -1,5 +1,5 @@
-import * as type from "./type";
-import "./style/mypageView.scss";
+import * as type from "../type";
+import "../style/mypageView.scss";
 
 const UpdateUserView = ({
   userInfo,

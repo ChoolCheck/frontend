@@ -1,14 +1,14 @@
 import React, { useEffect, useState, useCallback } from "react";
-import WriteModal from "../../components/modal/WriteModal";
-import CreateWorkType from "./CreateWorkType";
+import WriteModal from "../../../components/modal/WriteModal";
+import CreateWorkType from "../CreateWorkType";
 import { useDispatch } from "react-redux";
-import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
+import { setWriteModalOpen } from "../../../Redux/Actions/handleWriteModal";
 import { useSelector } from "react-redux";
-import { RootState } from "../../Redux/Reducers/rootReducer";
-import { GetWorktypeApi } from "../../api/manage";
-import { DeleteWorktypeApi } from "../../api/manage";
-import "./style/manage-work.scss";
-import * as type from "./type";
+import { RootState } from "../../../Redux/Reducers/rootReducer";
+import { GetWorktypeApi } from "../../../api/manage";
+import { DeleteWorktypeApi } from "../../../api/manage";
+import "../style/manage-work.scss";
+import * as type from "../type";
 
 const ManageWorkView = () => {
   const [workTypeList, setWorkTypeList] = useState<

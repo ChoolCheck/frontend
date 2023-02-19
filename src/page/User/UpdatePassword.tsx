@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import UpdatePasswordView from "./UpdatePasswordView";
+import UpdatePasswordView from "./view/UpdatePasswordView";
 import { UpdatePasswordApi } from "../../api/mypage";
 import "./style/updatePassword.scss";
 

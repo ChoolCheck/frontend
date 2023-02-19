@@ -18,35 +18,32 @@ const refreshAPI = axios.create({
 
 refreshAPI.interceptors.response.use(
   function (response) {
-    console.log("get response", response);
     return response;
   },
-  async (error) => {
+  async function (error) {
     const navigate = useNavigate();
-    const originalRequest = error.config;
+    const originalConfig = error.config;
     console.log(error);
 
     if (error.response && error.response.status === 401) {
       if (error.response.data.message === "expired") {
-        const refreshToken = localStorage.getItem("refreshToken");
-
         // token refresh 요청
         try {
           const res = await axios({
             url: `${config.api}/user/reissue`,
             method: "Post",
             headers: {
-              Authorization: refreshToken,
+              accesstoken: localStorage.getItem("token"),
+              refreshToken: localStorage.getItem("refreshToken"),
             },
           });
           if (res) {
-            window.alert("토큰이 만료되어 자동으로 로그아웃 됩니다.");
             localStorage.setItem("token", res.data.accessToken);
-            localStorage.setItem("refreshToken", res.data.refreshToken);
-            return await LogoutApi({ navigate });
+            return await refreshAPI.request(originalConfig);
           }
         } catch (err) {
-          console.log("토큰 갱신 에러");
+          window.alert("토큰이 만료되어 자동으로 로그아웃 됩니다.");
+          return await LogoutApi({ navigate });
         }
       }
     }

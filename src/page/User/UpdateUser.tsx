@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import UpdateUserView from "./UpdateUserView";
+import UpdateUserView from "./view/UpdateUserView";
 import "./style/mypage.scss";
 import { useLocation, useNavigate } from "react-router-dom";
 import { UpdateUserInfoApi } from "../../api/mypage";

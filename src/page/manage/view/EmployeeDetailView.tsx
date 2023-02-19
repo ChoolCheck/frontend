@@ -1,10 +1,10 @@
-import * as type from "./type";
+import * as type from "../type";
 
-import WriteModal from "../../components/modal/WriteModal";
-import UpdateEmployee from "./UpdateEmployee";
+import WriteModal from "../../../components/modal/WriteModal";
+import UpdateEmployee from "../UpdateEmployee";
 
 import { useSelector } from "react-redux";
-import { RootState } from "../../Redux/Reducers/rootReducer";
+import { RootState } from "../../../Redux/Reducers/rootReducer";
 
 const EmployeeDetailView = ({
   onUpdateClick,

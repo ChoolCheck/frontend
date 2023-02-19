@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
 import { setReadModalOpen } from "../../Redux/Actions/handleReadModal";
 
-import EmployeeDetailView from "./EmployeeDetailView";
+import EmployeeDetailView from "./view/EmployeeDetailView";
 
 const EmployeeDetail = ({
   employeeDetail,

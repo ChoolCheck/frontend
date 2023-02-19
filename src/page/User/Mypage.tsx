@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import MypageView from "./MypageView";
+import MypageView from "./view/MypageView";
 import "./style/mypage.scss";
 import * as type from "./type";
 import { GetUserInfoApi } from "../../api/mypage";

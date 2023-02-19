@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import "./style/mypageView.scss";
-import * as type from "./type";
+import "../style/mypageView.scss";
+import * as type from "../type";
 
 const MypageView = ({ userInfo }: type.mypageViewProps) => {
   const navigate = useNavigate();

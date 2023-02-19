@@ -4,7 +4,7 @@ import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
 import { CreateEmployeeApi } from "../../api/manage";
 import * as type from "./type";
 
-import CreateEmployeeView from "./CreateEmployeeView";
+import CreateEmployeeView from "./view/CreateEmployeeView";
 
 import { roleInfo } from "../../static/role";
 

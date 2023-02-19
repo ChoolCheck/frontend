@@ -1,5 +1,5 @@
-import * as type from "./type";
-import "./style/updatePasswordView.scss";
+import * as type from "../type";
+import "../style/updatePasswordView.scss";
 
 const UpdatePasswordView = ({
   isPassword,

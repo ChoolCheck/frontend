@@ -1,20 +1,20 @@
-import "./style/manage-employee.scss";
-import * as type from "./type";
 import React, { useEffect, useState, useCallback } from "react";
-import CreateEmployee from "./CreateEmployee";
-import EmployeeDetail from "./EmployDetail";
+import CreateEmployee from "../CreateEmployee";
+import EmployeeDetail from "../EmployDetail";
+import "../style/manage-employee.scss";
+import * as type from "../type";
 
-import WriteModal from "../../components/modal/WriteModal";
-import ReadModal from "../../components/modal/ReadModal";
+import WriteModal from "../../../components/modal/WriteModal";
+import ReadModal from "../../../components/modal/ReadModal";
 
-import { GetEmployeeApi } from "../../api/manage";
-import { GetEmployeeDetailApi } from "../../api/manage";
+import { GetEmployeeApi } from "../../../api/manage";
+import { GetEmployeeDetailApi } from "../../../api/manage";
 
 import { useDispatch } from "react-redux";
-import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
-import { setReadModalOpen } from "../../Redux/Actions/handleReadModal";
+import { setWriteModalOpen } from "../../../Redux/Actions/handleWriteModal";
+import { setReadModalOpen } from "../../../Redux/Actions/handleReadModal";
 import { useSelector } from "react-redux";
-import { RootState } from "../../Redux/Reducers/rootReducer";
+import { RootState } from "../../../Redux/Reducers/rootReducer";
 
 const ManageEmployeeView = () => {
   const dispatch = useDispatch();

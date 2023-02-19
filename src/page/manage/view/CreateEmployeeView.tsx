@@ -1,29 +1,27 @@
-import * as type from "./type";
+import * as type from "../type";
 
-import { colorInfo } from "../../static/color";
-import { roleInfo } from "../../static/role";
+import { colorInfo } from "../../../static/color";
+import { roleInfo } from "../../../static/role";
 
-const UpdateEmployeeView = ({
+const CreateEmployeeView = ({
   onChangeName,
   onChangeRole,
-  onUpdateClick,
   onClickColor,
   onClickCancelOnModal,
-  name,
-  role,
+  onCreateClick,
   color,
-}: type.updateEmployeeViewProps) => {
+}: type.createEmployeeViewProps) => {
   return (
-    <div className="updateEmployeeView-container">
-      <h3>직원 수정</h3>
-      <div className="updateEmployeeView-content">
+    <div className="createEmplyeeView-container">
+      <h3>직원 추가</h3>
+      <div className="createEmplyeeView-content">
         <p className="modal-name">
           <span>이름</span>
-          <input name="name" value={name} onChange={onChangeName}></input>
+          <input name="name" onChange={onChangeName}></input>
         </p>
         <p className="modal-employee">
           <span>직급</span>
-          <select name="role" onChange={onChangeRole} value={role}>
+          <select name="role" onChange={onChangeRole}>
             {roleInfo.map((item) => (
               <option value={item.roleName}>{item.roleValue}</option>
             ))}
@@ -49,10 +47,10 @@ const UpdateEmployeeView = ({
         <button className="modal-close-button" onClick={onClickCancelOnModal}>
           취소
         </button>
-        <button onClick={onUpdateClick}>완료</button>
+        <button onClick={onCreateClick}>완료</button>
       </div>
     </div>
   );
 };
 
-export default UpdateEmployeeView;
+export default CreateEmployeeView;

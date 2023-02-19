@@ -1,22 +1,55 @@
 @import "../../../static/reset.scss";
 @import "../../../static/mixin";
 
-.mypage-top-container {
+.checkToSendEmail-top-container {
   width: 70%;
   min-width: 890px;
   margin: 0 auto;
+
+  .checkToSendEmail-content {
+    position: relative;
+    display: block;
+
+    height: 450px;
+
+    font-size: 20px;
+    background-color: rgb(238, 238, 238);
+    border-radius: 20px;
+    margin: 10px;
+
+    text-align: center;
+
+    .checkToSendEmail-message {
+      width: 60%;
+      margin: 0 auto;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 40px;
+      p {
+        margin: 100px 0 20px 0;
+      }
+    }
+
+    button {
+      border: 1px solid rgb(173, 173, 173);
+      padding: 15px;
+      border-radius: 10px;
+    }
+  }
 }
 
 @include tablet {
-  .mypage-top-container {
+  .checkToSendEmail-top-container {
     width: 70%;
     min-width: 650px;
   }
 }
 
 @include mobile {
-  .mypage-top-container {
-    width: 60%;
+  .checkToSendEmail-top-container {
+    width: 65%;
     min-width: 500px;
   }
 }
