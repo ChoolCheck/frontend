@@ -43,7 +43,11 @@ const CreateScheduleView = ({
                   name="hours_id"
                   type="radio"
                   value={item.title}
-                  onChange={onChangeWorkType(item.id)}
+                  onChange={onChangeWorkType(
+                    item.id,
+                    item.startTime,
+                    item.endTime
+                  )}
                 />
                 <label>{item.title}</label>
               </div>
@@ -58,6 +62,7 @@ const CreateScheduleView = ({
             className="modal-time-start"
             name="startTime"
             type="time"
+            value={scheduleForm.startTime}
             onChange={onChangeStartTime}
           ></input>
           {" ~ "}
@@ -65,6 +70,7 @@ const CreateScheduleView = ({
             className="modal-time-end"
             name="endTime"
             type="time"
+            value={scheduleForm.endTime}
             onChange={onChangeEndTime}
           ></input>
         </p>

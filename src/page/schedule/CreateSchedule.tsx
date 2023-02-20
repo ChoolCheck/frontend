@@ -41,7 +41,7 @@ const CreateSchedule = () => {
     } else return;
   };
 
-  const [scheduleForm, setWorkCheckForm] = useState({
+  const [scheduleForm, setScheduleForm] = useState({
     employee: "",
     hours_id: "",
     date: "",
@@ -52,7 +52,7 @@ const CreateSchedule = () => {
   const { employee, hours_id, date, startTime, endTime } = scheduleForm;
 
   const onChangeForm = (name: string, value: string) => {
-    setWorkCheckForm({
+    setScheduleForm({
       ...scheduleForm,
       [name]: value,
     });
@@ -77,10 +77,17 @@ const CreateSchedule = () => {
     onChangeForm("date", e.target.value);
   };
 
-  const onChangeWorkType = (id: number) => {
+  const onChangeWorkType = (id: number, startTime: string, endTime: string) => {
     return (e: React.ChangeEvent<HTMLInputElement>) => {
       console.log(id);
+
+      const startTimeInput = document.getElementsByName("startTime")[0];
+      const endTimeInput = document.getElementsByName("endTime")[0];
+      console.log(startTimeInput);
+
       onChangeForm("hours_id", id.toString());
+      onChangeForm("startTime", startTime);
+      onChangeForm("endTime", endTime);
     };
   };
 
