@@ -3,7 +3,7 @@ import { config } from "../static/config";
 import * as type from "./type/scheduleType";
 
 export async function CreateScheduleApi({
-  employee_id,
+  employee,
   hours_id,
   date,
   startTime,
@@ -17,7 +17,7 @@ export async function CreateScheduleApi({
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
     data: {
-      employee_id: employee_id,
+      employee_id: employee,
       hours_id: hours_id,
       date: date,
       startTime: startTime,

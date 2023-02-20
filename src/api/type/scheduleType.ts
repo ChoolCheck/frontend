@@ -1,5 +1,5 @@
 export interface createScheduleProps {
-  employee_id: string;
+  employee: string;
   hours_id: string;
   date: string;
   startTime: string;

@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
 
 import { GetWorktypeApi, GetEmployeeApi } from "../../api/manage";
+import { CreateScheduleApi } from "../../api/schedule";
 
 import * as type from "./type";
 import * as employeeType from "../../commonType/employee";
@@ -22,32 +23,15 @@ const CreateSchedule = () => {
 
   const [workTypeList, setWorkTypeList] = useState<
     worktypeType.worktypeProps[] | undefined
-  >([
-    { id: 1, title: "미들", startTime: "14:00", endTime: "18:00" },
-    { id: 2, title: "마감", startTime: "19:00", endTime: "23:00" },
-  ]);
+  >();
 
-  const [employeeList, setEmployeeList] = useState<
-    employeeType.employeeProps[]
-  >([
-    {
-      id: 3,
-      name: "이예빈",
-      role: "MANAGER",
-      color: "RED",
-    },
-    {
-      id: 5,
-      name: "김어진",
-      role: "MANAGER",
-      color: "Yellow",
-    },
-  ]);
+  const [employeeList, setEmployeeList] =
+    useState<employeeType.employeeProps[]>();
 
-  // useEffect(() => {
-  //   GetWorktypeApi({ setWorkTypeList });
-  //   GetEmployeeApi({ setEmployeeList });
-  // }, []);
+  useEffect(() => {
+    GetWorktypeApi({ setWorkTypeList });
+    GetEmployeeApi({ setEmployeeList });
+  }, []);
 
   const onClickCancelOnModal = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -75,10 +59,18 @@ const CreateSchedule = () => {
   };
 
   const onChangeEmployee = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    onChangeForm(
-      "employee",
-      e.currentTarget.options[e.currentTarget.options.selectedIndex].innerText
-    );
+    let employeeId = 0;
+    if (employeeList) {
+      for (let i = 0; i < employeeList.length; i++) {
+        if (
+          employeeList[i].name ==
+          e.currentTarget.options[e.currentTarget.options.selectedIndex]
+            .innerText
+        )
+          employeeId = employeeList[i].id;
+      }
+    }
+    onChangeForm("employee", employeeId.toString());
   };
 
   const onChangeDate = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -101,8 +93,7 @@ const CreateSchedule = () => {
   };
 
   const onClickCreate = (e: React.MouseEvent<HTMLButtonElement>) => {
-    console.log(e);
-    console.log(scheduleForm);
+    CreateScheduleApi(scheduleForm);
   };
 
   return (
