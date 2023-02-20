@@ -29,7 +29,7 @@ const CreateSchedule = () => {
   // { id: 3, title: "오픈", startTime: "09:00", endTime: "18:00" },
 
   const [employeeList, setEmployeeList] = useState<
-    employeeType.employeeProps[]
+    employeeType.employeeProps[] | undefined
   >([]);
   // {
   //   id: 3,
