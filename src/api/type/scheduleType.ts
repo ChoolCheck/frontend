@@ -4,6 +4,11 @@ export interface createScheduleProps {
   date: string;
   startTime: string;
   endTime: string;
+
+  setWriteModal: (readModalState: boolean) => {
+    type: "handleWriteodal/SETWRITEMODAL";
+    payload: boolean;
+  };
 }
 
 export interface getMonthScheduleProps {

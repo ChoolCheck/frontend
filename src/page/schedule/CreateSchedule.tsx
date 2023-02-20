@@ -32,10 +32,10 @@ const CreateSchedule = () => {
   const [employeeList, setEmployeeList] =
     useState<employeeType.employeeProps[]>();
 
-  useEffect(() => {
-    GetWorktypeApi({ setWorkTypeList });
-    GetEmployeeApi({ setEmployeeList });
-  }, []);
+  // useEffect(() => {
+  //   GetWorktypeApi({ setWorkTypeList });
+  //   GetEmployeeApi({ setEmployeeList });
+  // }, []);
 
   const onClickCancelOnModal = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -45,22 +45,31 @@ const CreateSchedule = () => {
     } else return;
   };
 
-  const [scheduleForm, setScheduleForm] = useState({
-    employee: "",
-    hours_id: "",
-    date: "",
-    startTime: "",
-    endTime: "",
-  });
+  const [employee, setEmployee] = useState("");
+  const [hours_id, setHoursid] = useState("");
+  const [startTime, setStartTime] = useState("");
+  const [endTime, setEndTime] = useState("");
+  const [date, setDate] = useState("");
 
-  const { employee, hours_id, date, startTime, endTime } = scheduleForm;
+  // const [scheduleForm, setScheduleForm] = useState({
+  //   employee: "",
+  //   hours_id: "",
+  //   date: "",
+  //   startTime: "",
+  //   endTime: "",
+  // });
 
-  const onChangeForm = (name: string, value: string) => {
-    setScheduleForm({
-      ...scheduleForm,
-      [name]: value,
-    });
-  };
+  const scheduleForm = { employee, hours_id, date, startTime, endTime };
+
+  // const onChangeForm = (name: string, value: string) => {
+  //   console.log("name : " + name);
+  //   console.log("value : " + value);
+  //   setScheduleForm({
+  //     ...scheduleForm,
+  //     [name]: value,
+  //   });
+  //   console.log(scheduleForm);
+  // };
 
   const onChangeEmployee = (e: React.ChangeEvent<HTMLSelectElement>) => {
     let employeeId = 0;
@@ -74,11 +83,13 @@ const CreateSchedule = () => {
           employeeId = employeeList[i].id;
       }
     }
-    onChangeForm("employee", employeeId.toString());
+    // onChangeForm("employee", employeeId.toString());
+    setEmployee(employeeId.toString());
   };
 
   const onChangeDate = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onChangeForm("date", e.target.value);
+    // onChangeForm("date", e.target.value);
+    setDate(e.target.value);
   };
 
   const onChangeWorkType = (id: number, startTime: string, endTime: string) => {
@@ -87,32 +98,53 @@ const CreateSchedule = () => {
       const startTimeInput = inputs[inputs.length - 2];
       const endTimeInput = inputs[inputs.length - 1];
 
+      startTimeInput.setAttribute("value", startTime);
+      endTimeInput.setAttribute("value", endTime);
       startTimeInput.value = startTime;
       endTimeInput.value = endTime;
 
-      onChangeForm("startTime", startTime);
-      onChangeForm("endTime", endTime);
+      // setScheduleForm({
+      //   ...scheduleForm,
+      //   ["startTime"]: startTime,
+      // });
 
-      if (id > 0) onChangeForm("hours_id", id.toString());
-      else onChangeForm("hours_id", "");
+      // if (id > 0) onChangeForm("hours_id", id.toString());
+      // else onChangeForm("hours_id", "");
+
+      setStartTime(startTime);
+      setEndTime(endTime);
+
+      if (id > 0) setHoursid(id.toString());
+      else setHoursid("");
     };
   };
 
   const onChangeStartTime = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onChangeForm("startTime", e.target.value);
+    // onChangeForm("startTime", e.target.value);
+    setStartTime(e.target.value);
   };
   const onChangeEndTime = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onChangeForm("endTime", e.target.value);
+    // onChangeForm("endTime", e.target.value);
+    setEndTime(e.target.value);
   };
 
   const onClickCreate = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if ((scheduleForm.date = "")) {
+    console.log(scheduleForm);
+    if (date == "") {
       window.alert("날짜를 선택해주세요.");
-    } else if ((scheduleForm.startTime = "")) {
+    } else if (startTime == "") {
       window.alert("시작 시간을 선택해주세요.");
-    } else if ((scheduleForm.endTime = "")) {
+    } else if (endTime == "") {
       window.alert("종료 시간을 선택해주세요.");
-    } else CreateScheduleApi(scheduleForm);
+    } else
+      CreateScheduleApi({
+        employee,
+        date,
+        hours_id,
+        startTime,
+        endTime,
+        setWriteModal,
+      });
   };
 
   return (

@@ -48,6 +48,7 @@ export interface createScheduleViewProps
   };
   onChangeEmployee: React.ChangeEventHandler<HTMLSelectElement>;
   onChangeDate: React.ChangeEventHandler<HTMLInputElement>;
+
   onChangeWorkType: (
     id: number,
     startTime: string,

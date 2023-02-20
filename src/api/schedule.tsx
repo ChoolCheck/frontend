@@ -8,6 +8,7 @@ export async function CreateScheduleApi({
   date,
   startTime,
   endTime,
+  setWriteModal,
 }: type.createScheduleProps) {
   let data;
   if (hours_id == "") {
@@ -35,7 +36,9 @@ export async function CreateScheduleApi({
     },
     data: data,
   })
-    .then((res) => {})
+    .then((res) => {
+      setWriteModal(false);
+    })
     .then((res) => {})
     .catch((err) => {
       window.alert("스케줄 추가에 실패했습니다.");
