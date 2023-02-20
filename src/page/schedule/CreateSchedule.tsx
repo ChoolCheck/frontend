@@ -63,14 +63,6 @@ const CreateSchedule = () => {
   const [endTime, setEndTime] = useState("");
   const [date, setDate] = useState("");
 
-  // const [scheduleForm, setScheduleForm] = useState({
-  //   employee: "",
-  //   hours_id: "",
-  //   date: "",
-  //   startTime: "",
-  //   endTime: "",
-  // });
-
   const scheduleForm = { employee, hours_id, date, startTime, endTime };
 
   // const onChangeForm = (name: string, value: string) => {
@@ -101,11 +93,9 @@ const CreateSchedule = () => {
         setEmployee(employeeId.toString());
       }
     }
-    // onChangeForm("employee", employeeId.toString());
   };
 
   const onChangeDate = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // onChangeForm("date", e.target.value);
     setDate(e.target.value);
   };
 
@@ -120,14 +110,6 @@ const CreateSchedule = () => {
       startTimeInput.value = startTime;
       endTimeInput.value = endTime;
 
-      // setScheduleForm({
-      //   ...scheduleForm,
-      //   ["startTime"]: startTime,
-      // });
-
-      // if (id > 0) onChangeForm("hours_id", id.toString());
-      // else onChangeForm("hours_id", "");
-
       setStartTime(startTime);
       setEndTime(endTime);
 
@@ -137,11 +119,9 @@ const CreateSchedule = () => {
   };
 
   const onChangeStartTime = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // onChangeForm("startTime", e.target.value);
     setStartTime(e.target.value);
   };
   const onChangeEndTime = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // onChangeForm("endTime", e.target.value);
     setEndTime(e.target.value);
   };
 

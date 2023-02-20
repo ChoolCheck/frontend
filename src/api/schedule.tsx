@@ -29,7 +29,7 @@ export async function CreateScheduleApi({
   }
   await axios({
     method: "POST",
-    url: `${config.api}/schdule`,
+    url: `${config.api}/schedule`,
     headers: {
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,
