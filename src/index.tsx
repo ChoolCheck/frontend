@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 
 const refreshAPI = axios.create({
   baseURL: `${config.api}`,
-  // headers: { "Content-type": "application/json" }, // data type
+  headers: { "Content-type": "application/json" }, // data type
 });
 
 refreshAPI.interceptors.request.use(
