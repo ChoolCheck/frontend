@@ -3,6 +3,7 @@ import * as type from "../type";
 import WriteModal from "../../../components/modal/WriteModal";
 import UpdateEmployee from "../UpdateEmployee";
 
+import * as enumType from "../../../commonType/enum";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../Redux/Reducers/rootReducer";
 
@@ -37,7 +38,11 @@ const EmployeeDetailView = ({
         <p className="modal-role">
           <span className="detail-title">직급</span>
           <span className="detail-content detail-role">
-            {type.enumRole[employeeDetail?.role as keyof typeof type.enumRole]}
+            {
+              enumType.enumRole[
+                employeeDetail?.role as keyof typeof enumType.enumRole
+              ]
+            }
           </span>
         </p>
         <p className="modal-color">
@@ -47,8 +52,8 @@ const EmployeeDetailView = ({
               className="detail-color"
               style={{
                 backgroundColor: `#${
-                  type.enumColor[
-                    employeeDetail?.color as keyof typeof type.enumColor
+                  enumType.enumColor[
+                    employeeDetail?.color as keyof typeof enumType.enumColor
                   ]
                 }`,
               }}
@@ -58,7 +63,7 @@ const EmployeeDetailView = ({
           </span>
         </p>
       </div>
-      <div className="modal-button-container">
+      <div className="modal-read-button-container">
         <button className="update-button" onClick={onUpdateClick}>
           직원 수정
         </button>

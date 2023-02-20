@@ -10,9 +10,11 @@ import { DeleteWorktypeApi } from "../../../api/manage";
 import "../style/manage-work.scss";
 import * as type from "../type";
 
+import * as worktypeType from "../../../commonType/worktype";
+
 const ManageWorkView = () => {
   const [workTypeList, setWorkTypeList] = useState<
-    type.worktypeProps[] | undefined
+    worktypeType.worktypeProps[] | undefined
   >();
 
   useEffect(() => {

@@ -19,9 +19,9 @@ $opacity-zero: 0.3;
     }
   }
   .writemodal-container {
-    padding: 50px 20px 40px 20px;
+    padding: 40px 20px 40px 20px;
     h3 {
-      margin: 20px 0 20px 0;
+      margin: 10px 0 40px 0;
     }
   }
 
@@ -100,7 +100,10 @@ $opacity-zero: 0.3;
     .modal-date > input {
       width: 200px;
     }
-    .modal-worktype > input {
+    .modal-worktype {
+      label {
+        padding: 0 20px 0 10px;
+      }
     }
 
     .modal-color {
@@ -135,11 +138,12 @@ $opacity-zero: 0.3;
       margin-left: 5px;
     }
 
-    .modal-button-container {
+    .modal-write-button-container,
+    .modal-read-button-container {
       float: right;
       button {
         background-color: white;
-        margin: 20px 10px 0 10px;
+        margin: 30px 10px 0 10px;
       }
     }
   }

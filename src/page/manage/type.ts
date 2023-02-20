@@ -1,38 +1,12 @@
-export const enumColor = {
-  RED: "FFADAD",
-  ORANGE: "FFD6A5",
-  YELLOW: "FDFFB6",
-  GREEN: "CAFFBF",
-  LIGHT_BLUE: "9BF6FF",
-  BLUE: "A0C4FF",
-  PURPLE: "BDB2FF",
-  PINK: "FFC6FF",
-  GRAY: "DEDEDE",
-} as const;
+import * as employeeType from "../../commonType/employee";
+import * as worktypeType from "../../commonType/worktype";
 
-export const enumRole = {
-  FULL_TIME: "직원",
-  PART_TIME: "알바",
-  MANAGER: "매니저",
-} as const;
+export interface worktypeProps extends worktypeType.worktypeProps {}
 
-export interface worktypeProps {
-  title: string;
-  startTime: string;
-  endTime: string;
-  id: number;
-}
+export interface employeeProps extends employeeType.employeeProps {}
 
-export interface employeeProps {
-  name: string;
-  role: string;
-  color: string;
-  id: number;
-}
-
-export interface employeeDetailProps {
+export interface employeeDetailProps extends employeeType.employeeList {
   employeeDetail: employeeProps | undefined;
-  employeeList: employeeProps[] | undefined;
   setEmployeeList: React.Dispatch<
     React.SetStateAction<employeeProps[] | undefined>
   >;

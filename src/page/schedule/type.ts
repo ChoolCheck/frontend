@@ -1,3 +1,6 @@
+import * as employeeType from "../../commonType/employee";
+import * as worktypeType from "../../commonType/worktype";
+
 export interface scheduleTotalProps {
   onShowNameButtonClick: (
     name: string
@@ -31,4 +34,26 @@ export interface scheduleWeeklyProps {
       backgroundColor: string;
     }[];
   }[];
+}
+
+export interface createScheduleViewProps
+  extends employeeType.employeeList,
+    worktypeType.workTypeList {
+  scheduleForm: {
+    employee: string;
+    hours_id: string;
+    date: string;
+    startTime: string;
+    endTime: string;
+  };
+  onChangeEmployee: React.ChangeEventHandler<HTMLSelectElement>;
+  onChangeDate: React.ChangeEventHandler<HTMLInputElement>;
+  onChangeWorkType: (
+    id: number
+  ) => (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChangeStartTime: React.ChangeEventHandler<HTMLInputElement>;
+  onChangeEndTime: React.ChangeEventHandler<HTMLInputElement>;
+
+  onClickCancelOnModal: React.MouseEventHandler<HTMLButtonElement>;
+  onClickCreate: React.MouseEventHandler<HTMLButtonElement>;
 }

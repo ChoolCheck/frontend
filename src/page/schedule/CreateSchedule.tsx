@@ -1,7 +1,16 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
+
+import { GetWorktypeApi, GetEmployeeApi } from "../../api/manage";
+
+import * as type from "./type";
+import * as employeeType from "../../commonType/employee";
+import * as worktypeType from "../../commonType/worktype";
+
+import CreateScheduleView from "./CreateScheduleView";
 import "./style/createSchedule.scss";
+import { stringify } from "querystring";
 
 const CreateSchedule = () => {
   const dispatch = useDispatch();
@@ -10,6 +19,35 @@ const CreateSchedule = () => {
     (readModalState: boolean) => dispatch(setWriteModalOpen(readModalState)),
     [dispatch]
   );
+
+  const [workTypeList, setWorkTypeList] = useState<
+    worktypeType.worktypeProps[] | undefined
+  >([
+    { id: 1, title: "미들", startTime: "14:00", endTime: "18:00" },
+    { id: 2, title: "마감", startTime: "19:00", endTime: "23:00" },
+  ]);
+
+  const [employeeList, setEmployeeList] = useState<
+    employeeType.employeeProps[]
+  >([
+    {
+      id: 3,
+      name: "이예빈",
+      role: "MANAGER",
+      color: "RED",
+    },
+    {
+      id: 5,
+      name: "김어진",
+      role: "MANAGER",
+      color: "Yellow",
+    },
+  ]);
+
+  // useEffect(() => {
+  //   GetWorktypeApi({ setWorkTypeList });
+  //   GetEmployeeApi({ setEmployeeList });
+  // }, []);
 
   const onClickCancelOnModal = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -21,43 +59,66 @@ const CreateSchedule = () => {
 
   const [scheduleForm, setWorkCheckForm] = useState({
     employee: "",
+    hours_id: "",
     date: "",
-    workType: "",
-    time: "",
+    startTime: "",
+    endTime: "",
   });
 
+  const { employee, hours_id, date, startTime, endTime } = scheduleForm;
+
+  const onChangeForm = (name: string, value: string) => {
+    setWorkCheckForm({
+      ...scheduleForm,
+      [name]: value,
+    });
+  };
+
+  const onChangeEmployee = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    onChangeForm(
+      "employee",
+      e.currentTarget.options[e.currentTarget.options.selectedIndex].innerText
+    );
+  };
+
+  const onChangeDate = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onChangeForm("date", e.target.value);
+  };
+
+  const onChangeWorkType = (id: number) => {
+    return (e: React.ChangeEvent<HTMLInputElement>) => {
+      console.log(id);
+      onChangeForm("hours_id", id.toString());
+    };
+  };
+
+  const onChangeStartTime = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onChangeForm("startTime", e.target.value);
+  };
+
+  const onChangeEndTime = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onChangeForm("endTime", e.target.value);
+  };
+
+  const onClickCreate = (e: React.MouseEvent<HTMLButtonElement>) => {
+    console.log(e);
+    console.log(scheduleForm);
+  };
+
   return (
-    <div className="CreateWorkCheck-container">
-      <h3>스케줄 추가</h3>
-      <div className="CreateWorkCheck-content">
-        <p className="modal-employee">
-          <span>직원</span>
-          <input></input>
-        </p>
-        <p className="modal-date">
-          <span>날짜</span>
-          <input type="date"></input>
-        </p>
-        <p className="modal-worktype">
-          <span>근무형태</span>
-          <input type="checkbox"></input>
-        </p>
-        <p className="modal-time">
-          <span>시간</span>
-          <input className="modal-time-start" type="time"></input>
-          {" ~ "}
-          <input className="modal-time-end" type="time"></input>
-        </p>
-      </div>
-      <div className="modal-write-button-container">
-        <button
-          className="modal-write-close-button"
-          onClick={onClickCancelOnModal}
-        >
-          취소
-        </button>
-        <button>완료</button>
-      </div>
+    <div>
+      <CreateScheduleView
+        workTypeList={workTypeList}
+        employeeList={employeeList}
+        onClickCancelOnModal={onClickCancelOnModal}
+        scheduleForm={scheduleForm}
+        onChangeEmployee={onChangeEmployee}
+        onChangeDate={onChangeDate}
+        onChangeWorkType={onChangeWorkType}
+        onChangeStartTime={onChangeStartTime}
+        onChangeEndTime={onChangeEndTime}
+        onClickCreate={onClickCreate}
+      ></CreateScheduleView>
     </div>
   );
 };

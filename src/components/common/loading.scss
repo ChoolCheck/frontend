@@ -1,0 +1,19 @@
+@import "../../static/reset.scss";
+@import "../../static/mixin.scss";
+
+.loading-container {
+  position: fixed;
+  display: block;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+  background-color: aliceblue;
+
+  p {
+    padding: 20px;
+    border: 1px solid rgb(128, 128, 128);
+    border-radius: 20px;
+  }
+}

@@ -16,6 +16,9 @@ import { setReadModalOpen } from "../../../Redux/Actions/handleReadModal";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../Redux/Reducers/rootReducer";
 
+import * as employeeType from "../../../commonType/employee";
+import * as enumType from "../../../commonType/enum";
+
 const ManageEmployeeView = () => {
   const dispatch = useDispatch();
 
@@ -37,8 +40,10 @@ const ManageEmployeeView = () => {
     [dispatch]
   );
 
-  const [employeeList, setEmployeeList] = useState<type.employeeProps[]>();
-  const [employeeDetail, setEmployeeDetail] = useState<type.employeeProps>();
+  const [employeeList, setEmployeeList] =
+    useState<employeeType.employeeProps[]>();
+  const [employeeDetail, setEmployeeDetail] =
+    useState<employeeType.employeeProps>();
 
   useEffect(() => {
     GetEmployeeApi({ setEmployeeList });
@@ -80,15 +85,19 @@ const ManageEmployeeView = () => {
               >
                 <span className="employeeList-li-name">{item.name}</span>
                 <span className="employeeList-li-role">
-                  {type.enumRole[item.role as keyof typeof type.enumRole]}
+                  {
+                    enumType.enumRole[
+                      item.role as keyof typeof enumType.enumRole
+                    ]
+                  }
                 </span>
                 <span className="employeeList-li-color">
                   <span
                     className="employeeList-li-color-content"
                     style={{
                       backgroundColor: `#${
-                        type.enumColor[
-                          item.color as keyof typeof type.enumColor
+                        enumType.enumColor[
+                          item.color as keyof typeof enumType.enumColor
                         ]
                       }`,
                     }}

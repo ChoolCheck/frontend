@@ -1,7 +1,6 @@
 import axios from "axios";
 import { config } from "../static/config";
 import * as type from "./type/manageType";
-import { roleInfo } from "../static/role";
 
 export async function CreateWorktypeApi({
   worktypeForm,
@@ -44,6 +43,7 @@ export async function GetWorktypeApi({
     },
   })
     .then((res) => {
+      console.log(res.data);
       setWorkTypeList(res.data);
     })
     .catch((err) => {

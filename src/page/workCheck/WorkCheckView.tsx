@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
 import "./style/workCheckView.scss";
 import * as type from "./type";
+
 const WorkCheckView = ({
   onShowNameButtonClick,
   onShowTotalButtonClick,
