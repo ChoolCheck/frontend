@@ -36,35 +36,37 @@ const CreateScheduleView = ({
         </p>
         <p className="modal-worktype">
           <span>근무형태</span>
-          {workTypeList && workTypeList.length > 0 && (
-            <div>
-              <input
-                name="hours_id"
-                type="radio"
-                onChange={onChangeWorkType(-1, "00:00", "00:00")}
-              />
-              <label>선택안함</label>
-            </div>
-          )}
-          {workTypeList && workTypeList.length > 0 ? (
-            workTypeList.map((item) => (
+          <div className="worktype-list">
+            {workTypeList && workTypeList.length > 0 && (
               <div>
                 <input
                   name="hours_id"
                   type="radio"
-                  value={item.title}
-                  onChange={onChangeWorkType(
-                    item.id,
-                    item.startTime,
-                    item.endTime
-                  )}
+                  onChange={onChangeWorkType(-1, "00:00", "00:00")}
                 />
-                <label>{item.title}</label>
+                <label>선택안함</label>
               </div>
-            ))
-          ) : (
-            <span>없음</span>
-          )}
+            )}
+            {workTypeList && workTypeList.length > 0 ? (
+              workTypeList.map((item) => (
+                <div>
+                  <input
+                    name="hours_id"
+                    type="radio"
+                    value={item.title}
+                    onChange={onChangeWorkType(
+                      item.id,
+                      item.startTime,
+                      item.endTime
+                    )}
+                  />
+                  <label>{item.title}</label>
+                </div>
+              ))
+            ) : (
+              <label>근무 형태 없음</label>
+            )}
+          </div>
         </p>
         <p className="modal-time">
           <span>시간</span>
@@ -72,7 +74,6 @@ const CreateScheduleView = ({
             className="modal-time-start"
             name="startTime"
             type="time"
-            value={scheduleForm.startTime}
             onChange={onChangeStartTime}
           ></input>
           {" ~ "}
@@ -80,7 +81,6 @@ const CreateScheduleView = ({
             className="modal-time-end"
             name="endTime"
             type="time"
-            value={scheduleForm.endTime}
             onChange={onChangeEndTime}
           ></input>
         </p>

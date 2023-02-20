@@ -49,7 +49,7 @@ $opacity-zero: 0.3;
     }
 
     p {
-      height: 50px;
+      min-height: 50px;
       padding: 0 20px 0 20px;
       display: flex;
       align-items: center;
@@ -101,8 +101,15 @@ $opacity-zero: 0.3;
       width: 200px;
     }
     .modal-worktype {
+      .worktype-list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 280px;
+        line-height: 20px;
+      }
       label {
-        padding: 0 20px 0 10px;
+        padding: 0 10px 0 5px;
       }
     }
 

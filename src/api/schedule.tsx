@@ -9,6 +9,23 @@ export async function CreateScheduleApi({
   startTime,
   endTime,
 }: type.createScheduleProps) {
+  let data;
+  if (hours_id == "") {
+    data = {
+      employee_id: employee,
+      date: date,
+      startTime: startTime,
+      endTime: endTime,
+    };
+  } else {
+    data = {
+      employee_id: employee,
+      hours_id: hours_id,
+      date: date,
+      startTime: startTime,
+      endTime: endTime,
+    };
+  }
   await axios({
     method: "POST",
     url: `${config.api}/schdule`,
@@ -16,13 +33,7 @@ export async function CreateScheduleApi({
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
-    data: {
-      employee_id: employee,
-      hours_id: hours_id,
-      date: date,
-      startTime: startTime,
-      endTime: endTime,
-    },
+    data: data,
   })
     .then((res) => {})
     .then((res) => {})

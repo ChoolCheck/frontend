@@ -23,15 +23,19 @@ const CreateSchedule = () => {
 
   const [workTypeList, setWorkTypeList] = useState<
     worktypeType.worktypeProps[] | undefined
-  >();
+  >([
+    { id: 1, title: "미들입니다", startTime: "12:00", endTime: "18:00" },
+    { id: 2, title: "마감", startTime: "19:00", endTime: "23:00" },
+    { id: 3, title: "오픈", startTime: "9:00", endTime: "18:00" },
+  ]);
 
   const [employeeList, setEmployeeList] =
     useState<employeeType.employeeProps[]>();
 
-  useEffect(() => {
-    GetWorktypeApi({ setWorkTypeList });
-    GetEmployeeApi({ setEmployeeList });
-  }, []);
+  // useEffect(() => {
+  //   GetWorktypeApi({ setWorkTypeList });
+  //   GetEmployeeApi({ setEmployeeList });
+  // }, []);
 
   const onClickCancelOnModal = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -85,10 +89,17 @@ const CreateSchedule = () => {
       startTimeInput.nodeValue = startTime;
       endTimeInput.nodeValue = endTime;
 
-      if (id > 0) onChangeForm("hours_id", id.toString());
-      else onChangeForm("hours_id", "");
+      console.log(startTime);
+      console.log(startTimeInput.nodeValue);
+
+      console.log(endTime);
+      console.log(startTimeInput.nodeValue);
+
       onChangeForm("startTime", startTime);
       onChangeForm("endTime", endTime);
+
+      if (id > 0) onChangeForm("hours_id", id.toString());
+      else onChangeForm("hours_id", "");
     };
   };
 
