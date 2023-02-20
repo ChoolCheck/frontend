@@ -86,7 +86,8 @@ const CreateSchedule = () => {
       startTimeInput.nodeValue = startTime;
       endTimeInput.nodeValue = endTime;
 
-      onChangeForm("hours_id", id.toString());
+      if (id > 0) onChangeForm("hours_id", id.toString());
+      else onChangeForm("hours_id", "");
       onChangeForm("startTime", startTime);
       onChangeForm("endTime", endTime);
     };

@@ -36,6 +36,16 @@ const CreateScheduleView = ({
         </p>
         <p className="modal-worktype">
           <span>근무형태</span>
+          {workTypeList && (
+            <div>
+              <input
+                name="hours_id"
+                type="radio"
+                onChange={onChangeWorkType(-1, "00:00", "00:00")}
+              />
+              <label>선택안함</label>
+            </div>
+          )}
           {workTypeList && workTypeList.length > 0 ? (
             workTypeList.map((item) => (
               <div>
