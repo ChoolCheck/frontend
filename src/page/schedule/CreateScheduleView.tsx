@@ -24,6 +24,7 @@ const CreateScheduleView = ({
           <span>직원</span>
 
           <select name="employee" onChange={onChangeEmployee}>
+            <option>직원 선택</option>
             {employeeList &&
               employeeList.map((item) => (
                 <option value={scheduleForm.employee}>{item.name}</option>

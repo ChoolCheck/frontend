@@ -27,8 +27,22 @@ const CreateSchedule = () => {
   // { id: 1, title: "미들입니다", startTime: "12:00", endTime: "18:00" },
   // { id: 2, title: "마감", startTime: "19:00", endTime: "23:00" },
   // { id: 3, title: "오픈", startTime: "09:00", endTime: "18:00" },
-  const [employeeList, setEmployeeList] =
-    useState<employeeType.employeeProps[]>();
+
+  const [employeeList, setEmployeeList] = useState<
+    employeeType.employeeProps[]
+  >([]);
+  // {
+  //   id: 3,
+  //   name: "이예빈",
+  //   role: "MANAGER",
+  //   color: "REd",
+  // },
+  // {
+  //   id: 2,
+  //   name: "김어진",
+  //   role: "MANAGER",
+  //   color: "REd",
+  // },
 
   useEffect(() => {
     GetWorktypeApi({ setWorkTypeList });
@@ -71,18 +85,23 @@ const CreateSchedule = () => {
 
   const onChangeEmployee = (e: React.ChangeEvent<HTMLSelectElement>) => {
     let employeeId = 0;
+    const selectedOption =
+      e.currentTarget.options[e.currentTarget.options.selectedIndex].innerText;
+
     if (employeeList) {
-      for (let i = 0; i < employeeList.length; i++) {
-        if (
-          employeeList[i].name ==
-          e.currentTarget.options[e.currentTarget.options.selectedIndex]
-            .innerText
-        )
-          employeeId = employeeList[i].id;
+      if (selectedOption == "직원 선택") {
+        setEmployee("");
+      } else {
+        for (let i = 0; i < employeeList.length; i++) {
+          if (employeeList[i].name == selectedOption) {
+            employeeId = employeeList[i].id;
+            break;
+          }
+        }
+        setEmployee(employeeId.toString());
       }
     }
     // onChangeForm("employee", employeeId.toString());
-    setEmployee(employeeId.toString());
   };
 
   const onChangeDate = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -128,7 +147,9 @@ const CreateSchedule = () => {
 
   const onClickCreate = (e: React.MouseEvent<HTMLButtonElement>) => {
     console.log(scheduleForm);
-    if (date == "") {
+    if (employee == "") {
+      window.alert("직원을 선택해주세요");
+    } else if (date == "") {
       window.alert("날짜를 선택해주세요.");
     } else if (startTime == "") {
       window.alert("시작 시간을 선택해주세요.");
