@@ -45,7 +45,7 @@ const UpdateEmployeeView = ({
           </div>
         </p>
       </div>
-      <div className="modal-button-container">
+      <div className="modal-write-close-button">
         <button className="modal-close-button" onClick={onClickCancelOnModal}>
           취소
         </button>

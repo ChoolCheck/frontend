@@ -65,7 +65,7 @@ const CreateWorkType = ({ setWorkTypeList }: type.createWorktypeProps) => {
           ></input>
         </p>
       </div>
-      <div className="modal-button-container">
+      <div className="modal-write-button-container">
         <button
           className="modal-write-close-button"
           onClick={onClickCancelOnModal}

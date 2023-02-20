@@ -36,7 +36,7 @@ const CreateScheduleView = ({
         </p>
         <p className="modal-worktype">
           <span>근무형태</span>
-          {workTypeList && (
+          {workTypeList && workTypeList.length > 0 && (
             <div>
               <input
                 name="hours_id"

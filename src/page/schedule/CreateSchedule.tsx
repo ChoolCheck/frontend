@@ -81,8 +81,7 @@ const CreateSchedule = () => {
     return (e: React.ChangeEvent<HTMLInputElement>) => {
       const startTimeInput = document.getElementsByName("startTime")[0];
       const endTimeInput = document.getElementsByName("endTime")[0];
-      console.log(startTimeInput.innerHTML);
-      console.log(startTimeInput.innerText);
+
       startTimeInput.nodeValue = startTime;
       endTimeInput.nodeValue = endTime;
 
