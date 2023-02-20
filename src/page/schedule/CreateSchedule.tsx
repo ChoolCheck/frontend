@@ -26,16 +26,16 @@ const CreateSchedule = () => {
   >([
     { id: 1, title: "미들입니다", startTime: "12:00", endTime: "18:00" },
     { id: 2, title: "마감", startTime: "19:00", endTime: "23:00" },
-    { id: 3, title: "오픈", startTime: "9:00", endTime: "18:00" },
+    { id: 3, title: "오픈", startTime: "09:00", endTime: "18:00" },
   ]);
 
   const [employeeList, setEmployeeList] =
     useState<employeeType.employeeProps[]>();
 
-  // useEffect(() => {
-  //   GetWorktypeApi({ setWorkTypeList });
-  //   GetEmployeeApi({ setEmployeeList });
-  // }, []);
+  useEffect(() => {
+    GetWorktypeApi({ setWorkTypeList });
+    GetEmployeeApi({ setEmployeeList });
+  }, []);
 
   const onClickCancelOnModal = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -49,8 +49,8 @@ const CreateSchedule = () => {
     employee: "",
     hours_id: "",
     date: "",
-    startTime: "00:00",
-    endTime: "00:00",
+    startTime: "",
+    endTime: "",
   });
 
   const { employee, hours_id, date, startTime, endTime } = scheduleForm;
@@ -83,17 +83,12 @@ const CreateSchedule = () => {
 
   const onChangeWorkType = (id: number, startTime: string, endTime: string) => {
     return (e: React.ChangeEvent<HTMLInputElement>) => {
-      const startTimeInput = document.getElementsByName("startTime")[0];
-      const endTimeInput = document.getElementsByName("endTime")[0];
+      const inputs = document.querySelectorAll("input");
+      const startTimeInput = inputs[inputs.length - 2];
+      const endTimeInput = inputs[inputs.length - 1];
 
-      startTimeInput.nodeValue = startTime;
-      endTimeInput.nodeValue = endTime;
-
-      console.log(startTime);
-      console.log(startTimeInput.nodeValue);
-
-      console.log(endTime);
-      console.log(startTimeInput.nodeValue);
+      startTimeInput.value = startTime;
+      endTimeInput.value = endTime;
 
       onChangeForm("startTime", startTime);
       onChangeForm("endTime", endTime);
@@ -106,13 +101,18 @@ const CreateSchedule = () => {
   const onChangeStartTime = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChangeForm("startTime", e.target.value);
   };
-
   const onChangeEndTime = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChangeForm("endTime", e.target.value);
   };
 
   const onClickCreate = (e: React.MouseEvent<HTMLButtonElement>) => {
-    CreateScheduleApi(scheduleForm);
+    if ((scheduleForm.date = "")) {
+      window.alert("날짜를 선택해주세요.");
+    } else if ((scheduleForm.startTime = "")) {
+      window.alert("시작 시간을 선택해주세요.");
+    } else if ((scheduleForm.endTime = "")) {
+      window.alert("종료 시간을 선택해주세요.");
+    } else CreateScheduleApi(scheduleForm);
   };
 
   return (
