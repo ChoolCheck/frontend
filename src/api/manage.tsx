@@ -43,7 +43,6 @@ export async function GetWorktypeApi({
     },
   })
     .then((res) => {
-      console.log(res.data);
       setWorkTypeList(res.data);
     })
     .catch((err) => {

@@ -45,8 +45,8 @@ const CreateSchedule = () => {
     employee: "",
     hours_id: "",
     date: "",
-    startTime: "",
-    endTime: "",
+    startTime: "00:00",
+    endTime: "00:00",
   });
 
   const { employee, hours_id, date, startTime, endTime } = scheduleForm;
@@ -79,11 +79,12 @@ const CreateSchedule = () => {
 
   const onChangeWorkType = (id: number, startTime: string, endTime: string) => {
     return (e: React.ChangeEvent<HTMLInputElement>) => {
-      console.log(id);
-
       const startTimeInput = document.getElementsByName("startTime")[0];
       const endTimeInput = document.getElementsByName("endTime")[0];
-      console.log(startTimeInput);
+      console.log(startTimeInput.innerHTML);
+      console.log(startTimeInput.innerText);
+      startTimeInput.nodeValue = startTime;
+      endTimeInput.nodeValue = endTime;
 
       onChangeForm("hours_id", id.toString());
       onChangeForm("startTime", startTime);
