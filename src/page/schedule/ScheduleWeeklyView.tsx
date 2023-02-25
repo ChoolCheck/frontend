@@ -42,7 +42,7 @@ const ScheduleWeeklyView = ({
                 {item.map((listItem, idx) => (
                   <li
                     className="card-li"
-                    onClick={onWeekItemClick(listItem.id)}
+                    onClick={() => onWeekItemClick(listItem.id)}
                   >
                     <span
                       className="card-li-name"
