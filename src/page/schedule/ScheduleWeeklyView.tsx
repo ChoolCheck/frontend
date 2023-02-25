@@ -4,10 +4,9 @@ import "./style/schedule-weekly.scss";
 import * as type from "./type";
 import * as enumType from "../../commonType/enum";
 
-const ScheduleWeeklyView = ({
-  weekScheduleList,
-  day,
-}: type.scheduleWeeklyProps) => {
+const ScheduleWeeklyView = ({ weekScheduleList }: type.scheduleWeeklyProps) => {
+  const day = ["월", "화", "수", "목", "금", "토", "일"];
+
   console.log(weekScheduleList);
 
   let currentDay = new Date();

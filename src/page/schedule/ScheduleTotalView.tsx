@@ -7,12 +7,12 @@ import * as enumType from "../../commonType/enum";
 const ScheduleTotalView = ({
   onShowNameButtonClick,
   onShowTotalButtonClick,
-  day,
   scheduleToShow,
   employeeList,
   totalScheduleList,
 }: type.scheduleTotalProps) => {
   const totalList = scheduleToShow ? scheduleToShow : totalScheduleList;
+  const day = ["일", "월", "화", "수", "목", "금", "토"];
 
   return (
     <div className="ScheduleTotalView-top-container">
@@ -53,7 +53,7 @@ const ScheduleTotalView = ({
             totalList.map((item, idx) => (
               <li className="totalList-li">
                 <span className="totalList-li-date">
-                  {item.date}({day[idx]})
+                  {item.date}({day[new Date(item.date).getDay()]})
                 </span>
                 <span
                   className="totalList-li-name"

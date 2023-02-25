@@ -31,8 +31,6 @@ const Schedule = () => {
   );
   const [leftOrRight, setLeftOrRight] = useState(true);
 
-  const day = ["월", "화", "수", "목", "금", "토", "일"];
-
   const [employeeList, setEmployeeList] = useState<
     employeeType.employeeProps[] | undefined
   >([]);
@@ -115,14 +113,12 @@ const Schedule = () => {
       {leftOrRight ? (
         <ScheduleWeeklyView
           weekScheduleList={weekScheduleList}
-          day={day}
         ></ScheduleWeeklyView>
       ) : (
         <ScheduleTotalView
           scheduleToShow={scheduleToShow}
           employeeList={employeeList}
           totalScheduleList={totalScheduleList}
-          day={day}
           onShowNameButtonClick={onShowNameButtonClick}
           onShowTotalButtonClick={onShowTotalButtonClick}
         ></ScheduleTotalView>

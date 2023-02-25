@@ -17,7 +17,6 @@ export interface scheduleTotalProps {
   onShowTotalButtonClick: (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => void;
-  day: string[];
 
   employeeList: employeeType.employeeProps[] | undefined;
   totalScheduleList: scheduleObjProps[] | undefined;
@@ -27,7 +26,6 @@ export interface scheduleTotalProps {
 
 export interface scheduleWeeklyProps {
   weekScheduleList: scheduleObjProps[][] | undefined;
-  day: string[];
 }
 
 export interface createScheduleProps {
