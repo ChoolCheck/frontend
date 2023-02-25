@@ -27,7 +27,7 @@ const ScheduleDetail = ({}: type.scheduleDetailProps) => {
   const onDeleteClick = (id: number) => {
     return (e: React.MouseEvent<HTMLButtonElement>) => {
       if (window.confirm("해당 스케줄을 정말로 삭제하시겠습니까?")) {
-        // DeleteEmployeeApi({
+        // DeleteScheduleApi({
         //   setReadModal,
         //   employeeList,
         //   setEmployeeList,

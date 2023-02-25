@@ -78,7 +78,10 @@ export async function UpdateScheduleApi({
     });
 }
 
-export async function DeleteScheduleApi({ id }: type.deleteScheduleProps) {
+export async function DeleteScheduleApi({
+  id,
+  setReadModal,
+}: type.deleteScheduleProps) {
   await axios({
     method: "Delete",
     url: `${config.api}/schedule/${id}`,
@@ -88,6 +91,9 @@ export async function DeleteScheduleApi({ id }: type.deleteScheduleProps) {
     },
   })
     .then((res) => {})
+    .then((res) => {
+      setReadModal(true);
+    })
     .catch((err) => {
       window.alert("스케줄 삭제에 실패했습니다.");
     });
@@ -122,7 +128,6 @@ export async function GetWeekScheduleApi({
     },
   })
     .then((res) => {
-      console.log(res.data);
       setWeekScheduleList(res.data);
     })
     .catch((err) => {
@@ -141,7 +146,6 @@ export async function GetTotalScheduleApi({
     },
   })
     .then((res) => {
-      console.log(res.data);
       setTotalScheduleList(res.data);
     })
     .catch((err) => {
@@ -150,6 +154,8 @@ export async function GetTotalScheduleApi({
 }
 export async function GetDetailScheduleApi({
   id,
+  setScheduleDetail,
+  setReadModal,
 }: type.getDetailScheduleProps) {
   await axios({
     method: "GET",
@@ -159,7 +165,13 @@ export async function GetDetailScheduleApi({
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
   })
-    .then((res) => {})
+    .then((res) => {
+      console.log(res.data);
+      setScheduleDetail(res.data);
+    })
+    .then((res) => {
+      setReadModal(true);
+    })
     .catch((err) => {
       window.alert("스케줄 상세 조회에 실패했습니다.");
     });

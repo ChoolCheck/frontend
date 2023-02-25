@@ -15,9 +15,7 @@ export interface scheduleTotalProps {
   onShowNameButtonClick: (
     name: string
   ) => (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-  onShowTotalButtonClick: (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => void;
+  onShowTotalButtonClick: React.MouseEventHandler<HTMLButtonElement>;
 
   employeeList: employeeType.employeeProps[] | undefined;
   totalScheduleList: scheduleObjProps[] | undefined;

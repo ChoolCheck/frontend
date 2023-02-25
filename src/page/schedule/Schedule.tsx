@@ -5,8 +5,11 @@ import { setReadModalOpen } from "../../Redux/Actions/handleReadModal";
 import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/Reducers/rootReducer";
 
-import { GetWeekScheduleApi } from "../../api/schedule";
-import { GetTotalScheduleApi } from "../../api/schedule";
+import {
+  GetWeekScheduleApi,
+  GetDetailScheduleApi,
+  GetTotalScheduleApi,
+} from "../../api/schedule";
 import { GetEmployeeApi } from "../../api/manage";
 
 import ScheduleWeeklyView from "./ScheduleWeeklyView";
@@ -24,6 +27,8 @@ import * as employeeType from "../../commonType/employee";
 const Schedule = () => {
   const dispatch = useDispatch();
 
+  const [leftOrRight, setLeftOrRight] = useState(true);
+
   const writeModalState = useSelector(
     (state: RootState) => state.WriteModalReducer.writeModalState
   );
@@ -38,7 +43,6 @@ const Schedule = () => {
     (readModalState: boolean) => dispatch(setWriteModalOpen(readModalState)),
     [dispatch]
   );
-  const [leftOrRight, setLeftOrRight] = useState(true);
 
   const [employeeList, setEmployeeList] = useState<
     employeeType.employeeProps[] | undefined
@@ -55,6 +59,14 @@ const Schedule = () => {
     type.scheduleObjProps[] | undefined
   >();
 
+  const [scheduleDetail, setScheduleDetail] = useState<type.scheduleObjProps>();
+
+  useEffect(() => {
+    GetWeekScheduleApi({ setWeekScheduleList });
+    GetTotalScheduleApi({ setTotalScheduleList });
+    GetEmployeeApi({ setEmployeeList });
+  }, []);
+
   const filterTotalList = (name: string) => {
     if (name == "total") {
       setScheduleToShow(totalScheduleList);
@@ -69,29 +81,24 @@ const Schedule = () => {
     }
   };
 
-  useEffect(() => {
-    GetWeekScheduleApi({ setWeekScheduleList });
-    GetTotalScheduleApi({ setTotalScheduleList });
-    GetEmployeeApi({ setEmployeeList });
-  }, []);
-
   const onShowNameButtonClick = (name: string) => {
-    filterTotalList(name);
     return (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
       e.preventDefault();
+      filterTotalList(name);
     };
   };
 
-  const onShowTotalButtonClick = () => {
+  const onShowTotalButtonClick = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    e.preventDefault();
     filterTotalList("total");
-    return (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-      e.preventDefault();
-    };
   };
 
   const onWeekItemClick = (id: number) => {
     return (e: React.MouseEventHandler<HTMLLIElement>) => {
-      setReadModal(true);
+      console.log(id);
+      GetDetailScheduleApi({ id, setScheduleDetail, setReadModal });
     };
   };
 

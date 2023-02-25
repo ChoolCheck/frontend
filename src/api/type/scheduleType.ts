@@ -37,6 +37,14 @@ export interface getWeekScheduleProps {
 
 export interface getDetailScheduleProps {
   id: number;
+  setScheduleDetail: React.Dispatch<
+    React.SetStateAction<scheduleObjProps | undefined>
+  >;
+
+  setReadModal: (readModalState: boolean) => {
+    type: "handleReadModal/SETREADMODAL";
+    payload: boolean;
+  };
 }
 
 export interface getEmployeeScheduleProps {
@@ -60,4 +68,8 @@ export interface updateScheduleProps {
 
 export interface deleteScheduleProps {
   id: number;
+  setReadModal: (readModalState: boolean) => {
+    type: "handleReadModal/SETREADMODAL";
+    payload: boolean;
+  };
 }
