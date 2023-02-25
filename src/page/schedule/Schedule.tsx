@@ -44,22 +44,21 @@ const Schedule = () => {
     type.scheduleObjProps[][] | undefined
   >();
 
-  const [scheduleTotalObj, setScheduleTotalObj] = useState({
-    totalList: totalScheduleList,
-    employee: employeeList,
-  });
+  const [scheduleToShow, setScheduleToShow] = useState<
+    type.scheduleObjProps[] | undefined
+  >();
 
   const filterTotalList = (name: string) => {
     if (name == "total") {
-      setScheduleTotalObj(scheduleTotalObj);
+      setScheduleToShow(scheduleToShow);
     } else {
-      if (scheduleTotalObj.totalList) {
-        const filteredList = scheduleTotalObj.totalList.filter((item) => {
+      if (scheduleToShow) {
+        const filteredList = scheduleToShow.filter((item) => {
           if (item.name == name) {
             return true;
           }
         });
-        setScheduleTotalObj({ ...scheduleTotalObj, totalList: filteredList });
+        setScheduleToShow(filteredList);
       }
     }
   };
@@ -118,7 +117,9 @@ const Schedule = () => {
         ></ScheduleWeeklyView>
       ) : (
         <ScheduleTotalView
-          scheduleTotalObj={scheduleTotalObj}
+          scheduleToShow={scheduleToShow}
+          employeeList={employeeList}
+          totalScheduleList={totalScheduleList}
           day={day}
           onShowNameButtonClick={onShowNameButtonClick}
           onShowTotalButtonClick={onShowTotalButtonClick}

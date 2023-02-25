@@ -56,9 +56,7 @@ const ScheduleWeeklyView = ({
                     </span>
 
                     <span className="card-li-time">
-                      {parseInt(listItem.endTime) -
-                        parseInt(listItem.startTime)}
-                      시간
+                      {listItem.endTime} - {listItem.startTime}
                     </span>
                   </li>
                 ))}

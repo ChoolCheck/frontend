@@ -8,16 +8,19 @@ const ScheduleTotalView = ({
   onShowNameButtonClick,
   onShowTotalButtonClick,
   day,
-  scheduleTotalObj,
+  scheduleToShow,
+  employeeList,
+  totalScheduleList,
 }: type.scheduleTotalProps) => {
-  console.log(scheduleTotalObj);
+  const totalList = scheduleToShow ? scheduleToShow : totalScheduleList;
+
   return (
     <div className="ScheduleTotalView-top-container">
       <div className="ScheduleTotalView-left-container">
         <h2>직원별로 보기</h2>
         <ul className="employee-list-ul">
-          {scheduleTotalObj.employee &&
-            scheduleTotalObj.employee.map((item) => (
+          {employeeList &&
+            employeeList.map((item) => (
               <li className="employee-list-li">
                 <span
                   className="employee-list-li-color"
@@ -46,8 +49,8 @@ const ScheduleTotalView = ({
       </div>
       <div className="ScheduleTotalView-right-container">
         <ul className="totalList-ul">
-          {scheduleTotalObj.totalList &&
-            scheduleTotalObj.totalList.map((item, idx) => (
+          {totalList &&
+            totalList.map((item, idx) => (
               <li className="totalList-li">
                 <span className="totalList-li-date">
                   {item.date}({day[idx]})
@@ -64,8 +67,9 @@ const ScheduleTotalView = ({
                 >
                   {item.name}
                 </span>
-                <span className="totalList-li-time">{item.startTime}</span>
-                <span className="totalList-li-time">{item.endTime}</span>
+                <span className="totalList-li-time">
+                  {item.startTime} - {item.endTime}
+                </span>
                 <span className="totalList-li-totalWorkTime">
                   {parseInt(item.endTime) - parseInt(item.startTime)}시간
                 </span>
