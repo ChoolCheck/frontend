@@ -16,16 +16,16 @@ const refreshAPI = axios.create({
   headers: {
     "Content-type": "application/json",
     Authorization: `Bearer ${localStorage.getItem("token")}`,
-  }, // data type
+  },
 });
 
 axios.interceptors.request.use(
   function (config) {
+    // 작동 확인 완료
     if (!config.headers["authorization"]) {
-      console.log(`Bearer ${localStorage.getItem("token")}`);
-      // config.headers["authorization"] = `Bearer ${localStorage.getItem(
-      //   "token"
-      // )}`;
+      config.headers["Authorization"] = `Bearer ${localStorage.getItem(
+        "token"
+      )}`;
     }
     return config;
   },
