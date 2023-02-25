@@ -76,21 +76,18 @@ const Schedule = () => {
         const filteredList = totalScheduleList.filter((item) => {
           if (item.name == name) return true;
         });
-        console.log(filteredList);
-        // setScheduleToShow(filteredList);
+        setScheduleToShow(filteredList);
       }
     }
   };
 
   const onShowNameButtonClick = (name: string) => {
     return (e: React.MouseEvent<HTMLButtonElement>) => {
-      console.log(name);
       filterTotalList(name);
     };
   };
 
   const onShowTotalButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    console.log("total");
     filterTotalList("total");
   };
 
