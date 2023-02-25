@@ -58,15 +58,14 @@ const Schedule = () => {
   const filterTotalList = (name: string) => {
     if (name == "total") {
       setScheduleToShow(totalScheduleList);
-    } else if (name != "total"&&totalScheduleList) {
-        const filteredList = totalScheduleList.filter((item) => {
-          if (item.name == name) {
-            return true;
-          }
-        });
-        console.log(filteredList);
-        // setScheduleToShow(filteredList);
-      }
+    } else if (name != "total" && totalScheduleList) {
+      const filteredList = totalScheduleList.filter((item) => {
+        if (item.name == name) {
+          return true;
+        }
+      });
+      console.log(filteredList);
+      // setScheduleToShow(filteredList);
     }
   };
 
