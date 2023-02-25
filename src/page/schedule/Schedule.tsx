@@ -52,8 +52,8 @@ const Schedule = () => {
     if (name == "total") {
       setScheduleToShow(scheduleToShow);
     } else {
-      if (scheduleToShow) {
-        const filteredList = scheduleToShow.filter((item) => {
+      if (totalScheduleList) {
+        const filteredList = totalScheduleList.filter((item) => {
           if (item.name == name) {
             return true;
           }

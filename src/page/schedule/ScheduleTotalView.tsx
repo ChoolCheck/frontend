@@ -36,7 +36,7 @@ const ScheduleTotalView = ({
                 </span>
                 <button
                   className="employee-list-li-name"
-                  onClick={() => onShowNameButtonClick(item.name)}
+                  onClick={onShowNameButtonClick(item.name)}
                 >
                   {item.name}
                 </button>
@@ -71,7 +71,9 @@ const ScheduleTotalView = ({
                   {item.startTime} - {item.endTime}
                 </span>
                 <span className="totalList-li-totalWorkTime">
-                  {parseInt(item.endTime) - parseInt(item.startTime)}시간
+                  {parseInt(item.endTime.substring(0, 5)) -
+                    parseInt(item.startTime.substring(0, 5))}
+                  시간
                 </span>
               </li>
             ))}
