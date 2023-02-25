@@ -96,7 +96,8 @@ const Schedule = () => {
   };
 
   const onWeekItemClick = (id: number) => {
-    return (e: React.MouseEventHandler<HTMLLIElement>) => {
+    return (e: React.MouseEvent<HTMLLIElement>) => {
+      e.preventDefault();
       console.log(id);
       GetDetailScheduleApi({ id, setScheduleDetail, setReadModal });
     };
