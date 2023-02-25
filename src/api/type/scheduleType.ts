@@ -14,7 +14,21 @@ export interface createScheduleProps {
 export interface getMonthScheduleProps {
   date: string;
 }
-export interface getWeekScheduleProps {}
+
+export interface scheduleObjProps {
+  name: string;
+  date: string;
+  startTime: string;
+  endTime: string;
+  hours: string | null;
+  color: string;
+}
+
+export interface getWeekScheduleProps {
+  setWeekScheduleList: React.Dispatch<
+    React.SetStateAction<scheduleObjProps[] | undefined>
+  >;
+}
 
 export interface getDetailScheduleProps {
   id: number;
@@ -24,7 +38,11 @@ export interface getEmployeeScheduleProps {
   employee_id: string;
 }
 
-export interface getTotalScheduleProps {}
+export interface getTotalScheduleProps {
+  setTotalScheduleList: React.Dispatch<
+    React.SetStateAction<scheduleObjProps[] | undefined>
+  >;
+}
 
 export interface updateScheduleProps {
   id: string;

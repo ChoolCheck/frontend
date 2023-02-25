@@ -107,7 +107,9 @@ export async function GetMonthScheduleApi({
     });
 }
 
-export async function GetWeekScheduleApi({}: type.getWeekScheduleProps) {
+export async function GetWeekScheduleApi({
+  setWeekScheduleList,
+}: type.getWeekScheduleProps) {
   await axios({
     method: "GET",
     url: `${config.api}/schdule/week`,
@@ -116,9 +118,31 @@ export async function GetWeekScheduleApi({}: type.getWeekScheduleProps) {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
   })
-    .then((res) => {})
+    .then((res) => {
+      console.log(res.data);
+      setWeekScheduleList(res.data);
+    })
     .catch((err) => {
       window.alert("주별 스케줄 조회에 실패했습니다.");
+    });
+}
+export async function GetTotalScheduleApi({
+  setTotalScheduleList,
+}: type.getTotalScheduleProps) {
+  await axios({
+    method: "GET",
+    url: `${config.api}/schdule`,
+    headers: {
+      "Content-Type": `application/json`,
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  })
+    .then((res) => {
+      console.log(res.data);
+      setTotalScheduleList(res.data);
+    })
+    .catch((err) => {
+      window.alert("스케줄 전체 조회에 실패했습니다.");
     });
 }
 export async function GetDetailScheduleApi({
@@ -152,20 +176,5 @@ export async function GetEmployeeScheduleProps({
     .then((res) => {})
     .catch((err) => {
       window.alert("직원별 스케줄 조회에 실패했습니다.");
-    });
-}
-
-export async function GetTotalScheduleApi({}: type.getTotalScheduleProps) {
-  await axios({
-    method: "GET",
-    url: `${config.api}/schdule`,
-    headers: {
-      "Content-Type": `application/json`,
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-    },
-  })
-    .then((res) => {})
-    .catch((err) => {
-      window.alert("스케줄 전체 조회에 실패했습니다.");
     });
 }

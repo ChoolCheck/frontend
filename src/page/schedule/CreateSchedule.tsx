@@ -24,25 +24,10 @@ const CreateSchedule = () => {
   const [workTypeList, setWorkTypeList] = useState<
     worktypeType.worktypeProps[] | undefined
   >([]);
-  // { id: 1, title: "미들입니다", startTime: "12:00", endTime: "18:00" },
-  // { id: 2, title: "마감", startTime: "19:00", endTime: "23:00" },
-  // { id: 3, title: "오픈", startTime: "09:00", endTime: "18:00" },
 
   const [employeeList, setEmployeeList] = useState<
     employeeType.employeeProps[] | undefined
   >([]);
-  // {
-  //   id: 3,
-  //   name: "이예빈",
-  //   role: "MANAGER",
-  //   color: "REd",
-  // },
-  // {
-  //   id: 2,
-  //   name: "김어진",
-  //   role: "MANAGER",
-  //   color: "REd",
-  // },
 
   useEffect(() => {
     GetWorktypeApi({ setWorkTypeList });

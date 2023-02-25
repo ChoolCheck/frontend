@@ -1,6 +1,15 @@
 import * as employeeType from "../../commonType/employee";
 import * as worktypeType from "../../commonType/worktype";
 
+export interface scheduleObjProps {
+  name: string;
+  date: string;
+  startTime: string;
+  endTime: string;
+  hours: string | null;
+  color: string;
+}
+
 export interface scheduleTotalProps {
   onShowNameButtonClick: (
     name: string
@@ -8,32 +17,16 @@ export interface scheduleTotalProps {
   onShowTotalButtonClick: (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => void;
-  scheduleTotalList: {
-    totalList: {
-      day: string;
-      date: string;
-      name: string;
-      time: string;
-      totalWorkTime: string;
-      backgroundColor: string;
-    }[];
-    employee: {
-      name: string;
-      backgroundColor: string;
-    }[];
+  day: string[];
+  scheduleTotalObj: {
+    totalList: scheduleObjProps[] | undefined;
+    employee: employeeType.employeeProps[] | undefined;
   };
 }
 
 export interface scheduleWeeklyProps {
-  scheduleWeeklyList: {
-    day: string;
-    date: string;
-    schedule: {
-      name: string;
-      time: string;
-      backgroundColor: string;
-    }[];
-  }[];
+  weekScheduleList: scheduleObjProps[] | undefined;
+  day: string[];
 }
 
 export interface createScheduleViewProps
