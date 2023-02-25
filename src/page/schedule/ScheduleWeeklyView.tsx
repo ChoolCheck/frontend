@@ -9,6 +9,26 @@ const ScheduleWeeklyView = ({
   day,
 }: type.scheduleWeeklyProps) => {
   console.log(weekScheduleList);
+
+  let currentDay = new Date();
+  let theYear = currentDay.getFullYear();
+  let theMonth = currentDay.getMonth();
+  let theDate = currentDay.getDate();
+  let theDayOfWeek = currentDay.getDay();
+
+  let thisWeek: string[] = [];
+
+  for (var i = 0; i < 7; i++) {
+    let resultDay = new Date(theYear, theMonth, theDate + (i - theDayOfWeek));
+    let m = String(Number(resultDay.getMonth()) + 1);
+    let d = String(resultDay.getDate());
+
+    m = m.length === 1 ? "0" + m : m;
+    d = d.length === 1 ? "0" + d : d;
+
+    thisWeek[i] = m + "/" + d;
+  }
+
   return (
     <div className="ScheduleWeeklyView-top-container">
       <div className="card-container">
@@ -16,8 +36,9 @@ const ScheduleWeeklyView = ({
           weekScheduleList.map((item, idx) => (
             <div className="card">
               <p className="card-title">
-                {day[idx]}요일 ({item[0].date})
+                {day[idx]}요일 ({thisWeek[idx]})
               </p>
+
               <ul className="card-ul">
                 {item.map((listItem, idx) => (
                   <li className="card-li">
