@@ -68,6 +68,7 @@ const Schedule = () => {
   }, []);
 
   const filterTotalList = (name: string) => {
+    console.log(name);
     if (name == "total") {
       setScheduleToShow(totalScheduleList);
     } else if (name != "total" && totalScheduleList) {

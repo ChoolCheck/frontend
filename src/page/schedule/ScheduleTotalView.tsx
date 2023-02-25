@@ -68,11 +68,11 @@ const ScheduleTotalView = ({
                   {item.name}
                 </span>
                 <span className="totalList-li-time">
-                  {item.startTime} - {item.endTime}
+                  {item.startTime.substring(0, 5)} -{" "}
+                  {item.endTime.substring(0, 5)}
                 </span>
                 <span className="totalList-li-totalWorkTime">
-                  {parseInt(item.endTime.substring(0, 5)) -
-                    parseInt(item.startTime.substring(0, 5))}
+                  {parseInt(item.endTime) - parseInt(item.startTime)}
                   시간
                 </span>
               </li>
