@@ -10,6 +10,7 @@ const ScheduleTotalView = ({
   day,
   scheduleTotalObj,
 }: type.scheduleTotalProps) => {
+  console.log(scheduleTotalObj);
   return (
     <div className="ScheduleTotalView-top-container">
       <div className="ScheduleTotalView-left-container">

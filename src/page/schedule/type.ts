@@ -25,7 +25,7 @@ export interface scheduleTotalProps {
 }
 
 export interface scheduleWeeklyProps {
-  weekScheduleList: scheduleObjProps[] | undefined;
+  weekScheduleList: scheduleObjProps[][] | undefined;
   day: string[];
 }
 
