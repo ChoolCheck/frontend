@@ -8,6 +8,7 @@ export interface scheduleObjProps {
   endTime: string;
   hours: string | null;
   color: string;
+  id: number;
 }
 
 export interface scheduleTotalProps {
@@ -25,6 +26,9 @@ export interface scheduleTotalProps {
 }
 
 export interface scheduleWeeklyProps {
+  onWeekItemClick: (
+    id: number
+  ) => (e: React.MouseEventHandler<HTMLLIElement>) => void;
   weekScheduleList: scheduleObjProps[][] | undefined;
 }
 
@@ -58,3 +62,7 @@ export interface createScheduleViewProps
   onClickCancelOnModal: React.MouseEventHandler<HTMLButtonElement>;
   onClickCreate: React.MouseEventHandler<HTMLButtonElement>;
 }
+
+export interface updateScheduleViewViewProps {}
+export interface scheduleDetailProps {}
+export interface scheduleDetailViewProps {}

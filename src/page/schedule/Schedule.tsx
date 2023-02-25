@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
+import { setReadModalOpen } from "../../Redux/Actions/handleReadModal";
 import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/Reducers/rootReducer";
 
@@ -10,9 +11,11 @@ import { GetEmployeeApi } from "../../api/manage";
 
 import ScheduleWeeklyView from "./ScheduleWeeklyView";
 import ScheduleTotalView from "./ScheduleTotalView";
+import ScheduleDetail from "./ScheduleDetail";
 import ToggleButton from "../../components/button/ToggleButton";
 import CreateSchedule from "./CreateSchedule";
 import WriteModal from "../../components/modal/WriteModal";
+import ReadModal from "../../components/modal/ReadModal";
 
 import "./style/schedule.scss";
 import * as type from "./type";
@@ -24,7 +27,13 @@ const Schedule = () => {
   const writeModalState = useSelector(
     (state: RootState) => state.WriteModalReducer.writeModalState
   );
-
+  const readModalState = useSelector(
+    (state: RootState) => state.ReadModalReducer.readModalState
+  );
+  const setReadModal = useCallback(
+    (readModalState: boolean) => dispatch(setReadModalOpen(readModalState)),
+    [dispatch]
+  );
   const setWriteModal = useCallback(
     (readModalState: boolean) => dispatch(setWriteModalOpen(readModalState)),
     [dispatch]
@@ -56,7 +65,8 @@ const Schedule = () => {
             return true;
           }
         });
-        setScheduleToShow(filteredList);
+        console.log(filteredList);
+        // setScheduleToShow(filteredList);
       }
     }
   };
@@ -69,16 +79,20 @@ const Schedule = () => {
 
   const onShowNameButtonClick = (name: string) => {
     filterTotalList(name);
-    return (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-      event.preventDefault();
+    return (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+      e.preventDefault();
     };
   };
 
   const onShowTotalButtonClick = () => {
     filterTotalList("total");
-    return (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-      event.preventDefault();
+    return (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+      e.preventDefault();
     };
+  };
+
+  const onWeekItemClick = (id: number) => {
+    return (e: React.MouseEventHandler<HTMLLIElement>) => {};
   };
 
   return (
@@ -110,9 +124,16 @@ const Schedule = () => {
         </WriteModal>
       )}
 
+      {readModalState && (
+        <ReadModal>
+          <ScheduleDetail></ScheduleDetail>
+        </ReadModal>
+      )}
+
       {leftOrRight ? (
         <ScheduleWeeklyView
           weekScheduleList={weekScheduleList}
+          onWeekItemClick={onWeekItemClick}
         ></ScheduleWeeklyView>
       ) : (
         <ScheduleTotalView

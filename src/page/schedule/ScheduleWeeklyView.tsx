@@ -4,21 +4,21 @@ import "./style/schedule-weekly.scss";
 import * as type from "./type";
 import * as enumType from "../../commonType/enum";
 
-const ScheduleWeeklyView = ({ weekScheduleList }: type.scheduleWeeklyProps) => {
+const ScheduleWeeklyView = ({
+  weekScheduleList,
+  onWeekItemClick,
+}: type.scheduleWeeklyProps) => {
   const day = ["월", "화", "수", "목", "금", "토", "일"];
 
-  console.log(weekScheduleList);
-
-  let currentDay = new Date();
-  let theYear = currentDay.getFullYear();
-  let theMonth = currentDay.getMonth();
-  let theDate = currentDay.getDate();
-  let theDayOfWeek = currentDay.getDay();
-
+  let now = new Date();
   let thisWeek: string[] = [];
 
   for (var i = 0; i < 7; i++) {
-    let resultDay = new Date(theYear, theMonth, theDate + (i - theDayOfWeek));
+    let resultDay = new Date(
+      now.getFullYear(),
+      now.getMonth(),
+      now.getDate() + (i - now.getDay())
+    );
     let m = String(Number(resultDay.getMonth()) + 1);
     let d = String(resultDay.getDate());
 
@@ -40,7 +40,10 @@ const ScheduleWeeklyView = ({ weekScheduleList }: type.scheduleWeeklyProps) => {
 
               <ul className="card-ul">
                 {item.map((listItem, idx) => (
-                  <li className="card-li">
+                  <li
+                    className="card-li"
+                    onClick={() => onWeekItemClick(listItem.id)}
+                  >
                     <span
                       className="card-li-name"
                       style={{

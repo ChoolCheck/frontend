@@ -1,8 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import CreateEmployee from "../CreateEmployee";
-import EmployeeDetail from "../EmployDetail";
+import EmployeeDetail from "../EmployeeDetail";
 import "../style/manage-employee.scss";
-import * as type from "../type";
 
 import WriteModal from "../../../components/modal/WriteModal";
 import ReadModal from "../../../components/modal/ReadModal";

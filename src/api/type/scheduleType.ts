@@ -26,6 +26,7 @@ export interface scheduleObjProps {
   endTime: string;
   hours: string | null;
   color: string;
+  id: number;
 }
 
 export interface getWeekScheduleProps {
