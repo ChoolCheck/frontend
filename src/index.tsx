@@ -19,7 +19,7 @@ const refreshAPI = axios.create({
   }, // data type
 });
 
-refreshAPI.interceptors.request.use(
+axios.interceptors.request.use(
   function (config) {
     if (!config.headers["authorization"]) {
       console.log(`Bearer ${localStorage.getItem("token")}`);
@@ -35,14 +35,14 @@ refreshAPI.interceptors.request.use(
   }
 );
 
-refreshAPI.interceptors.response.use(
+axios.interceptors.response.use(
   function (response) {
     return response;
   },
   async function (error) {
     const navigate = useNavigate();
     const originalConfig = error.config;
-    console.log(error);
+    console.log("token is expired : " + error);
 
     if (error.response && error.response.status === 401) {
       if (error.response.data.message === "expired") {

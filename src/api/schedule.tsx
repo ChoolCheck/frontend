@@ -38,7 +38,7 @@ export async function CreateScheduleApi({
     data: data,
   })
     .then((res) => {
-      GetWeekScheduleApi(setWeekScheduleList);
+      GetWeekScheduleApi({ setWeekScheduleList });
     })
     .then((res) => {
       setWriteModal(false);
