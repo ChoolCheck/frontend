@@ -55,7 +55,7 @@ export async function UpdateScheduleApi({
 }: type.updateScheduleProps) {
   await axios({
     method: "Patch",
-    url: `${config.api}/schdule/${id}`,
+    url: `${config.api}/schedule/${id}`,
     headers: {
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -78,7 +78,7 @@ export async function UpdateScheduleApi({
 export async function DeleteScheduleApi({ id }: type.deleteScheduleProps) {
   await axios({
     method: "Delete",
-    url: `${config.api}/schdule/${id}`,
+    url: `${config.api}/schedule/${id}`,
     headers: {
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -95,7 +95,7 @@ export async function GetMonthScheduleApi({
 }: type.getMonthScheduleProps) {
   await axios({
     method: "GET",
-    url: `${config.api}/schdule/month?date=${date}`,
+    url: `${config.api}/schedule/month?date=${date}`,
     headers: {
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -112,7 +112,7 @@ export async function GetWeekScheduleApi({
 }: type.getWeekScheduleProps) {
   await axios({
     method: "GET",
-    url: `${config.api}/schdule/week`,
+    url: `${config.api}/schedule/week`,
     headers: {
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -131,7 +131,7 @@ export async function GetTotalScheduleApi({
 }: type.getTotalScheduleProps) {
   await axios({
     method: "GET",
-    url: `${config.api}/schdule`,
+    url: `${config.api}/schedule`,
     headers: {
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -150,7 +150,7 @@ export async function GetDetailScheduleApi({
 }: type.getDetailScheduleProps) {
   await axios({
     method: "GET",
-    url: `${config.api}/schdule/${id}`,
+    url: `${config.api}/schedule/${id}`,
     headers: {
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -167,7 +167,7 @@ export async function GetEmployeeScheduleProps({
 }: type.getEmployeeScheduleProps) {
   await axios({
     method: "GET",
-    url: `${config.api}/schdule/employee/${employee_id}`,
+    url: `${config.api}/schedule/employee/${employee_id}`,
     headers: {
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,
