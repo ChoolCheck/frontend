@@ -19,7 +19,7 @@ const ScheduleDetailView = ({}: type.scheduleDetailViewProps) => {
           <UpdateSchedule></UpdateSchedule>
         </WriteModal>
       )}
-      <h3>직원 정보</h3>
+      <h3>스케줄 정보</h3>
       {/* <div className="detail-info">
         <p className="modal-name">
           <span className="detail-title">이름</span>

@@ -58,8 +58,7 @@ const Schedule = () => {
   const filterTotalList = (name: string) => {
     if (name == "total") {
       setScheduleToShow(totalScheduleList);
-    } else {
-      if (totalScheduleList) {
+    } else if (name != "total"&&totalScheduleList) {
         const filteredList = totalScheduleList.filter((item) => {
           if (item.name == name) {
             return true;
@@ -92,7 +91,9 @@ const Schedule = () => {
   };
 
   const onWeekItemClick = (id: number) => {
-    return (e: React.MouseEventHandler<HTMLLIElement>) => {};
+    return (e: React.MouseEventHandler<HTMLLIElement>) => {
+      setReadModal(true);
+    };
   };
 
   return (

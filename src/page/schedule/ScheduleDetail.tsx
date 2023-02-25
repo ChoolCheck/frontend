@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from "react";
 import * as type from "./type";
 
-import { DeleteEmployeeApi } from "../../api/manage";
+import { DeleteScheduleApi } from "../../api/schedule";
 import { useDispatch } from "react-redux";
 import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
 import { setReadModalOpen } from "../../Redux/Actions/handleReadModal";
@@ -26,7 +26,7 @@ const ScheduleDetail = ({}: type.scheduleDetailProps) => {
 
   const onDeleteClick = (id: number) => {
     return (e: React.MouseEvent<HTMLButtonElement>) => {
-      if (window.confirm("직원 정보를 정말로 삭제하시겠습니까?")) {
+      if (window.confirm("해당 스케줄을 정말로 삭제하시겠습니까?")) {
         // DeleteEmployeeApi({
         //   setReadModal,
         //   employeeList,
@@ -34,7 +34,7 @@ const ScheduleDetail = ({}: type.scheduleDetailProps) => {
         //   id,
         // });
       } else {
-        window.alert("직원 삭제가 취소되었습니다.");
+        window.alert("스케줄 삭제가 취소되었습니다.");
       }
     };
   };
