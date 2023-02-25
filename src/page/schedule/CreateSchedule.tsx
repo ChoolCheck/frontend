@@ -11,9 +11,8 @@ import * as worktypeType from "../../commonType/worktype";
 
 import CreateScheduleView from "./CreateScheduleView";
 import "./style/createSchedule.scss";
-import { stringify } from "querystring";
 
-const CreateSchedule = () => {
+const CreateSchedule = ({ setWeekScheduleList }: type.createScheduleProps) => {
   const dispatch = useDispatch();
 
   const setWriteModal = useCallback(
@@ -49,16 +48,6 @@ const CreateSchedule = () => {
   const [date, setDate] = useState("");
 
   const scheduleForm = { employee, hours_id, date, startTime, endTime };
-
-  // const onChangeForm = (name: string, value: string) => {
-  //   console.log("name : " + name);
-  //   console.log("value : " + value);
-  //   setScheduleForm({
-  //     ...scheduleForm,
-  //     [name]: value,
-  //   });
-  //   console.log(scheduleForm);
-  // };
 
   const onChangeEmployee = (e: React.ChangeEvent<HTMLSelectElement>) => {
     let employeeId = 0;
@@ -128,6 +117,7 @@ const CreateSchedule = () => {
         startTime,
         endTime,
         setWriteModal,
+        setWeekScheduleList,
       });
   };
 

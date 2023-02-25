@@ -9,6 +9,10 @@ export interface createScheduleProps {
     type: "handleWriteodal/SETWRITEMODAL";
     payload: boolean;
   };
+
+  setWeekScheduleList: React.Dispatch<
+    React.SetStateAction<scheduleObjProps[][] | undefined>
+  >;
 }
 
 export interface getMonthScheduleProps {

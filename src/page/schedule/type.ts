@@ -30,6 +30,12 @@ export interface scheduleWeeklyProps {
   day: string[];
 }
 
+export interface createScheduleProps {
+  setWeekScheduleList: React.Dispatch<
+    React.SetStateAction<scheduleObjProps[][] | undefined>
+  >;
+}
+
 export interface createScheduleViewProps
   extends employeeType.employeeList,
     worktypeType.workTypeList {

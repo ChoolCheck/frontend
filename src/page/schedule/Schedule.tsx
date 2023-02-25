@@ -106,7 +106,9 @@ const Schedule = () => {
 
       {writeModalState && (
         <WriteModal>
-          <CreateSchedule></CreateSchedule>
+          <CreateSchedule
+            setWeekScheduleList={setWeekScheduleList}
+          ></CreateSchedule>
         </WriteModal>
       )}
 
