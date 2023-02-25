@@ -36,7 +36,7 @@ const ScheduleTotalView = ({
                 </span>
                 <button
                   className="employee-list-li-name"
-                  onClick={() => onShowNameButtonClick(item.name)}
+                  onClick={onShowNameButtonClick(item.name)}
                 >
                   {item.name}
                 </button>

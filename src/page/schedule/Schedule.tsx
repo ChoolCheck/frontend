@@ -69,37 +69,35 @@ const Schedule = () => {
 
   const filterTotalList = (name: string) => {
     console.log(name);
-    if (name == "total") {
-      setScheduleToShow(totalScheduleList);
-    } else if (name != "total" && totalScheduleList) {
-      const filteredList = totalScheduleList.filter((item) => {
-        if (item.name == name) {
-          return true;
-        }
-      });
-      console.log(filteredList);
-      // setScheduleToShow(filteredList);
+    if (totalScheduleList) {
+      if (name == "total") {
+        setScheduleToShow(totalScheduleList);
+      } else {
+        const filteredList = totalScheduleList.filter((item) => {
+          if (item.name == name) return true;
+        });
+        console.log(filteredList);
+        // setScheduleToShow(filteredList);
+      }
     }
   };
 
   const onShowNameButtonClick = (name: string) => {
-    return (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-      e.preventDefault();
+    return (e: React.MouseEvent<HTMLButtonElement>) => {
+      console.log(name);
       filterTotalList(name);
     };
   };
 
-  const onShowTotalButtonClick = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
-    e.preventDefault();
+  const onShowTotalButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    console.log("total");
     filterTotalList("total");
   };
 
   const onWeekItemClick = (id: number) => {
+    console.log(id);
     return (e: React.MouseEvent<HTMLLIElement>) => {
       e.preventDefault();
-      console.log(id);
       GetDetailScheduleApi({ id, setScheduleDetail, setReadModal });
     };
   };
