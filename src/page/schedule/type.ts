@@ -12,6 +12,7 @@ export interface scheduleObjProps {
 }
 
 export interface scheduleTotalProps {
+  onItemClick: (id: number) => (e: React.MouseEvent<HTMLLIElement>) => void;
   onShowNameButtonClick: (
     name: string
   ) => (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
@@ -24,7 +25,7 @@ export interface scheduleTotalProps {
 }
 
 export interface scheduleWeeklyProps {
-  onWeekItemClick: (id: number) => (e: React.MouseEvent<HTMLLIElement>) => void;
+  onItemClick: (id: number) => (e: React.MouseEvent<HTMLLIElement>) => void;
   weekScheduleList: scheduleObjProps[][] | undefined;
 }
 

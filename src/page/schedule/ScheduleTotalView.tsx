@@ -5,6 +5,7 @@ import * as type from "./type";
 import * as enumType from "../../commonType/enum";
 
 const ScheduleTotalView = ({
+  onItemClick,
   onShowNameButtonClick,
   onShowTotalButtonClick,
   scheduleToShow,
@@ -51,7 +52,7 @@ const ScheduleTotalView = ({
         <ul className="totalList-ul">
           {totalList &&
             totalList.map((item, idx) => (
-              <li className="totalList-li">
+              <li className="totalList-li" onClick={onItemClick(item.id)}>
                 <span className="totalList-li-date">
                   {item.date}({day[new Date(item.date).getDay()]})
                 </span>

@@ -68,7 +68,6 @@ const Schedule = () => {
   }, []);
 
   const filterTotalList = (name: string) => {
-    console.log(name);
     if (totalScheduleList) {
       if (name == "total") {
         setScheduleToShow(totalScheduleList);
@@ -91,7 +90,7 @@ const Schedule = () => {
     filterTotalList("total");
   };
 
-  const onWeekItemClick = (id: number) => {
+  const onItemClick = (id: number) => {
     console.log(id);
     return (e: React.MouseEvent<HTMLLIElement>) => {
       e.preventDefault();
@@ -137,7 +136,7 @@ const Schedule = () => {
       {leftOrRight ? (
         <ScheduleWeeklyView
           weekScheduleList={weekScheduleList}
-          onWeekItemClick={onWeekItemClick}
+          onItemClick={onItemClick}
         ></ScheduleWeeklyView>
       ) : (
         <ScheduleTotalView
@@ -146,6 +145,7 @@ const Schedule = () => {
           totalScheduleList={totalScheduleList}
           onShowNameButtonClick={onShowNameButtonClick}
           onShowTotalButtonClick={onShowTotalButtonClick}
+          onItemClick={onItemClick}
         ></ScheduleTotalView>
       )}
     </div>

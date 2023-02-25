@@ -6,7 +6,7 @@ import * as enumType from "../../commonType/enum";
 
 const ScheduleWeeklyView = ({
   weekScheduleList,
-  onWeekItemClick,
+  onItemClick,
 }: type.scheduleWeeklyProps) => {
   const day = ["월", "화", "수", "목", "금", "토", "일"];
 
@@ -40,10 +40,7 @@ const ScheduleWeeklyView = ({
 
               <ul className="card-ul">
                 {item.map((listItem, idx) => (
-                  <li
-                    className="card-li"
-                    onClick={onWeekItemClick(listItem.id)}
-                  >
+                  <li className="card-li" onClick={onItemClick(listItem.id)}>
                     <span
                       className="card-li-name"
                       style={{
