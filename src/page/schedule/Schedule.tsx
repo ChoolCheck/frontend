@@ -41,7 +41,7 @@ const Schedule = () => {
     type.scheduleObjProps[] | undefined
   >();
   const [weekScheduleList, setWeekScheduleList] = useState<
-    type.scheduleObjProps[] | undefined
+    type.scheduleObjProps[][] | undefined
   >();
 
   const [scheduleTotalObj, setScheduleTotalObj] = useState({

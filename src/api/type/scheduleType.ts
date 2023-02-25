@@ -26,7 +26,7 @@ export interface scheduleObjProps {
 
 export interface getWeekScheduleProps {
   setWeekScheduleList: React.Dispatch<
-    React.SetStateAction<scheduleObjProps[] | undefined>
+    React.SetStateAction<scheduleObjProps[][] | undefined>
   >;
 }
 
