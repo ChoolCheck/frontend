@@ -129,7 +129,11 @@ const Schedule = () => {
 
       {readModalState && (
         <ReadModal>
-          <ScheduleDetail></ScheduleDetail>
+          <ScheduleDetail
+            scheduleDetail={scheduleDetail}
+            setTotalScheduleList={setTotalScheduleList}
+            setWeekScheduleList={setWeekScheduleList}
+          ></ScheduleDetail>
         </ReadModal>
       )}
 

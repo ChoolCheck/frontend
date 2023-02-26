@@ -50,12 +50,33 @@ export async function CreateScheduleApi({
 
 export async function UpdateScheduleApi({
   id,
-  employee_id,
+  employee,
   hours_id,
   date,
   startTime,
   endTime,
+  setWriteModal,
+  setReadModal,
+  setWeekScheduleList,
+  setTotalScheduleList,
 }: type.updateScheduleProps) {
+  let data;
+  if (hours_id == "") {
+    data = {
+      employee_id: employee,
+      date: date,
+      startTime: startTime,
+      endTime: endTime,
+    };
+  } else {
+    data = {
+      employee_id: employee,
+      hours_id: hours_id,
+      date: date,
+      startTime: startTime,
+      endTime: endTime,
+    };
+  }
   await axios({
     method: "Patch",
     url: `${config.api}/schedule/${id}`,
@@ -63,16 +84,16 @@ export async function UpdateScheduleApi({
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
-    data: {
-      employee_id: employee_id,
-      hours_id: hours_id,
-      date: date,
-      startTime: startTime,
-      endTime: endTime,
-    },
+    data: data,
   })
-    .then((res) => {})
-    .then((res) => {})
+    .then((res) => {
+      GetWeekScheduleApi({ setWeekScheduleList });
+      GetTotalScheduleApi({ setTotalScheduleList });
+    })
+    .then((res) => {
+      setWriteModal(false);
+      setReadModal(false);
+    })
     .catch((err) => {
       window.alert("스케줄 수정에 실패했습니다.");
     });

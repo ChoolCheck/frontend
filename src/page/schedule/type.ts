@@ -1,6 +1,15 @@
 import * as employeeType from "../../commonType/employee";
 import * as worktypeType from "../../commonType/worktype";
 
+export interface setScheduleListTypes {
+  setWeekScheduleList: React.Dispatch<
+    React.SetStateAction<scheduleObjProps[][] | undefined>
+  >;
+  setTotalScheduleList: React.Dispatch<
+    React.SetStateAction<scheduleObjProps[] | undefined>
+  >;
+}
+
 export interface scheduleObjProps {
   name: string;
   date: string;
@@ -60,6 +69,47 @@ export interface createScheduleViewProps
   onClickCreate: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-export interface updateScheduleViewViewProps {}
-export interface scheduleDetailProps {}
-export interface scheduleDetailViewProps {}
+export interface updateScheduleProps extends setScheduleListTypes {
+  id: number;
+  scheduleDetail: scheduleObjProps | undefined;
+}
+
+export interface updateScheduleViewProps
+  extends employeeType.employeeList,
+    worktypeType.workTypeList {
+  scheduleForm: {
+    id: number;
+    employee: string;
+    hours_id: string;
+    date: string;
+    startTime: string;
+    endTime: string;
+  };
+  onChangeEmployee: React.ChangeEventHandler<HTMLSelectElement>;
+  onChangeDate: React.ChangeEventHandler<HTMLInputElement>;
+
+  onChangeWorkType: (
+    id: number,
+    startTime: string,
+    endTime: string
+  ) => (e: React.ChangeEvent<HTMLInputElement>) => void;
+
+  onChangeStartTime: React.ChangeEventHandler<HTMLInputElement>;
+  onChangeEndTime: React.ChangeEventHandler<HTMLInputElement>;
+
+  onClickCancelOnModal: React.MouseEventHandler<HTMLButtonElement>;
+  onClickUpdate: React.MouseEventHandler<HTMLButtonElement>;
+}
+
+export interface scheduleDetailProps extends setScheduleListTypes {
+  scheduleDetail: scheduleObjProps | undefined;
+}
+
+export interface scheduleDetailViewProps extends setScheduleListTypes {
+  scheduleDetail: scheduleObjProps | undefined;
+
+  onUpdateClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onDeleteClick: (
+    id: number
+  ) => (e: React.MouseEvent<HTMLButtonElement>) => void;
+}

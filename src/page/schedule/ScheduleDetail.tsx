@@ -4,23 +4,21 @@ import * as type from "./type";
 import { DeleteScheduleApi } from "../../api/schedule";
 import { useDispatch } from "react-redux";
 import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
-import { setReadModalOpen } from "../../Redux/Actions/handleReadModal";
 
 import ScheduleDetailView from "./ScheduleDetailView";
-
-const ScheduleDetail = ({}: type.scheduleDetailProps) => {
+const ScheduleDetail = ({
+  scheduleDetail,
+  setTotalScheduleList,
+  setWeekScheduleList,
+}: type.scheduleDetailProps) => {
   const dispatch = useDispatch();
 
   const setWriteModal = useCallback(
     (writeModalState: boolean) => dispatch(setWriteModalOpen(writeModalState)),
     [dispatch]
   );
-  const setReadModal = useCallback(
-    (readModalState: boolean) => dispatch(setReadModalOpen(readModalState)),
-    [dispatch]
-  );
 
-  const onUpdateClick = () => {
+  const onUpdateClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     setWriteModal(true);
   };
 
@@ -41,7 +39,13 @@ const ScheduleDetail = ({}: type.scheduleDetailProps) => {
 
   return (
     <div className="employeeDetail-container">
-      <ScheduleDetailView></ScheduleDetailView>
+      <ScheduleDetailView
+        scheduleDetail={scheduleDetail}
+        onUpdateClick={onUpdateClick}
+        onDeleteClick={onDeleteClick}
+        setTotalScheduleList={setTotalScheduleList}
+        setWeekScheduleList={setWeekScheduleList}
+      ></ScheduleDetailView>
     </div>
   );
 };

@@ -22,7 +22,7 @@ const ScheduleTotalView = ({
         <ul className="employee-list-ul">
           {employeeList &&
             employeeList.map((item) => (
-              <li className="employee-list-li">
+              <li className="employee-list-li" onClick={onItemClick(item.id)}>
                 <span
                   className="employee-list-li-color"
                   style={{
