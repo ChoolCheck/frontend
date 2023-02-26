@@ -91,7 +91,6 @@ const Schedule = () => {
   };
 
   const onItemClick = (id: number) => {
-    console.log(id);
     return (e: React.MouseEvent<HTMLLIElement>) => {
       e.preventDefault();
       GetDetailScheduleApi({ id, setScheduleDetail, setReadModal });
