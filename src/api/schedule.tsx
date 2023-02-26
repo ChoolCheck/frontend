@@ -102,6 +102,9 @@ export async function UpdateScheduleApi({
 export async function DeleteScheduleApi({
   id,
   setReadModal,
+
+  setTotalScheduleList,
+  setWeekScheduleList,
 }: type.deleteScheduleProps) {
   await axios({
     method: "Delete",
@@ -111,9 +114,13 @@ export async function DeleteScheduleApi({
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
   })
-    .then((res) => {})
     .then((res) => {
-      setReadModal(true);
+      GetWeekScheduleApi({ setWeekScheduleList });
+      GetTotalScheduleApi({ setTotalScheduleList });
+    })
+
+    .then((res) => {
+      setReadModal(false);
     })
     .catch((err) => {
       window.alert("스케줄 삭제에 실패했습니다.");

@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import CreateEmployee from "../CreateEmployee";
-import EmployeeDetail from "../EmployeeDetail";
+import EmployeeDetail from "../EmployDetail";
 import "../style/manage-employee.scss";
 
 import WriteModal from "../../../components/modal/WriteModal";

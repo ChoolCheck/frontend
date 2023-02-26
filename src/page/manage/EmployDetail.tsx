@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback } from "react";
 import * as type from "./type";
 
 import { DeleteEmployeeApi } from "../../api/manage";

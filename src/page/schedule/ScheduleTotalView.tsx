@@ -1,5 +1,3 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
 import "./style/schedule-total.scss";
 import * as type from "./type";
 import * as enumType from "../../commonType/enum";

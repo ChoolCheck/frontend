@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import ManageEmployeeView from "./view/ManageEmployeeView";
 import ManageWorkView from "./view/ManageWorkView";
 import ToggleButton from "../../components/button/ToggleButton";

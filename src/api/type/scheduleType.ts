@@ -1,20 +1,3 @@
-export interface createScheduleProps {
-  employee: string;
-  hours_id: string;
-  date: string;
-  startTime: string;
-  endTime: string;
-
-  setWriteModal: (readModalState: boolean) => {
-    type: "handleWriteodal/SETWRITEMODAL";
-    payload: boolean;
-  };
-
-  setWeekScheduleList: React.Dispatch<
-    React.SetStateAction<scheduleObjProps[][] | undefined>
-  >;
-}
-
 export interface getMonthScheduleProps {
   date: string;
 }
@@ -56,6 +39,22 @@ export interface getTotalScheduleProps {
     React.SetStateAction<scheduleObjProps[] | undefined>
   >;
 }
+export interface createScheduleProps {
+  employee: string;
+  hours_id: string;
+  date: string;
+  startTime: string;
+  endTime: string;
+
+  setWriteModal: (readModalState: boolean) => {
+    type: "handleWriteodal/SETWRITEMODAL";
+    payload: boolean;
+  };
+
+  setWeekScheduleList: React.Dispatch<
+    React.SetStateAction<scheduleObjProps[][] | undefined>
+  >;
+}
 
 export interface updateScheduleProps {
   id: number;
@@ -87,4 +86,10 @@ export interface deleteScheduleProps {
     type: "handleReadModal/SETREADMODAL";
     payload: boolean;
   };
+  setWeekScheduleList: React.Dispatch<
+    React.SetStateAction<scheduleObjProps[][] | undefined>
+  >;
+  setTotalScheduleList: React.Dispatch<
+    React.SetStateAction<scheduleObjProps[] | undefined>
+  >;
 }
