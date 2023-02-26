@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback } from "react";
 import * as type from "./type";
 
 import { DeleteScheduleApi } from "../../api/schedule";
@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/Reducers/rootReducer";
 
 import ScheduleDetailView from "./ScheduleDetailView";
+
 const ScheduleDetail = ({
   scheduleDetail,
   setTotalScheduleList,

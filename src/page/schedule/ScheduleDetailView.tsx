@@ -47,21 +47,23 @@ const ScheduleDetailView = ({
         <p className="modal-worktype">
           <span className="detail-title">근무형태</span>
           <span className="detail-content detail-worktype">
-            {scheduleDetail?.hours !== null ? "없음" : scheduleDetail?.hours}
+            {scheduleDetail?.hours == null ? "없음" : scheduleDetail?.hours}
           </span>
         </p>
         <p className="modal-time">
           <span className="detail-title">시간</span>
           <span className="detail-content detail-time">
-            {scheduleDetail?.startTime} - {scheduleDetail?.endTime}
+            {scheduleDetail?.startTime.substring(0, 5)} -
+            {scheduleDetail?.endTime.substring(0, 5)}
           </span>
-        </p>{" "}
+        </p>
         <p className="modal-totalWorkTime">
           <span className="detail-title">총 근무시간</span>
           <span className="detail-content detail-totalWorkTime">
             {scheduleDetail &&
               parseInt(scheduleDetail.endTime) -
                 parseInt(scheduleDetail.startTime)}
+            시간
           </span>
         </p>
       </div>
