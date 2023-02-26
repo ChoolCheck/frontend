@@ -52,9 +52,13 @@ const UpdateSchedule = ({
 
   const [employee, setEmployee] = useState("");
   const [hours_id, setHoursid] = useState("");
-  const [startTime, setStartTime] = useState("");
-  const [endTime, setEndTime] = useState("");
-  const [date, setDate] = useState("");
+  const [startTime, setStartTime] = useState(
+    scheduleDetail ? scheduleDetail.startTime : ""
+  );
+  const [endTime, setEndTime] = useState(
+    scheduleDetail ? scheduleDetail.endTime : ""
+  );
+  const [date, setDate] = useState(scheduleDetail ? scheduleDetail.date : "");
 
   const scheduleForm = { id, employee, hours_id, date, startTime, endTime };
 
