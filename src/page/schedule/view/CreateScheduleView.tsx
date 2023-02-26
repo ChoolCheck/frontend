@@ -1,20 +1,24 @@
-import * as type from "./type";
+import * as type from "../type";
 
-const UpdateScheduleView = ({
-  onChangeEmployee,
+import "./style/createSchedule.scss";
+
+const CreateScheduleView = ({
   employeeList,
-  onChangeDate,
   workTypeList,
-  onChangeWorkType,
   scheduleForm,
+
+  onChangeEmployee,
+  onChangeDate,
+  onChangeWorkType,
   onChangeStartTime,
   onChangeEndTime,
+
   onClickCancelOnModal,
-  onClickUpdate,
-}: type.updateScheduleViewProps) => {
+  onClickCreate,
+}: type.createScheduleViewProps) => {
   return (
-    <div className="updateEmployeeView-container">
-      <h3>스케줄 수정</h3>
+    <div className="CreateWorkCheck-container">
+      <h3>스케줄 추가</h3>
       <div className="CreateWorkCheck-content">
         <p className="modal-employee">
           <span>직원</span>
@@ -89,10 +93,10 @@ const UpdateScheduleView = ({
         >
           취소
         </button>
-        <button onClick={onClickUpdate}>수정</button>
+        <button onClick={onClickCreate}>완료</button>
       </div>
     </div>
   );
 };
 
-export default UpdateScheduleView;
+export default CreateScheduleView;

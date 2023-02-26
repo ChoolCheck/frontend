@@ -8,7 +8,7 @@ import { setReadModalOpen } from "../../Redux/Actions/handleReadModal";
 import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/Reducers/rootReducer";
 
-import ScheduleDetailView from "./ScheduleDetailView";
+import ScheduleDetailView from "./view/ScheduleDetailView";
 
 const ScheduleDetail = ({
   scheduleDetail,

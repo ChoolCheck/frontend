@@ -9,7 +9,7 @@ import * as type from "./type";
 import * as employeeType from "../../commonType/employee";
 import * as worktypeType from "../../commonType/worktype";
 
-import CreateScheduleView from "./CreateScheduleView";
+import CreateScheduleView from "./view/CreateScheduleView";
 import "./style/createSchedule.scss";
 
 const CreateSchedule = ({ setWeekScheduleList }: type.createScheduleProps) => {

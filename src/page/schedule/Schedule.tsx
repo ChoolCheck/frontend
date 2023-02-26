@@ -12,8 +12,8 @@ import {
 } from "../../api/schedule";
 import { GetEmployeeApi } from "../../api/manage";
 
-import ScheduleWeeklyView from "./ScheduleWeeklyView";
-import ScheduleTotalView from "./ScheduleTotalView";
+import ScheduleWeeklyView from "./view/ScheduleWeeklyView";
+import ScheduleTotalView from "./view/ScheduleTotalView";
 import ScheduleDetail from "./ScheduleDetail";
 import ToggleButton from "../../components/button/ToggleButton";
 import CreateSchedule from "./CreateSchedule";

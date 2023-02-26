@@ -10,7 +10,7 @@ import * as employeeType from "../../commonType/employee";
 import * as worktypeType from "../../commonType/worktype";
 import * as type from "./type";
 
-import UpdateScheduleView from "./UpdateScheduleView";
+import UpdateScheduleView from "./view/UpdateScheduleView";
 
 const UpdateSchedule = ({
   id,

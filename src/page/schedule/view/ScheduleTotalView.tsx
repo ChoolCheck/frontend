@@ -1,6 +1,6 @@
 import "./style/schedule-total.scss";
-import * as type from "./type";
-import * as enumType from "../../commonType/enum";
+import * as type from "../type";
+import * as enumType from "../../../commonType/enum";
 
 const ScheduleTotalView = ({
   onItemClick,
