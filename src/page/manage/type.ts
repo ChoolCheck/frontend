@@ -17,9 +17,6 @@ export interface employeeDetailViewProps {
     id: number
   ) => (e: React.MouseEvent<HTMLButtonElement>) => void;
   employeeDetail: employeeProps | undefined;
-  setEmployeeList: React.Dispatch<
-    React.SetStateAction<employeeProps[] | undefined>
-  >;
 }
 
 export interface createEmployeeProps {

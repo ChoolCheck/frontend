@@ -25,7 +25,6 @@ export async function LoginApi({
       console.log(err.response);
 
       window.alert("로그인에 실패했습니다.");
-      navigate("/auth");
     });
 }
 

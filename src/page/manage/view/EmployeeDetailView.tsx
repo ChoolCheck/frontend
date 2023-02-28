@@ -1,32 +1,14 @@
 import * as type from "../type";
 
-import WriteModal from "../../../components/modal/WriteModal";
-import UpdateEmployee from "../UpdateEmployee";
-
 import * as enumType from "../../../commonType/enum";
-import { useSelector } from "react-redux";
-import { RootState } from "../../../Redux/Reducers/rootReducer";
 
 const EmployeeDetailView = ({
   onUpdateClick,
   onDeleteClick,
   employeeDetail,
-  setEmployeeList,
 }: type.employeeDetailViewProps) => {
-  const writeModalState = useSelector(
-    (state: RootState) => state.WriteModalReducer.writeModalState
-  );
-
   return (
     <div className="employeeDetailView-container">
-      {writeModalState && (
-        <WriteModal>
-          <UpdateEmployee
-            employeeDetail={employeeDetail}
-            setEmployeeList={setEmployeeList}
-          ></UpdateEmployee>
-        </WriteModal>
-      )}
       <h3>직원 정보</h3>
       <div className="detail-info">
         <p className="modal-name">

@@ -5,8 +5,12 @@ import { DeleteEmployeeApi } from "../../api/manage";
 import { useDispatch } from "react-redux";
 import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
 import { setReadModalOpen } from "../../Redux/Actions/handleReadModal";
+import { useSelector } from "react-redux";
+import { RootState } from "../../Redux/Reducers/rootReducer";
 
 import EmployeeDetailView from "./view/EmployeeDetailView";
+import WriteModal from "../../components/modal/WriteModal";
+import UpdateEmployee from "./UpdateEmployee";
 
 const EmployeeDetail = ({
   employeeDetail,
@@ -14,7 +18,9 @@ const EmployeeDetail = ({
   setEmployeeList,
 }: type.employeeDetailProps) => {
   const dispatch = useDispatch();
-
+  const writeModalState = useSelector(
+    (state: RootState) => state.WriteModalReducer.writeModalState
+  );
   const setWriteModal = useCallback(
     (writeModalState: boolean) => dispatch(setWriteModalOpen(writeModalState)),
     [dispatch]
@@ -45,11 +51,18 @@ const EmployeeDetail = ({
 
   return (
     <div className="employeeDetail-container">
+      {writeModalState && (
+        <WriteModal>
+          <UpdateEmployee
+            employeeDetail={employeeDetail}
+            setEmployeeList={setEmployeeList}
+          ></UpdateEmployee>
+        </WriteModal>
+      )}
       <EmployeeDetailView
         onUpdateClick={onUpdateClick}
         onDeleteClick={onDeleteClick}
         employeeDetail={employeeDetail}
-        setEmployeeList={setEmployeeList}
       ></EmployeeDetailView>
     </div>
   );

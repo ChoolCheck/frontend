@@ -39,7 +39,7 @@ axios.interceptors.response.use(
     return response;
   },
   async function (error) {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const originalConfig = error.config;
     console.log("token is expired : " + error);
 
@@ -61,7 +61,7 @@ axios.interceptors.response.use(
           }
         } catch (err) {
           window.alert("토큰이 만료되어 자동으로 로그아웃 됩니다.");
-          return await LogoutApi({ navigate });
+          // return await LogoutApi({ navigate });
         }
       }
     }
