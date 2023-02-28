@@ -59,10 +59,11 @@ const UpdateSchedule = ({
     GetEmployeeApi({ setEmployeeList, employee, setEmployeeId });
 
     const workTypeInputs = document.getElementsByName(hours_id);
+    console.log(workTypeInputs);
 
     for (let i = 0; i < workTypeInputs.length; i++) {
       if (workTypeInputs[i].id == hours_id) {
-        workTypeInputs[i].setAttribute("defaultChecked");
+        workTypeInputs[i].setAttribute("defaultChecked", true);
         break;
       }
     }
