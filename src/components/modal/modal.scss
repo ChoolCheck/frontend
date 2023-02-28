@@ -15,7 +15,7 @@ $opacity-zero: 0.3;
   .readmodal-container {
     padding: 30px 40px 40px 40px;
     h3 {
-      margin: 20px 0 40px 0;
+      margin: 25px 0 40px 0;
     }
   }
   .writemodal-container {
@@ -72,7 +72,7 @@ $opacity-zero: 0.3;
 
       /*read modal style*/
       .detail-title {
-        height: 50px;
+        height: 40px;
         margin-right: 20px;
         width: 110px;
         font-size: 20px;
@@ -80,7 +80,7 @@ $opacity-zero: 0.3;
       }
 
       .detail-content {
-        height: 50px;
+        height: 40px;
         width: 150px;
         display: flex;
         justify-content: center;
@@ -149,7 +149,7 @@ $opacity-zero: 0.3;
     .modal-write-button-container,
     .modal-read-button-container {
       margin-bottom: 10px;
-      font-size: 18px;
+      font-size: 19px;
       float: right;
       button {
         background-color: white;
