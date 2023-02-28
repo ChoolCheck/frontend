@@ -103,6 +103,7 @@ export interface scheduleDetailProps extends setScheduleListTypes {
 }
 
 export interface scheduleDetailViewProps {
+  id: number;
   scheduleDetail: scheduleObjProps | undefined;
 
   onUpdateClick: (e: React.MouseEvent<HTMLButtonElement>) => void;

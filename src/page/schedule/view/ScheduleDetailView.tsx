@@ -1,8 +1,10 @@
 import * as type from "../type";
 
 const ScheduleDetailView = ({
+  id,
   scheduleDetail,
   onUpdateClick,
+  onDeleteClick,
 }: type.scheduleDetailViewProps) => {
   const day = ["일", "월", "화", "수", "목", "금", "토"];
 
@@ -50,7 +52,9 @@ const ScheduleDetailView = ({
         <button className="update-button" onClick={onUpdateClick}>
           스케줄 수정
         </button>
-        <button className="delete-button">스케줄 삭제</button>
+        <button className="delete-button" onClick={onDeleteClick(id)}>
+          스케줄 삭제
+        </button>
       </div>
     </div>
   );

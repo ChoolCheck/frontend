@@ -63,6 +63,7 @@ const ScheduleDetail = ({
         </WriteModal>
       )}
       <ScheduleDetailView
+        id={scheduleDetail ? scheduleDetail.id : 0}
         scheduleDetail={scheduleDetail}
         onUpdateClick={onUpdateClick}
         onDeleteClick={onDeleteClick}
