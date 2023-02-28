@@ -113,7 +113,6 @@ const UpdateSchedule = ({
   };
 
   const onClickUpdate = (e: React.MouseEvent<HTMLButtonElement>) => {
-    console.log(scheduleForm);
     if (employee == "") {
       window.alert("직원을 선택해주세요");
     } else if (date == "") {

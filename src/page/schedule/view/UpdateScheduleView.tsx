@@ -19,7 +19,11 @@ const UpdateScheduleView = ({
         <p className="modal-employee">
           <span>직원</span>
 
-          <select name="employee" onChange={onChangeEmployee}>
+          <select
+            name="employee"
+            value={scheduleForm.employee}
+            onChange={onChangeEmployee}
+          >
             <option>직원 선택</option>
             {employeeList &&
               employeeList.map((item) => (
@@ -29,7 +33,12 @@ const UpdateScheduleView = ({
         </p>
         <p className="modal-date">
           <span>날짜</span>
-          <input type="date" name="date" onChange={onChangeDate}></input>
+          <input
+            type="date"
+            name="date"
+            value={scheduleForm.date}
+            onChange={onChangeDate}
+          ></input>
         </p>
         <p className="modal-worktype">
           <span>근무형태</span>
@@ -72,6 +81,7 @@ const UpdateScheduleView = ({
             name="startTime"
             type="time"
             onChange={onChangeStartTime}
+            value={scheduleForm.startTime}
           ></input>
           {" ~ "}
           <input
@@ -79,6 +89,7 @@ const UpdateScheduleView = ({
             name="endTime"
             type="time"
             onChange={onChangeEndTime}
+            value={scheduleForm.endTime}
           ></input>
         </p>
       </div>
