@@ -41,12 +41,13 @@ axios.interceptors.response.use(
     return response;
   },
   async function (error) {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     const originalConfig = error.config;
     console.log("-- token is expired : " + error + " --");
 
     if (error.response && error.response.status == 401) {
       if (error.response.data.message == "expired") {
+        console.log("-- token refresh post --");
         // token refresh 요청
         try {
           const res = await axios({
@@ -64,11 +65,10 @@ axios.interceptors.response.use(
           }
         } catch (err) {
           window.alert("토큰이 만료되어 자동으로 로그아웃 됩니다.");
-          // return await LogoutApi({ navigate });
+          return await LogoutApi({ navigate });
         }
       }
     }
-    console.log("response error", error);
     return Promise.reject(error);
   }
 );
