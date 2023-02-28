@@ -59,35 +59,31 @@ const UpdateScheduleView = ({
               </div>
             )}
             {workTypeList && workTypeList.length > 0 ? (
-              workTypeList.map(
-                (item) => (
-                  <>
-                    {console.log({
-                      itemId: item.id,
-                      string_itemId: item.id.toString(),
-                      hourId: hours_id,
-                      flag: item.id.toString() == hours_id ? true : false,
-                    })}
-                  </>
-                )
-                // <div>
-                //   <input
-                //     name="hours_id"
-                //     type="radio"
-                //     id={item.id.toString()}
-                //     value={item.title}
-                //     defaultChecked={
-                //       item.id.toString() == hours_id ? true : false
-                //     }
-                //     onChange={onChangeWorkType(
-                //       item.id,
-                //       item.startTime,
-                //       item.endTime
-                //     )}
-                //   />
-                //   <label>{item.title}</label>
-                // </div>
-              )
+              workTypeList.map((item) => (
+                <div>
+                  <input
+                    name="hours_id"
+                    type="radio"
+                    id={item.id.toString()}
+                    value={item.title}
+                    defaultChecked={
+                      item.id.toString() == hours_id ? true : false
+                    }
+                    onChange={onChangeWorkType(
+                      item.id,
+                      item.startTime,
+                      item.endTime
+                    )}
+                  />
+                  <label>{item.title}</label>
+                </div>
+                // {console.log({
+                //   itemId: item.id,
+                //   string_itemId: item.id.toString(),
+                //   hourId: hours_id,
+                //   flag: item.id.toString() == hours_id ? true : false,
+                // })}
+              ))
             ) : (
               <label>근무 형태 없음</label>
             )}

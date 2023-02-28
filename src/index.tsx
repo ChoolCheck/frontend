@@ -60,6 +60,7 @@ axios.interceptors.response.use(
           });
           if (res) {
             console.log("-- complete token refreshing --");
+            console.log(res.data);
             localStorage.setItem("token", res.data.accessToken);
             return await refreshAPI.request(originalConfig);
           }
