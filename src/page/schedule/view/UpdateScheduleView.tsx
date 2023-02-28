@@ -66,7 +66,10 @@ const UpdateScheduleView = ({
                     type="radio"
                     id={item.id.toString()}
                     value={item.title}
-                    defaultChecked={item.id.toString() === hours_id}
+                    // defaultChecked={
+                    //   item.id.toString() == hours_id ? true : false
+                    // }
+                    defaultChecked={true}
                     onChange={onChangeWorkType(
                       item.id,
                       item.startTime,
