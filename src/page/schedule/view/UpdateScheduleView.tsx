@@ -6,11 +6,15 @@ const UpdateScheduleView = ({
   onChangeDate,
   workTypeList,
   onChangeWorkType,
-  scheduleForm,
   onChangeStartTime,
   onChangeEndTime,
   onClickCancelOnModal,
   onClickUpdate,
+
+  employeeId,
+  date,
+  startTime,
+  endTime,
 }: type.updateScheduleViewProps) => {
   return (
     <div className="updateEmployeeView-container">
@@ -21,13 +25,13 @@ const UpdateScheduleView = ({
 
           <select
             name="employee"
-            value={scheduleForm.employee}
+            value={employeeId}
             onChange={onChangeEmployee}
           >
             <option>직원 선택</option>
             {employeeList &&
               employeeList.map((item) => (
-                <option value={scheduleForm.employee}>{item.name}</option>
+                <option value={employeeId}>{item.name}</option>
               ))}
           </select>
         </p>
@@ -36,7 +40,7 @@ const UpdateScheduleView = ({
           <input
             type="date"
             name="date"
-            value={scheduleForm.date}
+            value={date}
             onChange={onChangeDate}
           ></input>
         </p>
@@ -81,7 +85,7 @@ const UpdateScheduleView = ({
             name="startTime"
             type="time"
             onChange={onChangeStartTime}
-            value={scheduleForm.startTime}
+            value={startTime}
           ></input>
           {" ~ "}
           <input
@@ -89,7 +93,7 @@ const UpdateScheduleView = ({
             name="endTime"
             type="time"
             onChange={onChangeEndTime}
-            value={scheduleForm.endTime}
+            value={endTime}
           ></input>
         </p>
       </div>

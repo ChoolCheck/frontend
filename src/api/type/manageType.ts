@@ -46,6 +46,9 @@ export interface getEmployeeProps {
   setEmployeeList: React.Dispatch<
     React.SetStateAction<employeeProps[] | undefined>
   >;
+
+  employee?: string;
+  setEmployeeId?: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export interface getEmployeeDetailProps {

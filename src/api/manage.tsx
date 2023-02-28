@@ -169,6 +169,8 @@ export async function DeleteEmployeeApi({
 }
 export async function GetEmployeeApi({
   setEmployeeList,
+  employee,
+  setEmployeeId,
 }: type.getEmployeeProps) {
   await axios({
     method: "GET",
@@ -179,8 +181,21 @@ export async function GetEmployeeApi({
     },
   })
     .then((res) => {
+      const employeeList: {
+        id: string;
+        name: string;
+        role: string;
+        color: string;
+      }[] = res.data;
       setEmployeeList(res.data);
+
+      for (let i = 0; i < employeeList.length; i++) {
+        if (employeeList[i].name == employee && setEmployeeId) {
+          setEmployeeId(employeeList[i].id);
+        }
+      }
     })
+
     .catch((err) => {
       window.alert("직원 조회에 실패했습니다.");
     });

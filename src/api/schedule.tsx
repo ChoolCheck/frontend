@@ -3,7 +3,7 @@ import { config } from "../static/config";
 import * as type from "./type/scheduleType";
 
 export async function CreateScheduleApi({
-  employee,
+  employeeId,
   hours_id,
   date,
   startTime,
@@ -14,14 +14,14 @@ export async function CreateScheduleApi({
   let data;
   if (hours_id == "") {
     data = {
-      employee_id: employee,
+      employee_id: employeeId,
       date: date,
       startTime: startTime,
       endTime: endTime,
     };
   } else {
     data = {
-      employee_id: employee,
+      employee_id: employeeId,
       hours_id: hours_id,
       date: date,
       startTime: startTime,
@@ -50,7 +50,7 @@ export async function CreateScheduleApi({
 
 export async function UpdateScheduleApi({
   id,
-  employee,
+  employeeId,
   hours_id,
   date,
   startTime,
@@ -63,14 +63,14 @@ export async function UpdateScheduleApi({
   let data;
   if (hours_id == "") {
     data = {
-      employee_id: employee,
+      employee_id: employeeId,
       date: date,
       startTime: startTime,
       endTime: endTime,
     };
   } else {
     data = {
-      employee_id: employee,
+      employee_id: employeeId,
       hours_id: hours_id,
       date: date,
       startTime: startTime,

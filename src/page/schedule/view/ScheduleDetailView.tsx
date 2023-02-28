@@ -1,34 +1,13 @@
 import * as type from "../type";
 
-import WriteModal from "../../../components/modal/WriteModal";
-import UpdateSchedule from "../UpdateSchedule";
-
-import { useSelector } from "react-redux";
-import { RootState } from "../../../Redux/Reducers/rootReducer";
-
 const ScheduleDetailView = ({
   scheduleDetail,
   onUpdateClick,
-  setTotalScheduleList,
-  setWeekScheduleList,
 }: type.scheduleDetailViewProps) => {
-  const writeModalState = useSelector(
-    (state: RootState) => state.WriteModalReducer.writeModalState
-  );
   const day = ["일", "월", "화", "수", "목", "금", "토"];
 
   return (
     <div className="employeeDetailView-container">
-      {writeModalState && (
-        <WriteModal>
-          <UpdateSchedule
-            id={scheduleDetail ? scheduleDetail.id : 0}
-            scheduleDetail={scheduleDetail}
-            setWeekScheduleList={setWeekScheduleList}
-            setTotalScheduleList={setTotalScheduleList}
-          ></UpdateSchedule>
-        </WriteModal>
-      )}
       <h3>스케줄 정보</h3>
       <div className="detail-info">
         <p className="modal-date">

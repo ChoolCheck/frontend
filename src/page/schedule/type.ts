@@ -77,14 +77,11 @@ export interface updateScheduleProps extends setScheduleListTypes {
 export interface updateScheduleViewProps
   extends employeeType.employeeList,
     worktypeType.workTypeList {
-  scheduleForm: {
-    id: number;
-    employee: string;
-    hours_id: string;
-    date: string;
-    startTime: string;
-    endTime: string;
-  };
+  hours_id: string;
+  employeeId: string;
+  date: string;
+  startTime: string;
+  endTime: string;
   onChangeEmployee: React.ChangeEventHandler<HTMLSelectElement>;
   onChangeDate: React.ChangeEventHandler<HTMLInputElement>;
 
@@ -105,7 +102,7 @@ export interface scheduleDetailProps extends setScheduleListTypes {
   scheduleDetail: scheduleObjProps | undefined;
 }
 
-export interface scheduleDetailViewProps extends setScheduleListTypes {
+export interface scheduleDetailViewProps {
   scheduleDetail: scheduleObjProps | undefined;
 
   onUpdateClick: (e: React.MouseEvent<HTMLButtonElement>) => void;

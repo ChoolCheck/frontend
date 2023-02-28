@@ -42,6 +42,7 @@ const CreateSchedule = ({ setWeekScheduleList }: type.createScheduleProps) => {
   };
 
   const [employee, setEmployee] = useState("");
+  const [employeeId, setEmployeeId] = useState("");
   const [hours_id, setHoursid] = useState("");
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
@@ -51,6 +52,7 @@ const CreateSchedule = ({ setWeekScheduleList }: type.createScheduleProps) => {
 
   const onChangeEmployee = (e: React.ChangeEvent<HTMLSelectElement>) => {
     let employeeId = 0;
+    let employee = "";
     const selectedOption =
       e.currentTarget.options[e.currentTarget.options.selectedIndex].innerText;
 
@@ -61,10 +63,12 @@ const CreateSchedule = ({ setWeekScheduleList }: type.createScheduleProps) => {
         for (let i = 0; i < employeeList.length; i++) {
           if (employeeList[i].name == selectedOption) {
             employeeId = employeeList[i].id;
+            employee = employeeList[i].name;
             break;
           }
         }
-        setEmployee(employeeId.toString());
+        setEmployee(employee);
+        setEmployeeId(employeeId.toString());
       }
     }
   };
@@ -100,7 +104,6 @@ const CreateSchedule = ({ setWeekScheduleList }: type.createScheduleProps) => {
   };
 
   const onClickCreate = (e: React.MouseEvent<HTMLButtonElement>) => {
-    console.log(scheduleForm);
     if (employee == "") {
       window.alert("직원을 선택해주세요");
     } else if (date == "") {
@@ -111,7 +114,7 @@ const CreateSchedule = ({ setWeekScheduleList }: type.createScheduleProps) => {
       window.alert("종료 시간을 선택해주세요.");
     } else
       CreateScheduleApi({
-        employee,
+        employeeId,
         date,
         hours_id,
         startTime,

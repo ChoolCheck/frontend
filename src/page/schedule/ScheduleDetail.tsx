@@ -9,6 +9,8 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/Reducers/rootReducer";
 
 import ScheduleDetailView from "./view/ScheduleDetailView";
+import WriteModal from "../../components/modal/WriteModal";
+import UpdateSchedule from "./UpdateSchedule";
 
 const ScheduleDetail = ({
   scheduleDetail,
@@ -21,10 +23,10 @@ const ScheduleDetail = ({
     (writeModalState: boolean) => dispatch(setWriteModalOpen(writeModalState)),
     [dispatch]
   );
-
-  const readModalState = useSelector(
-    (state: RootState) => state.ReadModalReducer.readModalState
+  const writeModalState = useSelector(
+    (state: RootState) => state.WriteModalReducer.writeModalState
   );
+
   const setReadModal = useCallback(
     (readModalState: boolean) => dispatch(setReadModalOpen(readModalState)),
     [dispatch]
@@ -50,12 +52,20 @@ const ScheduleDetail = ({
 
   return (
     <div className="employeeDetail-container">
+      {writeModalState && (
+        <WriteModal>
+          <UpdateSchedule
+            id={scheduleDetail ? scheduleDetail.id : 0}
+            scheduleDetail={scheduleDetail}
+            setWeekScheduleList={setWeekScheduleList}
+            setTotalScheduleList={setTotalScheduleList}
+          ></UpdateSchedule>
+        </WriteModal>
+      )}
       <ScheduleDetailView
         scheduleDetail={scheduleDetail}
         onUpdateClick={onUpdateClick}
         onDeleteClick={onDeleteClick}
-        setTotalScheduleList={setTotalScheduleList}
-        setWeekScheduleList={setWeekScheduleList}
       ></ScheduleDetailView>
     </div>
   );

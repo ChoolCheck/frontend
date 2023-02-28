@@ -37,9 +37,20 @@ const UpdateSchedule = ({
     employeeType.employeeProps[] | undefined
   >([]);
 
+  const [employee, setEmployee] = useState(scheduleDetail?.name);
+  const [employeeId, setEmployeeId] = useState("");
+  const [hours_id, setHoursid] = useState("");
+  const [startTime, setStartTime] = useState(
+    scheduleDetail ? scheduleDetail.startTime : ""
+  );
+  const [endTime, setEndTime] = useState(
+    scheduleDetail ? scheduleDetail.endTime : ""
+  );
+  const [date, setDate] = useState(scheduleDetail ? scheduleDetail.date : "");
+
   useEffect(() => {
     GetWorktypeApi({ setWorkTypeList });
-    GetEmployeeApi({ setEmployeeList });
+    GetEmployeeApi({ setEmployeeList, employee, setEmployeeId });
   }, []);
 
   const onClickCancelOnModal = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -50,20 +61,7 @@ const UpdateSchedule = ({
     } else return;
   };
 
-  const [employee, setEmployee] = useState("");
-  const [hours_id, setHoursid] = useState("");
-  const [startTime, setStartTime] = useState(
-    scheduleDetail ? scheduleDetail.startTime : ""
-  );
-  const [endTime, setEndTime] = useState(
-    scheduleDetail ? scheduleDetail.endTime : ""
-  );
-  const [date, setDate] = useState(scheduleDetail ? scheduleDetail.date : "");
-
-  const scheduleForm = { id, employee, hours_id, date, startTime, endTime };
-
   const onChangeEmployee = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    let employeeId = 0;
     const selectedOption =
       e.currentTarget.options[e.currentTarget.options.selectedIndex].innerText;
 
@@ -73,11 +71,11 @@ const UpdateSchedule = ({
       } else {
         for (let i = 0; i < employeeList.length; i++) {
           if (employeeList[i].name == selectedOption) {
-            employeeId = employeeList[i].id;
+            setEmployee(employeeList[i].name);
+            setEmployeeId(employeeList[i].id.toString());
             break;
           }
         }
-        setEmployee(employeeId.toString());
       }
     }
   };
@@ -124,7 +122,7 @@ const UpdateSchedule = ({
     } else
       UpdateScheduleApi({
         id,
-        employee,
+        employeeId,
         date,
         hours_id,
         startTime,
@@ -142,13 +140,17 @@ const UpdateSchedule = ({
         workTypeList={workTypeList}
         employeeList={employeeList}
         onClickCancelOnModal={onClickCancelOnModal}
-        scheduleForm={scheduleForm}
         onChangeEmployee={onChangeEmployee}
         onChangeDate={onChangeDate}
         onChangeWorkType={onChangeWorkType}
         onChangeStartTime={onChangeStartTime}
         onChangeEndTime={onChangeEndTime}
         onClickUpdate={onClickUpdate}
+        employeeId={employeeId}
+        hours_id={hours_id}
+        startTime={startTime}
+        endTime={endTime}
+        date={date}
       ></UpdateScheduleView>
     </div>
   );

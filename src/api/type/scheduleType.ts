@@ -40,7 +40,7 @@ export interface getTotalScheduleProps {
   >;
 }
 export interface createScheduleProps {
-  employee: string;
+  employeeId: string;
   hours_id: string;
   date: string;
   startTime: string;
@@ -58,7 +58,7 @@ export interface createScheduleProps {
 
 export interface updateScheduleProps {
   id: number;
-  employee: string;
+  employeeId: string;
   hours_id: string;
   date: string;
   startTime: string;
