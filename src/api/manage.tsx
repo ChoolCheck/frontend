@@ -33,6 +33,8 @@ export async function CreateWorktypeApi({
 
 export async function GetWorktypeApi({
   setWorkTypeList,
+  hours,
+  setHoursid,
 }: type.getWorktypeProps) {
   await axios({
     method: "GET",
@@ -43,7 +45,19 @@ export async function GetWorktypeApi({
     },
   })
     .then((res) => {
+      const workTypeList: {
+        id: string;
+        title: string;
+        startTime: string;
+        endTime: string;
+      }[] = res.data;
       setWorkTypeList(res.data);
+
+      for (let i = 0; i < workTypeList.length; i++) {
+        if (workTypeList[i].title == hours && setHoursid) {
+          setHoursid(workTypeList[i].id);
+        }
+      }
     })
     .catch((err) => {
       window.alert("근무 형태 조회에 실패했습니다.");

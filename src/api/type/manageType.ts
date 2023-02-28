@@ -25,6 +25,9 @@ export interface getWorktypeProps {
   setWorkTypeList: React.Dispatch<
     React.SetStateAction<worktypeProps[] | undefined>
   >;
+
+  hours?: string;
+  setHoursid?: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export interface deleteWorktypeProps {

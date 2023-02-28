@@ -83,8 +83,6 @@ const CreateSchedule = ({ setWeekScheduleList }: type.createScheduleProps) => {
       const startTimeInput = inputs[inputs.length - 2];
       const endTimeInput = inputs[inputs.length - 1];
 
-      // startTimeInput.setAttribute("value", startTime);
-      // endTimeInput.setAttribute("value", endTime);
       startTimeInput.value = startTime;
       endTimeInput.value = endTime;
 

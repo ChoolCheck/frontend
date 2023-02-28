@@ -39,13 +39,14 @@ const UpdateSchedule = ({
 
   const [employee, setEmployee] = useState(scheduleDetail?.name);
   const [employeeId, setEmployeeId] = useState("");
-  const [hours_id, setHoursid] = useState(
+  const [hours, setHours] = useState(
     scheduleDetail
       ? scheduleDetail.hours == null
         ? ""
         : scheduleDetail.hours
-      : "0"
+      : ""
   );
+  const [hours_id, setHoursid] = useState("");
   const [startTime, setStartTime] = useState(
     scheduleDetail ? scheduleDetail.startTime : ""
   );
@@ -55,7 +56,7 @@ const UpdateSchedule = ({
   const [date, setDate] = useState(scheduleDetail ? scheduleDetail.date : "");
 
   useEffect(() => {
-    GetWorktypeApi({ setWorkTypeList });
+    GetWorktypeApi({ setWorkTypeList, hours, setHoursid });
     GetEmployeeApi({ setEmployeeList, employee, setEmployeeId });
   }, []);
 
@@ -96,8 +97,6 @@ const UpdateSchedule = ({
       const startTimeInput = inputs[inputs.length - 2];
       const endTimeInput = inputs[inputs.length - 1];
 
-      // startTimeInput.setAttribute("value", startTime);
-      // endTimeInput.setAttribute("value", endTime);
       startTimeInput.value = startTime;
       endTimeInput.value = endTime;
 
