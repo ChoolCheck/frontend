@@ -60,13 +60,16 @@ const UpdateScheduleView = ({
             )}
             {workTypeList && workTypeList.length > 0 ? (
               workTypeList.map(
-                (item) =>
-                  console.log({
-                    itemId: item.id,
-                    string_itemId: item.id.toString(),
-                    hourId: hours_id,
-                    flag: item.id.toString() == hours_id ? true : false,
-                  })
+                (item) => (
+                  <>
+                    {console.log({
+                      itemId: item.id,
+                      string_itemId: item.id.toString(),
+                      hourId: hours_id,
+                      flag: item.id.toString() == hours_id ? true : false,
+                    })}
+                  </>
+                )
                 // <div>
                 //   <input
                 //     name="hours_id"
