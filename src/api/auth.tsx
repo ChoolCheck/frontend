@@ -22,7 +22,8 @@ export async function LoginApi({
     })
     .catch((err) => {
       console.log(err.response);
-      console.error(err.response);
+      console.log(err[0]);
+
       window.alert("로그인에 실패했습니다.");
       navigate("/auth");
     });
