@@ -15,7 +15,7 @@ $opacity-zero: 0.3;
   .readmodal-container {
     padding: 30px 40px 40px 40px;
     h3 {
-      margin: 40px 0 60px 0;
+      margin: 20px 0 40px 0;
     }
   }
   .writemodal-container {
@@ -44,6 +44,7 @@ $opacity-zero: 0.3;
       font-weight: 600;
     }
     .modal-read-close-button {
+      font-size: 18px;
       float: right;
       background-color: white;
     }
@@ -147,7 +148,8 @@ $opacity-zero: 0.3;
 
     .modal-write-button-container,
     .modal-read-button-container {
-      font-size: 20px;
+      margin-bottom: 10px;
+      font-size: 18px;
       float: right;
       button {
         background-color: white;
