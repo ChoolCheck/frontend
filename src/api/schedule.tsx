@@ -205,8 +205,9 @@ export async function GetDetailScheduleApi({
     });
 }
 
-export async function GetEmployeeScheduleProps({
+export async function GetEmployeeScheduleApi({
   employee_id,
+  setScheduleToShow,
 }: type.getEmployeeScheduleProps) {
   await axios({
     method: "GET",
@@ -216,7 +217,9 @@ export async function GetEmployeeScheduleProps({
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
   })
-    .then((res) => {})
+    .then((res) => {
+      setScheduleToShow(res.data);
+    })
     .catch((err) => {
       window.alert("직원별 스케줄 조회에 실패했습니다.");
     });

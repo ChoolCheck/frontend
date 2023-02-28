@@ -9,6 +9,7 @@ import {
   GetWeekScheduleApi,
   GetDetailScheduleApi,
   GetTotalScheduleApi,
+  GetEmployeeScheduleApi,
 } from "../../api/schedule";
 import { GetEmployeeApi } from "../../api/manage";
 
@@ -67,27 +68,28 @@ const Schedule = () => {
     GetEmployeeApi({ setEmployeeList });
   }, []);
 
-  const filterTotalList = (name: string) => {
-    if (totalScheduleList) {
-      if (name == "total") {
-        setScheduleToShow(totalScheduleList);
-      } else {
-        const filteredList = totalScheduleList.filter((item) => {
-          if (item.name == name) return true;
-        });
-        setScheduleToShow(filteredList);
-      }
-    }
-  };
+  // const filterTotalList = (name: string) => {
+  //   if (totalScheduleList) {
+  //     if (name == "total") {
+  //       setScheduleToShow(totalScheduleList);
+  //     } else {
+  //       const filteredList = totalScheduleList.filter((item) => {
+  //         if (item.name == name) return true;
+  //       });
+  //       setScheduleToShow(filteredList);
+  //     }
+  //   }
+  // };
 
-  const onShowNameButtonClick = (name: string) => {
+  const onShowNameButtonClick = (id: number) => {
+    const employee_id = id.toString();
     return (e: React.MouseEvent<HTMLButtonElement>) => {
-      filterTotalList(name);
+      GetEmployeeScheduleApi({ employee_id, setScheduleToShow });
     };
   };
 
   const onShowTotalButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    filterTotalList("total");
+    setScheduleToShow(totalScheduleList);
   };
 
   const onItemClick = (id: number) => {

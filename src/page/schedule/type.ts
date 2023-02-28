@@ -23,7 +23,7 @@ export interface scheduleObjProps {
 export interface scheduleTotalProps {
   onItemClick: (id: number) => (e: React.MouseEvent<HTMLLIElement>) => void;
   onShowNameButtonClick: (
-    name: string
+    id: number
   ) => (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   onShowTotalButtonClick: React.MouseEventHandler<HTMLButtonElement>;
 
