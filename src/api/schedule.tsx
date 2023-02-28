@@ -77,6 +77,7 @@ export async function UpdateScheduleApi({
       endTime: endTime,
     };
   }
+  console.log("update data : " + data);
   await axios({
     method: "Patch",
     url: `${config.api}/schedule/${id}`,

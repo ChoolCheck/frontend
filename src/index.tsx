@@ -43,10 +43,10 @@ axios.interceptors.response.use(
   async function (error) {
     // const navigate = useNavigate();
     const originalConfig = error.config;
-    console.log("token is expired : " + error);
+    console.log("-- token is expired : " + error + " --");
 
-    if (error.response && error.response.status === 401) {
-      if (error.response.data.message === "expired") {
+    if (error.response && error.response.status == 401) {
+      if (error.response.data.message == "expired") {
         // token refresh 요청
         try {
           const res = await axios({
@@ -58,6 +58,7 @@ axios.interceptors.response.use(
             },
           });
           if (res) {
+            console.log("-- complete token refreshing --");
             localStorage.setItem("token", res.data.accessToken);
             return await refreshAPI.request(originalConfig);
           }
