@@ -22,7 +22,7 @@ export async function LoginApi({
     })
     .catch((err) => {
       if (err.response.data.message) window.alert(err.response.data.message);
-      window.alert("로그인에 실패했습니다.");
+      else window.alert("로그인에 실패했습니다.");
     });
 }
 
