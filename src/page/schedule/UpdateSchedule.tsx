@@ -62,7 +62,9 @@ const UpdateSchedule = ({
     console.log(workTypeInputs);
 
     for (let i = 0; i < workTypeInputs.length; i++) {
-      if (workTypeInputs[i].id == hours_id) {
+      if (workTypeInputs[i].attributes[2].value == hours_id) {
+        console.log("id : " + workTypeInputs[i].attributes[2].value);
+        console.log("value : " + workTypeInputs[i].attributes[3].value);
         workTypeInputs[i].setAttribute("defaultChecked", "defaultChecked");
         break;
       }
