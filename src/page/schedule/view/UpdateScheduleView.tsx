@@ -16,12 +16,6 @@ const UpdateScheduleView = ({
   startTime,
   endTime,
 }: type.updateScheduleViewProps) => {
-  console.log({
-    employeeId: employeeId,
-    date: date,
-    startTime: startTime,
-    endTime: endTime,
-  });
   return (
     <div className="updateEmployeeView-container">
       <h3>스케줄 수정</h3>
@@ -37,7 +31,7 @@ const UpdateScheduleView = ({
             <option>직원 선택</option>
             {employeeList &&
               employeeList.map((item) => (
-                <option value={employeeId}>{item.name}</option>
+                <option value={item.id}>{item.name}</option>
               ))}
           </select>
         </p>
