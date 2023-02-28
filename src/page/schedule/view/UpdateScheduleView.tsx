@@ -16,6 +16,12 @@ const UpdateScheduleView = ({
   startTime,
   endTime,
 }: type.updateScheduleViewProps) => {
+  console.log({
+    employeeId: employeeId,
+    date: date,
+    startTime: startTime,
+    endTime: endTime,
+  });
   return (
     <div className="updateEmployeeView-container">
       <h3>스케줄 수정</h3>

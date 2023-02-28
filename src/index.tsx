@@ -2,9 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { QueryClient, QueryClientProvider } from "react-query";
 import App from "./App";
+
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 import rootReducer from "./Redux/Reducers/rootReducer";
+
 import axios from "axios";
 import { config } from "./static/config";
 import { LogoutApi } from "./api/auth";
