@@ -21,8 +21,8 @@ export async function LoginApi({
       navigate("/calendar");
     })
     .catch((err) => {
-      console.log(err);
-      console.error(err);
+      console.log(err.response);
+      console.error(err.response);
       window.alert("로그인에 실패했습니다.");
       navigate("/auth");
     });
