@@ -58,7 +58,7 @@ const UpdateSchedule = ({
     GetWorktypeApi({ setWorkTypeList });
     GetEmployeeApi({ setEmployeeList, employee, setEmployeeId });
 
-    const workTypeInputs = document.getElementsByName(hours_id);
+    const workTypeInputs = document.getElementsByName("hours_id");
     console.log(workTypeInputs);
 
     for (let i = 0; i < workTypeInputs.length; i++) {
