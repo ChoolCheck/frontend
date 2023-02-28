@@ -1,6 +1,6 @@
 import * as type from "../type";
 
-import "./style/createSchedule.scss";
+import "../style/createSchedule.scss";
 
 const CreateScheduleView = ({
   employeeList,
