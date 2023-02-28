@@ -57,19 +57,6 @@ const UpdateSchedule = ({
   useEffect(() => {
     GetWorktypeApi({ setWorkTypeList });
     GetEmployeeApi({ setEmployeeList, employee, setEmployeeId });
-
-    const workTypeInputs = document.getElementsByName("hours_id");
-    console.log(workTypeInputs);
-
-    for (let i = 0; i < workTypeInputs.length; i++) {
-      console.log(workTypeInputs[i].attributes);
-      console.log("id : " + workTypeInputs[i].attributes[2].value);
-      console.log("value : " + workTypeInputs[i].attributes[3].value);
-      if (workTypeInputs[i].attributes[2].value == hours_id) {
-        workTypeInputs[i].setAttribute("defaultChecked", "defaultChecked");
-        break;
-      }
-    }
   }, []);
 
   const onClickCancelOnModal = (e: React.MouseEvent<HTMLButtonElement>) => {
