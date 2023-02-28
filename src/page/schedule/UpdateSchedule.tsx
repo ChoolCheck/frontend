@@ -39,7 +39,13 @@ const UpdateSchedule = ({
 
   const [employee, setEmployee] = useState(scheduleDetail?.name);
   const [employeeId, setEmployeeId] = useState("");
-  const [hours_id, setHoursid] = useState("");
+  const [hours_id, setHoursid] = useState(
+    scheduleDetail
+      ? scheduleDetail.hours == null
+        ? ""
+        : scheduleDetail.hours
+      : "0"
+  );
   const [startTime, setStartTime] = useState(
     scheduleDetail ? scheduleDetail.startTime : ""
   );
@@ -51,6 +57,15 @@ const UpdateSchedule = ({
   useEffect(() => {
     GetWorktypeApi({ setWorkTypeList });
     GetEmployeeApi({ setEmployeeList, employee, setEmployeeId });
+
+    const workTypeInputs = document.getElementsByName(hours_id);
+
+    for (let i = 0; i < workTypeInputs.length; i++) {
+      if (workTypeInputs[i].id == hours_id) {
+        workTypeInputs[i].setAttribute("defaultChecked");
+        break;
+      }
+    }
   }, []);
 
   const onClickCancelOnModal = (e: React.MouseEvent<HTMLButtonElement>) => {

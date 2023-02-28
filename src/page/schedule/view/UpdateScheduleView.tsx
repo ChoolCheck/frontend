@@ -13,6 +13,7 @@ const UpdateScheduleView = ({
 
   employeeId,
   date,
+  hours_id,
   startTime,
   endTime,
 }: type.updateScheduleViewProps) => {
@@ -63,6 +64,7 @@ const UpdateScheduleView = ({
                   <input
                     name="hours_id"
                     type="radio"
+                    id={item.id.toString()}
                     value={item.title}
                     onChange={onChangeWorkType(
                       item.id,
