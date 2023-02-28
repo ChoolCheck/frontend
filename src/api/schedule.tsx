@@ -195,7 +195,6 @@ export async function GetDetailScheduleApi({
     },
   })
     .then((res) => {
-      console.log(res.data);
       setScheduleDetail(res.data);
     })
     .then((res) => {

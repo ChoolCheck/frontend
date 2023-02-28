@@ -77,12 +77,6 @@ const UpdateScheduleView = ({
                   />
                   <label>{item.title}</label>
                 </div>
-                // {console.log({
-                //   itemId: item.id,
-                //   string_itemId: item.id.toString(),
-                //   hourId: hours_id,
-                //   flag: item.id.toString() == hours_id ? true : false,
-                // })}
               ))
             ) : (
               <label>근무 형태 없음</label>
