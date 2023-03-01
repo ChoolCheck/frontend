@@ -9,7 +9,7 @@ export async function CreateWorkcheckApi({
   startTime,
   endTime,
   setWriteModal,
-  setTotalWorkcheckList,
+  setTotalWorkCheckList,
 }: type.createWorkcheckProps) {
   let data;
   if (hours_id == "") {
@@ -38,7 +38,7 @@ export async function CreateWorkcheckApi({
     data: data,
   })
     .then((res) => {
-      GetTotalWorkcheckApi({ setTotalWorkcheckList });
+      GetTotalWorkcheckApi({ setTotalWorkCheckList });
     })
     .then((res) => {
       setWriteModal(false);
