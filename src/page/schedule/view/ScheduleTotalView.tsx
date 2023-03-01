@@ -71,7 +71,14 @@ const ScheduleTotalView = ({
                   {item.endTime.substring(0, 5)}
                 </span>
                 <span className="totalList-li-totalWorkTime">
-                  {parseInt(item.endTime) - parseInt(item.startTime)}
+                  {Math.round(
+                    ((new Date(item.date + "T" + item.endTime).getTime() -
+                      new Date(item.date + "T" + item.startTime).getTime()) /
+                      1000 /
+                      60 /
+                      60) *
+                      10
+                  ) / 10}
                   시간
                 </span>
               </li>

@@ -8,6 +8,22 @@ const ScheduleDetailView = ({
 }: type.scheduleDetailViewProps) => {
   const day = ["일", "월", "화", "수", "목", "금", "토"];
 
+  const startDate = new Date(
+    scheduleDetail
+      ? scheduleDetail.date + "T" + scheduleDetail.startTime
+      : "2023-01-01T00:00:00"
+  );
+  const endDate = new Date(
+    scheduleDetail
+      ? scheduleDetail.date + "T" + scheduleDetail.endTime
+      : "2023-01-01T00:00:00"
+  );
+
+  const totalWorkTime =
+    Math.round(
+      ((endDate.getTime() - startDate.getTime()) / 1000 / 60 / 60) * 10
+    ) / 10;
+
   return (
     <div className="employeeDetailView-container">
       <h3>스케줄 정보</h3>
@@ -41,10 +57,7 @@ const ScheduleDetailView = ({
         <p className="modal-totalWorkTime">
           <span className="detail-title">총 근무시간</span>
           <span className="detail-content detail-totalWorkTime">
-            {scheduleDetail &&
-              parseInt(scheduleDetail.endTime) -
-                parseInt(scheduleDetail.startTime)}
-            시간
+            {totalWorkTime}시간
           </span>
         </p>
       </div>
