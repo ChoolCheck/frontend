@@ -1,4 +1,4 @@
-import "../style/schedule-total.scss";
+import "../schedule/style/schedule-total.scss";
 import * as type from "./type";
 import * as enumType from "../../commonType/enum";
 

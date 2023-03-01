@@ -1,4 +1,3 @@
-import "./style/createWorkCheck.scss";
 import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
@@ -11,7 +10,6 @@ import * as employeeType from "../../commonType/employee";
 import * as worktypeType from "../../commonType/worktype";
 
 import CreateWorkCheckView from "./CreateWorkCheckView";
-import "./style/createSchedule.scss";
 
 const CreateWorkCheck = ({
   setTotalWorkcheckList,
