@@ -3,12 +3,31 @@ import { config } from "../static/config";
 import * as type from "./type/workType";
 
 export async function CreateWorkcheckApi({
-  employee_id,
+  employeeId,
   hours_id,
   date,
   startTime,
   endTime,
+  setWriteModal,
+  setTotalWorkcheckList,
 }: type.createWorkcheckProps) {
+  let data;
+  if (hours_id == "") {
+    data = {
+      employee_id: employeeId,
+      date: date,
+      startTime: startTime,
+      endTime: endTime,
+    };
+  } else {
+    data = {
+      employee_id: employeeId,
+      hours_id: hours_id,
+      date: date,
+      startTime: startTime,
+      endTime: endTime,
+    };
+  }
   await axios({
     method: "POST",
     url: `${config.api}/work`,
@@ -16,16 +35,14 @@ export async function CreateWorkcheckApi({
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
-    data: {
-      employee_id: employee_id,
-      hours_id: hours_id,
-      date: date,
-      startTime: startTime,
-      endTime: endTime,
-    },
+    data: data,
   })
-    .then((res) => {})
-    .then((res) => {})
+    .then((res) => {
+      GetTotalWorkcheckApi({ setTotalWorkcheckList });
+    })
+    .then((res) => {
+      setWriteModal(false);
+    })
     .catch((err) => {
       window.alert("출근부 추가에 실패했습니다.");
     });
@@ -33,7 +50,7 @@ export async function CreateWorkcheckApi({
 
 export async function UpdateWorkcheckApi({
   id,
-  employee_id,
+  employeeId,
   hours_id,
   date,
   startTime,
@@ -47,7 +64,7 @@ export async function UpdateWorkcheckApi({
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
     data: {
-      employee_id: employee_id,
+      employee_id: employeeId,
       hours_id: hours_id,
       date: date,
       startTime: startTime,
@@ -78,6 +95,7 @@ export async function DeleteWorkcheckApi({ id }: type.deleteWorkcheckProps) {
 
 export async function GetMonthWorkcheckApi({
   date,
+  setWorkcheckToShow,
 }: type.getMonthWorkcheckProps) {
   await axios({
     method: "GET",
@@ -87,7 +105,31 @@ export async function GetMonthWorkcheckApi({
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
   })
-    .then((res) => {})
+    .then((res) => {
+      console.log(res.data);
+      setWorkcheckToShow(res.data);
+    })
+    .catch((err) => {
+      window.alert("월별 출근부 조회에 실패했습니다.");
+    });
+}
+export async function GetDateWorkcheckApi({
+  startInput,
+  endInput,
+  setWorkcheckToShow,
+}: type.getDateWorkcheckProps) {
+  await axios({
+    method: "GET",
+    url: `${config.api}/work/month?start=${startInput}&end=${endInput}`,
+    headers: {
+      "Content-Type": `application/json`,
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  })
+    .then((res) => {
+      console.log(res.data);
+      setWorkcheckToShow(res.data);
+    })
     .catch((err) => {
       window.alert("월별 출근부 조회에 실패했습니다.");
     });
@@ -95,6 +137,8 @@ export async function GetMonthWorkcheckApi({
 
 export async function GetDetailWorkcheckApi({
   id,
+  setWorkcheckDetail,
+  setReadModal,
 }: type.getDetailWorkcheckProps) {
   await axios({
     method: "GET",
@@ -104,14 +148,21 @@ export async function GetDetailWorkcheckApi({
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
   })
-    .then((res) => {})
+    .then((res) => {
+      console.log(res.data);
+      setWorkcheckDetail(res.data);
+    })
+    .then((res) => {
+      setReadModal(true);
+    })
     .catch((err) => {
       window.alert("출근부 상세 조회에 실패했습니다.");
     });
 }
 
-export async function GetEmployeeWorkcheckProps({
+export async function GetEmployeeWorkcheckApi({
   employee_id,
+  setWorkcheckToShow,
 }: type.getEmployeeWorkcheckProps) {
   await axios({
     method: "GET",
@@ -121,13 +172,18 @@ export async function GetEmployeeWorkcheckProps({
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
   })
-    .then((res) => {})
+    .then((res) => {
+      console.log(res.data);
+      setWorkcheckToShow(res.data);
+    })
     .catch((err) => {
       window.alert("직원별 출근부 조회에 실패했습니다.");
     });
 }
 
-export async function GetTotalWorkcheckApi({}: type.getTotalWorkcheckProps) {
+export async function GetTotalWorkcheckApi({
+  setTotalWorkcheckList,
+}: type.getTotalWorkcheckProps) {
   await axios({
     method: "GET",
     url: `${config.api}/schdule`,
@@ -136,8 +192,11 @@ export async function GetTotalWorkcheckApi({}: type.getTotalWorkcheckProps) {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
   })
-    .then((res) => {})
+    .then((res) => {
+      console.log(res.data);
+      setTotalWorkcheckList(res.data);
+    })
     .catch((err) => {
-      window.alert("스케줄 전체 조회에 실패했습니다.");
+      window.alert("출근부 전체 조회에 실패했습니다.");
     });
 }

@@ -12,7 +12,10 @@ import * as worktypeType from "../../commonType/worktype";
 import CreateScheduleView from "./view/CreateScheduleView";
 import "./style/createSchedule.scss";
 
-const CreateSchedule = ({ setWeekScheduleList }: type.createScheduleProps) => {
+const CreateSchedule = ({
+  setWeekScheduleList,
+  setTotalScheduleList,
+}: type.createScheduleProps) => {
   const dispatch = useDispatch();
 
   const setWriteModal = useCallback(
@@ -33,14 +36,6 @@ const CreateSchedule = ({ setWeekScheduleList }: type.createScheduleProps) => {
     GetEmployeeApi({ setEmployeeList });
   }, []);
 
-  const onClickCancelOnModal = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    if (window.confirm("정말로 작성을 취소하시겠습니까?")) {
-      setWriteModal(false);
-      window.alert("작성이 취소되었습니다.");
-    } else return;
-  };
-
   const [employee, setEmployee] = useState("");
   const [employeeId, setEmployeeId] = useState("");
   const [hours_id, setHoursid] = useState("");
@@ -49,6 +44,14 @@ const CreateSchedule = ({ setWeekScheduleList }: type.createScheduleProps) => {
   const [date, setDate] = useState("");
 
   const scheduleForm = { employee, hours_id, date, startTime, endTime };
+
+  const onClickCancelOnModal = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    if (window.confirm("정말로 작성을 취소하시겠습니까?")) {
+      setWriteModal(false);
+      window.alert("작성이 취소되었습니다.");
+    } else return;
+  };
 
   const onChangeEmployee = (e: React.ChangeEvent<HTMLSelectElement>) => {
     let employeeId = 0;
@@ -119,6 +122,7 @@ const CreateSchedule = ({ setWeekScheduleList }: type.createScheduleProps) => {
         endTime,
         setWriteModal,
         setWeekScheduleList,
+        setTotalScheduleList,
       });
   };
 

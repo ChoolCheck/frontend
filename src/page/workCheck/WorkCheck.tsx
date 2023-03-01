@@ -1,7 +1,46 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import WorkCheckView from "./WorkCheckView";
 import "./style/workCheck.scss";
+
+import { useDispatch } from "react-redux";
+import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
+import { setReadModalOpen } from "../../Redux/Actions/handleReadModal";
+import { useSelector } from "react-redux";
+import { RootState } from "../../Redux/Reducers/rootReducer";
+
+import {
+  GetDetailWorkcheckApi,
+  GetTotalWorkcheckApi,
+  GetEmployeeWorkcheckApi,
+  GetDateWorkcheckApi,
+} from "../../api/workcheck";
+import { GetEmployeeApi } from "../../api/manage";
+
+import WriteModal from "../../components/modal/WriteModal";
+import ReadModal from "../../components/modal/ReadModal";
+
+import "./style/schedule.scss";
+import * as type from "./type";
+import * as employeeType from "../../commonType/employee";
+
 const WorkCheck = () => {
+  const dispatch = useDispatch();
+
+  const writeModalState = useSelector(
+    (state: RootState) => state.WriteModalReducer.writeModalState
+  );
+  const readModalState = useSelector(
+    (state: RootState) => state.ReadModalReducer.readModalState
+  );
+  const setReadModal = useCallback(
+    (readModalState: boolean) => dispatch(setReadModalOpen(readModalState)),
+    [dispatch]
+  );
+  const setWriteModal = useCallback(
+    (readModalState: boolean) => dispatch(setWriteModalOpen(readModalState)),
+    [dispatch]
+  );
+
   const workCheckTotal = {
     totalList: [
       {
@@ -130,7 +169,20 @@ const WorkCheck = () => {
     ],
   };
 
-  const [workCheckTotalList, setWorkCheckTotalList] = useState(workCheckTotal);
+  const [employeeList, setEmployeeList] = useState<
+    employeeType.employeeProps[] | undefined
+  >([]);
+
+  const [totalWorkcheckList, setTotalWorkcheckList] = useState<
+    type.workcheckObjProps[] | undefined
+  >();
+
+  const [workcheckToShow, setWorkcheckToShow] = useState<
+    type.workcheckObjProps[] | undefined
+  >();
+
+  const [workcheckDetail, setWorkcheckDetail] =
+    useState<type.workcheckObjProps>();
 
   const [startInput, setStartInput] = useState("");
   const [endInput, setEndInput] = useState("");
@@ -147,36 +199,30 @@ const WorkCheck = () => {
     //조회 로직 : startInput, endInput 서버에 넘겨주고 결과 list 받기
     return (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
       event.preventDefault();
+      GetDateWorkcheckApi({ startInput, endInput, setWorkcheckToShow });
     };
   };
 
-  const filterTotalList = (name: string) => {
-    if (name == "total") {
-      setWorkCheckTotalList(workCheckTotal);
-    } else {
-      const filteredList = workCheckTotal.totalList.filter((item) => {
-        if (item.name == name) {
-          return true;
-        }
-      });
-      setWorkCheckTotalList({ ...workCheckTotal, totalList: filteredList });
-    }
-  };
+  useEffect(() => {
+    GetTotalWorkcheckApi({ setTotalWorkcheckList });
+    GetEmployeeApi({ setEmployeeList });
+  }, []);
 
-  // useEffect(() => {
-  // }, []);
-
-  const onShowNameButtonClick = (name: string) => {
-    filterTotalList(name);
-    return (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-      event.preventDefault();
+  const onShowNameButtonClick = (id: number) => {
+    const employee_id = id.toString();
+    return (e: React.MouseEvent<HTMLButtonElement>) => {
+      GetEmployeeWorkcheckApi({ employee_id, setWorkcheckToShow });
     };
   };
 
-  const onShowTotalButtonClick = () => {
-    filterTotalList("total");
-    return (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-      event.preventDefault();
+  const onShowTotalButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setWorkcheckToShow(totalWorkcheckList);
+  };
+
+  const onItemClick = (id: number) => {
+    return (e: React.MouseEvent<HTMLLIElement>) => {
+      e.preventDefault();
+      GetDetailWorkcheckApi({ id, setWorkcheckDetail, setReadModal });
     };
   };
 
@@ -212,9 +258,12 @@ const WorkCheck = () => {
       </div>
 
       <WorkCheckView
-        workCheckTotalList={workCheckTotalList}
         onShowNameButtonClick={onShowNameButtonClick}
         onShowTotalButtonClick={onShowTotalButtonClick}
+        onItemClick={onItemClick}
+        workcheckToShow={workcheckToShow}
+        employeeList={employeeList}
+        totalWorkcheckList={totalWorkcheckList}
       ></WorkCheckView>
     </div>
   );

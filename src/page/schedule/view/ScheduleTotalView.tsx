@@ -3,9 +3,9 @@ import * as type from "../type";
 import * as enumType from "../../../commonType/enum";
 
 const ScheduleTotalView = ({
-  onItemClick,
   onShowNameButtonClick,
   onShowTotalButtonClick,
+  onItemClick,
   scheduleToShow,
   employeeList,
   totalScheduleList,

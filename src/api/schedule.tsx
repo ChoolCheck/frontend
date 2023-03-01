@@ -10,6 +10,7 @@ export async function CreateScheduleApi({
   endTime,
   setWriteModal,
   setWeekScheduleList,
+  setTotalScheduleList,
 }: type.createScheduleProps) {
   let data;
   if (hours_id == "") {
@@ -39,6 +40,7 @@ export async function CreateScheduleApi({
   })
     .then((res) => {
       GetWeekScheduleApi({ setWeekScheduleList });
+      GetTotalScheduleApi({ setTotalScheduleList });
     })
     .then((res) => {
       setWriteModal(false);
@@ -103,7 +105,6 @@ export async function UpdateScheduleApi({
 export async function DeleteScheduleApi({
   id,
   setReadModal,
-
   setTotalScheduleList,
   setWeekScheduleList,
 }: type.deleteScheduleProps) {

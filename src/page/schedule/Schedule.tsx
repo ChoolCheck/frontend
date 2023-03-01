@@ -68,19 +68,6 @@ const Schedule = () => {
     GetEmployeeApi({ setEmployeeList });
   }, []);
 
-  // const filterTotalList = (name: string) => {
-  //   if (totalScheduleList) {
-  //     if (name == "total") {
-  //       setScheduleToShow(totalScheduleList);
-  //     } else {
-  //       const filteredList = totalScheduleList.filter((item) => {
-  //         if (item.name == name) return true;
-  //       });
-  //       setScheduleToShow(filteredList);
-  //     }
-  //   }
-  // };
-
   const onShowNameButtonClick = (id: number) => {
     const employee_id = id.toString();
     return (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -124,6 +111,7 @@ const Schedule = () => {
         <WriteModal>
           <CreateSchedule
             setWeekScheduleList={setWeekScheduleList}
+            setTotalScheduleList={setTotalScheduleList}
           ></CreateSchedule>
         </WriteModal>
       )}
