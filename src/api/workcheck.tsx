@@ -182,7 +182,7 @@ export async function GetEmployeeWorkcheckApi({
 }
 
 export async function GetTotalWorkcheckApi({
-  setTotalWorkcheckList,
+  setTotalWorkCheckList,
 }: type.getTotalWorkcheckProps) {
   await axios({
     method: "GET",
@@ -194,7 +194,7 @@ export async function GetTotalWorkcheckApi({
   })
     .then((res) => {
       console.log(res.data);
-      setTotalWorkcheckList(res.data);
+      setTotalWorkCheckList(res.data);
     })
     .catch((err) => {
       window.alert("출근부 전체 조회에 실패했습니다.");

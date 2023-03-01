@@ -55,10 +55,6 @@ const WorkCheck = () => {
     employeeType.employeeProps[] | undefined
   >([]);
 
-  // const [totalWorkcheckList, setTotalWorkcheckList] = useState<
-  //   type.workcheckObjProps[] | undefined
-  // >();
-
   const [workcheckToShow, setWorkcheckToShow] = useState<
     type.workcheckObjProps[] | undefined
   >();
