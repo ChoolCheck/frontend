@@ -120,7 +120,7 @@ export async function GetDateWorkcheckApi({
 }: type.getDateWorkcheckProps) {
   await axios({
     method: "GET",
-    url: `${config.api}/work/month?start=${startInput}&end=${endInput}`,
+    url: `${config.api}/work/date?start=${startInput}&end=${endInput}`,
     headers: {
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -173,7 +173,6 @@ export async function GetEmployeeWorkcheckApi({
     },
   })
     .then((res) => {
-      console.log(res.data);
       setWorkcheckToShow(res.data);
     })
     .catch((err) => {
