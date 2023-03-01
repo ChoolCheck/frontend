@@ -1,3 +1,5 @@
+import * as reducerType from "../../Redux/Types";
+
 // setReadModal: (readModalState: boolean) => {
 //   type: "handleReadModal/SETREADMODAL";
 //   payload: boolean;
@@ -27,9 +29,12 @@ export interface createWorkcheckProps {
     type: "handleWriteodal/SETWRITEMODAL";
     payload: boolean;
   };
-  setTotalWorkcheckList: React.Dispatch<
-    React.SetStateAction<workcheckObjProps[] | undefined>
-  >;
+  setTotalWorkCheckList: (
+    totalWorkcheckList: workcheckObjProps[] | undefined
+  ) => {
+    type: "handleTotalWorkcheckList/SETTOTALWORKCHECKLIST";
+    payload: reducerType.workcheckObjProps[] | undefined;
+  };
 }
 
 export interface updateWorkcheckProps {
@@ -71,9 +76,12 @@ export interface getDetailWorkcheckProps {
 }
 
 export interface getTotalWorkcheckProps {
-  setTotalWorkcheckList: React.Dispatch<
-    React.SetStateAction<workcheckObjProps[] | undefined>
-  >;
+  setTotalWorkCheckList: (
+    totalWorkcheckList: workcheckObjProps[] | undefined
+  ) => {
+    type: "handleTotalWorkcheckList/SETTOTALWORKCHECKLIST";
+    payload: reducerType.workcheckObjProps[] | undefined;
+  };
 }
 
 export interface getEmployeeWorkcheckProps {

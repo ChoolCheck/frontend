@@ -5,6 +5,7 @@ import "./style/workCheck.scss";
 import { useDispatch } from "react-redux";
 import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
 import { setReadModalOpen } from "../../Redux/Actions/handleReadModal";
+import { setTotalWorkcheckList } from "../../Redux/Actions/handleTotalWorkcheckList";
 import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/Reducers/rootReducer";
 
@@ -31,12 +32,22 @@ const WorkCheck = () => {
   const readModalState = useSelector(
     (state: RootState) => state.ReadModalReducer.readModalState
   );
+  const totalWorkCheckList = useSelector(
+    (state: RootState) => state.totalWorkcheckListReducer
+  );
+
   const setReadModal = useCallback(
     (readModalState: boolean) => dispatch(setReadModalOpen(readModalState)),
     [dispatch]
   );
   const setWriteModal = useCallback(
-    (readModalState: boolean) => dispatch(setWriteModalOpen(readModalState)),
+    (writeModalState: boolean) => dispatch(setWriteModalOpen(writeModalState)),
+    [dispatch]
+  );
+
+  const setTotalWorkCheckList = useCallback(
+    (totalWorkcheckList: type.workcheckObjProps[] | undefined) =>
+      dispatch(setTotalWorkcheckList(totalWorkcheckList)),
     [dispatch]
   );
 
@@ -44,9 +55,9 @@ const WorkCheck = () => {
     employeeType.employeeProps[] | undefined
   >([]);
 
-  const [totalWorkcheckList, setTotalWorkcheckList] = useState<
-    type.workcheckObjProps[] | undefined
-  >();
+  // const [totalWorkcheckList, setTotalWorkcheckList] = useState<
+  //   type.workcheckObjProps[] | undefined
+  // >();
 
   const [workcheckToShow, setWorkcheckToShow] = useState<
     type.workcheckObjProps[] | undefined
@@ -75,7 +86,7 @@ const WorkCheck = () => {
   };
 
   useEffect(() => {
-    GetTotalWorkcheckApi({ setTotalWorkcheckList });
+    GetTotalWorkcheckApi({ setTotalWorkCheckList });
     GetEmployeeApi({ setEmployeeList });
   }, []);
 
@@ -87,7 +98,7 @@ const WorkCheck = () => {
   };
 
   const onShowTotalButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    setWorkcheckToShow(totalWorkcheckList);
+    setWorkcheckToShow(totalWorkCheckList.totalWorkcheckList);
   };
 
   const onItemClick = (id: number) => {
@@ -134,7 +145,6 @@ const WorkCheck = () => {
         onItemClick={onItemClick}
         workcheckToShow={workcheckToShow}
         employeeList={employeeList}
-        totalWorkcheckList={totalWorkcheckList}
       ></WorkCheckView>
     </div>
   );

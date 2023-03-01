@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
+import { setTotalWorkcheckList } from "../../Redux/Actions/handleTotalWorkcheckList";
 
 import { GetWorktypeApi, GetEmployeeApi } from "../../api/manage";
 import { CreateWorkcheckApi } from "../../api/workcheck";
@@ -11,13 +12,17 @@ import * as worktypeType from "../../commonType/worktype";
 
 import CreateWorkCheckView from "./CreateWorkCheckView";
 
-const CreateWorkCheck = ({
-  setTotalWorkcheckList,
-}: type.createWorkCheckProps) => {
+const CreateWorkCheck = () => {
   const dispatch = useDispatch();
 
   const setWriteModal = useCallback(
     (readModalState: boolean) => dispatch(setWriteModalOpen(readModalState)),
+    [dispatch]
+  );
+
+  const setTotalWorkCheckList = useCallback(
+    (totalWorkcheckList: type.workcheckObjProps[] | undefined) =>
+      dispatch(setTotalWorkcheckList(totalWorkcheckList)),
     [dispatch]
   );
 
@@ -119,7 +124,7 @@ const CreateWorkCheck = ({
         startTime,
         endTime,
         setWriteModal,
-        setTotalWorkcheckList,
+        setTotalWorkCheckList,
       });
   };
 

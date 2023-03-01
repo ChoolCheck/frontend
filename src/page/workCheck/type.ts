@@ -11,11 +11,8 @@ export interface workcheckObjProps {
   id: number;
 }
 
-export interface createWorkCheckProps {
-  setTotalWorkcheckList: React.Dispatch<
-    React.SetStateAction<workcheckObjProps[] | undefined>
-  >;
-}
+export interface createWorkCheckProps {}
+
 export interface createWorkCheckViewProps
   extends employeeType.employeeList,
     worktypeType.workTypeList {
@@ -49,7 +46,6 @@ export interface workCheckViewProps {
   onShowTotalButtonClick: React.MouseEventHandler<HTMLButtonElement>;
 
   employeeList: employeeType.employeeProps[] | undefined;
-  totalWorkcheckList: workcheckObjProps[] | undefined;
 
   workcheckToShow: workcheckObjProps[] | undefined;
 }

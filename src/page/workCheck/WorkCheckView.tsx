@@ -1,6 +1,9 @@
 import "../schedule/style/schedule-total.scss";
 import * as type from "./type";
 import * as enumType from "../../commonType/enum";
+import { useSelector } from "react-redux";
+
+import { RootState } from "../../Redux/Reducers/rootReducer";
 
 const WorkCheckView = ({
   onShowNameButtonClick,
@@ -9,9 +12,14 @@ const WorkCheckView = ({
   onItemClick,
   workcheckToShow,
   employeeList,
-  totalWorkcheckList,
 }: type.workCheckViewProps) => {
-  const totalList = workcheckToShow ? workcheckToShow : totalWorkcheckList;
+  const totalWorkCheckList = useSelector(
+    (state: RootState) => state.totalWorkcheckListReducer
+  );
+
+  const totalList = workcheckToShow
+    ? workcheckToShow
+    : totalWorkCheckList.totalWorkcheckList;
   const day = ["일", "월", "화", "수", "목", "금", "토"];
 
   return (
