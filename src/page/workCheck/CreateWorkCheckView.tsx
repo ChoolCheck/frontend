@@ -1,9 +1,9 @@
-import * as type from "../type";
+import * as type from "./type";
 
-const CreateScheduleView = ({
+const CreateWorkCheckView = ({
   employeeList,
   workTypeList,
-  scheduleForm,
+  workcheckForm,
 
   onChangeEmployee,
   onChangeDate,
@@ -13,11 +13,11 @@ const CreateScheduleView = ({
 
   onClickCancelOnModal,
   onClickCreate,
-}: type.createScheduleViewProps) => {
+}: type.createWorkCheckViewProps) => {
   return (
-    <div className="CreateSchedule-container">
-      <h3>스케줄 추가</h3>
-      <div className="CreateSchedule-content">
+    <div className="CreateWorkCheck-container">
+      <h3>출근부 추가</h3>
+      <div className="CreateWorkCheck-content">
         <p className="modal-employee">
           <span>직원</span>
 
@@ -25,7 +25,7 @@ const CreateScheduleView = ({
             <option>직원 선택</option>
             {employeeList &&
               employeeList.map((item) => (
-                <option value={scheduleForm.employee}>{item.name}</option>
+                <option value={workcheckForm.employee}>{item.name}</option>
               ))}
           </select>
         </p>
@@ -97,4 +97,4 @@ const CreateScheduleView = ({
   );
 };
 
-export default CreateScheduleView;
+export default CreateWorkCheckView;

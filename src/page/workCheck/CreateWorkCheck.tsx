@@ -10,6 +10,9 @@ import * as type from "./type";
 import * as employeeType from "../../commonType/employee";
 import * as worktypeType from "../../commonType/worktype";
 
+import CreateWorkCheckView from "./CreateWorkCheckView";
+import "./style/createSchedule.scss";
+
 const CreateWorkCheck = ({
   setTotalWorkcheckList,
 }: type.createWorkCheckProps) => {
@@ -40,7 +43,7 @@ const CreateWorkCheck = ({
   const [endTime, setEndTime] = useState("");
   const [date, setDate] = useState("");
 
-  const workCheckForm = { employee, hours_id, date, startTime, endTime };
+  const workcheckForm = { employee, hours_id, date, startTime, endTime };
 
   const onClickCancelOnModal = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -123,45 +126,19 @@ const CreateWorkCheck = ({
   };
 
   return (
-    <div className="CreateWorkCheck-container">
-      <h3>출근부 작성</h3>
-      <div className="CreateWorkCheck-content">
-        <p className="modal-employee">
-          <span>직원</span>
-          <select>
-            <option>김어진</option>
-            <option>이예빈</option>
-            <option>고구마</option>
-          </select>
-        </p>
-        <p className="modal-date">
-          <span>날짜</span>
-          <input type="date"></input>
-        </p>
-        <p className="modal-worktype">
-          <span>근무형태</span>
-          <input type="checkbox"></input>
-        </p>
-        <p className="modal-time">
-          <span>시간</span>
-          <input
-            className="modal-time-start"
-            name="startTime"
-            type="time"
-          ></input>
-          {" ~ "}
-          <input className="modal-time-end" name="endTime" type="time"></input>
-        </p>
-      </div>
-      <div className="modal-write-button-container">
-        <button
-          className="modal-write-close-button"
-          onClick={onClickCancelOnModal}
-        >
-          취소
-        </button>
-        <button>완료</button>
-      </div>
+    <div>
+      <CreateWorkCheckView
+        workTypeList={workTypeList}
+        employeeList={employeeList}
+        onClickCancelOnModal={onClickCancelOnModal}
+        workcheckForm={workcheckForm}
+        onChangeEmployee={onChangeEmployee}
+        onChangeDate={onChangeDate}
+        onChangeWorkType={onChangeWorkType}
+        onChangeStartTime={onChangeStartTime}
+        onChangeEndTime={onChangeEndTime}
+        onClickCreate={onClickCreate}
+      ></CreateWorkCheckView>
     </div>
   );
 };

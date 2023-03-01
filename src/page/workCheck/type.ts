@@ -16,6 +16,30 @@ export interface createWorkCheckProps {
     React.SetStateAction<workcheckObjProps[] | undefined>
   >;
 }
+export interface createWorkCheckViewProps
+  extends employeeType.employeeList,
+    worktypeType.workTypeList {
+  workcheckForm: {
+    employee: string;
+    hours_id: string;
+    date: string;
+    startTime: string;
+    endTime: string;
+  };
+  onChangeEmployee: React.ChangeEventHandler<HTMLSelectElement>;
+  onChangeDate: React.ChangeEventHandler<HTMLInputElement>;
+
+  onChangeWorkType: (
+    id: number,
+    startTime: string,
+    endTime: string
+  ) => (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChangeStartTime: React.ChangeEventHandler<HTMLInputElement>;
+  onChangeEndTime: React.ChangeEventHandler<HTMLInputElement>;
+
+  onClickCancelOnModal: React.MouseEventHandler<HTMLButtonElement>;
+  onClickCreate: React.MouseEventHandler<HTMLButtonElement>;
+}
 
 export interface workCheckViewProps {
   onItemClick: (id: number) => (e: React.MouseEvent<HTMLLIElement>) => void;
