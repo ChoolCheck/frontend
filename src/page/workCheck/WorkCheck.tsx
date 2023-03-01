@@ -75,7 +75,7 @@ const WorkCheck = () => {
 
   const onGetResultClick = () => {
     //조회 로직 : startInput, endInput 서버에 넘겨주고 결과 list 받기
-    return (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    return (event: React.MouseEvent<HTMLButtonElement>) => {
       event.preventDefault();
       GetDateWorkcheckApi({ startInput, endInput, setWorkcheckToShow });
     };

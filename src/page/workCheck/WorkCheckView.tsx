@@ -1,4 +1,4 @@
-import "../schedule/style/schedule-total.scss";
+import "./style/workCheckView.scss";
 import * as type from "./type";
 import * as enumType from "../../commonType/enum";
 import { useSelector } from "react-redux";
@@ -8,7 +8,6 @@ import { RootState } from "../../Redux/Reducers/rootReducer";
 const WorkCheckView = ({
   onShowNameButtonClick,
   onShowTotalButtonClick,
-
   onItemClick,
   workcheckToShow,
   employeeList,
@@ -23,8 +22,8 @@ const WorkCheckView = ({
   const day = ["일", "월", "화", "수", "목", "금", "토"];
 
   return (
-    <div className="ScheduleTotalView-top-container">
-      <div className="ScheduleTotalView-left-container">
+    <div className="WorkCheckView-top-container">
+      <div className="WorkCheckView-left-container">
         <h2>직원별로 보기</h2>
         <ul className="employee-list-ul">
           {employeeList &&
@@ -55,7 +54,7 @@ const WorkCheckView = ({
           전체보기
         </button>
       </div>
-      <div className="ScheduleTotalView-right-container">
+      <div className="WorkCheckView-right-container">
         <ul className="totalList-ul">
           {totalList &&
             totalList.map((item, idx) => (
