@@ -65,16 +65,16 @@ export async function UpdateScheduleApi({
     data = {
       employee_id: employeeId,
       date: date,
-      startTime: startTime,
-      endTime: endTime,
+      startTime: startTime.substring(0, 5),
+      endTime: endTime.substring(0, 5),
     };
   } else {
     data = {
       employee_id: employeeId,
       hours_id: hours_id,
       date: date,
-      startTime: startTime,
-      endTime: endTime,
+      startTime: startTime.substring(0, 5),
+      endTime: endTime.substring(0, 5),
     };
   }
   console.log("update data : " + data);
