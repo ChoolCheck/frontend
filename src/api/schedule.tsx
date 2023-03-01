@@ -156,13 +156,12 @@ export async function GetWeekScheduleApi({
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
-  })
-    .then((res) => {
-      setWeekScheduleList(res.data);
-    })
-    .catch((err) => {
-      window.alert("주별 스케줄 조회에 실패했습니다.");
-    });
+  }).then((res) => {
+    setWeekScheduleList(res.data);
+  });
+  // .catch((err) => {
+  //   window.alert("주별 스케줄 조회에 실패했습니다.");
+  // });
 }
 export async function GetTotalScheduleApi({
   setTotalScheduleList,
@@ -174,13 +173,12 @@ export async function GetTotalScheduleApi({
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
-  })
-    .then((res) => {
-      setTotalScheduleList(res.data);
-    })
-    .catch((err) => {
-      window.alert("스케줄 전체 조회에 실패했습니다.");
-    });
+  }).then((res) => {
+    setTotalScheduleList(res.data);
+  });
+  // .catch((err) => {
+  //   window.alert("스케줄 전체 조회에 실패했습니다.");
+  // });
 }
 export async function GetDetailScheduleApi({
   id,

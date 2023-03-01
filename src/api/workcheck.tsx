@@ -186,7 +186,7 @@ export async function GetTotalWorkcheckApi({
 }: type.getTotalWorkcheckProps) {
   await axios({
     method: "GET",
-    url: `${config.api}/schdule`,
+    url: `${config.api}/work`,
     headers: {
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,
