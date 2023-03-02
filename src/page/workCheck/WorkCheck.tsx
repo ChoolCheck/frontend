@@ -67,6 +67,11 @@ const WorkCheck = () => {
   const [startInput, setStartInput] = useState("");
   const [endInput, setEndInput] = useState("");
 
+  useEffect(() => {
+    GetTotalWorkcheckApi({ setTotalWorkCheckList });
+    GetEmployeeApi({ setEmployeeList });
+  }, []);
+
   const onChageStartInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setStartInput(e.target.value);
   };
@@ -75,16 +80,10 @@ const WorkCheck = () => {
     setEndInput(e.target.value);
   };
 
-  const onGetDateResultClick = (
-    e: React.MouseEventHandler<HTMLButtonElement>
-  ) => {
+  const onGetDateResultClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     GetDateWorkcheckApi({ startInput, endInput, setWorkcheckToShow });
   };
-
-  useEffect(() => {
-    GetTotalWorkcheckApi({ setTotalWorkCheckList });
-    GetEmployeeApi({ setEmployeeList });
-  }, []);
 
   const onShowNameButtonClick = (id: number) => {
     const employee_id = id.toString();
@@ -139,8 +138,9 @@ const WorkCheck = () => {
             aria-required="true"
           ></input>
           <button
+            type="button"
             className="WorkCheck-getResultButton"
-            onClick={() => onGetDateResultClick}
+            onClick={onGetDateResultClick}
           >
             조회
           </button>
