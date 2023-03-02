@@ -22,6 +22,8 @@ import ReadModal from "../../components/modal/ReadModal";
 
 import * as type from "./type";
 import * as employeeType from "../../commonType/employee";
+import CreateWorkCheck from "./CreateWorkCheck";
+import WorkCheckDetail from "./WorkCheckDetail";
 
 const WorkCheck = () => {
   const dispatch = useDispatch();
@@ -108,6 +110,17 @@ const WorkCheck = () => {
 
   return (
     <div className="WorkCheck-top-container">
+      {writeModalState && (
+        <WriteModal>
+          <CreateWorkCheck></CreateWorkCheck>
+        </WriteModal>
+      )}
+
+      {readModalState && (
+        <ReadModal>
+          <WorkCheckDetail workcheckDetail={workcheckDetail}></WorkCheckDetail>
+        </ReadModal>
+      )}
       <div className="WorkCheck-Header-container">
         <span className="WorkCheck-Header">기간 내 조회</span>
         <form>
