@@ -1,11 +1,11 @@
 import { useRef, useEffect } from "react";
 import axios from "axios";
 import { config } from "../static/config";
-import { LogoutApi } from "../api/auth";
 import { useNavigate } from "react-router-dom";
 
 export function useAxiosNavigation() {
   const navRef = useRef(useNavigate());
+  const navigate = useNavigate();
 
   useEffect(() => {
     const refreshAPI = axios.create({
@@ -24,7 +24,7 @@ export function useAxiosNavigation() {
         const originalConfig = error.config;
         console.log("-- token is expired : " + error + " --");
 
-        if (error.response && error.response.status == 401) {
+        if (error?.response?.status == 401) {
           if (error.response.data.message == "expired") {
             console.log("-- token refresh post --");
             // token refresh 요청
@@ -45,9 +45,26 @@ export function useAxiosNavigation() {
               }
             } catch (err) {
               window.alert("토큰이 만료되어 자동으로 로그아웃 됩니다.");
-              localStorage.removeItem("token");
-              localStorage.removeItem("refreshToken");
-              return await navRef.current("/");
+
+              return await axios({
+                method: "Post",
+                url: `${config.api}/user/logout`,
+                headers: {
+                  "Content-Type": `application/json`,
+                  Authorization: `Bearer ${localStorage.getItem("token")}`,
+                },
+              })
+                .then((res) => {
+                  localStorage.removeItem("token");
+                  localStorage.removeItem("refreshToken");
+
+                  window.alert("로그아웃 되었습니다.");
+                  navigate("/login");
+                })
+                .catch((err) => {
+                  window.alert("로그아웃에 실패했습니다.");
+                  console.log(err);
+                });
             }
           }
         }
