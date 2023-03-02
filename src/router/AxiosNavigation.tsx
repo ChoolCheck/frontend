@@ -25,6 +25,7 @@ export default function AxiosNavigation() {
         if (error?.response?.status == 401) {
           if (error.response.data.message == "expired") {
             console.log("-- token is expired : " + error + " --");
+            console.log(originalConfig);
             try {
               console.log("-- token refresh post --");
               const res = await axios({
@@ -37,7 +38,6 @@ export default function AxiosNavigation() {
               });
               if (res) {
                 console.log("-- complete token refreshing --");
-                console.log(res.data);
                 localStorage.setItem("token", res.data.accessToken);
                 return await refreshAPI.request(originalConfig);
               }

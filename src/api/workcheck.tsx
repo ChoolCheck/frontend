@@ -130,7 +130,6 @@ export async function GetMonthWorkcheckApi({
     },
   })
     .then((res) => {
-      console.log(res.data);
       setWorkcheckToShow(res.data);
     })
     .catch((err) => {});
@@ -149,7 +148,6 @@ export async function GetDateWorkcheckApi({
     },
   })
     .then((res) => {
-      console.log(res.data);
       setWorkcheckToShow(res.data);
     })
     .catch((err) => {});
@@ -169,7 +167,6 @@ export async function GetDetailWorkcheckApi({
     },
   })
     .then((res) => {
-      console.log(res.data);
       setWorkcheckDetail(res.data);
     })
     .then((res) => {
