@@ -75,13 +75,10 @@ const WorkCheck = () => {
     setEndInput(e.target.value);
   };
 
-  const onGetDateResultClick = () => {
-    console.log(startInput);
-    console.log(endInput);
+  const onGetDateResultClick = (
+    e: React.MouseEventHandler<HTMLButtonElement>
+  ) => {
     GetDateWorkcheckApi({ startInput, endInput, setWorkcheckToShow });
-    return (e: React.MouseEvent<HTMLButtonElement>) => {
-      e.preventDefault();
-    };
   };
 
   useEffect(() => {
@@ -143,7 +140,7 @@ const WorkCheck = () => {
           ></input>
           <button
             className="WorkCheck-getResultButton"
-            onClick={onGetDateResultClick}
+            onClick={() => onGetDateResultClick}
           >
             조회
           </button>

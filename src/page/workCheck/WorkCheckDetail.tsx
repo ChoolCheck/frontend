@@ -39,16 +39,11 @@ const WorkCheckDetail = ({
     [dispatch]
   );
 
-  const totalWorkCheckList = useSelector(
-    (state: RootState) => state.totalWorkcheckListReducer
-  );
-
   const onUpdateClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     setWriteModal(true);
   };
 
   const onDeleteClick = (id: number) => {
-    const totalWorkcheckList = totalWorkCheckList.totalWorkcheckList;
     return (e: React.MouseEvent<HTMLButtonElement>) => {
       if (window.confirm("해당 스케줄을 정말로 삭제하시겠습니까?")) {
         DeleteWorkcheckApi({
