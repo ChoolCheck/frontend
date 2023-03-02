@@ -75,7 +75,7 @@ const WorkCheckView = ({
                   {item.name}
                 </span>
                 <span className="totalList-li-time">
-                  {item.startTime.substring(0, 5)} -{" "}
+                  {item.startTime.substring(0, 5)} -
                   {item.endTime.substring(0, 5)}
                 </span>
                 <span className="totalList-li-totalWorkTime">

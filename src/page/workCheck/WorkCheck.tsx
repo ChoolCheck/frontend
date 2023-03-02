@@ -73,10 +73,12 @@ const WorkCheck = () => {
     setEndInput(e.target.value);
   };
 
-  const onGetResultClick = () => {
-    //조회 로직 : startInput, endInput 서버에 넘겨주고 결과 list 받기
-    return (event: React.MouseEvent<HTMLButtonElement>) => {
-      event.preventDefault();
+  const onGetDateResultClick = () => {
+    return (e: React.MouseEvent<HTMLButtonElement>) => {
+      e.preventDefault();
+
+      console.log(startInput);
+      console.log(endInput);
       GetDateWorkcheckApi({ startInput, endInput, setWorkcheckToShow });
     };
   };
@@ -126,7 +128,7 @@ const WorkCheck = () => {
           ></input>
           <button
             className="WorkCheck-getResultButton"
-            onClick={onGetResultClick}
+            onClick={onGetDateResultClick}
           >
             조회
           </button>
