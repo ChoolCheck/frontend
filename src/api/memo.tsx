@@ -17,9 +17,7 @@ export async function CreateMemoApi({ date, content }: type.createMemoProps) {
   })
     .then((res) => {})
     .then((res) => {})
-    .catch((err) => {
-      window.alert("메모 추가에 실패했습니다.");
-    });
+    .catch((err) => {});
 }
 
 export async function UpdateMemoApi({
@@ -41,9 +39,7 @@ export async function UpdateMemoApi({
   })
     .then((res) => {})
     .then((res) => {})
-    .catch((err) => {
-      window.alert("메모 수정에 실패했습니다.");
-    });
+    .catch((err) => {});
 }
 
 export async function DeleteMemoApi({ id }: type.deleteMemoProps) {
@@ -56,9 +52,7 @@ export async function DeleteMemoApi({ id }: type.deleteMemoProps) {
     },
   })
     .then((res) => {})
-    .catch((err) => {
-      window.alert("메모 삭제에 실패했습니다.");
-    });
+    .catch((err) => {});
 }
 
 export async function GetDetailMemoApi({ id }: type.getDetailMemoProps) {
@@ -71,9 +65,7 @@ export async function GetDetailMemoApi({ id }: type.getDetailMemoProps) {
     },
   })
     .then((res) => {})
-    .catch((err) => {
-      window.alert("메모 상세 조회에 실패했습니다.");
-    });
+    .catch((err) => {});
 }
 
 export async function GetDateMemoProps({ date }: type.getDateMemoProps) {
@@ -86,7 +78,5 @@ export async function GetDateMemoProps({ date }: type.getDateMemoProps) {
     },
   })
     .then((res) => {})
-    .catch((err) => {
-      window.alert("날짜별 메모 조회에 실패했습니다.");
-    });
+    .catch((err) => {});
 }

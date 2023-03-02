@@ -21,11 +21,8 @@ export async function LoginApi({
       navigate("/calendar");
     })
     .catch((err) => {
-      console.log(err);
-      console.log(err.response.data.message);
-
-      // if (err.response.data.message) window.alert(err.response.data.message);
-      // else window.alert("로그인에 실패했습니다.");
+      if (err.response.data.message) window.alert(err.response.data.message);
+      else window.alert("로그인에 실패했습니다.");
     });
 }
 

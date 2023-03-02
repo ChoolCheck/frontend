@@ -14,9 +14,7 @@ export async function GetUserInfoApi({ setUserInfo }: type.setUserInfoProps) {
     .then((res) => {
       setUserInfo(res.data);
     })
-    .catch((err) => {
-      window.alert("사용자 정보 조회에 실패했습니다.");
-    });
+    .catch((err) => {});
 }
 
 export async function UpdateUserInfoApi({
@@ -35,9 +33,7 @@ export async function UpdateUserInfoApi({
     .then((res) => {
       navigate("/mypage");
     })
-    .catch((err) => {
-      window.alert("사용자 정보 조회에 실패했습니다.");
-    });
+    .catch((err) => {});
 }
 
 export async function UpdatePasswordApi({
@@ -60,7 +56,6 @@ export async function UpdatePasswordApi({
       navigate("/mypage");
     })
     .catch((err) => {
-      window.alert("비밀번호 수정에 실패했습니다.");
       navigate("/mypage");
     });
 }
@@ -78,7 +73,5 @@ export async function SendEmailApi({ navigate }: type.sendEmailProps) {
       window.alert("메일이 전송되었습니다. 메일함을 확인해주세요.");
       navigate("/mypage");
     })
-    .catch((err) => {
-      window.alert("메일 전송에 실패했습니다.");
-    });
+    .catch((err) => {});
 }

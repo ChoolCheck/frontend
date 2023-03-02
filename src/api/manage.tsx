@@ -26,9 +26,7 @@ export async function CreateWorktypeApi({
     .then((res) => {
       setWriteModal(false);
     })
-    .catch((err) => {
-      window.alert("근무 추가에 실패했습니다.");
-    });
+    .catch((err) => {});
 }
 
 export async function GetWorktypeApi({
@@ -43,24 +41,23 @@ export async function GetWorktypeApi({
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
-  }).then((res) => {
-    const workTypeList: {
-      id: string;
-      title: string;
-      startTime: string;
-      endTime: string;
-    }[] = res.data;
-    setWorkTypeList(res.data);
+  })
+    .then((res) => {
+      const workTypeList: {
+        id: string;
+        title: string;
+        startTime: string;
+        endTime: string;
+      }[] = res.data;
+      setWorkTypeList(res.data);
 
-    for (let i = 0; i < workTypeList.length; i++) {
-      if (workTypeList[i].title == hours && setHoursid) {
-        setHoursid(workTypeList[i].id);
+      for (let i = 0; i < workTypeList.length; i++) {
+        if (workTypeList[i].title == hours && setHoursid) {
+          setHoursid(workTypeList[i].id);
+        }
       }
-    }
-  });
-  // .catch((err) => {
-  //   window.alert("근무 형태 조회에 실패했습니다.");
-  // });
+    })
+    .catch((err) => {});
 }
 
 export async function DeleteWorktypeApi({
@@ -82,9 +79,7 @@ export async function DeleteWorktypeApi({
     .then((res) => {
       setWorkTypeList(res);
     })
-    .catch((err) => {
-      window.alert("근무 삭제에 실패했습니다.");
-    });
+    .catch((err) => {});
 }
 
 export async function CreateEmployeeApi({
@@ -113,9 +108,7 @@ export async function CreateEmployeeApi({
     .then((res) => {
       setWriteModal(false);
     })
-    .catch((err) => {
-      window.alert("직원 추가에 실패했습니다.");
-    });
+    .catch((err) => {});
 }
 
 export async function UpdateEmployeeApi({
@@ -147,9 +140,7 @@ export async function UpdateEmployeeApi({
       setWriteModal(false);
       setReadModal(false);
     })
-    .catch((err) => {
-      window.alert("직원 수정에 실패했습니다.");
-    });
+    .catch((err) => {});
 }
 
 export async function DeleteEmployeeApi({
@@ -176,9 +167,7 @@ export async function DeleteEmployeeApi({
     .then((res) => {
       setReadModal(false);
     })
-    .catch((err) => {
-      window.alert("직원 삭제에 실패했습니다.");
-    });
+    .catch((err) => {});
 }
 export async function GetEmployeeApi({
   setEmployeeList,
@@ -209,9 +198,7 @@ export async function GetEmployeeApi({
       }
     })
 
-    .catch((err) => {
-      window.alert("직원 조회에 실패했습니다.");
-    });
+    .catch((err) => {});
 }
 
 export async function GetEmployeeDetailApi({
@@ -234,7 +221,5 @@ export async function GetEmployeeDetailApi({
     .then((res) => {
       setReadModal(res);
     })
-    .catch((err) => {
-      window.alert("직원 상세 조회에 실패했습니다.");
-    });
+    .catch((err) => {});
 }

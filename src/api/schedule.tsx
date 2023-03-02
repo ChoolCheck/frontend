@@ -45,9 +45,7 @@ export async function CreateScheduleApi({
     .then((res) => {
       setWriteModal(false);
     })
-    .catch((err) => {
-      window.alert("스케줄 추가에 실패했습니다.");
-    });
+    .catch((err) => {});
 }
 
 export async function UpdateScheduleApi({
@@ -126,9 +124,7 @@ export async function DeleteScheduleApi({
     .then((res) => {
       setReadModal(false);
     })
-    .catch((err) => {
-      window.alert("스케줄 삭제에 실패했습니다.");
-    });
+    .catch((err) => {});
 }
 
 export async function GetMonthScheduleApi({
@@ -143,9 +139,7 @@ export async function GetMonthScheduleApi({
     },
   })
     .then((res) => {})
-    .catch((err) => {
-      window.alert("월별 스케줄 조회에 실패했습니다.");
-    });
+    .catch((err) => {});
 }
 
 export async function GetWeekScheduleApi({
@@ -158,12 +152,11 @@ export async function GetWeekScheduleApi({
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
-  }).then((res) => {
-    setWeekScheduleList(res.data);
-  });
-  // .catch((err) => {
-  //   window.alert("주별 스케줄 조회에 실패했습니다.");
-  // });
+  })
+    .then((res) => {
+      setWeekScheduleList(res.data);
+    })
+    .catch((err) => {});
 }
 
 export async function GetTotalScheduleApi({
@@ -177,13 +170,12 @@ export async function GetTotalScheduleApi({
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
-  }).then((res) => {
-    setScheduleToShow && setScheduleToShow(res.data);
-    setTotalScheduleList(res.data);
-  });
-  // .catch((err) => {
-  //   window.alert("스케줄 전체 조회에 실패했습니다.");
-  // });
+  })
+    .then((res) => {
+      setScheduleToShow && setScheduleToShow(res.data);
+      setTotalScheduleList(res.data);
+    })
+    .catch((err) => {});
 }
 export async function GetDetailScheduleApi({
   id,
@@ -204,9 +196,7 @@ export async function GetDetailScheduleApi({
     .then((res) => {
       setReadModal(true);
     })
-    .catch((err) => {
-      window.alert("스케줄 상세 조회에 실패했습니다.");
-    });
+    .catch((err) => {});
 }
 
 export async function GetEmployeeScheduleApi({
@@ -224,7 +214,5 @@ export async function GetEmployeeScheduleApi({
     .then((res) => {
       setScheduleToShow(res.data);
     })
-    .catch((err) => {
-      window.alert("직원별 스케줄 조회에 실패했습니다.");
-    });
+    .catch((err) => {});
 }

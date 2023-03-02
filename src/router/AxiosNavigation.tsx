@@ -65,8 +65,11 @@ export default function AxiosNavigation() {
                 });
             }
           }
+        } else if (error.response.data.message) {
+          window.alert(error.response.data.message);
+        } else {
+          window.alert("요청 처리에 실패하였습니다.");
         }
-
         return Promise.reject(error);
       }
     );

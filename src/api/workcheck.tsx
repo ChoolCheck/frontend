@@ -43,9 +43,7 @@ export async function CreateWorkcheckApi({
     .then((res) => {
       setWriteModal(false);
     })
-    .catch((err) => {
-      window.alert("출근부 추가에 실패했습니다.");
-    });
+    .catch((err) => {});
 }
 
 export async function UpdateWorkcheckApi({
@@ -93,9 +91,7 @@ export async function UpdateWorkcheckApi({
       setWriteModal(false);
       setReadModal(false);
     })
-    .catch((err) => {
-      window.alert("출근부 수정에 실패했습니다.");
-    });
+    .catch((err) => {});
 }
 
 export async function DeleteWorkcheckApi({
@@ -118,9 +114,7 @@ export async function DeleteWorkcheckApi({
     .then((res) => {
       setReadModal(false);
     })
-    .catch((err) => {
-      window.alert("출근부 삭제에 실패했습니다.");
-    });
+    .catch((err) => {});
 }
 
 export async function GetMonthWorkcheckApi({
@@ -139,9 +133,7 @@ export async function GetMonthWorkcheckApi({
       console.log(res.data);
       setWorkcheckToShow(res.data);
     })
-    .catch((err) => {
-      window.alert("월별 출근부 조회에 실패했습니다.");
-    });
+    .catch((err) => {});
 }
 export async function GetDateWorkcheckApi({
   startInput,
@@ -160,9 +152,7 @@ export async function GetDateWorkcheckApi({
       console.log(res.data);
       setWorkcheckToShow(res.data);
     })
-    .catch((err) => {
-      window.alert("월별 출근부 조회에 실패했습니다.");
-    });
+    .catch((err) => {});
 }
 
 export async function GetDetailWorkcheckApi({
@@ -185,9 +175,7 @@ export async function GetDetailWorkcheckApi({
     .then((res) => {
       setReadModal(true);
     })
-    .catch((err) => {
-      window.alert("출근부 상세 조회에 실패했습니다.");
-    });
+    .catch((err) => {});
 }
 
 export async function GetEmployeeWorkcheckApi({
@@ -205,9 +193,7 @@ export async function GetEmployeeWorkcheckApi({
     .then((res) => {
       setWorkcheckToShow(res.data);
     })
-    .catch((err) => {
-      window.alert("직원별 출근부 조회에 실패했습니다.");
-    });
+    .catch((err) => {});
 }
 export async function GetTotalWorkcheckApi({
   setTotalWorkCheckList,
@@ -225,7 +211,5 @@ export async function GetTotalWorkcheckApi({
       setWorkcheckToShow && setWorkcheckToShow(res.data);
       setTotalWorkCheckList(res.data);
     })
-    .catch((err) => {
-      window.alert("출근부 전체 조회에 실패했습니다.");
-    });
+    .catch((err) => {});
 }

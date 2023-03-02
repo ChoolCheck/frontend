@@ -15,9 +15,7 @@ export async function GetMonthStatisticsApi({
     },
   })
     .then((res) => {})
-    .catch((err) => {
-      window.alert("월별 통계 조회에 실패했습니다.");
-    });
+    .catch((err) => {});
 }
 
 export async function GetDateStatisticsProps({
@@ -33,7 +31,5 @@ export async function GetDateStatisticsProps({
     },
   })
     .then((res) => {})
-    .catch((err) => {
-      window.alert("기간별 통계 조회에 실패했습니다.");
-    });
+    .catch((err) => {});
 }
