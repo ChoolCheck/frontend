@@ -11,7 +11,7 @@ import * as employeeType from "../../commonType/employee";
 import * as worktypeType from "../../commonType/worktype";
 import * as type from "./type";
 
-import UpdateWorkCheckView from "./UpdateWorkCheckView";
+import UpdateWorkCheckView from "./view/UpdateWorkCheckView";
 
 const UpdateWorkCheck = ({
   id,

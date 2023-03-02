@@ -8,7 +8,7 @@ import { setTotalWorkcheckList } from "../../Redux/Actions/handleTotalWorkcheckL
 import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/Reducers/rootReducer";
 
-import WorkCheckDetailView from "./WorkCheckDetailView";
+import WorkCheckDetailView from "./view/WorkCheckDetailView";
 import WriteModal from "../../components/modal/WriteModal";
 import UpdateWorkCheck from "./UpdateWorkCheck";
 

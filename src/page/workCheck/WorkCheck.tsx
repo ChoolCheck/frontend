@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import WorkCheckView from "./WorkCheckView";
+import WorkCheckView from "./view/WorkCheckView";
 import "./style/workCheck.scss";
 
 import { useDispatch } from "react-redux";

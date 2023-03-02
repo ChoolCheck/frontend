@@ -10,7 +10,7 @@ import * as type from "./type";
 import * as employeeType from "../../commonType/employee";
 import * as worktypeType from "../../commonType/worktype";
 
-import CreateWorkCheckView from "./CreateWorkCheckView";
+import CreateWorkCheckView from "./view/CreateWorkCheckView";
 
 const CreateWorkCheck = () => {
   const dispatch = useDispatch();

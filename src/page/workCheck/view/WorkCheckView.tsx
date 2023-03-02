@@ -1,9 +1,9 @@
-import "./style/workCheckView.scss";
-import * as type from "./type";
-import * as enumType from "../../commonType/enum";
+import "../style/workCheckView.scss";
+import * as type from "../type";
+import * as enumType from "../../../commonType/enum";
 import { useSelector } from "react-redux";
 
-import { RootState } from "../../Redux/Reducers/rootReducer";
+import { RootState } from "../../../Redux/Reducers/rootReducer";
 
 const WorkCheckView = ({
   onShowNameButtonClick,
