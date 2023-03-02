@@ -63,11 +63,16 @@ $opacity-zero: 0.3;
         text-align: center;
       }
       input,
-      select {
+      select,
+      textarea {
         font-size: 18px;
         border: 1px solid rgb(161, 161, 161);
         border-radius: 10px;
         padding: 5px;
+      }
+
+      textarea {
+        height: 100px;
       }
 
       /*read modal style*/

@@ -22,7 +22,6 @@ export async function CreateMemoApi({
     .then((res) => {
       setWriteModal(false);
     })
-    .then((res) => {})
     .catch((err) => {});
 }
 
