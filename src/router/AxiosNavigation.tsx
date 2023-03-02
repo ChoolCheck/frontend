@@ -3,8 +3,8 @@ import axios from "axios";
 import { config } from "../static/config";
 import { useNavigate } from "react-router-dom";
 
-export function useAxiosNavigation() {
-  const navRef = useRef(useNavigate());
+export default function AxiosNavigation() {
+  // const navRef = useRef(useNavigate());
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -77,9 +77,5 @@ export function useAxiosNavigation() {
       axios.interceptors.response.eject(interceptor);
     };
   }, []);
-}
-
-export default function AxiosNavigation() {
-  useAxiosNavigation();
   return <></>;
 }
