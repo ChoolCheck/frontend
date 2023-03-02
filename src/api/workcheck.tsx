@@ -83,13 +83,7 @@ export async function UpdateWorkcheckApi({
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
-    data: {
-      employee_id: employeeId,
-      hours_id: hours_id,
-      date: date,
-      startTime: startTime,
-      endTime: endTime,
-    },
+    data: data,
   })
     .then((res) => {
       GetTotalWorkcheckApi({ setTotalWorkCheckList });
@@ -107,6 +101,8 @@ export async function DeleteWorkcheckApi({
   id,
   setReadModal,
   setTotalWorkCheckList,
+  setWorkcheckToShow,
+  totalWorkcheckList,
 }: type.deleteWorkcheckProps) {
   await axios({
     method: "Delete",
@@ -119,7 +115,9 @@ export async function DeleteWorkcheckApi({
     .then((res) => {
       GetTotalWorkcheckApi({ setTotalWorkCheckList });
     })
-
+    .then((res) => {
+      setWorkcheckToShow(totalWorkcheckList);
+    })
     .then((res) => {
       setReadModal(false);
     })

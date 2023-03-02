@@ -73,6 +73,10 @@ export interface deleteWorkcheckProps {
     type: "handleTotalWorkcheckList/SETTOTALWORKCHECKLIST";
     payload: reducerType.workcheckObjProps[] | undefined;
   };
+  setWorkcheckToShow: (
+    value: React.SetStateAction<workcheckObjProps[] | undefined>
+  ) => void;
+  totalWorkcheckList: workcheckObjProps[] | undefined;
 }
 
 export interface getMonthWorkcheckProps {

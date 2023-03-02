@@ -14,7 +14,10 @@ import UpdateWorkCheck from "./UpdateWorkCheck";
 
 import { DeleteWorkcheckApi } from "../../api/workcheck";
 
-const WorkCheckDetail = ({ workcheckDetail }: type.workcheckDetailProps) => {
+const WorkCheckDetail = ({
+  workcheckDetail,
+  setWorkcheckToShow,
+}: type.workcheckDetailProps) => {
   const dispatch = useDispatch();
 
   const setWriteModal = useCallback(
@@ -35,17 +38,26 @@ const WorkCheckDetail = ({ workcheckDetail }: type.workcheckDetailProps) => {
       dispatch(setTotalWorkcheckList(totalWorkcheckList)),
     [dispatch]
   );
+
+  const totalWorkCheckList = useSelector(
+    (state: RootState) => state.totalWorkcheckListReducer
+  );
+
   const onUpdateClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     setWriteModal(true);
   };
+  setWorkcheckToShow(totalWorkCheckList.totalWorkcheckList);
 
   const onDeleteClick = (id: number) => {
+    const totalWorkcheckList = totalWorkCheckList.totalWorkcheckList;
     return (e: React.MouseEvent<HTMLButtonElement>) => {
       if (window.confirm("해당 스케줄을 정말로 삭제하시겠습니까?")) {
         DeleteWorkcheckApi({
           setReadModal,
           id,
           setTotalWorkCheckList,
+          setWorkcheckToShow,
+          totalWorkcheckList,
         });
       } else {
         window.alert("스케줄 삭제가 취소되었습니다.");

@@ -76,12 +76,11 @@ const WorkCheck = () => {
   };
 
   const onGetDateResultClick = () => {
+    console.log(startInput);
+    console.log(endInput);
+    GetDateWorkcheckApi({ startInput, endInput, setWorkcheckToShow });
     return (e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
-
-      console.log(startInput);
-      console.log(endInput);
-      GetDateWorkcheckApi({ startInput, endInput, setWorkcheckToShow });
     };
   };
 
@@ -118,7 +117,10 @@ const WorkCheck = () => {
 
       {readModalState && (
         <ReadModal>
-          <WorkCheckDetail workcheckDetail={workcheckDetail}></WorkCheckDetail>
+          <WorkCheckDetail
+            workcheckDetail={workcheckDetail}
+            setWorkcheckToShow={setWorkcheckToShow}
+          ></WorkCheckDetail>
         </ReadModal>
       )}
       <div className="WorkCheck-Header-container">

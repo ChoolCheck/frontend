@@ -22,13 +22,11 @@ export default function AxiosNavigation() {
       },
       async function (error) {
         const originalConfig = error.config;
-        console.log("-- token is expired : " + error + " --");
-
         if (error?.response?.status == 401) {
           if (error.response.data.message == "expired") {
-            console.log("-- token refresh post --");
-            // token refresh 요청
+            console.log("-- token is expired : " + error + " --");
             try {
+              console.log("-- token refresh post --");
               const res = await axios({
                 url: `${config.api}/user/reissue`,
                 method: "Post",

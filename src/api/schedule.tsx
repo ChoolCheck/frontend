@@ -107,6 +107,7 @@ export async function DeleteScheduleApi({
   setReadModal,
   setTotalScheduleList,
   setWeekScheduleList,
+  onShowTotalButtonClick,
 }: type.deleteScheduleProps) {
   await axios({
     method: "Delete",
@@ -120,7 +121,9 @@ export async function DeleteScheduleApi({
       GetWeekScheduleApi({ setWeekScheduleList });
       GetTotalScheduleApi({ setTotalScheduleList });
     })
-
+    .then((res) => {
+      onShowTotalButtonClick();
+    })
     .then((res) => {
       setReadModal(false);
     })

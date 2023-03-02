@@ -80,6 +80,9 @@ export interface updateWorkcheckViewProps
 }
 
 export interface workcheckDetailProps {
+  setWorkcheckToShow: (
+    value: React.SetStateAction<workcheckObjProps[] | undefined>
+  ) => void;
   workcheckDetail: workcheckObjProps | undefined;
 }
 

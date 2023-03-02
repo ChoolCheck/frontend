@@ -26,7 +26,7 @@ const WorkCheckDetailView = ({
 
   return (
     <div className="employeeDetailView-container">
-      <h3>스케줄 정보</h3>
+      <h3>출근부 정보</h3>
       <div className="detail-info">
         <p className="modal-date">
           <span className="detail-title">날짜</span>
@@ -63,10 +63,10 @@ const WorkCheckDetailView = ({
       </div>
       <div className="modal-read-button-container">
         <button className="update-button" onClick={onUpdateClick}>
-          스케줄 수정
+          출근부 수정
         </button>
         <button className="delete-button" onClick={onDeleteClick(id)}>
-          스케줄 삭제
+          출근부 삭제
         </button>
       </div>
     </div>

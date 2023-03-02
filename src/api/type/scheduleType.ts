@@ -88,4 +88,7 @@ export interface deleteScheduleProps extends setScheduleListTypes {
     type: "handleReadModal/SETREADMODAL";
     payload: boolean;
   };
+  onShowTotalButtonClick: () => (
+    e: React.MouseEvent<HTMLButtonElement>
+  ) => void;
 }
