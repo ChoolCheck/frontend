@@ -19,13 +19,14 @@ import Mypage from "../page/User/Mypage";
 import UpdateUser from "../page/User/UpdateUser";
 import UpdatePassword from "../page/User/UpdatePassword";
 import CheckToSendEmail from "../page/User/CheckToSendEmail";
+import AxiosNavigation from "./AxiosNavigation";
 
 const AppRouter = () => {
   return (
     <>
       <BrowserRouter>
+        <AxiosNavigation />
         <Navigation />
-
         <Routes>
           <Route element={<PublicLayout />}>
             <Route path="/login" element={<Login />} />
