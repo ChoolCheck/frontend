@@ -75,11 +75,8 @@ const Schedule = () => {
     };
   };
 
-  const onShowTotalButtonClick = () => {
-    return (e: React.MouseEvent<HTMLButtonElement>) => {
-      e.preventDefault();
-      setScheduleToShow(totalScheduleList);
-    };
+  const onShowTotalButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setScheduleToShow(totalScheduleList);
   };
 
   const onItemClick = (id: number) => {
@@ -118,14 +115,13 @@ const Schedule = () => {
           ></CreateSchedule>
         </WriteModal>
       )}
-
       {readModalState && (
         <ReadModal>
           <ScheduleDetail
             scheduleDetail={scheduleDetail}
             setTotalScheduleList={setTotalScheduleList}
             setWeekScheduleList={setWeekScheduleList}
-            onShowTotalButtonClick={onShowTotalButtonClick}
+            setScheduleToShow={setScheduleToShow}
           ></ScheduleDetail>
         </ReadModal>
       )}

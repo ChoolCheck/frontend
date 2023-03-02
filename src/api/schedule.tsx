@@ -107,7 +107,7 @@ export async function DeleteScheduleApi({
   setReadModal,
   setTotalScheduleList,
   setWeekScheduleList,
-  onShowTotalButtonClick,
+  setScheduleToShow,
 }: type.deleteScheduleProps) {
   await axios({
     method: "Delete",
@@ -119,11 +119,9 @@ export async function DeleteScheduleApi({
   })
     .then((res) => {
       GetWeekScheduleApi({ setWeekScheduleList });
-      GetTotalScheduleApi({ setTotalScheduleList });
+      GetTotalScheduleApi({ setTotalScheduleList, setScheduleToShow });
     })
-    .then((res) => {
-      onShowTotalButtonClick();
-    })
+
     .then((res) => {
       setReadModal(false);
     })
@@ -166,8 +164,10 @@ export async function GetWeekScheduleApi({
   //   window.alert("주별 스케줄 조회에 실패했습니다.");
   // });
 }
+
 export async function GetTotalScheduleApi({
   setTotalScheduleList,
+  setScheduleToShow,
 }: type.getTotalScheduleProps) {
   await axios({
     method: "GET",
@@ -177,6 +177,7 @@ export async function GetTotalScheduleApi({
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
   }).then((res) => {
+    setScheduleToShow && setScheduleToShow(res.data);
     setTotalScheduleList(res.data);
   });
   // .catch((err) => {

@@ -105,6 +105,10 @@ export interface getDetailWorkcheckProps {
 }
 
 export interface getTotalWorkcheckProps {
+  setWorkcheckToShow?: (
+    value: React.SetStateAction<workcheckObjProps[] | undefined>
+  ) => void;
+
   setTotalWorkCheckList: (
     totalWorkcheckList: workcheckObjProps[] | undefined
   ) => {

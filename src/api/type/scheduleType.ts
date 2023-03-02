@@ -47,6 +47,10 @@ export interface getEmployeeScheduleProps {
 }
 
 export interface getTotalScheduleProps {
+  setScheduleToShow?: (
+    value: React.SetStateAction<scheduleObjProps[] | undefined>
+  ) => void;
+
   setTotalScheduleList: React.Dispatch<
     React.SetStateAction<scheduleObjProps[] | undefined>
   >;
@@ -88,7 +92,7 @@ export interface deleteScheduleProps extends setScheduleListTypes {
     type: "handleReadModal/SETREADMODAL";
     payload: boolean;
   };
-  onShowTotalButtonClick: () => (
-    e: React.MouseEvent<HTMLButtonElement>
+  setScheduleToShow: (
+    value: React.SetStateAction<scheduleObjProps[] | undefined>
   ) => void;
 }

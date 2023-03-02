@@ -102,7 +102,6 @@ export async function DeleteWorkcheckApi({
   setReadModal,
   setTotalWorkCheckList,
   setWorkcheckToShow,
-  totalWorkcheckList,
 }: type.deleteWorkcheckProps) {
   await axios({
     method: "Delete",
@@ -113,10 +112,7 @@ export async function DeleteWorkcheckApi({
     },
   })
     .then((res) => {
-      GetTotalWorkcheckApi({ setTotalWorkCheckList });
-    })
-    .then((res) => {
-      setWorkcheckToShow(totalWorkcheckList);
+      GetTotalWorkcheckApi({ setTotalWorkCheckList, setWorkcheckToShow });
     })
     .then((res) => {
       setReadModal(false);
@@ -212,9 +208,9 @@ export async function GetEmployeeWorkcheckApi({
       window.alert("직원별 출근부 조회에 실패했습니다.");
     });
 }
-
 export async function GetTotalWorkcheckApi({
   setTotalWorkCheckList,
+  setWorkcheckToShow,
 }: type.getTotalWorkcheckProps) {
   await axios({
     method: "GET",
@@ -225,7 +221,7 @@ export async function GetTotalWorkcheckApi({
     },
   })
     .then((res) => {
-      console.log(res.data);
+      setWorkcheckToShow && setWorkcheckToShow(res.data);
       setTotalWorkCheckList(res.data);
     })
     .catch((err) => {

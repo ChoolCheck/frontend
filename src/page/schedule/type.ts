@@ -96,9 +96,9 @@ export interface updateScheduleViewProps
 
 export interface scheduleDetailProps extends setScheduleListTypes {
   scheduleDetail: scheduleObjProps | undefined;
-  onShowTotalButtonClick: () => (
-    e: React.MouseEvent<HTMLButtonElement>
-  ) => void;
+  setScheduleToShow: React.Dispatch<
+    React.SetStateAction<scheduleObjProps[] | undefined>
+  >;
 }
 
 export interface scheduleDetailViewProps {
