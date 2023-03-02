@@ -55,7 +55,27 @@ export async function UpdateWorkcheckApi({
   date,
   startTime,
   endTime,
+  setWriteModal,
+  setReadModal,
+  setTotalWorkCheckList,
 }: type.updateWorkcheckProps) {
+  let data;
+  if (hours_id == "") {
+    data = {
+      employee_id: employeeId,
+      date: date,
+      startTime: startTime.substring(0, 5),
+      endTime: endTime.substring(0, 5),
+    };
+  } else {
+    data = {
+      employee_id: employeeId,
+      hours_id: hours_id,
+      date: date,
+      startTime: startTime.substring(0, 5),
+      endTime: endTime.substring(0, 5),
+    };
+  }
   await axios({
     method: "Patch",
     url: `${config.api}/work/${id}`,
@@ -71,14 +91,23 @@ export async function UpdateWorkcheckApi({
       endTime: endTime,
     },
   })
-    .then((res) => {})
-    .then((res) => {})
+    .then((res) => {
+      GetTotalWorkcheckApi({ setTotalWorkCheckList });
+    })
+    .then((res) => {
+      setWriteModal(false);
+      setReadModal(false);
+    })
     .catch((err) => {
       window.alert("출근부 수정에 실패했습니다.");
     });
 }
 
-export async function DeleteWorkcheckApi({ id }: type.deleteWorkcheckProps) {
+export async function DeleteWorkcheckApi({
+  id,
+  setReadModal,
+  setTotalWorkCheckList,
+}: type.deleteWorkcheckProps) {
   await axios({
     method: "Delete",
     url: `${config.api}/work/${id}`,
@@ -87,7 +116,13 @@ export async function DeleteWorkcheckApi({ id }: type.deleteWorkcheckProps) {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
   })
-    .then((res) => {})
+    .then((res) => {
+      GetTotalWorkcheckApi({ setTotalWorkCheckList });
+    })
+
+    .then((res) => {
+      setReadModal(false);
+    })
     .catch((err) => {
       window.alert("출근부 삭제에 실패했습니다.");
     });

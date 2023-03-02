@@ -38,16 +38,41 @@ export interface createWorkcheckProps {
 }
 
 export interface updateWorkcheckProps {
-  id: string;
+  id: number;
   employeeId: string;
   hours_id: string;
   date: string;
   startTime: string;
   endTime: string;
+
+  setReadModal: (readModalState: boolean) => {
+    type: "handleReadModal/SETREADMODAL";
+    payload: boolean;
+  };
+  setWriteModal: (readModalState: boolean) => {
+    type: "handleWriteodal/SETWRITEMODAL";
+    payload: boolean;
+  };
+  setTotalWorkCheckList: (
+    totalWorkcheckList: workcheckObjProps[] | undefined
+  ) => {
+    type: "handleTotalWorkcheckList/SETTOTALWORKCHECKLIST";
+    payload: reducerType.workcheckObjProps[] | undefined;
+  };
 }
 
 export interface deleteWorkcheckProps {
   id: number;
+  setReadModal: (readModalState: boolean) => {
+    type: "handleReadModal/SETREADMODAL";
+    payload: boolean;
+  };
+  setTotalWorkCheckList: (
+    totalWorkcheckList: workcheckObjProps[] | undefined
+  ) => {
+    type: "handleTotalWorkcheckList/SETTOTALWORKCHECKLIST";
+    payload: reducerType.workcheckObjProps[] | undefined;
+  };
 }
 
 export interface getMonthWorkcheckProps {

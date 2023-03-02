@@ -49,3 +49,46 @@ export interface workCheckViewProps {
 
   workcheckToShow: workcheckObjProps[] | undefined;
 }
+
+export interface updateWorkcheckProps {
+  id: number;
+  workcheckDetail: workcheckObjProps | undefined;
+}
+
+export interface updateWorkcheckViewProps
+  extends employeeType.employeeList,
+    worktypeType.workTypeList {
+  hours_id: string;
+  employeeId: string;
+  date: string;
+  startTime: string;
+  endTime: string;
+  onChangeEmployee: React.ChangeEventHandler<HTMLSelectElement>;
+  onChangeDate: React.ChangeEventHandler<HTMLInputElement>;
+
+  onChangeWorkType: (
+    id: number,
+    startTime: string,
+    endTime: string
+  ) => (e: React.ChangeEvent<HTMLInputElement>) => void;
+
+  onChangeStartTime: React.ChangeEventHandler<HTMLInputElement>;
+  onChangeEndTime: React.ChangeEventHandler<HTMLInputElement>;
+
+  onClickCancelOnModal: React.MouseEventHandler<HTMLButtonElement>;
+  onClickUpdate: React.MouseEventHandler<HTMLButtonElement>;
+}
+
+export interface workcheckDetailProps {
+  workcheckDetail: workcheckObjProps | undefined;
+}
+
+export interface workcheckDetailViewProps {
+  id: number;
+  workcheckDetail: workcheckObjProps | undefined;
+
+  onUpdateClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onDeleteClick: (
+    id: number
+  ) => (e: React.MouseEvent<HTMLButtonElement>) => void;
+}
