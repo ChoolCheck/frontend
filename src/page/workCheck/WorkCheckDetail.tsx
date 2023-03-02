@@ -46,7 +46,6 @@ const WorkCheckDetail = ({
   const onUpdateClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     setWriteModal(true);
   };
-  setWorkcheckToShow(totalWorkCheckList.totalWorkcheckList);
 
   const onDeleteClick = (id: number) => {
     const totalWorkcheckList = totalWorkCheckList.totalWorkcheckList;
@@ -57,7 +56,6 @@ const WorkCheckDetail = ({
           id,
           setTotalWorkCheckList,
           setWorkcheckToShow,
-          totalWorkcheckList,
         });
       } else {
         window.alert("스케줄 삭제가 취소되었습니다.");
@@ -72,6 +70,7 @@ const WorkCheckDetail = ({
           <UpdateWorkCheck
             id={workcheckDetail ? workcheckDetail.id : 0}
             workcheckDetail={workcheckDetail}
+            setWorkcheckToShow={setWorkcheckToShow}
           ></UpdateWorkCheck>
         </WriteModal>
       )}

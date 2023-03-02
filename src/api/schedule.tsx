@@ -61,6 +61,7 @@ export async function UpdateScheduleApi({
   setReadModal,
   setWeekScheduleList,
   setTotalScheduleList,
+  setScheduleToShow,
 }: type.updateScheduleProps) {
   let data;
   if (hours_id == "") {
@@ -91,7 +92,7 @@ export async function UpdateScheduleApi({
   })
     .then((res) => {
       GetWeekScheduleApi({ setWeekScheduleList });
-      GetTotalScheduleApi({ setTotalScheduleList });
+      GetTotalScheduleApi({ setTotalScheduleList, setScheduleToShow });
     })
     .then((res) => {
       setWriteModal(false);

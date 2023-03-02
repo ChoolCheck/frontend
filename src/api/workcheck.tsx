@@ -58,6 +58,7 @@ export async function UpdateWorkcheckApi({
   setWriteModal,
   setReadModal,
   setTotalWorkCheckList,
+  setWorkcheckToShow,
 }: type.updateWorkcheckProps) {
   let data;
   if (hours_id == "") {
@@ -86,7 +87,7 @@ export async function UpdateWorkcheckApi({
     data: data,
   })
     .then((res) => {
-      GetTotalWorkcheckApi({ setTotalWorkCheckList });
+      GetTotalWorkcheckApi({ setTotalWorkCheckList, setWorkcheckToShow });
     })
     .then((res) => {
       setWriteModal(false);

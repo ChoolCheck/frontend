@@ -16,6 +16,7 @@ import UpdateWorkCheckView from "./UpdateWorkCheckView";
 const UpdateWorkCheck = ({
   id,
   workcheckDetail,
+  setWorkcheckToShow,
 }: type.updateWorkcheckProps) => {
   const dispatch = useDispatch();
 
@@ -140,6 +141,7 @@ const UpdateWorkCheck = ({
         setWriteModal,
         setReadModal,
         setTotalWorkCheckList,
+        setWorkcheckToShow,
       });
   };
 

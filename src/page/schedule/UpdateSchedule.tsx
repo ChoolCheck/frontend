@@ -17,6 +17,7 @@ const UpdateSchedule = ({
   scheduleDetail,
   setWeekScheduleList,
   setTotalScheduleList,
+  setScheduleToShow,
 }: type.updateScheduleProps) => {
   const dispatch = useDispatch();
 
@@ -136,6 +137,7 @@ const UpdateSchedule = ({
         setReadModal,
         setWeekScheduleList,
         setTotalScheduleList,
+        setScheduleToShow,
       });
   };
 

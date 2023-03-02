@@ -68,6 +68,9 @@ export interface createScheduleViewProps
 export interface updateScheduleProps extends setScheduleListTypes {
   id: number;
   scheduleDetail: scheduleObjProps | undefined;
+  setScheduleToShow: React.Dispatch<
+    React.SetStateAction<scheduleObjProps[] | undefined>
+  >;
 }
 
 export interface updateScheduleViewProps

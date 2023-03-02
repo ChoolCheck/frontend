@@ -61,6 +61,7 @@ const ScheduleDetail = ({
             scheduleDetail={scheduleDetail}
             setWeekScheduleList={setWeekScheduleList}
             setTotalScheduleList={setTotalScheduleList}
+            setScheduleToShow={setScheduleToShow}
           ></UpdateSchedule>
         </WriteModal>
       )}
