@@ -1,6 +1,3 @@
-import * as employeeType from "../../commonType/employee";
-import * as worktypeType from "../../commonType/worktype";
-
 export interface createMemoViewProps {
   memoForm: {
     content: string;
