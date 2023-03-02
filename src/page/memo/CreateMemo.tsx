@@ -1,6 +1,11 @@
 import React, { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
+
+import { CreateMemoApi } from "../../api/memo";
+
+import * as type from "./type";
+import CreateMemoView from "./CreateMemoView";
 import "./createMemo.scss";
 
 const CreateMemo = () => {
@@ -10,6 +15,12 @@ const CreateMemo = () => {
     (readModalState: boolean) => dispatch(setWriteModalOpen(readModalState)),
     [dispatch]
   );
+
+  const [date, setDate] = useState("");
+  const [content, setContent] = useState("");
+
+  const memoForm = { date, content };
+
   const onClickCancelOnModal = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (window.confirm("정말로 작성을 취소하시겠습니까?")) {
@@ -18,32 +29,35 @@ const CreateMemo = () => {
     } else return;
   };
 
+  const onChangeDate = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setDate(e.target.value);
+  };
+  const onChangeContent = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setContent(e.target.value);
+  };
+
+  const onClickCreate = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (date == "") {
+      window.alert("날짜를 선택해주세요.");
+    } else if (content == "") {
+      window.alert("내용을 입력해주세요.");
+    } else
+      CreateMemoApi({
+        date,
+        content,
+        setWriteModal,
+      });
+  };
+
   return (
-    <div className="CreateWorkCheck-container">
-      <h3>메모 작성</h3>
-      <div className="CreateWorkCheck-content">
-        <p className="modal-employee">
-          <span>직원</span>
-          <input></input>
-        </p>
-        <p className="modal-date">
-          <span>날짜</span>
-          <input type="date"></input>
-        </p>
-        <p className="modal-content">
-          <span>내용</span>
-          <textarea></textarea>
-        </p>
-      </div>
-      <div className="modal-write-button-container">
-        <button
-          className="modal-write-close-button"
-          onClick={onClickCancelOnModal}
-        >
-          취소
-        </button>
-        <button>완료</button>
-      </div>
+    <div>
+      <CreateMemoView
+        onClickCancelOnModal={onClickCancelOnModal}
+        memoForm={memoForm}
+        onChangeDate={onChangeDate}
+        onChangeContent={onChangeContent}
+        onClickCreate={onClickCreate}
+      ></CreateMemoView>
     </div>
   );
 };

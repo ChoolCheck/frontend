@@ -2,7 +2,11 @@ import axios from "axios";
 import { config } from "../static/config";
 import * as type from "./type/memoType";
 
-export async function CreateMemoApi({ date, content }: type.createMemoProps) {
+export async function CreateMemoApi({
+  date,
+  content,
+  setWriteModal,
+}: type.createMemoProps) {
   await axios({
     method: "POST",
     url: `${config.api}/memo`,
@@ -15,7 +19,9 @@ export async function CreateMemoApi({ date, content }: type.createMemoProps) {
       content: content,
     },
   })
-    .then((res) => {})
+    .then((res) => {
+      setWriteModal(false);
+    })
     .then((res) => {})
     .catch((err) => {});
 }
