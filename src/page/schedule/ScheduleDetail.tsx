@@ -16,7 +16,7 @@ const ScheduleDetail = ({
   scheduleDetail,
   setTotalScheduleList,
   setWeekScheduleList,
-  onShowTotalButtonClick,
+  setScheduleToShow,
 }: type.scheduleDetailProps) => {
   const dispatch = useDispatch();
 
@@ -44,7 +44,7 @@ const ScheduleDetail = ({
           id,
           setTotalScheduleList,
           setWeekScheduleList,
-          onShowTotalButtonClick,
+          setScheduleToShow,
         });
       } else {
         window.alert("스케줄 삭제가 취소되었습니다.");
