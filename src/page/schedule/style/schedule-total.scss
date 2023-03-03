@@ -9,7 +9,6 @@
 
   .ScheduleTotalView-left-container,
   .ScheduleTotalView-right-container {
-    min-height: 400px;
     font-size: 18px;
     max-height: 450px;
     background-color: rgb(238, 238, 238);
@@ -136,8 +135,8 @@
     display: block;
 
     .ScheduleTotalView-left-container {
+      min-width: 700px;
       margin: 0 auto;
-      min-height: 100px;
       margin: 10px;
       h2 {
         padding: 40px 0 40px 0;
@@ -155,6 +154,7 @@
           display: flex;
           width: 120px;
           align-items: center;
+
           .employee-list-li-color {
             padding: 0 5px 0 5px;
             border-radius: 8px;

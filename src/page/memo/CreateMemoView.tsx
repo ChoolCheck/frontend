@@ -1,4 +1,5 @@
 import * as type from "./type";
+import "./createMemo.scss";
 
 const CreateMemoView = ({
   memoForm,
@@ -8,9 +9,9 @@ const CreateMemoView = ({
   onClickCreate,
 }: type.createMemoViewProps) => {
   return (
-    <div className="CreateWorkCheck-container">
+    <div className="CreateMemo-container">
       <h3>메모 작성</h3>
-      <div className="CreateWorkCheck-content">
+      <div className="CreateMemo-content">
         <p className="modal-date">
           <span>날짜</span>
           <input type="date" name="date" onChange={onChangeDate}></input>

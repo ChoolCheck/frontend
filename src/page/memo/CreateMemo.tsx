@@ -1,12 +1,8 @@
 import React, { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
-
 import { CreateMemoApi } from "../../api/memo";
-
-import * as type from "./type";
 import CreateMemoView from "./CreateMemoView";
-import "./createMemo.scss";
 
 const CreateMemo = () => {
   const dispatch = useDispatch();
