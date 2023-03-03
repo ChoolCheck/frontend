@@ -86,11 +86,11 @@ const Calendar = () => {
   // };
 
   const onCalendarClick = (calendarData: any) => {
+    console.log(date);
     const date = (
       calendarData.event.start.getFullYear() +
       "-" +
-      calendarData.event.start.getMonth() +
-      1 +
+      (calendarData.event.start.getMonth() + 1) +
       "-" +
       calendarData.event.start.getDate()
     ).toString();
