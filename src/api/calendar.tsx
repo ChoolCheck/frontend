@@ -12,6 +12,15 @@ export async function GetTotalCalendarApi({
   calendarTotalList,
   setCalendarTotalList,
 }: type.getTotalCalendarProps) {
+  const date = new Date();
+  const today =
+    date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDay();
+
+  const monthStart = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + 1;
+
+  const lastDate = new Date(date.getFullYear(), date.getMonth(), 0);
+  const monthEnd = lastDate.getDate();
+
   const axiosInstance = axios.create({
     headers: {
       "Content-Type": `application/json`,
@@ -22,8 +31,12 @@ export async function GetTotalCalendarApi({
 
   axios
     .all([
-      axiosInstance.get(`${config.api}/schedule`),
-      axiosInstance.get(`${config.api}/work`),
+      axiosInstance.get(
+        `${config.api}/schedule/date?start=${today}&end=${monthEnd}`
+      ),
+      axiosInstance.get(
+        `${config.api}/work/date?start=${monthStart}&end=${today}`
+      ),
     ])
     .then(
       axios.spread((res1, res2) => {
@@ -140,7 +153,6 @@ export async function GetDetailCalendarApi({
       console.log(calendarDetailWorkcheckList);
     })
     .catch((err) => {});
-  // time : startTime+"-"+endTime
 
   await axios({
     method: "GET",

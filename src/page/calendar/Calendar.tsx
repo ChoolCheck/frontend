@@ -86,7 +86,6 @@ const Calendar = () => {
   // };
 
   const onCalendarClick = (calendarData: any) => {
-    console.log(date);
     const date = (
       calendarData.event.start.getFullYear() +
       "-" +
