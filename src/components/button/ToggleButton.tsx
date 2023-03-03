@@ -30,13 +30,13 @@ const ToggleButton = ({
   return (
     <div className="togglebutton-container">
       <button
-        className="toggleButton selected page-header-button"
+        className="toggleButton selected page-header-button left"
         onClick={onToggleButtonClick}
       >
         {leftButtonTitle}
       </button>
       <button
-        className="toggleButton page-header-button"
+        className="toggleButton page-header-button right"
         onClick={onToggleButtonClick}
       >
         {rightButtonTitle}

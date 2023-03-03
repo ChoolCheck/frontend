@@ -5,7 +5,7 @@ import "./style/calendarView.scss";
 import * as type from "./type";
 
 const CalendarView = ({
-  calendarData,
+  calendarTotalList,
   onCalendarClick,
   onCreateWorkcheckClick,
   onCreateMemoClick,
@@ -25,7 +25,7 @@ const CalendarView = ({
             click: onCreateMemoClick,
           },
         }}
-        events={calendarData}
+        events={calendarTotalList}
         themeSystem="Simplex"
         headerToolbar={{
           left: "prev",

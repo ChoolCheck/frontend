@@ -44,12 +44,12 @@
 .fc-daygrid-day-frame {
   overflow-y: auto;
   height: 120px;
-}
-.fc-h-event {
-  padding: 4px 2px 4px 2px;
-  border-radius: 5px;
-  border: none;
-  text-align: center;
+  .fc-h-event {
+    padding: 4px 2px 4px 2px;
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+  }
 }
 
 /* calendar custom */

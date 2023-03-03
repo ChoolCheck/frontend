@@ -134,6 +134,7 @@ export async function GetMonthWorkcheckApi({
     })
     .catch((err) => {});
 }
+
 export async function GetDateWorkcheckApi({
   startInput,
   endInput,
@@ -192,6 +193,7 @@ export async function GetEmployeeWorkcheckApi({
     })
     .catch((err) => {});
 }
+
 export async function GetTotalWorkcheckApi({
   setTotalWorkCheckList,
   setWorkcheckToShow,

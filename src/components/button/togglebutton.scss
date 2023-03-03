@@ -2,7 +2,12 @@
 
 .togglebutton-container {
   button {
-    margin-left: 3vw;
+    .left {
+      margin-left: 3vw;
+    }
+    .right {
+      margin-left: 10px;
+    }
     color: rgb(154, 154, 154);
   }
   .selected {
