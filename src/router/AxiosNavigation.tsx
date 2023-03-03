@@ -25,47 +25,48 @@ export default function AxiosNavigation() {
           if (error.response.data.message == "expired") {
             console.log("-- token is expired : " + error + " --");
             console.log(originalConfig);
-            try {
-              console.log("-- token refresh post --");
-              const res = await axios({
-                url: `${config.api}/user/reissue`,
-                method: "Post",
-                headers: {
-                  accesstoken: localStorage.getItem("token"),
-                  refreshToken: localStorage.getItem("refreshToken"),
-                },
-              });
-              if (res) {
+            console.log("-- token refresh post --");
+
+            await axios({
+              url: `${config.api}/user/reissue`,
+              method: "Post",
+              headers: {
+                accesstoken: localStorage.getItem("token"),
+                refreshToken: localStorage.getItem("refreshToken"),
+              },
+            })
+              .then((res) => {
                 console.log("-- complete token refreshing --");
                 localStorage.setItem("token", res.data.accessToken);
-                return await refreshAPI.request(originalConfig);
-              }
-            } catch (err) {
-              if (localStorage.getItem("token")) {
-                window.alert("토큰이 만료되어 자동으로 로그아웃 됩니다.");
+                return refreshAPI.request(originalConfig);
+              })
 
-                return await axios({
-                  method: "Post",
-                  url: `${config.api}/user/logout`,
-                  headers: {
-                    "Content-Type": `application/json`,
-                    Authorization: `Bearer ${localStorage.getItem("token")}`,
-                  },
-                })
-                  .then((res) => {
-                    localStorage.removeItem("token");
-                    localStorage.removeItem("refreshToken");
+              .catch((err) => {
+                if (localStorage.getItem("token")) {
+                  window.alert("토큰이 만료되어 자동으로 로그아웃 됩니다.");
 
-                    window.alert("로그아웃 되었습니다.");
-                    navigate("/login");
+                  return axios({
+                    method: "Post",
+                    url: `${config.api}/user/logout`,
+                    headers: {
+                      "Content-Type": `application/json`,
+                      Authorization: `Bearer ${localStorage.getItem("token")}`,
+                    },
                   })
-                  .catch((err) => {
-                    if (localStorage.getItem("token"))
-                      window.alert("로그아웃에 실패했습니다.");
-                    console.log(err);
-                  });
-              }
-            }
+                    .then((res) => {
+                      localStorage.removeItem("token");
+                      localStorage.removeItem("refreshToken");
+
+                      window.alert("로그아웃 되었습니다.");
+                      navigate("/login");
+                    })
+                    .catch((err) => {
+                      if (localStorage.getItem("token"))
+                        window.alert("로그아웃에 실패했습니다.");
+                      console.log(err);
+                    });
+                }
+              });
           }
         } else if (error.response.data.message) {
           window.alert(error.response.data.message);

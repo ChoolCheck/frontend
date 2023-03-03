@@ -56,34 +56,34 @@ const Calendar = () => {
   //   },
   // ];
 
-  const calendarDetailData = {
-    scheduleList: [
-      {
-        name: "옥수수판매합니다",
-        time: "17:00-21:00",
-        date: "2023-02-18",
-        backgroundColor: "#a0c4ff",
-      },
-      {
-        name: "감자밭",
-        time: "18:00-22:00",
-        date: "2023-02-12",
-        backgroundColor: "#bdb2ff",
-        workType: "마감",
-      },
-    ],
-    checkedWorkList: [
-      {
-        name: "김어진",
-        time: "09:00-13:00",
-        totalWorkTime: "4",
-        date: "2023-02-18",
-        backgroundColor: "#ffadad",
-        workType: "오픈",
-      },
-    ],
-    memo: "오늘 7시에 10명 단체 예약 있어요. 금요일 마감 알바 대타 구합니다",
-  };
+  // const calendarDetailData = {
+  //   scheduleList: [
+  //     {
+  //       name: "옥수수판매합니다",
+  //       time: "17:00-21:00",
+  //       date: "2023-02-18",
+  //       backgroundColor: "#a0c4ff",
+  //     },
+  //     {
+  //       name: "감자밭",
+  //       time: "18:00-22:00",
+  //       date: "2023-02-12",
+  //       backgroundColor: "#bdb2ff",
+  //       workType: "마감",
+  //     },
+  //   ],
+  //   checkedWorkList: [
+  //     {
+  //       name: "김어진",
+  //       time: "09:00-13:00",
+  //       totalWorkTime: "4",
+  //       date: "2023-02-18",
+  //       backgroundColor: "#ffadad",
+  //       workType: "오픈",
+  //     },
+  //   ],
+  //   memo: "오늘 7시에 10명 단체 예약 있어요. 금요일 마감 알바 대타 구합니다",
+  // };
 
   const onCalendarClick = (calendarData: any) => {
     const date = (
