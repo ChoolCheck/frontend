@@ -25,26 +25,27 @@ export async function GetTotalCalendarApi({
       const scheduleList: scheduleType.scheduleObjProps[] = res.data;
 
       for (let i = 0; i < scheduleList.length; i++) {
-        calendarTotalList?.push({
-          title: (
-            scheduleList[i].name +
-            " " +
-            scheduleList[i].startTime +
-            "-" +
-            scheduleList[i].endTime
-          ).toString(),
-          date: scheduleList[i].date,
-          textColor: "black",
-          backgroundColor: `#${
-            enumType.enumColor[
-              scheduleList[i].color as keyof typeof enumType.enumColor
-            ]
-          }`,
-        });
+        const data: type.calendarListType[] = [
+          {
+            title: (
+              scheduleList[i].name +
+              " " +
+              scheduleList[i].startTime +
+              "-" +
+              scheduleList[i].endTime
+            ).toString(),
+            date: scheduleList[i].date,
+            textColor: "black",
+            backgroundColor: `#${
+              enumType.enumColor[
+                scheduleList[i].color as keyof typeof enumType.enumColor
+              ]
+            }`,
+          },
+        ];
+        if (calendarTotalList == undefined) setCalendarTotalList(data);
+        else setCalendarTotalList(...(calendarTotalList as []), data);
       }
-    })
-    .then((res) => {
-      console.log(calendarTotalList);
     })
     .catch((err) => {});
 
@@ -61,26 +62,28 @@ export async function GetTotalCalendarApi({
 
       const workcheckList: workcheckType.workcheckObjProps[] = res.data;
       for (let i = 0; i < workcheckList.length; i++) {
-        calendarTotalList?.push({
-          title: (
-            workcheckList[i].name +
-            " " +
-            workcheckList[i].startTime +
-            "-" +
-            workcheckList[i].endTime
-          ).toString(),
-          date: workcheckList[i].date,
-          textColor: "#727272",
-          backgroundColor: `#${
-            enumType.enumColor[
-              workcheckList[i].color as keyof typeof enumType.enumColor
-            ]
-          }`,
-        });
+        const data: type.calendarListType[] = [
+          {
+            title: (
+              workcheckList[i].name +
+              " " +
+              workcheckList[i].startTime +
+              "-" +
+              workcheckList[i].endTime
+            ).toString(),
+            date: workcheckList[i].date,
+            textColor: "#727272",
+            backgroundColor: `#${
+              enumType.enumColor[
+                workcheckList[i].color as keyof typeof enumType.enumColor
+              ]
+            }`,
+          },
+        ];
+
+        if (calendarTotalList == undefined) setCalendarTotalList(data);
+        else setCalendarTotalList(...(calendarTotalList as []), data);
       }
-    })
-    .then((res) => {
-      console.log(calendarTotalList);
     })
     .catch((err) => {});
 }

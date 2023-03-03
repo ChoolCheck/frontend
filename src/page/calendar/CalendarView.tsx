@@ -10,6 +10,7 @@ const CalendarView = ({
   onCreateWorkcheckClick,
   onCreateMemoClick,
 }: type.calendarViewProps) => {
+  console.log(calendarTotalList);
   return (
     <div className="CalendarView-container">
       <FullCalendar
