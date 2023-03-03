@@ -26,7 +26,16 @@ const Calendar = () => {
   );
 
   useEffect(() => {
-    GetTotalCalendarApi({ calendarTotalList, setCalendarTotalList });
+    const now = new Date();
+    const date =
+      now.getFullYear() +
+      "-" +
+      (now.getMonth() + 1 < 10
+        ? "0" + now.getMonth() + 1
+        : now.getMonth() + 1) +
+      "-" +
+      now.getDay();
+    GetTotalCalendarApi({ date, setCalendarTotalList });
   }, []);
 
   const [detailModalOpen, setDetailModalOpen] = useState(false);
@@ -45,45 +54,6 @@ const Calendar = () => {
     useState<type.calendarDetailType[] | undefined>();
 
   const [memo, setMemo] = useState("");
-  // const calendarData = [
-  //   {
-  //     title: "김어진 11:00-14:00",date: "2023-02-18",
-  //     textColor: "#727272",backgroundColor: "#ffadad",
-  //   },
-  //   {
-  //     title: "이예빈 14:00-18:00", date: "2023-02-22",
-  //     textColor: "black",backgroundColor: "#ffd6a5",
-  //   },
-  // ];
-
-  // const calendarDetailData = {
-  //   scheduleList: [
-  //     {
-  //       name: "옥수수판매합니다",
-  //       time: "17:00-21:00",
-  //       date: "2023-02-18",
-  //       backgroundColor: "#a0c4ff",
-  //     },
-  //     {
-  //       name: "감자밭",
-  //       time: "18:00-22:00",
-  //       date: "2023-02-12",
-  //       backgroundColor: "#bdb2ff",
-  //       workType: "마감",
-  //     },
-  //   ],
-  //   checkedWorkList: [
-  //     {
-  //       name: "김어진",
-  //       time: "09:00-13:00",
-  //       totalWorkTime: "4",
-  //       date: "2023-02-18",
-  //       backgroundColor: "#ffadad",
-  //       workType: "오픈",
-  //     },
-  //   ],
-  //   memo: "오늘 7시에 10명 단체 예약 있어요. 금요일 마감 알바 대타 구합니다",
-  // };
 
   const onCalendarClick = (calendarData: any) => {
     const date = (
@@ -102,6 +72,27 @@ const Calendar = () => {
       setMemo,
     });
   };
+
+  const onLeftButtonClick = (calendarData: any) => {
+    const date = (
+      calendarData.event.start.getFullYear() +
+      "-" +
+      calendarData.event.start.getMonth() +
+      "-01"
+    ).toString();
+    GetTotalCalendarApi({ date, setCalendarTotalList });
+  };
+
+  const onRightButtonClick = (calendarData: any) => {
+    const date = (
+      calendarData.event.start.getFullYear() +
+      "-" +
+      (calendarData.event.start.getMonth() + 2) +
+      "-01"
+    ).toString();
+    GetTotalCalendarApi({ date, setCalendarTotalList });
+  };
+
   const onCreateWorkcheckClick = (ev: MouseEvent, element: HTMLElement) => {
     setWriteModal(true);
     setSelectedModal("workcheck");
@@ -136,6 +127,8 @@ const Calendar = () => {
         onCalendarClick={onCalendarClick}
         onCreateWorkcheckClick={onCreateWorkcheckClick}
         onCreateMemoClick={onCreateMemoClick}
+        onLeftButtonClick={onLeftButtonClick}
+        onRightButtonClick={onRightButtonClick}
       ></CalendarView>
     </div>
   );

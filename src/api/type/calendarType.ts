@@ -13,7 +13,7 @@ export interface calendarDetailType {
 }
 
 export interface getTotalCalendarProps {
-  calendarTotalList: calendarListType[] | undefined;
+  date: string;
   setCalendarTotalList: React.Dispatch<
     React.SetStateAction<calendarListType[] | undefined>
   >;

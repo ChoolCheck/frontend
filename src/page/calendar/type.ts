@@ -3,6 +3,9 @@ export interface calendarViewProps {
   onCalendarClick: any;
   onCreateWorkcheckClick: (ev: MouseEvent, element: HTMLElement) => void;
   onCreateMemoClick: (ev: MouseEvent, element: HTMLElement) => void;
+
+  onLeftButtonClick: any;
+  onRightButtonClick: any;
 }
 
 export interface calendarListType {

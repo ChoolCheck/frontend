@@ -6,20 +6,38 @@ import * as workcheckType from "./type/workType";
 import * as enumType from "../commonType/enum";
 
 import { GetDateMemoApi } from "./memo";
-import { isTypedArray } from "util/types";
 
 export async function GetTotalCalendarApi({
-  calendarTotalList,
+  date,
   setCalendarTotalList,
 }: type.getTotalCalendarProps) {
-  const date = new Date();
+  const inputDate = new Date(date);
+  const nowDate = new Date();
+
+  const inputYear = inputDate.getFullYear();
+  const inputMonth =
+    inputDate.getMonth() + 1 < 10
+      ? "0" + inputDate.getMonth() + 1
+      : inputDate.getMonth() + 1;
+
+  const inputStart = inputYear + "-" + inputMonth + "-01";
+
+  const inputlastDATE = new Date(inputYear, inputDate.getMonth(), 0);
+  const inputEnd = inputYear + "-" + inputMonth + inputlastDATE.getDate();
+
   const today =
-    date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDay();
+    nowDate.getFullYear() +
+    "-" +
+    (nowDate.getMonth() + 1 < 10
+      ? "0" + nowDate.getMonth() + 1
+      : nowDate.getMonth() + 1) +
+    "-" +
+    nowDate.getDay();
 
-  const monthStart = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + 1;
-
-  const lastDate = new Date(date.getFullYear(), date.getMonth(), 0);
-  const monthEnd = lastDate.getDate();
+  let scheduleStart;
+  let scheduleEnd;
+  let workcheckStart;
+  let workcheckEnd;
 
   const axiosInstance = axios.create({
     headers: {
@@ -29,68 +47,171 @@ export async function GetTotalCalendarApi({
   });
   const tempScheduleList: type.calendarListType[] = [];
 
-  axios
-    .all([
-      axiosInstance.get(
-        `${config.api}/schedule/date?start=${today}&end=${monthEnd}`
-      ),
-      axiosInstance.get(
-        `${config.api}/work/date?start=${monthStart}&end=${today}`
-      ),
-    ])
-    .then(
-      axios.spread((res1, res2) => {
-        console.log(res1.data);
-        console.log(res2.data);
+  // 보여줄 달력이 현재 달보다 이후인 경우 : 달력에 스케줄만 표시
+  if (
+    inputDate.getFullYear() > nowDate.getFullYear() ||
+    (inputDate.getFullYear() == nowDate.getFullYear() &&
+      inputDate.getMonth() > nowDate.getMonth())
+  ) {
+    scheduleStart = inputStart;
+    scheduleEnd = inputEnd;
+    axios
+      .all([
+        axiosInstance.get(
+          `${config.api}/schedule/date?start=${scheduleStart}&end=${scheduleEnd}`
+        ),
+      ])
+      .then(
+        axios.spread((res1) => {
+          console.log(res1.data);
+          const scheduleList: scheduleType.scheduleObjProps[] = res1.data;
 
-        const scheduleList: scheduleType.scheduleObjProps[] = res1.data;
-        const workcheckList: workcheckType.workcheckObjProps[] = res2.data;
-
-        for (let i = 0; i < scheduleList.length; i++) {
-          const data: type.calendarListType = {
-            title: (
-              scheduleList[i].name +
-              " " +
-              scheduleList[i].startTime +
-              "-" +
-              scheduleList[i].endTime
-            ).toString(),
-            date: scheduleList[i].date,
-            textColor: "black",
-            backgroundColor: `#${
-              enumType.enumColor[
-                scheduleList[i].color as keyof typeof enumType.enumColor
-              ]
-            }`,
-          };
-          tempScheduleList.push(data);
-        }
-        for (let i = 0; i < workcheckList.length; i++) {
-          const data: type.calendarListType = {
-            title: (
-              workcheckList[i].name +
-              " " +
-              workcheckList[i].startTime +
-              "-" +
-              workcheckList[i].endTime
-            ).toString(),
-            date: workcheckList[i].date,
-            textColor: "#727272",
-            backgroundColor: `#${
-              enumType.enumColor[
-                workcheckList[i].color as keyof typeof enumType.enumColor
-              ]
-            }`,
-          };
-          tempScheduleList.push(data);
-        }
-        return tempScheduleList;
+          for (let i = 0; i < scheduleList.length; i++) {
+            const data: type.calendarListType = {
+              title: (
+                scheduleList[i].name +
+                " " +
+                scheduleList[i].startTime +
+                "-" +
+                scheduleList[i].endTime
+              ).toString(),
+              date: scheduleList[i].date,
+              textColor: "black",
+              backgroundColor: `#${
+                enumType.enumColor[
+                  scheduleList[i].color as keyof typeof enumType.enumColor
+                ]
+              }`,
+            };
+            tempScheduleList.push(data);
+          }
+          return tempScheduleList;
+        })
+      )
+      .then((res) => {
+        setCalendarTotalList(tempScheduleList);
       })
-    )
-    .then((res) => {
-      setCalendarTotalList(tempScheduleList);
-    })
-    .catch((error) => {});
+      .catch((error) => {});
+  }
+  // 보여줄 달력이 현재 달보다 이전인 경우 : 달력에 출근부만 표시
+  else if (
+    inputDate.getFullYear() < nowDate.getFullYear() ||
+    (inputDate.getFullYear() == nowDate.getFullYear() &&
+      inputDate.getMonth() < nowDate.getMonth())
+  ) {
+    workcheckStart = inputStart;
+    workcheckEnd = inputEnd;
+
+    axios
+      .all([
+        axiosInstance.get(
+          `${config.api}/work/date?start=${workcheckStart}&end=${workcheckEnd}`
+        ),
+      ])
+      .then(
+        axios.spread((res1) => {
+          const workcheckList: workcheckType.workcheckObjProps[] = res1.data;
+
+          for (let i = 0; i < workcheckList.length; i++) {
+            const data: type.calendarListType = {
+              title: (
+                workcheckList[i].name +
+                " " +
+                workcheckList[i].startTime +
+                "-" +
+                workcheckList[i].endTime
+              ).toString(),
+              date: workcheckList[i].date,
+              textColor: "#727272",
+              backgroundColor: `#${
+                enumType.enumColor[
+                  workcheckList[i].color as keyof typeof enumType.enumColor
+                ]
+              }`,
+            };
+            tempScheduleList.push(data);
+          }
+          return tempScheduleList;
+        })
+      )
+      .then((res) => {
+        setCalendarTotalList(tempScheduleList);
+      })
+      .catch((error) => {});
+  }
+  // 보여줄 달력이 현재 달과 같은 경우 : 달력에 출근부와 스케줄 모두 표시
+  else if (
+    inputDate.getFullYear() == nowDate.getFullYear() &&
+    inputDate.getMonth() == nowDate.getMonth()
+  ) {
+    scheduleStart = today;
+    scheduleEnd = inputEnd;
+    workcheckStart = inputStart;
+    workcheckEnd = today;
+
+    axios
+      .all([
+        axiosInstance.get(
+          `${config.api}/schedule/date?start=${scheduleStart}&end=${scheduleEnd}`
+        ),
+        axiosInstance.get(
+          `${config.api}/work/date?start=${workcheckStart}&end=${workcheckEnd}`
+        ),
+      ])
+      .then(
+        axios.spread((res1, res2) => {
+          console.log(res1.data);
+          console.log(res2.data);
+
+          const scheduleList: scheduleType.scheduleObjProps[] = res1.data;
+          const workcheckList: workcheckType.workcheckObjProps[] = res2.data;
+
+          for (let i = 0; i < scheduleList.length; i++) {
+            const data: type.calendarListType = {
+              title: (
+                scheduleList[i].name +
+                " " +
+                scheduleList[i].startTime +
+                "-" +
+                scheduleList[i].endTime
+              ).toString(),
+              date: scheduleList[i].date,
+              textColor: "black",
+              backgroundColor: `#${
+                enumType.enumColor[
+                  scheduleList[i].color as keyof typeof enumType.enumColor
+                ]
+              }`,
+            };
+            tempScheduleList.push(data);
+          }
+          for (let i = 0; i < workcheckList.length; i++) {
+            const data: type.calendarListType = {
+              title: (
+                workcheckList[i].name +
+                " " +
+                workcheckList[i].startTime +
+                "-" +
+                workcheckList[i].endTime
+              ).toString(),
+              date: workcheckList[i].date,
+              textColor: "#727272",
+              backgroundColor: `#${
+                enumType.enumColor[
+                  workcheckList[i].color as keyof typeof enumType.enumColor
+                ]
+              }`,
+            };
+            tempScheduleList.push(data);
+          }
+          return tempScheduleList;
+        })
+      )
+      .then((res) => {
+        setCalendarTotalList(tempScheduleList);
+      })
+      .catch((error) => {});
+  }
 }
 
 export async function GetDetailCalendarApi({
