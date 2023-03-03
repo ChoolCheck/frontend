@@ -67,8 +67,8 @@ const Calendar = () => {
     GetDetailCalendarApi({
       setDetailModalOpen,
       date,
-      calendarDetailScheduleList,
-      calendarDetailWorkcheckList,
+      setCalendarDetailScheduleList,
+      setCalendarDetailWorkcheckList,
       setMemo,
     });
   };

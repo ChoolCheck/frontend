@@ -21,8 +21,12 @@ export interface getTotalCalendarProps {
 
 export interface getDetailCalendarProps {
   setDetailModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  calendarDetailScheduleList: calendarDetailType[] | undefined;
-  calendarDetailWorkcheckList: calendarDetailType[] | undefined;
+  setCalendarDetailScheduleList: React.Dispatch<
+    React.SetStateAction<calendarDetailType[] | undefined>
+  >;
+  setCalendarDetailWorkcheckList: React.Dispatch<
+    React.SetStateAction<calendarDetailType[] | undefined>
+  >;
   date: string;
   setMemo: React.Dispatch<React.SetStateAction<string>>;
 }

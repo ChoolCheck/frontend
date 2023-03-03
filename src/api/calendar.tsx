@@ -34,10 +34,7 @@ export async function GetTotalCalendarApi({
     "-" +
     nowDate.getDay();
 
-  let scheduleStart;
-  let scheduleEnd;
-  let workcheckStart;
-  let workcheckEnd;
+  let scheduleStart, scheduleEnd, workcheckStart, workcheckEnd;
 
   const axiosInstance = axios.create({
     headers: {
@@ -45,7 +42,7 @@ export async function GetTotalCalendarApi({
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
   });
-  const tempScheduleList: type.calendarListType[] = [];
+  const tempResultList: type.calendarListType[] = [];
 
   // 보여줄 달력이 현재 달보다 이후인 경우 : 달력에 스케줄만 표시
   if (
@@ -83,13 +80,13 @@ export async function GetTotalCalendarApi({
                 ]
               }`,
             };
-            tempScheduleList.push(data);
+            tempResultList.push(data);
           }
-          return tempScheduleList;
+          return tempResultList;
         })
       )
       .then((res) => {
-        setCalendarTotalList(tempScheduleList);
+        setCalendarTotalList(tempResultList);
       })
       .catch((error) => {});
   }
@@ -129,13 +126,13 @@ export async function GetTotalCalendarApi({
                 ]
               }`,
             };
-            tempScheduleList.push(data);
+            tempResultList.push(data);
           }
-          return tempScheduleList;
+          return tempResultList;
         })
       )
       .then((res) => {
-        setCalendarTotalList(tempScheduleList);
+        setCalendarTotalList(tempResultList);
       })
       .catch((error) => {});
   }
@@ -183,7 +180,7 @@ export async function GetTotalCalendarApi({
                 ]
               }`,
             };
-            tempScheduleList.push(data);
+            tempResultList.push(data);
           }
           for (let i = 0; i < workcheckList.length; i++) {
             const data: type.calendarListType = {
@@ -202,13 +199,13 @@ export async function GetTotalCalendarApi({
                 ]
               }`,
             };
-            tempScheduleList.push(data);
+            tempResultList.push(data);
           }
-          return tempScheduleList;
+          return tempResultList;
         })
       )
       .then((res) => {
-        setCalendarTotalList(tempScheduleList);
+        setCalendarTotalList(tempResultList);
       })
       .catch((error) => {});
   }
@@ -217,116 +214,118 @@ export async function GetTotalCalendarApi({
 export async function GetDetailCalendarApi({
   setDetailModalOpen,
   date,
-  calendarDetailScheduleList,
-  calendarDetailWorkcheckList,
+  setCalendarDetailScheduleList,
+  setCalendarDetailWorkcheckList,
   setMemo,
 }: type.getDetailCalendarProps) {
   GetDateMemoApi({ date, setMemo });
 
-  await axios({
-    method: "GET",
-    url: `${config.api}/schedule/date?start=${date}&end=${date}`,
+  const axiosInstance = axios.create({
     headers: {
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
-  })
-    .then((res) => {
-      console.log(res.data);
+  });
 
-      const scheduleDetailList: workcheckType.workcheckObjProps[] = res.data;
+  const tempScheduleList: type.calendarDetailType[] = [];
+  const tempWorkcheckList: type.calendarDetailType[] = [];
 
-      for (let i = 0; i < scheduleDetailList.length; i++) {
-        calendarDetailScheduleList?.push({
-          name: scheduleDetailList[i].name,
-          time: (
-            scheduleDetailList[i].startTime +
-            "-" +
-            scheduleDetailList[i].endTime
-          ).toString(),
-          backgroundColor: `#${
-            enumType.enumColor[
-              scheduleDetailList[i].color as keyof typeof enumType.enumColor
-            ]
-          }`,
-          totalWorkTime:
-            Math.round(
-              ((new Date(
-                scheduleDetailList[i].date + "T" + scheduleDetailList[i].endTime
-              ).getTime() -
-                new Date(
+  axios
+    .all([
+      axiosInstance.get(
+        `${config.api}/schedule/date?start=${date}&end=${date}`
+      ),
+      axiosInstance.get(`${config.api}/work/date?start=${date}&end=${date}`),
+    ])
+    .then(
+      axios.spread((res1, res2) => {
+        console.log(res1.data);
+        console.log(res2.data);
+
+        const scheduleDetailList: scheduleType.scheduleObjProps[] = res1.data;
+        const workcheckDetailList: workcheckType.workcheckObjProps[] =
+          res2.data;
+
+        for (let i = 0; i < scheduleDetailList.length; i++) {
+          const data: type.calendarDetailType = {
+            name: scheduleDetailList[i].name,
+            time: (
+              scheduleDetailList[i].startTime +
+              "-" +
+              scheduleDetailList[i].endTime
+            ).toString(),
+            backgroundColor: `#${
+              enumType.enumColor[
+                scheduleDetailList[i].color as keyof typeof enumType.enumColor
+              ]
+            }`,
+            totalWorkTime:
+              Math.round(
+                ((new Date(
                   scheduleDetailList[i].date +
                     "T" +
-                    scheduleDetailList[i].startTime
-                ).getTime()) /
-                1000 /
-                60 /
-                60) *
-                10
-            ) / 10,
-          workType: scheduleDetailList[i].hours
-            ? scheduleDetailList[i].hours
-            : null,
-        });
-      }
-    })
-    .then((res) => {
-      console.log(calendarDetailWorkcheckList);
-    })
-    .catch((err) => {});
-
-  await axios({
-    method: "GET",
-    url: `${config.api}/work/date?start=${date}&end=${date}`,
-    headers: {
-      "Content-Type": `application/json`,
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-    },
-  })
-    .then((res) => {
-      console.log(res.data);
-
-      const workcheckDetailList: workcheckType.workcheckObjProps[] = res.data;
-
-      for (let i = 0; i < workcheckDetailList.length; i++) {
-        calendarDetailWorkcheckList?.push({
-          name: workcheckDetailList[i].name,
-          time: (
-            workcheckDetailList[i].startTime +
-            "-" +
-            workcheckDetailList[i].endTime
-          ).toString(),
-          backgroundColor: `#${
-            enumType.enumColor[
-              workcheckDetailList[i].color as keyof typeof enumType.enumColor
-            ]
-          }`,
-          totalWorkTime:
-            Math.round(
-              ((new Date(
-                workcheckDetailList[i].date +
-                  "T" +
-                  workcheckDetailList[i].endTime
-              ).getTime() -
-                new Date(
+                    scheduleDetailList[i].endTime
+                ).getTime() -
+                  new Date(
+                    scheduleDetailList[i].date +
+                      "T" +
+                      scheduleDetailList[i].startTime
+                  ).getTime()) /
+                  1000 /
+                  60 /
+                  60) *
+                  10
+              ) / 10,
+            workType: scheduleDetailList[i].hours
+              ? scheduleDetailList[i].hours
+              : null,
+          };
+          tempScheduleList.push(data);
+        }
+        for (let i = 0; i < workcheckDetailList.length; i++) {
+          const data: type.calendarDetailType = {
+            name: workcheckDetailList[i].name,
+            time: (
+              workcheckDetailList[i].startTime +
+              "-" +
+              workcheckDetailList[i].endTime
+            ).toString(),
+            backgroundColor: `#${
+              enumType.enumColor[
+                workcheckDetailList[i].color as keyof typeof enumType.enumColor
+              ]
+            }`,
+            totalWorkTime:
+              Math.round(
+                ((new Date(
                   workcheckDetailList[i].date +
                     "T" +
-                    workcheckDetailList[i].startTime
-                ).getTime()) /
-                1000 /
-                60 /
-                60) *
-                10
-            ) / 10,
-          workType: workcheckDetailList[i].hours
-            ? workcheckDetailList[i].hours
-            : null,
-        });
-      }
+                    workcheckDetailList[i].endTime
+                ).getTime() -
+                  new Date(
+                    workcheckDetailList[i].date +
+                      "T" +
+                      workcheckDetailList[i].startTime
+                  ).getTime()) /
+                  1000 /
+                  60 /
+                  60) *
+                  10
+              ) / 10,
+            workType: workcheckDetailList[i].hours
+              ? workcheckDetailList[i].hours
+              : null,
+          };
+          tempWorkcheckList.push(data);
+        }
+      })
+    )
+    .then((res) => {
+      setCalendarDetailScheduleList(tempScheduleList);
+      setCalendarDetailWorkcheckList(tempWorkcheckList);
     })
     .then((res) => {
-      console.log(calendarDetailWorkcheckList);
       setDetailModalOpen(true);
     })
-    .catch((err) => {});
+    .catch((error) => {});
 }
