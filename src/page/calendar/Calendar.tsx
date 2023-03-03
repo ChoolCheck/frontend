@@ -24,20 +24,58 @@ const Calendar = () => {
 
   const [selectedModal, setSelectedModal] = useState<string>("");
   const calendarData = [
+    // title : name + " " + startTime+"-"+endTime
+    //
     {
-      title: "김어진 11-14",
+      title: "김어진 11:00-14:00",
       date: "2023-02-18",
       textColor: "#727272",
       backgroundColor: "#ffadad",
     },
     {
-      title: "이예빈 14-18",
+      title: "이예빈 14:00-18:00",
       date: "2023-02-18",
       textColor: "#727272",
       backgroundColor: "#ffd6a5",
     },
     {
-      title: "이예빈 14-18",
+      title: "김어진 11:00-14:00",
+      date: "2023-02-18",
+      textColor: "#727272",
+      backgroundColor: "#ffadad",
+    },
+    {
+      title: "이예빈 14:00-18:00",
+      date: "2023-02-18",
+      textColor: "#727272",
+      backgroundColor: "#ffd6a5",
+    },
+    {
+      title: "김어진 11:00-14:00",
+      date: "2023-02-18",
+      textColor: "#727272",
+      backgroundColor: "#ffadad",
+    },
+    {
+      title: "이예빈 14:00-18:00",
+      date: "2023-02-18",
+      textColor: "#727272",
+      backgroundColor: "#ffd6a5",
+    },
+    {
+      title: "김어진 11:00-14:00",
+      date: "2023-02-18",
+      textColor: "#727272",
+      backgroundColor: "#ffadad",
+    },
+    {
+      title: "이예빈 14:00-18:00",
+      date: "2023-02-18",
+      textColor: "#727272",
+      backgroundColor: "#ffd6a5",
+    },
+    {
+      title: "이예빈 14:00-18:00",
       date: "2023-02-22",
       textColor: "black",
       backgroundColor: "#ffd6a5",
