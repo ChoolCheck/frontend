@@ -19,4 +19,5 @@ export interface getDetailMemoProps {
 }
 export interface getDateMemoProps {
   date: string;
+  setMemo: React.Dispatch<React.SetStateAction<string>>;
 }

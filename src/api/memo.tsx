@@ -73,7 +73,7 @@ export async function GetDetailMemoApi({ id }: type.getDetailMemoProps) {
     .catch((err) => {});
 }
 
-export async function GetDateMemoProps({ date }: type.getDateMemoProps) {
+export async function GetDateMemoApi({ date, setMemo }: type.getDateMemoProps) {
   await axios({
     method: "GET",
     url: `${config.api}/memo?date=${date}`,
@@ -82,6 +82,9 @@ export async function GetDateMemoProps({ date }: type.getDateMemoProps) {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
   })
-    .then((res) => {})
+    .then((res) => {
+      console.log(res.data);
+      setMemo(res.data);
+    })
     .catch((err) => {});
 }

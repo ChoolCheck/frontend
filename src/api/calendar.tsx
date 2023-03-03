@@ -5,6 +5,8 @@ import * as scheduleType from "./type/scheduleType";
 import * as workcheckType from "./type/workType";
 import * as enumType from "../commonType/enum";
 
+import { GetDateMemoApi } from "./memo";
+
 export async function GetTotalCalendarApi({
   calendarTotalList,
   setCalendarTotalList,
@@ -88,7 +90,10 @@ export async function GetDetailCalendarApi({
   date,
   calendarDetailScheduleList,
   calendarDetailWorkcheckList,
+  setMemo,
 }: type.getDetailCalendarProps) {
+  GetDateMemoApi({ date, setMemo });
+
   await axios({
     method: "GET",
     url: `${config.api}/schedule/date?start=${date}&end=${date}`,
@@ -115,7 +120,21 @@ export async function GetDetailCalendarApi({
               scheduleDetailList[i].color as keyof typeof enumType.enumColor
             ]
           }`,
-          date: scheduleDetailList[i].date,
+          totalWorkTime:
+            Math.round(
+              ((new Date(
+                scheduleDetailList[i].date + "T" + scheduleDetailList[i].endTime
+              ).getTime() -
+                new Date(
+                  scheduleDetailList[i].date +
+                    "T" +
+                    scheduleDetailList[i].startTime
+                ).getTime()) /
+                1000 /
+                60 /
+                60) *
+                10
+            ) / 10,
           workType: scheduleDetailList[i].hours
             ? scheduleDetailList[i].hours
             : null,
@@ -154,7 +173,23 @@ export async function GetDetailCalendarApi({
               workcheckDetailList[i].color as keyof typeof enumType.enumColor
             ]
           }`,
-          date: workcheckDetailList[i].date,
+          totalWorkTime:
+            Math.round(
+              ((new Date(
+                workcheckDetailList[i].date +
+                  "T" +
+                  workcheckDetailList[i].endTime
+              ).getTime() -
+                new Date(
+                  workcheckDetailList[i].date +
+                    "T" +
+                    workcheckDetailList[i].startTime
+                ).getTime()) /
+                1000 /
+                60 /
+                60) *
+                10
+            ) / 10,
           workType: workcheckDetailList[i].hours
             ? workcheckDetailList[i].hours
             : null,

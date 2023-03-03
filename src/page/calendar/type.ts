@@ -15,29 +15,15 @@ export interface calendarListType {
 export interface calendarDetailType {
   name: string;
   time: string;
-  date: string;
+  totalWorkTime: number;
   backgroundColor: string;
   workType: string | null;
 }
 
 export interface calendarDetailViewProps {
-  calendarDetailData: {
-    scheduleList: {
-      name: string;
-      time: string;
-      date: string;
-      workType?: string;
-      backgroundColor: string;
-    }[];
-    checkedWorkList: {
-      name: string;
-      time: string;
-      totalWorkTime: string;
-      date: string;
-      workType?: string;
-      backgroundColor: string;
-    }[];
-    memo: string;
-  };
+  calendarDetailScheduleList: calendarDetailType[] | undefined;
+  calendarDetailWorkcheckList: calendarDetailType[] | undefined;
+  memo: string;
+
   setDetailModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }

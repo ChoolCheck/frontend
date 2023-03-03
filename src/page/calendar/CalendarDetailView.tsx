@@ -5,7 +5,9 @@ import { useDispatch } from "react-redux";
 import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
 
 const CalendarDetailView = ({
-  calendarDetailData,
+  calendarDetailScheduleList,
+  calendarDetailWorkcheckList,
+  memo,
   setDetailModalOpen,
 }: type.calendarDetailViewProps) => {
   const dispatch = useDispatch();
@@ -28,50 +30,52 @@ const CalendarDetailView = ({
         <div className="list-top-container">
           <div className="checkedWorkList-container">
             <ul className="checkedWorkList-ul">
-              {calendarDetailData.checkedWorkList.map((item) => (
-                <li className="checkedWorkList-li">
-                  <span
-                    className="checkedWorkList-li-color"
-                    style={{ backgroundColor: item.backgroundColor }}
-                  >
-                    &nbsp;&nbsp;&nbsp;
-                  </span>
-                  <span className="checkedWorkList-li-name">{item.name}</span>
-                  <span className="checkedWorkList-li-time">{item.time}</span>
-                  <span className="checkedWorkList-li-totalWorkTime">
-                    {item.totalWorkTime}시간
-                  </span>{" "}
-                  <span className="checkedWorkList-li-workType">
-                    {item.workType}
-                  </span>
-                </li>
-              ))}
+              {calendarDetailWorkcheckList &&
+                calendarDetailWorkcheckList.map((item) => (
+                  <li className="checkedWorkList-li">
+                    <span
+                      className="checkedWorkList-li-color"
+                      style={{ backgroundColor: item.backgroundColor }}
+                    >
+                      &nbsp;&nbsp;&nbsp;
+                    </span>
+                    <span className="checkedWorkList-li-name">{item.name}</span>
+                    <span className="checkedWorkList-li-time">{item.time}</span>
+                    <span className="checkedWorkList-li-totalWorkTime">
+                      {item.totalWorkTime}시간
+                    </span>
+                    <span className="checkedWorkList-li-workType">
+                      {item.workType != null && item.workType}
+                    </span>
+                  </li>
+                ))}
             </ul>
           </div>
 
           <div className="scheduleList-container">
             <ul className="scheduleList-ul">
-              {calendarDetailData.scheduleList.map((item) => (
-                <li className="scheduleList-li">
-                  <span
-                    className="scheduleList-li-color"
-                    style={{ backgroundColor: item.backgroundColor }}
-                  >
-                    &nbsp;&nbsp;&nbsp;
-                  </span>
-                  <span className="scheduleList-li-name">{item.name}</span>
-                  <span className="scheduleList-li-time">{item.time} </span>
-                  <span className="scheduleList-li-workType">
-                    {item.workType}{" "}
-                  </span>
-                </li>
-              ))}
+              {calendarDetailScheduleList &&
+                calendarDetailScheduleList.map((item) => (
+                  <li className="scheduleList-li">
+                    <span
+                      className="scheduleList-li-color"
+                      style={{ backgroundColor: item.backgroundColor }}
+                    >
+                      &nbsp;&nbsp;&nbsp;
+                    </span>
+                    <span className="scheduleList-li-name">{item.name}</span>
+                    <span className="scheduleList-li-time">{item.time} </span>
+                    <span className="scheduleList-li-workType">
+                      {item.workType != null && item.workType}
+                    </span>
+                  </li>
+                ))}
             </ul>
           </div>
         </div>
         <div className="memo-container">
           <h3 className="memo-container-header"> 메모</h3>
-          <p className="memo-container-content"> {calendarDetailData.memo}</p>
+          <p className="memo-container-content"> {memo}</p>
         </div>
 
         <button

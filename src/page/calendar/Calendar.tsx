@@ -44,6 +44,7 @@ const Calendar = () => {
   const [calendarDetailWorkcheckList, setCalendarDetailWorkcheckList] =
     useState<type.calendarDetailType[] | undefined>();
 
+  const [memo, setMemo] = useState("");
   // const calendarData = [
   //   {
   //     title: "김어진 11:00-14:00",date: "2023-02-18",
@@ -99,6 +100,7 @@ const Calendar = () => {
       date,
       calendarDetailScheduleList,
       calendarDetailWorkcheckList,
+      setMemo,
     });
   };
   const onCreateWorkcheckClick = (ev: MouseEvent, element: HTMLElement) => {
@@ -114,7 +116,9 @@ const Calendar = () => {
     <div className="Calendar-top-container">
       {detailModalOpen && (
         <CalendarDetailView
-          calendarDetailData={calendarDetailData}
+          calendarDetailScheduleList={calendarDetailScheduleList}
+          calendarDetailWorkcheckList={calendarDetailWorkcheckList}
+          memo={memo}
           setDetailModalOpen={setDetailModalOpen}
         ></CalendarDetailView>
       )}

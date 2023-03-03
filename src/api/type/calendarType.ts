@@ -7,7 +7,7 @@ export interface calendarListType {
 export interface calendarDetailType {
   name: string;
   time: string;
-  date: string;
+  totalWorkTime: number;
   backgroundColor: string;
   workType: string | null;
 }
@@ -24,4 +24,5 @@ export interface getDetailCalendarProps {
   calendarDetailScheduleList: calendarDetailType[] | undefined;
   calendarDetailWorkcheckList: calendarDetailType[] | undefined;
   date: string;
+  setMemo: React.Dispatch<React.SetStateAction<string>>;
 }
