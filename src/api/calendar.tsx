@@ -43,8 +43,7 @@ export async function GetTotalCalendarApi({
             }`,
           },
         ];
-        if (calendarTotalList == undefined) setCalendarTotalList(data);
-        else setCalendarTotalList(...(calendarTotalList as []), data);
+        setCalendarTotalList(...(calendarTotalList as []), data);
       }
     })
     .catch((err) => {});
@@ -81,8 +80,7 @@ export async function GetTotalCalendarApi({
           },
         ];
 
-        if (calendarTotalList == undefined) setCalendarTotalList(data);
-        else setCalendarTotalList(...(calendarTotalList as []), data);
+        setCalendarTotalList(...(calendarTotalList as []), data);
       }
     })
     .catch((err) => {});
