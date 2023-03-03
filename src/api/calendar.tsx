@@ -6,27 +6,35 @@ import * as workcheckType from "./type/workType";
 import * as enumType from "../commonType/enum";
 
 import { GetDateMemoApi } from "./memo";
+import { isTypedArray } from "util/types";
 
 export async function GetTotalCalendarApi({
   calendarTotalList,
   setCalendarTotalList,
 }: type.getTotalCalendarProps) {
-  await axios({
-    method: "GET",
-    url: `${config.api}/schedule`,
+  const axiosInstance = axios.create({
     headers: {
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
-  })
-    .then((res) => {
-      console.log(res.data);
+  });
+  const tempScheduleList: type.calendarListType[] = [];
 
-      const scheduleList: scheduleType.scheduleObjProps[] = res.data;
+  axios
+    .all([
+      axiosInstance.get(`${config.api}/schedule`),
+      axiosInstance.get(`${config.api}/work`),
+    ])
+    .then(
+      axios.spread((res1, res2) => {
+        console.log(res1.data);
+        console.log(res2.data);
 
-      for (let i = 0; i < scheduleList.length; i++) {
-        const data: type.calendarListType[] = [
-          {
+        const scheduleList: scheduleType.scheduleObjProps[] = res1.data;
+        const workcheckList: workcheckType.workcheckObjProps[] = res2.data;
+
+        for (let i = 0; i < scheduleList.length; i++) {
+          const data: type.calendarListType = {
             title: (
               scheduleList[i].name +
               " " +
@@ -41,28 +49,11 @@ export async function GetTotalCalendarApi({
                 scheduleList[i].color as keyof typeof enumType.enumColor
               ]
             }`,
-          },
-        ];
-        setCalendarTotalList(...(calendarTotalList as []), data);
-      }
-    })
-    .catch((err) => {});
-
-  await axios({
-    method: "GET",
-    url: `${config.api}/work`,
-    headers: {
-      "Content-Type": `application/json`,
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-    },
-  })
-    .then((res) => {
-      console.log(res.data);
-
-      const workcheckList: workcheckType.workcheckObjProps[] = res.data;
-      for (let i = 0; i < workcheckList.length; i++) {
-        const data: type.calendarListType[] = [
-          {
+          };
+          tempScheduleList.push(data);
+        }
+        for (let i = 0; i < workcheckList.length; i++) {
+          const data: type.calendarListType = {
             title: (
               workcheckList[i].name +
               " " +
@@ -77,13 +68,16 @@ export async function GetTotalCalendarApi({
                 workcheckList[i].color as keyof typeof enumType.enumColor
               ]
             }`,
-          },
-        ];
-
-        setCalendarTotalList(...(calendarTotalList as []), data);
-      }
+          };
+          tempScheduleList.push(data);
+        }
+        return tempScheduleList;
+      })
+    )
+    .then((res) => {
+      setCalendarTotalList(tempScheduleList);
     })
-    .catch((err) => {});
+    .catch((error) => {});
 }
 
 export async function GetDetailCalendarApi({
