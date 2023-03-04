@@ -109,9 +109,11 @@ const Calendar = () => {
   const prev = document.getElementsByClassName("fc-prev-button");
   const next = document.getElementsByClassName("fc-next-button");
 
-  console.log(buttons);
-  console.log(buttons[7]);
-  console.log(buttons.namedItem("fc-prev-button"));
+  const buttons2 = document.querySelectorAll("button");
+
+  console.log(buttons2);
+  console.log(buttons2.item(7));
+
   // document.addEventListener("DOMContentLoaded", function (e) {
   //   console.log(prev);
   //   console.log(Array.from(prev));
