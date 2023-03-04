@@ -105,19 +105,6 @@ const Calendar = () => {
     setSelectedModal("memo");
   };
 
-  const prev = document.getElementsByClassName("fc-button-prev");
-  const next = document.getElementsByClassName("fc-button-next");
-
-  console.log(prev);
-  console.log(prev.item(0));
-
-  prev.item(0)?.addEventListener("click", () => {
-    onLeftButtonClick();
-  });
-  next.item(0)?.addEventListener("click", () => {
-    onRightButtonClick();
-  });
-
   return (
     <div className="Calendar-top-container">
       {detailModalOpen && (
