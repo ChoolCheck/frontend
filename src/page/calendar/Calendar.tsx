@@ -104,18 +104,28 @@ const Calendar = () => {
     setWriteModal(true);
     setSelectedModal("memo");
   };
+  const buttons = document.getElementsByTagName("button");
+
   const prev = document.getElementsByClassName("fc-prev-button");
   const next = document.getElementsByClassName("fc-next-button");
-  console.log(prev);
-  console.log(document.getElementsByClassName("fc-prev-button")[0]);
 
-  document.addEventListener("DOMContentLoaded", function (e) {
-    console.log(prev);
-    console.log(Array.from(prev));
-    Array.from(prev).forEach((item) =>
-      item.addEventListener("click", onLeftButtonClick)
-    );
+  console.log(prev);
+
+  for (let i = 0; i < prev.length; i++) {
+    console.log(prev[i].className);
+  }
+
+  Array.prototype.forEach.call(prev, (element) => {
+    console.log(element.className);
   });
+
+  // document.addEventListener("DOMContentLoaded", function (e) {
+  //   console.log(prev);
+  //   console.log(Array.from(prev));
+  //   Array.from(prev).forEach((item) =>
+  //     item.addEventListener("click", onLeftButtonClick)
+  //   );
+  // });
 
   // prev[0].addEventListener("click", () => {
   //   onLeftButtonClick();
