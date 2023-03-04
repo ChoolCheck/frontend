@@ -111,8 +111,8 @@ const Calendar = () => {
 
   console.log(prev);
 
-  for (let i = 0; i < prev.length; i++) {
-    console.log(prev[i].className);
+  for (let i = 0; i < buttons.length; i++) {
+    console.log(buttons[i].className);
   }
 
   Array.prototype.forEach.call(prev, (element) => {
