@@ -104,15 +104,14 @@ const Calendar = () => {
     setWriteModal(true);
     setSelectedModal("memo");
   };
-  const buttons = document.getElementsByTagName("button");
 
-  const prev = document.getElementsByClassName("fc-prev-button");
-  const next = document.getElementsByClassName("fc-next-button");
+  // const prev = document.getElementsByClassName("fc-prev-button");
+  // const next = document.getElementsByClassName("fc-next-button");
 
-  const buttons2 = document.querySelectorAll("button");
+  const prev = document.querySelectorAll(".fc-prev-button");
 
-  console.log(buttons2);
-  console.log(buttons2.item(7));
+  console.log(prev);
+  console.log(prev.item(0));
 
   // document.addEventListener("DOMContentLoaded", function (e) {
   //   console.log(prev);
