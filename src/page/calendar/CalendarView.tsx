@@ -11,18 +11,7 @@ const CalendarView = ({
   onCreateMemoClick,
 }: type.calendarViewProps) => {
   // console.log(calendarTotalList);
-  const prev = document.getElementsByClassName("fc-prev-button");
-  const next = document.getElementsByClassName("fc-next-button");
 
-  console.log(prev);
-  console.log(prev.item(0));
-
-  // prev.item(0)?.addEventListener("click", () => {
-  //   onLeftButtonClick();
-  // });
-  // next.item(0)?.addEventListener("click", () => {
-  //   onRightButtonClick();
-  // });
   return (
     <div className="CalendarView-container">
       <FullCalendar
