@@ -115,10 +115,6 @@ const Calendar = () => {
     console.log(buttons[i].className);
   }
 
-  Array.prototype.forEach.call(prev, (element) => {
-    console.log(element.className);
-  });
-
   // document.addEventListener("DOMContentLoaded", function (e) {
   //   console.log(prev);
   //   console.log(Array.from(prev));
