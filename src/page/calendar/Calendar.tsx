@@ -109,11 +109,13 @@ const Calendar = () => {
   const prev = document.getElementsByClassName("fc-prev-button");
   const next = document.getElementsByClassName("fc-next-button");
 
-  console.log(prev);
-
-  for (let i = 0; i < buttons.length; i++) {
-    console.log(buttons[i].className);
-  }
+  console.log(
+    document.getElementsByClassName("fc-prev-button").item(0)?.innerHTML
+  );
+  console.log(
+    document.getElementsByClassName("fc-prev-button").item(0)?.firstChild
+  );
+  console.log(buttons);
 
   // document.addEventListener("DOMContentLoaded", function (e) {
   //   console.log(prev);
