@@ -73,24 +73,38 @@ const Calendar = () => {
     });
   };
 
+  const prev = document.getElementsByClassName(".fc-button-prev span");
+  const next = document.getElementsByClassName(".fc-button-next span");
+
+  const btn = document.getElementById("btn");
+  // prev[].onclick = () => {
+  //   // 발동되는 내용 작성
+  // };
+  // prev?.addEventListner('click', () => {
+  //   // 발동되는 내용 작성
+  // })
   const onLeftButtonClick = (calendarData: any) => {
-    const date = (
-      calendarData.event.start.getFullYear() +
-      "-" +
-      calendarData.event.start.getMonth() +
-      "-01"
-    ).toString();
-    GetTotalCalendarApi({ date, setCalendarTotalList });
+    return (ev: MouseEvent, element: HTMLElement) => {
+      const date = (
+        calendarData.event.start.getFullYear() +
+        "-" +
+        calendarData.event.start.getMonth() +
+        "-01"
+      ).toString();
+      GetTotalCalendarApi({ date, setCalendarTotalList });
+    };
   };
 
   const onRightButtonClick = (calendarData: any) => {
-    const date = (
-      calendarData.event.start.getFullYear() +
-      "-" +
-      (calendarData.event.start.getMonth() + 2) +
-      "-01"
-    ).toString();
-    GetTotalCalendarApi({ date, setCalendarTotalList });
+    return (ev: MouseEvent, element: HTMLElement) => {
+      const date = (
+        calendarData.event.start.getFullYear() +
+        "-" +
+        (calendarData.event.start.getMonth() + 2) +
+        "-01"
+      ).toString();
+      GetTotalCalendarApi({ date, setCalendarTotalList });
+    };
   };
 
   const onCreateWorkcheckClick = (ev: MouseEvent, element: HTMLElement) => {

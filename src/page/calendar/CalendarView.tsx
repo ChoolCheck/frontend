@@ -9,24 +9,15 @@ const CalendarView = ({
   onCalendarClick,
   onCreateWorkcheckClick,
   onCreateMemoClick,
-  onLeftButtonClick,
-  onRightButtonClick,
 }: type.calendarViewProps) => {
   console.log(calendarTotalList);
+
   return (
     <div className="CalendarView-container">
       <FullCalendar
         plugins={[dayGridPlugin]}
         eventClick={onCalendarClick}
         customButtons={{
-          customPrevButton: {
-            text: "prev",
-            click: onLeftButtonClick,
-          },
-          customNextButton: {
-            text: "next",
-            click: onRightButtonClick,
-          },
           createWorkCheck: {
             text: "출근부 작성하기",
             click: onCreateWorkcheckClick,
@@ -39,9 +30,9 @@ const CalendarView = ({
         events={calendarTotalList}
         themeSystem="Simplex"
         headerToolbar={{
-          left: "customPrevButton",
+          left: "prev",
           center: "createWorkCheck,title,createMemo",
-          right: "customNextButton",
+          right: "next",
         }}
       ></FullCalendar>
     </div>
