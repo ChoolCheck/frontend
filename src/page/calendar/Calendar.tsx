@@ -107,10 +107,20 @@ const Calendar = () => {
   const prev = document.getElementsByClassName("fc-prev-button");
   const next = document.getElementsByClassName("fc-next-button");
 
-  const arr = Array.from(prev);
+  const arr1 = Array.from(prev);
+  const arr2 = Array.from(prev);
+  const arr3 = [];
 
+  const arr4 = Array.from(document.getElementsByClassName("fc-prev-button"));
+  for (var i = 0; i < prev.length; i++) {
+    arr3.push(prev[i]);
+    console.log(prev.item(i));
+  }
   console.log(prev);
-  console.log(arr[0]);
+  console.log(arr1[0]);
+  console.log(arr2[0]);
+  console.log(arr3[0]);
+  console.log(arr4);
 
   // prev[0].addEventListener("click", () => {
   //   onLeftButtonClick();
