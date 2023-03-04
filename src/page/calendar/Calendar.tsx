@@ -107,15 +107,15 @@ const Calendar = () => {
   const prev = document.getElementsByClassName("fc-prev-button");
   const next = document.getElementsByClassName("fc-next-button");
 
+  console.log(prev);
   console.log(prev[0]);
-  console.log(next[0]);
 
-  prev[0].addEventListener("click", () => {
-    onLeftButtonClick();
-  });
-  next[0].addEventListener("click", () => {
-    onRightButtonClick();
-  });
+  // prev[0].addEventListener("click", () => {
+  //   onLeftButtonClick();
+  // });
+  // next[0].addEventListener("click", () => {
+  //   onRightButtonClick();
+  // });
   return (
     <div className="Calendar-top-container">
       {detailModalOpen && (
