@@ -105,13 +105,18 @@ const Calendar = () => {
     setSelectedModal("memo");
   };
 
-  // const prev = document.getElementsByClassName("fc-prev-button");
-  // const next = document.getElementsByClassName("fc-next-button");
+  const prev = document.getElementsByClassName("fc-prev-button");
+  const next = document.getElementsByClassName("fc-next-button");
 
-  const prev = document.querySelectorAll(".fc-prev-button");
-
-  console.log(prev);
-  console.log(prev.item(0));
+  console.log(
+    Array.from(
+      document.getElementsByClassName(
+        "fc-prev-button"
+      ) as HTMLCollectionOf<HTMLElement>
+    )
+  );
+  const prev2 = document.querySelectorAll<HTMLElement>(".fc-prev-button");
+  console.log(prev2);
 
   // document.addEventListener("DOMContentLoaded", function (e) {
   //   console.log(prev);
