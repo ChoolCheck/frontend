@@ -107,8 +107,10 @@ const Calendar = () => {
   const prev = document.getElementsByClassName("fc-prev-button");
   const next = document.getElementsByClassName("fc-next-button");
 
+  const arr = Array.from(prev);
+
   console.log(prev);
-  console.log(prev[0]);
+  console.log(arr[0]);
 
   // prev[0].addEventListener("click", () => {
   //   onLeftButtonClick();
