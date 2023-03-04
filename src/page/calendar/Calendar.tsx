@@ -13,6 +13,8 @@ import { RootState } from "../../Redux/Reducers/rootReducer";
 import { GetDetailCalendarApi, GetTotalCalendarApi } from "../../api/calendar";
 import * as type from "./type";
 
+import { Calender2 } from "./Calendar2";
+
 const Calendar = () => {
   const dispatch = useDispatch();
 
@@ -105,33 +107,6 @@ const Calendar = () => {
     setSelectedModal("memo");
   };
 
-  const prev = document.getElementsByClassName("fc-prev-button");
-  const next = document.getElementsByClassName("fc-next-button");
-
-  console.log(
-    Array.from(
-      document.getElementsByClassName(
-        "fc-prev-button"
-      ) as HTMLCollectionOf<HTMLElement>
-    )
-  );
-  const prev2 = document.querySelectorAll<HTMLElement>(".fc-prev-button");
-  console.log(prev2);
-
-  // document.addEventListener("DOMContentLoaded", function (e) {
-  //   console.log(prev);
-  //   console.log(Array.from(prev));
-  //   Array.from(prev).forEach((item) =>
-  //     item.addEventListener("click", onLeftButtonClick)
-  //   );
-  // });
-
-  // prev[0].addEventListener("click", () => {
-  //   onLeftButtonClick();
-  // });
-  // next[0].addEventListener("click", () => {
-  //   onRightButtonClick();
-  // });
   return (
     <div className="Calendar-top-container">
       {detailModalOpen && (
@@ -152,14 +127,16 @@ const Calendar = () => {
           )}
         </WriteModal>
       )}
-      <CalendarView
+      <Calender2></Calender2>
+      {/* <CalendarView
         calendarTotalList={calendarTotalList}
         onCalendarClick={onCalendarClick}
         onCreateWorkcheckClick={onCreateWorkcheckClick}
         onCreateMemoClick={onCreateMemoClick}
         onLeftButtonClick={onLeftButtonClick}
         onRightButtonClick={onRightButtonClick}
-      ></CalendarView>
+      ></CalendarView> */}
+      <script></script>
     </div>
   );
 };
