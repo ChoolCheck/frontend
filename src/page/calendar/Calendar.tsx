@@ -104,7 +104,11 @@ const Calendar = () => {
     setWriteModal(true);
     setSelectedModal("memo");
   };
+  const prev = document.getElementsByClassName("fc-prev-button");
+  const next = document.getElementsByClassName("fc-next-button");
 
+  console.log(prev);
+  console.log(prev.item(0));
   return (
     <div className="Calendar-top-container">
       {detailModalOpen && (
