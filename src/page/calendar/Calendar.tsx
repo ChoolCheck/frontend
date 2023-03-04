@@ -25,6 +25,9 @@ const Calendar = () => {
     [dispatch]
   );
 
+  const now = new Date();
+  const [nowDate, setNowDate] = useState(now);
+
   useEffect(() => {
     const now = new Date();
     const date =
@@ -73,38 +76,24 @@ const Calendar = () => {
     });
   };
 
-  const prev = document.getElementsByClassName(".fc-button-prev span");
-  const next = document.getElementsByClassName(".fc-button-next span");
-
-  const btn = document.getElementById("btn");
-  // prev[].onclick = () => {
-  //   // 발동되는 내용 작성
-  // };
-  // prev?.addEventListner('click', () => {
-  //   // 발동되는 내용 작성
-  // })
-  const onLeftButtonClick = (calendarData: any) => {
-    return (ev: MouseEvent, element: HTMLElement) => {
-      const date = (
-        calendarData.event.start.getFullYear() +
-        "-" +
-        calendarData.event.start.getMonth() +
-        "-01"
-      ).toString();
-      GetTotalCalendarApi({ date, setCalendarTotalList });
-    };
+  const onLeftButtonClick = () => {
+    const date = (
+      nowDate.getFullYear() +
+      "-" +
+      nowDate.getMonth() +
+      "-01"
+    ).toString();
+    GetTotalCalendarApi({ date, setCalendarTotalList });
   };
 
-  const onRightButtonClick = (calendarData: any) => {
-    return (ev: MouseEvent, element: HTMLElement) => {
-      const date = (
-        calendarData.event.start.getFullYear() +
-        "-" +
-        (calendarData.event.start.getMonth() + 2) +
-        "-01"
-      ).toString();
-      GetTotalCalendarApi({ date, setCalendarTotalList });
-    };
+  const onRightButtonClick = () => {
+    const date = (
+      nowDate.getFullYear() +
+      "-" +
+      (nowDate.getMonth() + 2) +
+      "-01"
+    ).toString();
+    GetTotalCalendarApi({ date, setCalendarTotalList });
   };
 
   const onCreateWorkcheckClick = (ev: MouseEvent, element: HTMLElement) => {
@@ -115,6 +104,19 @@ const Calendar = () => {
     setWriteModal(true);
     setSelectedModal("memo");
   };
+
+  const prev = document.getElementsByClassName(".fc-button-prev");
+  const next = document.getElementsByClassName(".fc-button-next");
+
+  console.log(prev);
+  console.log(next);
+
+  prev.item(0)?.addEventListener("click", () => {
+    onLeftButtonClick();
+  });
+  next.item(0)?.addEventListener("click", () => {
+    onRightButtonClick();
+  });
 
   return (
     <div className="Calendar-top-container">
