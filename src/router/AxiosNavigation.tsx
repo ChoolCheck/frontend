@@ -43,7 +43,7 @@ export default function AxiosNavigation() {
 
               .catch((err) => {
                 if (localStorage.getItem("token")) {
-                  window.alert("토큰이 만료되어 자동으로 로그아웃 됩니다.");
+                  // window.alert("토큰이 만료되어 자동으로 로그아웃 됩니다.");
 
                   return axios({
                     method: "Post",
@@ -57,7 +57,9 @@ export default function AxiosNavigation() {
                       localStorage.removeItem("token");
                       localStorage.removeItem("refreshToken");
 
-                      window.alert("로그아웃 되었습니다.");
+                      window.alert(
+                        "토큰이 만료되어 자동으로 로그아웃 되었습니다."
+                      );
                       navigate("/login");
                     })
                     .catch((err) => {

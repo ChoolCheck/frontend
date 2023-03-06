@@ -1,42 +1,170 @@
 import React, { useState } from "react";
-import FullCalendar from "@fullcalendar/react";
-import dayGridPlugin from "@fullcalendar/daygrid";
-import "./style/calendarView.scss";
-import * as type from "./type";
+import { Icon } from "@iconify/react";
+import { format, addMonths, subMonths } from "date-fns";
+import { startOfMonth, endOfMonth, startOfWeek, endOfWeek } from "date-fns";
+import { isSameMonth, isSameDay, addDays, parse } from "date-fns";
 
-const CalendarView = ({
-  calendarTotalList,
-  onCalendarClick,
+import * as type from "./type";
+import { GetDetailCalendarApi, GetTotalCalendarApi } from "../../api/calendar";
+
+const RenderHeader = ({
+  currentMonth,
+  prevMonth,
+  nextMonth,
   onCreateWorkcheckClick,
   onCreateMemoClick,
-}: type.calendarViewProps) => {
-  // console.log(calendarTotalList);
-
+}: type.renderheaderProps) => {
   return (
     <div className="CalendarView-container">
-      <FullCalendar
-        plugins={[dayGridPlugin]}
-        eventClick={onCalendarClick}
-        customButtons={{
-          createWorkCheck: {
-            text: "출근부 작성하기",
-            click: onCreateWorkcheckClick,
-          },
-          createMemo: {
-            text: "메모 작성하기",
-            click: onCreateMemoClick,
-          },
-        }}
-        events={calendarTotalList}
-        themeSystem="Simplex"
-        headerToolbar={{
-          left: "prev",
-          center: "createWorkCheck,title,createMemo",
-          right: "next",
-        }}
-      ></FullCalendar>
+      <div className="header row">
+        <div className="col col-start">
+          <span className="text">
+            <span className="text month">{format(currentMonth, "M")}월</span>
+            {format(currentMonth, "yyyy")}
+          </span>
+        </div>
+
+        <div className="col col-end">
+          <button onClick={onCreateWorkcheckClick}>출근부 작성하기</button>
+          <button onClick={onCreateMemoClick}>메모 작성하기 </button>
+          <Icon icon="bi:arrow-left-circle-fill" onClick={prevMonth} />
+          <Icon icon="bi:arrow-right-circle-fill" onClick={nextMonth} />
+        </div>
+      </div>
     </div>
   );
 };
 
-export default CalendarView;
+const RenderDays = () => {
+  const days = [];
+  const date = ["Mon", "Thu", "Wed", "Thrs", "Fri", "Sat", "Sun"];
+
+  for (let i = 0; i < 7; i++) {
+    days.push(
+      <div className="col" key={i}>
+        {date[i]}
+      </div>
+    );
+  }
+  return <div className="days row">{days}</div>;
+};
+
+const RenderCells = ({
+  currentMonth,
+  selectedDate,
+  onDateClick,
+}: type.rendercellProps) => {
+  const monthStart = startOfMonth(currentMonth);
+  const monthEnd = endOfMonth(monthStart);
+  const startDate = startOfWeek(monthStart);
+  const endDate = endOfWeek(monthEnd);
+
+  const rows = [];
+  let days = [];
+  let day = startDate;
+  let formattedDate = "";
+
+  while (day <= endDate) {
+    for (let i = 0; i < 7; i++) {
+      formattedDate = format(day, "d");
+      const cloneDay = day;
+
+      days.push(
+        <div
+          className={`col cell ${
+            !isSameMonth(day, monthStart)
+              ? "disabled"
+              : isSameDay(day, selectedDate)
+              ? "selected"
+              : format(currentMonth, "M") !== format(day, "M")
+              ? "not-valid"
+              : "valid"
+          }`}
+          key={day}
+          onClick={() => onDateClick(cloneDay)}
+        >
+          <span
+            className={
+              format(currentMonth, "M") !== format(day, "M")
+                ? "text not-valid"
+                : ""
+            }
+          >
+            {formattedDate}
+          </span>
+        </div>
+      );
+      day = addDays(day, 1);
+    }
+    rows.push(
+      <div className="row" key={day}>
+        {days}
+      </div>
+    );
+    days = [];
+  }
+  return <div className="body">{rows}</div>;
+};
+
+export const CalendarView = ({
+  calendarTotalList,
+  onCalendarClick,
+  onCreateWorkcheckClick,
+  onCreateMemoClick,
+  setCalendarTotalList,
+  setDetailModalOpen,
+}: type.calendarViewProps) => {
+  const [currentMonth, setCurrentMonth] = useState<Date>(new Date());
+  const [selectedDate, setSelectedDate] = useState<Date>(new Date());
+
+  const prevMonth = (e: React.MouseEvent<SVGSVGElement>) => {
+    setCurrentMonth(subMonths(currentMonth, 1));
+    const date = (
+      currentMonth.getFullYear() +
+      "-" +
+      (currentMonth.getMonth() == 0 ? 12 : currentMonth.getMonth()) +
+      "-01"
+    ).toString();
+
+    GetTotalCalendarApi({ date, setCalendarTotalList });
+  };
+
+  const nextMonth = (e: React.MouseEvent<SVGSVGElement>) => {
+    setCurrentMonth(addMonths(currentMonth, 1));
+
+    const date = (
+      currentMonth.getFullYear() +
+      "-" +
+      (currentMonth.getMonth() + 2 == 13 ? 1 : currentMonth.getMonth() + 2) +
+      "-01"
+    ).toString();
+
+    GetTotalCalendarApi({ date, setCalendarTotalList });
+  };
+
+  const onDateClick = (day: Date) => {
+    return (e: React.MouseEventHandler<HTMLDivElement>) => {
+      setSelectedDate(day);
+      console.log("달력 클릭");
+      setDetailModalOpen(true);
+    };
+  };
+
+  return (
+    <div className="calendar">
+      <RenderHeader
+        currentMonth={currentMonth}
+        prevMonth={prevMonth}
+        nextMonth={nextMonth}
+        onCreateWorkcheckClick={onCreateWorkcheckClick}
+        onCreateMemoClick={onCreateMemoClick}
+      />
+      <RenderDays />
+      <RenderCells
+        currentMonth={currentMonth}
+        selectedDate={selectedDate}
+        onDateClick={onDateClick}
+      />
+    </div>
+  );
+};

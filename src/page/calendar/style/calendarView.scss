@@ -1,68 +1,88 @@
-@import "../../../static/reset.scss";
+@import "../../../static/style/reset.scss";
 
 * body {
   background-color: white;
 }
 
 .CalendarView-container {
-  z-index: 100;
-  margin: 10px 70px 0 70px;
+  // width: 90%;
+  // min-width: 1000px;
+  margin: 0 auto;
+  .Manage-Header-container {
+    display: flex;
+    justify-content: left;
+  }
 }
+
+@include tablet {
+  .CalendarView-container {
+    // width: 70%;
+    min-width: 650px;
+  }
+}
+
+@include mobile {
+  .CalendarView-container {
+    // width: 60%;
+    min-width: 500px;
+  }
+}
+
 /* header custom */
-.fc-header-toolbar {
-  display: flex;
-}
+// .fc-header-toolbar {
+//   display: flex;
+// }
 
-.fc-header-toolbar :nth-child(1) > .fc-prev-button,
-.fc-header-toolbar :nth-child(3) > .fc-next-button {
-  background-color: white;
-  border: none;
-  color: black;
-}
+// .fc-header-toolbar :nth-child(1) > .fc-prev-button,
+// .fc-header-toolbar :nth-child(3) > .fc-next-button {
+//   background-color: white;
+//   border: none;
+//   color: black;
+// }
 
-.fc-header-toolbar :nth-child(2) {
-  padding: 1vw;
-  .fc-createWorkCheck-button,
-  .fc-createMemo-button {
-    background-color: #e7e7e7;
-    padding: 0.5vw 1vw 0.5vw 1vw;
-    width: 25vw;
-    min-width: 130px;
-    max-width: 150px;
-    border-radius: 20px;
-    margin: 0 1vw 0 1vw;
-    color: black;
-    border: none;
-  }
-  h2 {
-    width: 500px;
-    display: inline;
-    font-family: "nanum-extraBold";
-  }
-}
+// .fc-header-toolbar :nth-child(2) {
+//   padding: 1vw;
+//   .fc-createWorkCheck-button,
+//   .fc-createMemo-button {
+//     background-color: #e7e7e7;
+//     padding: 0.5vw 1vw 0.5vw 1vw;
+//     width: 25vw;
+//     min-width: 130px;
+//     max-width: 150px;
+//     border-radius: 20px;
+//     margin: 0 1vw 0 1vw;
+//     color: black;
+//     border: none;
+//   }
+//   h2 {
+//     width: 500px;
+//     display: inline;
+//     font-family: "nanum-extraBold";
+//   }
+// }
 
-.fc-daygrid-day-frame {
-  overflow-y: auto;
-  height: 120px;
-  .fc-h-event {
-    padding: 4px 2px 4px 2px;
-    border-radius: 5px;
-    border: none;
-    text-align: center;
-  }
-}
+// .fc-daygrid-day-frame {
+//   overflow-y: auto;
+//   height: 120px;
+//   .fc-h-event {
+//     padding: 4px 2px 4px 2px;
+//     border-radius: 5px;
+//     border: none;
+//     text-align: center;
+//   }
+// }
 
-/* calendar custom */
-.fc-scrollgrid {
-  border-radius: 10px;
+// /* calendar custom */
+// .fc-scrollgrid {
+//   border-radius: 10px;
 
-  td {
-    height: 100px;
-  }
-}
+//   td {
+//     height: 100px;
+//   }
+// }
 
-.Calendar-container {
-  min-width: 900px;
-  padding: 0 100px 0 100px;
-  overflow: auto;
-}
+// .Calendar-container {
+//   min-width: 900px;
+//   padding: 0 100px 0 100px;
+//   overflow: auto;
+// }

@@ -128,15 +128,15 @@ button {
 
 @font-face {
   font-family: "nanum-regular";
-  src: url("./font/NanumGothic-Regular.ttf");
+  src: url("../font/NanumGothic-Regular.ttf");
 }
 @font-face {
   font-family: "nanum-extraBold";
-  src: url("./font/NanumGothic-ExtraBold.ttf");
+  src: url("../font/NanumGothic-ExtraBold.ttf");
 }
 @font-face {
   font-family: "nanum-bold";
-  src: url("./font/NanumGothic-Bold.ttf");
+  src: url("../font/NanumGothic-Bold.ttf");
 }
 html,
 body {
@@ -185,7 +185,7 @@ input[type="date"]::-webkit-inner-spin-button {
 }
 input[type="date"]::-webkit-calendar-picker-indicator {
   display: block;
-  background: url(./icon/calendar.png) center/80% no-repeat white;
+  background: url(../icon/calendar.png) center/80% no-repeat white;
   width: 20px;
   height: 20px;
 }

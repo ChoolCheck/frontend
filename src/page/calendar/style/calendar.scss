@@ -1,7 +1,8 @@
-@use "../../../static/common.scss" as common;
+@use "../../../static/style/_common" as common;
 
 .calendar {
-  @include common.size(60%, 90%);
+  margin: 0 auto;
+  @include common.size(90%, 100%);
   .header {
     @include common.size(100%, 7%);
     @include common.flex-row(space-between, baseline);
@@ -10,11 +11,11 @@
       @include common.flex-column(center, flex-start);
       margin-left: 1%;
       .text {
-        font-size: 0.8em;
+        font-size: 1em;
       }
       .text.month {
         margin-right: 5px;
-        font-size: 1.6em;
+        font-size: 2em;
         font-weight: 600;
       }
     }
@@ -33,36 +34,32 @@
       }
     }
   }
+
   .days {
     @include common.size(100%, fit-content);
     @include common.flex-row(space-between, center);
     font-weight: 600;
     font-size: 0.65em;
     padding: 2px;
-    color: theme.$dark-gray-color;
+    color: gray;
     .col {
-      @include common.size(12.9%, 100%);
+      @include common.size(12.9%, 90%);
       @include common.flex-column(flex-end, flex-start);
 
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      align-items: flex-start;
-
       padding-left: 1%;
-      background-color: aliceblue;
-      //   background: transparentize(theme.$step-color, 0.6);
-      border-radius: 10px;
+      background: transparentize(rgb(180, 179, 179), 0.6);
+      border-radius: 3px;
     }
   }
   .body {
-    @include common.size(100%, 89%);
+    @include common.size(100%, 90%);
     @include common.flex-column();
     .row {
       @include common.size(100%, 100%);
       @include common.flex-row(space-between, center);
       .col {
-        @include common.size(13.5%, 93%);
+        // min-height: 100px;
+        @include common.size(13.5%, 90%);
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
@@ -90,8 +87,6 @@
       .col.cell.selected {
         transform: scale(1.02);
         border: none;
-        // background: theme.$sub-color;
-        // color: theme.$main-color;
         font-weight: 600;
       }
     }

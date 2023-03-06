@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useCallback } from "react";
-import CalendarView from "./CalendarView";
 import CalendarDetailView from "./CalendarDetailView";
 import WriteModal from "../../components/modal/WriteModal";
 import CreateWorkCheck from "../workCheck/CreateWorkCheck";
@@ -12,8 +11,10 @@ import { RootState } from "../../Redux/Reducers/rootReducer";
 
 import { GetDetailCalendarApi, GetTotalCalendarApi } from "../../api/calendar";
 import * as type from "./type";
+import "./style/calendarView.scss";
+import "./style/calendar.scss";
 
-import { Calender2 } from "./Calendar2";
+import { CalendarView } from "./CalendarView";
 
 const Calendar = () => {
   const dispatch = useDispatch();
@@ -78,31 +79,11 @@ const Calendar = () => {
     });
   };
 
-  const onLeftButtonClick = () => {
-    const date = (
-      nowDate.getFullYear() +
-      "-" +
-      nowDate.getMonth() +
-      "-01"
-    ).toString();
-    GetTotalCalendarApi({ date, setCalendarTotalList });
-  };
-
-  const onRightButtonClick = () => {
-    const date = (
-      nowDate.getFullYear() +
-      "-" +
-      (nowDate.getMonth() + 2) +
-      "-01"
-    ).toString();
-    GetTotalCalendarApi({ date, setCalendarTotalList });
-  };
-
-  const onCreateWorkcheckClick = (ev: MouseEvent, element: HTMLElement) => {
+  const onCreateWorkcheckClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     setWriteModal(true);
     setSelectedModal("workcheck");
   };
-  const onCreateMemoClick = (ev: MouseEvent, element: HTMLElement) => {
+  const onCreateMemoClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     setWriteModal(true);
     setSelectedModal("memo");
   };
@@ -127,16 +108,14 @@ const Calendar = () => {
           )}
         </WriteModal>
       )}
-      <Calender2></Calender2>
-      {/* <CalendarView
+      <CalendarView
+        setCalendarTotalList={setCalendarTotalList}
         calendarTotalList={calendarTotalList}
         onCalendarClick={onCalendarClick}
         onCreateWorkcheckClick={onCreateWorkcheckClick}
         onCreateMemoClick={onCreateMemoClick}
-        onLeftButtonClick={onLeftButtonClick}
-        onRightButtonClick={onRightButtonClick}
-      ></CalendarView> */}
-      <script></script>
+        setDetailModalOpen={setDetailModalOpen}
+      ></CalendarView>
     </div>
   );
 };

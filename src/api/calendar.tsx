@@ -17,22 +17,13 @@ export async function GetTotalCalendarApi({
   const inputYear = inputDate.getFullYear();
   const inputMonth =
     inputDate.getMonth() + 1 < 10
-      ? "0" + inputDate.getMonth() + 1
+      ? "0" + (inputDate.getMonth() + 1)
       : inputDate.getMonth() + 1;
 
   const inputStart = inputYear + "-" + inputMonth + "-01";
 
-  const inputlastDATE = new Date(inputYear, inputDate.getMonth(), 0);
-  const inputEnd = inputYear + "-" + inputMonth + inputlastDATE.getDate();
-
-  const today =
-    nowDate.getFullYear() +
-    "-" +
-    (nowDate.getMonth() + 1 < 10
-      ? "0" + nowDate.getMonth() + 1
-      : nowDate.getMonth() + 1) +
-    "-" +
-    nowDate.getDay();
+  const inputlastDATE = new Date(inputYear, inputDate.getMonth() + 1, 0);
+  const inputEnd = inputYear + "-" + inputMonth + "-" + inputlastDATE.getDate();
 
   let scheduleStart, scheduleEnd, workcheckStart, workcheckEnd;
 
@@ -141,6 +132,17 @@ export async function GetTotalCalendarApi({
     inputDate.getFullYear() == nowDate.getFullYear() &&
     inputDate.getMonth() == nowDate.getMonth()
   ) {
+    const today =
+      nowDate.getFullYear() +
+      "-" +
+      (nowDate.getMonth() + 1 < 10
+        ? "0" + (nowDate.getMonth() + 1)
+        : nowDate.getMonth() + 1) +
+      "-" +
+      (nowDate.getDate() + 1 < 10
+        ? "0" + (nowDate.getDate() + 1)
+        : nowDate.getDate() + 1);
+
     scheduleStart = today;
     scheduleEnd = inputEnd;
     workcheckStart = inputStart;
