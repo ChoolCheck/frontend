@@ -81,26 +81,28 @@
         border-radius: 5px;
         font-size: 0.8em;
         margin: 5px 0 0 0;
-        .text.day {
-          margin: 4px 0 4px 4px;
-        }
+
         .not-valid {
           color: rgb(181, 181, 181);
-        }
-        img {
-          opacity: 0.1;
+          .calendarItem {
+            color: rgb(181, 181, 181);
+          }
         }
 
         .cell {
           display: block;
           overflow-y: auto;
-        }
-        .calendarContainer {
-          .calendarItem {
-            margin: 0 0 5px 0;
-            padding: 3px;
-            border-radius: 10px;
-            background-color: antiquewhite;
+          .text.day {
+            margin: 4px 0 4px 4px;
+          }
+
+          .calendarContainer {
+            .calendarItem {
+              margin: 0 0 5px 0;
+              padding: 3px;
+              border-radius: 10px;
+              background-color: antiquewhite;
+            }
           }
         }
       }

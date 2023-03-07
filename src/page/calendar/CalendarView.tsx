@@ -48,7 +48,7 @@ const RenderHeader = ({
 
 const RenderDays = () => {
   const days = [];
-  const date = ["Mon", "Thu", "Wed", "Thrs", "Fri", "Sat", "Sun"];
+  const date = ["Sun", "Mon", "Thu", "Wed", "Thrs", "Fri", "Sat"];
 
   for (let i = 0; i < 7; i++) {
     days.push(
