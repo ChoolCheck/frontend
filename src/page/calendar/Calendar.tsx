@@ -45,7 +45,11 @@ const Calendar = () => {
   const [calendarDetailWorkcheckList, setCalendarDetailWorkcheckList] =
     useState<type.calendarDetailType[] | undefined>();
 
-  const [memo, setMemo] = useState("");
+  const [memo, setMemo] = useState<{
+    id: number;
+    date: string;
+    content: string;
+  }>();
 
   useEffect(() => {
     const now = new Date();

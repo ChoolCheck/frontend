@@ -75,7 +75,7 @@ const CalendarDetailView = ({
         </div>
         <div className="memo-container">
           <h3 className="memo-container-header"> 메모</h3>
-          <p className="memo-container-content"> {memo}</p>
+          <p className="memo-container-content"> {memo && memo.content}</p>
         </div>
 
         <button

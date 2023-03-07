@@ -17,7 +17,13 @@ export interface deleteMemoProps {
 export interface getDetailMemoProps {
   id: number;
 }
+export interface memoProps {
+  id: number;
+  date: string;
+  content: string;
+}
+
 export interface getDateMemoProps {
   date: string;
-  setMemo: React.Dispatch<React.SetStateAction<string>>;
+  setMemo: React.Dispatch<React.SetStateAction<memoProps | undefined>>;
 }

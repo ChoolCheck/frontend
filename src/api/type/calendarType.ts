@@ -28,5 +28,10 @@ export interface getDetailCalendarProps {
     React.SetStateAction<calendarDetailType[] | undefined>
   >;
   date: string;
-  setMemo: React.Dispatch<React.SetStateAction<string>>;
+  setMemo: React.Dispatch<React.SetStateAction<memoProps | undefined>>;
+}
+export interface memoProps {
+  id: number;
+  date: string;
+  content: string;
 }
