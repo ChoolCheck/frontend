@@ -139,9 +139,7 @@ export async function GetTotalCalendarApi({
         ? "0" + (nowDate.getMonth() + 1)
         : nowDate.getMonth() + 1) +
       "-" +
-      (nowDate.getDate() + 1 < 10
-        ? "0" + (nowDate.getDate() + 1)
-        : nowDate.getDate() + 1);
+      (nowDate.getDate() < 10 ? "0" + nowDate.getDate() : nowDate.getDate());
 
     scheduleStart = today;
     scheduleEnd = inputEnd;

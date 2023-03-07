@@ -12,7 +12,6 @@ import { RootState } from "../../Redux/Reducers/rootReducer";
 import { GetDetailCalendarApi, GetTotalCalendarApi } from "../../api/calendar";
 import * as type from "./type";
 import "./style/calendarView.scss";
-import "./style/calendar.scss";
 
 import { CalendarView } from "./CalendarView";
 
@@ -61,13 +60,17 @@ const Calendar = () => {
 
   const [memo, setMemo] = useState("");
 
-  const onCalendarClick = (calendarData: any) => {
+  const onCalendarClick = (nowDate: Date) => {
+    console.log(nowDate);
+
     const date = (
-      calendarData.event.start.getFullYear() +
+      nowDate.getFullYear() +
       "-" +
-      (calendarData.event.start.getMonth() + 1) +
+      (nowDate.getMonth() + 1 < 10
+        ? "0" + (nowDate.getMonth() + 1)
+        : nowDate.getMonth() + 1) +
       "-" +
-      calendarData.event.start.getDate()
+      (nowDate.getDate() < 10 ? "0" + nowDate.getDate() : nowDate.getDate())
     ).toString();
 
     GetDetailCalendarApi({
@@ -114,7 +117,6 @@ const Calendar = () => {
         onCalendarClick={onCalendarClick}
         onCreateWorkcheckClick={onCreateWorkcheckClick}
         onCreateMemoClick={onCreateMemoClick}
-        setDetailModalOpen={setDetailModalOpen}
       ></CalendarView>
     </div>
   );

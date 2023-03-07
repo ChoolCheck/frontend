@@ -25,7 +25,6 @@ export default function AxiosNavigation() {
           if (error.response.data.message == "expired") {
             console.log("-- token is expired : " + error + " --");
             console.log(originalConfig);
-            console.log("-- token refresh post --");
 
             await axios({
               url: `${config.api}/user/reissue`,
@@ -43,8 +42,6 @@ export default function AxiosNavigation() {
 
               .catch((err) => {
                 if (localStorage.getItem("token")) {
-                  // window.alert("토큰이 만료되어 자동으로 로그아웃 됩니다.");
-
                   return axios({
                     method: "Post",
                     url: `${config.api}/user/logout`,
@@ -57,10 +54,12 @@ export default function AxiosNavigation() {
                       localStorage.removeItem("token");
                       localStorage.removeItem("refreshToken");
 
+                      navigate("/login");
+                    })
+                    .then((res) => {
                       window.alert(
                         "토큰이 만료되어 자동으로 로그아웃 되었습니다."
                       );
-                      navigate("/login");
                     })
                     .catch((err) => {
                       if (localStorage.getItem("token"))

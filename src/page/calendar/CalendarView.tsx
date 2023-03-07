@@ -6,6 +6,7 @@ import { isSameMonth, isSameDay, addDays, parse } from "date-fns";
 
 import * as type from "./type";
 import { GetDetailCalendarApi, GetTotalCalendarApi } from "../../api/calendar";
+import "./style/calendarView.scss";
 
 const RenderHeader = ({
   currentMonth,
@@ -18,15 +19,24 @@ const RenderHeader = ({
     <div className="CalendarView-container">
       <div className="header row">
         <div className="col col-start">
-          <span className="text">
-            <span className="text month">{format(currentMonth, "M")}월</span>
+          <h2 className="text">
+            <span className="text month">
+              {format(currentMonth, "M")}월&nbsp;
+            </span>
             {format(currentMonth, "yyyy")}
-          </span>
+          </h2>
         </div>
 
         <div className="col col-end">
-          <button onClick={onCreateWorkcheckClick}>출근부 작성하기</button>
-          <button onClick={onCreateMemoClick}>메모 작성하기 </button>
+          <button
+            className="createWorkcheckButton"
+            onClick={onCreateWorkcheckClick}
+          >
+            출근부 작성하기
+          </button>
+          <button className="createMemoButton" onClick={onCreateMemoClick}>
+            메모 작성하기
+          </button>
           <Icon icon="bi:arrow-left-circle-fill" onClick={prevMonth} />
           <Icon icon="bi:arrow-right-circle-fill" onClick={nextMonth} />
         </div>
@@ -80,7 +90,17 @@ const RenderCells = ({
               ? "not-valid"
               : "valid"
           }`}
-          key={day}
+          key={
+            cloneDay.getFullYear() +
+            "-" +
+            (cloneDay.getMonth() + 1 < 10
+              ? "0" + (cloneDay.getMonth() + 1)
+              : cloneDay.getMonth() + 1) +
+            "-" +
+            (cloneDay.getDate() < 10
+              ? "0" + cloneDay.getDate()
+              : cloneDay.getDate())
+          }
           onClick={() => onDateClick(cloneDay)}
         >
           <span
@@ -97,7 +117,18 @@ const RenderCells = ({
       day = addDays(day, 1);
     }
     rows.push(
-      <div className="row" key={day}>
+      <div
+        className="row"
+        key={
+          day.getFullYear() +
+          "-" +
+          (day.getMonth() + 1 < 10
+            ? "0" + (day.getMonth() + 1)
+            : day.getMonth() + 1) +
+          "-" +
+          (day.getDate() < 10 ? "0" + day.getDate() : day.getDate())
+        }
+      >
         {days}
       </div>
     );
@@ -112,7 +143,6 @@ export const CalendarView = ({
   onCreateWorkcheckClick,
   onCreateMemoClick,
   setCalendarTotalList,
-  setDetailModalOpen,
 }: type.calendarViewProps) => {
   const [currentMonth, setCurrentMonth] = useState<Date>(new Date());
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
@@ -143,10 +173,12 @@ export const CalendarView = ({
   };
 
   const onDateClick = (day: Date) => {
-    return (e: React.MouseEventHandler<HTMLDivElement>) => {
-      setSelectedDate(day);
-      console.log("달력 클릭");
-      setDetailModalOpen(true);
+    console.log(day);
+
+    setSelectedDate(day);
+    onCalendarClick(day);
+    return (e: React.MouseEvent<HTMLDivElement>) => {
+      e.preventDefault();
     };
   };
 

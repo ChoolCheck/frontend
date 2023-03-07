@@ -1,12 +1,11 @@
 export interface calendarViewProps {
   calendarTotalList: calendarListType[] | undefined;
-  onCalendarClick: any;
+  onCalendarClick: (nowDate: Date) => void;
   onCreateWorkcheckClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   onCreateMemoClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   setCalendarTotalList: React.Dispatch<
     React.SetStateAction<calendarListType[] | undefined>
   >;
-  setDetailModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 export interface renderheaderProps {
   currentMonth: Date;
@@ -19,9 +18,7 @@ export interface renderheaderProps {
 export interface rendercellProps {
   currentMonth: Date;
   selectedDate: Date;
-  onDateClick: (
-    day: Date
-  ) => (e: React.MouseEventHandler<HTMLDivElement>) => void;
+  onDateClick: (day: Date) => (e: React.MouseEvent<HTMLDivElement>) => void;
 }
 export interface calendarListType {
   title: string;
