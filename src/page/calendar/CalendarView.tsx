@@ -90,7 +90,17 @@ const RenderCells = ({
               ? "not-valid"
               : "valid"
           }`}
-          key={cloneDay}
+          key={
+            cloneDay.getFullYear() +
+            "-" +
+            (cloneDay.getMonth() + 1 < 10
+              ? "0" + (cloneDay.getMonth() + 1)
+              : cloneDay.getMonth() + 1) +
+            "-" +
+            (cloneDay.getDate() < 10
+              ? "0" + cloneDay.getDate()
+              : cloneDay.getDate())
+          }
           id={
             cloneDay.getFullYear() +
             "-" +
@@ -129,7 +139,15 @@ const RenderCells = ({
           "-" +
           (day.getDate() < 10 ? "0" + day.getDate() : day.getDate())
         }
-        key={day}
+        key={
+          day.getFullYear() +
+          "-" +
+          (day.getMonth() + 1 < 10
+            ? "0" + (day.getMonth() + 1)
+            : day.getMonth() + 1) +
+          "-" +
+          (day.getDate() < 10 ? "0" + day.getDate() : day.getDate())
+        }
       >
         {days}
       </div>
