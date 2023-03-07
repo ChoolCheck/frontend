@@ -189,6 +189,16 @@ export const CalendarView = ({
         console.log(calendarTotalList[i]);
         const cell = document.getElementById(calendarTotalList[i].date);
         console.log(cell);
+
+        const calendarItemContainer = document.createElement("div");
+        calendarItemContainer.className = "calendarContainer";
+
+        const calendarItem = document.createElement("p");
+        calendarItem.className = "calendarItem";
+        calendarItem.innerText = calendarTotalList[i].title;
+
+        calendarItemContainer.appendChild(calendarItem);
+        cell?.appendChild(calendarItemContainer);
       }
     }
   };
