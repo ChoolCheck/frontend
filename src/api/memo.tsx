@@ -84,7 +84,7 @@ export async function GetDateMemoApi({ date, setMemo }: type.getDateMemoProps) {
   })
     .then((res) => {
       console.log(res.data);
-      setMemo(res.data[0]);
+      setMemo(res.data);
     })
     .catch((err) => {});
 }

@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Icon } from "@iconify/react";
 import { format, addMonths, subMonths } from "date-fns";
 import { startOfMonth, endOfMonth, startOfWeek, endOfWeek } from "date-fns";
 import { isSameMonth, isSameDay, addDays, parse } from "date-fns";
 
 import * as type from "./type";
-import { GetDetailCalendarApi, GetTotalCalendarApi } from "../../api/calendar";
+import { GetTotalCalendarApi } from "../../api/calendar";
 import "./style/calendarView.scss";
 
 const RenderHeader = ({
@@ -146,6 +146,19 @@ export const CalendarView = ({
 }: type.calendarViewProps) => {
   const [currentMonth, setCurrentMonth] = useState<Date>(new Date());
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
+
+  useEffect(() => {
+    const now = new Date();
+    const date =
+      now.getFullYear() +
+      "-" +
+      (now.getMonth() + 1 < 10
+        ? "0" + now.getMonth() + 1
+        : now.getMonth() + 1) +
+      "-" +
+      now.getDay();
+    GetTotalCalendarApi({ date, setCalendarTotalList });
+  }, []);
 
   console.log(calendarTotalList);
 

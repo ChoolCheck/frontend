@@ -38,7 +38,7 @@ export interface calendarDetailType {
 export interface calendarDetailViewProps {
   calendarDetailScheduleList: calendarDetailType[] | undefined;
   calendarDetailWorkcheckList: calendarDetailType[] | undefined;
-  memo: memoProps | undefined;
+  memo: memoProps[] | undefined;
 
   setDetailModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }

@@ -25,5 +25,5 @@ export interface memoProps {
 
 export interface getDateMemoProps {
   date: string;
-  setMemo: React.Dispatch<React.SetStateAction<memoProps | undefined>>;
+  setMemo: React.Dispatch<React.SetStateAction<memoProps[] | undefined>>;
 }
