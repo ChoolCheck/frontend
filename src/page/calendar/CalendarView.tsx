@@ -153,10 +153,11 @@ export const CalendarView = ({
       now.getFullYear() +
       "-" +
       (now.getMonth() + 1 < 10
-        ? "0" + now.getMonth() + 1
+        ? "0" + (now.getMonth() + 1)
         : now.getMonth() + 1) +
       "-" +
-      now.getDay();
+      (now.getDate() + 1 < 10 ? "0" + (now.getDate() + 1) : now.getDate() + 1);
+
     GetTotalCalendarApi({ date, setCalendarTotalList });
   }, []);
 
