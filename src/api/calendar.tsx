@@ -236,106 +236,99 @@ export async function GetDetailCalendarApi({
   const tempScheduleList: type.calendarDetailType[] = [];
   const tempWorkcheckList: type.calendarDetailType[] = [];
 
-  if (
-    today.getFullYear() + today.getMonth() + today.getDate() ==
-    inputDate.getFullYear() + inputDate.getMonth() + inputDate.getDate()
-  ) {
-  } else {
-    axios
-      .all([
-        axiosInstance.get(
-          `${config.api}/schedule/date?start=${date}&end=${date}`
-        ),
-        axiosInstance.get(`${config.api}/work/date?start=${date}&end=${date}`),
-      ])
-      .then(
-        axios.spread((res1, res2) => {
-          const scheduleDetailList: scheduleType.scheduleObjProps[] = res1.data;
-          const workcheckDetailList: workcheckType.workcheckObjProps[] =
-            res2.data;
+  axios
+    .all([
+      axiosInstance.get(
+        `${config.api}/schedule/date?start=${date}&end=${date}`
+      ),
+      axiosInstance.get(`${config.api}/work/date?start=${date}&end=${date}`),
+    ])
+    .then(
+      axios.spread((res1, res2) => {
+        const scheduleDetailList: scheduleType.scheduleObjProps[] = res1.data;
+        const workcheckDetailList: workcheckType.workcheckObjProps[] =
+          res2.data;
 
-          for (let i = 0; i < scheduleDetailList.length; i++) {
-            const data: type.calendarDetailType = {
-              name: scheduleDetailList[i].name,
-              time: (
-                scheduleDetailList[i].startTime.substring(0, 5) +
-                "-" +
-                scheduleDetailList[i].endTime.substring(0, 5)
-              ).toString(),
-              backgroundColor: `#${
-                enumType.enumColor[
-                  scheduleDetailList[i].color as keyof typeof enumType.enumColor
-                ]
-              }`,
-              totalWorkTime:
-                Math.round(
-                  ((new Date(
+        for (let i = 0; i < scheduleDetailList.length; i++) {
+          const data: type.calendarDetailType = {
+            name: scheduleDetailList[i].name,
+            time: (
+              scheduleDetailList[i].startTime.substring(0, 5) +
+              "-" +
+              scheduleDetailList[i].endTime.substring(0, 5)
+            ).toString(),
+            backgroundColor: `#${
+              enumType.enumColor[
+                scheduleDetailList[i].color as keyof typeof enumType.enumColor
+              ]
+            }`,
+            totalWorkTime:
+              Math.round(
+                ((new Date(
+                  scheduleDetailList[i].date +
+                    "T" +
+                    scheduleDetailList[i].endTime
+                ).getTime() -
+                  new Date(
                     scheduleDetailList[i].date +
                       "T" +
-                      scheduleDetailList[i].endTime
-                  ).getTime() -
-                    new Date(
-                      scheduleDetailList[i].date +
-                        "T" +
-                        scheduleDetailList[i].startTime
-                    ).getTime()) /
-                    1000 /
-                    60 /
-                    60) *
-                    10
-                ) / 10,
-              workType: scheduleDetailList[i].hours
-                ? scheduleDetailList[i].hours
-                : null,
-            };
-            tempScheduleList.push(data);
-          }
-          for (let i = 0; i < workcheckDetailList.length; i++) {
-            const data: type.calendarDetailType = {
-              name: workcheckDetailList[i].name,
-              time: (
-                workcheckDetailList[i].startTime.substring(0, 5) +
-                "-" +
-                workcheckDetailList[i].endTime.substring(0, 5)
-              ).toString(),
-              backgroundColor: `#${
-                enumType.enumColor[
-                  workcheckDetailList[i]
-                    .color as keyof typeof enumType.enumColor
-                ]
-              }`,
-              totalWorkTime:
-                Math.round(
-                  ((new Date(
+                      scheduleDetailList[i].startTime
+                  ).getTime()) /
+                  1000 /
+                  60 /
+                  60) *
+                  10
+              ) / 10,
+            workType: scheduleDetailList[i].hours
+              ? scheduleDetailList[i].hours
+              : null,
+          };
+          tempScheduleList.push(data);
+        }
+        for (let i = 0; i < workcheckDetailList.length; i++) {
+          const data: type.calendarDetailType = {
+            name: workcheckDetailList[i].name,
+            time: (
+              workcheckDetailList[i].startTime.substring(0, 5) +
+              "-" +
+              workcheckDetailList[i].endTime.substring(0, 5)
+            ).toString(),
+            backgroundColor: `#${
+              enumType.enumColor[
+                workcheckDetailList[i].color as keyof typeof enumType.enumColor
+              ]
+            }`,
+            totalWorkTime:
+              Math.round(
+                ((new Date(
+                  workcheckDetailList[i].date +
+                    "T" +
+                    workcheckDetailList[i].endTime.substring(0, 5)
+                ).getTime() -
+                  new Date(
                     workcheckDetailList[i].date +
                       "T" +
-                      workcheckDetailList[i].endTime.substring(0, 5)
-                  ).getTime() -
-                    new Date(
-                      workcheckDetailList[i].date +
-                        "T" +
-                        workcheckDetailList[i].startTime.substring(0, 5)
-                    ).getTime()) /
-                    1000 /
-                    60 /
-                    60) *
-                    10
-                ) / 10,
-              workType: workcheckDetailList[i].hours
-                ? workcheckDetailList[i].hours
-                : null,
-            };
-            tempWorkcheckList.push(data);
-          }
-        })
-      )
-      .then((res) => {
-        setCalendarDetailScheduleList(tempScheduleList);
-        setCalendarDetailWorkcheckList(tempWorkcheckList);
+                      workcheckDetailList[i].startTime.substring(0, 5)
+                  ).getTime()) /
+                  1000 /
+                  60 /
+                  60) *
+                  10
+              ) / 10,
+            workType: workcheckDetailList[i].hours
+              ? workcheckDetailList[i].hours
+              : null,
+          };
+          tempWorkcheckList.push(data);
+        }
       })
-      .then((res) => {
-        setDetailModalOpen(true);
-      })
-      .catch((error) => {});
-  }
+    )
+    .then((res) => {
+      setCalendarDetailScheduleList(tempScheduleList);
+      setCalendarDetailWorkcheckList(tempWorkcheckList);
+    })
+    .then((res) => {
+      setDetailModalOpen(true);
+    })
+    .catch((error) => {});
 }

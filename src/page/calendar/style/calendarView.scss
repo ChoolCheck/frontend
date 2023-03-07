@@ -82,7 +82,7 @@
         border-radius: 5px;
         font-size: 0.8em;
         margin: 5px 0 0 0;
-        p {
+        .text.day {
           margin: 4px 0 4px 4px;
         }
         .not-valid {
@@ -92,6 +92,7 @@
           opacity: 0.1;
         }
         .calendarContainer {
+          display: block;
           .calendarItem {
             margin: 0 0 5px;
             height: 30px;

@@ -118,7 +118,7 @@ const RenderCells = ({
             className={
               format(currentMonth, "M") !== format(day, "M")
                 ? "text not-valid"
-                : ""
+                : "text day"
             }
           >
             {formattedDate}
@@ -181,24 +181,26 @@ export const CalendarView = ({
     GetTotalCalendarApi({ date, setCalendarTotalList });
   }, []);
 
-  console.log(calendarTotalList);
-
   const renderData = () => {
     if (calendarTotalList) {
       for (let i = 0; i < calendarTotalList?.length; i++) {
-        console.log(calendarTotalList[i]);
         const cell = document.getElementById(calendarTotalList[i].date);
-        console.log(cell);
-
-        const calendarItemContainer = document.createElement("div");
-        calendarItemContainer.className = "calendarContainer";
+        let calendarItemContainer;
+        if (cell) {
+          if (cell.childNodes.length && cell?.childNodes.length > 1) {
+            calendarItemContainer = cell.childNodes[1];
+          } else {
+            calendarItemContainer = document.createElement("div");
+            calendarItemContainer.className = "calendarContainer";
+          }
+        }
 
         const calendarItem = document.createElement("p");
         calendarItem.className = "calendarItem";
         calendarItem.innerText = calendarTotalList[i].title;
 
-        calendarItemContainer.appendChild(calendarItem);
-        cell?.appendChild(calendarItemContainer);
+        calendarItemContainer?.appendChild(calendarItem);
+        if (calendarItemContainer) cell?.appendChild(calendarItemContainer);
       }
     }
   };
