@@ -30,19 +30,6 @@ const Calendar = () => {
   const now = new Date();
   const [nowDate, setNowDate] = useState(now);
 
-  useEffect(() => {
-    const now = new Date();
-    const date =
-      now.getFullYear() +
-      "-" +
-      (now.getMonth() + 1 < 10
-        ? "0" + now.getMonth() + 1
-        : now.getMonth() + 1) +
-      "-" +
-      now.getDay();
-    GetTotalCalendarApi({ date, setCalendarTotalList });
-  }, []);
-
   const [detailModalOpen, setDetailModalOpen] = useState(false);
 
   const [selectedModal, setSelectedModal] = useState<string>("");
@@ -60,9 +47,20 @@ const Calendar = () => {
 
   const [memo, setMemo] = useState("");
 
-  const onCalendarClick = (nowDate: Date) => {
-    console.log(nowDate);
+  useEffect(() => {
+    const now = new Date();
+    const date =
+      now.getFullYear() +
+      "-" +
+      (now.getMonth() + 1 < 10
+        ? "0" + now.getMonth() + 1
+        : now.getMonth() + 1) +
+      "-" +
+      now.getDay();
+    GetTotalCalendarApi({ date, setCalendarTotalList });
+  }, []);
 
+  const onCalendarClick = (nowDate: Date) => {
     const date = (
       nowDate.getFullYear() +
       "-" +

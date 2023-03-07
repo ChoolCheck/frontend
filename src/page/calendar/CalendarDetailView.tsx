@@ -45,7 +45,7 @@ const CalendarDetailView = ({
                       {item.totalWorkTime}시간
                     </span>
                     <span className="checkedWorkList-li-workType">
-                      {item.workType != null && item.workType}
+                      {item.workType != null ? item.workType : ""}
                     </span>
                   </li>
                 ))}
@@ -66,7 +66,7 @@ const CalendarDetailView = ({
                     <span className="scheduleList-li-name">{item.name}</span>
                     <span className="scheduleList-li-time">{item.time} </span>
                     <span className="scheduleList-li-workType">
-                      {item.workType != null && item.workType}
+                      {item.workType != null ? item.workType : ""}
                     </span>
                   </li>
                 ))}

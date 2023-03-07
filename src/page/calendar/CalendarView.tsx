@@ -147,6 +147,8 @@ export const CalendarView = ({
   const [currentMonth, setCurrentMonth] = useState<Date>(new Date());
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
 
+  console.log(calendarTotalList);
+
   const prevMonth = (e: React.MouseEvent<SVGSVGElement>) => {
     setCurrentMonth(subMonths(currentMonth, 1));
     const date = (

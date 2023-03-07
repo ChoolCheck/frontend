@@ -105,9 +105,9 @@ export async function GetTotalCalendarApi({
               title: (
                 workcheckList[i].name +
                 " " +
-                workcheckList[i].startTime +
+                workcheckList[i].startTime.substring(0, 5) +
                 "-" +
-                workcheckList[i].endTime
+                workcheckList[i].endTime.substring(0, 5)
               ).toString(),
               date: workcheckList[i].date,
               textColor: "#727272",
@@ -168,9 +168,9 @@ export async function GetTotalCalendarApi({
               title: (
                 scheduleList[i].name +
                 " " +
-                scheduleList[i].startTime +
+                scheduleList[i].startTime.substring(0, 5) +
                 "-" +
-                scheduleList[i].endTime
+                scheduleList[i].endTime.substring(0, 5)
               ).toString(),
               date: scheduleList[i].date,
               textColor: "black",
@@ -187,9 +187,9 @@ export async function GetTotalCalendarApi({
               title: (
                 workcheckList[i].name +
                 " " +
-                workcheckList[i].startTime +
+                workcheckList[i].startTime.substring(0, 5) +
                 "-" +
-                workcheckList[i].endTime
+                workcheckList[i].endTime.substring(0, 5)
               ).toString(),
               date: workcheckList[i].date,
               textColor: "#727272",
@@ -239,9 +239,6 @@ export async function GetDetailCalendarApi({
     ])
     .then(
       axios.spread((res1, res2) => {
-        console.log(res1.data);
-        console.log(res2.data);
-
         const scheduleDetailList: scheduleType.scheduleObjProps[] = res1.data;
         const workcheckDetailList: workcheckType.workcheckObjProps[] =
           res2.data;
@@ -250,9 +247,9 @@ export async function GetDetailCalendarApi({
           const data: type.calendarDetailType = {
             name: scheduleDetailList[i].name,
             time: (
-              scheduleDetailList[i].startTime +
+              scheduleDetailList[i].startTime.substring(0, 5) +
               "-" +
-              scheduleDetailList[i].endTime
+              scheduleDetailList[i].endTime.substring(0, 5)
             ).toString(),
             backgroundColor: `#${
               enumType.enumColor[
@@ -286,9 +283,9 @@ export async function GetDetailCalendarApi({
           const data: type.calendarDetailType = {
             name: workcheckDetailList[i].name,
             time: (
-              workcheckDetailList[i].startTime +
+              workcheckDetailList[i].startTime.substring(0, 5) +
               "-" +
-              workcheckDetailList[i].endTime
+              workcheckDetailList[i].endTime.substring(0, 5)
             ).toString(),
             backgroundColor: `#${
               enumType.enumColor[
@@ -300,12 +297,12 @@ export async function GetDetailCalendarApi({
                 ((new Date(
                   workcheckDetailList[i].date +
                     "T" +
-                    workcheckDetailList[i].endTime
+                    workcheckDetailList[i].endTime.substring(0, 5)
                 ).getTime() -
                   new Date(
                     workcheckDetailList[i].date +
                       "T" +
-                      workcheckDetailList[i].startTime
+                      workcheckDetailList[i].startTime.substring(0, 5)
                   ).getTime()) /
                   1000 /
                   60 /
