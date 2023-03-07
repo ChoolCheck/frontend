@@ -7,6 +7,7 @@ import { isSameMonth, isSameDay, addDays, parse } from "date-fns";
 import * as type from "./type";
 import { GetTotalCalendarApi } from "../../api/calendar";
 import "./style/calendarView.scss";
+import * as enumType from "../../commonType/enum";
 
 const RenderHeader = ({
   currentMonth,
@@ -198,6 +199,9 @@ export const CalendarView = ({
         const calendarItem = document.createElement("p");
         calendarItem.className = "calendarItem";
         calendarItem.innerText = calendarTotalList[i].title;
+        calendarItem.style.backgroundColor = `#${
+          enumType.enumColor[item.color as keyof typeof enumType.enumColor]
+        }`;
 
         calendarItemContainer?.appendChild(calendarItem);
         if (calendarItemContainer) cell?.appendChild(calendarItemContainer);
