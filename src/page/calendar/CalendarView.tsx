@@ -90,7 +90,8 @@ const RenderCells = ({
               ? "not-valid"
               : "valid"
           }`}
-          key={
+          key={cloneDay}
+          id={
             cloneDay.getFullYear() +
             "-" +
             (cloneDay.getMonth() + 1 < 10
@@ -119,7 +120,7 @@ const RenderCells = ({
     rows.push(
       <div
         className="row"
-        key={
+        id={
           day.getFullYear() +
           "-" +
           (day.getMonth() + 1 < 10
@@ -128,6 +129,7 @@ const RenderCells = ({
           "-" +
           (day.getDate() < 10 ? "0" + day.getDate() : day.getDate())
         }
+        key={day}
       >
         {days}
       </div>
@@ -162,6 +164,18 @@ export const CalendarView = ({
   }, []);
 
   console.log(calendarTotalList);
+
+  const renderData = () => {
+    if (calendarTotalList) {
+      for (let i = 0; i < calendarTotalList?.length; i++) {
+        console.log(calendarTotalList[i]);
+        const cell = document.getElementById(calendarTotalList[i].date);
+        console.log(cell);
+      }
+    }
+  };
+
+  renderData();
 
   const prevMonth = (e: React.MouseEvent<SVGSVGElement>) => {
     setCurrentMonth(subMonths(currentMonth, 1));
