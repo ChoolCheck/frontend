@@ -107,9 +107,9 @@ export async function GetTotalCalendarApi({
               title: (
                 scheduleList[i].name +
                 " " +
-                scheduleList[i].startTime +
+                scheduleList[i].startTime.substring(0, 5) +
                 "-" +
-                scheduleList[i].endTime
+                scheduleList[i].endTime.substring(0, 5)
               ).toString(),
               date: scheduleList[i].date,
               textColor: "black",

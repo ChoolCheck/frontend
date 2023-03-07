@@ -114,7 +114,7 @@ const RenderCells = ({
           }
           onClick={() => onDateClick(cloneDay)}
         >
-          <span
+          <p
             className={
               format(currentMonth, "M") !== format(day, "M")
                 ? "text not-valid"
@@ -122,7 +122,7 @@ const RenderCells = ({
             }
           >
             {formattedDate}
-          </span>
+          </p>
         </div>
       );
       day = addDays(day, 1);

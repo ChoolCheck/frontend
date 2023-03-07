@@ -71,6 +71,7 @@
       @include common.size(100%, 100%);
       @include common.flex-row(space-between, center);
       .col {
+        overflow-y: auto;
         min-height: 100px;
         @include common.size(13.5%, 90%);
         display: flex;
@@ -81,14 +82,22 @@
         border-radius: 5px;
         font-size: 0.8em;
         margin: 5px 0 0 0;
-        span {
-          margin: 4px 0 0 4px;
+        p {
+          margin: 4px 0 4px 4px;
         }
         .not-valid {
           color: rgb(181, 181, 181);
         }
         img {
           opacity: 0.1;
+        }
+        .calendarContainer {
+          .calendarItem {
+            margin: 0 0 5px;
+            height: 30px;
+            border-radius: 10px;
+            background-color: antiquewhite;
+          }
         }
       }
       .col.cell.valid,
