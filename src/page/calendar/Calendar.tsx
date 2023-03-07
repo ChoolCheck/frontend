@@ -103,6 +103,7 @@ const Calendar = () => {
           calendarDetailWorkcheckList={calendarDetailWorkcheckList}
           memo={memo}
           setDetailModalOpen={setDetailModalOpen}
+          setSelectedModal={setSelectedModal}
         ></CalendarDetailView>
       )}
 

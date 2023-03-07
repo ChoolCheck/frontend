@@ -9,6 +9,7 @@ const CalendarDetailView = ({
   calendarDetailWorkcheckList,
   memo,
   setDetailModalOpen,
+  setSelectedModal,
 }: type.calendarDetailViewProps) => {
   const dispatch = useDispatch();
 
@@ -86,6 +87,7 @@ const CalendarDetailView = ({
           onClick={() => {
             setDetailModalOpen(false);
             setWriteModal(true);
+            setSelectedModal("workcheck");
           }}
         >
           출근부 작성
