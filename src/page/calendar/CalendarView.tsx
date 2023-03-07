@@ -168,19 +168,19 @@ export const CalendarView = ({
   const [currentMonth, setCurrentMonth] = useState<Date>(new Date());
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
 
-  useEffect(() => {
-    const now = new Date();
-    const date =
-      now.getFullYear() +
-      "-" +
-      (now.getMonth() + 1 < 10
-        ? "0" + (now.getMonth() + 1)
-        : now.getMonth() + 1) +
-      "-" +
-      (now.getDate() + 1 < 10 ? "0" + (now.getDate() + 1) : now.getDate() + 1);
+  // useEffect(() => {
+  //   const now = new Date();
+  //   const date =
+  //     now.getFullYear() +
+  //     "-" +
+  //     (now.getMonth() + 1 < 10
+  //       ? "0" + (now.getMonth() + 1)
+  //       : now.getMonth() + 1) +
+  //     "-" +
+  //     (now.getDate() + 1 < 10 ? "0" + (now.getDate() + 1) : now.getDate() + 1);
 
-    GetTotalCalendarApi({ date, setCalendarTotalList });
-  }, []);
+  //   GetTotalCalendarApi({ date, setCalendarTotalList });
+  // }, []);
 
   const renderData = () => {
     if (calendarTotalList) {
@@ -199,12 +199,8 @@ export const CalendarView = ({
         const calendarItem = document.createElement("p");
         calendarItem.className = "calendarItem";
         calendarItem.innerText = calendarTotalList[i].title;
-        calendarItem.style.backgroundColor = `#${
-          enumType.enumColor[
-            calendarTotalList[i]
-              .backgroundColor as keyof typeof enumType.enumColor
-          ]
-        }`;
+        calendarItem.style.backgroundColor =
+          calendarTotalList[i].backgroundColor;
 
         calendarItemContainer?.appendChild(calendarItem);
         if (calendarItemContainer) cell?.appendChild(calendarItemContainer);
