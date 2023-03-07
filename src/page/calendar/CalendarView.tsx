@@ -200,7 +200,10 @@ export const CalendarView = ({
         calendarItem.className = "calendarItem";
         calendarItem.innerText = calendarTotalList[i].title;
         calendarItem.style.backgroundColor = `#${
-          enumType.enumColor[item.color as keyof typeof enumType.enumColor]
+          enumType.enumColor[
+            calendarTotalList[i]
+              .backgroundColor as keyof typeof enumType.enumColor
+          ]
         }`;
 
         calendarItemContainer?.appendChild(calendarItem);
