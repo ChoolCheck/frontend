@@ -10,6 +10,10 @@ export interface updateMemoProps {
   id: number;
   date: string;
   content: string;
+  setWriteModal: (readModalState: boolean) => {
+    type: "handleWriteodal/SETWRITEMODAL";
+    payload: boolean;
+  };
 }
 export interface deleteMemoProps {
   id: number;

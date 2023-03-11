@@ -29,6 +29,7 @@ export async function UpdateMemoApi({
   id,
   date,
   content,
+  setWriteModal,
 }: type.updateMemoProps) {
   await axios({
     method: "Patch",
@@ -42,8 +43,9 @@ export async function UpdateMemoApi({
       content: content,
     },
   })
-    .then((res) => {})
-    .then((res) => {})
+    .then((res) => {
+      setWriteModal(false);
+    })
     .catch((err) => {});
 }
 

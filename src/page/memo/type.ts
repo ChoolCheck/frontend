@@ -9,6 +9,18 @@ export interface createMemoViewProps {
   onClickCancelOnModal: React.MouseEventHandler<HTMLButtonElement>;
   onClickCreate: React.MouseEventHandler<HTMLButtonElement>;
 }
+export interface updateMemoViewProps {
+  memoForm: memoProps | undefined;
+  onChangeDate: React.ChangeEventHandler<HTMLInputElement>;
+  onChangeContent: React.ChangeEventHandler<HTMLTextAreaElement>;
+
+  onClickCancelOnModal: React.MouseEventHandler<HTMLButtonElement>;
+  onClickCreate: React.MouseEventHandler<HTMLButtonElement>;
+}
+
+export interface updateMemoProps {
+  memoForm: memoProps | undefined;
+}
 
 export interface memoProps {
   id: number;
