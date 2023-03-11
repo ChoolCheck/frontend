@@ -77,7 +77,7 @@ export async function GetDetailMemoApi({
 }: type.getDetailMemoProps) {
   await axios({
     method: "GET",
-    url: `${config.api}/work/${id}`,
+    url: `${config.api}/memo/${id}`,
     headers: {
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,
