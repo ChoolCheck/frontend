@@ -9,11 +9,11 @@ const MemoDetailView = ({
     <div className="employeeDetailView-container">
       <h3>메모 정보</h3>
       <div className="detail-info">
-        <p className="modal-name">
+        <p className="modal-date">
           <span className="detail-title">날짜</span>
           <span className="detail-content detail-date">{memoDetail?.date}</span>
         </p>
-        <p className="modal-name">
+        <p className="modal-content">
           <span className="detail-title">내용</span>
           <span className="detail-content detail-memocontent">
             {memoDetail?.content}
