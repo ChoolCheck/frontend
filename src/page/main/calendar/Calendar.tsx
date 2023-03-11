@@ -34,6 +34,9 @@ export const CalendarView = ({
   }, []);
 
   const renderData = (calendarTotalList: type.calendarListType[]) => {
+    const prevcells = document.getElementById("classitem");
+    prevcells?.remove();
+
     if (calendarTotalList) {
       for (let i = 0; i < calendarTotalList?.length; i++) {
         const cell = document.getElementById(calendarTotalList[i].date);
@@ -49,6 +52,7 @@ export const CalendarView = ({
 
         const calendarItem = document.createElement("p");
         calendarItem.className = "calendarItem";
+        calendarItem.id = "classitem";
         calendarItem.innerText = calendarTotalList[i].title;
         calendarItem.style.backgroundColor =
           calendarTotalList[i].backgroundColor;
