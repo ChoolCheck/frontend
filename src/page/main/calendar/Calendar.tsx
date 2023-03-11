@@ -52,9 +52,9 @@ export const CalendarView = ({
           cell?.appendChild(calendarItemContainer);
         }
       }
-
-      if (cell?.classList.contains("disabled")) continue;
-      else {
+      console.log(cell?.classList);
+      console.log(cell?.classList.contains("disabled"));
+      if (!cell?.classList.contains("disabled")) {
         const calendarItem = document.createElement("p");
         calendarItem.className = "calendarItem";
         calendarItem.id = "classitem";
