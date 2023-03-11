@@ -1,5 +1,4 @@
 import * as type from "./type";
-import "./createMemo.scss";
 
 const CreateMemoView = ({
   memoForm,
