@@ -83,31 +83,25 @@
         border-radius: 5px;
         font-size: 0.8em;
         margin: 5px 0 0 0;
+      }
+      .not-valid {
+        color: rgb(181, 181, 181);
+      }
 
-        .not-valid {
-          color: rgb(181, 181, 181);
-          .calendarItem {
-            color: rgb(181, 181, 181);
-          }
+      .cell {
+        display: block;
+        .text {
+          margin: 4px 0 4px 4px;
         }
 
-        .cell {
-          display: block;
-          .text.day {
-            margin: 4px 0 4px 4px;
-          }
-
-          .calendarContainer {
-            .calendarItem {
-              margin: 0 0 5px 0;
-              padding: 3px;
-              border-radius: 10px;
-            }
-          }
+        .calendarItem {
+          margin: 0 0 5px 0;
+          padding: 3px;
+          border-radius: 10px;
         }
       }
-      .col.cell.valid,
-      .col.cell.selected {
+      .cell.valid,
+      .cell.selected {
         &:hover {
           cursor: pointer;
           transform: scale(1.01);
@@ -115,7 +109,7 @@
           background: transparentize(gray, 0.8);
         }
       }
-      .col.cell.selected {
+      .cell.selected {
         border-color: rgba(0, 0, 0);
       }
     }
