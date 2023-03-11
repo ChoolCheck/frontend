@@ -98,7 +98,8 @@ $opacity-zero: 0.3;
       }
 
       .detail-memocontent {
-        height: 80px;
+        min-height: 50px;
+        max-height: 80px;
         width: 180px;
       }
     }
@@ -162,7 +163,7 @@ $opacity-zero: 0.3;
       float: right;
       button {
         background-color: white;
-        margin: 30px 10px 0 10px;
+        margin: 40px 10px 0 10px;
       }
     }
   }
