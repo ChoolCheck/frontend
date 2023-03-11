@@ -106,10 +106,9 @@ $opacity-zero: 0.3;
     }
     .memo-container {
       overflow-y: auto;
-      height: 100px;
+      height: 90px;
 
-      margin: 0 40px 20px 40px;
-      padding-top: 20px;
+      margin: 20px 40px 20px 40px;
       border-top: 1px solid rgb(208, 208, 208);
 
       .memo-container-header {
