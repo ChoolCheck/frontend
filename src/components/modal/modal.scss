@@ -88,7 +88,7 @@ $opacity-zero: 0.3;
         height: 40px;
         width: 150px;
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
       }
 
       .detail-color {
@@ -104,14 +104,15 @@ $opacity-zero: 0.3;
       }
     }
 
+    .modal-date > input {
+      width: 200px;
+    }
+
     .modal-employee > select {
       text-align: center;
       width: 200px;
     }
 
-    .modal-date > input {
-      width: 200px;
-    }
     .modal-worktype {
       .worktype-list {
         display: flex;
