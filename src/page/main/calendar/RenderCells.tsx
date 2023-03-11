@@ -45,6 +45,17 @@ const RenderCells = ({
               ? "0" + cloneDay.getDate()
               : cloneDay.getDate())
           }
+          id={
+            cloneDay.getFullYear() +
+            "-" +
+            (cloneDay.getMonth() + 1 < 10
+              ? "0" + (cloneDay.getMonth() + 1)
+              : cloneDay.getMonth() + 1) +
+            "-" +
+            (cloneDay.getDate() < 10
+              ? "0" + cloneDay.getDate()
+              : cloneDay.getDate())
+          }
           onClick={() => onDateClick(cloneDay)}
         >
           <p
@@ -63,15 +74,6 @@ const RenderCells = ({
     rows.push(
       <div
         className="row"
-        id={
-          day.getFullYear() +
-          "-" +
-          (day.getMonth() + 1 < 10
-            ? "0" + (day.getMonth() + 1)
-            : day.getMonth() + 1) +
-          "-" +
-          (day.getDate() < 10 ? "0" + day.getDate() : day.getDate())
-        }
         key={
           day.getFullYear() +
           "-" +

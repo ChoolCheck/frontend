@@ -40,30 +40,28 @@ export const CalendarView = ({
     const prevItemCells = document.getElementById("classitem");
     prevItemCells?.remove();
 
-    if (calendarTotalList) {
-      for (let i = 0; i < calendarTotalList?.length; i++) {
-        const cell = document.getElementById(calendarTotalList[i].date);
-        let calendarItemContainer;
-        if (cell) {
-          if (cell.childNodes.length > 1) {
-            calendarItemContainer = cell.childNodes[1];
-          } else {
-            calendarItemContainer = document.createElement("div");
-            calendarItemContainer.className = "calendarContainer";
-            cell?.appendChild(calendarItemContainer);
-          }
+    for (let i = 0; i < calendarTotalList.length; i++) {
+      const cell = document.getElementById(calendarTotalList[i].date);
+      let calendarItemContainer;
+      if (cell) {
+        if (cell.childNodes.length > 1) {
+          calendarItemContainer = cell.childNodes[1];
+        } else {
+          calendarItemContainer = document.createElement("div");
+          calendarItemContainer.className = "calendarContainer";
+          cell?.appendChild(calendarItemContainer);
         }
+      }
 
-        if (cell?.classList.contains("disabled")) continue;
-        else {
-          const calendarItem = document.createElement("p");
-          calendarItem.className = "calendarItem";
-          calendarItem.id = "classitem";
-          calendarItem.innerText = calendarTotalList[i].title;
-          calendarItem.style.backgroundColor =
-            calendarTotalList[i].backgroundColor;
-          calendarItemContainer?.appendChild(calendarItem);
-        }
+      if (cell?.classList.contains("disabled")) continue;
+      else {
+        const calendarItem = document.createElement("p");
+        calendarItem.className = "calendarItem";
+        calendarItem.id = "classitem";
+        calendarItem.innerText = calendarTotalList[i].title;
+        calendarItem.style.backgroundColor =
+          calendarTotalList[i].backgroundColor;
+        calendarItemContainer?.appendChild(calendarItem);
       }
     }
   };
