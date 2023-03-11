@@ -88,11 +88,6 @@ export async function GetTotalCalendarApi({
 
   // 보여줄 달력이 현재 달보다 이후인 경우 : 달력에 스케줄만 표시
   else {
-    // else if (
-    //   inputDate.getFullYear() > nowDate.getFullYear() ||
-    //   (inputDate.getFullYear() == nowDate.getFullYear() &&
-    //     inputDate.getMonth() > nowDate.getMonth())
-    // ) {
     scheduleStart = inputStart;
     scheduleEnd = inputEnd;
     axios
@@ -136,89 +131,6 @@ export async function GetTotalCalendarApi({
       })
       .catch((error) => {});
   }
-  // 보여줄 달력이 현재 달과 같은 경우 : 달력에 출근부와 스케줄 모두 표시
-  // else if (
-  //   inputDate.getFullYear() == nowDate.getFullYear() &&
-  //   inputDate.getMonth() == nowDate.getMonth()
-  // ) {
-  //   const today =
-  //     nowDate.getFullYear() +
-  //     "-" +
-  //     (nowDate.getMonth() + 1 < 10
-  //       ? "0" + (nowDate.getMonth() + 1)
-  //       : nowDate.getMonth() + 1) +
-  //     "-" +
-  //     (nowDate.getDate() < 10 ? "0" + nowDate.getDate() : nowDate.getDate());
-
-  //   scheduleStart = today;
-  //   scheduleEnd = inputEnd;
-  //   workcheckStart = inputStart;
-  //   workcheckEnd = today;
-
-  //   axios
-  //     .all([
-  //       axiosInstance.get(
-  //         `${config.api}/schedule/date?start=${scheduleStart}&end=${scheduleEnd}`
-  //       ),
-  //       axiosInstance.get(
-  //         `${config.api}/work/date?start=${workcheckStart}&end=${workcheckEnd}`
-  //       ),
-  //     ])
-  //     .then(
-  //       axios.spread((res1, res2) => {
-  //         console.log(res1.data);
-  //         console.log(res2.data);
-
-  //         const scheduleList: scheduleType.scheduleObjProps[] = res1.data;
-  //         const workcheckList: workcheckType.workcheckObjProps[] = res2.data;
-
-  //         for (let i = 0; i < scheduleList.length; i++) {
-  //           const data: type.calendarListType = {
-  //             title: (
-  //               scheduleList[i].name +
-  //               " " +
-  //               scheduleList[i].startTime.substring(0, 5) +
-  //               "-" +
-  //               scheduleList[i].endTime.substring(0, 5)
-  //             ).toString(),
-  //             date: scheduleList[i].date,
-  //             textColor: "black",
-  //             backgroundColor: `#${
-  //               enumType.enumColor[
-  //                 scheduleList[i].color as keyof typeof enumType.enumColor
-  //               ]
-  //             }`,
-  //           };
-  //           tempResultList.push(data);
-  //         }
-  //         for (let i = 0; i < workcheckList.length; i++) {
-  //           const data: type.calendarListType = {
-  //             title: (
-  //               workcheckList[i].name +
-  //               " " +
-  //               workcheckList[i].startTime.substring(0, 5) +
-  //               "-" +
-  //               workcheckList[i].endTime.substring(0, 5)
-  //             ).toString(),
-  //             date: workcheckList[i].date,
-  //             textColor: "#727272",
-  //             backgroundColor: `#${
-  //               enumType.enumColor[
-  //                 workcheckList[i].color as keyof typeof enumType.enumColor
-  //               ]
-  //             }`,
-  //           };
-  //           tempResultList.push(data);
-  //         }
-  //         return tempResultList;
-  //       })
-  //     )
-  //     .then((res) => {
-  //       console.log(tempResultList);
-  //       setCalendarTotalList(tempResultList);
-  //     })
-  //     .catch((error) => {});
-  // }
 }
 
 export async function GetDetailCalendarApi({
@@ -229,9 +141,6 @@ export async function GetDetailCalendarApi({
   setMemo,
 }: type.getDetailCalendarProps) {
   GetDateMemoApi({ date, setMemo });
-
-  const today = new Date();
-  const inputDate = new Date(date);
 
   const axiosInstance = axios.create({
     headers: {

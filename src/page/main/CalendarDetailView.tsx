@@ -10,6 +10,7 @@ const CalendarDetailView = ({
   memo,
   setDetailModalOpen,
   setSelectedModal,
+  onMemoClick,
 }: type.calendarDetailViewProps) => {
   const dispatch = useDispatch();
 
@@ -76,11 +77,17 @@ const CalendarDetailView = ({
             </ul>
           </div>
         </div>
+
         <div className="memo-container">
           <h3 className="memo-container-header"> 메모</h3>
           {memo &&
             memo.map((item) => (
-              <p className="memo-container-content">{item.content}</p>
+              <p
+                className="memo-container-content"
+                onClick={onMemoClick(item.id)}
+              >
+                -{item.content}
+              </p>
             ))}
         </div>
 

@@ -53,19 +53,6 @@ const Calendar = () => {
     }[]
   >();
 
-  // useEffect(() => {
-  //   const now = new Date();
-  //   const date =
-  //     now.getFullYear() +
-  //     "-" +
-  //     (now.getMonth() + 1 < 10
-  //       ? "0" + now.getMonth() + 1
-  //       : now.getMonth() + 1) +
-  //     "-" +
-  //     now.getDay();
-  //   GetTotalCalendarApi({ date, setCalendarTotalList });
-  // }, []);
-
   const onCalendarClick = (nowDate: Date) => {
     const date = (
       nowDate.getFullYear() +
@@ -95,6 +82,10 @@ const Calendar = () => {
     setSelectedModal("memo");
   };
 
+  const onMemoClick = (id: number) => {
+    return (e: React.MouseEvent<HTMLParagraphElement>) => {};
+  };
+
   return (
     <div className="Calendar-top-container">
       {detailModalOpen && (
@@ -104,6 +95,7 @@ const Calendar = () => {
           memo={memo}
           setDetailModalOpen={setDetailModalOpen}
           setSelectedModal={setSelectedModal}
+          onMemoClick={onMemoClick}
         ></CalendarDetailView>
       )}
 
