@@ -6,6 +6,7 @@ import CreateMemo from "../memo/CreateMemo";
 
 import { useDispatch } from "react-redux";
 import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
+import { setReadModalOpen } from "../../Redux/Actions/handleReadModal";
 import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/Reducers/rootReducer";
 
@@ -14,6 +15,7 @@ import * as type from "./type";
 import "./style/calendarView.scss";
 
 import { CalendarView } from "./calendar/Calendar";
+import MemoDetail from "../memo/MemoDetail";
 
 const Calendar = () => {
   const dispatch = useDispatch();
@@ -22,13 +24,19 @@ const Calendar = () => {
     (state: RootState) => state.WriteModalReducer.writeModalState
   );
 
+  const readModalState = useSelector(
+    (state: RootState) => state.ReadModalReducer.readModalState
+  );
+
   const setWriteModal = useCallback(
     (readModalState: boolean) => dispatch(setWriteModalOpen(readModalState)),
     [dispatch]
   );
 
-  const now = new Date();
-  const [nowDate, setNowDate] = useState(now);
+  const setReadModal = useCallback(
+    (readModalState: boolean) => dispatch(setReadModalOpen(readModalState)),
+    [dispatch]
+  );
 
   const [detailModalOpen, setDetailModalOpen] = useState(false);
 
@@ -52,6 +60,12 @@ const Calendar = () => {
       content: string;
     }[]
   >();
+
+  const [selectedMemo, setSelectedMemo] = useState<{
+    id: number;
+    date: string;
+    content: string;
+  }>();
 
   const onCalendarClick = (nowDate: Date) => {
     const date = (
@@ -77,17 +91,24 @@ const Calendar = () => {
     setWriteModal(true);
     setSelectedModal("workcheck");
   };
+
   const onCreateMemoClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     setWriteModal(true);
     setSelectedModal("memo");
   };
 
-  const onMemoClick = (id: number) => {
-    return (e: React.MouseEvent<HTMLParagraphElement>) => {};
+  const onMemoClick = (item: type.memoProps) => {
+    return (e: React.MouseEvent<HTMLParagraphElement>) => {
+      setDetailModalOpen(false);
+      setSelectedMemo(item);
+      setReadModal(true);
+    };
   };
 
   return (
     <div className="Calendar-top-container">
+      {readModalState && <MemoDetail memoDetail={selectedMemo}></MemoDetail>}
+
       {detailModalOpen && (
         <CalendarDetailView
           calendarDetailScheduleList={calendarDetailScheduleList}

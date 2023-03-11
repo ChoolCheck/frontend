@@ -13,6 +13,10 @@ export interface updateMemoProps {
 }
 export interface deleteMemoProps {
   id: number;
+  setReadModal: (readModalState: boolean) => {
+    type: "handleReadModal/SETREADMODAL";
+    payload: boolean;
+  };
 }
 export interface getDetailMemoProps {
   id: number;

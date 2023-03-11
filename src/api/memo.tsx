@@ -47,7 +47,10 @@ export async function UpdateMemoApi({
     .catch((err) => {});
 }
 
-export async function DeleteMemoApi({ id }: type.deleteMemoProps) {
+export async function DeleteMemoApi({
+  id,
+  setReadModal,
+}: type.deleteMemoProps) {
   await axios({
     method: "Delete",
     url: `${config.api}/memo/${id}`,
@@ -56,7 +59,9 @@ export async function DeleteMemoApi({ id }: type.deleteMemoProps) {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
   })
-    .then((res) => {})
+    .then((res) => {
+      setReadModal(false);
+    })
     .catch((err) => {});
 }
 

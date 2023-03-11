@@ -82,10 +82,7 @@ const CalendarDetailView = ({
           <h3 className="memo-container-header"> 메모</h3>
           {memo &&
             memo.map((item) => (
-              <p
-                className="memo-container-content"
-                onClick={onMemoClick(item.id)}
-              >
+              <p className="memo-container-content" onClick={onMemoClick(item)}>
                 -{item.content}
               </p>
             ))}

@@ -3,7 +3,6 @@ import WorkCheckView from "./view/WorkCheckView";
 import "./style/workCheck.scss";
 
 import { useDispatch } from "react-redux";
-import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
 import { setReadModalOpen } from "../../Redux/Actions/handleReadModal";
 import { setTotalWorkcheckList } from "../../Redux/Actions/handleTotalWorkcheckList";
 import { useSelector } from "react-redux";
@@ -40,10 +39,6 @@ const WorkCheck = () => {
 
   const setReadModal = useCallback(
     (readModalState: boolean) => dispatch(setReadModalOpen(readModalState)),
-    [dispatch]
-  );
-  const setWriteModal = useCallback(
-    (writeModalState: boolean) => dispatch(setWriteModalOpen(writeModalState)),
     [dispatch]
   );
 

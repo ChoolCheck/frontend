@@ -42,7 +42,7 @@ export interface calendarDetailViewProps {
   setSelectedModal: React.Dispatch<React.SetStateAction<string>>;
   setDetailModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   onMemoClick: (
-    id: number
+    item: memoProps
   ) => (e: React.MouseEvent<HTMLParagraphElement>) => void;
 }
 
