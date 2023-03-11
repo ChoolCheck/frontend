@@ -30,6 +30,7 @@ const CalendarDetailView = ({
 
         <div className="list-top-container">
           <div className="checkedWorkList-container">
+            <h2>출근부</h2>
             <ul className="checkedWorkList-ul">
               {calendarDetailWorkcheckList &&
                 calendarDetailWorkcheckList.map((item) => (
@@ -54,6 +55,7 @@ const CalendarDetailView = ({
           </div>
 
           <div className="scheduleList-container">
+            <h2>스케줄</h2>
             <ul className="scheduleList-ul">
               {calendarDetailScheduleList &&
                 calendarDetailScheduleList.map((item) => (

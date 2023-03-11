@@ -10,6 +10,7 @@ import { GetDateMemoApi } from "./memo";
 export async function GetTotalCalendarApi({
   date,
   setCalendarTotalList,
+  renderData,
 }: type.getTotalCalendarProps) {
   const inputDate = new Date(date);
   const nowDate = new Date();
@@ -79,6 +80,9 @@ export async function GetTotalCalendarApi({
       .then((res) => {
         setCalendarTotalList(tempResultList);
       })
+      .then((res) => {
+        renderData();
+      })
       .catch((error) => {});
   }
 
@@ -126,6 +130,9 @@ export async function GetTotalCalendarApi({
       )
       .then((res) => {
         setCalendarTotalList(tempResultList);
+      })
+      .then((res) => {
+        renderData();
       })
       .catch((error) => {});
   }

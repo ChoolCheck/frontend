@@ -17,6 +17,7 @@ export interface getTotalCalendarProps {
   setCalendarTotalList: React.Dispatch<
     React.SetStateAction<calendarListType[] | undefined>
   >;
+  renderData: () => void;
 }
 
 export interface getDetailCalendarProps {

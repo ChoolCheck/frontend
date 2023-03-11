@@ -179,8 +179,7 @@ export const CalendarView = ({
       "-" +
       (now.getDate() + 1 < 10 ? "0" + (now.getDate() + 1) : now.getDate() + 1);
 
-    GetTotalCalendarApi({ date, setCalendarTotalList });
-    renderData();
+    GetTotalCalendarApi({ date, setCalendarTotalList, renderData });
   }, []);
 
   const renderData = () => {
@@ -218,7 +217,7 @@ export const CalendarView = ({
       "-01"
     ).toString();
 
-    GetTotalCalendarApi({ date, setCalendarTotalList });
+    GetTotalCalendarApi({ date, setCalendarTotalList, renderData });
     renderData();
   };
 
@@ -232,13 +231,10 @@ export const CalendarView = ({
       "-01"
     ).toString();
 
-    GetTotalCalendarApi({ date, setCalendarTotalList });
-    renderData();
+    GetTotalCalendarApi({ date, setCalendarTotalList, renderData });
   };
 
   const onDateClick = (day: Date) => {
-    console.log(day);
-
     setSelectedDate(day);
     onCalendarClick(day);
     return (e: React.MouseEvent<HTMLDivElement>) => {
