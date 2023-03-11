@@ -53,18 +53,18 @@ const Calendar = () => {
     }[]
   >();
 
-  useEffect(() => {
-    const now = new Date();
-    const date =
-      now.getFullYear() +
-      "-" +
-      (now.getMonth() + 1 < 10
-        ? "0" + now.getMonth() + 1
-        : now.getMonth() + 1) +
-      "-" +
-      now.getDay();
-    GetTotalCalendarApi({ date, setCalendarTotalList });
-  }, []);
+  // useEffect(() => {
+  //   const now = new Date();
+  //   const date =
+  //     now.getFullYear() +
+  //     "-" +
+  //     (now.getMonth() + 1 < 10
+  //       ? "0" + now.getMonth() + 1
+  //       : now.getMonth() + 1) +
+  //     "-" +
+  //     now.getDay();
+  //   GetTotalCalendarApi({ date, setCalendarTotalList });
+  // }, []);
 
   const onCalendarClick = (nowDate: Date) => {
     const date = (

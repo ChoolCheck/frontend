@@ -168,19 +168,20 @@ export const CalendarView = ({
   const [currentMonth, setCurrentMonth] = useState<Date>(new Date());
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
 
-  // useEffect(() => {
-  //   const now = new Date();
-  //   const date =
-  //     now.getFullYear() +
-  //     "-" +
-  //     (now.getMonth() + 1 < 10
-  //       ? "0" + (now.getMonth() + 1)
-  //       : now.getMonth() + 1) +
-  //     "-" +
-  //     (now.getDate() + 1 < 10 ? "0" + (now.getDate() + 1) : now.getDate() + 1);
+  useEffect(() => {
+    const now = new Date();
+    const date =
+      now.getFullYear() +
+      "-" +
+      (now.getMonth() + 1 < 10
+        ? "0" + (now.getMonth() + 1)
+        : now.getMonth() + 1) +
+      "-" +
+      (now.getDate() + 1 < 10 ? "0" + (now.getDate() + 1) : now.getDate() + 1);
 
-  //   GetTotalCalendarApi({ date, setCalendarTotalList });
-  // }, []);
+    GetTotalCalendarApi({ date, setCalendarTotalList });
+    renderData();
+  }, []);
 
   const renderData = () => {
     if (calendarTotalList) {
@@ -208,8 +209,6 @@ export const CalendarView = ({
     }
   };
 
-  renderData();
-
   const prevMonth = (e: React.MouseEvent<SVGSVGElement>) => {
     setCurrentMonth(subMonths(currentMonth, 1));
     const date = (
@@ -220,6 +219,7 @@ export const CalendarView = ({
     ).toString();
 
     GetTotalCalendarApi({ date, setCalendarTotalList });
+    renderData();
   };
 
   const nextMonth = (e: React.MouseEvent<SVGSVGElement>) => {
@@ -233,6 +233,7 @@ export const CalendarView = ({
     ).toString();
 
     GetTotalCalendarApi({ date, setCalendarTotalList });
+    renderData();
   };
 
   const onDateClick = (day: Date) => {
