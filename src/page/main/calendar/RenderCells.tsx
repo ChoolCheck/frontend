@@ -45,17 +45,6 @@ const RenderCells = ({
               ? "0" + cloneDay.getDate()
               : cloneDay.getDate())
           }
-          id={
-            cloneDay.getFullYear() +
-            "-" +
-            (cloneDay.getMonth() + 1 < 10
-              ? "0" + (cloneDay.getMonth() + 1)
-              : cloneDay.getMonth() + 1) +
-            "-" +
-            (cloneDay.getDate() < 10
-              ? "0" + cloneDay.getDate()
-              : cloneDay.getDate())
-          }
           onClick={() => onDateClick(cloneDay)}
         >
           <p

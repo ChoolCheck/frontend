@@ -71,24 +71,23 @@
       @include common.size(100%, 100%);
       @include common.flex-row(space-between, center);
       .col {
+        @include common.size(13.5%, 90%);
+        @include common.flex-row(flex-start, flex-start);
+
         max-height: 110px;
         min-height: 110px;
         overflow-y: auto;
-        @include common.size(13.5%, 90%);
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
 
         border: 0.8px solid transparentize(gray, 0.4);
         border-radius: 5px;
         font-size: 0.8em;
         margin: 5px 0 0 0;
-      }
-      .not-valid {
-        color: rgb(181, 181, 181);
+        .not-valid {
+          color: rgb(181, 181, 181);
+        }
       }
 
-      .cell {
+      .col.cell {
         display: block;
         .text {
           margin: 4px 0 4px 4px;
@@ -100,8 +99,8 @@
           border-radius: 10px;
         }
       }
-      .cell.valid,
-      .cell.selected {
+      .col.cell.valid,
+      .col.cell.selected {
         &:hover {
           cursor: pointer;
           transform: scale(1.01);
@@ -109,7 +108,7 @@
           background: transparentize(gray, 0.8);
         }
       }
-      .cell.selected {
+      .col.cell.selected {
         border-color: rgba(0, 0, 0);
       }
     }
