@@ -13,8 +13,6 @@ const UpdateMemo = ({ memoForm, setMemoDetail }: type.updateMemoProps) => {
     [dispatch]
   );
 
-  console.log(memoForm);
-
   const [date, setDate] = useState(memoForm ? memoForm.date : "");
   const [content, setContent] = useState(memoForm ? memoForm.content : "");
 

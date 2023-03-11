@@ -8,8 +8,6 @@ const UpdateMemoView = ({
   onClickCancelOnModal,
   onClickCreate,
 }: type.updateMemoViewProps) => {
-  console.log(date);
-  console.log(content);
   return (
     <div className="CreateMemo-container">
       <h3>메모 수정</h3>

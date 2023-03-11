@@ -13,7 +13,7 @@ $opacity-zero: 0.3;
   background-color: rgba($color-none, $opacity-zero);
 
   display: block;
-  font-size: 20px;
+  font-size: 19px;
 
   .CalendarDetailView-container {
     position: absolute;
@@ -39,10 +39,10 @@ $opacity-zero: 0.3;
       height: 250px;
 
       .checkedWorkList-container {
-        margin-top: 10px;
         text-align: left;
         padding: 0 20px 20px 20px;
         .checkedWorkList-ul {
+          margin-top: 10px;
           .checkedWorkList-li {
             justify-content: left;
             display: flex;
@@ -74,11 +74,12 @@ $opacity-zero: 0.3;
 
       .scheduleList-container {
         text-align: left;
-        margin: 10px 20px 0px 20px;
+        margin: 0 20px 0px 20px;
         padding-top: 20px;
         border-top: 1px solid rgb(208, 208, 208);
 
         .scheduleList-ul {
+          margin-top: 10px;
           .scheduleList-li {
             justify-content: left;
             display: flex;
