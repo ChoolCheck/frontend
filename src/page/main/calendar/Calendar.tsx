@@ -34,31 +34,29 @@ export const CalendarView = ({
   }, []);
 
   const renderData = (calendarTotalList: type.calendarListType[]) => {
-    const prevcells = document.getElementById("classitem");
-    prevcells?.remove();
+    const prevItemContainerCells = document.getElementById("classitem");
+    prevItemContainerCells?.remove();
+
+    const prevItemCells = document.getElementById("classitem");
+    prevItemCells?.remove();
 
     if (calendarTotalList) {
       for (let i = 0; i < calendarTotalList?.length; i++) {
         const cell = document.getElementById(calendarTotalList[i].date);
-        let calendarItemContainer;
-        if (cell) {
-          if (cell.childNodes.length && cell?.childNodes.length > 1) {
-            calendarItemContainer = cell.childNodes[1];
-          } else {
-            calendarItemContainer = document.createElement("div");
-            calendarItemContainer.className = "calendarContainer";
-          }
+        let calendarItemContainer = document.createElement("div");
+        calendarItemContainer.className = "calendarContainer";
+        if (cell?.classList.contains("disabled")) continue;
+        else {
+          cell?.appendChild(calendarItemContainer);
+
+          const calendarItem = document.createElement("p");
+          calendarItem.className = "calendarItem";
+          calendarItem.id = "classitem";
+          calendarItem.innerText = calendarTotalList[i].title;
+          calendarItem.style.backgroundColor =
+            calendarTotalList[i].backgroundColor;
+          calendarItemContainer.appendChild(calendarItem);
         }
-
-        const calendarItem = document.createElement("p");
-        calendarItem.className = "calendarItem";
-        calendarItem.id = "classitem";
-        calendarItem.innerText = calendarTotalList[i].title;
-        calendarItem.style.backgroundColor =
-          calendarTotalList[i].backgroundColor;
-
-        calendarItemContainer?.appendChild(calendarItem);
-        if (calendarItemContainer) cell?.appendChild(calendarItemContainer);
       }
     }
   };

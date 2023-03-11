@@ -71,7 +71,9 @@
       @include common.size(100%, 100%);
       @include common.flex-row(space-between, center);
       .col {
-        min-height: 100px;
+        max-height: 110px;
+        min-height: 110px;
+        overflow-y: auto;
         @include common.size(13.5%, 90%);
         display: flex;
         flex-direction: row;
@@ -91,7 +93,6 @@
 
         .cell {
           display: block;
-          overflow-y: auto;
           .text.day {
             margin: 4px 0 4px 4px;
           }
@@ -108,6 +109,7 @@
       .col.cell.valid,
       .col.cell.selected {
         &:hover {
+          cursor: pointer;
           transform: scale(1.01);
           border: none;
           background: transparentize(gray, 0.8);
