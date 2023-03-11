@@ -51,16 +51,14 @@ const UpdateMemo = ({ memoForm, setMemoDetail }: type.updateMemoProps) => {
   };
 
   return (
-    <div>
-      <UpdateMemoView
-        onClickCancelOnModal={onClickCancelOnModal}
-        onChangeDate={onChangeDate}
-        onChangeContent={onChangeContent}
-        onClickCreate={onClickCreate}
-        date={date}
-        content={content}
-      ></UpdateMemoView>
-    </div>
+    <UpdateMemoView
+      onClickCancelOnModal={onClickCancelOnModal}
+      onChangeDate={onChangeDate}
+      onChangeContent={onChangeContent}
+      onClickCreate={onClickCreate}
+      date={date}
+      content={content}
+    ></UpdateMemoView>
   );
 };
 

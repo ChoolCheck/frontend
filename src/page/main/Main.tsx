@@ -16,11 +16,11 @@ import { GetDetailMemoApi } from "../../api/memo";
 import * as type from "./type";
 import "./style/calendarView.scss";
 
-import { CalendarView } from "./calendar/Calendar";
+import { CalendarView } from "./calendar/CalendarView";
 import MemoDetail from "../memo/MemoDetail";
 import ReadModal from "../../components/modal/ReadModal";
 
-const Calendar = () => {
+const Main = () => {
   const dispatch = useDispatch();
 
   const writeModalState = useSelector(
@@ -133,13 +133,20 @@ const Calendar = () => {
       )}
 
       {writeModalState && (
-        <WriteModal>
+        <>
           {selectedModal == "createworkcheck" && (
-            <CreateWorkCheck></CreateWorkCheck>
+            <WriteModal>
+              <CreateWorkCheck></CreateWorkCheck>
+            </WriteModal>
           )}
-          {selectedModal == "creatememo" && <CreateMemo></CreateMemo>}
-        </WriteModal>
+          {selectedModal == "creatememo" && (
+            <WriteModal>
+              <CreateMemo></CreateMemo>
+            </WriteModal>
+          )}
+        </>
       )}
+
       <CalendarView
         setCalendarTotalList={setCalendarTotalList}
         calendarTotalList={calendarTotalList}
@@ -151,4 +158,4 @@ const Calendar = () => {
   );
 };
 
-export default Calendar;
+export default Main;
