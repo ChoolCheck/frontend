@@ -6,7 +6,7 @@ import RenderCells from "./RenderCells";
 import RenderDays from "./RenderDays";
 
 import { GetTotalCalendarApi } from "../../../api/calendar";
-import "./style/calendarView.scss";
+import "../style/calendarView.scss";
 import * as type from "../type";
 
 export const CalendarView = ({
