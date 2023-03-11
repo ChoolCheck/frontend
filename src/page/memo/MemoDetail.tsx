@@ -10,8 +10,9 @@ import { RootState } from "../../Redux/Reducers/rootReducer";
 
 import WriteModal from "../../components/modal/WriteModal";
 import MemoDetailView from "./MemoDetailView";
+import UpdateMemo from "./UpdateMemo";
 
-const MemoDetail = ({ memoDetail }: type.memoDetailProps) => {
+const MemoDetail = ({ memoDetail, setMemoDetail }: type.memoDetailProps) => {
   const dispatch = useDispatch();
   const writeModalState = useSelector(
     (state: RootState) => state.WriteModalReducer.writeModalState
@@ -46,9 +47,10 @@ const MemoDetail = ({ memoDetail }: type.memoDetailProps) => {
     <div className="employeeDetail-container">
       {writeModalState && (
         <WriteModal>
-          {/* <UpdateMemo>
-
-          ></UpdateMemo> */}
+          <UpdateMemo
+            memoForm={memoDetail}
+            setMemoDetail={setMemoDetail}
+          ></UpdateMemo>
         </WriteModal>
       )}
       <MemoDetailView

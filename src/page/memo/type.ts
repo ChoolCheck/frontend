@@ -10,7 +10,8 @@ export interface createMemoViewProps {
   onClickCreate: React.MouseEventHandler<HTMLButtonElement>;
 }
 export interface updateMemoViewProps {
-  memoForm: memoProps | undefined;
+  date: string;
+  content: string;
   onChangeDate: React.ChangeEventHandler<HTMLInputElement>;
   onChangeContent: React.ChangeEventHandler<HTMLTextAreaElement>;
 
@@ -20,6 +21,16 @@ export interface updateMemoViewProps {
 
 export interface updateMemoProps {
   memoForm: memoProps | undefined;
+  setMemoDetail: React.Dispatch<
+    React.SetStateAction<
+      | {
+          id: number;
+          date: string;
+          content: string;
+        }
+      | undefined
+    >
+  >;
 }
 
 export interface memoProps {
@@ -30,6 +41,16 @@ export interface memoProps {
 
 export interface memoDetailProps {
   memoDetail: memoProps | undefined;
+  setMemoDetail: React.Dispatch<
+    React.SetStateAction<
+      | {
+          id: number;
+          date: string;
+          content: string;
+        }
+      | undefined
+    >
+  >;
 }
 
 export interface memoDetailViewProps {

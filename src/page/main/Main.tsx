@@ -10,12 +10,13 @@ import { setReadModalOpen } from "../../Redux/Actions/handleReadModal";
 import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/Reducers/rootReducer";
 
-import { GetDetailCalendarApi, GetTotalCalendarApi } from "../../api/calendar";
+import { GetDetailCalendarApi } from "../../api/calendar";
 import * as type from "./type";
 import "./style/calendarView.scss";
 
 import { CalendarView } from "./calendar/Calendar";
 import MemoDetail from "../memo/MemoDetail";
+import ReadModal from "../../components/modal/ReadModal";
 
 const Calendar = () => {
   const dispatch = useDispatch();
@@ -61,7 +62,7 @@ const Calendar = () => {
     }[]
   >();
 
-  const [selectedMemo, setSelectedMemo] = useState<{
+  const [memoDetail, setMemoDetail] = useState<{
     id: number;
     date: string;
     content: string;
@@ -100,14 +101,21 @@ const Calendar = () => {
   const onMemoClick = (item: type.memoProps) => {
     return (e: React.MouseEvent<HTMLParagraphElement>) => {
       setDetailModalOpen(false);
-      setSelectedMemo(item);
+      setMemoDetail(item);
       setReadModal(true);
     };
   };
 
   return (
     <div className="Calendar-top-container">
-      {readModalState && <MemoDetail memoDetail={selectedMemo}></MemoDetail>}
+      {readModalState && (
+        <ReadModal>
+          <MemoDetail
+            memoDetail={memoDetail}
+            setMemoDetail={setMemoDetail}
+          ></MemoDetail>
+        </ReadModal>
+      )}
 
       {detailModalOpen && (
         <CalendarDetailView

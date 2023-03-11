@@ -30,6 +30,7 @@ export async function UpdateMemoApi({
   date,
   content,
   setWriteModal,
+  setMemoDetail,
 }: type.updateMemoProps) {
   await axios({
     method: "Patch",
@@ -43,6 +44,9 @@ export async function UpdateMemoApi({
       content: content,
     },
   })
+    .then((res) => {
+      GetDetailMemoApi({ id, setMemoDetail });
+    })
     .then((res) => {
       setWriteModal(false);
     })
@@ -67,7 +71,10 @@ export async function DeleteMemoApi({
     .catch((err) => {});
 }
 
-export async function GetDetailMemoApi({ id }: type.getDetailMemoProps) {
+export async function GetDetailMemoApi({
+  id,
+  setMemoDetail,
+}: type.getDetailMemoProps) {
   await axios({
     method: "GET",
     url: `${config.api}/work/${id}`,
@@ -76,7 +83,9 @@ export async function GetDetailMemoApi({ id }: type.getDetailMemoProps) {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
   })
-    .then((res) => {})
+    .then((res) => {
+      setMemoDetail(res.data);
+    })
     .catch((err) => {});
 }
 

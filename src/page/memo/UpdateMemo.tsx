@@ -5,7 +5,7 @@ import { UpdateMemoApi } from "../../api/memo";
 import UpdateMemoView from "./UpdateMemoView";
 import * as type from "./type";
 
-const UpdateMemo = ({ memoForm }: type.updateMemoProps) => {
+const UpdateMemo = ({ memoForm, setMemoDetail }: type.updateMemoProps) => {
   const dispatch = useDispatch();
 
   const setWriteModal = useCallback(
@@ -43,6 +43,7 @@ const UpdateMemo = ({ memoForm }: type.updateMemoProps) => {
         date,
         content,
         setWriteModal,
+        setMemoDetail,
       });
     }
   };
@@ -51,10 +52,11 @@ const UpdateMemo = ({ memoForm }: type.updateMemoProps) => {
     <div>
       <UpdateMemoView
         onClickCancelOnModal={onClickCancelOnModal}
-        memoForm={memoForm}
         onChangeDate={onChangeDate}
         onChangeContent={onChangeContent}
         onClickCreate={onClickCreate}
+        date={date}
+        content={content}
       ></UpdateMemoView>
     </div>
   );

@@ -14,6 +14,16 @@ export interface updateMemoProps {
     type: "handleWriteodal/SETWRITEMODAL";
     payload: boolean;
   };
+  setMemoDetail: React.Dispatch<
+    React.SetStateAction<
+      | {
+          id: number;
+          date: string;
+          content: string;
+        }
+      | undefined
+    >
+  >;
 }
 export interface deleteMemoProps {
   id: number;
@@ -24,6 +34,16 @@ export interface deleteMemoProps {
 }
 export interface getDetailMemoProps {
   id: number;
+  setMemoDetail: React.Dispatch<
+    React.SetStateAction<
+      | {
+          id: number;
+          date: string;
+          content: string;
+        }
+      | undefined
+    >
+  >;
 }
 export interface memoProps {
   id: number;

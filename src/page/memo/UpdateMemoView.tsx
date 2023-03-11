@@ -2,23 +2,29 @@ import * as type from "./type";
 import "./createMemo.scss";
 
 const UpdateMemoView = ({
-  memoForm,
+  date,
+  content,
   onChangeDate,
   onChangeContent,
   onClickCancelOnModal,
   onClickCreate,
-}: type.createMemoViewProps) => {
+}: type.updateMemoViewProps) => {
   return (
     <div className="CreateMemo-container">
-      <h3>메모 작성</h3>
+      <h3>메모 수정</h3>
       <div className="CreateMemo-content">
         <p className="modal-date">
           <span>날짜</span>
-          <input type="date" name="date" onChange={onChangeDate}></input>
+          <input
+            type="date"
+            name="date"
+            onChange={onChangeDate}
+            value={date}
+          ></input>
         </p>
         <p className="modal-content">
           <span>내용</span>
-          <textarea onChange={onChangeContent}></textarea>
+          <textarea onChange={onChangeContent} value={content}></textarea>
         </p>
       </div>
       <div className="modal-write-button-container">
