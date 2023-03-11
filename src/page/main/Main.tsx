@@ -11,6 +11,8 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/Reducers/rootReducer";
 
 import { GetDetailCalendarApi } from "../../api/calendar";
+import { GetDetailMemoApi } from "../../api/memo";
+
 import * as type from "./type";
 import "./style/calendarView.scss";
 
