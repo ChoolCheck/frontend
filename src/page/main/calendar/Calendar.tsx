@@ -34,11 +34,18 @@ export const CalendarView = ({
   }, []);
 
   const renderData = (calendarTotalList: type.calendarListType[]) => {
-    const prevItemContainerCells = document.getElementById("classitem");
-    prevItemContainerCells?.remove();
+    const prevItemContainerCells =
+      document.querySelectorAll(".calendarContainer");
 
-    const prevItemCells = document.getElementById("classitem");
-    prevItemCells?.remove();
+    prevItemContainerCells.forEach((cell) => {
+      cell.remove();
+    });
+
+    const prevItemCells = document.querySelectorAll(".calendarItem");
+
+    prevItemCells.forEach((cell) => {
+      cell.remove();
+    });
 
     for (let i = 0; i < calendarTotalList.length; i++) {
       const cell = document.getElementById(calendarTotalList[i].date);
@@ -57,7 +64,6 @@ export const CalendarView = ({
       if (!cell?.classList.contains("disabled")) {
         const calendarItem = document.createElement("p");
         calendarItem.className = "calendarItem";
-        calendarItem.id = "classitem";
         calendarItem.innerText = calendarTotalList[i].title;
         calendarItem.style.backgroundColor =
           calendarTotalList[i].backgroundColor;

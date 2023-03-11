@@ -89,7 +89,11 @@ const RenderCells = ({
     );
     days = [];
   }
-  return <div className="body">{rows}</div>;
+  return (
+    <div className="calendar-body" id="calendar-body">
+      {rows}
+    </div>
+  );
 };
 
 export default RenderCells;

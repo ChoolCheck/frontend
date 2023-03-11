@@ -3,6 +3,7 @@
 * body {
   background-color: white;
 }
+
 .calendar {
   margin: 0 auto;
   @include common.size(90%, 100%);
@@ -85,6 +86,18 @@
         .not-valid {
           color: rgb(181, 181, 181);
         }
+
+        ::-webkit-scrollbar {
+          width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+          background-color: #e4e4e4;
+          border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb {
+          background-color: #d3d3d3;
+          border-radius: 5px;
+        }
       }
 
       .col.cell {
@@ -94,8 +107,8 @@
         }
 
         .calendarItem {
-          margin: 0 0 5px 0;
-          padding: 3px;
+          margin: 0 0 3px 0;
+          padding: 3px 0 3px 0;
           border-radius: 5px;
         }
       }
