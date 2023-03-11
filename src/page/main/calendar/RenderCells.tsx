@@ -90,7 +90,7 @@ const RenderCells = ({
     days = [];
   }
   return (
-    <div className="calendar-body" id="calendar-body">
+    <div className="body" id="calendar-body">
       {rows}
     </div>
   );
