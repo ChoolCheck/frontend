@@ -13,7 +13,7 @@ $opacity-zero: 0.3;
   background-color: rgba($color-none, $opacity-zero);
 
   .readmodal-container {
-    padding: 30px 40px 40px 40px;
+    padding: 30px 35px 35px 40px;
     h3 {
       margin: 30px 0 45px 0;
     }
@@ -79,7 +79,7 @@ $opacity-zero: 0.3;
       .detail-title {
         height: 40px;
         margin-right: 20px;
-        width: 110px;
+        max-width: 110px;
         font-size: 20px;
         text-align: center;
       }
@@ -99,6 +99,7 @@ $opacity-zero: 0.3;
 
       .detail-memocontent {
         height: 80px;
+        width: 180px;
       }
     }
 
