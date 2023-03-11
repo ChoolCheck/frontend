@@ -36,6 +36,8 @@ const UpdateMemo = ({ memoForm, setMemoDetail }: type.updateMemoProps) => {
       window.alert("날짜를 선택해주세요.");
     } else if (content == "") {
       window.alert("내용을 입력해주세요.");
+    } else if (content.length > 35) {
+      window.alert("내용을 35자 이하로 입력해주세요");
     } else {
       const id = memoForm ? memoForm.id : 0;
       UpdateMemoApi({
