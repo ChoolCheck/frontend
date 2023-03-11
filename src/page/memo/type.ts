@@ -51,6 +51,8 @@ export interface memoDetailProps {
       | undefined
     >
   >;
+  setSelectedModal: React.Dispatch<React.SetStateAction<string>>;
+  selectedModal: string;
 }
 
 export interface memoDetailViewProps {

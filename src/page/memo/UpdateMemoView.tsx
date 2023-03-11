@@ -4,7 +4,6 @@ import "./createMemo.scss";
 const UpdateMemoView = ({
   date,
   content,
-  onChangeDate,
   onChangeContent,
   onClickCancelOnModal,
   onClickCreate,
@@ -17,16 +16,14 @@ const UpdateMemoView = ({
       <div className="CreateMemo-content">
         <p className="modal-date">
           <span>날짜</span>
-          <input
-            type="date"
-            name="date"
-            onChange={onChangeDate}
-            value={date}
-          ></input>
+          <span className="detail-content detail-date">{date}</span>
         </p>
         <p className="modal-content">
           <span>내용</span>
-          <textarea onChange={onChangeContent} value={content}></textarea>
+          <textarea
+            onChange={onChangeContent}
+            defaultValue={content}
+          ></textarea>
         </p>
       </div>
       <div className="modal-write-button-container">

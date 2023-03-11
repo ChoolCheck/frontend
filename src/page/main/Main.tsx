@@ -92,12 +92,12 @@ const Calendar = () => {
 
   const onCreateWorkcheckClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     setWriteModal(true);
-    setSelectedModal("workcheck");
+    setSelectedModal("createworkcheck");
   };
 
   const onCreateMemoClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     setWriteModal(true);
-    setSelectedModal("memo");
+    setSelectedModal("creatememo");
   };
 
   const onMemoClick = (item: type.memoProps) => {
@@ -115,6 +115,8 @@ const Calendar = () => {
           <MemoDetail
             memoDetail={memoDetail}
             setMemoDetail={setMemoDetail}
+            setSelectedModal={setSelectedModal}
+            selectedModal={selectedModal}
           ></MemoDetail>
         </ReadModal>
       )}
@@ -132,11 +134,10 @@ const Calendar = () => {
 
       {writeModalState && (
         <WriteModal>
-          {selectedModal == "workcheck" ? (
+          {selectedModal == "createworkcheck" && (
             <CreateWorkCheck></CreateWorkCheck>
-          ) : (
-            <CreateMemo></CreateMemo>
           )}
+          {selectedModal == "creatememo" && <CreateMemo></CreateMemo>}
         </WriteModal>
       )}
       <CalendarView
