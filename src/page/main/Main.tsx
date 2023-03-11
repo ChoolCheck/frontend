@@ -13,7 +13,7 @@ import { GetDetailCalendarApi, GetTotalCalendarApi } from "../../api/calendar";
 import * as type from "./type";
 import "./style/calendarView.scss";
 
-import { CalendarView } from "./CalendarView";
+import { CalendarView } from "./calendar/Calendar";
 
 const Calendar = () => {
   const dispatch = useDispatch();

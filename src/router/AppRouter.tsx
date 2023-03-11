@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import Login from "../page/login/Login";
 import Signup from "../page/signup/Signup";
-import Calendar from "../page/calendar/Calendar";
+import Main from "../page/main/Main";
 import Schedule from "../page/schedule/Schedule";
 import WorkCheck from "../page/workCheck/WorkCheck";
 import Statistics from "../page/statistics/Statistics";
@@ -34,7 +34,7 @@ const AppRouter = () => {
           </Route>
 
           <Route element={<AuthLayout />}>
-            <Route path="/calendar" element={<Calendar />} />
+            <Route path="/calendar" element={<Main />} />
             <Route path="/statistics" element={<Statistics />} />
             <Route path="/workcheck" element={<WorkCheck />} />
             <Route path="/schedule" element={<Schedule />} />
