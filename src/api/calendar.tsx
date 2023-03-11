@@ -78,10 +78,11 @@ export async function GetTotalCalendarApi({
         })
       )
       .then((res) => {
-        setCalendarTotalList(tempResultList);
+        setCalendarTotalList(res);
+        return res;
       })
       .then((res) => {
-        renderData();
+        renderData(res);
       })
       .catch((error) => {});
   }
@@ -129,10 +130,11 @@ export async function GetTotalCalendarApi({
         })
       )
       .then((res) => {
-        setCalendarTotalList(tempResultList);
+        setCalendarTotalList(res);
+        return res;
       })
       .then((res) => {
-        renderData();
+        renderData(res);
       })
       .catch((error) => {});
   }

@@ -33,7 +33,7 @@ export const CalendarView = ({
     GetTotalCalendarApi({ date, setCalendarTotalList, renderData });
   }, []);
 
-  const renderData = () => {
+  const renderData = (calendarTotalList: type.calendarListType[]) => {
     if (calendarTotalList) {
       for (let i = 0; i < calendarTotalList?.length; i++) {
         const cell = document.getElementById(calendarTotalList[i].date);
@@ -69,7 +69,6 @@ export const CalendarView = ({
     ).toString();
 
     GetTotalCalendarApi({ date, setCalendarTotalList, renderData });
-    renderData();
   };
 
   const nextMonth = (e: React.MouseEvent<SVGSVGElement>) => {
