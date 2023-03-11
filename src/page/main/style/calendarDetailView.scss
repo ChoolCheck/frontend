@@ -36,7 +36,7 @@ $opacity-zero: 0.3;
     .list-top-container {
       margin: 40px 20px 20px 20px;
       overflow-y: auto;
-      height: 250px;
+      height: 230px;
 
       .checkedWorkList-container {
         text-align: left;
@@ -109,6 +109,7 @@ $opacity-zero: 0.3;
       height: 90px;
 
       margin: 20px 40px 20px 40px;
+      padding: 20px;
       border-top: 1px solid rgb(208, 208, 208);
 
       .memo-container-header {
