@@ -9,9 +9,9 @@ export async function GetMonthStatisticsApi({
   setStatisticsList,
   setStatisticsData,
 }: type.getMonthStatisticsProps) {
-  let statisticsDataLabels: Array<string>;
-  let statisticsDataColor: Array<string>;
-  let statisticsDataContent: Array<number>;
+  let statisticsDataLabels: Array<string> = [];
+  let statisticsDataColor: Array<string> = [];
+  let statisticsDataContent: Array<number> = [];
 
   await axios({
     method: "GET",
