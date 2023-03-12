@@ -29,6 +29,45 @@ const StatisticsView = ({
 }: type.statisticsViewProps) => {
   let barChart: ChartJS;
 
+  const option = {
+    responsive: false,
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
+    indexAxis: "y",
+    scales: {
+      x: {
+        ticks: {
+          font: {
+            size: 18,
+          },
+        },
+        grid: {
+          display: false,
+        },
+        border: {
+          display: false,
+        },
+      },
+      y: {
+        ticks: {
+          font: {
+            size: 18,
+          },
+          color: "black",
+        },
+        grid: {
+          display: false,
+        },
+        border: {
+          display: false,
+        },
+      },
+    },
+  };
+
   useEffect(() => {
     if (barChart !== undefined) {
       console.log("chart destroyed");
@@ -54,27 +93,103 @@ const StatisticsView = ({
                 },
               ],
             },
+        options: {
+          responsive: false,
+          plugins: {
+            legend: {
+              display: false,
+            },
+          },
+          indexAxis: "y",
+          scales: {
+            x: {
+              ticks: {
+                font: {
+                  size: 18,
+                },
+              },
+              grid: {
+                display: false,
+              },
+              border: {
+                display: false,
+              },
+            },
+            y: {
+              ticks: {
+                font: {
+                  size: 18,
+                },
+                color: "black",
+              },
+              grid: {
+                display: false,
+              },
+              border: {
+                display: false,
+              },
+            },
+          },
+        },
       });
       console.log(barChart);
-
-      if (barChart !== undefined) {
-        // barChart.data = statisticsData;
-        barChart.update();
-        console.log("chart updated");
-      }
     }
   }, [statisticsData]);
 
-  // useEffect(() => {
-  //   if (statisticsData) {
-  //     console.log("update statisticsData");
-  //     if (barChart !== undefined) {
-  //       barChart.data = statisticsData;
-  //       barChart.update();
-  //     }
-  //     console.log("chart updated");
-  //   }
-  // }, [statisticsData]);
+  useEffect(() => {
+    if (statisticsData) {
+      const ctx = chartRef.current?.getContext("2d");
+
+      if (ctx) {
+        if (barChart !== undefined) {
+          barChart.destroy();
+          barChart = new ChartJS(ctx, {
+            type: "bar",
+            data: statisticsData,
+            options: {
+              responsive: false,
+              plugins: {
+                legend: {
+                  display: false,
+                },
+              },
+              indexAxis: "y",
+              scales: {
+                x: {
+                  ticks: {
+                    font: {
+                      size: 18,
+                    },
+                  },
+                  grid: {
+                    display: false,
+                  },
+                  border: {
+                    display: false,
+                  },
+                },
+                y: {
+                  ticks: {
+                    font: {
+                      size: 18,
+                    },
+                    color: "black",
+                  },
+                  grid: {
+                    display: false,
+                  },
+                  border: {
+                    display: false,
+                  },
+                },
+              },
+            },
+          });
+        }
+      }
+      console.log("chart updated");
+    }
+  }, [statisticsData]);
 
   const chartHeight = statisticsList ? statisticsList.length * 80 : 400;
 
