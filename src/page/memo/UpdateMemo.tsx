@@ -2,7 +2,7 @@ import React, { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
 import { UpdateMemoApi } from "../../api/memo";
-import UpdateMemoView from "./UpdateMemoView";
+import UpdateMemoView from "./view/UpdateMemoView";
 import * as type from "./type";
 
 const UpdateMemo = ({ memoForm, setMemoDetail }: type.updateMemoProps) => {

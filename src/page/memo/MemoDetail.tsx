@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/Reducers/rootReducer";
 
 import WriteModal from "../../components/modal/WriteModal";
-import MemoDetailView from "./MemoDetailView";
+import MemoDetailView from "./view/MemoDetailView";
 import UpdateMemo from "./UpdateMemo";
 
 const MemoDetail = ({

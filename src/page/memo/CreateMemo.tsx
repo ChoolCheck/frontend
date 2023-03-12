@@ -2,7 +2,7 @@ import React, { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
 import { CreateMemoApi } from "../../api/memo";
-import CreateMemoView from "./CreateMemoView";
+import CreateMemoView from "./view/CreateMemoView";
 
 const CreateMemo = () => {
   const dispatch = useDispatch();

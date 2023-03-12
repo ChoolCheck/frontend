@@ -1,5 +1,4 @@
-import * as type from "./type";
-import "./createMemo.scss";
+import * as type from "../type";
 
 const UpdateMemoView = ({
   date,
