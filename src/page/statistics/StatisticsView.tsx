@@ -64,8 +64,10 @@ const StatisticsView = ({
   useEffect(() => {
     if (statisticsData) {
       console.log("update statisticsData");
-      // barChart.data = statisticsData;
-      barChart.update();
+      if (barChart !== undefined) {
+        barChart.update();
+      }
+      console.log("chart updated");
     }
   }, [statisticsData]);
 
