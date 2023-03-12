@@ -30,8 +30,6 @@ const StatisticsView = ({
   let barChart: ChartJS;
 
   useEffect(() => {
-    console.log(barChart);
-
     if (barChart !== undefined) {
       console.log("chart destroyed");
       barChart.destroy();
@@ -65,6 +63,7 @@ const StatisticsView = ({
     if (statisticsData) {
       console.log("update statisticsData");
       if (barChart !== undefined) {
+        barChart.data = statisticsData;
         barChart.update();
       }
       console.log("chart updated");
