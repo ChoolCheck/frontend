@@ -66,9 +66,9 @@ export async function GetDateStatisticsApi({
   setStatisticsList,
   setStatisticsData,
 }: type.getDateStatisticsProps) {
-  let statisticsDataLabels: Array<string>;
-  let statisticsDataColor: Array<string>;
-  let statisticsDataContent: Array<number>;
+  let statisticsDataLabels: Array<string> = [];
+  let statisticsDataColor: Array<string> = [];
+  let statisticsDataContent: Array<number> = [];
   await axios({
     method: "GET",
     url: `${config.api}/statistics?start=${startInput}&end=${endInput}`,
