@@ -30,7 +30,9 @@ const StatisticsView = ({
   let barChart: ChartJS;
 
   useEffect(() => {
-    barChart.destroy();
+    if (barChart != null || barChart != undefined) {
+      barChart.destroy();
+    }
     const ctx = chartRef.current?.getContext("2d");
     if (ctx) {
       barChart = new ChartJS(ctx, {
