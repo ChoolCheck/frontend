@@ -128,7 +128,6 @@ const Statistics = () => {
       setStatisticsList,
       setStatisticsData,
     });
-    resetGraph();
   };
 
   const onNextClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
