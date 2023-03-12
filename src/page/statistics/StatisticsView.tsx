@@ -37,7 +37,6 @@ const StatisticsView = ({
       barChart.destroy();
     }
     const ctx = chartRef.current?.getContext("2d");
-    console.log(ctx);
 
     if (ctx) {
       barChart = new ChartJS(ctx, {
@@ -58,6 +57,7 @@ const StatisticsView = ({
               ],
             },
       });
+      console.log(barChart);
     }
   }, []);
 

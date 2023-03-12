@@ -76,14 +76,14 @@ const Statistics = () => {
   };
 
   const onGetResultClick = () => {
+    GetDateStatisticsApi({
+      startInput,
+      endInput,
+      setStatisticsList,
+      setStatisticsData,
+    });
     return (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
       e.preventDefault();
-      GetDateStatisticsApi({
-        startInput,
-        endInput,
-        setStatisticsList,
-        setStatisticsData,
-      });
     };
   };
 
