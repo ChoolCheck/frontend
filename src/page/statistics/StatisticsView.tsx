@@ -31,9 +31,8 @@ const StatisticsView = ({
 
   useEffect(() => {
     console.log(barChart);
-    console.log(barChart.id);
 
-    if (barChart.id == "0") {
+    if (barChart !== undefined) {
       barChart.destroy();
     }
     const ctx = chartRef.current?.getContext("2d");
