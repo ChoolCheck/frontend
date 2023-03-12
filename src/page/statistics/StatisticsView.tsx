@@ -69,7 +69,7 @@ const StatisticsView = ({
   };
 
   useEffect(() => {
-    if (barChart !== undefined) {
+    if (barChart) {
       console.log("chart destroyed");
       barChart.destroy();
     }
