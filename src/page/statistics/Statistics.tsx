@@ -7,6 +7,9 @@ import {
   GetDateStatisticsApi,
   GetMonthStatisticsApi,
 } from "../../api/statistics";
+import Chart from "chart.js/auto";
+import { CategoryScale } from "chart.js";
+Chart.register(CategoryScale);
 
 const Statistics = () => {
   const now = new Date();
@@ -137,6 +140,13 @@ const Statistics = () => {
     setYearToShow(date.getFullYear());
     setMonthToShow(date.getMonth() + 1);
     GetMonthStatisticsApi({ start, end, setStatisticsList });
+  };
+
+  const resetGraph = () => {
+    const canvasContainer = document.getElementById("canvasContainer");
+    canvasContainer?.removeChild;
+
+    canvasContainer?.append('<canvas id="results-graph"><canvas>');
   };
 
   return (

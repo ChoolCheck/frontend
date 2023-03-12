@@ -4,6 +4,7 @@ import * as type from "./type";
 import * as enumType from "../../commonType/enum";
 
 import { Bar } from "react-chartjs-2";
+
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -21,6 +22,7 @@ ChartJS.register(
   Tooltip,
   Legend
 );
+
 const StatisticsView = ({ statisticsList }: type.statisticsViewProps) => {
   const [statisticsDataLabels, setStatisticsDataLabels] = useState<
     Array<string>
@@ -40,8 +42,6 @@ const StatisticsView = ({ statisticsList }: type.statisticsViewProps) => {
       `#${enumType.enumColor[item.color as keyof typeof enumType.enumColor]}`
     );
     statisticsDataContent.push(item.totalTime);
-
-    console.log(item);
   });
 
   const statisticsData = {
@@ -57,11 +57,11 @@ const StatisticsView = ({ statisticsList }: type.statisticsViewProps) => {
       },
     ],
   };
-  const chartHeight = statisticsList ? statisticsList.length * 80 : 500;
+  const chartHeight = statisticsList ? statisticsList.length * 80 : 400;
 
   return (
     <div className="StatisticsView-top-container">
-      <div className="StatisticsView-Chart-Container">
+      <div className="StatisticsView-Chart-Container" id="canvasContainer">
         <Bar
           data={statisticsData}
           width={600}
