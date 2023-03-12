@@ -35,65 +35,66 @@ const StatisticsView = ({
 
     if (barChart.id == "0") {
       barChart.destroy();
-    }
-    const ctx = chartRef.current?.getContext("2d");
-    if (ctx) {
-      barChart = new ChartJS(ctx, {
-        type: "bar",
-        data: statisticsData
-          ? statisticsData
-          : {
-              labels: [],
-              datasets: [
-                {
-                  axis: "y",
-                  data: [],
-                  backgroundColor: [],
-                  borderRadius: Number.MAX_VALUE,
-                  maxBarThickness: 20,
-                  borderSkipped: false,
-                },
-              ],
+    } else {
+      const ctx = chartRef.current?.getContext("2d");
+      if (ctx) {
+        barChart = new ChartJS(ctx, {
+          type: "bar",
+          data: statisticsData
+            ? statisticsData
+            : {
+                labels: [],
+                datasets: [
+                  {
+                    axis: "y",
+                    data: [],
+                    backgroundColor: [],
+                    borderRadius: Number.MAX_VALUE,
+                    maxBarThickness: 20,
+                    borderSkipped: false,
+                  },
+                ],
+              },
+          options: {
+            responsive: false,
+            plugins: {
+              legend: {
+                display: false,
+              },
             },
-        options: {
-          responsive: false,
-          plugins: {
-            legend: {
-              display: false,
+            indexAxis: "y",
+            scales: {
+              x: {
+                ticks: {
+                  font: {
+                    size: 18,
+                  },
+                },
+                grid: {
+                  display: false,
+                },
+                border: {
+                  display: false,
+                },
+              },
+              y: {
+                ticks: {
+                  font: {
+                    size: 18,
+                  },
+                  color: "black",
+                },
+                grid: {
+                  display: false,
+                },
+                border: {
+                  display: false,
+                },
+              },
             },
           },
-          indexAxis: "y",
-          scales: {
-            x: {
-              ticks: {
-                font: {
-                  size: 18,
-                },
-              },
-              grid: {
-                display: false,
-              },
-              border: {
-                display: false,
-              },
-            },
-            y: {
-              ticks: {
-                font: {
-                  size: 18,
-                },
-                color: "black",
-              },
-              grid: {
-                display: false,
-              },
-              border: {
-                display: false,
-              },
-            },
-          },
-        },
-      });
+        });
+      }
     }
   }, []);
 
