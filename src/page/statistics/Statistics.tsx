@@ -173,6 +173,7 @@ const Statistics = () => {
               aria-required="true"
             ></input>
             <button
+              type="button"
               className="Statistics-getResultButton"
               onClick={onGetResultClick}
             >
