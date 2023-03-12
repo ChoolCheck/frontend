@@ -57,7 +57,17 @@ const Statistics = () => {
   };
 
   const onPrevClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    const prevMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+    let prevMonth;
+
+    if (monthToShow == 1) {
+      setYearToShow(yearToShow - 1);
+      setMonthToShow(12);
+      prevMonth = new Date(yearToShow - 1, 12, 1);
+    } else {
+      setMonthToShow(monthToShow - 1);
+      prevMonth = new Date(yearToShow, monthToShow - 1, 1);
+    }
+
     const startInput =
       prevMonth.getFullYear() +
       "-" +
@@ -68,7 +78,7 @@ const Statistics = () => {
 
     const prevMonthlastDate = new Date(
       prevMonth.getFullYear(),
-      prevMonth.getMonth() + 1,
+      prevMonth.getMonth(),
       0
     ).getDate();
 
@@ -79,23 +89,42 @@ const Statistics = () => {
       "-" +
       (prevMonthlastDate < 10 ? "0" + prevMonthlastDate : prevMonthlastDate);
 
-    if (monthToShow == 1) {
-      setYearToShow(yearToShow - 1);
-      setMonthToShow(12);
-    } else {
-      setMonthToShow(monthToShow - 1);
-    }
     GetDateStatisticsApi({ startInput, endInput, setStatisticsList });
   };
 
   const onNextClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    //해당 날짜 데이터 요청 api
+    let nextMonth;
+
     if (monthToShow == 12) {
       setYearToShow(yearToShow + 1);
       setMonthToShow(1);
+      nextMonth = new Date(yearToShow + 1, 1, 1);
     } else {
       setMonthToShow(monthToShow + 1);
+      nextMonth = new Date(yearToShow, monthToShow + 1, 1);
     }
+    const startInput =
+      nextMonth.getFullYear() +
+      "-" +
+      (nextMonth.getMonth() + 2 < 10
+        ? "0" + (nextMonth.getMonth() + 1)
+        : nextMonth.getMonth() + 1) +
+      "-01";
+
+    const nextMonthlastDate = new Date(
+      nextMonth.getFullYear(),
+      nextMonth.getMonth(),
+      0
+    ).getDate();
+
+    const endInput =
+      now.getFullYear() +
+      "-" +
+      now.getMonth() +
+      "-" +
+      (nextMonthlastDate < 10 ? "0" + nextMonthlastDate : nextMonthlastDate);
+
+    GetDateStatisticsApi({ startInput, endInput, setStatisticsList });
   };
 
   const onGetThismonthClick = (

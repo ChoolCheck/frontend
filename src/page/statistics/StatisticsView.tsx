@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./style/statisticsView.scss";
 import * as type from "./type";
-import { Bar } from "react-chartjs-2";
 import * as enumType from "../../commonType/enum";
 
+import { Bar } from "react-chartjs-2";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -59,8 +59,7 @@ const StatisticsView = ({ statisticsList }: type.statisticsViewProps) => {
       },
     ],
   };
-
-  const chartHeight = statisticsList ? statisticsList.length * 80 : 100;
+  const chartHeight = statisticsList ? statisticsList.length * 80 : 500;
 
   return (
     <div className="StatisticsView-top-container">
