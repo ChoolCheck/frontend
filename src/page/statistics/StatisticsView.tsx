@@ -54,44 +54,6 @@ const StatisticsView = ({
                 },
               ],
             },
-        options: {
-          responsive: false,
-          plugins: {
-            legend: {
-              display: false,
-            },
-          },
-          indexAxis: "y",
-          scales: {
-            x: {
-              ticks: {
-                font: {
-                  size: 18,
-                },
-              },
-              grid: {
-                display: false,
-              },
-              border: {
-                display: false,
-              },
-            },
-            y: {
-              ticks: {
-                font: {
-                  size: 18,
-                },
-                color: "black",
-              },
-              grid: {
-                display: false,
-              },
-              border: {
-                display: false,
-              },
-            },
-          },
-        },
       });
     }
   }, []);
