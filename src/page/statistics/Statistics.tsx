@@ -144,8 +144,9 @@ const Statistics = () => {
 
   const resetGraph = () => {
     const canvasContainer = document.getElementById("canvasContainer");
-    canvasContainer?.removeChild;
-
+    if (canvasContainer && canvasContainer?.firstChild !== null) {
+      canvasContainer.removeChild(canvasContainer.firstChild);
+    }
     canvasContainer?.append('<canvas id="results-graph"><canvas>');
   };
 
