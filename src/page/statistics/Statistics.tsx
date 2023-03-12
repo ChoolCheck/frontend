@@ -72,8 +72,8 @@ const Statistics = () => {
       prevMonth.getFullYear() +
       "-" +
       (prevMonth.getMonth() < 10
-        ? "0" + (prevMonth.getMonth() + 1)
-        : prevMonth.getMonth() + 1) +
+        ? "0" + prevMonth.getMonth()
+        : prevMonth.getMonth()) +
       "-01";
 
     const prevMonthlastDate = new Date(
@@ -85,7 +85,9 @@ const Statistics = () => {
     const endInput =
       now.getFullYear() +
       "-" +
-      now.getMonth() +
+      (prevMonth.getMonth() < 10
+        ? "0" + prevMonth.getMonth()
+        : prevMonth.getMonth()) +
       "-" +
       (prevMonthlastDate < 10 ? "0" + prevMonthlastDate : prevMonthlastDate);
 
@@ -107,20 +109,22 @@ const Statistics = () => {
       nextMonth.getFullYear() +
       "-" +
       (nextMonth.getMonth() + 2 < 10
-        ? "0" + (nextMonth.getMonth() + 1)
-        : nextMonth.getMonth() + 1) +
+        ? "0" + (nextMonth.getMonth() + 2)
+        : nextMonth.getMonth() + 2) +
       "-01";
 
     const nextMonthlastDate = new Date(
       nextMonth.getFullYear(),
-      nextMonth.getMonth(),
+      nextMonth.getMonth() + 2,
       0
     ).getDate();
 
     const endInput =
       now.getFullYear() +
       "-" +
-      now.getMonth() +
+      (nextMonth.getMonth() + 2 < 10
+        ? "0" + (nextMonth.getMonth() + 2)
+        : nextMonth.getMonth() + 2) +
       "-" +
       (nextMonthlastDate < 10 ? "0" + nextMonthlastDate : nextMonthlastDate);
 
