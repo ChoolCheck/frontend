@@ -1,7 +1,7 @@
 export interface statisticListProps {
   name: string;
   totalTime: number;
-  backgroundColor: string;
+  color: string;
 }
 
 export interface getMonthStatisticsProps {

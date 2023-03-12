@@ -37,11 +37,7 @@ const StatisticsView = ({ statisticsList }: type.statisticsViewProps) => {
   statisticsList?.map((item) => {
     statisticsDataLabels.push(item.name);
     statisticsDataColor.push(
-      `#${
-        enumType.enumColor[
-          item.backgroundColor as keyof typeof enumType.enumColor
-        ]
-      }`
+      `#${enumType.enumColor[item.color as keyof typeof enumType.enumColor]}`
     );
     statisticsDataContent.push(item.totalTime);
 
