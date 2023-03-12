@@ -35,66 +35,65 @@ const StatisticsView = ({
 
     if (barChart.id == "0") {
       barChart.destroy();
-    } else {
-      const ctx = chartRef.current?.getContext("2d");
-      if (ctx) {
-        barChart = new ChartJS(ctx, {
-          type: "bar",
-          data: statisticsData
-            ? statisticsData
-            : {
-                labels: [],
-                datasets: [
-                  {
-                    axis: "y",
-                    data: [],
-                    backgroundColor: [],
-                    borderRadius: Number.MAX_VALUE,
-                    maxBarThickness: 20,
-                    borderSkipped: false,
-                  },
-                ],
+    }
+    const ctx = chartRef.current?.getContext("2d");
+    if (ctx) {
+      barChart = new ChartJS(ctx, {
+        type: "bar",
+        data: statisticsData
+          ? statisticsData
+          : {
+              labels: [],
+              datasets: [
+                {
+                  axis: "y",
+                  data: [],
+                  backgroundColor: [],
+                  borderRadius: Number.MAX_VALUE,
+                  maxBarThickness: 20,
+                  borderSkipped: false,
+                },
+              ],
+            },
+        options: {
+          responsive: false,
+          plugins: {
+            legend: {
+              display: false,
+            },
+          },
+          indexAxis: "y",
+          scales: {
+            x: {
+              ticks: {
+                font: {
+                  size: 18,
+                },
               },
-          options: {
-            responsive: false,
-            plugins: {
-              legend: {
+              grid: {
+                display: false,
+              },
+              border: {
                 display: false,
               },
             },
-            indexAxis: "y",
-            scales: {
-              x: {
-                ticks: {
-                  font: {
-                    size: 18,
-                  },
+            y: {
+              ticks: {
+                font: {
+                  size: 18,
                 },
-                grid: {
-                  display: false,
-                },
-                border: {
-                  display: false,
-                },
+                color: "black",
               },
-              y: {
-                ticks: {
-                  font: {
-                    size: 18,
-                  },
-                  color: "black",
-                },
-                grid: {
-                  display: false,
-                },
-                border: {
-                  display: false,
-                },
+              grid: {
+                display: false,
+              },
+              border: {
+                display: false,
               },
             },
           },
-        });
-      }
+        },
+      });
     }
   }, []);
 
@@ -108,6 +107,6 @@ const StatisticsView = ({
 
   // const chartHeight = statisticsList ? statisticsList.length * 80 : 400;
 
-  return <Chart chartRef={chartRef} statisticsData={statisticsData}></Chart>;
+  return <Chart chartRef={chartRef}></Chart>;
 };
 export default StatisticsView;

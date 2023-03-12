@@ -23,8 +23,4 @@ export interface chartDataProps {
 
 export interface chartProps {
   chartRef: React.RefObject<HTMLCanvasElement>;
-  // statisticsDataLabels: string[];
-  // statisticsDataColor: string[];
-  // statisticsDataContent: number[];
-  statisticsData: chartDataProps | undefined;
 }
