@@ -44,6 +44,8 @@ const StatisticsView = ({ statisticsList }: type.statisticsViewProps) => {
       }`
     );
     statisticsDataContent.push(item.totalTime);
+
+    console.log(item);
   });
 
   const statisticsData = {
