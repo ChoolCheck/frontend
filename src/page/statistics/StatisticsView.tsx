@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./style/statisticsView.scss";
 import * as type from "./type";
-import * as enumType from "../../commonType/enum";
-import { GetMonthStatisticsApi } from "../../api/statistics";
 import { Bar } from "react-chartjs-2";
 import Chart from "./Chart";
+import "chart.js/auto";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -31,6 +30,7 @@ const StatisticsView = ({
   let barChart: ChartJS;
 
   useEffect(() => {
+    barChart.destroy();
     const ctx = chartRef.current?.getContext("2d");
     if (ctx) {
       barChart = new ChartJS(ctx, {
@@ -93,7 +93,7 @@ const StatisticsView = ({
   }, []);
 
   useEffect(() => {
-    if (statisticsData != null) {
+    if (statisticsData) {
       const barChartDataUpdated = statisticsData;
       barChart.data = barChartDataUpdated;
       barChart.update();

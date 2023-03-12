@@ -61,7 +61,7 @@ const Chart = ({ chartRef, statisticsData }: type.chartProps) => {
   return (
     <div className="StatisticsView-top-container">
       <div className="StatisticsView-Chart-Container" id="canvasContainer">
-        <canvas ref={chartRef}></canvas>
+        <canvas id="canvas" ref={chartRef}></canvas>
       </div>
     </div>
   );
