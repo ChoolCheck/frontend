@@ -56,19 +56,25 @@ const StatisticsView = ({
             },
       });
       console.log(barChart);
-    }
-  }, []);
 
-  useEffect(() => {
-    if (statisticsData) {
-      console.log("update statisticsData");
       if (barChart !== undefined) {
-        barChart.data = statisticsData;
+        // barChart.data = statisticsData;
         barChart.update();
+        console.log("chart updated");
       }
-      console.log("chart updated");
     }
   }, [statisticsData]);
+
+  // useEffect(() => {
+  //   if (statisticsData) {
+  //     console.log("update statisticsData");
+  //     if (barChart !== undefined) {
+  //       barChart.data = statisticsData;
+  //       barChart.update();
+  //     }
+  //     console.log("chart updated");
+  //   }
+  // }, [statisticsData]);
 
   const chartHeight = statisticsList ? statisticsList.length * 80 : 400;
 
