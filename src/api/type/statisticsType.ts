@@ -10,6 +10,9 @@ export interface getMonthStatisticsProps {
   setStatisticsList: React.Dispatch<
     React.SetStateAction<statisticListProps[] | undefined>
   >;
+  setStatisticsData: React.Dispatch<
+    React.SetStateAction<chartDataProps | undefined>
+  >;
 }
 export interface getDateStatisticsProps {
   startInput: string;
@@ -17,4 +20,19 @@ export interface getDateStatisticsProps {
   setStatisticsList: React.Dispatch<
     React.SetStateAction<statisticListProps[] | undefined>
   >;
+  setStatisticsData: React.Dispatch<
+    React.SetStateAction<chartDataProps | undefined>
+  >;
+}
+
+export interface chartDataProps {
+  labels: string[];
+  datasets: {
+    axis: string;
+    data: number[];
+    backgroundColor: string[];
+    borderRadius: number;
+    maxBarThickness: number;
+    borderSkipped: boolean;
+  }[];
 }

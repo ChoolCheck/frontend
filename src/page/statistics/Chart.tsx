@@ -2,9 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 import "./style/statisticsView.scss";
 import * as type from "./type";
 import * as enumType from "../../commonType/enum";
-import { GetMonthStatisticsApi } from "../../api/statistics";
+
 import { Bar } from "react-chartjs-2";
-import Chart from "./Chart";
+
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -23,11 +23,7 @@ ChartJS.register(
   Legend
 );
 
-const StatisticsView = ({
-  statisticsList,
-  chartRef,
-  statisticsData,
-}: type.statisticsViewProps) => {
+const Chart = ({ chartRef, statisticsData }: type.chartProps) => {
   let barChart: ChartJS;
 
   useEffect(() => {
@@ -50,44 +46,6 @@ const StatisticsView = ({
                 },
               ],
             },
-        options: {
-          responsive: false,
-          plugins: {
-            legend: {
-              display: false,
-            },
-          },
-          indexAxis: "y",
-          scales: {
-            x: {
-              ticks: {
-                font: {
-                  size: 18,
-                },
-              },
-              grid: {
-                display: false,
-              },
-              border: {
-                display: false,
-              },
-            },
-            y: {
-              ticks: {
-                font: {
-                  size: 18,
-                },
-                color: "black",
-              },
-              grid: {
-                display: false,
-              },
-              border: {
-                display: false,
-              },
-            },
-          },
-        },
       });
     }
   }, []);
@@ -100,8 +58,12 @@ const StatisticsView = ({
     }
   }, [statisticsData]);
 
-  // const chartHeight = statisticsList ? statisticsList.length * 80 : 400;
-
-  return <Chart chartRef={chartRef} statisticsData={statisticsData}></Chart>;
+  return (
+    <div className="StatisticsView-top-container">
+      <div className="StatisticsView-Chart-Container" id="canvasContainer">
+        <canvas ref={chartRef}></canvas>
+      </div>
+    </div>
+  );
 };
-export default StatisticsView;
+export default Chart;

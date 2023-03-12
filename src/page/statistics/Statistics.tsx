@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./style/statistics.scss";
 import StatisticsView from "./StatisticsView";
 import * as type from "./type";
@@ -8,10 +8,31 @@ import {
   GetMonthStatisticsApi,
 } from "../../api/statistics";
 import Chart from "chart.js/auto";
-import { CategoryScale } from "chart.js";
+
+import { Bar } from "react-chartjs-2";
+
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
 Chart.register(CategoryScale);
 
 const Statistics = () => {
+  const chartRef = useRef<HTMLCanvasElement>(null);
+
   const now = new Date();
   const start =
     now.getFullYear() +
@@ -34,8 +55,10 @@ const Statistics = () => {
     type.statisticListProps[] | undefined
   >();
 
+  const [statisticsData, setStatisticsData] = useState<type.chartDataProps>();
+
   useEffect(() => {
-    GetMonthStatisticsApi({ start, end, setStatisticsList });
+    GetMonthStatisticsApi({ start, end, setStatisticsList, setStatisticsData });
   }, []);
 
   const [startInput, setStartInput] = useState("");
@@ -55,7 +78,12 @@ const Statistics = () => {
   const onGetResultClick = () => {
     return (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
       e.preventDefault();
-      GetDateStatisticsApi({ startInput, endInput, setStatisticsList });
+      GetDateStatisticsApi({
+        startInput,
+        endInput,
+        setStatisticsList,
+        setStatisticsData,
+      });
     };
   };
 
@@ -94,7 +122,12 @@ const Statistics = () => {
       "-" +
       (prevMonthlastDate < 10 ? "0" + prevMonthlastDate : prevMonthlastDate);
 
-    GetDateStatisticsApi({ startInput, endInput, setStatisticsList });
+    GetDateStatisticsApi({
+      startInput,
+      endInput,
+      setStatisticsList,
+      setStatisticsData,
+    });
     resetGraph();
   };
 
@@ -132,7 +165,12 @@ const Statistics = () => {
       "-" +
       (nextMonthlastDate < 10 ? "0" + nextMonthlastDate : nextMonthlastDate);
 
-    GetDateStatisticsApi({ startInput, endInput, setStatisticsList });
+    GetDateStatisticsApi({
+      startInput,
+      endInput,
+      setStatisticsList,
+      setStatisticsData,
+    });
   };
 
   const onGetThismonthClick = (
@@ -140,7 +178,7 @@ const Statistics = () => {
   ) => {
     setYearToShow(date.getFullYear());
     setMonthToShow(date.getMonth() + 1);
-    GetMonthStatisticsApi({ start, end, setStatisticsList });
+    GetMonthStatisticsApi({ start, end, setStatisticsList, setStatisticsData });
   };
 
   const resetGraph = () => {
@@ -149,48 +187,21 @@ const Statistics = () => {
       canvasContainer.removeChild(canvasContainer.firstChild);
     }
 
-    canvasContainer?.append(`<Bar
-    data={statisticsData}
-    width={600}
-    height={chartHeight}
-    options={{
-      responsive: false,
-      plugins: {
-        legend: {
-          display: false,
-        },
-      },
-      indexAxis: "y",
-      scales: {
-        x: {
-          ticks: {
-            font: {
-              size: 18,
-            },
-          },
-          grid: {
-            display: false,
-          },
-          border: {
-            display: false,
-          },
-        },
-        y: {
-          ticks: {
-            font: {
-              size: 18,
-            },
-            color: "black",
-          },
-          grid: {
-            display: false,
-          },
-          border: {
-            display: false,
-          },
-        },
-      },
-    }}`);
+    const canvasElement = document.createElement("canvas");
+    canvasElement.id = "results-graph";
+
+    let ctx = canvasElement.getContext("2d");
+
+    var x = canvasElement.width / 2;
+    var y = canvasElement.height / 2;
+
+    // ctx.canvas.width = $("#graph").width(); // resize to parent width
+    // ctx.canvas.height = $("#graph").height(); // resize to parent height
+    // ctx.font = '10pt Verdana';
+    // ctx.textAlign = 'center';
+    // ctx.fillText('This text is centered on the canvas', x, y);
+
+    canvasContainer?.append(canvasElement);
   };
 
   return (
@@ -244,7 +255,11 @@ const Statistics = () => {
           </button>
         </div>
       </div>
-      <StatisticsView statisticsList={statisticsList}></StatisticsView>
+      <StatisticsView
+        statisticsList={statisticsList}
+        chartRef={chartRef}
+        statisticsData={statisticsData}
+      ></StatisticsView>
     </div>
   );
 };
