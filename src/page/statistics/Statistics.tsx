@@ -1,17 +1,39 @@
 import React, { useState, useEffect } from "react";
 import "./style/statistics.scss";
 import StatisticsView from "./StatisticsView";
+import * as type from "./type";
+
+import {
+  GetDateStatisticsApi,
+  GetMonthStatisticsApi,
+} from "../../api/statistics";
+
 const Statistics = () => {
-  const statisticsList = [
-    { name: "감자밭", totalWorkTime: "20", backgroundColor: "#bdb2ff" },
-    { name: "고구마", totalWorkTime: "15", backgroundColor: "#fdffb6" },
-    { name: "김어진", totalWorkTime: "9", backgroundColor: "#ffd6a5" },
-    { name: "붕어빵", totalWorkTime: "52", backgroundColor: "#caffbf" },
-    { name: "옥수수", totalWorkTime: "13", backgroundColor: "#a0c4ff" },
-    { name: "조랭이떡", totalWorkTime: "10", backgroundColor: "#ffadad" },
-    { name: "초키초키", totalWorkTime: "5", backgroundColor: "#9bf6ff" },
-    { name: "호떡", totalWorkTime: "31", backgroundColor: "#ffc6ff" },
-  ];
+  const now = new Date();
+  const start =
+    now.getFullYear() +
+    "-" +
+    (now.getMonth() + 1 < 10
+      ? "0" + (now.getMonth() + 1)
+      : now.getMonth() + 1) +
+    "-01";
+
+  const end =
+    now.getFullYear() +
+    "-" +
+    (now.getMonth() + 1 < 10
+      ? "0" + (now.getMonth() + 1)
+      : now.getMonth() + 1) +
+    "-" +
+    (now.getDate() + 1 < 10 ? "0" + (now.getDate() + 1) : now.getDate() + 1);
+
+  const [statisticsList, setStatisticsList] = useState<
+    type.statisticListProps[] | undefined
+  >();
+
+  useEffect(() => {
+    GetMonthStatisticsApi({ start, end, setStatisticsList });
+  }, []);
 
   const [startInput, setStartInput] = useState("");
   const [endInput, setEndInput] = useState("");
@@ -28,20 +50,42 @@ const Statistics = () => {
   };
 
   const onGetResultClick = () => {
-    //조회 로직 : startInput, endInput 서버에 넘겨주고 결과 list 받기
     return (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
       e.preventDefault();
+      GetDateStatisticsApi({ startInput, endInput, setStatisticsList });
     };
   };
 
   const onPrevClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    //해당 날짜 데이터 요청 api
+    const prevMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+    const startInput =
+      prevMonth.getFullYear() +
+      "-" +
+      (prevMonth.getMonth() < 10
+        ? "0" + (prevMonth.getMonth() + 1)
+        : prevMonth.getMonth() + 1) +
+      "-01";
+
+    const prevMonthlastDate = new Date(
+      prevMonth.getFullYear(),
+      prevMonth.getMonth() + 1,
+      0
+    ).getDate();
+
+    const endInput =
+      now.getFullYear() +
+      "-" +
+      now.getMonth() +
+      "-" +
+      (prevMonthlastDate < 10 ? "0" + prevMonthlastDate : prevMonthlastDate);
+
     if (monthToShow == 1) {
       setYearToShow(yearToShow - 1);
       setMonthToShow(12);
     } else {
       setMonthToShow(monthToShow - 1);
     }
+    GetDateStatisticsApi({ startInput, endInput, setStatisticsList });
   };
 
   const onNextClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -59,10 +103,8 @@ const Statistics = () => {
   ) => {
     setYearToShow(date.getFullYear());
     setMonthToShow(date.getMonth() + 1);
+    GetMonthStatisticsApi({ start, end, setStatisticsList });
   };
-
-  // useEffect(() => {
-  // }, []);
 
   return (
     <div className="Statistics-top-container">

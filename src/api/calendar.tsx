@@ -98,7 +98,6 @@ export async function GetTotalCalendarApi({
       ])
       .then(
         axios.spread((res1) => {
-          console.log(res1.data);
           const scheduleList: scheduleType.scheduleObjProps[] = res1.data;
 
           for (let i = 0; i < scheduleList.length; i++) {

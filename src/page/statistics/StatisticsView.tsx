@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./style/statisticsView.scss";
 import * as type from "./type";
 import { Bar } from "react-chartjs-2";
@@ -19,7 +19,7 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-const StatisticsView = ({ statisticsList }: type.statisticsProps) => {
+const StatisticsView = ({ statisticsList }: type.statisticsViewProps) => {
   const [statisticsDataLabels, setStatisticsDataLabels] = useState<
     Array<string>
   >([]);
@@ -29,13 +29,13 @@ const StatisticsView = ({ statisticsList }: type.statisticsProps) => {
   );
 
   const [statisticsDataContent, setStatisticsDataContent] = useState<
-    Array<string>
+    Array<number>
   >([]);
 
-  statisticsList.map((item) => {
+  statisticsList?.map((item) => {
     statisticsDataLabels.push(item.name);
     statisticsDataColor.push(item.backgroundColor);
-    statisticsDataContent.push(item.totalWorkTime);
+    statisticsDataContent.push(item.totalTime);
   });
 
   const statisticsData = {
@@ -52,7 +52,7 @@ const StatisticsView = ({ statisticsList }: type.statisticsProps) => {
     ],
   };
 
-  const chartHeight = statisticsList.length * 80;
+  const chartHeight = statisticsList ? statisticsList.length * 80 : 100;
 
   return (
     <div className="StatisticsView-top-container">
