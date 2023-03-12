@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./style/statisticsView.scss";
 import * as type from "./type";
 import { Bar } from "react-chartjs-2";
+import * as enumType from "../../commonType/enum";
+
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -34,7 +36,13 @@ const StatisticsView = ({ statisticsList }: type.statisticsViewProps) => {
 
   statisticsList?.map((item) => {
     statisticsDataLabels.push(item.name);
-    statisticsDataColor.push(item.backgroundColor);
+    statisticsDataColor.push(
+      `#${
+        enumType.enumColor[
+          item.backgroundColor as keyof typeof enumType.enumColor
+        ]
+      }`
+    );
     statisticsDataContent.push(item.totalTime);
   });
 
