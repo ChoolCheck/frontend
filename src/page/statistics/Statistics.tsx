@@ -95,6 +95,7 @@ const Statistics = () => {
       (prevMonthlastDate < 10 ? "0" + prevMonthlastDate : prevMonthlastDate);
 
     GetDateStatisticsApi({ startInput, endInput, setStatisticsList });
+    resetGraph();
   };
 
   const onNextClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -147,7 +148,49 @@ const Statistics = () => {
     if (canvasContainer && canvasContainer?.firstChild !== null) {
       canvasContainer.removeChild(canvasContainer.firstChild);
     }
-    canvasContainer?.append('<canvas id="results-graph"><canvas>');
+
+    canvasContainer?.append(`<Bar
+    data={statisticsData}
+    width={600}
+    height={chartHeight}
+    options={{
+      responsive: false,
+      plugins: {
+        legend: {
+          display: false,
+        },
+      },
+      indexAxis: "y",
+      scales: {
+        x: {
+          ticks: {
+            font: {
+              size: 18,
+            },
+          },
+          grid: {
+            display: false,
+          },
+          border: {
+            display: false,
+          },
+        },
+        y: {
+          ticks: {
+            font: {
+              size: 18,
+            },
+            color: "black",
+          },
+          grid: {
+            display: false,
+          },
+          border: {
+            display: false,
+          },
+        },
+      },
+    }}`);
   };
 
   return (
