@@ -22,5 +22,6 @@ export interface chartDataProps {
 }
 
 export interface chartProps {
+  height: number;
   chartRef: React.RefObject<HTMLCanvasElement>;
 }

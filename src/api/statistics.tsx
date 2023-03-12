@@ -39,6 +39,19 @@ export async function GetMonthStatisticsApi({
       }
     })
     .then((res) => {
+      console.log({
+        labels: statisticsDataLabels,
+        datasets: [
+          {
+            axis: "y",
+            data: statisticsDataContent,
+            backgroundColor: statisticsDataColor,
+            borderRadius: Number.MAX_VALUE,
+            maxBarThickness: 20,
+            borderSkipped: false,
+          },
+        ],
+      });
       setStatisticsData({
         labels: statisticsDataLabels,
         datasets: [

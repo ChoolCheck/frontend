@@ -19,11 +19,11 @@ ChartJS.register(
   Legend
 );
 
-const Chart = ({ chartRef }: type.chartProps) => {
+const Chart = ({ chartRef, height }: type.chartProps) => {
   return (
     <div className="StatisticsView-top-container">
       <div className="StatisticsView-Chart-Container" id="canvasContainer">
-        <canvas id="canvas" ref={chartRef}></canvas>
+        <canvas id="canvas" ref={chartRef} height={height}></canvas>
       </div>
     </div>
   );

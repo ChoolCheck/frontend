@@ -33,9 +33,12 @@ const StatisticsView = ({
     console.log(barChart);
 
     if (barChart !== undefined) {
+      console.log("chart destroyed");
       barChart.destroy();
     }
     const ctx = chartRef.current?.getContext("2d");
+    console.log(ctx);
+
     if (ctx) {
       barChart = new ChartJS(ctx, {
         type: "bar",
@@ -60,14 +63,15 @@ const StatisticsView = ({
 
   useEffect(() => {
     if (statisticsData) {
+      console.log("update statisticsData");
       const barChartDataUpdated = statisticsData;
       barChart.data = barChartDataUpdated;
       barChart.update();
     }
   }, [statisticsData]);
 
-  // const chartHeight = statisticsList ? statisticsList.length * 80 : 400;
+  const chartHeight = statisticsList ? statisticsList.length * 80 : 400;
 
-  return <Chart chartRef={chartRef}></Chart>;
+  return <Chart chartRef={chartRef} height={chartHeight}></Chart>;
 };
 export default StatisticsView;
