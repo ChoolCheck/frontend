@@ -22,6 +22,7 @@ export async function GetMonthStatisticsApi({
     },
   })
     .then((res) => {
+      console.log(res.data);
       setStatisticsList(res.data);
 
       const resultList = res.data;
@@ -87,6 +88,7 @@ export async function GetDateStatisticsApi({
     },
   })
     .then((res) => {
+      console.log(res.data);
       setStatisticsList(res.data);
 
       const resultList = res.data;
