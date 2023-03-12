@@ -38,34 +38,24 @@ export async function GetMonthStatisticsApi({
         );
         statisticsDataContent.push(resultList[i].totalTime);
       }
+
+      return {
+        labels: statisticsDataLabels,
+        datasets: [
+          {
+            axis: "y",
+            data: statisticsDataContent,
+            backgroundColor: statisticsDataColor,
+            borderRadius: Number.MAX_VALUE,
+            maxBarThickness: 20,
+            borderSkipped: false,
+          },
+        ],
+      };
     })
     .then((res) => {
-      console.log({
-        labels: statisticsDataLabels,
-        datasets: [
-          {
-            axis: "y",
-            data: statisticsDataContent,
-            backgroundColor: statisticsDataColor,
-            borderRadius: Number.MAX_VALUE,
-            maxBarThickness: 20,
-            borderSkipped: false,
-          },
-        ],
-      });
-      setStatisticsData({
-        labels: statisticsDataLabels,
-        datasets: [
-          {
-            axis: "y",
-            data: statisticsDataContent,
-            backgroundColor: statisticsDataColor,
-            borderRadius: Number.MAX_VALUE,
-            maxBarThickness: 20,
-            borderSkipped: false,
-          },
-        ],
-      });
+      console.log(res);
+      setStatisticsData(res);
     })
     .catch((err) => {});
 }
@@ -104,34 +94,24 @@ export async function GetDateStatisticsApi({
         );
         statisticsDataContent.push(resultList[i].totalTime);
       }
+
+      return {
+        labels: statisticsDataLabels,
+        datasets: [
+          {
+            axis: "y",
+            data: statisticsDataContent,
+            backgroundColor: statisticsDataColor,
+            borderRadius: Number.MAX_VALUE,
+            maxBarThickness: 20,
+            borderSkipped: false,
+          },
+        ],
+      };
     })
     .then((res) => {
-      console.log({
-        labels: statisticsDataLabels,
-        datasets: [
-          {
-            axis: "y",
-            data: statisticsDataContent,
-            backgroundColor: statisticsDataColor,
-            borderRadius: Number.MAX_VALUE,
-            maxBarThickness: 20,
-            borderSkipped: false,
-          },
-        ],
-      });
-      setStatisticsData({
-        labels: statisticsDataLabels,
-        datasets: [
-          {
-            axis: "y",
-            data: statisticsDataContent,
-            backgroundColor: statisticsDataColor,
-            borderRadius: Number.MAX_VALUE,
-            maxBarThickness: 20,
-            borderSkipped: false,
-          },
-        ],
-      });
+      console.log(res);
+      setStatisticsData(res);
     })
     .catch((err) => {});
 }
