@@ -102,17 +102,10 @@ const StatisticsView = ({
 
   useEffect(() => {
     if (statisticsData) {
-      // const ctx = chartRef.current?.getContext("2d");
-      // if (ctx) {
-      // barChart.destroy();
-      // barChart = new ChartJS(ctx, {
-      //   type: "bar",
-      //   data: statisticsData,}
-
       if (barChart) {
         console.log("update" + statisticsData);
         barChart.data = statisticsData;
-        barChart.update("reset");
+        barChart.update();
       }
       // }
     }
