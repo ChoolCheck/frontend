@@ -88,13 +88,10 @@ const Statistics = () => {
   const onPrevClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     let prevMonth;
 
-    console.log(monthToShow);
-    console.log(prevMonth);
-
     if (monthToShow == 1) {
       setYearToShow(yearToShow - 1);
       setMonthToShow(12);
-      prevMonth = new Date(yearToShow - 1, 12, 1);
+      prevMonth = new Date(yearToShow - 1, 11, 1);
     } else {
       setMonthToShow(monthToShow - 1);
       prevMonth = new Date(yearToShow, monthToShow - 1, 1);
@@ -137,7 +134,7 @@ const Statistics = () => {
     if (monthToShow == 12) {
       setYearToShow(yearToShow + 1);
       setMonthToShow(1);
-      nextMonth = new Date(yearToShow + 1, 1, 1);
+      nextMonth = new Date(yearToShow + 1, 0, 1);
     } else {
       setMonthToShow(monthToShow + 1);
       nextMonth = new Date(yearToShow, monthToShow + 1, 1);
