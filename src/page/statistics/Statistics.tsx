@@ -154,7 +154,7 @@ const Statistics = () => {
     ).getDate();
 
     const endInput =
-      now.getFullYear() +
+      nextMonth.getFullYear() +
       "-" +
       (nextMonth.getMonth() < 10
         ? "0" + nextMonth.getMonth()
