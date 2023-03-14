@@ -30,79 +30,79 @@ const StatisticsView = ({
   let barChart: ChartJS;
 
   useEffect(() => {
-    const ctx = chartRef.current?.getContext("2d");
+    if (barChart && statisticsData) {
+      console.log("chart updated");
+      // barChart.clear();
+      // barChart.destroy();
+      barChart.data.labels = statisticsData.labels;
+      barChart.data.datasets[0] = statisticsData.datasets[0];
+      barChart.update();
+      console.log("updated");
+    } else {
+      const ctx = chartRef.current?.getContext("2d");
 
-    if (ctx) {
-      barChart = new ChartJS(ctx, {
-        type: "bar",
-        data: statisticsData
-          ? statisticsData
-          : {
-              labels: [],
-              datasets: [
-                {
-                  axis: "y",
-                  data: [],
-                  backgroundColor: [],
-                  borderRadius: Number.MAX_VALUE,
-                  maxBarThickness: 20,
-                  borderSkipped: false,
-                },
-              ],
+      if (ctx) {
+        console.log("create" + statisticsData);
+        barChart = new ChartJS(ctx, {
+          type: "bar",
+          data: statisticsData
+            ? statisticsData
+            : {
+                labels: [],
+                datasets: [
+                  {
+                    axis: "y",
+                    data: [],
+                    backgroundColor: [],
+                    borderRadius: Number.MAX_VALUE,
+                    maxBarThickness: 20,
+                    borderSkipped: false,
+                  },
+                ],
+              },
+          options: {
+            responsive: false,
+            plugins: {
+              legend: {
+                display: false,
+              },
             },
-        options: {
-          responsive: false,
-          plugins: {
-            legend: {
-              display: false,
+            indexAxis: "y",
+            scales: {
+              x: {
+                ticks: {
+                  font: {
+                    size: 18,
+                  },
+                },
+                grid: {
+                  display: false,
+                },
+                border: {
+                  display: false,
+                },
+              },
+              y: {
+                ticks: {
+                  font: {
+                    size: 18,
+                  },
+                  color: "black",
+                },
+                grid: {
+                  display: false,
+                },
+                border: {
+                  display: false,
+                },
+              },
             },
           },
-          indexAxis: "y",
-          scales: {
-            x: {
-              ticks: {
-                font: {
-                  size: 18,
-                },
-              },
-              grid: {
-                display: false,
-              },
-              border: {
-                display: false,
-              },
-            },
-            y: {
-              ticks: {
-                font: {
-                  size: 18,
-                },
-                color: "black",
-              },
-              grid: {
-                display: false,
-              },
-              border: {
-                display: false,
-              },
-            },
-          },
-        },
-      });
-      console.log(barChart);
+        });
+        console.log(barChart);
+      }
     }
-    // if (barChart && statisticsData) {
-    //   console.log("chart updated");
-    //   // barChart.clear();
-    //   // barChart.destroy();
-    //   barChart.data.labels = statisticsData.labels;
-    //   barChart.data.datasets[0] = statisticsData.datasets[0];
-    //   barChart.update();
-    //   console.log("updated");
-    // } else {
-
-    // }
-  }, []);
+  }, [statisticsData]);
 
   // useEffect(() => {
   //   console.log(statisticsData);
