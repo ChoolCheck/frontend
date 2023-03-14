@@ -169,8 +169,8 @@ const Statistics = () => {
   const onGetThismonthClick = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
-    setYearToShow(date.getFullYear());
-    setMonthToShow(date.getMonth() + 1);
+    setYearToShow(now.getFullYear());
+    setMonthToShow(now.getMonth() + 1);
     GetMonthStatisticsApi({ start, end, setStatisticsList, setStatisticsData });
   };
 
