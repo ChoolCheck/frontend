@@ -69,10 +69,11 @@ const StatisticsView = ({
   };
 
   useEffect(() => {
-    if (barChart && barChart.id == "0") {
+    if (barChart && barChart.id.toString() == "0") {
       console.log("chart destroyed");
       barChart.destroy();
     }
+
     const ctx = chartRef.current?.getContext("2d");
 
     if (ctx) {
