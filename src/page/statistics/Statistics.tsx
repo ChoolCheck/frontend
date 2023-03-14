@@ -88,12 +88,13 @@ const Statistics = () => {
   const onPrevClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     let prevMonth;
 
+    console.log(monthToShow);
+    console.log(prevMonth);
+
     if (monthToShow == 1) {
       setYearToShow(yearToShow - 1);
       setMonthToShow(12);
       prevMonth = new Date(yearToShow - 1, 12, 1);
-      console.log(monthToShow);
-      console.log(prevMonth);
     } else {
       setMonthToShow(monthToShow - 1);
       prevMonth = new Date(yearToShow, monthToShow - 1, 1);
