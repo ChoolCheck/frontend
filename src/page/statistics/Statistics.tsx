@@ -81,6 +81,7 @@ const Statistics = () => {
 
   const onPrevClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     let prevMonth;
+    let inputYearMonth;
 
     // console.log(new Date(2022, 12, 1)); 1월
     // console.log(new Date(2022, 1, 1)); 2월
@@ -89,17 +90,18 @@ const Statistics = () => {
     if (monthToShow == 1) {
       setYearToShow(yearToShow - 1);
       setMonthToShow(12);
-      prevMonth = new Date(yearToShow - 1, 11, 1);
+      prevMonth = new Date(yearToShow - 1, 12, 1);
+      inputYearMonth = prevMonth.getFullYear() + "-12";
     } else {
       setMonthToShow(monthToShow - 1);
       prevMonth = new Date(yearToShow, monthToShow, 1);
+      inputYearMonth =
+        prevMonth.getFullYear() +
+        "-" +
+        (prevMonth.getMonth() - 1 < 10
+          ? "0" + (prevMonth.getMonth() - 1)
+          : prevMonth.getMonth() - 1);
     }
-    const inputYearMonth =
-      prevMonth.getFullYear() +
-      "-" +
-      (prevMonth.getMonth() - 1 < 10
-        ? "0" + (prevMonth.getMonth() - 1)
-        : prevMonth.getMonth() - 1);
 
     const startInput = inputYearMonth + "-01";
 
