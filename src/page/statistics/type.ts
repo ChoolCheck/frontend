@@ -1,6 +1,6 @@
+import Chart from "chart.js/auto";
 export interface statisticsViewProps {
   statisticsList: statisticListProps[] | undefined;
-  chartRef: React.RefObject<HTMLCanvasElement>;
   statisticsData: chartDataProps | undefined;
 }
 
@@ -23,5 +23,5 @@ export interface chartDataProps {
 
 export interface chartProps {
   height: number;
-  chartRef: React.RefObject<HTMLCanvasElement>;
+  canvasCallback: (canvas: HTMLCanvasElement | null) => void;
 }

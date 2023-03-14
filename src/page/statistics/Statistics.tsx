@@ -31,8 +31,6 @@ ChartJS.register(
 Chart.register(CategoryScale);
 
 const Statistics = () => {
-  const chartRef = useRef<HTMLCanvasElement>(null);
-
   const now = new Date();
   const start =
     now.getFullYear() +
@@ -234,7 +232,6 @@ const Statistics = () => {
       {statisticsData && (
         <StatisticsView
           statisticsList={statisticsList}
-          chartRef={chartRef}
           statisticsData={statisticsData}
         ></StatisticsView>
       )}
