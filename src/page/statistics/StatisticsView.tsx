@@ -101,12 +101,14 @@ const StatisticsView = ({
   }, []);
 
   useEffect(() => {
+    console.log(statisticsData);
+    console.log(barChart);
+
     if (statisticsData && barChart) {
-      console.log("update");
-      console.log(statisticsData);
       barChart.data.labels = statisticsData.labels;
       barChart.data.datasets[0] = statisticsData.datasets[0];
       barChart.update();
+      console.log("updated");
     }
   }, [statisticsData]);
 
