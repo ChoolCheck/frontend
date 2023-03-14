@@ -102,7 +102,8 @@ const StatisticsView = ({
 
   useEffect(() => {
     if (statisticsData && barChart) {
-      console.log("update" + statisticsData);
+      console.log("update");
+      console.log(statisticsData);
       barChart.data.labels = statisticsData.labels;
       barChart.data.datasets[0] = statisticsData.datasets[0];
       barChart.update();
