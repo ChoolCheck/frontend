@@ -87,12 +87,6 @@ const Statistics = () => {
       setMonthToShow(12);
       prevMonth = new Date(yearToShow - 1, 12, 1);
       inputYearMonth = yearToShow - 1 + "-12";
-
-      prevMonthlastDate = new Date(
-        prevMonth.getFullYear(),
-        prevMonth.getMonth(),
-        0
-      ).getDate();
     } else {
       setMonthToShow(monthToShow - 1);
       prevMonth = new Date(yearToShow, monthToShow - 1, 1);
@@ -102,16 +96,15 @@ const Statistics = () => {
         (prevMonth.getMonth() < 10
           ? "0" + prevMonth.getMonth()
           : prevMonth.getMonth());
-
-      prevMonthlastDate = new Date(
-        prevMonth.getFullYear(),
-        prevMonth.getMonth(),
-        0
-      ).getDate();
     }
 
-    const startInput = inputYearMonth + "-01";
+    prevMonthlastDate = new Date(
+      prevMonth.getFullYear(),
+      prevMonth.getMonth(),
+      0
+    ).getDate();
 
+    const startInput = inputYearMonth + "-01";
     const endInput =
       inputYearMonth +
       "-" +
@@ -132,7 +125,7 @@ const Statistics = () => {
       setMonthToShow(monthToShow + 1);
       nextMonth = new Date(yearToShow, monthToShow, 1);
       inputYearMonth = nextMonth.getFullYear() + "-12";
-      nextMonthlastDate = new Date(nextMonth.getFullYear(), 11, 0).getDate();
+      nextMonthlastDate = 31;
     } else {
       if (monthToShow == 12) {
         setYearToShow(yearToShow + 1);
@@ -158,7 +151,6 @@ const Statistics = () => {
     }
 
     const startInput = inputYearMonth + "-01";
-
     const endInput =
       inputYearMonth +
       "-" +
