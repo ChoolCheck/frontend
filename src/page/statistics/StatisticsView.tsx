@@ -27,7 +27,7 @@ const StatisticsView = ({
   chartRef,
   statisticsData,
 }: type.statisticsViewProps) => {
-  let barChart: ChartJS;
+  let barChart: ChartJS | undefined;
 
   useEffect(() => {
     if (barChart && statisticsData) {
@@ -39,6 +39,7 @@ const StatisticsView = ({
       barChart.update();
       console.log("updated");
     } else {
+      barChart = undefined;
       const ctx = chartRef.current?.getContext("2d");
 
       if (ctx) {
