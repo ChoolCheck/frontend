@@ -101,17 +101,15 @@ const StatisticsView = ({
   }, []);
 
   useEffect(() => {
-    if (statisticsData) {
-      if (barChart) {
-        console.log("update" + statisticsData);
-        barChart.data = statisticsData;
-        barChart.update();
-      }
-      // }
+    if (statisticsData && barChart) {
+      console.log("update" + statisticsData);
+      barChart.data.labels = statisticsData.labels;
+      barChart.data.datasets[0] = statisticsData.datasets[0];
+      barChart.update();
     }
   }, [statisticsData]);
 
-  const chartHeight = statisticsList ? statisticsList.length * 80 : 400;
+  const chartHeight = statisticsList ? statisticsList.length * 100 : 600;
 
   return <Chart chartRef={chartRef} height={chartHeight}></Chart>;
 };
