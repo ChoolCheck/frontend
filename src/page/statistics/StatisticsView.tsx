@@ -69,7 +69,7 @@ const StatisticsView = ({
   };
 
   useEffect(() => {
-    if (barChart) {
+    if (barChart && barChart.id == "0") {
       console.log("chart destroyed");
       barChart.destroy();
     }
@@ -133,6 +133,8 @@ const StatisticsView = ({
         },
       });
       console.log(barChart);
+      console.log(barChart.id);
+      console.log(typeof barChart.id);
     }
   }, [statisticsData]);
 
