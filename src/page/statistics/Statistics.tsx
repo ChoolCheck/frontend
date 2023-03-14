@@ -81,14 +81,13 @@ const Statistics = () => {
 
   const onPrevClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     let prevMonth, inputYearMonth, prevMonthlastDate;
-    // console.log(new Date(2022, 12, 1)); 1월
-    // console.log(new Date(2022, -1, 1)); 12월
 
     if (monthToShow == 1) {
       setYearToShow(yearToShow - 1);
       setMonthToShow(12);
       prevMonth = new Date(yearToShow - 1, 12, 1);
       inputYearMonth = yearToShow - 1 + "-12";
+
       prevMonthlastDate = new Date(
         prevMonth.getFullYear(),
         prevMonth.getMonth(),
@@ -129,24 +128,19 @@ const Statistics = () => {
   const onNextClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     let nextMonth, inputYearMonth, nextMonthlastDate;
 
-    if (monthToShow == 12) {
-      setYearToShow(yearToShow + 1);
-      setMonthToShow(1);
-      nextMonth = new Date(yearToShow + 1, 0, 1);
-
-      inputYearMonth = nextMonth.getFullYear() + "-01";
-
-      nextMonthlastDate = new Date(
-        nextMonth.getFullYear(),
-        nextMonth.getMonth(),
-        0
-      ).getDate();
-    } else {
+    if (monthToShow == 11) {
       setMonthToShow(monthToShow + 1);
-      if (monthToShow == 11) {
-        nextMonth = new Date(yearToShow, monthToShow, 1);
-        inputYearMonth = nextMonth.getFullYear() + "-12";
+      nextMonth = new Date(yearToShow, monthToShow, 1);
+      inputYearMonth = nextMonth.getFullYear() + "-12";
+      nextMonthlastDate = new Date(nextMonth.getFullYear(), 11, 0).getDate();
+    } else {
+      if (monthToShow == 12) {
+        setYearToShow(yearToShow + 1);
+        setMonthToShow(1);
+        nextMonth = new Date(yearToShow + 1, 0, 1);
+        inputYearMonth = nextMonth.getFullYear() + "-01";
       } else {
+        setMonthToShow(monthToShow + 1);
         nextMonth = new Date(yearToShow, monthToShow + 1, 1);
         inputYearMonth =
           nextMonth.getFullYear() +
@@ -162,7 +156,6 @@ const Statistics = () => {
         0
       ).getDate();
     }
-    console.log(nextMonth);
 
     const startInput = inputYearMonth + "-01";
 
