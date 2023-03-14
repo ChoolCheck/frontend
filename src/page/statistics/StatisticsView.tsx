@@ -87,16 +87,7 @@ const StatisticsView = ({
   const chartHeight = statisticsList ? statisticsList.length * 100 : 600;
 
   return (
-    <>
-      {statisticsList && statisticsList.length > 0 ? (
-        <BarChart
-          canvasCallback={canvasCallback}
-          height={chartHeight}
-        ></BarChart>
-      ) : (
-        <p>근무 이력이 없습니다.</p>
-      )}
-    </>
+    <BarChart canvasCallback={canvasCallback} height={chartHeight}></BarChart>
   );
 };
 export default StatisticsView;
