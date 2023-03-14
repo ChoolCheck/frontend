@@ -142,23 +142,23 @@ const Statistics = () => {
     const startInput =
       nextMonth.getFullYear() +
       "-" +
-      (nextMonth.getMonth() + 2 < 10
-        ? "0" + (nextMonth.getMonth() + 2)
-        : nextMonth.getMonth() + 2) +
+      (nextMonth.getMonth() < 10
+        ? "0" + nextMonth.getMonth()
+        : nextMonth.getMonth()) +
       "-01";
 
     const nextMonthlastDate = new Date(
       nextMonth.getFullYear(),
-      nextMonth.getMonth() + 2,
+      nextMonth.getMonth(),
       0
     ).getDate();
 
     const endInput =
       now.getFullYear() +
       "-" +
-      (nextMonth.getMonth() + 2 < 10
-        ? "0" + (nextMonth.getMonth() + 2)
-        : nextMonth.getMonth() + 2) +
+      (nextMonth.getMonth() < 10
+        ? "0" + nextMonth.getMonth()
+        : nextMonth.getMonth()) +
       "-" +
       (nextMonthlastDate < 10 ? "0" + nextMonthlastDate : nextMonthlastDate);
 
