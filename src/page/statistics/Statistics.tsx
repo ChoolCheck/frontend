@@ -85,7 +85,7 @@ const Statistics = () => {
     // console.log(new Date(2022, -1, 1)); 12월
 
     if (monthToShow == 1) {
-      console.log(monthToShow);
+      console.log(yearToShow - 1 + " " + monthToShow);
       setYearToShow(yearToShow - 1);
       setMonthToShow(12);
       prevMonth = new Date(yearToShow - 1, 12, 1);
@@ -129,38 +129,45 @@ const Statistics = () => {
   };
 
   const onNextClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    let nextMonth;
+    let nextMonth, inputYearMonth, nextMonthlastDate;
 
     if (monthToShow == 12) {
       setYearToShow(yearToShow + 1);
       setMonthToShow(1);
-      nextMonth = new Date(yearToShow + 1, 1, 1);
+      nextMonth = new Date(yearToShow + 1, 0, 1);
+
+      inputYearMonth = nextMonth.getFullYear() + "-01";
+
+      nextMonthlastDate = new Date(
+        nextMonth.getFullYear(),
+        nextMonth.getMonth(),
+        0
+      ).getDate();
     } else {
       setMonthToShow(monthToShow + 1);
+      if (monthToShow == 11) {
+        nextMonth = new Date(yearToShow, monthToShow + 1, 1);
+      }
       nextMonth = new Date(yearToShow, monthToShow + 1, 1);
+      inputYearMonth =
+        nextMonth.getFullYear() +
+        "-" +
+        (nextMonth.getMonth() < 10
+          ? "0" + nextMonth.getMonth()
+          : nextMonth.getMonth());
+
+      nextMonthlastDate = new Date(
+        nextMonth.getFullYear(),
+        nextMonth.getMonth(),
+        0
+      ).getDate();
     }
     console.log(nextMonth);
 
-    const startInput =
-      nextMonth.getFullYear() +
-      "-" +
-      (nextMonth.getMonth() < 10
-        ? "0" + nextMonth.getMonth()
-        : nextMonth.getMonth()) +
-      "-01";
-
-    const nextMonthlastDate = new Date(
-      nextMonth.getFullYear(),
-      nextMonth.getMonth(),
-      0
-    ).getDate();
+    const startInput = inputYearMonth + "-01";
 
     const endInput =
-      nextMonth.getFullYear() +
-      "-" +
-      (nextMonth.getMonth() < 10
-        ? "0" + nextMonth.getMonth()
-        : nextMonth.getMonth()) +
+      inputYearMonth +
       "-" +
       (nextMonthlastDate < 10 ? "0" + nextMonthlastDate : nextMonthlastDate);
 
