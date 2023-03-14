@@ -97,15 +97,15 @@ const Statistics = () => {
     const inputYearMonth =
       prevMonth.getFullYear() +
       "-" +
-      (prevMonth.getMonth() + 1 < 10
-        ? "0" + (prevMonth.getMonth() + 1)
-        : prevMonth.getMonth() + 1);
+      (prevMonth.getMonth() - 1 < 10
+        ? "0" + (prevMonth.getMonth() - 1)
+        : prevMonth.getMonth() - 1);
 
     const startInput = inputYearMonth + "-01";
 
     const prevMonthlastDate = new Date(
       prevMonth.getFullYear(),
-      prevMonth.getMonth() + 1,
+      prevMonth.getMonth() - 1,
       0
     ).getDate();
 
