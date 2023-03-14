@@ -1,7 +1,7 @@
 import Chart from "chart.js/auto";
 export interface statisticsViewProps {
   statisticsList: statisticListProps[] | undefined;
-  statisticsData: chartDataProps | undefined;
+  statisticsData: chartDataProps;
 }
 
 export interface statisticListProps {
