@@ -29,21 +29,29 @@ const StatisticsView = ({
 }: type.statisticsViewProps) => {
   let barChart: ChartJS | undefined;
 
+  const updateChart = (barChart: ChartJS) => {
+    if (statisticsData) {
+      barChart.data.labels = statisticsData.labels;
+      barChart.data.datasets[0] = statisticsData.datasets[0];
+      barChart.update();
+    }
+  };
+
   useEffect(() => {
+    console.log(barChart);
+    console.log(statisticsData);
+
     if (barChart && statisticsData) {
       console.log("chart updated");
       // barChart.clear();
       // barChart.destroy();
-      barChart.data.labels = statisticsData.labels;
-      barChart.data.datasets[0] = statisticsData.datasets[0];
-      barChart.update();
+      updateChart(barChart);
       console.log("updated");
     } else {
       barChart?.destroy();
       const ctx = chartRef.current?.getContext("2d");
 
       if (ctx) {
-        console.log("create" + statisticsData);
         barChart = new ChartJS(ctx, {
           type: "bar",
           data: statisticsData
