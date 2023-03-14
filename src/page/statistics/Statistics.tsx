@@ -231,11 +231,13 @@ const Statistics = () => {
           </button>
         </div>
       </div>
-      <StatisticsView
-        statisticsList={statisticsList}
-        chartRef={chartRef}
-        statisticsData={statisticsData}
-      ></StatisticsView>
+      {statisticsData && (
+        <StatisticsView
+          statisticsList={statisticsList}
+          chartRef={chartRef}
+          statisticsData={statisticsData}
+        ></StatisticsView>
+      )}
     </div>
   );
 };
