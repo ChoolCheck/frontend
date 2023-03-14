@@ -85,18 +85,16 @@ const Statistics = () => {
     // console.log(new Date(2022, -1, 1)); 12월
 
     if (monthToShow == 1) {
-      console.log(yearToShow - 1 + " " + monthToShow);
       setYearToShow(yearToShow - 1);
       setMonthToShow(12);
       prevMonth = new Date(yearToShow - 1, 12, 1);
-      inputYearMonth = prevMonth.getFullYear() + "-12";
+      inputYearMonth = yearToShow - 1 + "-12";
       prevMonthlastDate = new Date(
         prevMonth.getFullYear(),
         prevMonth.getMonth(),
         0
       ).getDate();
     } else {
-      console.log(monthToShow);
       setMonthToShow(monthToShow - 1);
       prevMonth = new Date(yearToShow, monthToShow - 1, 1);
       inputYearMonth =
