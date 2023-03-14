@@ -180,29 +180,6 @@ const Statistics = () => {
     GetMonthStatisticsApi({ start, end, setStatisticsList, setStatisticsData });
   };
 
-  const resetGraph = () => {
-    const canvasContainer = document.getElementById("canvasContainer");
-    if (canvasContainer && canvasContainer?.firstChild !== null) {
-      canvasContainer.removeChild(canvasContainer.firstChild);
-    }
-
-    const canvasElement = document.createElement("canvas");
-    canvasElement.id = "results-graph";
-
-    let ctx = canvasElement.getContext("2d");
-
-    var x = canvasElement.width / 2;
-    var y = canvasElement.height / 2;
-
-    // ctx.canvas.width = $("#graph").width(); // resize to parent width
-    // ctx.canvas.height = $("#graph").height(); // resize to parent height
-    // ctx.font = '10pt Verdana';
-    // ctx.textAlign = 'center';
-    // ctx.fillText('This text is centered on the canvas', x, y);
-
-    canvasContainer?.append(canvasElement);
-  };
-
   return (
     <div className="Statistics-top-container">
       <h2 className="Statistics-top-Header">

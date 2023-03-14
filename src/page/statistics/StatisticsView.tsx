@@ -29,45 +29,6 @@ const StatisticsView = ({
 }: type.statisticsViewProps) => {
   let barChart: ChartJS;
 
-  const option = {
-    responsive: false,
-    plugins: {
-      legend: {
-        display: false,
-      },
-    },
-    indexAxis: "y",
-    scales: {
-      x: {
-        ticks: {
-          font: {
-            size: 18,
-          },
-        },
-        grid: {
-          display: false,
-        },
-        border: {
-          display: false,
-        },
-      },
-      y: {
-        ticks: {
-          font: {
-            size: 18,
-          },
-          color: "black",
-        },
-        grid: {
-          display: false,
-        },
-        border: {
-          display: false,
-        },
-      },
-    },
-  };
-
   useEffect(() => {
     if (barChart && barChart.id.toString() == "0") {
       console.log("chart destroyed");
@@ -77,6 +38,7 @@ const StatisticsView = ({
       const ctx = chartRef.current?.getContext("2d");
 
       if (ctx) {
+        console.log("create" + statisticsData);
         barChart = new ChartJS(ctx, {
           type: "bar",
           data: statisticsData
@@ -134,8 +96,6 @@ const StatisticsView = ({
           },
         });
         console.log(barChart);
-        console.log(barChart.id);
-        console.log(typeof barChart.id);
       }
     }
   }, []);
@@ -146,6 +106,7 @@ const StatisticsView = ({
 
       // if (ctx) {
       if (barChart !== undefined) {
+        console.log("update" + statisticsData);
         barChart.data = statisticsData;
         barChart.update("reset");
         // barChart.destroy();
