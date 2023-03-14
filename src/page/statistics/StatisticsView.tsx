@@ -39,7 +39,7 @@ const StatisticsView = ({
       barChart.update();
       console.log("updated");
     } else {
-      barChart = undefined;
+      barChart?.destroy();
       const ctx = chartRef.current?.getContext("2d");
 
       if (ctx) {
