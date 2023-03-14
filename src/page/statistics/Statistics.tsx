@@ -80,40 +80,43 @@ const Statistics = () => {
   };
 
   const onPrevClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    let prevMonth;
-    let inputYearMonth;
-
+    let prevMonth, inputYearMonth, prevMonthlastDate;
     // console.log(new Date(2022, 12, 1)); 1월
-    // console.log(new Date(2022, 1, 1)); 2월
     // console.log(new Date(2022, -1, 1)); 12월
 
     if (monthToShow == 1) {
+      console.log(monthToShow);
       setYearToShow(yearToShow - 1);
       setMonthToShow(12);
       prevMonth = new Date(yearToShow - 1, 12, 1);
-      inputYearMonth = prevMonth.getFullYear() + "-12";
+      inputYearMonth = prevMonth.getFullYear() + "-12-";
+      prevMonthlastDate = new Date(
+        prevMonth.getFullYear(),
+        prevMonth.getMonth(),
+        0
+      ).getDate();
     } else {
+      console.log(monthToShow);
       setMonthToShow(monthToShow - 1);
-      prevMonth = new Date(yearToShow, monthToShow, 1);
+      prevMonth = new Date(yearToShow, monthToShow - 1, 1);
       inputYearMonth =
         prevMonth.getFullYear() +
         "-" +
-        (prevMonth.getMonth() - 1 < 10
-          ? "0" + (prevMonth.getMonth() - 1)
-          : prevMonth.getMonth() - 1);
+        (prevMonth.getMonth() < 10
+          ? "0" + prevMonth.getMonth()
+          : prevMonth.getMonth());
+
+      prevMonthlastDate = new Date(
+        prevMonth.getFullYear(),
+        prevMonth.getMonth(),
+        0
+      ).getDate();
     }
 
-    const startInput = inputYearMonth + "-01";
-
-    const prevMonthlastDate = new Date(
-      prevMonth.getFullYear(),
-      prevMonth.getMonth() - 1,
-      0
-    ).getDate();
+    const startInput = inputYearMonth + "01";
 
     const endInput =
       inputYearMonth +
-      "-" +
       (prevMonthlastDate < 10 ? "0" + prevMonthlastDate : prevMonthlastDate);
 
     GetDateStatisticsApi({
