@@ -89,7 +89,7 @@ const Statistics = () => {
       setYearToShow(yearToShow - 1);
       setMonthToShow(12);
       prevMonth = new Date(yearToShow - 1, 12, 1);
-      inputYearMonth = prevMonth.getFullYear() + "-12-";
+      inputYearMonth = prevMonth.getFullYear() + "-12";
       prevMonthlastDate = new Date(
         prevMonth.getFullYear(),
         prevMonth.getMonth(),
@@ -113,10 +113,11 @@ const Statistics = () => {
       ).getDate();
     }
 
-    const startInput = inputYearMonth + "01";
+    const startInput = inputYearMonth + "-01";
 
     const endInput =
       inputYearMonth +
+      "-" +
       (prevMonthlastDate < 10 ? "0" + prevMonthlastDate : prevMonthlastDate);
 
     GetDateStatisticsApi({
