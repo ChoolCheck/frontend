@@ -144,15 +144,17 @@ const Statistics = () => {
     } else {
       setMonthToShow(monthToShow + 1);
       if (monthToShow == 11) {
+        nextMonth = new Date(yearToShow, monthToShow, 1);
+        inputYearMonth = nextMonth.getFullYear() + "-12";
+      } else {
         nextMonth = new Date(yearToShow, monthToShow + 1, 1);
+        inputYearMonth =
+          nextMonth.getFullYear() +
+          "-" +
+          (nextMonth.getMonth() < 10
+            ? "0" + nextMonth.getMonth()
+            : nextMonth.getMonth());
       }
-      nextMonth = new Date(yearToShow, monthToShow + 1, 1);
-      inputYearMonth =
-        nextMonth.getFullYear() +
-        "-" +
-        (nextMonth.getMonth() < 10
-          ? "0" + nextMonth.getMonth()
-          : nextMonth.getMonth());
 
       nextMonthlastDate = new Date(
         nextMonth.getFullYear(),
