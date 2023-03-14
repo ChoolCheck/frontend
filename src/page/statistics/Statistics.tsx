@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import "./style/statistics.scss";
 import StatisticsView from "./StatisticsView";
 import * as type from "./type";
@@ -8,8 +8,6 @@ import {
   GetMonthStatisticsApi,
 } from "../../api/statistics";
 import Chart from "chart.js/auto";
-
-import { Bar } from "react-chartjs-2";
 
 import {
   Chart as ChartJS,
@@ -32,21 +30,18 @@ Chart.register(CategoryScale);
 
 const Statistics = () => {
   const now = new Date();
-  const start =
+  const yearmonth =
     now.getFullYear() +
     "-" +
     (now.getMonth() + 1 < 10
       ? "0" + (now.getMonth() + 1)
       : now.getMonth() + 1) +
-    "-01";
+    "-";
+
+  const start = yearmonth + "01";
 
   const end =
-    now.getFullYear() +
-    "-" +
-    (now.getMonth() + 1 < 10
-      ? "0" + (now.getMonth() + 1)
-      : now.getMonth() + 1) +
-    "-" +
+    yearmonth +
     (now.getDate() + 1 < 10 ? "0" + (now.getDate() + 1) : now.getDate() + 1);
 
   const [statisticsList, setStatisticsList] = useState<
@@ -61,9 +56,8 @@ const Statistics = () => {
 
   const [startInput, setStartInput] = useState("");
   const [endInput, setEndInput] = useState("");
-  const date = new Date();
-  const [yearToShow, setYearToShow] = useState(date.getFullYear());
-  const [monthToShow, setMonthToShow] = useState(date.getMonth() + 1);
+  const [yearToShow, setYearToShow] = useState(now.getFullYear());
+  const [monthToShow, setMonthToShow] = useState(now.getMonth() + 1);
 
   const onChageStartInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setStartInput(e.target.value);
@@ -88,40 +82,35 @@ const Statistics = () => {
   const onPrevClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     let prevMonth;
 
-    console.log(new Date(2022, 12, 1));
-    console.log(new Date(2022, 1, 1));
-    console.log(new Date(2022, -1, 1));
+    // console.log(new Date(2022, 12, 1)); 1월
+    // console.log(new Date(2022, 1, 1)); 2월
+    // console.log(new Date(2022, -1, 1)); 12월
 
     if (monthToShow == 1) {
       setYearToShow(yearToShow - 1);
       setMonthToShow(12);
-      prevMonth = new Date(yearToShow - 1, 12, 1);
+      prevMonth = new Date(yearToShow - 1, 11, 1);
     } else {
       setMonthToShow(monthToShow - 1);
-      prevMonth = new Date(yearToShow, monthToShow - 1, 1);
+      prevMonth = new Date(yearToShow, monthToShow, 1);
     }
-    console.log(prevMonth);
-
-    const startInput =
+    const inputYearMonth =
       prevMonth.getFullYear() +
       "-" +
-      (prevMonth.getMonth() < 10
-        ? "0" + prevMonth.getMonth()
-        : prevMonth.getMonth()) +
-      "-01";
+      (prevMonth.getMonth() + 1 < 10
+        ? "0" + (prevMonth.getMonth() + 1)
+        : prevMonth.getMonth() + 1);
+
+    const startInput = inputYearMonth + "-01";
 
     const prevMonthlastDate = new Date(
       prevMonth.getFullYear(),
-      prevMonth.getMonth(),
+      prevMonth.getMonth() + 1,
       0
     ).getDate();
 
     const endInput =
-      prevMonth.getFullYear() +
-      "-" +
-      (prevMonth.getMonth() < 10
-        ? "0" + prevMonth.getMonth()
-        : prevMonth.getMonth()) +
+      inputYearMonth +
       "-" +
       (prevMonthlastDate < 10 ? "0" + prevMonthlastDate : prevMonthlastDate);
 
