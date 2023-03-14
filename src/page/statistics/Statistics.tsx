@@ -92,6 +92,8 @@ const Statistics = () => {
       setYearToShow(yearToShow - 1);
       setMonthToShow(12);
       prevMonth = new Date(yearToShow - 1, 12, 1);
+      console.log(monthToShow);
+      console.log(prevMonth);
     } else {
       setMonthToShow(monthToShow - 1);
       prevMonth = new Date(yearToShow, monthToShow - 1, 1);
@@ -112,7 +114,7 @@ const Statistics = () => {
     ).getDate();
 
     const endInput =
-      now.getFullYear() +
+      prevMonth.getFullYear() +
       "-" +
       (prevMonth.getMonth() < 10
         ? "0" + prevMonth.getMonth()
