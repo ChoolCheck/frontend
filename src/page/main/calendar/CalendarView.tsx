@@ -66,6 +66,8 @@ export const CalendarView = ({
         calendarItem.innerText = calendarTotalList[i].title;
         calendarItem.style.backgroundColor =
           calendarTotalList[i].backgroundColor;
+        calendarItem.style.color = calendarTotalList[i].textColor;
+
         calendarItemContainer?.appendChild(calendarItem);
       }
     }
