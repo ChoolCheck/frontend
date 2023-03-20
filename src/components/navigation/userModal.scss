@@ -12,25 +12,20 @@ $opacity-zero: 0;
   height: 200px;
   border-radius: 10px;
   background-color: rgb(225, 225, 225);
-  margin: 200px 10px 0 0;
+  margin: 0 0 0 0;
 
   .row-first {
     text-align: right;
     font-size: 18px;
-
-    .close-button {
-      margin: 5px 5px 0 0;
-    }
   }
   .row-center {
     text-align: center;
     font-family: "nanum-regular";
     font-size: 17px;
 
-    .userInfo {
-      margin: 10px;
-    }
+    .userInfo,
     .logout {
+      cursor: pointer;
       margin: 10px;
     }
   }
