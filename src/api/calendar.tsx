@@ -78,8 +78,6 @@ export async function GetTotalCalendarApi({
   const inputlastDATE = new Date(inputYear, inputDate.getMonth() + 1, 0);
   const inputEnd = inputYear + "-" + inputMonth + "-" + inputlastDATE.getDate();
 
-  let scheduleStart, scheduleEnd, workcheckStart, workcheckEnd;
-
   const axiosInstance = axios.create({
     headers: {
       "Content-Type": `application/json`,
@@ -95,20 +93,34 @@ export async function GetTotalCalendarApi({
     inputDate.getFullYear() == nowDate.getFullYear() &&
     inputDate.getMonth() == nowDate.getMonth()
   ) {
-    workcheckStart = inputStart;
-    workcheckEnd = inputEnd;
+    const todayMonth =
+      nowDate.getMonth() + 1 < 10
+        ? "0" + (nowDate.getMonth() + 1)
+        : nowDate.getMonth() + 1;
+
+    const todayDate =
+      nowDate.getDate() < 10 ? "0" + nowDate.getDate() : nowDate.getDate();
+
+    const yesterday =
+      nowDate.getFullYear() +
+      "-" +
+      todayMonth +
+      "-" +
+      (nowDate.getDate() - 1 < 10
+        ? "0" + (nowDate.getDate() - 1)
+        : nowDate.getDate() - 1);
 
     axios
       .all([
         axiosInstance.get(
-          `${config.api}/work/date?start=${workcheckStart}&end=${
-            nowDate.getDate() - 1
+          `${config.api}/work/date?start=${inputStart}&end=${
+            nowDate.getFullYear() + "-" + todayDate + "-" + yesterday
           }`
         ),
         axiosInstance.get(
-          `${
-            config.api
-          }/schedule/date?start=${nowDate.getDate()}&end=${scheduleEnd}`
+          `${config.api}/schedule/date?start=${
+            nowDate.getFullYear() + "-" + todayMonth + "-" + todayDate
+          }&end=${inputEnd}`
         ),
       ])
       .then(
@@ -137,13 +149,10 @@ export async function GetTotalCalendarApi({
     (inputDate.getFullYear() == nowDate.getFullYear() &&
       inputDate.getMonth() < nowDate.getMonth())
   ) {
-    workcheckStart = inputStart;
-    workcheckEnd = inputEnd;
-
     axios
       .all([
         axiosInstance.get(
-          `${config.api}/work/date?start=${workcheckStart}&end=${workcheckEnd}`
+          `${config.api}/work/date?start=${inputStart}&end=${inputEnd}`
         ),
       ])
       .then(
@@ -184,12 +193,10 @@ export async function GetTotalCalendarApi({
 
   // 보여줄 달력이 현재 달보다 이후인 경우 : 달력에 스케줄만 표시
   else {
-    scheduleStart = inputStart;
-    scheduleEnd = inputEnd;
     axios
       .all([
         axiosInstance.get(
-          `${config.api}/schedule/date?start=${scheduleStart}&end=${scheduleEnd}`
+          `${config.api}/schedule/date?start=${inputStart}&end=${inputEnd}`
         ),
       ])
       .then(
