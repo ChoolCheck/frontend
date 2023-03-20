@@ -25,11 +25,40 @@ const Navigation = () => {
         >
           Choolcheck
         </button>
+
         <div className="Navigation-menu">
-          <button onClick={() => navigate("/schedule")}>스케줄</button>
-          <button onClick={() => navigate("/workcheck")}>출근부</button>
-          <button onClick={() => navigate("/Statistics")}>근무통계</button>
-          <button onClick={() => navigate("/manage")}>관리</button>
+          <button
+            onClick={() => {
+              navigate("/schedule");
+              setUserModalOpen(false);
+            }}
+          >
+            스케줄
+          </button>
+          <button
+            onClick={() => {
+              navigate("/workcheck");
+              setUserModalOpen(false);
+            }}
+          >
+            출근부
+          </button>
+          <button
+            onClick={() => {
+              navigate("/Statistics");
+              setUserModalOpen(false);
+            }}
+          >
+            근무통계
+          </button>
+          <button
+            onClick={() => {
+              navigate("/manage");
+              setUserModalOpen(false);
+            }}
+          >
+            관리
+          </button>
           <button onClick={() => setUserModalOpen(!userModalOpen)}>
             <img className="userIcon" src={userIcon} />
           </button>

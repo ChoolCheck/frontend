@@ -11,9 +11,8 @@ $opacity-zero: 0;
   width: 120px;
   height: 200px;
   border-radius: 10px;
-  position: fixed;
   background-color: rgb(225, 225, 225);
-  margin: 30px 10px 0 0;
+  margin: 200px 10px 0 0;
 
   .row-first {
     text-align: right;
@@ -25,14 +24,14 @@ $opacity-zero: 0;
   }
   .row-center {
     text-align: center;
-    font-family: "nanum-medium";
+    font-family: "nanum-regular";
     font-size: 17px;
 
     .userInfo {
-      margin: 5px;
+      margin: 10px;
     }
     .logout {
-      margin: 5px;
+      margin: 10px;
     }
   }
 }
