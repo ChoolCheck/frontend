@@ -12,7 +12,7 @@ import Schedule from "../page/schedule/Schedule";
 import WorkCheck from "../page/workCheck/WorkCheck";
 import Statistics from "../page/statistics/Statistics";
 import Manage from "../page/manage/Manage";
-import Navigation from "../components/common/Navigation";
+import Navigation from "../components/navigation/Navigation";
 import AuthLayout from "../page/layout/AuthLayout";
 import PublicLayout from "../page/layout/PulicLayout";
 import Mypage from "../page/User/Mypage";
