@@ -23,7 +23,7 @@ const ScheduleWeeklyView = ({
     m = m.length === 1 ? "0" + m : m;
     d = d.length === 1 ? "0" + d : d;
 
-    thisWeek[i - 1] = m + "/" + d;
+    thisWeek[i] = m + "/" + d;
   }
 
   return (
