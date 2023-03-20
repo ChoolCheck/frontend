@@ -1,10 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import "../style/mypageView.scss";
 import * as type from "../type";
+import { DeleteUserApi } from "../../../api/mypage";
 
 const MypageView = ({ userInfo }: type.mypageViewProps) => {
   const navigate = useNavigate();
-
+  const onClickWithdrawal = () => {
+    if (window.confirm("정말로 탈퇴하시겠습니까?")) {
+      DeleteUserApi({ navigate });
+    }
+  };
   return (
     <div className="mypageview-top-container">
       <h3 className="mypageview-header">회원 정보</h3>
@@ -23,10 +28,10 @@ const MypageView = ({ userInfo }: type.mypageViewProps) => {
         </p>
       </div>
       <div className="button-container">
+        <button onClick={() => onClickWithdrawal()}>회원 탈퇴</button>
         <button onClick={() => navigate("/checkToSendEmail")}>
           비밀번호 변경
         </button>
-
         <button
           onClick={() => navigate("/updateUserInfo", { state: userInfo })}
         >
