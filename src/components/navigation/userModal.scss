@@ -4,6 +4,7 @@ $color-none: #000000;
 $opacity-zero: 0;
 
 .usermodal {
+  z-index: 1000;
   button {
     background-color: rgba($color-none, $opacity-zero);
   }

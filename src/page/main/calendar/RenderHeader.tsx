@@ -12,9 +12,11 @@ const RenderHeader = ({
   return (
     <div className="header row">
       <div className="col col-start">
-        <h1 className="text">
+        <Icon icon="bi:arrow-left-circle-fill" onClick={prevMonth} />
+        <h1 className="header-content">
           {format(currentMonth, "yyyy")}년&nbsp;{format(currentMonth, "M")}월
         </h1>
+        <Icon icon="bi:arrow-right-circle-fill" onClick={nextMonth} />
       </div>
 
       <div className="col col-end">
@@ -27,8 +29,6 @@ const RenderHeader = ({
         <button className="createMemoButton" onClick={onCreateMemoClick}>
           메모 작성하기
         </button>
-        <Icon icon="bi:arrow-left-circle-fill" onClick={prevMonth} />
-        <Icon icon="bi:arrow-right-circle-fill" onClick={nextMonth} />
       </div>
     </div>
   );
