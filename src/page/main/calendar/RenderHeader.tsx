@@ -13,8 +13,7 @@ const RenderHeader = ({
     <div className="header row">
       <div className="col col-start">
         <h2 className="text">
-          {format(currentMonth, "yyyy")}년&nbsp;
-          <span className="text month">{format(currentMonth, "M")}월</span>
+          {format(currentMonth, "yyyy")}년&nbsp;{format(currentMonth, "M")}월
         </h2>
       </div>
 

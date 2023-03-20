@@ -16,12 +16,9 @@
       @include common.flex-column(center, flex-start);
       margin-left: 1%;
 
-      .text {
-        font-size: 20px;
+      h2 {
+        font-size: 22px;
         font-weight: 700;
-      }
-      .text.month {
-        margin-right: 5px;
       }
     }
     .col.col-end {
