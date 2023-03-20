@@ -113,9 +113,7 @@ export async function GetTotalCalendarApi({
     axios
       .all([
         axiosInstance.get(
-          `${config.api}/work/date?start=${inputStart}&end=${
-            nowDate.getFullYear() + "-" + todayDate + "-" + yesterday
-          }`
+          `${config.api}/work/date?start=${inputStart}&end=${yesterday}`
         ),
         axiosInstance.get(
           `${config.api}/schedule/date?start=${
