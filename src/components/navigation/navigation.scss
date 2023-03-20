@@ -12,31 +12,34 @@ $opacity-zero: 0;
   background-color: #cdcdcd;
   display: flex;
   align-items: center;
-}
+  .Navigation-logo {
+    background-color: rgba($color-none, $opacity-zero);
+    font-size: 30px;
+    padding: 10px;
+    margin-left: 20px;
+  }
+  .Navigation-menu {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    font-size: 30px;
+    width: 100%;
+    min-width: 600px;
+    margin-right: 50px;
+  }
 
-.Navigation-logo {
-  background-color: rgba($color-none, $opacity-zero);
-  font-size: 30px;
-  padding: 10px;
-  margin-left: 20px;
-}
-.Navigation-menu {
-  display: flex;
-  justify-content: end;
-  align-items: center;
-  font-size: 30px;
-  width: 100%;
-  min-width: 600px;
-  margin-right: 50px;
-}
-
-.Navigation-menu > button {
-  background-color: rgba($color-none, $opacity-zero);
-  font-size: 20px;
-  padding: 10px;
-  margin: 0 10px 0 10px;
-  .userIcon {
-    width: 30px;
+  .Navigation-menu > button {
+    background-color: rgba($color-none, $opacity-zero);
+    font-size: 20px;
+    padding: 10px;
+    margin: 0 10px 0 10px;
+    .userIcon {
+      width: 30px;
+    }
+  }
+  .usermodal-container {
+    display: flex;
+    justify-content: end;
   }
 }
 

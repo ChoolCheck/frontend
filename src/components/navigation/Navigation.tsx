@@ -30,13 +30,15 @@ const Navigation = () => {
           <button onClick={() => navigate("/workcheck")}>출근부</button>
           <button onClick={() => navigate("/Statistics")}>근무통계</button>
           <button onClick={() => navigate("/manage")}>관리</button>
-          <button onClick={() => setUserModalOpen(true)}>
+          <button onClick={() => setUserModalOpen(!userModalOpen)}>
             <img className="userIcon" src={userIcon} />
           </button>
         </div>
-        {userModalOpen && (
-          <UserModal setUserModalOpen={setUserModalOpen}></UserModal>
-        )}
+        <div className="usermodal-container">
+          {userModalOpen && (
+            <UserModal setUserModalOpen={setUserModalOpen}></UserModal>
+          )}
+        </div>
       </div>
     );
 };
