@@ -15,11 +15,10 @@
       @include common.size(80%, 100%);
       @include common.flex-column(center, flex-start);
       margin-left: 1%;
-
-      h2 {
-        font-size: 22px;
-        font-weight: 700;
-      }
+    }
+    h1 {
+      font-size: 22px;
+      font-weight: 700;
     }
     .col.col-end {
       @include common.size(50%, 100%);
