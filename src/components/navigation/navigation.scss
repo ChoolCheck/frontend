@@ -10,8 +10,10 @@ $opacity-zero: 0;
   min-width: 1100px;
   height: 80px;
   background-color: #cdcdcd;
+  position: relative;
   display: flex;
   align-items: center;
+
   .Navigation-logo {
     background-color: rgba($color-none, $opacity-zero);
     font-size: 30px;
@@ -21,9 +23,9 @@ $opacity-zero: 0;
 
   .usermodal-container {
     position: absolute;
-    top: 80px;
-    left: 90%;
-    overflow: hidden;
+    right: 10px;
+    // margin-top: 50px;
+    // margin-right: 10px;
   }
   .Navigation-menu {
     display: flex;
@@ -33,14 +35,17 @@ $opacity-zero: 0;
     width: 100%;
     min-width: 600px;
     margin-right: 50px;
+
     button {
       background-color: rgba($color-none, $opacity-zero);
       font-size: 20px;
       padding: 10px;
       margin: 0 10px 0 10px;
-      .userIcon {
-        width: 30px;
-      }
+    }
+    .userIcon {
+      padding: 10px;
+      margin: 0 10px 0 10px;
+      width: 30px;
     }
   }
 }

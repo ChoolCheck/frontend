@@ -22,12 +22,14 @@ const UserModal = ({ setUserModalOpen }: userModalProps) => {
       <div className="row-first"></div>
 
       <div className="row-center">
-        <p className="userInfo" onClick={onUserInfoClick}>
-          회원정보
-        </p>
-        <p className="logout" onClick={onLogoutClick}>
-          로그아웃
-        </p>
+        <ul>
+          <li className="userInfo" onClick={onUserInfoClick}>
+            회원정보
+          </li>
+          <li className="logout" onClick={onLogoutClick}>
+            로그아웃
+          </li>
+        </ul>
       </div>
     </div>
   );

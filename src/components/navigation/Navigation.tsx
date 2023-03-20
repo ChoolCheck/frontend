@@ -59,15 +59,24 @@ const Navigation = () => {
           >
             관리
           </button>
-          <button onClick={() => setUserModalOpen(!userModalOpen)}>
-            <img className="userIcon" src={userIcon} />
-          </button>
+          <div>
+            <img
+              className="userIcon"
+              src={userIcon}
+              onClick={() => setUserModalOpen(!userModalOpen)}
+            ></img>
+            <div className="usermodal-container">
+              {userModalOpen && (
+                <UserModal setUserModalOpen={setUserModalOpen}></UserModal>
+              )}
+            </div>
+          </div>
         </div>
-        <div className="usermodal-container">
+        {/* <div className="usermodal-container">
           {userModalOpen && (
             <UserModal setUserModalOpen={setUserModalOpen}></UserModal>
           )}
-        </div>
+        </div> */}
       </div>
     );
 };

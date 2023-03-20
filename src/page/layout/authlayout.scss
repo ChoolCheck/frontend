@@ -2,7 +2,9 @@
 @import "../../static/style/mixin";
 
 .AuthLayout-container {
-  // background-color: antiquewhite;
+  z-index: 10;
+  position: relative;
+
   padding: 50px 0 50px 0;
   margin: 0 auto;
   min-width: 1100px;
@@ -10,10 +12,12 @@
 
 @include tablet {
   .AuthLayout-container {
+    z-index: 10;
   }
 }
 
 @include mobile {
   .AuthLayout-container {
+    z-index: 10;
   }
 }
