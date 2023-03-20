@@ -158,25 +158,6 @@ export async function GetTotalCalendarApi({
           const workcheckList: workcheckType.workcheckObjProps[] = res1.data;
           handleWorklist(workcheckList, tempResultList);
 
-          // for (let i = 0; i < workcheckList.length; i++) {
-          //   const data: type.calendarListType = {
-          //     title: (
-          //       workcheckList[i].name +
-          //       " " +
-          //       workcheckList[i].startTime.substring(0, 5) +
-          //       "-" +
-          //       workcheckList[i].endTime.substring(0, 5)
-          //     ).toString(),
-          //     date: workcheckList[i].date,
-          //     textColor: "#727272",
-          //     backgroundColor: `#${
-          //       enumType.enumColor[
-          //         workcheckList[i].color as keyof typeof enumType.enumColor
-          //       ]
-          //     }`,
-          //   };
-          //   tempResultList.push(data);
-          // }
           return tempResultList;
         })
       )
@@ -202,25 +183,6 @@ export async function GetTotalCalendarApi({
           const scheduleList: scheduleType.scheduleObjProps[] = res1.data;
           handleSchedulelist(scheduleList, tempResultList);
 
-          // for (let i = 0; i < scheduleList.length; i++) {
-          //   const data: type.calendarListType = {
-          //     title: (
-          //       scheduleList[i].name +
-          //       " " +
-          //       scheduleList[i].startTime.substring(0, 5) +
-          //       "-" +
-          //       scheduleList[i].endTime.substring(0, 5)
-          //     ).toString(),
-          //     date: scheduleList[i].date,
-          //     textColor: "black",
-          //     backgroundColor: `#${
-          //       enumType.enumColor[
-          //         scheduleList[i].color as keyof typeof enumType.enumColor
-          //       ]
-          //     }`,
-          //   };
-          //   tempResultList.push(data);
-          // }
           return tempResultList;
         })
       )

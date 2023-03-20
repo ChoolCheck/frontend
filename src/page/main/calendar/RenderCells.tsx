@@ -22,6 +22,16 @@ const RenderCells = ({
     for (let i = 0; i < 7; i++) {
       formattedDate = format(day, "d");
       const cloneDay = day;
+      const cellKey =
+        cloneDay.getFullYear() +
+        "-" +
+        (cloneDay.getMonth() + 1 < 10
+          ? "0" + (cloneDay.getMonth() + 1)
+          : cloneDay.getMonth() + 1) +
+        "-" +
+        (cloneDay.getDate() < 10
+          ? "0" + cloneDay.getDate()
+          : cloneDay.getDate());
 
       days.push(
         <div
@@ -34,28 +44,8 @@ const RenderCells = ({
               ? "not-valid"
               : "valid"
           }`}
-          key={
-            cloneDay.getFullYear() +
-            "-" +
-            (cloneDay.getMonth() + 1 < 10
-              ? "0" + (cloneDay.getMonth() + 1)
-              : cloneDay.getMonth() + 1) +
-            "-" +
-            (cloneDay.getDate() < 10
-              ? "0" + cloneDay.getDate()
-              : cloneDay.getDate())
-          }
-          id={
-            cloneDay.getFullYear() +
-            "-" +
-            (cloneDay.getMonth() + 1 < 10
-              ? "0" + (cloneDay.getMonth() + 1)
-              : cloneDay.getMonth() + 1) +
-            "-" +
-            (cloneDay.getDate() < 10
-              ? "0" + cloneDay.getDate()
-              : cloneDay.getDate())
-          }
+          key={cellKey}
+          id={cellKey}
           onClick={() => onDateClick(cloneDay)}
         >
           <p

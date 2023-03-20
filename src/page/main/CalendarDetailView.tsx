@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import { useCallback } from "react";
 import * as type from "./type";
 import "./style/calendarDetailView.scss";
 import { useDispatch } from "react-redux";

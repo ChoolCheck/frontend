@@ -11,11 +11,11 @@ const ScheduleWeeklyView = ({
   let now = new Date();
   let thisWeek: string[] = [];
 
-  for (var i = 0; i < 7; i++) {
+  for (let i = 0; i < 7; i++) {
     let resultDay = new Date(
       now.getFullYear(),
       now.getMonth(),
-      now.getDate() + (i - now.getDay())
+      now.getDate() + (i - now.getDay()) + 1
     );
     let m = String(Number(resultDay.getMonth()) + 1);
     let d = String(resultDay.getDate());
@@ -23,7 +23,7 @@ const ScheduleWeeklyView = ({
     m = m.length === 1 ? "0" + m : m;
     d = d.length === 1 ? "0" + d : d;
 
-    thisWeek[i] = m + "/" + d;
+    thisWeek[i - 1] = m + "/" + d;
   }
 
   return (
