@@ -7,6 +7,58 @@ import * as enumType from "../commonType/enum";
 
 import { GetDateMemoApi } from "./memo";
 
+export function handleSchedulelist(
+  scheduleList: scheduleType.scheduleObjProps[],
+  tempResultList: type.calendarListType[]
+) {
+  for (let i = 0; i < scheduleList.length; i++) {
+    const data: type.calendarListType = {
+      title: (
+        scheduleList[i].name +
+        " " +
+        scheduleList[i].startTime.substring(0, 5) +
+        "-" +
+        scheduleList[i].endTime.substring(0, 5)
+      ).toString(),
+      date: scheduleList[i].date,
+      textColor: "black",
+      backgroundColor: `#${
+        enumType.enumColor[
+          scheduleList[i].color as keyof typeof enumType.enumColor
+        ]
+      }`,
+    };
+    tempResultList.push(data);
+  }
+  return true;
+}
+
+export function handleWorklist(
+  workcheckList: workcheckType.workcheckObjProps[],
+  tempResultList: type.calendarListType[]
+) {
+  for (let i = 0; i < workcheckList.length; i++) {
+    const data: type.calendarListType = {
+      title: (
+        workcheckList[i].name +
+        " " +
+        workcheckList[i].startTime.substring(0, 5) +
+        "-" +
+        workcheckList[i].endTime.substring(0, 5)
+      ).toString(),
+      date: workcheckList[i].date,
+      textColor: "#727272",
+      backgroundColor: `#${
+        enumType.enumColor[
+          workcheckList[i].color as keyof typeof enumType.enumColor
+        ]
+      }`,
+    };
+    tempResultList.push(data);
+  }
+  return true;
+}
+
 export async function GetTotalCalendarApi({
   date,
   setCalendarTotalList,
@@ -36,8 +88,51 @@ export async function GetTotalCalendarApi({
   });
   const tempResultList: type.calendarListType[] = [];
 
-  // 보여줄 달력이 현재 달보다 이전인 경우 : 달력에 출근부만 표시
+  // 보여줄 달력이 현재 달과 같은 경우
+  // - 1일~오늘 전날 :  달력에 출근부만 표시
+  // - 오늘~마지막 날 :  달력에 스케줄 표시
   if (
+    inputDate.getFullYear() == nowDate.getFullYear() &&
+    inputDate.getMonth() == nowDate.getMonth()
+  ) {
+    workcheckStart = inputStart;
+    workcheckEnd = inputEnd;
+
+    axios
+      .all([
+        axiosInstance.get(
+          `${config.api}/work/date?start=${workcheckStart}&end=${
+            nowDate.getDate() - 1
+          }`
+        ),
+        axiosInstance.get(
+          `${
+            config.api
+          }/schedule/date?start=${nowDate.getDate()}&end=${scheduleEnd}`
+        ),
+      ])
+      .then(
+        axios.spread((res1, res2) => {
+          const workcheckList: workcheckType.workcheckObjProps[] = res1.data;
+          const scheduleList: scheduleType.scheduleObjProps[] = res2.data;
+
+          if (handleWorklist(workcheckList, tempResultList))
+            handleSchedulelist(scheduleList, tempResultList);
+
+          return tempResultList;
+        })
+      )
+      .then((res) => {
+        setCalendarTotalList(tempResultList);
+      })
+      .then((res) => {
+        renderData(tempResultList);
+      })
+      .catch((error) => {});
+  }
+
+  // 보여줄 달력이 현재보다 이전인 경우 : 달력에 출근부만 표시
+  else if (
     inputDate.getFullYear() < nowDate.getFullYear() ||
     (inputDate.getFullYear() == nowDate.getFullYear() &&
       inputDate.getMonth() < nowDate.getMonth())
@@ -54,26 +149,27 @@ export async function GetTotalCalendarApi({
       .then(
         axios.spread((res1) => {
           const workcheckList: workcheckType.workcheckObjProps[] = res1.data;
+          handleWorklist(workcheckList, tempResultList);
 
-          for (let i = 0; i < workcheckList.length; i++) {
-            const data: type.calendarListType = {
-              title: (
-                workcheckList[i].name +
-                " " +
-                workcheckList[i].startTime.substring(0, 5) +
-                "-" +
-                workcheckList[i].endTime.substring(0, 5)
-              ).toString(),
-              date: workcheckList[i].date,
-              textColor: "#727272",
-              backgroundColor: `#${
-                enumType.enumColor[
-                  workcheckList[i].color as keyof typeof enumType.enumColor
-                ]
-              }`,
-            };
-            tempResultList.push(data);
-          }
+          // for (let i = 0; i < workcheckList.length; i++) {
+          //   const data: type.calendarListType = {
+          //     title: (
+          //       workcheckList[i].name +
+          //       " " +
+          //       workcheckList[i].startTime.substring(0, 5) +
+          //       "-" +
+          //       workcheckList[i].endTime.substring(0, 5)
+          //     ).toString(),
+          //     date: workcheckList[i].date,
+          //     textColor: "#727272",
+          //     backgroundColor: `#${
+          //       enumType.enumColor[
+          //         workcheckList[i].color as keyof typeof enumType.enumColor
+          //       ]
+          //     }`,
+          //   };
+          //   tempResultList.push(data);
+          // }
           return tempResultList;
         })
       )
@@ -99,26 +195,27 @@ export async function GetTotalCalendarApi({
       .then(
         axios.spread((res1) => {
           const scheduleList: scheduleType.scheduleObjProps[] = res1.data;
+          handleSchedulelist(scheduleList, tempResultList);
 
-          for (let i = 0; i < scheduleList.length; i++) {
-            const data: type.calendarListType = {
-              title: (
-                scheduleList[i].name +
-                " " +
-                scheduleList[i].startTime.substring(0, 5) +
-                "-" +
-                scheduleList[i].endTime.substring(0, 5)
-              ).toString(),
-              date: scheduleList[i].date,
-              textColor: "black",
-              backgroundColor: `#${
-                enumType.enumColor[
-                  scheduleList[i].color as keyof typeof enumType.enumColor
-                ]
-              }`,
-            };
-            tempResultList.push(data);
-          }
+          // for (let i = 0; i < scheduleList.length; i++) {
+          //   const data: type.calendarListType = {
+          //     title: (
+          //       scheduleList[i].name +
+          //       " " +
+          //       scheduleList[i].startTime.substring(0, 5) +
+          //       "-" +
+          //       scheduleList[i].endTime.substring(0, 5)
+          //     ).toString(),
+          //     date: scheduleList[i].date,
+          //     textColor: "black",
+          //     backgroundColor: `#${
+          //       enumType.enumColor[
+          //         scheduleList[i].color as keyof typeof enumType.enumColor
+          //       ]
+          //     }`,
+          //   };
+          //   tempResultList.push(data);
+          // }
           return tempResultList;
         })
       )
