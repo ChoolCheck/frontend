@@ -23,7 +23,7 @@ const Navigation = () => {
           className="Navigation-logo"
           onClick={() => navigate("/calendar")}
         >
-          🙋🏻‍♀️Choolcheck
+          Choolcheck
         </button>
 
         <div className="Navigation-menu">
@@ -72,11 +72,6 @@ const Navigation = () => {
             </div>
           </div>
         </div>
-        {/* <div className="usermodal-container">
-          {userModalOpen && (
-            <UserModal setUserModalOpen={setUserModalOpen}></UserModal>
-          )}
-        </div> */}
       </div>
     );
 };
