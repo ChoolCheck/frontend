@@ -3,29 +3,32 @@
 $color-none: #000000;
 $opacity-zero: 0;
 
+$color-usermodal: rgb(236, 236, 236);
+$opacity-usermodal: 0.8;
+
 .usermodal {
-  z-index: 1000;
   button {
     background-color: rgba($color-none, $opacity-zero);
   }
-  width: 140px;
-  padding: 10px;
+  width: 130px;
+  padding: 5px 10px 5px 10px;
   border-radius: 10px;
-  background-color: rgb(225, 225, 225);
+  background-color: rgba($color-usermodal, $opacity-usermodal);
+  color: rgb(84, 84, 84);
 
-  .row-first {
-    text-align: right;
-    font-size: 18px;
-  }
-  .row-center {
+  .row {
     text-align: center;
     font-family: "nanum-regular";
     font-size: 17px;
+    color: black;
+    .userInfo {
+      border-bottom: 1px solid rgb(174, 174, 174);
+    }
 
     .userInfo,
     .logout {
       cursor: pointer;
-      margin: 15px 0 15px 0;
+      padding: 10px 0 10px 0;
     }
   }
 }

@@ -19,9 +19,7 @@ const UserModal = ({ setUserModalOpen }: userModalProps) => {
   };
   return (
     <div className="usermodal">
-      <div className="row-first"></div>
-
-      <div className="row-center">
+      <div className="row">
         <ul>
           <li className="userInfo" onClick={onUserInfoClick}>
             회원정보

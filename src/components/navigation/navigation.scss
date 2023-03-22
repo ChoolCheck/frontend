@@ -11,6 +11,8 @@ $opacity-zero: 0;
   height: 80px;
   background-color: #cdcdcd;
   position: relative;
+  z-index: 100;
+
   display: flex;
   align-items: center;
 
