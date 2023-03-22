@@ -17,7 +17,7 @@ $opacity-zero: 0;
     margin: 0 auto;
     padding: 0px 0 20px 0;
     width: 80%;
-    height: 250px;
+    height: 300px;
     overflow-y: auto;
 
     .employeeList-li {
@@ -58,6 +58,28 @@ $opacity-zero: 0;
       font-weight: 600;
       width: 100%;
       background-color: rgba($color-none, $opacity-zero);
+    }
+  }
+}
+
+@include tablet {
+  .top-container {
+    height: 700px;
+    margin: 10px;
+    .employeeList-ul {
+      overflow-y: auto;
+      height: 600px;
+    }
+  }
+}
+
+@include mobile {
+  .top-container {
+    height: 700px;
+    margin: 10px;
+    .employeeList-ul {
+      overflow-y: auto;
+      height: 600px;
     }
   }
 }

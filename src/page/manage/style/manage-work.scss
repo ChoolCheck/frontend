@@ -9,7 +9,7 @@ $opacity-zero: 0;
     margin: 0 auto;
     padding: 0px 0 20px 0;
     width: 80%;
-    height: 250px;
+    height: 300px;
     overflow-y: auto;
 
     .workTypeList-li {
@@ -27,7 +27,7 @@ $opacity-zero: 0;
       }
       .workTypeList-li-delete {
         font-size: 18px;
-        width: 50px;
+        width: 80px;
         border-radius: 10px;
         padding: 10px 20px 10px 20px;
         color: rgb(80, 80, 80);
@@ -49,6 +49,28 @@ $opacity-zero: 0;
       font-weight: 600;
       width: 100%;
       background-color: rgba($color-none, $opacity-zero);
+    }
+  }
+}
+
+@include tablet {
+  .top-container {
+    height: 700px;
+    margin: 10px;
+    .workTypeList-ul {
+      overflow-y: auto;
+      height: 600px;
+    }
+  }
+}
+
+@include mobile {
+  .top-container {
+    height: 700px;
+    margin: 10px;
+    .workTypeList-ul {
+      overflow-y: auto;
+      height: 600px;
     }
   }
 }

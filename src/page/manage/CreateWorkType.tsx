@@ -31,7 +31,6 @@ const CreateWorkType = ({ setWorkTypeList }: type.createWorktypeProps) => {
     e.preventDefault();
     if (window.confirm("정말로 작성을 취소하시겠습니까?")) {
       setWriteModal(false);
-      window.alert("작성이 취소되었습니다.");
     } else return;
   };
 
