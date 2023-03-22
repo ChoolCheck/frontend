@@ -1,6 +1,7 @@
 @import "../../../static/style/reset.scss";
 @import "../../../static/style/mixin";
-
+$color-none: #000000;
+$opacity-zero: 0;
 .ManageEmployeeView.top-container {
   min-width: 700px;
 
@@ -54,6 +55,7 @@
       font-size: 22px;
       font-weight: 600;
       width: 100%;
+      background-color: rgba($color-none, $opacity-zero);
     }
   }
 }

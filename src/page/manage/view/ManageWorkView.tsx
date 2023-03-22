@@ -64,7 +64,7 @@ const ManageWorkView = () => {
                   className="workTypeList-li-delete"
                   onClick={() => onDeleteClick(item.id)}
                 >
-                  x
+                  삭제
                 </button>
               </li>
             ))}

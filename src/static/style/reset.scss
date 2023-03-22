@@ -147,12 +147,16 @@ h1 {
   font-size: 25px;
   font-weight: 600;
 }
+$color: #eaeee3;
+$opacity: 0.8;
 
 .page-header-button {
+  // background-color: rgba($color, $opacity);
+
   background-color: rgb(238, 238, 238);
   color: black;
   border-radius: 20px;
-  padding: 15px;
+  padding: 13px 15px 13px 15px;
   width: 150px;
 }
 

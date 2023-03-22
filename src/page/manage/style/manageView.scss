@@ -1,6 +1,9 @@
 @import "../../../static/style/reset.scss";
 @import "../../../static/style/mixin";
 
+$color: #f2f8e9;
+$opacity: 0.8;
+
 .top-container {
   position: relative;
   display: block;
@@ -9,7 +12,10 @@
 
   height: 450px;
   font-size: 20px;
-  background-color: rgb(238, 238, 238);
+
+  //   background-color: rgba($color, $opacity);
+
+  //   border: 1px solid rgb(195, 195, 195);
   border-radius: 20px;
   margin: 10px;
 
