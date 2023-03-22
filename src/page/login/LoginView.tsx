@@ -14,7 +14,7 @@ const LoginView = ({
       <div className="login inputContainer">
         <h1 className="Login-Header">Choolcheck</h1>
         <p>
-          <span className="login EmailHeader">🧑🏻‍💻</span>
+          <span className="login EmailHeader">💻</span>
           <input
             name="email"
             className="login inputEmail"
