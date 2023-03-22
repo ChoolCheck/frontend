@@ -39,7 +39,7 @@
       margin-bottom: 10px;
 
       button {
-        padding: 10px 15px 10px 15px;
+        padding: 10px 25px 10px 25px;
         border-radius: 20px;
         background-color: rgb(238, 238, 238);
         margin-right: 10px;
@@ -81,10 +81,10 @@
         border-radius: 5px;
         font-size: 0.8em;
         margin: 5px 0 0 0;
+
         .not-valid {
           color: rgb(181, 181, 181);
         }
-
         ::-webkit-scrollbar {
           width: 4px;
         }
@@ -100,6 +100,7 @@
 
       .col.cell {
         display: block;
+
         .text {
           margin: 4px 0 4px 4px;
         }

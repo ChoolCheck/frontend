@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { LogoutApi } from "../../api/auth";
 import "./userModal.scss";

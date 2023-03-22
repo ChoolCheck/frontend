@@ -1,8 +1,4 @@
 import React, { useState, useCallback } from "react";
-import CalendarDetailView from "./CalendarDetailView";
-import WriteModal from "../../components/modal/WriteModal";
-import CreateWorkCheck from "../workCheck/CreateWorkCheck";
-import CreateMemo from "../memo/CreateMemo";
 
 import { useDispatch } from "react-redux";
 import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
@@ -12,12 +8,17 @@ import { RootState } from "../../Redux/Reducers/rootReducer";
 
 import { GetDetailCalendarApi } from "../../api/calendar";
 
-import * as type from "./type";
-import "./style/calendarView.scss";
+import WriteModal from "../../components/modal/WriteModal";
 
+import CalendarDetailView from "./CalendarDetailView";
+import CreateWorkCheck from "../workCheck/CreateWorkCheck";
+import CreateMemo from "../memo/CreateMemo";
 import { CalendarView } from "./calendar/CalendarView";
 import MemoDetail from "../memo/MemoDetail";
 import ReadModal from "../../components/modal/ReadModal";
+
+import * as type from "./type";
+import "./style/calendarView.scss";
 
 const Main = () => {
   const dispatch = useDispatch();

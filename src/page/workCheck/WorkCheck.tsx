@@ -99,7 +99,12 @@ const WorkCheck = () => {
     };
   };
 
-  const onClickGetFile = () => {};
+  const onClickGetFile = () => {
+    if (startInput == "") window.alert("시작일을 입력해주세요");
+    else if (endInput == "") window.alert("마감일을 입력해주세요");
+    else {
+    }
+  };
 
   return (
     <div className="WorkCheck-top-container">
