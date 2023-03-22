@@ -70,7 +70,7 @@ const ManageWorkView = () => {
           </ul>
           <div className="button-container">
             <button
-              className="workTypeList-addButton"
+              className="workTypeList addButton"
               onClick={() => setWriteModal(true)}
             >
               근무추가

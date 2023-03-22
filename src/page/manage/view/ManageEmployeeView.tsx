@@ -107,7 +107,7 @@ const ManageEmployeeView = () => {
           </ul>
           <div className="button-container">
             <button
-              className="employeeList-addButton"
+              className="employeeList addButton"
               onClick={() => setWriteModal(true)}
             >
               직원추가
