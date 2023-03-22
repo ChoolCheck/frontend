@@ -7,9 +7,10 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../../Redux/Reducers/rootReducer";
 import { GetWorktypeApi } from "../../../api/manage";
 import { DeleteWorktypeApi } from "../../../api/manage";
-import "../style/manage-work.scss";
 
 import * as worktypeType from "../../../commonType/worktype";
+import "../style/manage-work.scss";
+import "../style/manageView.scss";
 
 const ManageWorkView = () => {
   const [workTypeList, setWorkTypeList] = useState<
@@ -38,7 +39,7 @@ const ManageWorkView = () => {
   };
 
   return (
-    <div className="ManageWorkView-top-container">
+    <div className="ManageWorkView top-container">
       {writeModalState && (
         <WriteModal>
           <CreateWorkType setWorkTypeList={setWorkTypeList}></CreateWorkType>
@@ -47,10 +48,10 @@ const ManageWorkView = () => {
 
       {workTypeList && workTypeList.length > 0 ? (
         <div className="workTypeList-exist">
-          <p className="workTypeList-ul-col">
-            <span className="workTypeList-ul-col-workForm">근무형태</span>
-            <span className="workTypeList-ul-col-time">시간</span>
-            <span className="workTypeList-ul-col-delete"></span>
+          <p className="workTypeList ul-col">
+            <span className="workTypeList ul-col-workForm">근무형태</span>
+            <span className="workTypeList ul-col-time">시간</span>
+            <span className="workTypeList ul-col-delete"></span>
           </p>
           <ul className="workTypeList-ul">
             {workTypeList.map((item) => (

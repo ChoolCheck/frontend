@@ -1,33 +1,7 @@
 @import "../../../static/style/reset.scss";
 @import "../../../static/style/mixin";
 
-.ManageWorkView-top-container {
-  position: relative;
-  display: block;
-  justify-content: center;
-  text-align: center;
-
-  height: 450px;
-
-  font-size: 20px;
-  background-color: rgb(238, 238, 238);
-  border-radius: 20px;
-  margin: 10px;
-
-  .workTypeList-ul-col {
-    margin: 0 auto;
-    padding: 50px 0 40px 0;
-    width: 80%;
-    display: flex;
-    justify-content: space-between;
-
-    .workTypeList-ul-col-workForm,
-    .workTypeList-ul-col-time,
-    .workTypeList-ul-col-delete {
-      padding: 0 50px 0 50px;
-      font-weight: 600;
-    }
-  }
+.ManageWorkView.top-container {
   .workTypeList-ul {
     margin: 0 auto;
     padding: 0px 0 20px 0;

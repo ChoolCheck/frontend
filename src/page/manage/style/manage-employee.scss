@@ -1,33 +1,15 @@
 @import "../../../static/style/reset.scss";
 @import "../../../static/style/mixin";
 
-.ManageEmployeeView-top-container {
-  position: relative;
-  display: block;
-  justify-content: center;
-  text-align: center;
-
+.ManageEmployeeView.top-container {
   min-width: 700px;
-  height: 450px;
-  font-size: 20px;
-  background-color: rgb(238, 238, 238);
-  border-radius: 20px;
-  margin: 10px;
 
-  .employeeList-ul-col {
-    margin: 0 auto;
-    padding: 50px 0 40px 0;
-    width: 80%;
-    display: flex;
-    justify-content: space-between;
-    .employeeList-ul-col-name,
-    .employeeList-ul-col-role,
-    .employeeList-ul-col-color {
-      width: 150px;
-      font-weight: 600;
-      padding: 0 50px 0 50px;
-    }
+  .employeeList.ul-col-name,
+  .employeeList.ul-col-role,
+  .employeeList.ul-col-color {
+    width: 150px;
   }
+
   .employeeList-ul {
     margin: 0 auto;
     padding: 0px 0 20px 0;

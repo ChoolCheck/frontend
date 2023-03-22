@@ -1,7 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 import CreateEmployee from "../CreateEmployee";
 import EmployeeDetail from "../EmployDetail";
-import "../style/manage-employee.scss";
 
 import WriteModal from "../../../components/modal/WriteModal";
 import ReadModal from "../../../components/modal/ReadModal";
@@ -17,6 +16,8 @@ import { RootState } from "../../../Redux/Reducers/rootReducer";
 
 import * as employeeType from "../../../commonType/employee";
 import * as enumType from "../../../commonType/enum";
+import "../style/manage-employee.scss";
+import "../style/manageView.scss";
 
 const ManageEmployeeView = () => {
   const dispatch = useDispatch();
@@ -53,7 +54,7 @@ const ManageEmployeeView = () => {
   };
 
   return (
-    <div className="ManageEmployeeView-top-container">
+    <div className="ManageEmployeeView top-container">
       {writeModalState && (
         <WriteModal>
           <CreateEmployee setEmployeeList={setEmployeeList}></CreateEmployee>
@@ -71,10 +72,10 @@ const ManageEmployeeView = () => {
 
       {employeeList && employeeList.length > 0 ? (
         <div className="employeeList-exist">
-          <div className="employeeList-ul-col">
-            <span className="employeeList-ul-col-name">이름</span>
-            <span className="employeeList-ul-col-rank">직급</span>
-            <span className="employeeList-ul-col-color">색상</span>
+          <div className="employeeList ul-col">
+            <span className="employeeList ul-col-name">이름</span>
+            <span className="employeeList ul-col-rank">직급</span>
+            <span className="employeeList ul-col-color">색상</span>
           </div>
           <ul className="employeeList-ul">
             {employeeList.map((item) => (
