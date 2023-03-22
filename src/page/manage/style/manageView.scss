@@ -47,7 +47,15 @@
 }
 
 @include tablet {
+  .top-container {
+    height: 700px;
+    margin: 10px;
+  }
 }
 
 @include mobile {
+  .top-container {
+    height: 700px;
+    margin: 10px;
+  }
 }

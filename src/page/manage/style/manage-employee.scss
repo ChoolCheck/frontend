@@ -40,15 +40,6 @@
       }
     }
   }
-  // .button-container {
-  //   position: absolute;
-  //   font-weight: 600;
-  //   bottom: 0;
-  //   right: 0;
-  //   .employeeList-addButton {
-  //     margin: 0 30px 30px 0;
-  //   }
-  // }
 
   .employeeList-notexist {
     height: 100%;
@@ -68,25 +59,15 @@
 }
 
 @include tablet {
-  .ManageEmployeeView-top-container {
-    height: 700px;
-    margin: 10px;
-
-    .employeeList-ul {
-      overflow-y: auto;
-      height: 500px;
-    }
+  .employeeList-ul {
+    overflow-y: auto;
+    height: 500px;
   }
 }
 
 @include mobile {
-  .ManageEmployeeView-top-container {
-    height: 700px;
-    margin: 10px;
-
-    .employeeList-ul {
-      overflow-y: auto;
-      height: 500px;
-    }
+  .employeeList-ul {
+    overflow-y: auto;
+    height: 500px;
   }
 }
