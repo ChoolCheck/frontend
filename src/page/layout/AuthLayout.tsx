@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate, useLocation, Outlet } from "react-router-dom";
+import { useEffect } from "react";
+import { useNavigate, Outlet } from "react-router-dom";
 import "./authlayout.scss";
 
 const AuthLayout = () => {

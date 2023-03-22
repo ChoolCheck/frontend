@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SignupView from "./SignupView";
 import { SignupApi } from "../../api/auth";

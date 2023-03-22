@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 import { config } from "../static/config";
 import { useNavigate } from "react-router-dom";
@@ -23,8 +23,8 @@ export default function AxiosNavigation() {
         const originalConfig = error.config;
         if (error?.response?.status == 401) {
           if (error.response.data.message == "expired") {
-            console.log("-- token is expired : " + error + " --");
-            console.log(originalConfig);
+            // console.log("-- token is expired : " + error + " --");
+            // console.log(originalConfig);
 
             await axios({
               url: `${config.api}/user/reissue`,
@@ -35,7 +35,7 @@ export default function AxiosNavigation() {
               },
             })
               .then((res) => {
-                console.log("-- complete token refreshing --");
+                // console.log("-- complete token refreshing --");
                 localStorage.setItem("token", res.data.accessToken);
                 return refreshAPI.request(originalConfig);
               })
@@ -64,7 +64,7 @@ export default function AxiosNavigation() {
                     .catch((err) => {
                       if (localStorage.getItem("token"))
                         window.alert("로그아웃에 실패했습니다.");
-                      console.log(err);
+                      // console.log(err);
                     });
                 }
               });

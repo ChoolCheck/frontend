@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { useNavigate, useLocation, Outlet } from "react-router-dom";
+import { useEffect } from "react";
+import { useNavigate, Outlet } from "react-router-dom";
 import "./publiclayout.scss";
 
 const PublicLayout = () => {

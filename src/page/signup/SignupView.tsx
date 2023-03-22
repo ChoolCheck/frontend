@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import "./signView.scss";
 import * as type from "./type";
 

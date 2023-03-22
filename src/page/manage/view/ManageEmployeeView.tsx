@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback } from "react";
 import CreateEmployee from "../CreateEmployee";
 import EmployeeDetail from "../EmployDetail";
 import "../style/manage-employee.scss";

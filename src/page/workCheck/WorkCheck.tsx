@@ -1,6 +1,4 @@
 import React, { useState, useEffect, useCallback } from "react";
-import WorkCheckView from "./view/WorkCheckView";
-import "./style/workCheck.scss";
 
 import { useDispatch } from "react-redux";
 import { setReadModalOpen } from "../../Redux/Actions/handleReadModal";
@@ -19,10 +17,13 @@ import { GetEmployeeApi } from "../../api/manage";
 import WriteModal from "../../components/modal/WriteModal";
 import ReadModal from "../../components/modal/ReadModal";
 
-import * as type from "./type";
-import * as employeeType from "../../commonType/employee";
 import CreateWorkCheck from "./CreateWorkCheck";
 import WorkCheckDetail from "./WorkCheckDetail";
+import WorkCheckView from "./view/WorkCheckView";
+
+import "./style/workCheck.scss";
+import * as type from "./type";
+import * as employeeType from "../../commonType/employee";
 
 const WorkCheck = () => {
   const dispatch = useDispatch();
@@ -98,6 +99,8 @@ const WorkCheck = () => {
     };
   };
 
+  const onClickGetFile = () => {};
+
   return (
     <div className="WorkCheck-top-container">
       {writeModalState && (
@@ -141,7 +144,9 @@ const WorkCheck = () => {
           </button>
         </form>
 
-        <button className="getFileButton">출근부 엑셀 파일 다운로드</button>
+        <button className="getFileButton" onClick={onClickGetFile}>
+          출근부 엑셀 파일 다운로드
+        </button>
       </div>
 
       <WorkCheckView

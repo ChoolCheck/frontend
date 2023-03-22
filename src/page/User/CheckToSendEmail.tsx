@@ -1,4 +1,3 @@
-import * as type from "./type";
 import "./style/checkToSendEmail.scss";
 import "./style/mypage.scss";
 import { useNavigate } from "react-router-dom";

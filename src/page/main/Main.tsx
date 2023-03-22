@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import CalendarDetailView from "./CalendarDetailView";
 import WriteModal from "../../components/modal/WriteModal";
 import CreateWorkCheck from "../workCheck/CreateWorkCheck";
@@ -11,7 +11,6 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/Reducers/rootReducer";
 
 import { GetDetailCalendarApi } from "../../api/calendar";
-import { GetDetailMemoApi } from "../../api/memo";
 
 import * as type from "./type";
 import "./style/calendarView.scss";
