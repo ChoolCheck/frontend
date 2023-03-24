@@ -3,6 +3,8 @@
 
 $color: #f2f8e9;
 $opacity: 0.8;
+$color-none: #000000;
+$opacity-zero: 0;
 
 .top-container {
   position: relative;
@@ -39,17 +41,29 @@ $opacity: 0.8;
       padding: 0 50px 0 50px;
     }
   }
+
+  .notexist {
+    height: 100%;
+    p {
+      padding-top: 150px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    button {
+      height: 70px;
+      font-size: 22px;
+      font-weight: 600;
+      width: 100%;
+      background-color: rgba($color-none, $opacity-zero);
+    }
+  }
 }
 
 @include tablet {
   .top-container {
     max-height: 700px;
     margin: 10px;
-    .employeeList-ul,
-    .workTypeList-ul {
-      overflow-y: auto;
-      height: 600px;
-    }
   }
 }
 
@@ -57,10 +71,5 @@ $opacity: 0.8;
   .top-container {
     max-height: 700px;
     margin: 10px;
-    .employeeList-ul,
-    .workTypeList-ul {
-      overflow-y: auto;
-      height: 600px;
-    }
   }
 }

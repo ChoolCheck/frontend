@@ -5,7 +5,7 @@ $color-none: #000000;
 $opacity-zero: 0;
 
 .ManageEmployeeView.top-container {
-  min-width: 700px;
+  // min-width: 700px;
 
   .employeeList.ul-col-name,
   .employeeList.ul-col-role,
@@ -17,7 +17,7 @@ $opacity-zero: 0;
     margin: 0 auto;
     padding: 0px 0 20px 0;
     width: 80%;
-    height: 300px;
+    height: 350px;
     overflow-y: auto;
 
     .employeeList-li {
@@ -43,43 +43,18 @@ $opacity-zero: 0;
       }
     }
   }
-
-  .employeeList-notexist {
-    height: 100%;
-    p {
-      padding-top: 150px;
-      width: 100%;
-      margin: 0 auto;
-    }
-
-    button {
-      height: 80px;
-      font-size: 22px;
-      font-weight: 600;
-      width: 100%;
-      background-color: rgba($color-none, $opacity-zero);
-    }
-  }
 }
 
 @include tablet {
-  .top-container {
-    height: 700px;
-    margin: 10px;
-    .employeeList-ul {
-      overflow-y: auto;
-      height: 600px;
-    }
+  .employeeList-ul {
+    height: 600px;
+    overflow-y: auto;
   }
 }
 
 @include mobile {
-  .top-container {
-    height: 700px;
-    margin: 10px;
-    .employeeList-ul {
-      overflow-y: auto;
-      height: 600px;
-    }
+  .employeeList-ul {
+    height: 600px;
+    overflow-y: auto;
   }
 }

@@ -108,10 +108,10 @@ const ManageEmployeeView = () => {
           </ul>
         </div>
       ) : (
-        <div className="employeeList-notexist">
-          <p className="employeeList-notexist-content">직원이 아직 없습니다.</p>
+        <div className="employeeList notexist">
+          <p className="employeeList notexist-content">직원이 아직 없습니다.</p>
           <button
-            className="employeeList-notexist-addButton"
+            className="employeeList notexist-addButton"
             onClick={() => setWriteModal(true)}
           >
             직원 추가하기

@@ -73,12 +73,12 @@ const ManageWorkView = () => {
           </ul>
         </div>
       ) : (
-        <div className="workTypeList-notexist">
-          <p className="workTypeList-notexist-content">
+        <div className="workTypeList notexist">
+          <p className="workTypeList notexist-content">
             설정한 근무시간이 아직 없습니다.
           </p>
           <button
-            className="workTypeList-notexist-addButton"
+            className="workTypeList notexist-addButton"
             onClick={() => setWriteModal(true)}
           >
             근무 시간 추가하기
