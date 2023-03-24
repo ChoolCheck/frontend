@@ -176,6 +176,21 @@ export async function GetTotalScheduleApi({
     })
     .catch((err) => {});
 }
+//   const page = 1;
+//   await axios({
+//     method: "GET",
+//     url: `${config.api}/schedule?page=${page}`,
+//     headers: {
+//       "Content-Type": `application/json`,
+//       Authorization: `Bearer ${localStorage.getItem("token")}`,
+//     },
+//   })
+//     .then((res) => {
+//       setScheduleToShow && setScheduleToShow(res.data);
+//       setTotalScheduleList(res.data);
+//     })
+//     .catch((err) => {});
+// }
 export async function GetDetailScheduleApi({
   id,
   setScheduleDetail,
