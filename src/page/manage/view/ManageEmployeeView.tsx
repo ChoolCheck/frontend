@@ -77,10 +77,10 @@ const ManageEmployeeView = () => {
             <span className="employeeList ul-col-role">직급</span>
             <span className="employeeList ul-col-color">색상</span>
           </div>
-          <ul className="employeeList-ul">
+          <ul className="employeeList ul">
             {employeeList.map((item) => (
               <li
-                className="employeeList-li"
+                className="employeeList li"
                 onClick={() => onClickDetail(item.id)}
               >
                 <span className="employeeList-li-name">{item.name}</span>

@@ -37,21 +37,25 @@ $opacity-zero: 0;
     .ul-col-workForm,
     .ul-col-time,
     .ul-col-delete {
-      background-color: aqua;
       font-weight: 600;
       padding: 0 40px 0 40px;
-    }
-
-    .ul-col-name,
-    .ul-col-role,
-    .ul-col-color {
       width: 150px;
     }
+  }
 
-    .ul-col-workForm,
-    .ul-col-time,
-    .ul-col-delete {
-      width: 150px;
+  .ul {
+    margin: 0 auto;
+    padding: 0px 0 20px 0;
+    width: 80%;
+    height: 350px;
+    overflow-y: auto;
+
+    .li {
+      cursor: pointer;
+      height: 50px;
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
     }
   }
 

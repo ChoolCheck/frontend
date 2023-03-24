@@ -5,34 +5,17 @@ $color-none: #000000;
 $opacity-zero: 0;
 
 .ManageEmployeeView.top-container {
-  .employeeList-ul {
-    margin: 0 auto;
-    padding: 0px 0 20px 0;
-    width: 80%;
-    height: 350px;
-    overflow-y: auto;
+  .employeeList.li {
+    margin: 10px;
 
-    .employeeList-li {
-      cursor: pointer;
-      height: 50px;
-      margin: 10px;
-      align-items: center;
-      display: flex;
-      justify-content: space-between;
-
-      .employeeList-li-name {
-        width: 150px;
-      }
-      .employeeList-li-role {
-        width: 150px;
-      }
-      .employeeList-li-color {
-        width: 150px;
-        .employeeList-li-color-content {
-          border-radius: 10px;
-          padding: 4px 15px 4px 15px;
-        }
-      }
+    .employeeList-li-name,
+    .employeeList-li-role,
+    .employeeList-li-color {
+      width: 150px;
+    }
+    .employeeList-li-color-content {
+      border-radius: 10px;
+      padding: 4px 15px 4px 15px;
     }
   }
 }

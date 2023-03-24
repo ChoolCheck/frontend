@@ -55,9 +55,9 @@ const ManageWorkView = () => {
               &nbsp;&nbsp;&nbsp;&nbsp;
             </span>
           </p>
-          <ul className="workTypeList-ul">
+          <ul className="workTypeList ul">
             {workTypeList.map((item) => (
-              <li className="workTypeList-li">
+              <li className="workTypeList li">
                 <span className="workTypeList-li-workForm">{item.title}</span>
                 <span className="workTypeList-li-time">
                   {item.startTime}-{item.endTime}

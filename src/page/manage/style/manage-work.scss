@@ -5,37 +5,21 @@ $color-none: #000000;
 $opacity-zero: 0;
 
 .ManageWorkView.top-container {
-  .workTypeList-ul {
-    margin: 0 auto;
-    padding: 0px 0 20px 0;
-    width: 80%;
-    height: 350px;
-    overflow-y: auto;
+  .workTypeList.li {
+    margin: 20px;
 
-    .workTypeList-li {
-      height: 50px;
-      margin: 20px;
-      align-items: center;
-      display: flex;
-      justify-content: space-between;
+    .workTypeList-li-workForm,
+    .workTypeList-li-time,
+    .workTypeList-li-delete {
+      width: 120px;
+    }
 
-      .workTypeList-li-workForm {
-        width: 120px;
-      }
-      .workTypeList-li-time {
-        width: 120px;
-      }
-      .workTypeList-li-delete {
-        width: 120px;
-
-        .delete-button {
-          font-size: 18px;
-          width: 80px;
-          border-radius: 10px;
-          padding: 10px 15px 10px 15px;
-          color: rgb(80, 80, 80);
-        }
-      }
+    .delete-button {
+      font-size: 18px;
+      width: 80px;
+      border-radius: 10px;
+      padding: 10px 15px 10px 15px;
+      color: rgb(80, 80, 80);
     }
   }
 }
