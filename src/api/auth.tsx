@@ -62,7 +62,7 @@ export async function CertificateEmailApi({
 }: type.emailProps) {
   await axios({
     method: "POST",
-    url: `${config.api}/user/email?email=${email}`,
+    url: `${config.api}/user/email?=${email}`,
     headers: {
       "Content-Type": `application/json`,
     },
