@@ -9,6 +9,16 @@
   .Manage-Header-container {
     display: flex;
     justify-content: left;
+
+    .button-container {
+      margin-left: auto;
+      .addButton {
+        font-size: 16px;
+        padding: 13px 25px 13px 25px;
+        border-radius: 20px;
+        background-color: rgb(238, 238, 238);
+      }
+    }
   }
 }
 

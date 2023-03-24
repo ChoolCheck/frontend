@@ -106,14 +106,6 @@ const ManageEmployeeView = () => {
               </li>
             ))}
           </ul>
-          <div className="button-container">
-            <button
-              className="employeeList addButton"
-              onClick={() => setWriteModal(true)}
-            >
-              직원추가
-            </button>
-          </div>
         </div>
       ) : (
         <div className="employeeList-notexist">

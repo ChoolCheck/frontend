@@ -69,14 +69,6 @@ const ManageWorkView = () => {
               </li>
             ))}
           </ul>
-          <div className="button-container">
-            <button
-              className="workTypeList addButton"
-              onClick={() => setWriteModal(true)}
-            >
-              근무추가
-            </button>
-          </div>
         </div>
       ) : (
         <div className="workTypeList-notexist">
