@@ -198,9 +198,23 @@ export async function GetTotalWorkcheckApi({
   setTotalWorkCheckList,
   setWorkcheckToShow,
 }: type.getTotalWorkcheckProps) {
+  const now = new Date();
+
+  const yearmonth =
+    now.getFullYear() +
+    "-" +
+    (now.getMonth() + 1 < 10
+      ? "0" + (now.getMonth() + 1)
+      : now.getMonth() + 1) +
+    "-";
+
+  const startInput = yearmonth + "01";
+  const endInput =
+    yearmonth + new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+
   await axios({
     method: "GET",
-    url: `${config.api}/work`,
+    url: `${config.api}/work/date?start=${startInput}&end=${endInput}`,
     headers: {
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -211,4 +225,18 @@ export async function GetTotalWorkcheckApi({
       setTotalWorkCheckList(res.data);
     })
     .catch((err) => {});
+
+  // await axios({
+  //   method: "GET",
+  //   url: `${config.api}/work`,
+  //   headers: {
+  //     "Content-Type": `application/json`,
+  //     Authorization: `Bearer ${localStorage.getItem("token")}`,
+  //   },
+  // })
+  //   .then((res) => {
+  //     setWorkcheckToShow && setWorkcheckToShow(res.data);
+  //     setTotalWorkCheckList(res.data);
+  //   })
+  //   .catch((err) => {});
 }

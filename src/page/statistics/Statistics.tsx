@@ -41,8 +41,7 @@ const Statistics = () => {
   const start = yearmonth + "01";
 
   const end =
-    yearmonth +
-    (now.getDate() + 1 < 10 ? "0" + (now.getDate() + 1) : now.getDate() + 1);
+    yearmonth + (now.getDate() < 10 ? "0" + now.getDate() : now.getDate());
 
   const [statisticsList, setStatisticsList] = useState<
     type.statisticListProps[] | undefined
@@ -95,7 +94,8 @@ const Statistics = () => {
         "-" +
         (prevMonth.getMonth() < 10
           ? "0" + prevMonth.getMonth()
-          : prevMonth.getMonth());
+          : prevMonth.getMonth()) +
+        "-";
     }
 
     prevMonthlastDate = new Date(
@@ -104,11 +104,8 @@ const Statistics = () => {
       0
     ).getDate();
 
-    const startInput = inputYearMonth + "-01";
-    const endInput =
-      inputYearMonth +
-      "-" +
-      (prevMonthlastDate < 10 ? "0" + prevMonthlastDate : prevMonthlastDate);
+    const startInput = inputYearMonth + "01";
+    const endInput = inputYearMonth + prevMonthlastDate;
 
     GetDateStatisticsApi({
       startInput,
