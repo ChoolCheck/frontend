@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SignupView from "./SignupView";
-import { SignupApi } from "../../api/auth";
+import { SignupApi, CertificateEmailApi } from "../../api/auth";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -10,9 +10,10 @@ const Signup = () => {
     email: "",
     password: "",
     storeName: "",
+    code: "",
   });
 
-  const { email, password, storeName } = form;
+  const { email, password, storeName, code } = form;
 
   //오류메시지 상태저장
   const [storeNameMessage, setStoreNameMessage] = useState("");
@@ -25,6 +26,8 @@ const Signup = () => {
   const [isEmail, setIsEmail] = useState(false);
   const [isPassword, setIsPassword] = useState(false);
   const [isPasswordCheck, setIsPasswordCheck] = useState(false);
+
+  const [emailCertificated, setEmailCertificated] = useState(false);
 
   const emailRegex =
     /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
@@ -47,6 +50,10 @@ const Signup = () => {
       setEmailMessage("");
       setIsEmail(true);
     }
+  };
+
+  const onChangeCode = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onChangeForm(e.target.name, e.target.value);
   };
 
   const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -93,6 +100,10 @@ const Signup = () => {
     }
   };
 
+  const onEmailCheck = () => {
+    CertificateEmailApi({ email, setEmailCertificated });
+  };
+
   const onSubmitForm = () => {
     if (email == "") window.alert("이메일을 입력해주세요");
     else if (password == "") window.alert("비밀번호를 입력해주세요");
@@ -112,12 +123,15 @@ const Signup = () => {
       isPassword={isPassword}
       isPasswordCheck={isPasswordCheck}
       isStoreName={isStoreName}
+      emailCertificated={emailCertificated}
       onCancleSignup={onCancleSignup}
       onSubmitForm={onSubmitForm}
       onChangeEmail={onChangeEmail}
+      onChangeCode={onChangeCode}
       onChangePassword={onChangePassword}
       onChangePasswordCheck={onChangePasswordCheck}
       onChangeStoreName={onChangeStoreName}
+      onEmailCheck={onEmailCheck}
     ></SignupView>
   );
 };

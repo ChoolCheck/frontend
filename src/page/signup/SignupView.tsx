@@ -10,32 +10,52 @@ const SignupView = ({
   isPassword,
   isPasswordCheck,
   isStoreName,
+  emailCertificated,
   onCancleSignup,
   onSubmitForm,
   onChangeEmail,
+  onChangeCode,
   onChangePassword,
   onChangePasswordCheck,
   onChangeStoreName,
+  onEmailCheck,
 }: type.signupProps) => {
   return (
-    <div className="Signup--Top-Container">
+    <div className="Signup-Top-Container">
       <div className="Signup-inputContainer">
         <h1 className="Signup-TopHeader">Choolcheck</h1>
         <h2 className="Signup-Header">회원가입</h2>
         <div className="Signup-Email">
           <p className="Signup-EmailHeader">이메일</p>
-          <input
-            className="Signup-inputEmail"
-            placeholder="이메일 입력해주세요"
-            onChange={onChangeEmail}
-            name="email"
-            type="email"
-          />
+          <p className="email-input-container">
+            <input
+              className="Signup-inputEmail"
+              placeholder="이메일 입력해주세요"
+              onChange={onChangeEmail}
+              name="email"
+              type="email"
+            />
+            <span onClick={onEmailCheck}>이메일인증</span>
+          </p>
 
           <p className={`message-${isEmail ? "success" : "error"}`}>
             {emailMessage}
           </p>
         </div>
+        {emailCertificated && (
+          <div className="Signup-code">
+            <p className="Signup-codeHeader">인증번호</p>
+            <p>
+              <input
+                className="Signup-inputCode"
+                placeholder="이메일 인증번호를 입력해주세요"
+                onChange={onChangeCode}
+                name="code"
+                type="number"
+              />
+            </p>
+          </div>
+        )}
         <div className="Signup-Password">
           <p className="Signup-PasswordHeader">비밀번호</p>
           <input

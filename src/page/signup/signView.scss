@@ -4,86 +4,108 @@ body {
   background-color: rgb(157, 157, 157);
 }
 .Signup-Top-Container {
-}
+  position: relative;
+  z-index: 200;
 
-.Signup-inputContainer {
-  text-align: center;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  .Signup-inputContainer {
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
-  width: 500px;
-  height: 600px;
-  border-radius: 20px;
-  background-color: rgb(238, 238, 238);
-  font-family: "nanum-regular";
-}
-.Signup-TopHeader {
-  font-size: 25px;
-  padding: 50px 0 40px 0;
-  font-family: "nanum-extraBold";
-}
-.Signup-Header {
-  text-align: left;
-  font-size: 20px;
-  margin: 0 0 30px 60px;
-}
+    width: 500px;
+    height: 600px;
+    border-radius: 20px;
+    background-color: rgb(238, 238, 238);
+    font-family: "nanum-regular";
+  }
+  .Signup-TopHeader {
+    font-size: 25px;
+    padding: 50px 0 40px 0;
+    font-family: "nanum-extraBold";
+  }
+  .Signup-Header {
+    text-align: left;
+    font-size: 20px;
+    margin: 0 0 30px 60px;
+  }
 
-.Signup-Email,
-.Signup-Password,
-.Signup-PasswordCheck,
-.Signup-StoreName {
-  height: 90px;
-  width: 70%;
-  margin: 0 auto;
-  justify-content: center;
-  align-items: center;
-}
+  .Signup-Email,
+  .Signup-code,
+  .Signup-Password,
+  .Signup-PasswordCheck,
+  .Signup-StoreName {
+    height: 90px;
+    width: 70%;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+  }
 
-.Signup-EmailHeader,
-.Signup-PasswordHeader,
-.Signup-PasswordCheckHeader,
-.Signup-StoreNameHeader {
-  font-size: 14px;
-  text-align: left;
-}
+  .Signup-EmailHeader,
+  .Signup-codeHeader,
+  .Signup-PasswordHeader,
+  .Signup-PasswordCheckHeader,
+  .Signup-StoreNameHeader {
+    font-size: 14px;
+    text-align: left;
+  }
 
-.Signup-inputEmail,
-.Signup-inputPassword,
-.Signup-inputPasswordCheck,
-.Signup-inputStoreName {
-  width: 350px;
-  padding: 13px;
-  margin-top: 10px;
-  /*  border: 1px solid rgb(255, 255, 255);*/
-  border-radius: 20px;
-}
+  .Signup-inputCode,
+  .Signup-inputPassword,
+  .Signup-inputPasswordCheck,
+  .Signup-inputStoreName {
+    width: 350px;
+    padding: 13px;
+    margin-top: 10px;
+    border-radius: 20px;
+  }
 
-.message-success {
-  padding: 3px;
-  font-size: 13px;
-  color: rgb(146, 146, 146);
-}
-.message-error {
-  padding: 3px;
-  font-size: 12px;
-  color: rgb(214, 29, 29);
-  width: 100%;
-}
-.Signup-cancleButton,
-.Signup-signupButton {
-  float: right;
-  width: 70px;
-  margin-top: 20px;
-  padding: 10px;
-  background-color: rgb(255, 255, 255);
-  border-radius: 15px;
-}
+  .email-input-container {
+    width: 380px;
+    .Signup-inputEmail {
+      width: 65%;
+      padding: 13px;
+      margin-top: 10px;
+      border-radius: 20px;
+      margin-right: 5px;
+    }
+    span {
+      cursor: pointer;
+      font-size: 13px;
+      width: 35%;
+      border-radius: 15px;
+      background-color: rgb(255, 255, 255);
+      padding: 10px 15px 10px 15px;
+    }
+  }
 
-.Signup-cancleButton {
-  margin-right: 20px;
-}
-.Signup-signupButton {
-  margin-right: 40px;
+  .message-success {
+    padding: 3px;
+    font-size: 13px;
+    color: rgb(146, 146, 146);
+  }
+  .message-error {
+    padding: 3px;
+    font-size: 12px;
+    color: rgb(214, 29, 29);
+    width: 100%;
+  }
+  .Signup-cancleButton,
+  .Signup-signupButton {
+    float: right;
+    width: 70px;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 15px;
+  }
+
+  .Signup-cancleButton {
+    margin-right: 20px;
+  }
+  .Signup-signupButton {
+    margin-right: 40px;
+  }
 }

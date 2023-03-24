@@ -6,6 +6,11 @@ export interface apiLoginProps {
   navigate: NavigateFunction;
 }
 
+export interface emailProps {
+  setEmailCertificated: React.Dispatch<React.SetStateAction<boolean>>;
+  email: string;
+}
+
 export interface apiSignupProps {
   email: string;
   password: string;

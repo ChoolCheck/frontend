@@ -50,6 +50,28 @@ export async function SignupApi({
     });
 }
 
+export async function CertificateEmailApi({
+  email,
+  setEmailCertificated,
+}: type.emailProps) {
+  await axios({
+    method: "POST",
+    url: `${config.api}/user/?email=${email}`,
+    headers: {
+      "Content-Type": `application/json`,
+    },
+  })
+    .then((res) => {
+      window.alert(
+        "입력하신 이메일 주소로 인증번호 메일이 전송되었습니다. 전송된 메일을 확인하고 인증번호를 입력해주세요."
+      );
+      setEmailCertificated(true);
+    })
+    .catch((err) => {
+      window.alert("인증 메일 전송에 실패하였습니다.");
+      setEmailCertificated(false);
+    });
+}
 export async function LogoutApi({ navigate }: type.apiLogoutProps) {
   await axios({
     method: "Post",
