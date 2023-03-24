@@ -109,7 +109,7 @@ const Signup = () => {
     else if (password == "") window.alert("비밀번호를 입력해주세요");
     else if (storeName == "") window.alert("가게명을 입력해주세요");
     else {
-      SignupApi({ email, password, storeName, navigate });
+      SignupApi({ email, password, storeName, code, navigate });
     }
   };
 

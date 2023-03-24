@@ -30,6 +30,7 @@ export async function SignupApi({
   email,
   password,
   storeName,
+  code,
   navigate,
 }: type.apiSignupProps) {
   await axios({
@@ -38,7 +39,12 @@ export async function SignupApi({
     headers: {
       "Content-Type": `application/json`,
     },
-    data: { email: email, password: password, storeName },
+    data: {
+      email: email,
+      password: password,
+      storeName: storeName,
+      code: code,
+    },
   })
     .then((res) => {
       window.alert("회원가입이 완료되었습니다.");
@@ -63,7 +69,7 @@ export async function CertificateEmailApi({
   })
     .then((res) => {
       window.alert(
-        "입력하신 이메일 주소로 인증번호 메일이 전송되었습니다. 전송된 메일을 확인하고 인증번호를 입력해주세요."
+        "입력하신 이메일 주소로 인증번호 메일이 전송되었습니다.\n전송된 메일을 확인하고 인증번호를 입력해주세요."
       );
       setEmailCertificated(true);
     })

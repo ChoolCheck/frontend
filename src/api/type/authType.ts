@@ -15,6 +15,7 @@ export interface apiSignupProps {
   email: string;
   password: string;
   storeName: string;
+  code: string;
   navigate: NavigateFunction;
 }
 
