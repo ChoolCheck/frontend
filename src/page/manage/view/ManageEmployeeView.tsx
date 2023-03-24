@@ -74,7 +74,7 @@ const ManageEmployeeView = () => {
         <div className="employeeList-exist">
           <div className="employeeList ul-col">
             <span className="employeeList ul-col-name">이름</span>
-            <span className="employeeList ul-col-rank">직급</span>
+            <span className="employeeList ul-col-role">직급</span>
             <span className="employeeList ul-col-color">색상</span>
           </div>
           <ul className="employeeList-ul">
