@@ -1,8 +1,6 @@
 @import "../../../static/style/reset.scss";
 @import "../../../static/style/mixin";
 
-$color: #f2f8e9;
-$opacity: 0.8;
 $color-none: #000000;
 $opacity-zero: 0;
 
@@ -79,16 +77,24 @@ $opacity-zero: 0;
 
 @include tablet {
   .top-container {
-    min-height: 600px;
+    min-height: 700px;
     max-height: 700px;
     margin: 10px;
+    .ul {
+      height: 600px;
+      overflow-y: auto;
+    }
   }
 }
 
 @include mobile {
   .top-container {
-    min-height: 600px;
+    min-height: 700px;
     max-height: 700px;
     margin: 10px;
+    .ul {
+      height: 600px;
+      overflow-y: auto;
+    }
   }
 }

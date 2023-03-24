@@ -23,17 +23,3 @@ $opacity-zero: 0;
     }
   }
 }
-
-@include tablet {
-  .workTypeList-ul {
-    height: 600px;
-    overflow-y: auto;
-  }
-}
-
-@include mobile {
-  .workTypeList-ul {
-    height: 600px;
-    overflow-y: auto;
-  }
-}
