@@ -5,15 +5,6 @@ $color-none: #000000;
 $opacity-zero: 0;
 
 .ManageEmployeeView.top-container {
-  // min-width: 700px;
-  background-color: antiquewhite;
-
-  .employeeList.ul-col-name,
-  .employeeList.ul-col-role,
-  .employeeList.ul-col-color {
-    width: 150px;
-  }
-
   .employeeList-ul {
     margin: 0 auto;
     padding: 0px 0 20px 0;

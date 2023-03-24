@@ -51,7 +51,9 @@ const ManageWorkView = () => {
           <p className="workTypeList ul-col">
             <span className="workTypeList ul-col-workForm">근무형태</span>
             <span className="workTypeList ul-col-time">시간</span>
-            <span className="workTypeList ul-col-delete">&nbsp;&nbsp; </span>
+            <span className="workTypeList ul-col-delete">
+              &nbsp;&nbsp;&nbsp;&nbsp;
+            </span>
           </p>
           <ul className="workTypeList-ul">
             {workTypeList.map((item) => (

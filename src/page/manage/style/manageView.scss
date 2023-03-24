@@ -41,6 +41,18 @@ $opacity-zero: 0;
       font-weight: 600;
       padding: 0 40px 0 40px;
     }
+
+    .ul-col-name,
+    .ul-col-role,
+    .ul-col-color {
+      width: 150px;
+    }
+
+    .ul-col-workForm,
+    .ul-col-time,
+    .ul-col-delete {
+      width: 150px;
+    }
   }
 
   .notexist {
@@ -63,6 +75,7 @@ $opacity-zero: 0;
 
 @include tablet {
   .top-container {
+    min-height: 600px;
     max-height: 700px;
     margin: 10px;
   }
@@ -70,6 +83,7 @@ $opacity-zero: 0;
 
 @include mobile {
   .top-container {
+    min-height: 600px;
     max-height: 700px;
     margin: 10px;
   }
