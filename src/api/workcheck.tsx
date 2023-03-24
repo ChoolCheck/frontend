@@ -225,18 +225,4 @@ export async function GetTotalWorkcheckApi({
       setTotalWorkCheckList(res.data);
     })
     .catch((err) => {});
-
-  // await axios({
-  //   method: "GET",
-  //   url: `${config.api}/work`,
-  //   headers: {
-  //     "Content-Type": `application/json`,
-  //     Authorization: `Bearer ${localStorage.getItem("token")}`,
-  //   },
-  // })
-  //   .then((res) => {
-  //     setWorkcheckToShow && setWorkcheckToShow(res.data);
-  //     setTotalWorkCheckList(res.data);
-  //   })
-  //   .catch((err) => {});
 }
