@@ -20,17 +20,21 @@ $opacity-zero: 0;
       justify-content: space-between;
 
       .workTypeList-li-workForm {
-        width: 100px;
+        width: 120px;
       }
       .workTypeList-li-time {
         width: 120px;
       }
       .workTypeList-li-delete {
-        font-size: 18px;
-        width: 80px;
-        border-radius: 10px;
-        padding: 10px 20px 10px 20px;
-        color: rgb(80, 80, 80);
+        width: 120px;
+
+        .delete-button {
+          font-size: 18px;
+          width: 80px;
+          border-radius: 10px;
+          padding: 10px 20px 10px 20px;
+          color: rgb(80, 80, 80);
+        }
       }
     }
   }

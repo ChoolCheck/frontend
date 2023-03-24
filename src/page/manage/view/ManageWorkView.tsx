@@ -60,12 +60,14 @@ const ManageWorkView = () => {
                 <span className="workTypeList-li-time">
                   {item.startTime}-{item.endTime}
                 </span>
-                <button
-                  className="workTypeList-li-delete"
-                  onClick={() => onDeleteClick(item.id)}
-                >
-                  삭제
-                </button>
+                <span className="workTypeList-li-delete">
+                  <button
+                    className="delete-button"
+                    onClick={() => onDeleteClick(item.id)}
+                  >
+                    삭제
+                  </button>
+                </span>
               </li>
             ))}
           </ul>
