@@ -102,6 +102,7 @@ export interface scheduleDetailProps extends setScheduleListTypes {
   setScheduleToShow: React.Dispatch<
     React.SetStateAction<scheduleObjProps[] | undefined>
   >;
+  setSelectedModal: (value: React.SetStateAction<string>) => void;
 }
 
 export interface scheduleDetailViewProps {

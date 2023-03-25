@@ -9,14 +9,13 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/Reducers/rootReducer";
 
 import ScheduleDetailView from "./view/ScheduleDetailView";
-import WriteModal from "../../components/modal/WriteModal";
-import UpdateSchedule from "./UpdateSchedule";
 
 const ScheduleDetail = ({
   scheduleDetail,
   setTotalScheduleList,
   setWeekScheduleList,
   setScheduleToShow,
+  setSelectedModal,
 }: type.scheduleDetailProps) => {
   const dispatch = useDispatch();
 
@@ -34,6 +33,7 @@ const ScheduleDetail = ({
   );
 
   const onUpdateClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setSelectedModal("udpate");
     setWriteModal(true);
     setReadModal(false);
   };
@@ -48,25 +48,12 @@ const ScheduleDetail = ({
           setWeekScheduleList,
           setScheduleToShow,
         });
-      } else {
-        window.alert("스케줄 삭제가 취소되었습니다.");
       }
     };
   };
 
   return (
     <div className="employeeDetail-container">
-      {writeModalState && (
-        <WriteModal>
-          <UpdateSchedule
-            id={scheduleDetail ? scheduleDetail.id : 0}
-            scheduleDetail={scheduleDetail}
-            setWeekScheduleList={setWeekScheduleList}
-            setTotalScheduleList={setTotalScheduleList}
-            setScheduleToShow={setScheduleToShow}
-          ></UpdateSchedule>
-        </WriteModal>
-      )}
       <ScheduleDetailView
         id={scheduleDetail ? scheduleDetail.id : 0}
         scheduleDetail={scheduleDetail}

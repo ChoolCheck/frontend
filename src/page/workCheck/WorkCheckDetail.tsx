@@ -52,8 +52,6 @@ const WorkCheckDetail = ({
           setTotalWorkCheckList,
           setWorkcheckToShow,
         });
-      } else {
-        window.alert("스케줄 삭제가 취소되었습니다.");
       }
     };
   };

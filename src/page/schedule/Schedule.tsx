@@ -4,6 +4,8 @@ import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
 import { setReadModalOpen } from "../../Redux/Actions/handleReadModal";
 import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/Reducers/rootReducer";
+import WriteModal from "../../components/modal/WriteModal";
+import ReadModal from "../../components/modal/ReadModal";
 
 import {
   GetWeekScheduleApi,
@@ -16,10 +18,10 @@ import { GetEmployeeApi } from "../../api/manage";
 import ScheduleWeeklyView from "./view/ScheduleWeeklyView";
 import ScheduleTotalView from "./view/ScheduleTotalView";
 import ScheduleDetail from "./ScheduleDetail";
-import ToggleButton from "../../components/button/ToggleButton";
+import UpdateSchedule from "./UpdateSchedule";
 import CreateSchedule from "./CreateSchedule";
-import WriteModal from "../../components/modal/WriteModal";
-import ReadModal from "../../components/modal/ReadModal";
+
+import ToggleButton from "../../components/button/ToggleButton";
 
 import "./style/schedule.scss";
 import * as type from "./type";
@@ -62,6 +64,8 @@ const Schedule = () => {
 
   const [scheduleDetail, setScheduleDetail] = useState<type.scheduleObjProps>();
 
+  const [selectedModal, setSelectedModal] = useState<string>("");
+
   useEffect(() => {
     GetWeekScheduleApi({ setWeekScheduleList });
     GetTotalScheduleApi({ setTotalScheduleList });
@@ -100,14 +104,17 @@ const Schedule = () => {
         <div className="Schedule-Header-right">
           <button
             className="add-Schedule-button page-header-button"
-            onClick={() => setWriteModal(true)}
+            onClick={() => {
+              setWriteModal(true);
+              setSelectedModal("create");
+            }}
           >
             스케줄추가
           </button>
         </div>
       </div>
 
-      {writeModalState && (
+      {writeModalState && selectedModal == "create" && (
         <WriteModal>
           <CreateSchedule
             setWeekScheduleList={setWeekScheduleList}
@@ -115,6 +122,19 @@ const Schedule = () => {
           ></CreateSchedule>
         </WriteModal>
       )}
+
+      {writeModalState && selectedModal == "update" && (
+        <WriteModal>
+          <UpdateSchedule
+            id={scheduleDetail ? scheduleDetail.id : 0}
+            scheduleDetail={scheduleDetail}
+            setWeekScheduleList={setWeekScheduleList}
+            setTotalScheduleList={setTotalScheduleList}
+            setScheduleToShow={setScheduleToShow}
+          ></UpdateSchedule>
+        </WriteModal>
+      )}
+
       {readModalState && (
         <ReadModal>
           <ScheduleDetail
@@ -122,6 +142,7 @@ const Schedule = () => {
             setTotalScheduleList={setTotalScheduleList}
             setWeekScheduleList={setWeekScheduleList}
             setScheduleToShow={setScheduleToShow}
+            setSelectedModal={setSelectedModal}
           ></ScheduleDetail>
         </ReadModal>
       )}
