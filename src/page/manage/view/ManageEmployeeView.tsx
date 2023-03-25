@@ -18,8 +18,12 @@ import * as employeeType from "../../../commonType/employee";
 import * as enumType from "../../../commonType/enum";
 import "../style/manage-employee.scss";
 import "../style/manageView.scss";
+import * as type from "../type";
 
-const ManageEmployeeView = () => {
+const ManageEmployeeView = ({
+  selectedModal,
+  setSelectedModal,
+}: type.manageEmployeeViewProps) => {
   const dispatch = useDispatch();
 
   const writeModalState = useSelector(
@@ -55,7 +59,7 @@ const ManageEmployeeView = () => {
 
   return (
     <div className="ManageEmployeeView top-container">
-      {writeModalState && (
+      {writeModalState && selectedModal == "createEmployee" && (
         <WriteModal>
           <CreateEmployee setEmployeeList={setEmployeeList}></CreateEmployee>
         </WriteModal>
@@ -66,6 +70,8 @@ const ManageEmployeeView = () => {
             employeeList={employeeList}
             employeeDetail={employeeDetail}
             setEmployeeList={setEmployeeList}
+            selectedModal={selectedModal}
+            setSelectedModal={setSelectedModal}
           ></EmployeeDetail>
         </ReadModal>
       )}

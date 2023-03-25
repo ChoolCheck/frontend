@@ -16,6 +16,8 @@ const EmployeeDetail = ({
   employeeDetail,
   employeeList,
   setEmployeeList,
+  setSelectedModal,
+  selectedModal,
 }: type.employeeDetailProps) => {
   const dispatch = useDispatch();
   const writeModalState = useSelector(
@@ -31,6 +33,7 @@ const EmployeeDetail = ({
   );
 
   const onUpdateClick = () => {
+    setSelectedModal("updateEmployee");
     setWriteModal(true);
     setReadModal(false);
   };
@@ -50,7 +53,7 @@ const EmployeeDetail = ({
 
   return (
     <div className="employeeDetail-container">
-      {writeModalState && (
+      {writeModalState && selectedModal == "updateEmployee" && (
         <WriteModal>
           <UpdateEmployee
             employeeDetail={employeeDetail}

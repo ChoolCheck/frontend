@@ -5,11 +5,18 @@ export interface worktypeProps extends worktypeType.worktypeProps {}
 
 export interface employeeProps extends employeeType.employeeProps {}
 
+export interface manageEmployeeViewProps {
+  selectedModal: string;
+  setSelectedModal: React.Dispatch<React.SetStateAction<string>>;
+}
+
 export interface employeeDetailProps extends employeeType.employeeList {
   employeeDetail: employeeProps | undefined;
   setEmployeeList: React.Dispatch<
     React.SetStateAction<employeeProps[] | undefined>
   >;
+  selectedModal: string;
+  setSelectedModal: React.Dispatch<React.SetStateAction<string>>;
 }
 export interface employeeDetailViewProps {
   onUpdateClick: React.MouseEventHandler<HTMLButtonElement>;

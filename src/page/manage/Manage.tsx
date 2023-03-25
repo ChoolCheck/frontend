@@ -1,14 +1,12 @@
 import { useState, useCallback } from "react";
-
 import { useDispatch } from "react-redux";
 import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
-import { setReadModalOpen } from "../../Redux/Actions/handleReadModal";
 
 import ManageEmployeeView from "./view/ManageEmployeeView";
 import ManageWorkView from "./view/ManageWorkView";
 import ToggleButton from "../../components/button/ToggleButton";
-
 import "./style/manage.scss";
+
 const Manage = () => {
   const dispatch = useDispatch();
 
@@ -18,11 +16,8 @@ const Manage = () => {
     (readModalState: boolean) => dispatch(setWriteModalOpen(readModalState)),
     [dispatch]
   );
+  const [selectedModal, setSelectedModal] = useState("");
 
-  const setReadModal = useCallback(
-    (readModalState: boolean) => dispatch(setReadModalOpen(readModalState)),
-    [dispatch]
-  );
   return (
     <div className="Manage-top-container">
       <div className="Manage-Header-container">
@@ -39,6 +34,7 @@ const Manage = () => {
               className="employeeList addButton"
               onClick={() => {
                 setWriteModal(true);
+                setSelectedModal("createEmployee");
               }}
             >
               직원추가
@@ -46,7 +42,10 @@ const Manage = () => {
           ) : (
             <button
               className="workTypeList addButton"
-              onClick={() => setWriteModal(true)}
+              onClick={() => {
+                setWriteModal(true);
+                setSelectedModal("createWorkform");
+              }}
             >
               근무추가
             </button>
@@ -55,7 +54,10 @@ const Manage = () => {
       </div>
 
       {leftOrRight ? (
-        <ManageEmployeeView></ManageEmployeeView>
+        <ManageEmployeeView
+          selectedModal={selectedModal}
+          setSelectedModal={setSelectedModal}
+        ></ManageEmployeeView>
       ) : (
         <ManageWorkView></ManageWorkView>
       )}
