@@ -34,8 +34,8 @@ const ScheduleDetail = ({
   );
 
   const onUpdateClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    setReadModal(false);
     setWriteModal(true);
+    setReadModal(false);
   };
 
   const onDeleteClick = (id: number) => {
