@@ -39,7 +39,6 @@ const Manage = () => {
               className="employeeList addButton"
               onClick={() => {
                 setWriteModal(true);
-                setReadModal(false);
               }}
             >
               직원추가

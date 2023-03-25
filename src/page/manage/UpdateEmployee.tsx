@@ -44,7 +44,7 @@ const UpdateEmployee = ({
       window.alert("이름을 2글자 이상 입력해주세요");
     } else {
       if (employeeDetail !== undefined) {
-        const id = employeeDetail ? employeeDetail.id : 0;
+        const id = employeeDetail.id;
         UpdateEmployeeApi({
           id,
           name,

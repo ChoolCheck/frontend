@@ -32,6 +32,7 @@ const EmployeeDetail = ({
 
   const onUpdateClick = () => {
     setWriteModal(true);
+    setReadModal(false);
   };
 
   const onDeleteClick = (id: number) => {
