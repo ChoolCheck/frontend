@@ -33,7 +33,7 @@ const ScheduleDetail = ({
   );
 
   const onUpdateClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    setSelectedModal("udpate");
+    setSelectedModal("update");
     setWriteModal(true);
     setReadModal(false);
   };
