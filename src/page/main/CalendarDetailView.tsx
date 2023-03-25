@@ -91,9 +91,9 @@ const CalendarDetailView = ({
         <button
           className="add-work-button"
           onClick={() => {
-            setDetailModalOpen(false);
-            setWriteModal(true);
             setSelectedModal("createworkcheck");
+            setWriteModal(true);
+            setDetailModalOpen(false);
           }}
         >
           출근부 작성

@@ -121,17 +121,6 @@ const Main = () => {
         </ReadModal>
       )}
 
-      {detailModalOpen && (
-        <CalendarDetailView
-          calendarDetailScheduleList={calendarDetailScheduleList}
-          calendarDetailWorkcheckList={calendarDetailWorkcheckList}
-          memo={memo}
-          setDetailModalOpen={setDetailModalOpen}
-          setSelectedModal={setSelectedModal}
-          onMemoClick={onMemoClick}
-        ></CalendarDetailView>
-      )}
-
       {writeModalState && (
         <>
           {selectedModal == "createworkcheck" && (
@@ -145,6 +134,17 @@ const Main = () => {
             </WriteModal>
           )}
         </>
+      )}
+
+      {detailModalOpen && (
+        <CalendarDetailView
+          calendarDetailScheduleList={calendarDetailScheduleList}
+          calendarDetailWorkcheckList={calendarDetailWorkcheckList}
+          memo={memo}
+          setDetailModalOpen={setDetailModalOpen}
+          setSelectedModal={setSelectedModal}
+          onMemoClick={onMemoClick}
+        ></CalendarDetailView>
       )}
 
       <CalendarView
