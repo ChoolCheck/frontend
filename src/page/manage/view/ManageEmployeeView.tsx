@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
 import CreateEmployee from "../CreateEmployee";
 import EmployeeDetail from "../EmployDetail";
+import UpdateEmployee from "../UpdateEmployee";
 
 import WriteModal from "../../../components/modal/WriteModal";
 import ReadModal from "../../../components/modal/ReadModal";
@@ -64,13 +65,20 @@ const ManageEmployeeView = ({
           <CreateEmployee setEmployeeList={setEmployeeList}></CreateEmployee>
         </WriteModal>
       )}
+      {writeModalState && selectedModal == "updateEmployee" && (
+        <WriteModal>
+          <UpdateEmployee
+            employeeDetail={employeeDetail}
+            setEmployeeList={setEmployeeList}
+          ></UpdateEmployee>
+        </WriteModal>
+      )}
       {readModalState && (
         <ReadModal>
           <EmployeeDetail
             employeeList={employeeList}
             employeeDetail={employeeDetail}
             setEmployeeList={setEmployeeList}
-            selectedModal={selectedModal}
             setSelectedModal={setSelectedModal}
           ></EmployeeDetail>
         </ReadModal>

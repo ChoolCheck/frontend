@@ -15,7 +15,6 @@ export interface employeeDetailProps extends employeeType.employeeList {
   setEmployeeList: React.Dispatch<
     React.SetStateAction<employeeProps[] | undefined>
   >;
-  selectedModal: string;
   setSelectedModal: React.Dispatch<React.SetStateAction<string>>;
 }
 export interface employeeDetailViewProps {

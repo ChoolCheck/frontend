@@ -42,10 +42,7 @@ const Manage = () => {
           ) : (
             <button
               className="workTypeList addButton"
-              onClick={() => {
-                setWriteModal(true);
-                setSelectedModal("createWorkform");
-              }}
+              onClick={() => setWriteModal(true)}
             >
               근무추가
             </button>
