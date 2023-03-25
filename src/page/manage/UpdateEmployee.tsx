@@ -55,6 +55,7 @@ const UpdateEmployee = ({
           setReadModal,
         });
       }
+      setReadModal(true);
     }
   };
 
