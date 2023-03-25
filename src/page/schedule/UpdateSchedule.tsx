@@ -65,6 +65,7 @@ const UpdateSchedule = ({
     e.preventDefault();
     if (window.confirm("정말로 작성을 취소하시겠습니까?")) {
       setWriteModal(false);
+      setReadModal(true);
     } else return;
   };
 

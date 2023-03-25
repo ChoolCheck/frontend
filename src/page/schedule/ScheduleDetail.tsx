@@ -32,7 +32,9 @@ const ScheduleDetail = ({
     (readModalState: boolean) => dispatch(setReadModalOpen(readModalState)),
     [dispatch]
   );
+
   const onUpdateClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setReadModal(false);
     setWriteModal(true);
   };
 
