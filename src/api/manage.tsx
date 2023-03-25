@@ -138,7 +138,6 @@ export async function UpdateEmployeeApi({
     })
     .then((res) => {
       setWriteModal(false);
-      setReadModal(true);
     })
     .catch((err) => {});
 }
