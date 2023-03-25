@@ -43,8 +43,6 @@ const EmployeeDetail = ({
           setEmployeeList,
           id,
         });
-      } else {
-        window.alert("직원 삭제가 취소되었습니다.");
       }
     };
   };

@@ -2,6 +2,7 @@ import { useState, useCallback } from "react";
 
 import { useDispatch } from "react-redux";
 import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
+import { setReadModalOpen } from "../../Redux/Actions/handleReadModal";
 
 import ManageEmployeeView from "./view/ManageEmployeeView";
 import ManageWorkView from "./view/ManageWorkView";
@@ -15,6 +16,11 @@ const Manage = () => {
 
   const setWriteModal = useCallback(
     (readModalState: boolean) => dispatch(setWriteModalOpen(readModalState)),
+    [dispatch]
+  );
+
+  const setReadModal = useCallback(
+    (readModalState: boolean) => dispatch(setReadModalOpen(readModalState)),
     [dispatch]
   );
   return (
@@ -31,7 +37,10 @@ const Manage = () => {
           {leftOrRight ? (
             <button
               className="employeeList addButton"
-              onClick={() => setWriteModal(true)}
+              onClick={() => {
+                setWriteModal(true);
+                setReadModal(false);
+              }}
             >
               직원추가
             </button>
