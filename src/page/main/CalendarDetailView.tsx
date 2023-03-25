@@ -93,7 +93,7 @@ const CalendarDetailView = ({
           onClick={() => {
             setDetailModalOpen(false);
             setWriteModal(true);
-            setSelectedModal("workcheck");
+            setSelectedModal("createworkcheck");
           }}
         >
           출근부 작성
