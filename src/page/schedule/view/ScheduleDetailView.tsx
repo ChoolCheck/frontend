@@ -40,7 +40,7 @@ const ScheduleDetailView = ({
           <span className="detail-content detail-name">
             {scheduleDetail?.name}
           </span>
-        </p>{" "}
+        </p>
         <p className="modal-worktype">
           <span className="detail-title">근무형태</span>
           <span className="detail-content detail-worktype">

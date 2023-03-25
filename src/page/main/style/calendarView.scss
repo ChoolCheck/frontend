@@ -51,14 +51,15 @@
     @include common.size(100%, fit-content);
     @include common.flex-row(space-between, center);
     font-weight: 600;
-    font-size: 0.65em;
+    font-size: 1em;
     padding: 2px;
     color: gray;
     .col {
       @include common.size(12.9%, 90%);
       @include common.flex-column(flex-end, flex-start);
 
-      padding-left: 1%;
+      padding: 1%;
+
       background: transparentize(rgb(180, 179, 179), 0.6);
       border-radius: 3px;
     }

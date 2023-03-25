@@ -62,7 +62,7 @@ const Navigation = () => {
           <div>
             <img
               className="userIcon"
-              src={"https://cdn-icons-png.flaticon.com/512/847/847969.png"}
+              src={userIcon}
               onClick={() => setUserModalOpen(!userModalOpen)}
             ></img>
             <div className="usermodal-container">
