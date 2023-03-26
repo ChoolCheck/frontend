@@ -19,6 +19,7 @@ const WorkCheckView = ({
   const totalList = workcheckToShow
     ? workcheckToShow
     : totalWorkCheckList.totalWorkcheckList;
+
   const day = ["일", "월", "화", "수", "목", "금", "토"];
 
   return (
@@ -74,10 +75,16 @@ const WorkCheckView = ({
                 >
                   {item.name}
                 </span>
+
+                <span className="totalList-li-hours">
+                  {item?.hours == null ? "없음" : item?.hours}
+                </span>
+
                 <span className="totalList-li-time">
                   {item.startTime.substring(0, 5)} -
                   {item.endTime.substring(0, 5)}
                 </span>
+
                 <span className="totalList-li-totalWorkTime">
                   {Math.round(
                     ((new Date(item.date + "T" + item.endTime).getTime() -

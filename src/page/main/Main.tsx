@@ -18,7 +18,7 @@ import MemoDetail from "../memo/MemoDetail";
 import ReadModal from "../../components/modal/ReadModal";
 
 import * as type from "./type";
-import "./style/calendarView.scss";
+import "./style/calendar.scss";
 
 const Main = () => {
   const dispatch = useDispatch();

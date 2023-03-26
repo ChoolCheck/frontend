@@ -1,8 +1,8 @@
 import { useCallback } from "react";
-import * as type from "./type";
-import "./style/calendarDetailView.scss";
 import { useDispatch } from "react-redux";
 import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
+import * as type from "./type";
+import "./style/calendarDetailView.scss";
 
 const CalendarDetailView = ({
   calendarDetailScheduleList,
