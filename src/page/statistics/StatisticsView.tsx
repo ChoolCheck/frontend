@@ -1,8 +1,8 @@
-import { useEffect, useRef } from "react";
-import "./style/statisticsView.scss";
+import "./style/statistics.scss";
 import * as type from "./type";
-import BarChart from "./BarChart";
+
 import Chart from "chart.js/auto";
+
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -20,74 +20,71 @@ ChartJS.register(
   Tooltip,
   Legend
 );
+Chart.register(CategoryScale);
 
 const StatisticsView = ({
-  statisticsList,
-  statisticsData,
+  onPrevClick,
+  yearToShow,
+  monthToShow,
+  onNextClick,
+  onChageStartInput,
+  onChageEndInput,
+  onGetResultClick,
+  onGetThismonthClick,
 }: type.statisticsViewProps) => {
-  const chartRef = useRef<Chart | null>(null);
-
-  const canvasCallback = (canvas: HTMLCanvasElement | null) => {
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (ctx && !chartRef.current) {
-      chartRef.current = new Chart(ctx, {
-        type: "bar",
-        data: statisticsData,
-        options: {
-          responsive: false,
-          plugins: {
-            legend: {
-              display: false,
-            },
-          },
-          indexAxis: "y",
-          scales: {
-            x: {
-              ticks: {
-                font: {
-                  size: 18,
-                },
-              },
-              grid: {
-                display: false,
-              },
-              border: {
-                display: false,
-              },
-            },
-            y: {
-              ticks: {
-                font: {
-                  size: 18,
-                },
-                color: "black",
-              },
-              grid: {
-                display: false,
-              },
-              border: {
-                display: false,
-              },
-            },
-          },
-        },
-      });
-    }
-  };
-
-  useEffect(() => {
-    const chart = chartRef.current;
-    if (chart) {
-      chart.data = statisticsData;
-      chart.update();
-    }
-  }, [statisticsData]);
-
-  const chartHeight = statisticsList ? statisticsList.length * 100 : 600;
-
   return (
-    <BarChart canvasCallback={canvasCallback} height={chartHeight}></BarChart>
+    <div>
+      <h2 className="Statistics-top-Header">
+        <button className="prevButton" onClick={onPrevClick}>
+          ◁
+        </button>
+        <span className="dateToShow">
+          {yearToShow}년 {monthToShow}월
+        </span>
+        <button className="nextButton" onClick={onNextClick}>
+          ▷
+        </button>
+        <span>근무 통계</span>
+      </h2>
+      <div className="Statistics-mid-Header">
+        <div className="Statistics-LeftHeader-container">
+          <span className="Statistics-LeftHeader">기간 내 조회</span>
+          <form>
+            <input
+              className="Statistics-startInput"
+              onChange={onChageStartInput}
+              type="date"
+              required
+              aria-required="true"
+            ></input>
+            -
+            <input
+              className="Statistics-endInput"
+              onChange={onChageEndInput}
+              type="date"
+              required
+              aria-required="true"
+            ></input>
+            <button
+              type="button"
+              className="Statistics-getResultButton"
+              onClick={onGetResultClick}
+            >
+              조회
+            </button>
+          </form>
+        </div>
+        <div className="Statistics-RightHeader-container">
+          <button
+            className="get-thismonth-statistics"
+            onClick={onGetThismonthClick}
+          >
+            이번달 근무 통계 조회
+          </button>
+        </div>
+      </div>
+    </div>
   );
 };
+
 export default StatisticsView;

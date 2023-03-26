@@ -1,5 +1,19 @@
-import Chart from "chart.js/auto";
 export interface statisticsViewProps {
+  yearToShow: number;
+  monthToShow: number;
+  onNextClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  onPrevClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  onChageStartInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChageEndInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onGetResultClick: () => (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => void;
+  onGetThismonthClick: (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => void;
+}
+
+export interface barChartProps {
   statisticsList: statisticListProps[] | undefined;
   statisticsData: chartDataProps;
 }
@@ -21,7 +35,7 @@ export interface chartDataProps {
   }[];
 }
 
-export interface chartProps {
+export interface barchartViewProps {
   height: number;
   canvasCallback: (canvas: HTMLCanvasElement | null) => void;
 }

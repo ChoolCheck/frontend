@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
-import "./style/statistics.scss";
+import BarChart from "./BarChart";
 import StatisticsView from "./StatisticsView";
-import * as type from "./type";
 
 import {
   GetDateStatisticsApi,
   GetMonthStatisticsApi,
 } from "../../api/statistics";
-import Chart from "chart.js/auto";
 
+import * as type from "./type";
+import "./style/statistics.scss";
+
+import Chart from "chart.js/auto";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -171,60 +173,21 @@ const Statistics = () => {
 
   return (
     <div className="Statistics-top-container">
-      <h2 className="Statistics-top-Header">
-        <button className="prevButton" onClick={onPrevClick}>
-          ◁
-        </button>
-        <span className="dateToShow">
-          {yearToShow}년 {monthToShow}월
-        </span>
-        <button className="nextButton" onClick={onNextClick}>
-          ▷
-        </button>
-        <span>근무 통계</span>
-      </h2>
-      <div className="Statistics-mid-Header">
-        <div className="Statistics-LeftHeader-container">
-          <span className="Statistics-LeftHeader">기간 내 조회</span>
-          <form>
-            <input
-              className="Statistics-startInput"
-              onChange={onChageStartInput}
-              type="date"
-              required
-              aria-required="true"
-            ></input>
-            -
-            <input
-              className="Statistics-endInput"
-              onChange={onChageEndInput}
-              type="date"
-              required
-              aria-required="true"
-            ></input>
-            <button
-              type="button"
-              className="Statistics-getResultButton"
-              onClick={onGetResultClick}
-            >
-              조회
-            </button>
-          </form>
-        </div>
-        <div className="Statistics-RightHeader-container">
-          <button
-            className="get-thismonth-statistics"
-            onClick={onGetThismonthClick}
-          >
-            이번달 근무 통계 조회
-          </button>
-        </div>
-      </div>
+      <StatisticsView
+        yearToShow={yearToShow}
+        monthToShow={monthToShow}
+        onPrevClick={onPrevClick}
+        onNextClick={onNextClick}
+        onChageStartInput={onChageStartInput}
+        onChageEndInput={onChageEndInput}
+        onGetResultClick={onGetResultClick}
+        onGetThismonthClick={onGetThismonthClick}
+      ></StatisticsView>
       {statisticsData && (
-        <StatisticsView
+        <BarChart
           statisticsList={statisticsList}
           statisticsData={statisticsData}
-        ></StatisticsView>
+        ></BarChart>
       )}
     </div>
   );
