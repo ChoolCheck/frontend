@@ -51,7 +51,7 @@ const SignupView = ({
                 placeholder="이메일 인증번호를 입력해주세요"
                 onChange={onChangeCode}
                 name="code"
-                type="number"
+                type="text"
               />
             </p>
           </div>
