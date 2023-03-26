@@ -95,6 +95,7 @@ const SignupView = ({
             {storeNameMessage}
           </p>
         </div>
+
         <button
           type="button"
           className="Signup-signupButton"

@@ -14,8 +14,10 @@ const UserModal = ({ setUserModalOpen }: userModalProps) => {
     setUserModalOpen(false);
   };
   const onLogoutClick = () => {
-    LogoutApi({ navigate });
-    setUserModalOpen(false);
+    if (window.confirm("로그아웃하시겠습니까?")) {
+      LogoutApi({ navigate });
+      setUserModalOpen(false);
+    }
   };
   return (
     <div className="usermodal">
