@@ -10,10 +10,10 @@ import { GetDetailCalendarApi } from "../../api/calendar";
 
 import WriteModal from "../../components/modal/WriteModal";
 
+import Calendar from "./calendar/Calendar";
 import CalendarDetailView from "./CalendarDetailView";
 import CreateWorkCheck from "../workCheck/CreateWorkCheck";
 import CreateMemo from "../memo/CreateMemo";
-import { CalendarView } from "./calendar/CalendarView";
 import MemoDetail from "../memo/MemoDetail";
 import ReadModal from "../../components/modal/ReadModal";
 
@@ -147,13 +147,12 @@ const Main = () => {
         ></CalendarDetailView>
       )}
 
-      <CalendarView
+      <Calendar
         setCalendarTotalList={setCalendarTotalList}
-        calendarTotalList={calendarTotalList}
         onCalendarClick={onCalendarClick}
         onCreateWorkcheckClick={onCreateWorkcheckClick}
         onCreateMemoClick={onCreateMemoClick}
-      ></CalendarView>
+      ></Calendar>
     </div>
   );
 };

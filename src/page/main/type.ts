@@ -1,5 +1,4 @@
-export interface calendarViewProps {
-  calendarTotalList: calendarListType[] | undefined;
+export interface calendarProps {
   onCalendarClick: (nowDate: Date) => void;
   onCreateWorkcheckClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   onCreateMemoClick: (e: React.MouseEvent<HTMLButtonElement>) => void;

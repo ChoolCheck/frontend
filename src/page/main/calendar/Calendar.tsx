@@ -9,13 +9,12 @@ import { GetTotalCalendarApi } from "../../../api/calendar";
 import "../style/calendarView.scss";
 import * as type from "../type";
 
-export const CalendarView = ({
-  calendarTotalList,
+export const Calendar = ({
   onCalendarClick,
   onCreateWorkcheckClick,
   onCreateMemoClick,
   setCalendarTotalList,
-}: type.calendarViewProps) => {
+}: type.calendarProps) => {
   const [currentMonth, setCurrentMonth] = useState<Date>(new Date());
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
 
@@ -124,3 +123,5 @@ export const CalendarView = ({
     </div>
   );
 };
+
+export default Calendar;

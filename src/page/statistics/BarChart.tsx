@@ -26,6 +26,14 @@ ChartJS.register(
 const BarChart = ({ statisticsList, statisticsData }: type.barChartProps) => {
   const chartRef = useRef<Chart | null>(null);
 
+  useEffect(() => {
+    const chart = chartRef.current;
+    if (chart) {
+      chart.data = statisticsData;
+      chart.update();
+    }
+  }, [statisticsData]);
+
   const canvasCallback = (canvas: HTMLCanvasElement | null) => {
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
@@ -74,14 +82,6 @@ const BarChart = ({ statisticsList, statisticsData }: type.barChartProps) => {
       });
     }
   };
-
-  useEffect(() => {
-    const chart = chartRef.current;
-    if (chart) {
-      chart.data = statisticsData;
-      chart.update();
-    }
-  }, [statisticsData]);
 
   const chartHeight = statisticsList ? statisticsList.length * 100 : 600;
 
