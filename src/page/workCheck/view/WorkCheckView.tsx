@@ -22,6 +22,13 @@ const WorkCheckView = ({
 
   const day = ["일", "월", "화", "수", "목", "금", "토"];
 
+  /*
+    //pagination
+  const totalElement=87; // 전체 데이터 수
+  const limit=12; //페이지당 보여줄 데이터 수
+  //87 / 12 = 7 ... 3
+  const pageNum = (totalElement/limit)+1; //총 페이지 수
+  */
   return (
     <div className="WorkCheckView-top-container">
       <div className="WorkCheckView-left-container">
@@ -99,6 +106,7 @@ const WorkCheckView = ({
               </li>
             ))}
         </ul>
+        <div className="pagination workcheck"></div>
       </div>
     </div>
   );
