@@ -10,7 +10,9 @@
   .ScheduleTotalView-left-container,
   .ScheduleTotalView-right-container {
     font-size: 18px;
-    max-height: 450px;
+    min-height: 400px;
+    max-height: 750px;
+    // max-height: 450px;
     background-color: rgb(238, 238, 238);
     border-radius: 20px;
     text-align: center;
@@ -53,9 +55,9 @@
   .ScheduleTotalView-right-container {
     margin-left: auto;
     min-width: 750px;
+    // min-height: 400px;
     margin: 10px;
     overflow-y: auto;
-    min-height: 400px;
 
     .totalList-ul {
       padding: 20px;
