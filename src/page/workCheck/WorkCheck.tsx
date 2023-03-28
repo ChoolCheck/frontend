@@ -105,6 +105,7 @@ const WorkCheck = () => {
 
   const onGetDateResultClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+    setPaginationFocus("total");
     GetDateWorkcheckApi({
       startInput,
       endInput,
@@ -118,14 +119,11 @@ const WorkCheck = () => {
     return (e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
       setEmployeeToShow(id.toString());
-      const employeeId = id.toString();
       setPaginationFocus("employee");
 
-      console.log(id);
-      console.log(employeeId);
       if (startInput !== "" && endInput !== "")
         GetEmployeeWorkcheckApi({
-          employeeId,
+          employeeId: employeeToShow,
           setWorkcheckToShow,
           startInput,
           endInput,
@@ -134,7 +132,7 @@ const WorkCheck = () => {
         });
       else
         GetEmployeeWorkcheckApi({
-          employeeId,
+          employeeId: employeeToShow,
           setWorkcheckToShow,
           setTotalElement,
           setTotalPage,
@@ -169,38 +167,35 @@ const WorkCheck = () => {
   };
 
   const onPaginationClick = (item: number) => {
-    const page = item;
-    setPage(item);
     return (e: React.MouseEvent<HTMLButtonElement>) => {
-      console.log(paginationFocus);
-      console.log(employeeToShow);
-      const employeeId = employeeToShow;
       e.preventDefault();
+      setPage(item);
+
       if (paginationFocus == "total") {
         GetTotalWorkcheckApi({
           setTotalWorkCheckList,
           setTotalPage,
           setTotalElement,
-          page,
+          page: item,
         });
       } else if (paginationFocus == "employee") {
         if (startInput !== "" && endInput !== "")
           GetEmployeeWorkcheckApi({
-            employeeId,
+            employeeId: employeeToShow,
             setWorkcheckToShow,
             startInput,
             endInput,
             setTotalElement,
             setTotalPage,
-            page,
+            page: item,
           });
         else
           GetEmployeeWorkcheckApi({
-            employeeId,
+            employeeId: employeeToShow,
             setWorkcheckToShow,
             setTotalElement,
             setTotalPage,
-            page,
+            page: item,
           });
       }
     };

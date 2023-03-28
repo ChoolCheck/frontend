@@ -72,9 +72,9 @@ const Schedule = () => {
   const [scheduleDetail, setScheduleDetail] = useState<type.scheduleObjProps>();
   const [selectedModal, setSelectedModal] = useState<string>("");
 
-  const [page, setPage] = useState<number>(0);
+  // const [page, setPage] = useState<number>(0);
 
-  const [employeeId, setEmployeeId] = useState<string>("0");
+  const [employeeToShow, setEmployeeToShow] = useState<string>("0");
   const [paginationFocus, setPaginationFocus] = useState("total");
 
   useEffect(() => {
@@ -88,12 +88,12 @@ const Schedule = () => {
   }, []);
 
   const onShowNameButtonClick = (id: number) => {
-    setPaginationFocus("employee");
-    setEmployeeId(id.toString());
-    const employeeId = id.toString();
     return (e: React.MouseEvent<HTMLButtonElement>) => {
+      setPaginationFocus("employee");
+      setEmployeeToShow(id.toString());
+
       GetEmployeeScheduleApi({
-        employeeId,
+        employeeId: id.toString(),
         setScheduleToShow,
         setTotalElement,
         setTotalPage,
@@ -109,7 +109,6 @@ const Schedule = () => {
       setTotalElement,
       setTotalPage,
     });
-    // setScheduleToShow(totalScheduleList);
   };
 
   const onItemClick = (id: number) => {
@@ -120,25 +119,23 @@ const Schedule = () => {
   };
 
   const onPaginationClick = (item: number) => {
-    const page = item;
-    setPage(item);
     return (e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
-      console.log(paginationFocus);
+      // setPage(item);
       if (paginationFocus == "total") {
         GetTotalScheduleApi({
           setTotalScheduleList,
-          page,
+          page: item,
           setTotalPage,
           setTotalElement,
         });
       } else if (paginationFocus == "employee") {
         GetEmployeeScheduleApi({
-          employeeId,
+          employeeId: employeeToShow,
           setScheduleToShow,
           setTotalElement,
           setTotalPage,
-          page,
+          page: item,
         });
       }
     };
