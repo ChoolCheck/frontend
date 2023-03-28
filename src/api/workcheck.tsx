@@ -206,8 +206,8 @@ export async function GetEmployeeWorkcheckApi({
     method: "GET",
     url:
       startInput && endInput
-        ? `${config.api}/work?employee=${employeeId}`
-        : `${config.api}/work?employee=${employeeId}&dateFrom=${startInput}&dateTo=${endInput}`,
+        ? `${config.api}/work?employee=${employeeId}&dateFrom=${startInput}&dateTo=${endInput}`
+        : `${config.api}/work?employee=${employeeId}`,
     headers: {
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,
