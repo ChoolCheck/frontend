@@ -14,14 +14,14 @@ export async function CreateWorkcheckApi({
   let data;
   if (hours_id == "") {
     data = {
-      employee_id: employeeId,
+      employeeId: employeeId,
       date: date,
       startTime: startTime,
       endTime: endTime,
     };
   } else {
     data = {
-      employee_id: employeeId,
+      employeeId: employeeId,
       hours_id: hours_id,
       date: date,
       startTime: startTime,
@@ -61,14 +61,14 @@ export async function UpdateWorkcheckApi({
   let data;
   if (hours_id == "") {
     data = {
-      employee_id: employeeId,
+      employeeId: employeeId,
       date: date,
       startTime: startTime.substring(0, 5),
       endTime: endTime.substring(0, 5),
     };
   } else {
     data = {
-      employee_id: employeeId,
+      employeeId: employeeId,
       hours_id: hours_id,
       date: date,
       startTime: startTime.substring(0, 5),
@@ -177,12 +177,12 @@ export async function GetDetailWorkcheckApi({
 }
 
 export async function GetEmployeeWorkcheckApi({
-  employee_id,
+  employeeId,
   setWorkcheckToShow,
 }: type.getEmployeeWorkcheckProps) {
   await axios({
     method: "GET",
-    url: `${config.api}/work/employee/${employee_id}`,
+    url: `${config.api}/work/employee/${employeeId}`,
     headers: {
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,

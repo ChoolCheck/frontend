@@ -15,14 +15,14 @@ export async function CreateScheduleApi({
   let data;
   if (hours_id == "") {
     data = {
-      employee_id: employeeId,
+      employeeId: employeeId,
       date: date,
       startTime: startTime,
       endTime: endTime,
     };
   } else {
     data = {
-      employee_id: employeeId,
+      employeeId: employeeId,
       hours_id: hours_id,
       date: date,
       startTime: startTime,
@@ -64,14 +64,14 @@ export async function UpdateScheduleApi({
   let data;
   if (hours_id == "") {
     data = {
-      employee_id: employeeId,
+      employeeId: employeeId,
       date: date,
       startTime: startTime.substring(0, 5),
       endTime: endTime.substring(0, 5),
     };
   } else {
     data = {
-      employee_id: employeeId,
+      employeeId: employeeId,
       hours_id: hours_id,
       date: date,
       startTime: startTime.substring(0, 5),
@@ -214,12 +214,12 @@ export async function GetDetailScheduleApi({
 }
 
 export async function GetEmployeeScheduleApi({
-  employee_id,
+  employeeId,
   setScheduleToShow,
 }: type.getEmployeeScheduleProps) {
   await axios({
     method: "GET",
-    url: `${config.api}/schedule/employee/${employee_id}`,
+    url: `${config.api}/schedule/employee/${employeeId}`,
     headers: {
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,

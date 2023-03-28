@@ -120,7 +120,7 @@ export interface getTotalWorkcheckProps {
 }
 
 export interface getEmployeeWorkcheckProps {
-  employee_id: string;
+  employeeId: string;
   setWorkcheckToShow: React.Dispatch<
     React.SetStateAction<workcheckObjProps[] | undefined>
   >;

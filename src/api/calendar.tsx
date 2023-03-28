@@ -75,8 +75,8 @@ export async function GetTotalCalendarApi({
 
   const inputStart = inputYear + "-" + inputMonth + "-01";
 
-  const inputlastDATE = new Date(inputYear, inputDate.getMonth() + 1, 0);
-  const inputEnd = inputYear + "-" + inputMonth + "-" + inputlastDATE.getDate();
+  // const inputlastDATE = new Date(inputYear, inputDate.getMonth() + 1, 0);
+  // const inputEnd = inputYear + "-" + inputMonth + "-" + inputlastDATE.getDate();
 
   const axiosInstance = axios.create({
     headers: {
@@ -86,114 +86,136 @@ export async function GetTotalCalendarApi({
   });
   const tempResultList: type.calendarListType[] = [];
 
+  axios
+    .all([
+      axiosInstance.get(`${config.api}/work/month?date=${inputStart}`),
+      axiosInstance.get(`${config.api}/schedule/month?date=${inputStart}`),
+    ])
+    .then(
+      axios.spread((res1, res2) => {
+        const workcheckList: workcheckType.workcheckObjProps[] = res1.data;
+        const scheduleList: scheduleType.scheduleObjProps[] = res2.data;
+
+        if (handleWorklist(workcheckList, tempResultList))
+          handleSchedulelist(scheduleList, tempResultList);
+
+        return tempResultList;
+      })
+    )
+    .then((res) => {
+      setCalendarTotalList(tempResultList);
+    })
+    .then((res) => {
+      renderData(tempResultList);
+    })
+    .catch((error) => {});
+
   // 보여줄 달력이 현재 달과 같은 경우
   // - 1일~오늘 전날 :  달력에 출근부만 표시
   // - 오늘~마지막 날 :  달력에 스케줄 표시
-  if (
-    inputDate.getFullYear() == nowDate.getFullYear() &&
-    inputDate.getMonth() == nowDate.getMonth()
-  ) {
-    const todayMonth =
-      nowDate.getMonth() + 1 < 10
-        ? "0" + (nowDate.getMonth() + 1)
-        : nowDate.getMonth() + 1;
+  // if (
+  //   inputDate.getFullYear() == nowDate.getFullYear() &&
+  //   inputDate.getMonth() == nowDate.getMonth()
+  // ) {
+  //   const todayMonth =
+  //     nowDate.getMonth() + 1 < 10
+  //       ? "0" + (nowDate.getMonth() + 1)
+  //       : nowDate.getMonth() + 1;
 
-    const todayDate =
-      nowDate.getDate() < 10 ? "0" + nowDate.getDate() : nowDate.getDate();
+  //   const todayDate =
+  //     nowDate.getDate() < 10 ? "0" + nowDate.getDate() : nowDate.getDate();
 
-    const yesterday =
-      nowDate.getFullYear() +
-      "-" +
-      todayMonth +
-      "-" +
-      (nowDate.getDate() - 1 < 10
-        ? "0" + (nowDate.getDate() - 1)
-        : nowDate.getDate() - 1);
+  //   const yesterday =
+  //     nowDate.getFullYear() +
+  //     "-" +
+  //     todayMonth +
+  //     "-" +
+  //     (nowDate.getDate() - 1 < 10
+  //       ? "0" + (nowDate.getDate() - 1)
+  //       : nowDate.getDate() - 1);
+  // axios
+  //   .all([
+  //     axiosInstance.get(
+  //       `${config.api}/work/date?start=${inputStart}&end=${yesterday}`
+  //     ),
+  //     axiosInstance.get(
+  //       `${config.api}/schedule/date?start=${
+  //         nowDate.getFullYear() + "-" + todayMonth + "-" + todayDate
+  //       }&end=${inputEnd}`
+  //     ),
+  //   ])
+  //   .then(
+  //     axios.spread((res1, res2) => {
+  //       const workcheckList: workcheckType.workcheckObjProps[] = res1.data;
+  //       const scheduleList: scheduleType.scheduleObjProps[] = res2.data;
 
-    axios
-      .all([
-        axiosInstance.get(
-          `${config.api}/work/date?start=${inputStart}&end=${yesterday}`
-        ),
-        axiosInstance.get(
-          `${config.api}/schedule/date?start=${
-            nowDate.getFullYear() + "-" + todayMonth + "-" + todayDate
-          }&end=${inputEnd}`
-        ),
-      ])
-      .then(
-        axios.spread((res1, res2) => {
-          const workcheckList: workcheckType.workcheckObjProps[] = res1.data;
-          const scheduleList: scheduleType.scheduleObjProps[] = res2.data;
+  //       if (handleWorklist(workcheckList, tempResultList))
+  //         handleSchedulelist(scheduleList, tempResultList);
 
-          if (handleWorklist(workcheckList, tempResultList))
-            handleSchedulelist(scheduleList, tempResultList);
-
-          return tempResultList;
-        })
-      )
-      .then((res) => {
-        setCalendarTotalList(tempResultList);
-      })
-      .then((res) => {
-        renderData(tempResultList);
-      })
-      .catch((error) => {});
-  }
+  //       return tempResultList;
+  //     })
+  //   )
+  //   .then((res) => {
+  //     setCalendarTotalList(tempResultList);
+  //   })
+  //   .then((res) => {
+  //     renderData(tempResultList);
+  //   })
+  //   .catch((error) => {});
 
   // 보여줄 달력이 현재보다 이전인 경우 : 달력에 출근부만 표시
-  else if (
-    inputDate.getFullYear() < nowDate.getFullYear() ||
-    (inputDate.getFullYear() == nowDate.getFullYear() &&
-      inputDate.getMonth() < nowDate.getMonth())
-  ) {
-    axios
-      .all([
-        axiosInstance.get(
-          `${config.api}/work/date?start=${inputStart}&end=${inputEnd}`
-        ),
-      ])
-      .then(
-        axios.spread((res1) => {
-          const workcheckList: workcheckType.workcheckObjProps[] = res1.data;
-          handleWorklist(workcheckList, tempResultList);
+  // else if (
+  //   inputDate.getFullYear() < nowDate.getFullYear() ||
+  //   (inputDate.getFullYear() == nowDate.getFullYear() &&
+  //     inputDate.getMonth() < nowDate.getMonth())
+  // ) {
+  //   axios
+  //     .all([
+  //       axiosInstance.get(
+  //         `${config.api}/work/date?start=${inputStart}&end=${inputEnd}`
+  //       ),
+  //     ])
+  //     .then(
+  //       axios.spread((res1) => {
+  //         const workcheckList: workcheckType.workcheckObjProps[] = res1.data;
+  //         handleWorklist(workcheckList, tempResultList);
 
-          return tempResultList;
-        })
-      )
-      .then((res) => {
-        setCalendarTotalList(tempResultList);
-      })
-      .then((res) => {
-        renderData(tempResultList);
-      })
-      .catch((error) => {});
-  }
+  //         return tempResultList;
+  //       })
+  //     )
+  //     .then((res) => {
+  //       setCalendarTotalList(tempResultList);
+  //     })
+  //     .then((res) => {
+  //       renderData(tempResultList);
+  //     })
+  //     .catch((error) => {});
+  // }
 
   // 보여줄 달력이 현재 달보다 이후인 경우 : 달력에 스케줄만 표시
-  else {
-    axios
-      .all([
-        axiosInstance.get(
-          `${config.api}/schedule/date?start=${inputStart}&end=${inputEnd}`
-        ),
-      ])
-      .then(
-        axios.spread((res1) => {
-          const scheduleList: scheduleType.scheduleObjProps[] = res1.data;
-          handleSchedulelist(scheduleList, tempResultList);
+  // else {
+  //   axios
+  //     .all([
+  //       axiosInstance.get(
+  //         `${config.api}/schedule/date?start=${inputStart}&end=${inputEnd}`
+  //       ),
+  //     ])
+  //     .then(
+  //       axios.spread((res1) => {
+  //         const scheduleList: scheduleType.scheduleObjProps[] = res1.data;
+  //         handleSchedulelist(scheduleList, tempResultList);
 
-          return tempResultList;
-        })
-      )
-      .then((res) => {
-        setCalendarTotalList(tempResultList);
-      })
-      .then((res) => {
-        renderData(tempResultList);
-      })
-      .catch((error) => {});
-  }
+  //         return tempResultList;
+  //       })
+  //     )
+  //     .then((res) => {
+  //       setCalendarTotalList(tempResultList);
+  //     })
+  //     .then((res) => {
+  //       renderData(tempResultList);
+  //     })
+  //     .catch((error) => {});
+  // }
 }
 
 export async function GetDetailCalendarApi({

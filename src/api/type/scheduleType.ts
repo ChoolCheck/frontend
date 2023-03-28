@@ -40,7 +40,7 @@ export interface getDetailScheduleProps {
 }
 
 export interface getEmployeeScheduleProps {
-  employee_id: string;
+  employeeId: string;
   setScheduleToShow: React.Dispatch<
     React.SetStateAction<scheduleObjProps[] | undefined>
   >;

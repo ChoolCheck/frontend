@@ -73,9 +73,9 @@ const Schedule = () => {
   }, []);
 
   const onShowNameButtonClick = (id: number) => {
-    const employee_id = id.toString();
+    const employeeId = id.toString();
     return (e: React.MouseEvent<HTMLButtonElement>) => {
-      GetEmployeeScheduleApi({ employee_id, setScheduleToShow });
+      GetEmployeeScheduleApi({ employeeId, setScheduleToShow });
     };
   };
 
