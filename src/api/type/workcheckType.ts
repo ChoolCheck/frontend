@@ -1,13 +1,9 @@
 import * as reducerType from "../../Redux/Types";
-
-// setReadModal: (readModalState: boolean) => {
-//   type: "handleReadModal/SETREADMODAL";
-//   payload: boolean;
-// };
-// setWriteModal: (readModalState: boolean) => {
-//   type: "handleWriteodal/SETWRITEMODAL";
-//   payload: boolean;
-// };
+export interface paginationProps {
+  setTotalPages: React.Dispatch<React.SetStateAction<number>>;
+  setTotalElements: React.Dispatch<React.SetStateAction<number>>;
+  page: number;
+}
 export interface workcheckObjProps {
   name: string;
   date: string;
@@ -18,9 +14,9 @@ export interface workcheckObjProps {
   id: number;
 }
 
-export interface createWorkcheckProps {
+export interface createWorkcheckProps extends paginationProps {
   employeeId: string;
-  hours_id: string;
+  hoursId: string;
   date: string;
   startTime: string;
   endTime: string;
@@ -37,10 +33,10 @@ export interface createWorkcheckProps {
   };
 }
 
-export interface updateWorkcheckProps {
+export interface updateWorkcheckProps extends paginationProps {
   id: number;
   employeeId: string;
-  hours_id: string;
+  hoursId: string;
   date: string;
   startTime: string;
   endTime: string;
@@ -64,7 +60,7 @@ export interface updateWorkcheckProps {
   ) => void;
 }
 
-export interface deleteWorkcheckProps {
+export interface deleteWorkcheckProps extends paginationProps {
   id: number;
   setReadModal: (readModalState: boolean) => {
     type: "handleReadModal/SETREADMODAL";
@@ -106,7 +102,7 @@ export interface getDetailWorkcheckProps {
   >;
 }
 
-export interface getTotalWorkcheckProps {
+export interface getTotalWorkcheckProps extends paginationProps {
   setWorkcheckToShow?: (
     value: React.SetStateAction<workcheckObjProps[] | undefined>
   ) => void;

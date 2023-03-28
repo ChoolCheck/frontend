@@ -4,16 +4,18 @@ import * as type from "./type/scheduleType";
 
 export async function CreateScheduleApi({
   employeeId,
-  hours_id,
+  hoursId,
   date,
   startTime,
   endTime,
   setWriteModal,
   setWeekScheduleList,
   setTotalScheduleList,
+  setTotalPages,
+  setTotalElements,
 }: type.createScheduleProps) {
   let data;
-  if (hours_id == "") {
+  if (hoursId == "") {
     data = {
       employeeId: employeeId,
       date: date,
@@ -23,7 +25,7 @@ export async function CreateScheduleApi({
   } else {
     data = {
       employeeId: employeeId,
-      hours_id: hours_id,
+      hoursId: hoursId,
       date: date,
       startTime: startTime,
       endTime: endTime,
@@ -40,7 +42,13 @@ export async function CreateScheduleApi({
   })
     .then((res) => {
       GetWeekScheduleApi({ setWeekScheduleList });
-      GetTotalScheduleApi({ setTotalScheduleList });
+      const page = 0;
+      GetTotalScheduleApi({
+        setTotalScheduleList,
+        setTotalPages,
+        setTotalElements,
+        page,
+      });
     })
     .then((res) => {
       setWriteModal(false);
@@ -51,7 +59,7 @@ export async function CreateScheduleApi({
 export async function UpdateScheduleApi({
   id,
   employeeId,
-  hours_id,
+  hoursId,
   date,
   startTime,
   endTime,
@@ -60,9 +68,11 @@ export async function UpdateScheduleApi({
   setWeekScheduleList,
   setTotalScheduleList,
   setScheduleToShow,
+  setTotalPages,
+  setTotalElements,
 }: type.updateScheduleProps) {
   let data;
-  if (hours_id == "") {
+  if (hoursId == "") {
     data = {
       employeeId: employeeId,
       date: date,
@@ -72,7 +82,7 @@ export async function UpdateScheduleApi({
   } else {
     data = {
       employeeId: employeeId,
-      hours_id: hours_id,
+      hoursId: hoursId,
       date: date,
       startTime: startTime.substring(0, 5),
       endTime: endTime.substring(0, 5),
@@ -89,7 +99,14 @@ export async function UpdateScheduleApi({
   })
     .then((res) => {
       GetWeekScheduleApi({ setWeekScheduleList });
-      GetTotalScheduleApi({ setTotalScheduleList, setScheduleToShow });
+      const page = 0;
+      GetTotalScheduleApi({
+        setTotalScheduleList,
+        setScheduleToShow,
+        setTotalPages,
+        setTotalElements,
+        page,
+      });
     })
     .then((res) => {
       setWriteModal(false);
@@ -106,6 +123,8 @@ export async function DeleteScheduleApi({
   setTotalScheduleList,
   setWeekScheduleList,
   setScheduleToShow,
+  setTotalPages,
+  setTotalElements,
 }: type.deleteScheduleProps) {
   await axios({
     method: "Delete",
@@ -117,7 +136,14 @@ export async function DeleteScheduleApi({
   })
     .then((res) => {
       GetWeekScheduleApi({ setWeekScheduleList });
-      GetTotalScheduleApi({ setTotalScheduleList, setScheduleToShow });
+      const page = 0;
+      GetTotalScheduleApi({
+        setTotalScheduleList,
+        setScheduleToShow,
+        setTotalPages,
+        setTotalElements,
+        page,
+      });
     })
 
     .then((res) => {
@@ -161,36 +187,27 @@ export async function GetWeekScheduleApi({
 export async function GetTotalScheduleApi({
   setTotalScheduleList,
   setScheduleToShow,
+  setTotalPages,
+  setTotalElements,
+  page,
 }: type.getTotalScheduleProps) {
   await axios({
     method: "GET",
-    url: `${config.api}/schedule`,
+    url: `${config.api}/schedule?page=${page}`,
     headers: {
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
   })
     .then((res) => {
-      setScheduleToShow && setScheduleToShow(res.data);
-      setTotalScheduleList(res.data);
+      setTotalPages(res.data.pageable.totalPages);
+      setTotalElements(res.data.pageable.setTotalElements);
+      setScheduleToShow && setScheduleToShow(res.data.content);
+      setTotalScheduleList(res.data.content);
     })
     .catch((err) => {});
 }
-//   const page = 1;
-//   await axios({
-//     method: "GET",
-//     url: `${config.api}/schedule?page=${page}`,
-//     headers: {
-//       "Content-Type": `application/json`,
-//       Authorization: `Bearer ${localStorage.getItem("token")}`,
-//     },
-//   })
-//     .then((res) => {
-//       setScheduleToShow && setScheduleToShow(res.data);
-//       setTotalScheduleList(res.data);
-//     })
-//     .catch((err) => {});
-// }
+
 export async function GetDetailScheduleApi({
   id,
   setScheduleDetail,

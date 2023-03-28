@@ -13,7 +13,7 @@ const UpdateScheduleView = ({
 
   employeeId,
   date,
-  hours_id,
+  hoursId,
   startTime,
   endTime,
 }: type.updateScheduleViewProps) => {
@@ -51,7 +51,7 @@ const UpdateScheduleView = ({
             {workTypeList && workTypeList.length > 0 && (
               <div>
                 <input
-                  name="hours_id"
+                  name="hoursId"
                   type="radio"
                   onChange={onChangeWorkType(-1, "00:00", "00:00")}
                 />
@@ -62,12 +62,12 @@ const UpdateScheduleView = ({
               workTypeList.map((item) => (
                 <div>
                   <input
-                    name="hours_id"
+                    name="hoursId"
                     type="radio"
                     id={item.id.toString()}
                     value={item.title}
                     defaultChecked={
-                      item.id.toString() == hours_id ? true : false
+                      item.id.toString() == hoursId ? true : false
                     }
                     onChange={onChangeWorkType(
                       item.id,

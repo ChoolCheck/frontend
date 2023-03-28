@@ -17,6 +17,8 @@ const UpdateWorkCheck = ({
   id,
   workcheckDetail,
   setWorkcheckToShow,
+  setTotalPages,
+  setTotalElements,
 }: type.updateWorkcheckProps) => {
   const dispatch = useDispatch();
 
@@ -52,7 +54,7 @@ const UpdateWorkCheck = ({
         : workcheckDetail.hours
       : ""
   );
-  const [hours_id, setHoursid] = useState("");
+  const [hoursId, setHoursid] = useState("");
   const [startTime, setStartTime] = useState(
     workcheckDetail ? workcheckDetail.startTime : ""
   );
@@ -129,19 +131,24 @@ const UpdateWorkCheck = ({
       window.alert("시작 시간을 선택해주세요.");
     } else if (endTime == "") {
       window.alert("종료 시간을 선택해주세요.");
-    } else
+    } else {
+      const page = 0;
       UpdateWorkcheckApi({
         id,
         employeeId,
         date,
-        hours_id,
+        hoursId,
         startTime,
         endTime,
         setWriteModal,
         setReadModal,
         setTotalWorkCheckList,
         setWorkcheckToShow,
+        setTotalPages,
+        setTotalElements,
+        page,
       });
+    }
   };
 
   return (
@@ -157,7 +164,7 @@ const UpdateWorkCheck = ({
         onChangeEndTime={onChangeEndTime}
         onClickUpdate={onClickUpdate}
         employeeId={employeeId}
-        hours_id={hours_id}
+        hoursId={hoursId}
         startTime={startTime}
         endTime={endTime}
         date={date}

@@ -12,7 +12,10 @@ import * as worktypeType from "../../commonType/worktype";
 
 import CreateWorkCheckView from "./view/CreateWorkCheckView";
 
-const CreateWorkCheck = () => {
+const CreateWorkCheck = ({
+  setTotalPages,
+  setTotalElements,
+}: type.paginationProps) => {
   const dispatch = useDispatch();
 
   const setWriteModal = useCallback(
@@ -41,12 +44,12 @@ const CreateWorkCheck = () => {
 
   const [employee, setEmployee] = useState("");
   const [employeeId, setEmployeeId] = useState("");
-  const [hours_id, setHoursid] = useState("");
+  const [hoursId, setHoursid] = useState("");
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
   const [date, setDate] = useState("");
 
-  const workcheckForm = { employee, hours_id, date, startTime, endTime };
+  const workcheckForm = { employee, hoursId, date, startTime, endTime };
 
   const onClickCancelOnModal = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -115,16 +118,21 @@ const CreateWorkCheck = () => {
       window.alert("시작 시간을 선택해주세요.");
     } else if (endTime == "") {
       window.alert("종료 시간을 선택해주세요.");
-    } else
+    } else {
+      const page = 0;
       CreateWorkcheckApi({
         employeeId,
         date,
-        hours_id,
+        hoursId,
         startTime,
         endTime,
         setWriteModal,
         setTotalWorkCheckList,
+        setTotalPages,
+        setTotalElements,
+        page,
       });
+    }
   };
 
   return (

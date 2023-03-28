@@ -2,6 +2,12 @@ export interface getMonthScheduleProps {
   date: string;
 }
 
+export interface paginationProps {
+  setTotalPages: React.Dispatch<React.SetStateAction<number>>;
+  setTotalElements: React.Dispatch<React.SetStateAction<number>>;
+  page: number;
+}
+
 export interface scheduleObjProps {
   name: string;
   date: string;
@@ -46,7 +52,7 @@ export interface getEmployeeScheduleProps {
   >;
 }
 
-export interface getTotalScheduleProps {
+export interface getTotalScheduleProps extends paginationProps {
   setScheduleToShow?: (
     value: React.SetStateAction<scheduleObjProps[] | undefined>
   ) => void;
@@ -55,9 +61,11 @@ export interface getTotalScheduleProps {
     React.SetStateAction<scheduleObjProps[] | undefined>
   >;
 }
-export interface createScheduleProps extends setScheduleListTypes {
+export interface createScheduleProps
+  extends setScheduleListTypes,
+    paginationProps {
   employeeId: string;
-  hours_id: string;
+  hoursId: string;
   date: string;
   startTime: string;
   endTime: string;
@@ -68,10 +76,12 @@ export interface createScheduleProps extends setScheduleListTypes {
   };
 }
 
-export interface updateScheduleProps extends setScheduleListTypes {
+export interface updateScheduleProps
+  extends setScheduleListTypes,
+    paginationProps {
   id: number;
   employeeId: string;
-  hours_id: string;
+  hoursId: string;
   date: string;
   startTime: string;
   endTime: string;
@@ -89,7 +99,9 @@ export interface updateScheduleProps extends setScheduleListTypes {
   ) => void;
 }
 
-export interface deleteScheduleProps extends setScheduleListTypes {
+export interface deleteScheduleProps
+  extends setScheduleListTypes,
+    paginationProps {
   id: number;
   setReadModal: (readModalState: boolean) => {
     type: "handleReadModal/SETREADMODAL";

@@ -1,18 +1,22 @@
 import axios from "axios";
 import { config } from "../static/config";
-import * as type from "./type/workType";
+import * as type from "./type/workcheckType";
+
+const page = 0;
 
 export async function CreateWorkcheckApi({
   employeeId,
-  hours_id,
+  hoursId,
   date,
   startTime,
   endTime,
   setWriteModal,
   setTotalWorkCheckList,
+  setTotalPages,
+  setTotalElements,
 }: type.createWorkcheckProps) {
   let data;
-  if (hours_id == "") {
+  if (hoursId == "") {
     data = {
       employeeId: employeeId,
       date: date,
@@ -22,7 +26,7 @@ export async function CreateWorkcheckApi({
   } else {
     data = {
       employeeId: employeeId,
-      hours_id: hours_id,
+      hoursId: hoursId,
       date: date,
       startTime: startTime,
       endTime: endTime,
@@ -38,7 +42,12 @@ export async function CreateWorkcheckApi({
     data: data,
   })
     .then((res) => {
-      GetTotalWorkcheckApi({ setTotalWorkCheckList });
+      GetTotalWorkcheckApi({
+        setTotalWorkCheckList,
+        setTotalPages,
+        setTotalElements,
+        page,
+      });
     })
     .then((res) => {
       setWriteModal(false);
@@ -49,7 +58,7 @@ export async function CreateWorkcheckApi({
 export async function UpdateWorkcheckApi({
   id,
   employeeId,
-  hours_id,
+  hoursId,
   date,
   startTime,
   endTime,
@@ -57,9 +66,11 @@ export async function UpdateWorkcheckApi({
   setReadModal,
   setTotalWorkCheckList,
   setWorkcheckToShow,
+  setTotalPages,
+  setTotalElements,
 }: type.updateWorkcheckProps) {
   let data;
-  if (hours_id == "") {
+  if (hoursId == "") {
     data = {
       employeeId: employeeId,
       date: date,
@@ -69,7 +80,7 @@ export async function UpdateWorkcheckApi({
   } else {
     data = {
       employeeId: employeeId,
-      hours_id: hours_id,
+      hoursId: hoursId,
       date: date,
       startTime: startTime.substring(0, 5),
       endTime: endTime.substring(0, 5),
@@ -85,7 +96,13 @@ export async function UpdateWorkcheckApi({
     data: data,
   })
     .then((res) => {
-      GetTotalWorkcheckApi({ setTotalWorkCheckList, setWorkcheckToShow });
+      GetTotalWorkcheckApi({
+        setTotalWorkCheckList,
+        setWorkcheckToShow,
+        setTotalPages,
+        setTotalElements,
+        page,
+      });
     })
     .then((res) => {
       setWriteModal(false);
@@ -99,6 +116,8 @@ export async function DeleteWorkcheckApi({
   setReadModal,
   setTotalWorkCheckList,
   setWorkcheckToShow,
+  setTotalPages,
+  setTotalElements,
 }: type.deleteWorkcheckProps) {
   await axios({
     method: "Delete",
@@ -109,7 +128,13 @@ export async function DeleteWorkcheckApi({
     },
   })
     .then((res) => {
-      GetTotalWorkcheckApi({ setTotalWorkCheckList, setWorkcheckToShow });
+      GetTotalWorkcheckApi({
+        setTotalWorkCheckList,
+        setWorkcheckToShow,
+        setTotalPages,
+        setTotalElements,
+        page,
+      });
     })
     .then((res) => {
       setReadModal(false);
@@ -142,7 +167,7 @@ export async function GetDateWorkcheckApi({
 }: type.getDateWorkcheckProps) {
   await axios({
     method: "GET",
-    url: `${config.api}/work/date?start=${startInput}&end=${endInput}`,
+    url: `${config.api}/work/date?dateFrom=${startInput}&dateTo=${endInput}`,
     headers: {
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -182,7 +207,7 @@ export async function GetEmployeeWorkcheckApi({
 }: type.getEmployeeWorkcheckProps) {
   await axios({
     method: "GET",
-    url: `${config.api}/work/employee/${employeeId}`,
+    url: `${config.api}/work?employee=${employeeId}`,
     headers: {
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -197,6 +222,8 @@ export async function GetEmployeeWorkcheckApi({
 export async function GetTotalWorkcheckApi({
   setTotalWorkCheckList,
   setWorkcheckToShow,
+  setTotalPages,
+  setTotalElements,
 }: type.getTotalWorkcheckProps) {
   const now = new Date();
 
@@ -214,15 +241,17 @@ export async function GetTotalWorkcheckApi({
 
   await axios({
     method: "GET",
-    url: `${config.api}/work/date?start=${startInput}&end=${endInput}`,
+    url: `${config.api}/work?dateFrom=${startInput}&dateTo=${endInput}`,
     headers: {
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
   })
     .then((res) => {
-      setWorkcheckToShow && setWorkcheckToShow(res.data);
-      setTotalWorkCheckList(res.data);
+      setTotalPages(res.data.pageable.totalPages);
+      setTotalElements(res.data.pageable.setTotalElements);
+      setWorkcheckToShow && setWorkcheckToShow(res.data.content);
+      setTotalWorkCheckList(res.data.content);
     })
     .catch((err) => {});
 }

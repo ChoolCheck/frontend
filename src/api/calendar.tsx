@@ -2,7 +2,7 @@ import axios from "axios";
 import { config } from "../static/config";
 import * as type from "./type/calendarType";
 import * as scheduleType from "./type/scheduleType";
-import * as workcheckType from "./type/workType";
+import * as workcheckType from "./type/workcheckType";
 import * as enumType from "../commonType/enum";
 
 import { GetDateMemoApi } from "./memo";

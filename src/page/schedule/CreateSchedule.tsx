@@ -37,12 +37,12 @@ const CreateSchedule = ({
 
   const [employee, setEmployee] = useState("");
   const [employeeId, setEmployeeId] = useState("");
-  const [hours_id, setHoursid] = useState("");
+  const [hoursId, setHoursid] = useState("");
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
   const [date, setDate] = useState("");
 
-  const scheduleForm = { employee, hours_id, date, startTime, endTime };
+  const scheduleForm = { employee, hoursId, date, startTime, endTime };
 
   const onClickCancelOnModal = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -115,7 +115,7 @@ const CreateSchedule = ({
       CreateScheduleApi({
         employeeId,
         date,
-        hours_id,
+        hoursId,
         startTime,
         endTime,
         setWriteModal,

@@ -45,7 +45,7 @@ export interface createScheduleViewProps
     worktypeType.workTypeList {
   scheduleForm: {
     employee: string;
-    hours_id: string;
+    hoursId: string;
     date: string;
     startTime: string;
     endTime: string;
@@ -76,7 +76,7 @@ export interface updateScheduleProps extends setScheduleListTypes {
 export interface updateScheduleViewProps
   extends employeeType.employeeList,
     worktypeType.workTypeList {
-  hours_id: string;
+  hoursId: string;
   employeeId: string;
   date: string;
   startTime: string;

@@ -47,7 +47,7 @@ const UpdateSchedule = ({
         : scheduleDetail.hours
       : ""
   );
-  const [hours_id, setHoursid] = useState("");
+  const [hoursId, setHoursid] = useState("");
   const [startTime, setStartTime] = useState(
     scheduleDetail ? scheduleDetail.startTime : ""
   );
@@ -130,7 +130,7 @@ const UpdateSchedule = ({
         id,
         employeeId,
         date,
-        hours_id,
+        hoursId,
         startTime,
         endTime,
         setWriteModal,
@@ -154,7 +154,7 @@ const UpdateSchedule = ({
         onChangeEndTime={onChangeEndTime}
         onClickUpdate={onClickUpdate}
         employeeId={employeeId}
-        hours_id={hours_id}
+        hoursId={hoursId}
         startTime={startTime}
         endTime={endTime}
         date={date}

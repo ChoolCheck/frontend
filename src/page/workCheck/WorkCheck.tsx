@@ -68,16 +68,15 @@ const WorkCheck = () => {
   const [totalPages, setTotalPages] = useState<number>(0);
   const [totalElements, setTotalElements] = useState<number>(0);
   const size = 10;
-
-  /*
-  const totalElement=87; // 전체 데이터 수
-  const limit=12; //페이지당 보여줄 데이터 수
-  //87 / 12 = 7 ... 3
-  const pageNum = (totalElement/limit)+1; //총 페이지 수
-  */
+  const [page, setPage] = useState<number>(0);
 
   useEffect(() => {
-    GetTotalWorkcheckApi({ setTotalWorkCheckList });
+    GetTotalWorkcheckApi({
+      setTotalWorkCheckList,
+      setTotalPages,
+      setTotalElements,
+      page,
+    });
     GetEmployeeApi({ setEmployeeList });
   }, []);
 
@@ -123,13 +122,18 @@ const WorkCheck = () => {
     <div className="WorkCheck-top-container">
       {writeModalState && (
         <WriteModal>
-          <CreateWorkCheck></CreateWorkCheck>
+          <CreateWorkCheck
+            setTotalPages={setTotalPages}
+            setTotalElements={setTotalElements}
+          ></CreateWorkCheck>
         </WriteModal>
       )}
 
       {readModalState && (
         <ReadModal>
           <WorkCheckDetail
+            setTotalPages={setTotalPages}
+            setTotalElements={setTotalElements}
             workcheckDetail={workcheckDetail}
             setWorkcheckToShow={setWorkcheckToShow}
           ></WorkCheckDetail>
@@ -149,6 +153,9 @@ const WorkCheck = () => {
         onItemClick={onItemClick}
         workcheckToShow={workcheckToShow}
         employeeList={employeeList}
+        totalPages={totalPages}
+        totalElements={totalElements}
+        page={page}
       ></WorkCheckView>
     </div>
   );

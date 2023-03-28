@@ -39,7 +39,7 @@ const CreateScheduleView = ({
             {workTypeList && workTypeList.length > 0 && (
               <div>
                 <input
-                  name="hours_id"
+                  name="hoursId"
                   type="radio"
                   onChange={onChangeWorkType(-1, "00:00", "00:00")}
                 />
@@ -50,7 +50,7 @@ const CreateScheduleView = ({
               workTypeList.map((item) => (
                 <div>
                   <input
-                    name="hours_id"
+                    name="hoursId"
                     type="radio"
                     value={item.title}
                     onChange={onChangeWorkType(
