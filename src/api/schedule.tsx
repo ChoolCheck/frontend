@@ -196,8 +196,8 @@ export async function GetTotalScheduleApi({
     },
   })
     .then((res) => {
-      setTotalPage(res.data.pageable.totalPages);
-      setTotalElement(res.data.pageable.setTotalElements);
+      setTotalPage(res.data.totalPages);
+      setTotalElement(res.data.setTotalElements);
       setScheduleToShow && setScheduleToShow(res.data.content);
       setTotalScheduleList(res.data.content);
     })

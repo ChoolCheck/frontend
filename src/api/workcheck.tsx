@@ -248,8 +248,9 @@ export async function GetTotalWorkcheckApi({
     },
   })
     .then((res) => {
-      setTotalPage(res.data.pageable.totalPages);
-      setTotalElement(res.data.pageable.setTotalElements);
+      console.log(res.data.pagable);
+      setTotalPage(res.data.totalPages);
+      setTotalElement(res.data.setTotalElements);
       setWorkcheckToShow && setWorkcheckToShow(res.data.content);
       setTotalWorkCheckList(res.data.content);
     })
