@@ -55,6 +55,7 @@ const WorkCheckView = ({
     for (let i = 0; i < totalPages.totalpageState; i++) {
       pageList.push(i);
     }
+    console.log(pageList);
   }, []);
 
   return (
@@ -135,13 +136,15 @@ const WorkCheckView = ({
             ))}
         </ul>
         <div className="pagination workcheck">
-          <p>
-            {pageList.map((item) => (
-              <button onClick={() => onPaginationClick(item)}>
-                {item + 1}
-              </button>
-            ))}
-          </p>
+          {pageList.length > 0 && (
+            <p>
+              {pageList.map((item) => (
+                <button onClick={() => onPaginationClick(item)}>
+                  {item + 1}
+                </button>
+              ))}
+            </p>
+          )}
         </div>
       </div>
     </div>

@@ -162,7 +162,7 @@ export async function GetDateWorkcheckApi({
 }: type.getDateWorkcheckProps) {
   await axios({
     method: "GET",
-    url: `${config.api}/work/date?dateFrom=${startInput}&dateTo=${endInput}`,
+    url: `${config.api}/work/?dateFrom=${startInput}&dateTo=${endInput}`,
     headers: {
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,
