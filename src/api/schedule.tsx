@@ -239,7 +239,7 @@ export async function GetEmployeeScheduleApi({
     },
   })
     .then((res) => {
-      setScheduleToShow(res.data);
+      setScheduleToShow(res.data.content);
     })
     .catch((err) => {});
 }

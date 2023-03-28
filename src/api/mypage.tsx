@@ -78,7 +78,6 @@ export async function SendEmailApi({ navigate }: type.sendEmailProps) {
 }
 
 export async function DeleteUserApi({ navigate }: type.sendEmailProps) {
-  LogoutApi({ navigate });
   await axios({
     method: "Delete",
     url: `${config.api}/user`,
@@ -89,6 +88,7 @@ export async function DeleteUserApi({ navigate }: type.sendEmailProps) {
   })
     .then((res) => {
       window.alert("탈퇴가 완료되었습니다.");
+      LogoutApi({ navigate });
     })
     .catch((err) => {
       window.alert("탈퇴에 실패하였습니다. 로그인 후 다시 시도해주세요.");

@@ -188,7 +188,7 @@ export async function GetDetailWorkcheckApi({
     },
   })
     .then((res) => {
-      setWorkcheckDetail(res.data);
+      setWorkcheckDetail(res.data.content);
     })
     .then((res) => {
       setReadModal(true);
@@ -209,7 +209,7 @@ export async function GetEmployeeWorkcheckApi({
     },
   })
     .then((res) => {
-      setWorkcheckToShow(res.data);
+      setWorkcheckToShow(res.data.content);
     })
     .catch((err) => {});
 }
