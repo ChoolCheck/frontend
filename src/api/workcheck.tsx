@@ -212,6 +212,8 @@ export async function GetEmployeeWorkcheckApi({
   let url;
   if (page && startInput && endInput) {
     url = `${config.api}/work?employee=${employeeId}&dateFrom=${startInput}&dateTo=${endInput}&page=${page}`;
+  } else if (startInput && endInput) {
+    url = `${config.api}/work?employee=${employeeId}&dateFrom=${startInput}&dateTo=${endInput}`;
   } else if (page) {
     url = `${config.api}/work?employee=${employeeId}&page=${page}`;
   } else url = `${config.api}/work?employee=${employeeId}`;
