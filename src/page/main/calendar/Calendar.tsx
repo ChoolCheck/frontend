@@ -77,7 +77,11 @@ export const Calendar = ({
 
           colorSpan.style.backgroundColor =
             calendarTotalList[i].backgroundColor;
-          titleSpan.innerText = calendarTotalList[i].title;
+          titleSpan.innerText = calendarTotalList[i].title.substring(
+            0,
+            calendarTotalList[i].title.length - 12
+          );
+
           titleSpan.style.color = calendarTotalList[i].textColor;
 
           calendarItem.appendChild(colorSpan);
