@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { setWriteModalOpen } from "../../../Redux/Actions/handleWriteModal";
 import ToggleButton from "../../../components/button/ToggleButton";
 
-import "./style/schedule.scss";
 import * as type from "../type";
 
 const ScheduleHeader = ({

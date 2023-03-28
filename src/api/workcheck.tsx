@@ -159,6 +159,8 @@ export async function GetDateWorkcheckApi({
   startInput,
   endInput,
   setWorkcheckToShow,
+  setTotalPage,
+  setTotalElement,
 }: type.getDateWorkcheckProps) {
   await axios({
     method: "GET",
@@ -169,6 +171,8 @@ export async function GetDateWorkcheckApi({
     },
   })
     .then((res) => {
+      setTotalPage(res.data.totalPages);
+      setTotalElement(res.data.setTotalElements);
       setWorkcheckToShow(res.data.content);
     })
     .catch((err) => {});
@@ -201,6 +205,8 @@ export async function GetEmployeeWorkcheckApi({
   endInput,
   employeeId,
   setWorkcheckToShow,
+  setTotalPage,
+  setTotalElement,
 }: type.getEmployeeWorkcheckProps) {
   await axios({
     method: "GET",
@@ -214,6 +220,8 @@ export async function GetEmployeeWorkcheckApi({
     },
   })
     .then((res) => {
+      setTotalPage(res.data.totalPages);
+      setTotalElement(res.data.setTotalElements);
       setWorkcheckToShow(res.data.content);
     })
     .catch((err) => {});

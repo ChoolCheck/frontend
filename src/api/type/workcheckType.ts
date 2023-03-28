@@ -80,7 +80,7 @@ export interface getMonthWorkcheckProps {
     React.SetStateAction<workcheckObjProps[] | undefined>
   >;
 }
-export interface getDateWorkcheckProps {
+export interface getDateWorkcheckProps extends paginationType.paginationProps {
   startInput: string;
   endInput: string;
   setWorkcheckToShow: React.Dispatch<
@@ -112,7 +112,8 @@ export interface getTotalWorkcheckProps extends paginationType.paginationProps {
   };
 }
 
-export interface getEmployeeWorkcheckProps {
+export interface getEmployeeWorkcheckProps
+  extends paginationType.paginationProps {
   employeeId: string;
   startInput?: string;
   endInput?: string;

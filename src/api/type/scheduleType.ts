@@ -41,7 +41,8 @@ export interface getDetailScheduleProps {
   };
 }
 
-export interface getEmployeeScheduleProps {
+export interface getEmployeeScheduleProps
+  extends paginationType.paginationProps {
   employeeId: string;
   setScheduleToShow: React.Dispatch<
     React.SetStateAction<scheduleObjProps[] | undefined>

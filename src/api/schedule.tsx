@@ -229,6 +229,8 @@ export async function GetDetailScheduleApi({
 export async function GetEmployeeScheduleApi({
   employeeId,
   setScheduleToShow,
+  setTotalPage,
+  setTotalElement,
 }: type.getEmployeeScheduleProps) {
   await axios({
     method: "GET",
@@ -239,6 +241,8 @@ export async function GetEmployeeScheduleApi({
     },
   })
     .then((res) => {
+      setTotalPage(res.data.totalPages);
+      setTotalElement(res.data.setTotalElements);
       setScheduleToShow(res.data.content);
     })
     .catch((err) => {});
