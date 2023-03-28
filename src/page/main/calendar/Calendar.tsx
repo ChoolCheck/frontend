@@ -70,10 +70,18 @@ export const Calendar = ({
             calendarTotalList[i].backgroundColor;
           calendarItem.style.color = calendarTotalList[i].textColor;
         } else {
-          calendarItem.innerText = calendarTotalList[i].title;
-          calendarItem.style.backgroundColor =
+          const colorSpan = document.createElement("span");
+          const titleSpan = document.createElement("span");
+          colorSpan.className = "colorSpan";
+          titleSpan.className = "titleSpan";
+
+          colorSpan.style.backgroundColor =
             calendarTotalList[i].backgroundColor;
-          calendarItem.style.color = calendarTotalList[i].textColor;
+          titleSpan.innerText = calendarTotalList[i].title;
+          titleSpan.style.color = calendarTotalList[i].textColor;
+
+          calendarItem.appendChild(colorSpan);
+          calendarItem.appendChild(titleSpan);
         }
         calendarItemContainer?.appendChild(calendarItem);
       }
