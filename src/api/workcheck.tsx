@@ -169,7 +169,7 @@ export async function GetDateWorkcheckApi({
     },
   })
     .then((res) => {
-      setWorkcheckToShow(res.data);
+      setWorkcheckToShow(res.data.content);
     })
     .catch((err) => {});
 }
@@ -188,7 +188,7 @@ export async function GetDetailWorkcheckApi({
     },
   })
     .then((res) => {
-      setWorkcheckDetail(res.data.content);
+      setWorkcheckDetail(res.data);
     })
     .then((res) => {
       setReadModal(true);
