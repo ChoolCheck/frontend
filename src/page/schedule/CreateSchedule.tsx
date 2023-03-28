@@ -17,6 +17,7 @@ const CreateSchedule = ({
   setWeekScheduleList,
   setTotalScheduleList,
   setScheduleToShow,
+  setPaginationFocus,
 }: type.createScheduleProps) => {
   const dispatch = useDispatch();
 
@@ -125,7 +126,8 @@ const CreateSchedule = ({
       window.alert("시작 시간을 선택해주세요.");
     } else if (endTime == "") {
       window.alert("종료 시간을 선택해주세요.");
-    } else
+    } else {
+      setPaginationFocus("total");
       CreateScheduleApi({
         employeeId,
         date,
@@ -139,6 +141,7 @@ const CreateSchedule = ({
         setTotalPage,
         setScheduleToShow,
       });
+    }
   };
 
   return (

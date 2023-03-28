@@ -20,6 +20,7 @@ const UpdateSchedule = ({
   setWeekScheduleList,
   setTotalScheduleList,
   setScheduleToShow,
+  setPaginationFocus,
 }: type.updateScheduleProps) => {
   const dispatch = useDispatch();
 
@@ -138,7 +139,8 @@ const UpdateSchedule = ({
       window.alert("시작 시간을 선택해주세요.");
     } else if (endTime == "") {
       window.alert("종료 시간을 선택해주세요.");
-    } else
+    } else {
+      setPaginationFocus("total");
       UpdateScheduleApi({
         id,
         employeeId,
@@ -154,6 +156,7 @@ const UpdateSchedule = ({
         setTotalElement,
         setTotalPage,
       });
+    }
   };
 
   return (

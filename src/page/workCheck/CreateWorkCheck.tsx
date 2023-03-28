@@ -14,7 +14,7 @@ import * as worktypeType from "../../commonType/worktype";
 
 import CreateWorkCheckView from "./view/CreateWorkCheckView";
 
-const CreateWorkCheck = () => {
+const CreateWorkCheck = ({ setPaginationFocus }: type.createWorkCheckProps) => {
   const dispatch = useDispatch();
 
   const setWriteModal = useCallback(
@@ -128,6 +128,7 @@ const CreateWorkCheck = () => {
     } else if (endTime == "") {
       window.alert("종료 시간을 선택해주세요.");
     } else {
+      setPaginationFocus("total");
       CreateWorkcheckApi({
         employeeId,
         date,

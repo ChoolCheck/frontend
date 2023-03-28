@@ -155,6 +155,7 @@ const Schedule = () => {
             setWeekScheduleList={setWeekScheduleList}
             setTotalScheduleList={setTotalScheduleList}
             setScheduleToShow={setScheduleToShow}
+            setPaginationFocus={setPaginationFocus}
           ></CreateSchedule>
         </WriteModal>
       )}
@@ -167,6 +168,7 @@ const Schedule = () => {
             setWeekScheduleList={setWeekScheduleList}
             setTotalScheduleList={setTotalScheduleList}
             setScheduleToShow={setScheduleToShow}
+            setPaginationFocus={setPaginationFocus}
           ></UpdateSchedule>
         </WriteModal>
       )}
@@ -179,6 +181,7 @@ const Schedule = () => {
             setWeekScheduleList={setWeekScheduleList}
             setScheduleToShow={setScheduleToShow}
             setSelectedModal={setSelectedModal}
+            setPaginationFocus={setPaginationFocus}
           ></ScheduleDetail>
         </ReadModal>
       )}

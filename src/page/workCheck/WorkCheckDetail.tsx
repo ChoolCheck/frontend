@@ -20,6 +20,7 @@ import { DeleteWorkcheckApi } from "../../api/workcheck";
 const WorkCheckDetail = ({
   workcheckDetail,
   setWorkcheckToShow,
+  setPaginationFocus,
 }: type.workcheckDetailProps) => {
   const dispatch = useDispatch();
 
@@ -59,7 +60,7 @@ const WorkCheckDetail = ({
   const onDeleteClick = (id: number) => {
     return (e: React.MouseEvent<HTMLButtonElement>) => {
       if (window.confirm("해당 스케줄을 정말로 삭제하시겠습니까?")) {
-        const page = 0;
+        setPaginationFocus("total");
         DeleteWorkcheckApi({
           setReadModal,
           id,
@@ -67,7 +68,6 @@ const WorkCheckDetail = ({
           setWorkcheckToShow,
           setTotalPage,
           setTotalElement,
-          page,
         });
       }
     };
@@ -81,6 +81,7 @@ const WorkCheckDetail = ({
             id={workcheckDetail ? workcheckDetail.id : 0}
             workcheckDetail={workcheckDetail}
             setWorkcheckToShow={setWorkcheckToShow}
+            setPaginationFocus={setPaginationFocus}
           ></UpdateWorkCheck>
         </WriteModal>
       )}

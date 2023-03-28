@@ -17,6 +17,9 @@ export interface workcheckHeaderProps {
   onClickGetFile: () => void;
 }
 
+export interface createWorkCheckProps {
+  setPaginationFocus: React.Dispatch<React.SetStateAction<string>>;
+}
 export interface createWorkCheckViewProps
   extends employeeType.employeeList,
     worktypeType.workTypeList {
@@ -66,6 +69,7 @@ export interface updateWorkcheckProps {
   setWorkcheckToShow: (
     value: React.SetStateAction<workcheckObjProps[] | undefined>
   ) => void;
+  setPaginationFocus: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export interface updateWorkcheckViewProps
@@ -97,6 +101,7 @@ export interface workcheckDetailProps {
     value: React.SetStateAction<workcheckObjProps[] | undefined>
   ) => void;
   workcheckDetail: workcheckObjProps | undefined;
+  setPaginationFocus: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export interface workcheckDetailViewProps {

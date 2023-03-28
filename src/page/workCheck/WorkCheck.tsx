@@ -229,7 +229,9 @@ const WorkCheck = () => {
     <div className="WorkCheck-top-container">
       {writeModalState && (
         <WriteModal>
-          <CreateWorkCheck></CreateWorkCheck>
+          <CreateWorkCheck
+            setPaginationFocus={setPaginationFocus}
+          ></CreateWorkCheck>
         </WriteModal>
       )}
 
@@ -238,6 +240,7 @@ const WorkCheck = () => {
           <WorkCheckDetail
             workcheckDetail={workcheckDetail}
             setWorkcheckToShow={setWorkcheckToShow}
+            setPaginationFocus={setPaginationFocus}
           ></WorkCheckDetail>
         </ReadModal>
       )}

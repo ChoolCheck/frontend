@@ -19,6 +19,7 @@ const UpdateWorkCheck = ({
   id,
   workcheckDetail,
   setWorkcheckToShow,
+  setPaginationFocus,
 }: type.updateWorkcheckProps) => {
   const dispatch = useDispatch();
 
@@ -144,6 +145,7 @@ const UpdateWorkCheck = ({
     } else if (endTime == "") {
       window.alert("종료 시간을 선택해주세요.");
     } else {
+      setPaginationFocus("total");
       UpdateWorkcheckApi({
         id,
         employeeId,

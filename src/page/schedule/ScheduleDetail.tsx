@@ -17,6 +17,7 @@ const ScheduleDetail = ({
   setWeekScheduleList,
   setScheduleToShow,
   setSelectedModal,
+  setPaginationFocus,
 }: type.scheduleDetailProps) => {
   const dispatch = useDispatch();
 
@@ -50,6 +51,7 @@ const ScheduleDetail = ({
   const onDeleteClick = (id: number) => {
     return (e: React.MouseEvent<HTMLButtonElement>) => {
       if (window.confirm("해당 스케줄을 정말로 삭제하시겠습니까?")) {
+        setPaginationFocus("total");
         DeleteScheduleApi({
           setReadModal,
           id,
