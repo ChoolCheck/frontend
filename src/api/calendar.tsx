@@ -65,7 +65,7 @@ export async function GetTotalCalendarApi({
   renderData,
 }: type.getTotalCalendarProps) {
   const inputDate = new Date(date);
-  const nowDate = new Date();
+  // const nowDate = new Date();
 
   const inputYear = inputDate.getFullYear();
   const inputMonth =
