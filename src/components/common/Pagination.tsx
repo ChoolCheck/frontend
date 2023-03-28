@@ -25,8 +25,9 @@ const Pagination = ({ onPaginationClick, page }: paginationProps) => {
               page == i
                 ? {
                     fontWeight: 700,
+                    color: "#d2d2d2",
                   }
-                : { fontWeight: 300 }
+                : { color: "black" }
             }
           >
             {i + 1}
