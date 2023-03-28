@@ -240,9 +240,9 @@ export async function GetDetailCalendarApi({
   axios
     .all([
       axiosInstance.get(
-        `${config.api}/schedule?dateFrom=${date}?dateTo=&${date}`
+        `${config.api}/schedule?dateFrom=${date}?dateTo=${date}`
       ),
-      axiosInstance.get(`${config.api}/work?dateFrom=${date}?dateTo=&${date}`),
+      axiosInstance.get(`${config.api}/work?dateFrom=${date}?dateTo=${date}`),
     ])
     .then(
       axios.spread((res1, res2) => {
