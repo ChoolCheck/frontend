@@ -115,14 +115,14 @@ const WorkCheck = () => {
   };
 
   const onShowNameButtonClick = (id: number) => {
-    setEmployeeToShow(id.toString());
-    const employeeId = id.toString();
-    setPaginationFocus("employee");
-
-    console.log(id);
-    console.log(employeeId);
     return (e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
+      setEmployeeToShow(id.toString());
+      const employeeId = id.toString();
+      setPaginationFocus("employee");
+
+      console.log(id);
+      console.log(employeeId);
       if (startInput !== "" && endInput !== "")
         GetEmployeeWorkcheckApi({
           employeeId,
