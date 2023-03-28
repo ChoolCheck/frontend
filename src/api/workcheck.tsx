@@ -260,7 +260,9 @@ export async function GetTotalWorkcheckApi({
   let url;
   if (page && startInput && endInput)
     url = `${config.api}/work?dateFrom=${startInput}&dateTo=${endInput}&page=${page}`;
-  else if (page) {
+  else if (startInput && endInput) {
+    url = `${config.api}/work?dateFrom=${startInput}&dateTo=${endInput}`;
+  } else if (page) {
     url = `${config.api}/work?dateFrom=${monthStart}&dateTo=${monthEnd}&page=${page}`;
   } else {
     url = `${config.api}/work?dateFrom=${monthStart}&dateTo=${monthEnd}&page=${page}`;

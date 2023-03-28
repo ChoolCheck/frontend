@@ -124,9 +124,9 @@ const WorkCheck = () => {
       if (startInput !== "" && endInput !== "")
         GetEmployeeWorkcheckApi({
           employeeId: id.toString(),
-          setWorkcheckToShow,
           startInput,
           endInput,
+          setWorkcheckToShow,
           setTotalElement,
           setTotalPage,
         });
@@ -161,8 +161,6 @@ const WorkCheck = () => {
         setWorkcheckToShow,
       });
     }
-
-    // setWorkcheckToShow(totalWorkCheckList.totalWorkcheckList);
   };
 
   const onItemClick = (id: number) => {
