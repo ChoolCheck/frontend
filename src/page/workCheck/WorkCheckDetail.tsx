@@ -5,6 +5,9 @@ import { useDispatch } from "react-redux";
 import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
 import { setReadModalOpen } from "../../Redux/Actions/handleReadModal";
 import { setTotalWorkcheckList } from "../../Redux/Actions/handleTotalWorkcheckList";
+import { setTotalElements } from "../../Redux/Actions/handleTotalElement";
+import { setTotalPages } from "../../Redux/Actions/handleTotalPages";
+
 import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/Reducers/rootReducer";
 
@@ -17,8 +20,6 @@ import { DeleteWorkcheckApi } from "../../api/workcheck";
 const WorkCheckDetail = ({
   workcheckDetail,
   setWorkcheckToShow,
-  setTotalPages,
-  setTotalElements,
 }: type.workcheckDetailProps) => {
   const dispatch = useDispatch();
 
@@ -40,6 +41,16 @@ const WorkCheckDetail = ({
       dispatch(setTotalWorkcheckList(totalWorkcheckList)),
     [dispatch]
   );
+  const setTotalElement = useCallback(
+    (totalElementState: number) =>
+      dispatch(setTotalElements(totalElementState)),
+    [dispatch]
+  );
+
+  const setTotalPage = useCallback(
+    (totalPageState: number) => dispatch(setTotalPages(totalPageState)),
+    [dispatch]
+  );
 
   const onUpdateClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     setWriteModal(true);
@@ -54,8 +65,8 @@ const WorkCheckDetail = ({
           id,
           setTotalWorkCheckList,
           setWorkcheckToShow,
-          setTotalPages,
-          setTotalElements,
+          setTotalPage,
+          setTotalElement,
           page,
         });
       }
@@ -70,8 +81,6 @@ const WorkCheckDetail = ({
             id={workcheckDetail ? workcheckDetail.id : 0}
             workcheckDetail={workcheckDetail}
             setWorkcheckToShow={setWorkcheckToShow}
-            setTotalPages={setTotalPages}
-            setTotalElements={setTotalElements}
           ></UpdateWorkCheck>
         </WriteModal>
       )}

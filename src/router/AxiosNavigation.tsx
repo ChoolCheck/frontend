@@ -21,6 +21,7 @@ export default function AxiosNavigation() {
       },
       async function (error) {
         const originalConfig = error.config;
+        console.log(originalConfig);
         if (
           error.response.status == 401 &&
           error.response.data.message == "expired"
