@@ -20,6 +20,7 @@ import ReadModal from "../../components/modal/ReadModal";
 import CreateWorkCheck from "./CreateWorkCheck";
 import WorkCheckDetail from "./WorkCheckDetail";
 import WorkCheckView from "./view/WorkCheckView";
+import WorkCheckHeader from "./WorkcheckHeader";
 
 import "./style/workCheck.scss";
 import * as type from "./type";
@@ -62,6 +63,18 @@ const WorkCheck = () => {
 
   const [startInput, setStartInput] = useState("");
   const [endInput, setEndInput] = useState("");
+
+  //pagination
+  const [totalPages, setTotalPages] = useState<number>(0);
+  const [totalElements, setTotalElements] = useState<number>(0);
+  const size = 10;
+
+  /*
+  const totalElement=87; // 전체 데이터 수
+  const limit=12; //페이지당 보여줄 데이터 수
+  //87 / 12 = 7 ... 3
+  const pageNum = (totalElement/limit)+1; //총 페이지 수
+  */
 
   useEffect(() => {
     GetTotalWorkcheckApi({ setTotalWorkCheckList });
@@ -122,37 +135,13 @@ const WorkCheck = () => {
           ></WorkCheckDetail>
         </ReadModal>
       )}
-      <div className="WorkCheck-Header-container">
-        <span className="WorkCheck-Header">기간 내 조회</span>
-        <form>
-          <input
-            className="WorkCheck-startInput"
-            onChange={onChageStartInput}
-            type="date"
-            required
-            aria-required="true"
-          ></input>
-          -
-          <input
-            className="WorkCheck-endInput"
-            onChange={onChageEndInput}
-            type="date"
-            required
-            aria-required="true"
-          ></input>
-          <button
-            type="button"
-            className="WorkCheck-getResultButton"
-            onClick={onGetDateResultClick}
-          >
-            조회
-          </button>
-        </form>
 
-        <button className="getFileButton" onClick={onClickGetFile}>
-          출근부 엑셀 파일 다운로드
-        </button>
-      </div>
+      <WorkCheckHeader
+        onChageStartInput={onChageStartInput}
+        onChageEndInput={onChageEndInput}
+        onGetDateResultClick={onGetDateResultClick}
+        onClickGetFile={onClickGetFile}
+      ></WorkCheckHeader>
 
       <WorkCheckView
         onShowNameButtonClick={onShowNameButtonClick}

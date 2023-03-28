@@ -134,9 +134,10 @@ export async function GetDetailCalendarApi({
     ])
     .then(
       axios.spread((res1, res2) => {
-        const scheduleDetailList: scheduleType.scheduleObjProps[] = res1.data;
+        const scheduleDetailList: scheduleType.scheduleObjProps[] =
+          res1.data.content;
         const workcheckDetailList: workcheckType.workcheckObjProps[] =
-          res2.data;
+          res2.data.content;
 
         for (let i = 0; i < scheduleDetailList.length; i++) {
           const data: type.calendarDetailType = {

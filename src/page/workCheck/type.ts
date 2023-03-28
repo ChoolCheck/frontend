@@ -10,7 +10,12 @@ export interface workcheckObjProps {
   color: string;
   id: number;
 }
-
+export interface workcheckHeaderProps {
+  onChageStartInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChageEndInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onGetDateResultClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onClickGetFile: () => void;
+}
 export interface createWorkCheckProps {}
 
 export interface createWorkCheckViewProps
