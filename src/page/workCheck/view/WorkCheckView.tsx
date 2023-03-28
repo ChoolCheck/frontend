@@ -1,10 +1,13 @@
+import { useSelector } from "react-redux";
+import { RootState } from "../../../Redux/Reducers/rootReducer";
+
+import { useEffect, useState } from "react";
+import { GetTotalWorkcheckApi } from "../../../api/workcheck";
+import { setTotalWorkcheckList } from "../../../Redux/Actions/handleTotalWorkcheckList";
+
 import "../style/workCheckView.scss";
 import * as type from "../type";
 import * as enumType from "../../../commonType/enum";
-import { useSelector } from "react-redux";
-
-import { RootState } from "../../../Redux/Reducers/rootReducer";
-import { useState } from "react";
 
 const WorkCheckView = ({
   onShowNameButtonClick,
@@ -12,6 +15,12 @@ const WorkCheckView = ({
   onItemClick,
   workcheckToShow,
   employeeList,
+  totalPages,
+  totalElements,
+  page,
+  setTotalPages,
+  setTotalElements,
+  onPaginationClick,
 }: type.workCheckViewProps) => {
   const totalWorkCheckList = useSelector(
     (state: RootState) => state.totalWorkcheckListReducer
@@ -22,6 +31,13 @@ const WorkCheckView = ({
     : totalWorkCheckList.totalWorkcheckList;
 
   const day = ["일", "월", "화", "수", "목", "금", "토"];
+  const [pages, setPages] = useState<Array<number>>([]);
+
+  useEffect(() => {
+    for (let i = 0; i < totalPages; i++) {
+      pages.push(i);
+    }
+  }, []);
 
   return (
     <div className="WorkCheckView-top-container">
@@ -100,7 +116,15 @@ const WorkCheckView = ({
               </li>
             ))}
         </ul>
-        <div className="pagination workcheck"></div>
+        <div className="pagination workcheck">
+          <p>
+            {pages.map((item) => (
+              <button onClick={() => onPaginationClick(item)}>
+                {item + 1}
+              </button>
+            ))}
+          </p>
+        </div>
       </div>
     </div>
   );

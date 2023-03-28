@@ -48,7 +48,7 @@ export interface createWorkCheckViewProps
   onClickCreate: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-export interface workCheckViewProps {
+export interface workCheckViewProps extends paginationProps {
   onItemClick: (id: number) => (e: React.MouseEvent<HTMLLIElement>) => void;
   onShowNameButtonClick: (
     id: number
@@ -60,7 +60,9 @@ export interface workCheckViewProps {
   workcheckToShow: workcheckObjProps[] | undefined;
   totalPages: number;
   totalElements: number;
-  page: number;
+  onPaginationClick: (
+    item: number
+  ) => (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export interface updateWorkcheckProps extends paginationProps {

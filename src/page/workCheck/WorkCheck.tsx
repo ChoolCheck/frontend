@@ -118,6 +118,17 @@ const WorkCheck = () => {
     }
   };
 
+  const onPaginationClick = (item: number) => {
+    return (e: React.MouseEvent<HTMLButtonElement>) => {
+      GetTotalWorkcheckApi({
+        setTotalWorkCheckList,
+        setTotalPages,
+        setTotalElements,
+        page,
+      });
+    };
+  };
+
   return (
     <div className="WorkCheck-top-container">
       {writeModalState && (
@@ -156,6 +167,9 @@ const WorkCheck = () => {
         totalPages={totalPages}
         totalElements={totalElements}
         page={page}
+        setTotalPages={setTotalPages}
+        setTotalElements={setTotalElements}
+        onPaginationClick={onPaginationClick}
       ></WorkCheckView>
     </div>
   );
