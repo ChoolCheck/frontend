@@ -18,17 +18,17 @@ export const Calendar = ({
   const [currentMonth, setCurrentMonth] = useState<Date>(new Date());
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
 
-  useEffect(() => {
-    const now = new Date();
-    const date =
-      now.getFullYear() +
-      "-" +
-      (now.getMonth() + 1 < 10
-        ? "0" + (now.getMonth() + 1)
-        : now.getMonth() + 1) +
-      "-" +
-      (now.getDate() + 1 < 10 ? "0" + (now.getDate() + 1) : now.getDate() + 1);
+  const now = new Date();
+  const date =
+    now.getFullYear() +
+    "-" +
+    (now.getMonth() + 1 < 10
+      ? "0" + (now.getMonth() + 1)
+      : now.getMonth() + 1) +
+    "-" +
+    (now.getDate() < 10 ? "0" + now.getDate() : now.getDate());
 
+  useEffect(() => {
     GetTotalCalendarApi({ date, setCalendarTotalList, renderData });
   }, []);
 
@@ -59,14 +59,22 @@ export const Calendar = ({
         }
       }
 
+      const cellDate = new Date(calendarTotalList[i].date);
       if (!cell?.classList.contains("disabled")) {
         const calendarItem = document.createElement("p");
         calendarItem.className = "calendarItem";
-        calendarItem.innerText = calendarTotalList[i].title;
-        calendarItem.style.backgroundColor =
-          calendarTotalList[i].backgroundColor;
-        calendarItem.style.color = calendarTotalList[i].textColor;
 
+        if (now <= cellDate) {
+          calendarItem.innerText = calendarTotalList[i].title;
+          calendarItem.style.backgroundColor =
+            calendarTotalList[i].backgroundColor;
+          calendarItem.style.color = calendarTotalList[i].textColor;
+        } else {
+          calendarItem.innerText = calendarTotalList[i].title;
+          calendarItem.style.backgroundColor =
+            calendarTotalList[i].backgroundColor;
+          calendarItem.style.color = calendarTotalList[i].textColor;
+        }
         calendarItemContainer?.appendChild(calendarItem);
       }
     }
