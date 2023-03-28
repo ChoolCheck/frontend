@@ -20,7 +20,7 @@ export interface scheduleObjProps {
   id: number;
 }
 
-export interface scheduleTotalProps {
+export interface scheduleTotalViewProps {
   onItemClick: (id: number) => (e: React.MouseEvent<HTMLLIElement>) => void;
   onShowNameButtonClick: (
     id: number
@@ -31,6 +31,14 @@ export interface scheduleTotalProps {
   totalScheduleList: scheduleObjProps[] | undefined;
 
   scheduleToShow: scheduleObjProps[] | undefined;
+  onPaginationClick: (
+    item: number
+  ) => (e: React.MouseEvent<HTMLButtonElement>) => void;
+}
+export interface scheduleHeaderProps {
+  setSelectedModal: React.Dispatch<React.SetStateAction<string>>;
+  leftOrRight: boolean;
+  setLeftOrRight: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export interface scheduleWeeklyProps {

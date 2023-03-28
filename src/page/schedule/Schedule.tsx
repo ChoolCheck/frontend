@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useDispatch } from "react-redux";
-import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
 import { setReadModalOpen } from "../../Redux/Actions/handleReadModal";
 import { setTotalElements } from "../../Redux/Actions/handleTotalElement";
 import { setTotalPages } from "../../Redux/Actions/handleTotalPages";
@@ -23,8 +22,7 @@ import ScheduleTotalView from "./view/ScheduleTotalView";
 import ScheduleDetail from "./ScheduleDetail";
 import UpdateSchedule from "./UpdateSchedule";
 import CreateSchedule from "./CreateSchedule";
-
-import ToggleButton from "../../components/button/ToggleButton";
+import ScheduleHeader from "./view/ScheduleHeader";
 
 import "./style/schedule.scss";
 import * as type from "./type";
@@ -45,17 +43,12 @@ const Schedule = () => {
     (readModalState: boolean) => dispatch(setReadModalOpen(readModalState)),
     [dispatch]
   );
-  const setWriteModal = useCallback(
-    (readModalState: boolean) => dispatch(setWriteModalOpen(readModalState)),
-    [dispatch]
-  );
 
   const setTotalElement = useCallback(
     (totalElementState: number) =>
       dispatch(setTotalElements(totalElementState)),
     [dispatch]
   );
-
   const setTotalPage = useCallback(
     (totalPageState: number) => dispatch(setTotalPages(totalPageState)),
     [dispatch]
@@ -79,6 +72,8 @@ const Schedule = () => {
   const [scheduleDetail, setScheduleDetail] = useState<type.scheduleObjProps>();
 
   const [selectedModal, setSelectedModal] = useState<string>("");
+
+  const [page, setPage] = useState<number>(0);
 
   useEffect(() => {
     GetWeekScheduleApi({ setWeekScheduleList });
@@ -108,29 +103,27 @@ const Schedule = () => {
     };
   };
 
+  const onPaginationClick = (item: number) => {
+    const page = item;
+    setPage(item);
+    return (e: React.MouseEvent<HTMLButtonElement>) => {
+      e.preventDefault();
+      GetTotalScheduleApi({
+        setTotalScheduleList,
+        page,
+        setTotalPage,
+        setTotalElement,
+      });
+    };
+  };
+
   return (
     <div className="Schedule-top-container">
-      <div className="Schedule-Header-container">
-        <div className="Schedule-Header-left">
-          <ToggleButton
-            leftButtonTitle="이번주스케줄"
-            rightButtonTitle="전체스케줄"
-            leftOrRight={leftOrRight}
-            setLeftOrRight={setLeftOrRight}
-          ></ToggleButton>
-        </div>
-        <div className="Schedule-Header-right">
-          <button
-            className="add-Schedule-button page-header-button"
-            onClick={() => {
-              setWriteModal(true);
-              setSelectedModal("create");
-            }}
-          >
-            스케줄추가
-          </button>
-        </div>
-      </div>
+      <ScheduleHeader
+        setSelectedModal={setSelectedModal}
+        leftOrRight={leftOrRight}
+        setLeftOrRight={setLeftOrRight}
+      ></ScheduleHeader>
 
       {writeModalState && selectedModal == "create" && (
         <WriteModal>
@@ -178,6 +171,7 @@ const Schedule = () => {
           onShowNameButtonClick={onShowNameButtonClick}
           onShowTotalButtonClick={onShowTotalButtonClick}
           onItemClick={onItemClick}
+          onPaginationClick={onPaginationClick}
         ></ScheduleTotalView>
       )}
     </div>

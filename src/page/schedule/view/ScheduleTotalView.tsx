@@ -1,3 +1,4 @@
+import Pagination from "../../../components/common/Pagination";
 import "../style/schedule-total.scss";
 import * as type from "../type";
 import * as enumType from "../../../commonType/enum";
@@ -9,6 +10,7 @@ const ScheduleTotalView = ({
   scheduleToShow,
   employeeList,
   totalScheduleList,
+  onPaginationClick,
 }: type.scheduleTotalProps) => {
   const totalList = scheduleToShow ? scheduleToShow : totalScheduleList;
   const day = ["일", "월", "화", "수", "목", "금", "토"];
@@ -84,6 +86,7 @@ const ScheduleTotalView = ({
               </li>
             ))}
         </ul>
+        <Pagination onPaginationClick={onPaginationClick}></Pagination>
       </div>
     </div>
   );
