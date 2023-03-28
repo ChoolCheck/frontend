@@ -1,12 +1,8 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 
 import { useSelector } from "react-redux";
 import { RootState } from "../../../Redux/Reducers/rootReducer";
 import { useDispatch } from "react-redux";
-import { GetTotalWorkcheckApi } from "../../../api/workcheck";
-import { setTotalWorkcheckList } from "../../../Redux/Actions/handleTotalWorkcheckList";
-import { setTotalElements } from "../../../Redux/Actions/handleTotalElement";
-import { setTotalPages } from "../../../Redux/Actions/handleTotalPages";
 
 import "../style/workCheckView.scss";
 import * as type from "../type";
@@ -21,28 +17,17 @@ const WorkCheckView = ({
   page,
   onPaginationClick,
 }: type.workCheckViewProps) => {
-  const dispatch = useDispatch();
-
-  const setTotalElement = useCallback(
-    (totalElementState: number) =>
-      dispatch(setTotalElements(totalElementState)),
-    [dispatch]
-  );
-
-  const setTotalPage = useCallback(
-    (totalPageState: number) => dispatch(setTotalPages(totalPageState)),
-    [dispatch]
-  );
-
   const totalWorkCheckList = useSelector(
     (state: RootState) => state.TotalWorkcheckListReducer
   );
 
   const totalElements = useSelector(
-    (state: RootState) => state.TotalWorkcheckListReducer
+    (state: RootState) => state.TotalElementReducer.totalElementState
   );
 
-  const totalPages = useSelector((state: RootState) => state.TotalPageReducer);
+  const totalPages = useSelector(
+    (state: RootState) => state.TotalPageReducer.totalpageState
+  );
 
   const totalList = workcheckToShow
     ? workcheckToShow
@@ -52,7 +37,7 @@ const WorkCheckView = ({
   const [pageList, setPageList] = useState<Array<number>>([]);
 
   useEffect(() => {
-    for (let i = 0; i < totalPages.totalpageState; i++) {
+    for (let i = 0; i < totalPages; i++) {
       pageList.push(i);
     }
     console.log(pageList);
@@ -136,15 +121,17 @@ const WorkCheckView = ({
             ))}
         </ul>
         <div className="pagination workcheck">
-          {pageList.length > 0 && (
-            <p>
-              {pageList.map((item) => (
-                <button onClick={() => onPaginationClick(item)}>
-                  {item + 1}
-                </button>
-              ))}
-            </p>
-          )}
+          <p className="pagination button-container">
+            {[...Array(totalPages)].map((i) => (
+              <button
+                className="pagination buttons"
+                onClick={() => onPaginationClick(i)}
+                key={i}
+              >
+                {i + 1}
+              </button>
+            ))}
+          </p>
         </div>
       </div>
     </div>

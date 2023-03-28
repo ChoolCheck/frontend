@@ -197,12 +197,17 @@ export async function GetDetailWorkcheckApi({
 }
 
 export async function GetEmployeeWorkcheckApi({
+  startInput,
+  endInput,
   employeeId,
   setWorkcheckToShow,
 }: type.getEmployeeWorkcheckProps) {
   await axios({
     method: "GET",
-    url: `${config.api}/work?employee=${employeeId}`,
+    url:
+      startInput && endInput
+        ? `${config.api}/work?employee=${employeeId}`
+        : `${config.api}/work?employee=${employeeId}&dateFrom=${startInput}&dateTo=${endInput}`,
     headers: {
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -248,7 +253,6 @@ export async function GetTotalWorkcheckApi({
     },
   })
     .then((res) => {
-      console.log(res.data.pagable);
       setTotalPage(res.data.totalPages);
       setTotalElement(res.data.setTotalElements);
       setWorkcheckToShow && setWorkcheckToShow(res.data.content);

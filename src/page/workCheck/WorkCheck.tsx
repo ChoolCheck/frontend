@@ -109,7 +109,14 @@ const WorkCheck = () => {
   const onShowNameButtonClick = (id: number) => {
     const employeeId = id.toString();
     return (e: React.MouseEvent<HTMLButtonElement>) => {
-      GetEmployeeWorkcheckApi({ employeeId, setWorkcheckToShow });
+      if (startInput && endInput)
+        GetEmployeeWorkcheckApi({
+          employeeId,
+          setWorkcheckToShow,
+          startInput,
+          endInput,
+        });
+      else GetEmployeeWorkcheckApi({ employeeId, setWorkcheckToShow });
     };
   };
 

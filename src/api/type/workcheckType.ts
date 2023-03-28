@@ -114,6 +114,8 @@ export interface getTotalWorkcheckProps extends paginationType.paginationProps {
 
 export interface getEmployeeWorkcheckProps {
   employeeId: string;
+  startInput?: string;
+  endInput?: string;
   setWorkcheckToShow: React.Dispatch<
     React.SetStateAction<workcheckObjProps[] | undefined>
   >;
