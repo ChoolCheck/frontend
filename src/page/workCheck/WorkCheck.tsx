@@ -123,7 +123,7 @@ const WorkCheck = () => {
 
       if (startInput !== "" && endInput !== "")
         GetEmployeeWorkcheckApi({
-          employeeId: employeeToShow,
+          employeeId: id.toString(),
           setWorkcheckToShow,
           startInput,
           endInput,
@@ -132,7 +132,7 @@ const WorkCheck = () => {
         });
       else
         GetEmployeeWorkcheckApi({
-          employeeId: employeeToShow,
+          employeeId: id.toString(),
           setWorkcheckToShow,
           setTotalElement,
           setTotalPage,
@@ -172,12 +172,23 @@ const WorkCheck = () => {
       setPage(item);
 
       if (paginationFocus == "total") {
-        GetTotalWorkcheckApi({
-          setTotalWorkCheckList,
-          setTotalPage,
-          setTotalElement,
-          page: item,
-        });
+        if (startInput !== "" && endInput !== "") {
+          GetTotalWorkcheckApi({
+            setTotalWorkCheckList,
+            setTotalPage,
+            setTotalElement,
+            page: item,
+            startInput,
+            endInput,
+          });
+        } else {
+          GetTotalWorkcheckApi({
+            setTotalWorkCheckList,
+            setTotalPage,
+            setTotalElement,
+            page: item,
+          });
+        }
       } else if (paginationFocus == "employee") {
         if (startInput !== "" && endInput !== "")
           GetEmployeeWorkcheckApi({

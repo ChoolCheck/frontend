@@ -238,6 +238,8 @@ export async function GetTotalWorkcheckApi({
   setTotalPage,
   setTotalElement,
   page,
+  startInput,
+  endInput,
 }: type.getTotalWorkcheckProps) {
   const now = new Date();
 
@@ -249,17 +251,22 @@ export async function GetTotalWorkcheckApi({
       : now.getMonth() + 1) +
     "-";
 
-  const startInput = yearmonth + "01";
-  const endInput =
+  const monthStart = yearmonth + "01";
+  const monthEnd =
     yearmonth + new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+
+  let url;
+  if (page && startInput && endInput)
+    url = `${config.api}/work?dateFrom=${startInput}&dateTo=${endInput}&page=${page}`;
+  else if (page) {
+    url = `${config.api}/work?dateFrom=${monthStart}&dateTo=${monthEnd}&page=${page}`;
+  } else {
+    url = `${config.api}/work?dateFrom=${monthStart}&dateTo=${monthEnd}&page=${page}`;
+  }
 
   await axios({
     method: "GET",
-    url: page
-      ? `${config.api}/work?dateFrom=${startInput}&dateTo=${endInput}&page=${page}`
-      : `${
-          config.api
-        }/work?dateFrom=${startInput}&dateTo=${endInput}&page=${0}`,
+    url: url,
     headers: {
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,

@@ -110,6 +110,9 @@ export interface getTotalWorkcheckProps extends paginationType.paginationProps {
     type: "handleTotalWorkcheckList/SETTOTALWORKCHECKLIST";
     payload: reducerType.workcheckObjProps[] | undefined;
   };
+
+  startInput?: string;
+  endInput?: string;
 }
 
 export interface getEmployeeWorkcheckProps
