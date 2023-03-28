@@ -102,7 +102,13 @@ const WorkCheck = () => {
 
   const onGetDateResultClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    GetDateWorkcheckApi({ startInput, endInput, setWorkcheckToShow });
+    GetDateWorkcheckApi({
+      startInput,
+      endInput,
+      setWorkcheckToShow,
+      setTotalElement,
+      setTotalPage,
+    });
   };
 
   const onShowNameButtonClick = (id: number) => {
@@ -115,8 +121,16 @@ const WorkCheck = () => {
           setWorkcheckToShow,
           startInput,
           endInput,
+          setTotalElement,
+          setTotalPage,
         });
-      else GetEmployeeWorkcheckApi({ employeeId, setWorkcheckToShow });
+      else
+        GetEmployeeWorkcheckApi({
+          employeeId,
+          setWorkcheckToShow,
+          setTotalElement,
+          setTotalPage,
+        });
     };
   };
 
