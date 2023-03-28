@@ -57,9 +57,9 @@ const WorkCheckView = ({
         </button>
       </div>
       <div className="WorkCheckView-right-container">
-        <ul className="totalList-ul">
-          {totalList &&
-            totalList.map((item, idx) => (
+        {totalList && totalList.length > 0 ? (
+          <ul className="totalList-ul">
+            {totalList.map((item, idx) => (
               <li className="totalList-li" onClick={onItemClick(item.id)}>
                 <span className="totalList-li-date">
                   {item.date}({day[new Date(item.date).getDay()]})
@@ -99,7 +99,10 @@ const WorkCheckView = ({
                 </span>
               </li>
             ))}
-        </ul>
+          </ul>
+        ) : (
+          <p> 데이터가 없습니다.</p>
+        )}
         <Pagination
           onPaginationClick={onPaginationClick}
           page={page}
