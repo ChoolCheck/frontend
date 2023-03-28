@@ -2,6 +2,8 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
 import { setReadModalOpen } from "../../Redux/Actions/handleReadModal";
+import { setTotalElements } from "../../Redux/Actions/handleTotalElement";
+import { setTotalPages } from "../../Redux/Actions/handleTotalPages";
 
 import { GetWorktypeApi, GetEmployeeApi } from "../../api/manage";
 import { UpdateScheduleApi } from "../../api/schedule";
@@ -30,6 +32,17 @@ const UpdateSchedule = ({
     (readModalState: boolean) => dispatch(setReadModalOpen(readModalState)),
     [dispatch]
   );
+  const setTotalElement = useCallback(
+    (totalElementState: number) =>
+      dispatch(setTotalElements(totalElementState)),
+    [dispatch]
+  );
+
+  const setTotalPage = useCallback(
+    (totalPageState: number) => dispatch(setTotalPages(totalPageState)),
+    [dispatch]
+  );
+
   const [workTypeList, setWorkTypeList] = useState<
     worktypeType.worktypeProps[] | undefined
   >([]);
@@ -138,6 +151,8 @@ const UpdateSchedule = ({
         setWeekScheduleList,
         setTotalScheduleList,
         setScheduleToShow,
+        setTotalElement,
+        setTotalPage,
       });
   };
 

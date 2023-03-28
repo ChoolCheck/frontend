@@ -1,6 +1,8 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
+import { setTotalElements } from "../../Redux/Actions/handleTotalElement";
+import { setTotalPages } from "../../Redux/Actions/handleTotalPages";
 
 import { GetWorktypeApi, GetEmployeeApi } from "../../api/manage";
 import { CreateScheduleApi } from "../../api/schedule";
@@ -19,6 +21,17 @@ const CreateSchedule = ({
 
   const setWriteModal = useCallback(
     (readModalState: boolean) => dispatch(setWriteModalOpen(readModalState)),
+    [dispatch]
+  );
+
+  const setTotalElement = useCallback(
+    (totalElementState: number) =>
+      dispatch(setTotalElements(totalElementState)),
+    [dispatch]
+  );
+
+  const setTotalPage = useCallback(
+    (totalPageState: number) => dispatch(setTotalPages(totalPageState)),
     [dispatch]
   );
 
@@ -121,6 +134,8 @@ const CreateSchedule = ({
         setWriteModal,
         setWeekScheduleList,
         setTotalScheduleList,
+        setTotalElement,
+        setTotalPage,
       });
   };
 

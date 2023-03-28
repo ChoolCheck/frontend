@@ -22,7 +22,7 @@ import ReadModal from "../../components/modal/ReadModal";
 import CreateWorkCheck from "./CreateWorkCheck";
 import WorkCheckDetail from "./WorkCheckDetail";
 import WorkCheckView from "./view/WorkCheckView";
-import WorkCheckHeader from "./WorkcheckHeader";
+import WorkCheckHeader from "./view/WorkcheckHeader";
 
 import "./style/workCheck.scss";
 import * as type from "./type";
