@@ -127,8 +127,6 @@ export async function GetDetailCalendarApi({
 
   axios
     .all([
-      axiosInstance.get(`${config.api}/schedule/month?date=${inputStart}`),
-
       axiosInstance.get(
         `${config.api}/schedule?dateFrom=${date}?dateTo=${date}`
       ),
