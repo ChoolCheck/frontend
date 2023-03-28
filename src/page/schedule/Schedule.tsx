@@ -70,10 +70,12 @@ const Schedule = () => {
   >();
 
   const [scheduleDetail, setScheduleDetail] = useState<type.scheduleObjProps>();
-
   const [selectedModal, setSelectedModal] = useState<string>("");
 
   const [page, setPage] = useState<number>(0);
+
+  const [employeeId, setEmployeeId] = useState<string>("0");
+  const [paginationFocus, setPaginationFocus] = useState("total");
 
   useEffect(() => {
     GetWeekScheduleApi({ setWeekScheduleList });
@@ -86,6 +88,8 @@ const Schedule = () => {
   }, []);
 
   const onShowNameButtonClick = (id: number) => {
+    setPaginationFocus("employee");
+    setEmployeeId(id.toString());
     const employeeId = id.toString();
     return (e: React.MouseEvent<HTMLButtonElement>) => {
       GetEmployeeScheduleApi({
@@ -98,6 +102,7 @@ const Schedule = () => {
   };
 
   const onShowTotalButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setPaginationFocus("total");
     setScheduleToShow(totalScheduleList);
   };
 
@@ -108,17 +113,27 @@ const Schedule = () => {
     };
   };
 
-  const onPaginationClick = (item: number) => {
+  const onPaginationClick = (item: number, paginationFocus: string) => {
     const page = item;
     setPage(item);
     return (e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
-      GetTotalScheduleApi({
-        setTotalScheduleList,
-        page,
-        setTotalPage,
-        setTotalElement,
-      });
+      if (paginationFocus == "employee") {
+        GetEmployeeScheduleApi({
+          employeeId,
+          setScheduleToShow,
+          setTotalElement,
+          setTotalPage,
+          page,
+        });
+      } else if (paginationFocus == "total") {
+        GetTotalScheduleApi({
+          setTotalScheduleList,
+          page,
+          setTotalPage,
+          setTotalElement,
+        });
+      }
     };
   };
 
@@ -177,9 +192,11 @@ const Schedule = () => {
           onShowTotalButtonClick={onShowTotalButtonClick}
           onItemClick={onItemClick}
           onPaginationClick={onPaginationClick}
+          paginationFocus={paginationFocus}
         ></ScheduleTotalView>
       )}
     </div>
   );
 };
+
 export default Schedule;

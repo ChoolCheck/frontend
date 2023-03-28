@@ -32,8 +32,10 @@ export interface scheduleTotalViewProps {
 
   scheduleToShow: scheduleObjProps[] | undefined;
   onPaginationClick: (
-    item: number
+    item: number,
+    paginationFocus: string
   ) => (e: React.MouseEvent<HTMLButtonElement>) => void;
+  paginationFocus: string;
 }
 export interface scheduleHeaderProps {
   setSelectedModal: React.Dispatch<React.SetStateAction<string>>;

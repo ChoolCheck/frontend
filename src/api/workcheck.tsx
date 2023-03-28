@@ -207,13 +207,18 @@ export async function GetEmployeeWorkcheckApi({
   setWorkcheckToShow,
   setTotalPage,
   setTotalElement,
+  page,
 }: type.getEmployeeWorkcheckProps) {
+  let url;
+  if (page && startInput && endInput) {
+    url = `${config.api}/work?employee=${employeeId}&dateFrom=${startInput}&dateTo=${endInput}&page=${page}`;
+  } else if (page) {
+    url = `${config.api}/work?employee=${employeeId}&page=${page}`;
+  } else url = `${config.api}/work?employee=${employeeId}`;
+
   await axios({
     method: "GET",
-    url:
-      startInput && endInput
-        ? `${config.api}/work?employee=${employeeId}&dateFrom=${startInput}&dateTo=${endInput}`
-        : `${config.api}/work?employee=${employeeId}`,
+    url: url,
     headers: {
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,

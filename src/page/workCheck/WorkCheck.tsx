@@ -77,6 +77,8 @@ const WorkCheck = () => {
   const [startInput, setStartInput] = useState("");
   const [endInput, setEndInput] = useState("");
   const [page, setPage] = useState<number>(0);
+  const [paginationFocus, setPaginationFocus] = useState("total");
+  const [employeeId, setEmployeeId] = useState<string>("0");
 
   useEffect(() => {
     GetTotalWorkcheckApi({
@@ -112,7 +114,9 @@ const WorkCheck = () => {
   };
 
   const onShowNameButtonClick = (id: number) => {
+    setEmployeeId(id.toString());
     const employeeId = id.toString();
+    setPaginationFocus("employee");
     return (e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
       if (startInput && endInput)
@@ -135,6 +139,7 @@ const WorkCheck = () => {
   };
 
   const onShowTotalButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setPaginationFocus("total");
     setWorkcheckToShow(totalWorkCheckList.totalWorkcheckList);
   };
 
@@ -152,17 +157,38 @@ const WorkCheck = () => {
     }
   };
 
-  const onPaginationClick = (item: number) => {
+  const onPaginationClick = (item: number, paginationFocus: string) => {
     const page = item;
     setPage(item);
     return (e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
-      GetTotalWorkcheckApi({
-        setTotalWorkCheckList,
-        page,
-        setTotalPage,
-        setTotalElement,
-      });
+      if (paginationFocus == "employee") {
+        if (startInput && endInput)
+          GetEmployeeWorkcheckApi({
+            employeeId,
+            setWorkcheckToShow,
+            startInput,
+            endInput,
+            setTotalElement,
+            setTotalPage,
+            page,
+          });
+        else
+          GetEmployeeWorkcheckApi({
+            employeeId,
+            setWorkcheckToShow,
+            setTotalElement,
+            setTotalPage,
+            page,
+          });
+      } else if (paginationFocus == "total") {
+        GetTotalWorkcheckApi({
+          setTotalWorkCheckList,
+          setTotalPage,
+          setTotalElement,
+          page,
+        });
+      }
     };
   };
 
@@ -198,6 +224,7 @@ const WorkCheck = () => {
         employeeList={employeeList}
         page={page}
         onPaginationClick={onPaginationClick}
+        paginationFocus={paginationFocus}
       ></WorkCheckView>
     </div>
   );

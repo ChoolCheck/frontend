@@ -47,6 +47,7 @@ export interface getEmployeeScheduleProps
   setScheduleToShow: React.Dispatch<
     React.SetStateAction<scheduleObjProps[] | undefined>
   >;
+  page?: number;
 }
 
 export interface getTotalScheduleProps extends paginationType.paginationProps {

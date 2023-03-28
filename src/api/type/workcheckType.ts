@@ -117,6 +117,7 @@ export interface getEmployeeWorkcheckProps
   employeeId: string;
   startInput?: string;
   endInput?: string;
+  page?: number;
   setWorkcheckToShow: React.Dispatch<
     React.SetStateAction<workcheckObjProps[] | undefined>
   >;

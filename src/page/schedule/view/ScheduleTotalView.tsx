@@ -11,6 +11,7 @@ const ScheduleTotalView = ({
   employeeList,
   totalScheduleList,
   onPaginationClick,
+  paginationFocus,
 }: type.scheduleTotalViewProps) => {
   const totalList = scheduleToShow ? scheduleToShow : totalScheduleList;
   const day = ["일", "월", "화", "수", "목", "금", "토"];
@@ -86,7 +87,10 @@ const ScheduleTotalView = ({
               </li>
             ))}
         </ul>
-        <Pagination onPaginationClick={onPaginationClick}></Pagination>
+        <Pagination
+          paginationFocus={paginationFocus}
+          onPaginationClick={onPaginationClick}
+        ></Pagination>
       </div>
     </div>
   );

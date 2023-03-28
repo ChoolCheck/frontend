@@ -54,8 +54,11 @@ export interface workCheckViewProps {
   workcheckToShow: workcheckObjProps[] | undefined;
 
   onPaginationClick: (
-    item: number
+    item: number,
+    paginationFocus: string
   ) => (e: React.MouseEvent<HTMLButtonElement>) => void;
+
+  paginationFocus: string;
   page: number;
 }
 

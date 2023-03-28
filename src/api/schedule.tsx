@@ -231,10 +231,16 @@ export async function GetEmployeeScheduleApi({
   setScheduleToShow,
   setTotalPage,
   setTotalElement,
+  page,
 }: type.getEmployeeScheduleProps) {
+  let url;
+  if (page) {
+    url = `${config.api}/schedule?employee=${employeeId}&page=${page}`;
+  } else url = `${config.api}/schedule?employee=${employeeId}`;
+
   await axios({
     method: "GET",
-    url: `${config.api}/schedule?employee=${employeeId}`,
+    url: url,
     headers: {
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,
