@@ -81,6 +81,7 @@ const WorkCheck = () => {
   const [employeeId, setEmployeeId] = useState<string>("0");
 
   useEffect(() => {
+    setPaginationFocus("total");
     GetTotalWorkcheckApi({
       setTotalWorkCheckList,
       setTotalElement,
@@ -162,7 +163,14 @@ const WorkCheck = () => {
     setPage(item);
     return (e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
-      if (paginationFocus == "employee") {
+      if (paginationFocus == "total") {
+        GetTotalWorkcheckApi({
+          setTotalWorkCheckList,
+          setTotalPage,
+          setTotalElement,
+          page,
+        });
+      } else if (paginationFocus == "employee") {
         if (startInput && endInput)
           GetEmployeeWorkcheckApi({
             employeeId,
@@ -181,13 +189,6 @@ const WorkCheck = () => {
             setTotalPage,
             page,
           });
-      } else if (paginationFocus == "total") {
-        GetTotalWorkcheckApi({
-          setTotalWorkCheckList,
-          setTotalPage,
-          setTotalElement,
-          page,
-        });
       }
     };
   };

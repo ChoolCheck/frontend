@@ -116,22 +116,23 @@ const Schedule = () => {
   const onPaginationClick = (item: number, paginationFocus: string) => {
     const page = item;
     setPage(item);
+    console.log(paginationFocus);
     return (e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
-      if (paginationFocus == "employee") {
+      if (paginationFocus == "total") {
+        GetTotalScheduleApi({
+          setTotalScheduleList,
+          page,
+          setTotalPage,
+          setTotalElement,
+        });
+      } else if (paginationFocus == "employee") {
         GetEmployeeScheduleApi({
           employeeId,
           setScheduleToShow,
           setTotalElement,
           setTotalPage,
           page,
-        });
-      } else if (paginationFocus == "total") {
-        GetTotalScheduleApi({
-          setTotalScheduleList,
-          page,
-          setTotalPage,
-          setTotalElement,
         });
       }
     };
