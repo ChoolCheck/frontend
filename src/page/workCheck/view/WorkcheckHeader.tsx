@@ -1,5 +1,5 @@
 import * as type from "../type";
-import "./style/workCheck.scss";
+import "../style/workCheck.scss";
 
 const WorkCheckHeader = ({
   onChageStartInput,
