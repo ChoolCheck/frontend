@@ -15,7 +15,7 @@ export async function GetMonthStatisticsApi({
 
   await axios({
     method: "GET",
-    url: `${config.api}/statistics?start=${start}&end=${end}`,
+    url: `${config.api}/statistics?dateFrom=${start}&dateTo=${end}`,
     headers: {
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -69,7 +69,7 @@ export async function GetDateStatisticsApi({
   let statisticsDataContent: Array<number> = [];
   await axios({
     method: "GET",
-    url: `${config.api}/statistics?start=${startInput}&end=${endInput}`,
+    url: `${config.api}/statistics?dateFrom=${startInput}&dateTo=${endInput}`,
     headers: {
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,
