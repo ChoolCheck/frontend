@@ -103,7 +103,13 @@ const Schedule = () => {
 
   const onShowTotalButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     setPaginationFocus("total");
-    setScheduleToShow(totalScheduleList);
+    GetTotalScheduleApi({
+      setTotalScheduleList,
+      setScheduleToShow,
+      setTotalElement,
+      setTotalPage,
+    });
+    // setScheduleToShow(totalScheduleList);
   };
 
   const onItemClick = (id: number) => {
