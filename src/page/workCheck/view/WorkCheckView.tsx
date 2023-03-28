@@ -122,7 +122,7 @@ const WorkCheckView = ({
         </ul>
         <div className="pagination workcheck">
           <p className="pagination button-container">
-            {[...Array(totalPages)].map((i) => (
+            {[...Array(totalPages)].map((x, i) => (
               <button
                 className="pagination buttons"
                 onClick={() => onPaginationClick(i)}
