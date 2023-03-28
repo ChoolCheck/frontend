@@ -69,6 +69,9 @@ const ScheduleTotalView = ({
                 >
                   {item.name}
                 </span>
+                <span className="totalList-li-hours">
+                  {item?.hours == null ? "없음" : item?.hours}
+                </span>
                 <span className="totalList-li-time">
                   {item.startTime.substring(0, 5)} -{" "}
                   {item.endTime.substring(0, 5)}
