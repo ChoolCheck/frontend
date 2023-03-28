@@ -16,12 +16,10 @@ const WorkCheckView = ({
   onPaginationClick,
 }: type.workCheckViewProps) => {
   const totalWorkCheckList = useSelector(
-    (state: RootState) => state.TotalWorkcheckListReducer
+    (state: RootState) => state.TotalWorkcheckListReducer.totalWorkcheckList
   );
 
-  const totalList = workcheckToShow
-    ? workcheckToShow
-    : totalWorkCheckList.totalWorkcheckList;
+  const totalList = workcheckToShow ? workcheckToShow : totalWorkCheckList;
 
   const day = ["일", "월", "화", "수", "목", "금", "토"];
 

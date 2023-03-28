@@ -78,7 +78,7 @@ const WorkCheck = () => {
   const [endInput, setEndInput] = useState("");
   const [page, setPage] = useState<number>(0);
   const [paginationFocus, setPaginationFocus] = useState("total");
-  const [employeeId, setEmployeeId] = useState<string>("0");
+  const [employeeToShow, setEmployeeToShow] = useState<string>("0");
 
   useEffect(() => {
     setPaginationFocus("total");
@@ -115,9 +115,12 @@ const WorkCheck = () => {
   };
 
   const onShowNameButtonClick = (id: number) => {
-    setEmployeeId(id.toString());
+    setEmployeeToShow(id.toString());
     const employeeId = id.toString();
     setPaginationFocus("employee");
+
+    console.log(id);
+    console.log(employeeId);
     return (e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
       if (startInput !== "" && endInput !== "")
@@ -170,7 +173,8 @@ const WorkCheck = () => {
     setPage(item);
     return (e: React.MouseEvent<HTMLButtonElement>) => {
       console.log(paginationFocus);
-
+      console.log(employeeToShow);
+      const employeeId = employeeToShow;
       e.preventDefault();
       if (paginationFocus == "total") {
         GetTotalWorkcheckApi({
