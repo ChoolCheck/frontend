@@ -143,12 +143,25 @@ const WorkCheck = () => {
   const onShowTotalButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setPaginationFocus("total");
-    GetTotalWorkcheckApi({
-      setTotalWorkCheckList,
-      setTotalElement,
-      setTotalPage,
-      setWorkcheckToShow,
-    });
+
+    if (startInput !== "" && endInput !== "") {
+      GetTotalWorkcheckApi({
+        setTotalWorkCheckList,
+        setTotalElement,
+        setTotalPage,
+        setWorkcheckToShow,
+        startInput,
+        endInput,
+      });
+    } else {
+      GetTotalWorkcheckApi({
+        setTotalWorkCheckList,
+        setTotalElement,
+        setTotalPage,
+        setWorkcheckToShow,
+      });
+    }
+
     // setWorkcheckToShow(totalWorkCheckList.totalWorkcheckList);
   };
 
