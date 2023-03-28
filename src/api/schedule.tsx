@@ -11,8 +11,8 @@ export async function CreateScheduleApi({
   setWriteModal,
   setWeekScheduleList,
   setTotalScheduleList,
-  setTotalPages,
-  setTotalElements,
+  setTotalPage,
+  setTotalElement,
 }: type.createScheduleProps) {
   let data;
   if (hoursId == "") {
@@ -42,12 +42,10 @@ export async function CreateScheduleApi({
   })
     .then((res) => {
       GetWeekScheduleApi({ setWeekScheduleList });
-      const page = 0;
       GetTotalScheduleApi({
         setTotalScheduleList,
-        setTotalPages,
-        setTotalElements,
-        page,
+        setTotalPage,
+        setTotalElement,
       });
     })
     .then((res) => {
@@ -68,8 +66,8 @@ export async function UpdateScheduleApi({
   setWeekScheduleList,
   setTotalScheduleList,
   setScheduleToShow,
-  setTotalPages,
-  setTotalElements,
+  setTotalPage,
+  setTotalElement,
 }: type.updateScheduleProps) {
   let data;
   if (hoursId == "") {
@@ -99,13 +97,11 @@ export async function UpdateScheduleApi({
   })
     .then((res) => {
       GetWeekScheduleApi({ setWeekScheduleList });
-      const page = 0;
       GetTotalScheduleApi({
         setTotalScheduleList,
         setScheduleToShow,
-        setTotalPages,
-        setTotalElements,
-        page,
+        setTotalPage,
+        setTotalElement,
       });
     })
     .then((res) => {
@@ -123,8 +119,8 @@ export async function DeleteScheduleApi({
   setTotalScheduleList,
   setWeekScheduleList,
   setScheduleToShow,
-  setTotalPages,
-  setTotalElements,
+  setTotalPage,
+  setTotalElement,
 }: type.deleteScheduleProps) {
   await axios({
     method: "Delete",
@@ -136,13 +132,11 @@ export async function DeleteScheduleApi({
   })
     .then((res) => {
       GetWeekScheduleApi({ setWeekScheduleList });
-      const page = 0;
       GetTotalScheduleApi({
         setTotalScheduleList,
         setScheduleToShow,
-        setTotalPages,
-        setTotalElements,
-        page,
+        setTotalPage,
+        setTotalElement,
       });
     })
 
@@ -187,21 +181,23 @@ export async function GetWeekScheduleApi({
 export async function GetTotalScheduleApi({
   setTotalScheduleList,
   setScheduleToShow,
-  setTotalPages,
-  setTotalElements,
+  setTotalPage,
+  setTotalElement,
   page,
 }: type.getTotalScheduleProps) {
   await axios({
     method: "GET",
-    url: `${config.api}/schedule?page=${page}`,
+    url: page
+      ? `${config.api}/schedule?page=${page}`
+      : `${config.api}/schedule?page=${0}`,
     headers: {
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
   })
     .then((res) => {
-      setTotalPages(res.data.pageable.totalPages);
-      setTotalElements(res.data.pageable.setTotalElements);
+      setTotalPage(res.data.pageable.totalPages);
+      setTotalElement(res.data.pageable.setTotalElements);
       setScheduleToShow && setScheduleToShow(res.data.content);
       setTotalScheduleList(res.data.content);
     })
@@ -236,7 +232,7 @@ export async function GetEmployeeScheduleApi({
 }: type.getEmployeeScheduleProps) {
   await axios({
     method: "GET",
-    url: `${config.api}/schedule/employee/${employeeId}`,
+    url: `${config.api}/schedule?employee=${employeeId}`,
     headers: {
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,

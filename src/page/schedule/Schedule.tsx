@@ -2,6 +2,9 @@ import React, { useEffect, useState, useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
 import { setReadModalOpen } from "../../Redux/Actions/handleReadModal";
+import { setTotalElements } from "../../Redux/Actions/handleTotalElement";
+import { setTotalPages } from "../../Redux/Actions/handleTotalPages";
+
 import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/Reducers/rootReducer";
 import WriteModal from "../../components/modal/WriteModal";
@@ -47,6 +50,17 @@ const Schedule = () => {
     [dispatch]
   );
 
+  const setTotalElement = useCallback(
+    (totalElementState: number) =>
+      dispatch(setTotalElements(totalElementState)),
+    [dispatch]
+  );
+
+  const setTotalPage = useCallback(
+    (totalPageState: number) => dispatch(setTotalPages(totalPageState)),
+    [dispatch]
+  );
+
   const [employeeList, setEmployeeList] = useState<
     employeeType.employeeProps[] | undefined
   >([]);
@@ -68,7 +82,11 @@ const Schedule = () => {
 
   useEffect(() => {
     GetWeekScheduleApi({ setWeekScheduleList });
-    GetTotalScheduleApi({ setTotalScheduleList });
+    GetTotalScheduleApi({
+      setTotalScheduleList,
+      setTotalElement,
+      setTotalPage,
+    });
     GetEmployeeApi({ setEmployeeList });
   }, []);
 

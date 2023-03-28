@@ -1,12 +1,16 @@
 import { combineReducers } from "redux";
 import ReadModalReducer from "./ReadModalReducer";
 import WriteModalReducer from "./WriteModalReducer";
-import totalWorkcheckListReducer from "./TotalWorkcheckListReducer";
+import TotalWorkcheckListReducer from "./TotalWorkcheckListReducer";
+import TotalElementReducer from "./TotalElementReducer";
+import TotalPageReducer from "./TotalPageReducer";
 
 const rootReducer = combineReducers({
   ReadModalReducer,
   WriteModalReducer,
-  totalWorkcheckListReducer,
+  TotalWorkcheckListReducer,
+  TotalElementReducer,
+  TotalPageReducer,
 });
 
 export default rootReducer;

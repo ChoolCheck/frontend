@@ -5,6 +5,8 @@ import { setReadModalOpen } from "../../Redux/Actions/handleReadModal";
 import { setTotalWorkcheckList } from "../../Redux/Actions/handleTotalWorkcheckList";
 import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/Reducers/rootReducer";
+import { setTotalElements } from "../../Redux/Actions/handleTotalElement";
+import { setTotalPages } from "../../Redux/Actions/handleTotalPages";
 
 import {
   GetDetailWorkcheckApi,
@@ -36,7 +38,7 @@ const WorkCheck = () => {
     (state: RootState) => state.ReadModalReducer.readModalState
   );
   const totalWorkCheckList = useSelector(
-    (state: RootState) => state.totalWorkcheckListReducer
+    (state: RootState) => state.TotalWorkcheckListReducer
   );
 
   const setReadModal = useCallback(
@@ -47,6 +49,17 @@ const WorkCheck = () => {
   const setTotalWorkCheckList = useCallback(
     (totalWorkcheckList: type.workcheckObjProps[] | undefined) =>
       dispatch(setTotalWorkcheckList(totalWorkcheckList)),
+    [dispatch]
+  );
+
+  const setTotalElement = useCallback(
+    (totalElementState: number) =>
+      dispatch(setTotalElements(totalElementState)),
+    [dispatch]
+  );
+
+  const setTotalPage = useCallback(
+    (totalPageState: number) => dispatch(setTotalPages(totalPageState)),
     [dispatch]
   );
 
@@ -63,18 +76,13 @@ const WorkCheck = () => {
 
   const [startInput, setStartInput] = useState("");
   const [endInput, setEndInput] = useState("");
-
-  //pagination
-  const [totalPages, setTotalPages] = useState<number>(0);
-  const [totalElements, setTotalElements] = useState<number>(0);
-  const size = 10;
   const [page, setPage] = useState<number>(0);
 
   useEffect(() => {
     GetTotalWorkcheckApi({
       setTotalWorkCheckList,
-      setTotalPages,
-      setTotalElements,
+      setTotalElement,
+      setTotalPage,
       page,
     });
     GetEmployeeApi({ setEmployeeList });
@@ -86,6 +94,11 @@ const WorkCheck = () => {
 
   const onChageEndInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEndInput(e.target.value);
+  };
+
+  const setDate = () => {
+    setStartInput("");
+    setEndInput("");
   };
 
   const onGetDateResultClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -122,9 +135,9 @@ const WorkCheck = () => {
     return (e: React.MouseEvent<HTMLButtonElement>) => {
       GetTotalWorkcheckApi({
         setTotalWorkCheckList,
-        setTotalPages,
-        setTotalElements,
         page,
+        setTotalPage,
+        setTotalElement,
       });
     };
   };
@@ -133,18 +146,13 @@ const WorkCheck = () => {
     <div className="WorkCheck-top-container">
       {writeModalState && (
         <WriteModal>
-          <CreateWorkCheck
-            setTotalPages={setTotalPages}
-            setTotalElements={setTotalElements}
-          ></CreateWorkCheck>
+          <CreateWorkCheck></CreateWorkCheck>
         </WriteModal>
       )}
 
       {readModalState && (
         <ReadModal>
           <WorkCheckDetail
-            setTotalPages={setTotalPages}
-            setTotalElements={setTotalElements}
             workcheckDetail={workcheckDetail}
             setWorkcheckToShow={setWorkcheckToShow}
           ></WorkCheckDetail>
@@ -164,11 +172,7 @@ const WorkCheck = () => {
         onItemClick={onItemClick}
         workcheckToShow={workcheckToShow}
         employeeList={employeeList}
-        totalPages={totalPages}
-        totalElements={totalElements}
         page={page}
-        setTotalPages={setTotalPages}
-        setTotalElements={setTotalElements}
         onPaginationClick={onPaginationClick}
       ></WorkCheckView>
     </div>

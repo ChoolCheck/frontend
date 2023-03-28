@@ -1,9 +1,6 @@
 import * as reducerType from "../../Redux/Types";
-export interface paginationProps {
-  setTotalPages: React.Dispatch<React.SetStateAction<number>>;
-  setTotalElements: React.Dispatch<React.SetStateAction<number>>;
-  page: number;
-}
+import * as paginationType from "../../commonType/pagination";
+
 export interface workcheckObjProps {
   name: string;
   date: string;
@@ -14,7 +11,7 @@ export interface workcheckObjProps {
   id: number;
 }
 
-export interface createWorkcheckProps extends paginationProps {
+export interface createWorkcheckProps extends paginationType.paginationProps {
   employeeId: string;
   hoursId: string;
   date: string;
@@ -33,7 +30,7 @@ export interface createWorkcheckProps extends paginationProps {
   };
 }
 
-export interface updateWorkcheckProps extends paginationProps {
+export interface updateWorkcheckProps extends paginationType.paginationProps {
   id: number;
   employeeId: string;
   hoursId: string;
@@ -60,7 +57,7 @@ export interface updateWorkcheckProps extends paginationProps {
   ) => void;
 }
 
-export interface deleteWorkcheckProps extends paginationProps {
+export interface deleteWorkcheckProps extends paginationType.paginationProps {
   id: number;
   setReadModal: (readModalState: boolean) => {
     type: "handleReadModal/SETREADMODAL";
@@ -102,7 +99,7 @@ export interface getDetailWorkcheckProps {
   >;
 }
 
-export interface getTotalWorkcheckProps extends paginationProps {
+export interface getTotalWorkcheckProps extends paginationType.paginationProps {
   setWorkcheckToShow?: (
     value: React.SetStateAction<workcheckObjProps[] | undefined>
   ) => void;

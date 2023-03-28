@@ -5,8 +5,9 @@ import { DeleteScheduleApi } from "../../api/schedule";
 import { useDispatch } from "react-redux";
 import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
 import { setReadModalOpen } from "../../Redux/Actions/handleReadModal";
-import { useSelector } from "react-redux";
-import { RootState } from "../../Redux/Reducers/rootReducer";
+
+import { setTotalElements } from "../../Redux/Actions/handleTotalElement";
+import { setTotalPages } from "../../Redux/Actions/handleTotalPages";
 
 import ScheduleDetailView from "./view/ScheduleDetailView";
 
@@ -23,12 +24,20 @@ const ScheduleDetail = ({
     (writeModalState: boolean) => dispatch(setWriteModalOpen(writeModalState)),
     [dispatch]
   );
-  const writeModalState = useSelector(
-    (state: RootState) => state.WriteModalReducer.writeModalState
-  );
 
   const setReadModal = useCallback(
     (readModalState: boolean) => dispatch(setReadModalOpen(readModalState)),
+    [dispatch]
+  );
+
+  const setTotalElement = useCallback(
+    (totalElementState: number) =>
+      dispatch(setTotalElements(totalElementState)),
+    [dispatch]
+  );
+
+  const setTotalPage = useCallback(
+    (totalPageState: number) => dispatch(setTotalPages(totalPageState)),
     [dispatch]
   );
 
@@ -47,6 +56,8 @@ const ScheduleDetail = ({
           setTotalScheduleList,
           setWeekScheduleList,
           setScheduleToShow,
+          setTotalElement,
+          setTotalPage,
         });
       }
     };

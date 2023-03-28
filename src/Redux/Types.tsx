@@ -1,6 +1,16 @@
 import { setReadModalOpen } from "./Actions/handleReadModal";
 import { setWriteModalOpen } from "./Actions/handleWriteModal";
 import { setTotalWorkcheckList } from "./Actions/handleTotalWorkcheckList";
+import { setTotalElements } from "./Actions/handleTotalElement";
+import { setTotalPages } from "./Actions/handleTotalPages";
+
+export interface totalElement {
+  totalElementState: number;
+}
+
+export interface totalpage {
+  totalpageState: number;
+}
 
 export interface readModal {
   readModalState: boolean;
@@ -28,3 +38,7 @@ export type handleReadModal = ReturnType<typeof setReadModalOpen>;
 export type handleWriteModal = ReturnType<typeof setWriteModalOpen>;
 
 export type handleTotalWorkcheckList = ReturnType<typeof setTotalWorkcheckList>;
+
+export type handleTotalElement = ReturnType<typeof setTotalElements>;
+
+export type handleTotalPage = ReturnType<typeof setTotalPages>;

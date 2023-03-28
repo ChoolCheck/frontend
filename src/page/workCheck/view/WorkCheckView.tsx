@@ -1,9 +1,12 @@
+import { useEffect, useState, useCallback } from "react";
+
 import { useSelector } from "react-redux";
 import { RootState } from "../../../Redux/Reducers/rootReducer";
-
-import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { GetTotalWorkcheckApi } from "../../../api/workcheck";
 import { setTotalWorkcheckList } from "../../../Redux/Actions/handleTotalWorkcheckList";
+import { setTotalElements } from "../../../Redux/Actions/handleTotalElement";
+import { setTotalPages } from "../../../Redux/Actions/handleTotalPages";
 
 import "../style/workCheckView.scss";
 import * as type from "../type";
@@ -15,27 +18,42 @@ const WorkCheckView = ({
   onItemClick,
   workcheckToShow,
   employeeList,
-  totalPages,
-  totalElements,
   page,
-  setTotalPages,
-  setTotalElements,
   onPaginationClick,
 }: type.workCheckViewProps) => {
-  const totalWorkCheckList = useSelector(
-    (state: RootState) => state.totalWorkcheckListReducer
+  const dispatch = useDispatch();
+
+  const setTotalElement = useCallback(
+    (totalElementState: number) =>
+      dispatch(setTotalElements(totalElementState)),
+    [dispatch]
   );
+
+  const setTotalPage = useCallback(
+    (totalPageState: number) => dispatch(setTotalPages(totalPageState)),
+    [dispatch]
+  );
+
+  const totalWorkCheckList = useSelector(
+    (state: RootState) => state.TotalWorkcheckListReducer
+  );
+
+  const totalElements = useSelector(
+    (state: RootState) => state.TotalWorkcheckListReducer
+  );
+
+  const totalPages = useSelector((state: RootState) => state.TotalPageReducer);
 
   const totalList = workcheckToShow
     ? workcheckToShow
     : totalWorkCheckList.totalWorkcheckList;
 
   const day = ["일", "월", "화", "수", "목", "금", "토"];
-  const [pages, setPages] = useState<Array<number>>([]);
+  const [pageList, setPageList] = useState<Array<number>>([]);
 
   useEffect(() => {
-    for (let i = 0; i < totalPages; i++) {
-      pages.push(i);
+    for (let i = 0; i < totalPages.totalpageState; i++) {
+      pageList.push(i);
     }
   }, []);
 
@@ -118,7 +136,7 @@ const WorkCheckView = ({
         </ul>
         <div className="pagination workcheck">
           <p>
-            {pages.map((item) => (
+            {pageList.map((item) => (
               <button onClick={() => onPaginationClick(item)}>
                 {item + 1}
               </button>

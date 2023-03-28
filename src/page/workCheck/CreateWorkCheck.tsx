@@ -2,6 +2,8 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
 import { setTotalWorkcheckList } from "../../Redux/Actions/handleTotalWorkcheckList";
+import { setTotalElements } from "../../Redux/Actions/handleTotalElement";
+import { setTotalPages } from "../../Redux/Actions/handleTotalPages";
 
 import { GetWorktypeApi, GetEmployeeApi } from "../../api/manage";
 import { CreateWorkcheckApi } from "../../api/workcheck";
@@ -12,10 +14,7 @@ import * as worktypeType from "../../commonType/worktype";
 
 import CreateWorkCheckView from "./view/CreateWorkCheckView";
 
-const CreateWorkCheck = ({
-  setTotalPages,
-  setTotalElements,
-}: type.paginationProps) => {
+const CreateWorkCheck = () => {
   const dispatch = useDispatch();
 
   const setWriteModal = useCallback(
@@ -29,6 +28,16 @@ const CreateWorkCheck = ({
     [dispatch]
   );
 
+  const setTotalElement = useCallback(
+    (totalElementState: number) =>
+      dispatch(setTotalElements(totalElementState)),
+    [dispatch]
+  );
+
+  const setTotalPage = useCallback(
+    (totalPageState: number) => dispatch(setTotalPages(totalPageState)),
+    [dispatch]
+  );
   const [workTypeList, setWorkTypeList] = useState<
     worktypeType.worktypeProps[] | undefined
   >([]);
@@ -119,7 +128,6 @@ const CreateWorkCheck = ({
     } else if (endTime == "") {
       window.alert("종료 시간을 선택해주세요.");
     } else {
-      const page = 0;
       CreateWorkcheckApi({
         employeeId,
         date,
@@ -128,9 +136,8 @@ const CreateWorkCheck = ({
         endTime,
         setWriteModal,
         setTotalWorkCheckList,
-        setTotalPages,
-        setTotalElements,
-        page,
+        setTotalPage,
+        setTotalElement,
       });
     }
   };

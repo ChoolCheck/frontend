@@ -1,12 +1,6 @@
 import * as employeeType from "../../commonType/employee";
 import * as worktypeType from "../../commonType/worktype";
 
-export interface paginationProps {
-  setTotalPages: React.Dispatch<React.SetStateAction<number>>;
-  setTotalElements: React.Dispatch<React.SetStateAction<number>>;
-  page?: number;
-}
-
 export interface workcheckObjProps {
   name: string;
   date: string;
@@ -48,7 +42,7 @@ export interface createWorkCheckViewProps
   onClickCreate: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-export interface workCheckViewProps extends paginationProps {
+export interface workCheckViewProps {
   onItemClick: (id: number) => (e: React.MouseEvent<HTMLLIElement>) => void;
   onShowNameButtonClick: (
     id: number
@@ -58,14 +52,14 @@ export interface workCheckViewProps extends paginationProps {
   employeeList: employeeType.employeeProps[] | undefined;
 
   workcheckToShow: workcheckObjProps[] | undefined;
-  totalPages: number;
-  totalElements: number;
+
   onPaginationClick: (
     item: number
   ) => (e: React.MouseEvent<HTMLButtonElement>) => void;
+  page: number;
 }
 
-export interface updateWorkcheckProps extends paginationProps {
+export interface updateWorkcheckProps {
   id: number;
   workcheckDetail: workcheckObjProps | undefined;
   setWorkcheckToShow: (
@@ -97,7 +91,7 @@ export interface updateWorkcheckViewProps
   onClickUpdate: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-export interface workcheckDetailProps extends paginationProps {
+export interface workcheckDetailProps {
   setWorkcheckToShow: (
     value: React.SetStateAction<workcheckObjProps[] | undefined>
   ) => void;
