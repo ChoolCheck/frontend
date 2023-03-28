@@ -47,7 +47,11 @@ export interface scheduleWeeklyProps {
   weekScheduleList: scheduleObjProps[][] | undefined;
 }
 
-export interface createScheduleProps extends setScheduleListTypes {}
+export interface createScheduleProps extends setScheduleListTypes {
+  setScheduleToShow: React.Dispatch<
+    React.SetStateAction<scheduleObjProps[] | undefined>
+  >;
+}
 
 export interface createScheduleViewProps
   extends employeeType.employeeList,

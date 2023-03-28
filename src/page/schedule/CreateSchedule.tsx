@@ -16,6 +16,7 @@ import CreateScheduleView from "./view/CreateScheduleView";
 const CreateSchedule = ({
   setWeekScheduleList,
   setTotalScheduleList,
+  setScheduleToShow,
 }: type.createScheduleProps) => {
   const dispatch = useDispatch();
 
@@ -136,6 +137,7 @@ const CreateSchedule = ({
         setTotalScheduleList,
         setTotalElement,
         setTotalPage,
+        setScheduleToShow,
       });
   };
 

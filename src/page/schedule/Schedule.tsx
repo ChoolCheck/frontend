@@ -154,6 +154,7 @@ const Schedule = () => {
           <CreateSchedule
             setWeekScheduleList={setWeekScheduleList}
             setTotalScheduleList={setTotalScheduleList}
+            setScheduleToShow={setScheduleToShow}
           ></CreateSchedule>
         </WriteModal>
       )}

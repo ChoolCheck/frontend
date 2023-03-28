@@ -73,6 +73,9 @@ export interface createScheduleProps
     type: "handleWriteodal/SETWRITEMODAL";
     payload: boolean;
   };
+  setScheduleToShow: (
+    value: React.SetStateAction<scheduleObjProps[] | undefined>
+  ) => void;
 }
 
 export interface updateScheduleProps

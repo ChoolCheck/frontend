@@ -13,6 +13,7 @@ export async function CreateScheduleApi({
   setTotalScheduleList,
   setTotalPage,
   setTotalElement,
+  setScheduleToShow,
 }: type.createScheduleProps) {
   let data;
   if (hoursId == "") {
@@ -46,6 +47,7 @@ export async function CreateScheduleApi({
         setTotalScheduleList,
         setTotalPage,
         setTotalElement,
+        setScheduleToShow,
       });
     })
     .then((res) => {
