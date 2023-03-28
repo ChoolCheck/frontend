@@ -11,7 +11,7 @@
   .WorkCheckView-right-container {
     font-size: 18px;
     min-height: 400px;
-    max-height: 730px;
+    max-height: 720px;
     background-color: rgb(238, 238, 238);
     border-radius: 20px;
     text-align: center;
@@ -28,7 +28,7 @@
       font-weight: 700;
     }
     .employee-list-ul {
-      height: 530px;
+      height: 50px;
       overflow-y: auto;
       .employee-list-li {
         height: 50px;
@@ -54,7 +54,7 @@
 
   .WorkCheckView-right-container {
     margin-left: auto;
-    min-width: 730px;
+    max-height: 720px;
     margin: 10px;
     overflow-y: auto;
 
