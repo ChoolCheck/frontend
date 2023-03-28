@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/Reducers/rootReducer";
+import "./pagination.scss";
 
 interface paginationProps {
   onPaginationClick: (
@@ -12,17 +13,19 @@ const Pagination = ({ onPaginationClick }: paginationProps) => {
   );
 
   return (
-    <p className="pagination button-container">
-      {[...Array(totalPages)].map((x, i) => (
-        <button
-          className="pagination buttons"
-          onClick={onPaginationClick(i)}
-          key={i}
-        >
-          {i + 1}
-        </button>
-      ))}
-    </p>
+    <div className="pagination workcheck">
+      <p className="pagination button-container">
+        {[...Array(totalPages)].map((x, i) => (
+          <button
+            className="pagination buttons"
+            onClick={onPaginationClick(i)}
+            key={i}
+          >
+            {i + 1}
+          </button>
+        ))}
+      </p>
+    </div>
   );
 };
 export default Pagination;

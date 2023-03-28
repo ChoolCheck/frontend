@@ -11,7 +11,7 @@ const ScheduleTotalView = ({
   employeeList,
   totalScheduleList,
   onPaginationClick,
-}: type.scheduleTotalProps) => {
+}: type.scheduleTotalViewProps) => {
   const totalList = scheduleToShow ? scheduleToShow : totalScheduleList;
   const day = ["일", "월", "화", "수", "목", "금", "토"];
 

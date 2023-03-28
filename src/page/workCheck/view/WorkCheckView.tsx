@@ -102,9 +102,7 @@ const WorkCheckView = ({
               </li>
             ))}
         </ul>
-        <div className="pagination workcheck">
-          <Pagination onPaginationClick={onPaginationClick}></Pagination>
-        </div>
+        <Pagination onPaginationClick={onPaginationClick}></Pagination>
       </div>
     </div>
   );

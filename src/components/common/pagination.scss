@@ -1,0 +1,14 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0 10px 0;
+
+  .button-container {
+    padding: 1vw 1.5vw 1vw 1.5vw;
+    background-color: #f6f6f6;
+    border-radius: 20px;
+    .buttons {
+      margin: 0 1vw 0 1vw;
+    }
+  }
+}
