@@ -139,13 +139,16 @@ const WorkCheck = () => {
   };
 
   const onPaginationClick = (item: number) => {
+    const page = item;
+    setPage(item);
+    GetTotalWorkcheckApi({
+      setTotalWorkCheckList,
+      page,
+      setTotalPage,
+      setTotalElement,
+    });
     return (e: React.MouseEvent<HTMLButtonElement>) => {
-      GetTotalWorkcheckApi({
-        setTotalWorkCheckList,
-        page,
-        setTotalPage,
-        setTotalElement,
-      });
+      e.preventDefault();
     };
   };
 
