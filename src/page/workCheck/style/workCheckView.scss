@@ -82,10 +82,12 @@
       }
     }
     .pagination {
-      background-color: #f6f6f6;
-      border-radius: 20px;
       display: flex;
       justify-content: center;
+      padding-bottom: 10px;
+      background-color: #f6f6f6;
+      border-radius: 20px;
+
       .button-container {
         .buttons {
           padding: 0 5px 0 5px;

@@ -1,8 +1,6 @@
-import { useEffect, useState } from "react";
-
 import { useSelector } from "react-redux";
 import { RootState } from "../../../Redux/Reducers/rootReducer";
-import { useDispatch } from "react-redux";
+import Pagination from "../../../components/common/Pagination";
 
 import "../style/workCheckView.scss";
 import * as type from "../type";
@@ -21,27 +19,11 @@ const WorkCheckView = ({
     (state: RootState) => state.TotalWorkcheckListReducer
   );
 
-  const totalElements = useSelector(
-    (state: RootState) => state.TotalElementReducer.totalElementState
-  );
-
-  const totalPages = useSelector(
-    (state: RootState) => state.TotalPageReducer.totalpageState
-  );
-
   const totalList = workcheckToShow
     ? workcheckToShow
     : totalWorkCheckList.totalWorkcheckList;
 
   const day = ["일", "월", "화", "수", "목", "금", "토"];
-  const [pageList, setPageList] = useState<Array<number>>([]);
-
-  useEffect(() => {
-    for (let i = 0; i < totalPages; i++) {
-      pageList.push(i);
-    }
-    console.log(pageList);
-  }, []);
 
   return (
     <div className="WorkCheckView-top-container">
@@ -121,17 +103,7 @@ const WorkCheckView = ({
             ))}
         </ul>
         <div className="pagination workcheck">
-          <p className="pagination button-container">
-            {[...Array(totalPages)].map((x, i) => (
-              <button
-                className="pagination buttons"
-                onClick={onPaginationClick(i)}
-                key={i}
-              >
-                {i + 1}
-              </button>
-            ))}
-          </p>
+          <Pagination onPaginationClick={onPaginationClick}></Pagination>
         </div>
       </div>
     </div>

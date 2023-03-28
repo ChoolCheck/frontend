@@ -83,7 +83,6 @@ const WorkCheck = () => {
       setTotalWorkCheckList,
       setTotalElement,
       setTotalPage,
-      page,
     });
     GetEmployeeApi({ setEmployeeList });
   }, []);
@@ -109,6 +108,7 @@ const WorkCheck = () => {
   const onShowNameButtonClick = (id: number) => {
     const employeeId = id.toString();
     return (e: React.MouseEvent<HTMLButtonElement>) => {
+      e.preventDefault();
       if (startInput && endInput)
         GetEmployeeWorkcheckApi({
           employeeId,
@@ -141,14 +141,14 @@ const WorkCheck = () => {
   const onPaginationClick = (item: number) => {
     const page = item;
     setPage(item);
-    GetTotalWorkcheckApi({
-      setTotalWorkCheckList,
-      page,
-      setTotalPage,
-      setTotalElement,
-    });
     return (e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
+      GetTotalWorkcheckApi({
+        setTotalWorkCheckList,
+        page,
+        setTotalPage,
+        setTotalElement,
+      });
     };
   };
 
