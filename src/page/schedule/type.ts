@@ -51,7 +51,6 @@ export interface createScheduleProps extends setScheduleListTypes {
   setScheduleToShow: React.Dispatch<
     React.SetStateAction<scheduleObjProps[] | undefined>
   >;
-  setPaginationFocus: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export interface createScheduleViewProps
@@ -85,7 +84,6 @@ export interface updateScheduleProps extends setScheduleListTypes {
   setScheduleToShow: React.Dispatch<
     React.SetStateAction<scheduleObjProps[] | undefined>
   >;
-  setPaginationFocus: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export interface updateScheduleViewProps
@@ -118,8 +116,6 @@ export interface scheduleDetailProps extends setScheduleListTypes {
     React.SetStateAction<scheduleObjProps[] | undefined>
   >;
   setSelectedModal: (value: React.SetStateAction<string>) => void;
-
-  setPaginationFocus: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export interface scheduleDetailViewProps {

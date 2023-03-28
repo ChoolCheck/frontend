@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { setReadModalOpen } from "../../Redux/Actions/handleReadModal";
 import { setTotalElements } from "../../Redux/Actions/handleTotalElement";
 import { setTotalPages } from "../../Redux/Actions/handleTotalPages";
+import { setPaginationFocus } from "../../Redux/Actions/handlePaginationFocus";
 
 import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/Reducers/rootReducer";
@@ -39,18 +40,27 @@ const Schedule = () => {
   const readModalState = useSelector(
     (state: RootState) => state.ReadModalReducer.readModalState
   );
+
+  const paginationFocus = useSelector(
+    (state: RootState) => state.PaginationFocus.paginationState
+  );
+
   const setReadModal = useCallback(
     (readModalState: boolean) => dispatch(setReadModalOpen(readModalState)),
     [dispatch]
   );
 
   const setTotalElement = useCallback(
-    (totalElementState: number) =>
-      dispatch(setTotalElements(totalElementState)),
+    (totalElement: number) => dispatch(setTotalElements(totalElement)),
     [dispatch]
   );
   const setTotalPage = useCallback(
-    (totalPageState: number) => dispatch(setTotalPages(totalPageState)),
+    (totalPage: number) => dispatch(setTotalPages(totalPage)),
+    [dispatch]
+  );
+
+  const setPaginationfocus = useCallback(
+    (paginationFocus: string) => dispatch(setPaginationFocus(paginationFocus)),
     [dispatch]
   );
 
@@ -74,9 +84,9 @@ const Schedule = () => {
 
   const [employeeToShow, setEmployeeToShow] = useState<string>("0");
   const [page, setPage] = useState<number>(0);
-  const [paginationFocus, setPaginationFocus] = useState("total");
 
   useEffect(() => {
+    setPaginationfocus("total");
     GetWeekScheduleApi({ setWeekScheduleList });
     GetTotalScheduleApi({
       setTotalScheduleList,
@@ -88,7 +98,7 @@ const Schedule = () => {
 
   const onShowNameButtonClick = (id: number) => {
     return (e: React.MouseEvent<HTMLButtonElement>) => {
-      setPaginationFocus("employee");
+      setPaginationfocus("employee");
       setEmployeeToShow(id.toString());
 
       GetEmployeeScheduleApi({
@@ -101,7 +111,7 @@ const Schedule = () => {
   };
 
   const onShowTotalButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    setPaginationFocus("total");
+    setPaginationfocus("total");
     GetTotalScheduleApi({
       setTotalScheduleList,
       setScheduleToShow,
@@ -155,7 +165,6 @@ const Schedule = () => {
             setWeekScheduleList={setWeekScheduleList}
             setTotalScheduleList={setTotalScheduleList}
             setScheduleToShow={setScheduleToShow}
-            setPaginationFocus={setPaginationFocus}
           ></CreateSchedule>
         </WriteModal>
       )}
@@ -168,7 +177,6 @@ const Schedule = () => {
             setWeekScheduleList={setWeekScheduleList}
             setTotalScheduleList={setTotalScheduleList}
             setScheduleToShow={setScheduleToShow}
-            setPaginationFocus={setPaginationFocus}
           ></UpdateSchedule>
         </WriteModal>
       )}
@@ -181,7 +189,6 @@ const Schedule = () => {
             setWeekScheduleList={setWeekScheduleList}
             setScheduleToShow={setScheduleToShow}
             setSelectedModal={setSelectedModal}
-            setPaginationFocus={setPaginationFocus}
           ></ScheduleDetail>
         </ReadModal>
       )}

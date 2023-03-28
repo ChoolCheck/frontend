@@ -5,6 +5,7 @@ import { setReadModalOpen } from "../../Redux/Actions/handleReadModal";
 import { setTotalWorkcheckList } from "../../Redux/Actions/handleTotalWorkcheckList";
 import { setTotalElements } from "../../Redux/Actions/handleTotalElement";
 import { setTotalPages } from "../../Redux/Actions/handleTotalPages";
+import { setPaginationFocus } from "../../Redux/Actions/handlePaginationFocus";
 
 import { GetWorktypeApi, GetEmployeeApi } from "../../api/manage";
 import { UpdateWorkcheckApi } from "../../api/workcheck";
@@ -19,7 +20,6 @@ const UpdateWorkCheck = ({
   id,
   workcheckDetail,
   setWorkcheckToShow,
-  setPaginationFocus,
 }: type.updateWorkcheckProps) => {
   const dispatch = useDispatch();
 
@@ -49,7 +49,10 @@ const UpdateWorkCheck = ({
     (totalPageState: number) => dispatch(setTotalPages(totalPageState)),
     [dispatch]
   );
-
+  const setPaginationfocus = useCallback(
+    (paginationFocus: string) => dispatch(setPaginationFocus(paginationFocus)),
+    [dispatch]
+  );
   const [workTypeList, setWorkTypeList] = useState<
     worktypeType.worktypeProps[] | undefined
   >([]);
@@ -145,7 +148,7 @@ const UpdateWorkCheck = ({
     } else if (endTime == "") {
       window.alert("종료 시간을 선택해주세요.");
     } else {
-      setPaginationFocus("total");
+      setPaginationfocus("total");
       UpdateWorkcheckApi({
         id,
         employeeId,
@@ -164,24 +167,22 @@ const UpdateWorkCheck = ({
   };
 
   return (
-    <div className="updateEmployeeView-container">
-      <UpdateWorkCheckView
-        workTypeList={workTypeList}
-        employeeList={employeeList}
-        onClickCancelOnModal={onClickCancelOnModal}
-        onChangeEmployee={onChangeEmployee}
-        onChangeDate={onChangeDate}
-        onChangeWorkType={onChangeWorkType}
-        onChangeStartTime={onChangeStartTime}
-        onChangeEndTime={onChangeEndTime}
-        onClickUpdate={onClickUpdate}
-        employeeId={employeeId}
-        hoursId={hoursId}
-        startTime={startTime}
-        endTime={endTime}
-        date={date}
-      ></UpdateWorkCheckView>
-    </div>
+    <UpdateWorkCheckView
+      workTypeList={workTypeList}
+      employeeList={employeeList}
+      onClickCancelOnModal={onClickCancelOnModal}
+      onChangeEmployee={onChangeEmployee}
+      onChangeDate={onChangeDate}
+      onChangeWorkType={onChangeWorkType}
+      onChangeStartTime={onChangeStartTime}
+      onChangeEndTime={onChangeEndTime}
+      onClickUpdate={onClickUpdate}
+      employeeId={employeeId}
+      hoursId={hoursId}
+      startTime={startTime}
+      endTime={endTime}
+      date={date}
+    ></UpdateWorkCheckView>
   );
 };
 

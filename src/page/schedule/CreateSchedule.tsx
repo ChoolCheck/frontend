@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
 import { setTotalElements } from "../../Redux/Actions/handleTotalElement";
 import { setTotalPages } from "../../Redux/Actions/handleTotalPages";
+import { setPaginationFocus } from "../../Redux/Actions/handlePaginationFocus";
 
 import { GetWorktypeApi, GetEmployeeApi } from "../../api/manage";
 import { CreateScheduleApi } from "../../api/schedule";
@@ -17,7 +18,6 @@ const CreateSchedule = ({
   setWeekScheduleList,
   setTotalScheduleList,
   setScheduleToShow,
-  setPaginationFocus,
 }: type.createScheduleProps) => {
   const dispatch = useDispatch();
 
@@ -34,6 +34,10 @@ const CreateSchedule = ({
 
   const setTotalPage = useCallback(
     (totalPageState: number) => dispatch(setTotalPages(totalPageState)),
+    [dispatch]
+  );
+  const setPaginationfocus = useCallback(
+    (paginationFocus: string) => dispatch(setPaginationFocus(paginationFocus)),
     [dispatch]
   );
 
@@ -127,7 +131,7 @@ const CreateSchedule = ({
     } else if (endTime == "") {
       window.alert("종료 시간을 선택해주세요.");
     } else {
-      setPaginationFocus("total");
+      setPaginationfocus("total");
       CreateScheduleApi({
         employeeId,
         date,

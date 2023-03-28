@@ -8,6 +8,7 @@ import { setReadModalOpen } from "../../Redux/Actions/handleReadModal";
 
 import { setTotalElements } from "../../Redux/Actions/handleTotalElement";
 import { setTotalPages } from "../../Redux/Actions/handleTotalPages";
+import { setPaginationFocus } from "../../Redux/Actions/handlePaginationFocus";
 
 import ScheduleDetailView from "./view/ScheduleDetailView";
 
@@ -17,7 +18,6 @@ const ScheduleDetail = ({
   setWeekScheduleList,
   setScheduleToShow,
   setSelectedModal,
-  setPaginationFocus,
 }: type.scheduleDetailProps) => {
   const dispatch = useDispatch();
 
@@ -41,6 +41,10 @@ const ScheduleDetail = ({
     (totalPageState: number) => dispatch(setTotalPages(totalPageState)),
     [dispatch]
   );
+  const setPaginationfocus = useCallback(
+    (paginationFocus: string) => dispatch(setPaginationFocus(paginationFocus)),
+    [dispatch]
+  );
 
   const onUpdateClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     setSelectedModal("update");
@@ -51,7 +55,7 @@ const ScheduleDetail = ({
   const onDeleteClick = (id: number) => {
     return (e: React.MouseEvent<HTMLButtonElement>) => {
       if (window.confirm("해당 스케줄을 정말로 삭제하시겠습니까?")) {
-        setPaginationFocus("total");
+        setPaginationfocus("total");
         DeleteScheduleApi({
           setReadModal,
           id,

@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/Reducers/rootReducer";
 import { setTotalElements } from "../../Redux/Actions/handleTotalElement";
 import { setTotalPages } from "../../Redux/Actions/handleTotalPages";
+import { setPaginationFocus } from "../../Redux/Actions/handlePaginationFocus";
 
 import {
   GetDetailWorkcheckApi,
@@ -46,6 +47,14 @@ const WorkCheck = () => {
     [dispatch]
   );
 
+  const paginationFocus = useSelector(
+    (state: RootState) => state.PaginationFocus.paginationState
+  );
+  const setPaginationfocus = useCallback(
+    (paginationFocus: string) => dispatch(setPaginationFocus(paginationFocus)),
+    [dispatch]
+  );
+
   const setTotalWorkCheckList = useCallback(
     (totalWorkcheckList: type.workcheckObjProps[] | undefined) =>
       dispatch(setTotalWorkcheckList(totalWorkcheckList)),
@@ -77,11 +86,10 @@ const WorkCheck = () => {
   const [startInput, setStartInput] = useState("");
   const [endInput, setEndInput] = useState("");
   const [page, setPage] = useState<number>(0);
-  const [paginationFocus, setPaginationFocus] = useState("total");
   const [employeeToShow, setEmployeeToShow] = useState<string>("0");
 
   useEffect(() => {
-    setPaginationFocus("total");
+    setPaginationfocus("total");
     GetTotalWorkcheckApi({
       setTotalWorkCheckList,
       setTotalElement,
@@ -105,7 +113,7 @@ const WorkCheck = () => {
 
   const onGetDateResultClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    setPaginationFocus("total");
+    setPaginationfocus("total");
     GetDateWorkcheckApi({
       startInput,
       endInput,
@@ -119,7 +127,7 @@ const WorkCheck = () => {
     return (e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
       setEmployeeToShow(id.toString());
-      setPaginationFocus("employee");
+      setPaginationfocus("employee");
 
       if (startInput !== "" && endInput !== "")
         GetEmployeeWorkcheckApi({
@@ -142,7 +150,7 @@ const WorkCheck = () => {
 
   const onShowTotalButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    setPaginationFocus("total");
+    setPaginationfocus("total");
 
     if (startInput !== "" && endInput !== "") {
       GetTotalWorkcheckApi({
@@ -229,9 +237,7 @@ const WorkCheck = () => {
     <div className="WorkCheck-top-container">
       {writeModalState && (
         <WriteModal>
-          <CreateWorkCheck
-            setPaginationFocus={setPaginationFocus}
-          ></CreateWorkCheck>
+          <CreateWorkCheck></CreateWorkCheck>
         </WriteModal>
       )}
 
@@ -240,7 +246,6 @@ const WorkCheck = () => {
           <WorkCheckDetail
             workcheckDetail={workcheckDetail}
             setWorkcheckToShow={setWorkcheckToShow}
-            setPaginationFocus={setPaginationFocus}
           ></WorkCheckDetail>
         </ReadModal>
       )}

@@ -4,6 +4,7 @@ import WriteModalReducer from "./WriteModalReducer";
 import TotalWorkcheckListReducer from "./TotalWorkcheckListReducer";
 import TotalElementReducer from "./TotalElementReducer";
 import TotalPageReducer from "./TotalPageReducer";
+import PaginationFocus from "./PaginationFocusReducer";
 
 const rootReducer = combineReducers({
   ReadModalReducer,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   TotalWorkcheckListReducer,
   TotalElementReducer,
   TotalPageReducer,
+  PaginationFocus,
 });
 
 export default rootReducer;

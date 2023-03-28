@@ -7,6 +7,7 @@ import { setReadModalOpen } from "../../Redux/Actions/handleReadModal";
 import { setTotalWorkcheckList } from "../../Redux/Actions/handleTotalWorkcheckList";
 import { setTotalElements } from "../../Redux/Actions/handleTotalElement";
 import { setTotalPages } from "../../Redux/Actions/handleTotalPages";
+import { setPaginationFocus } from "../../Redux/Actions/handlePaginationFocus";
 
 import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/Reducers/rootReducer";
@@ -20,7 +21,6 @@ import { DeleteWorkcheckApi } from "../../api/workcheck";
 const WorkCheckDetail = ({
   workcheckDetail,
   setWorkcheckToShow,
-  setPaginationFocus,
 }: type.workcheckDetailProps) => {
   const dispatch = useDispatch();
 
@@ -52,7 +52,10 @@ const WorkCheckDetail = ({
     (totalPageState: number) => dispatch(setTotalPages(totalPageState)),
     [dispatch]
   );
-
+  const setPaginationfocus = useCallback(
+    (paginationFocus: string) => dispatch(setPaginationFocus(paginationFocus)),
+    [dispatch]
+  );
   const onUpdateClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     setWriteModal(true);
   };
@@ -60,7 +63,7 @@ const WorkCheckDetail = ({
   const onDeleteClick = (id: number) => {
     return (e: React.MouseEvent<HTMLButtonElement>) => {
       if (window.confirm("해당 스케줄을 정말로 삭제하시겠습니까?")) {
-        setPaginationFocus("total");
+        setPaginationfocus("total");
         DeleteWorkcheckApi({
           setReadModal,
           id,
@@ -81,7 +84,6 @@ const WorkCheckDetail = ({
             id={workcheckDetail ? workcheckDetail.id : 0}
             workcheckDetail={workcheckDetail}
             setWorkcheckToShow={setWorkcheckToShow}
-            setPaginationFocus={setPaginationFocus}
           ></UpdateWorkCheck>
         </WriteModal>
       )}

@@ -4,6 +4,7 @@ import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
 import { setTotalWorkcheckList } from "../../Redux/Actions/handleTotalWorkcheckList";
 import { setTotalElements } from "../../Redux/Actions/handleTotalElement";
 import { setTotalPages } from "../../Redux/Actions/handleTotalPages";
+import { setPaginationFocus } from "../../Redux/Actions/handlePaginationFocus";
 
 import { GetWorktypeApi, GetEmployeeApi } from "../../api/manage";
 import { CreateWorkcheckApi } from "../../api/workcheck";
@@ -14,7 +15,7 @@ import * as worktypeType from "../../commonType/worktype";
 
 import CreateWorkCheckView from "./view/CreateWorkCheckView";
 
-const CreateWorkCheck = ({ setPaginationFocus }: type.createWorkCheckProps) => {
+const CreateWorkCheck = () => {
   const dispatch = useDispatch();
 
   const setWriteModal = useCallback(
@@ -36,6 +37,10 @@ const CreateWorkCheck = ({ setPaginationFocus }: type.createWorkCheckProps) => {
 
   const setTotalPage = useCallback(
     (totalPageState: number) => dispatch(setTotalPages(totalPageState)),
+    [dispatch]
+  );
+  const setPaginationfocus = useCallback(
+    (paginationFocus: string) => dispatch(setPaginationFocus(paginationFocus)),
     [dispatch]
   );
   const [workTypeList, setWorkTypeList] = useState<
@@ -128,7 +133,7 @@ const CreateWorkCheck = ({ setPaginationFocus }: type.createWorkCheckProps) => {
     } else if (endTime == "") {
       window.alert("종료 시간을 선택해주세요.");
     } else {
-      setPaginationFocus("total");
+      setPaginationfocus("total");
       CreateWorkcheckApi({
         employeeId,
         date,
@@ -144,20 +149,18 @@ const CreateWorkCheck = ({ setPaginationFocus }: type.createWorkCheckProps) => {
   };
 
   return (
-    <div>
-      <CreateWorkCheckView
-        workTypeList={workTypeList}
-        employeeList={employeeList}
-        onClickCancelOnModal={onClickCancelOnModal}
-        workcheckForm={workcheckForm}
-        onChangeEmployee={onChangeEmployee}
-        onChangeDate={onChangeDate}
-        onChangeWorkType={onChangeWorkType}
-        onChangeStartTime={onChangeStartTime}
-        onChangeEndTime={onChangeEndTime}
-        onClickCreate={onClickCreate}
-      ></CreateWorkCheckView>
-    </div>
+    <CreateWorkCheckView
+      workTypeList={workTypeList}
+      employeeList={employeeList}
+      onClickCancelOnModal={onClickCancelOnModal}
+      workcheckForm={workcheckForm}
+      onChangeEmployee={onChangeEmployee}
+      onChangeDate={onChangeDate}
+      onChangeWorkType={onChangeWorkType}
+      onChangeStartTime={onChangeStartTime}
+      onChangeEndTime={onChangeEndTime}
+      onClickCreate={onClickCreate}
+    ></CreateWorkCheckView>
   );
 };
 
