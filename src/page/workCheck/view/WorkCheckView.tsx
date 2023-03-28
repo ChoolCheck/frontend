@@ -14,7 +14,6 @@ const WorkCheckView = ({
   employeeList,
   page,
   onPaginationClick,
-  paginationFocus,
 }: type.workCheckViewProps) => {
   const totalWorkCheckList = useSelector(
     (state: RootState) => state.TotalWorkcheckListReducer
@@ -103,10 +102,7 @@ const WorkCheckView = ({
               </li>
             ))}
         </ul>
-        <Pagination
-          onPaginationClick={onPaginationClick}
-          paginationFocus={paginationFocus}
-        ></Pagination>
+        <Pagination onPaginationClick={onPaginationClick}></Pagination>
       </div>
     </div>
   );

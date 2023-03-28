@@ -87,10 +87,7 @@ const ScheduleTotalView = ({
               </li>
             ))}
         </ul>
-        <Pagination
-          paginationFocus={paginationFocus}
-          onPaginationClick={onPaginationClick}
-        ></Pagination>
+        <Pagination onPaginationClick={onPaginationClick}></Pagination>
       </div>
     </div>
   );

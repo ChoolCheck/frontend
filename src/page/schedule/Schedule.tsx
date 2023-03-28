@@ -113,12 +113,12 @@ const Schedule = () => {
     };
   };
 
-  const onPaginationClick = (item: number, paginationFocus: string) => {
+  const onPaginationClick = (item: number) => {
     const page = item;
     setPage(item);
-    console.log(paginationFocus);
     return (e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
+      console.log(paginationFocus);
       if (paginationFocus == "total") {
         GetTotalScheduleApi({
           setTotalScheduleList,

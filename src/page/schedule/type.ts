@@ -32,8 +32,7 @@ export interface scheduleTotalViewProps {
 
   scheduleToShow: scheduleObjProps[] | undefined;
   onPaginationClick: (
-    item: number,
-    paginationFocus: string
+    item: number
   ) => (e: React.MouseEvent<HTMLButtonElement>) => void;
   paginationFocus: string;
 }

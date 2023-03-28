@@ -3,16 +3,11 @@ import { RootState } from "../../Redux/Reducers/rootReducer";
 import "./pagination.scss";
 
 interface paginationProps {
-  paginationFocus: string;
   onPaginationClick: (
-    item: number,
-    paginationFocus: string
+    item: number
   ) => (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
-const Pagination = ({
-  onPaginationClick,
-  paginationFocus,
-}: paginationProps) => {
+const Pagination = ({ onPaginationClick }: paginationProps) => {
   const totalPages = useSelector(
     (state: RootState) => state.TotalPageReducer.totalpageState
   );
@@ -23,7 +18,7 @@ const Pagination = ({
         {[...Array(totalPages)].map((x, i) => (
           <button
             className="pagination buttons"
-            onClick={onPaginationClick(i, paginationFocus)}
+            onClick={onPaginationClick(i)}
             key={i}
           >
             {i + 1}

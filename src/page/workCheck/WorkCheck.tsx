@@ -120,7 +120,7 @@ const WorkCheck = () => {
     setPaginationFocus("employee");
     return (e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
-      if (startInput && endInput)
+      if (startInput !== "" && endInput !== "")
         GetEmployeeWorkcheckApi({
           employeeId,
           setWorkcheckToShow,
@@ -140,6 +140,7 @@ const WorkCheck = () => {
   };
 
   const onShowTotalButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     setPaginationFocus("total");
     setWorkcheckToShow(totalWorkCheckList.totalWorkcheckList);
   };
@@ -158,10 +159,12 @@ const WorkCheck = () => {
     }
   };
 
-  const onPaginationClick = (item: number, paginationFocus: string) => {
+  const onPaginationClick = (item: number) => {
     const page = item;
     setPage(item);
     return (e: React.MouseEvent<HTMLButtonElement>) => {
+      console.log(paginationFocus);
+
       e.preventDefault();
       if (paginationFocus == "total") {
         GetTotalWorkcheckApi({
@@ -171,7 +174,7 @@ const WorkCheck = () => {
           page,
         });
       } else if (paginationFocus == "employee") {
-        if (startInput && endInput)
+        if (startInput !== "" && endInput !== "")
           GetEmployeeWorkcheckApi({
             employeeId,
             setWorkcheckToShow,
@@ -225,7 +228,6 @@ const WorkCheck = () => {
         employeeList={employeeList}
         page={page}
         onPaginationClick={onPaginationClick}
-        paginationFocus={paginationFocus}
       ></WorkCheckView>
     </div>
   );
