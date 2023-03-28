@@ -72,8 +72,6 @@ const Schedule = () => {
   const [scheduleDetail, setScheduleDetail] = useState<type.scheduleObjProps>();
   const [selectedModal, setSelectedModal] = useState<string>("");
 
-  // const [page, setPage] = useState<number>(0);
-
   const [employeeToShow, setEmployeeToShow] = useState<string>("0");
   const [paginationFocus, setPaginationFocus] = useState("total");
 
@@ -121,13 +119,13 @@ const Schedule = () => {
   const onPaginationClick = (item: number) => {
     return (e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
-      // setPage(item);
       if (paginationFocus == "total") {
         GetTotalScheduleApi({
+          setScheduleToShow,
           setTotalScheduleList,
-          page: item,
           setTotalPage,
           setTotalElement,
+          page: item,
         });
       } else if (paginationFocus == "employee") {
         GetEmployeeScheduleApi({
