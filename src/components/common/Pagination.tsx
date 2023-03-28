@@ -6,8 +6,9 @@ interface paginationProps {
   onPaginationClick: (
     item: number
   ) => (e: React.MouseEvent<HTMLButtonElement>) => void;
+  page: number;
 }
-const Pagination = ({ onPaginationClick }: paginationProps) => {
+const Pagination = ({ onPaginationClick, page }: paginationProps) => {
   const totalPages = useSelector(
     (state: RootState) => state.TotalPageReducer.totalpageState
   );
@@ -20,6 +21,13 @@ const Pagination = ({ onPaginationClick }: paginationProps) => {
             className="pagination buttons"
             onClick={onPaginationClick(i)}
             key={i}
+            style={
+              page == i
+                ? {
+                    fontWeight: 700,
+                  }
+                : { fontWeight: 300 }
+            }
           >
             {i + 1}
           </button>
