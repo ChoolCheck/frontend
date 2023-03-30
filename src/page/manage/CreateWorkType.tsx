@@ -79,13 +79,7 @@ const CreateWorkType = ({ setWorkTypeList }: type.createWorktypeProps) => {
         >
           취소
         </button>
-        <button
-          onClick={() =>
-            CreateWorktypeApi({ worktypeForm, setWriteModal, setWorkTypeList })
-          }
-        >
-          완료
-        </button>
+        <button onClick={() => onClickCreate}>완료</button>
       </div>
     </div>
   );
