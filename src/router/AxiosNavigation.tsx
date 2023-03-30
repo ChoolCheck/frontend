@@ -40,29 +40,9 @@ export default function AxiosNavigation() {
             })
 
             .catch((err) => {
-              if (localStorage.getItem("token")) {
-                return axios({
-                  method: "Post",
-                  url: `${config.api}/user/logout`,
-                  headers: {
-                    "Content-Type": `application/json`,
-                    Authorization: `Bearer ${localStorage.getItem("token")}`,
-                  },
-                })
-                  .then((res) => {
-                    localStorage.clear();
-                    navigate("/login");
-                  })
-                  .then((res) => {
-                    window.alert(
-                      "토큰이 만료되어 자동으로 로그아웃 되었습니다."
-                    );
-                  })
-                  .catch((err) => {
-                    if (localStorage.getItem("token"))
-                      window.alert("로그아웃에 실패했습니다.");
-                  });
-              }
+              localStorage.clear();
+              navigate("/login");
+              window.alert("토큰이 만료되어 자동으로 로그아웃 되었습니다.");
             });
         } else if (error.response.data.message) {
           window.alert(error.response.data.message);
