@@ -34,6 +34,14 @@ const CreateWorkType = ({ setWorkTypeList }: type.createWorktypeProps) => {
     } else return;
   };
 
+  const onClickCreate = () => {
+    if (worktypeForm.startTime == "") window.alert("시작 시작을 입력해주세요");
+    else if (worktypeForm.startTime == "")
+      window.alert("종료 시작을 입력해주세요");
+    else if (worktypeForm.title == "") window.alert("제목을 입력해주세요");
+    else CreateWorktypeApi({ worktypeForm, setWriteModal, setWorkTypeList });
+  };
+
   return (
     <div className="createWorkType-container">
       <h3>근무 시간 추가</h3>
