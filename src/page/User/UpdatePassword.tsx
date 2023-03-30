@@ -48,7 +48,10 @@ const UpdatePassword = () => {
   };
 
   const onUpdateClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    UpdatePasswordApi({ password, mailToken, navigate });
+    if (isPasswordCheck == false) window.alert("비밀번호가 일치하지 않습니다.");
+    else if (isPassword == false) window.alert("비밀번호 형식을 확인해주세요.");
+    else if (password == "") window.alert("비밀번호를 입력해주세요.");
+    else UpdatePasswordApi({ password, mailToken, navigate });
   };
   return (
     <div className="updatepassword-top-container">
