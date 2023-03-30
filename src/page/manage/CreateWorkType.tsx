@@ -36,9 +36,9 @@ const CreateWorkType = ({ setWorkTypeList }: type.createWorktypeProps) => {
 
   const onClickCreate = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    if (worktypeForm.startTime == "") window.alert("시작 시작을 입력해주세요");
-    else if (worktypeForm.startTime == "")
-      window.alert("종료 시작을 입력해주세요");
+    if (worktypeForm.startTime == "") window.alert("시작 시간을 입력해주세요");
+    else if (worktypeForm.endTime == "")
+      window.alert("종료 시간을 입력해주세요");
     else if (worktypeForm.title == "") window.alert("제목을 입력해주세요");
     else CreateWorktypeApi({ worktypeForm, setWriteModal, setWorkTypeList });
   };
