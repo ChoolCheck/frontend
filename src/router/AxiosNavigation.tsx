@@ -36,7 +36,7 @@ export default function AxiosNavigation() {
           })
             .then((res) => {
               localStorage.setItem("token", res.data.accessToken);
-              return refreshAPI.request(originalConfig);
+              return refreshAPI(originalConfig);
             })
 
             .catch((err) => {
