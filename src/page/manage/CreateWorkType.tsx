@@ -34,7 +34,8 @@ const CreateWorkType = ({ setWorkTypeList }: type.createWorktypeProps) => {
     } else return;
   };
 
-  const onClickCreate = () => {
+  const onClickCreate = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     if (worktypeForm.startTime == "") window.alert("시작 시작을 입력해주세요");
     else if (worktypeForm.startTime == "")
       window.alert("종료 시작을 입력해주세요");
@@ -79,7 +80,7 @@ const CreateWorkType = ({ setWorkTypeList }: type.createWorktypeProps) => {
         >
           취소
         </button>
-        <button onClick={() => onClickCreate}>완료</button>
+        <button onClick={onClickCreate}>완료</button>
       </div>
     </div>
   );

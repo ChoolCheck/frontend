@@ -91,9 +91,7 @@ export async function LogoutApi({ navigate }: type.apiLogoutProps) {
     },
   })
     .then((res) => {
-      localStorage.removeItem("token");
-      localStorage.removeItem("refreshToken");
-
+      localStorage.clear();
       navigate("/login");
     })
     .catch((err) => {

@@ -88,7 +88,8 @@ export async function DeleteUserApi({ navigate }: type.sendEmailProps) {
   })
     .then((res) => {
       window.alert("탈퇴가 완료되었습니다.");
-      LogoutApi({ navigate });
+      localStorage.clear();
+      navigate("/login");
     })
     .catch((err) => {
       window.alert("탈퇴에 실패하였습니다. 로그인 후 다시 시도해주세요.");
