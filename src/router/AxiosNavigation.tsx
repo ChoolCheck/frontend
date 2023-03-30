@@ -39,7 +39,7 @@ export default function AxiosNavigation() {
               originalConfig.headers["Authorization"] =
                 "Bearer " + res.data.accessToken;
 
-              location.reload();
+              window.location.reload();
 
               // return refreshAPI(originalConfig);
             })
