@@ -106,11 +106,15 @@ const Signup = () => {
 
   const onSubmitForm = () => {
     if (email == "") window.alert("이메일을 입력해주세요");
+    else if (isEmail == false) window.alert("이메일 형식을 확인해주세요");
+    else if (emailCertificated == false) window.alert("이메일 인증을 해주세요");
+    else if (code == "") window.alert("이메일 인증 코드를 입력해주세요");
     else if (password == "") window.alert("비밀번호를 입력해주세요");
+    else if (isPassword == false) window.alert("비밀번호 형식을 확인해주세요");
+    else if (isPasswordCheck == false)
+      window.alert("비밀번호가 일치하지 않습니다");
     else if (storeName == "") window.alert("가게명을 입력해주세요");
-    else {
-      SignupApi({ email, password, storeName, code, navigate });
-    }
+    else SignupApi({ email, password, storeName, code, navigate });
   };
 
   return (
