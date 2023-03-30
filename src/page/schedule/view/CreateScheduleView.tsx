@@ -26,7 +26,10 @@ const CreateScheduleView = ({
             <option>직원 선택</option>
             {employeeList &&
               employeeList.map((item) => (
-                <option value={scheduleForm.employee}>
+                <option
+                  value={scheduleForm.employee}
+                  className="employee-option"
+                >
                   <span
                     style={{
                       backgroundColor: `#${
@@ -39,7 +42,6 @@ const CreateScheduleView = ({
                     &nbsp;
                   </span>
                   <span>{item.name}</span>
-                  {item.name}
                 </option>
               ))}
           </select>

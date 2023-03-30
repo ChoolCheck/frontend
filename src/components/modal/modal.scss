@@ -13,7 +13,11 @@ $opacity-zero: 0.3;
   background-color: rgba($color-none, $opacity-zero);
 
   option {
-    background-color: inherit;
+    .employee-option {
+      appearance: none;
+      -moz-appearance: none;
+      -webkit-appearance: none;
+    }
   }
   .readmodal-container {
     padding: 30px 35px 35px 40px;
