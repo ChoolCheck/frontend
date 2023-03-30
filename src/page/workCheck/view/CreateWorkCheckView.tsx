@@ -1,4 +1,5 @@
 import * as type from "../type";
+import * as enumType from "../../../commonType/enum";
 
 const CreateWorkCheckView = ({
   employeeList,
@@ -25,7 +26,19 @@ const CreateWorkCheckView = ({
             <option>직원 선택</option>
             {employeeList &&
               employeeList.map((item) => (
-                <option value={workcheckForm.employee}>{item.name}</option>
+                <option
+                  className="employee-option"
+                  value={workcheckForm.employee}
+                  style={{
+                    backgroundColor: `#${
+                      enumType.enumColor[
+                        item.color as keyof typeof enumType.enumColor
+                      ]
+                    }`,
+                  }}
+                >
+                  {item.name}
+                </option>
               ))}
           </select>
         </p>
