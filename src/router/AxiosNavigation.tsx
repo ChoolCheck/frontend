@@ -39,11 +39,15 @@ export default function AxiosNavigation() {
               originalConfig.headers["Authorization"] =
                 "Bearer " + res.data.accessToken;
 
-              window.location.reload();
+              // refreshAPI(originalConfig);
+              // window.location.reload();
 
-              // return refreshAPI(originalConfig);
+              return refreshAPI(originalConfig);
             })
-
+            .then((res) => {
+              console.log(res);
+              window.location.reload();
+            })
             .catch((err) => {
               localStorage.clear();
               navigate("/login");
