@@ -29,19 +29,15 @@ const CreateScheduleView = ({
                 <option
                   value={scheduleForm.employee}
                   className="employee-option"
+                  style={{
+                    backgroundColor: `#${
+                      enumType.enumColor[
+                        item.color as keyof typeof enumType.enumColor
+                      ]
+                    }`,
+                  }}
                 >
-                  <span
-                    style={{
-                      backgroundColor: `#${
-                        enumType.enumColor[
-                          item.color as keyof typeof enumType.enumColor
-                        ]
-                      }`,
-                    }}
-                  >
-                    &nbsp;
-                  </span>
-                  <span>{item.name}</span>
+                  {item.name}
                 </option>
               ))}
           </select>
