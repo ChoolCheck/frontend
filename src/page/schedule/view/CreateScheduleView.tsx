@@ -1,4 +1,5 @@
 import * as type from "../type";
+import * as enumType from "../../../commonType/enum";
 
 const CreateScheduleView = ({
   employeeList,
@@ -25,7 +26,18 @@ const CreateScheduleView = ({
             <option>직원 선택</option>
             {employeeList &&
               employeeList.map((item) => (
-                <option value={scheduleForm.employee}>{item.name}</option>
+                <option
+                  value={scheduleForm.employee}
+                  style={{
+                    backgroundColor: `#${
+                      enumType.enumColor[
+                        item.color as keyof typeof enumType.enumColor
+                      ]
+                    }`,
+                  }}
+                >
+                  {item.name}
+                </option>
               ))}
           </select>
         </p>
