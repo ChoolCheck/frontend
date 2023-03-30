@@ -11,7 +11,6 @@ export default function AxiosNavigation() {
       baseURL: `${config.api}`,
       headers: {
         "Content-type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
 
@@ -36,6 +35,10 @@ export default function AxiosNavigation() {
           })
             .then((res) => {
               localStorage.setItem("token", res.data.accessToken);
+
+              originalConfig.headers["Authorization"] =
+                "Bearer " + res.data.accessToken;
+
               return refreshAPI(originalConfig);
             })
 
