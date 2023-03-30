@@ -8,10 +8,7 @@ const UpdatePassword = () => {
   const navigate = useNavigate();
 
   const mailtoken = new URLSearchParams(window.location.search).get("token");
-
   const [mailToken, setMailToken] = useState(mailtoken ? mailtoken : "");
-
-  console.log(mailToken);
 
   const [password, setPassword] = useState("");
   const [passwordMessage, setPasswordMessage] = useState("");
