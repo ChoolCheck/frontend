@@ -20,10 +20,7 @@ export async function LoginApi({
       localStorage.setItem("refreshToken", res.data.refreshToken);
       navigate("/calendar");
     })
-    .catch((err) => {
-      if (err.response.message) window.alert(err.response.message);
-      else window.alert("로그인에 실패했습니다.");
-    });
+    .catch((err) => {});
 }
 
 export async function SignupApi({
