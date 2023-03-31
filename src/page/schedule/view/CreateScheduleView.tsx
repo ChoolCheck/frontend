@@ -57,6 +57,7 @@ const CreateScheduleView = ({
       backgroundColor: "white",
       boxShadow: "none",
       borderRadius: "10px",
+      borderColor: "gray",
     }),
     option: (styles, { data, isDisabled, isFocused, isSelected }) => {
       const color = chroma(data.color);
