@@ -56,15 +56,15 @@ const CreateScheduleView = ({
       const color = chroma(data.color);
       return {
         ...styles,
-        // backgroundColor: isDisabled
-        //   ? undefined
-        //   : isSelected
-        //   ? data.color
-        //   : isFocused
-        //   ? color.alpha(0.1)
-        //   : undefined,
+        backgroundColor: isDisabled
+          ? undefined
+          : isSelected
+          ? data.color
+          : isFocused
+          ? `${color.alpha(0.1)}`
+          : undefined,
         color: isDisabled
-          ? "#ccc"
+          ? "white"
           : isSelected
           ? chroma.contrast(color, "white") > 2
             ? "white"
@@ -83,7 +83,7 @@ const CreateScheduleView = ({
       };
     },
     input: (styles) => ({ ...styles, ...dot() }),
-    placeholder: (styles) => ({ ...styles, ...dot("#ccc") }),
+    placeholder: (styles) => ({ ...styles, ...dot("white") }),
     singleValue: (styles, { data }) => ({ ...styles, ...dot(data.color) }),
   };
 
