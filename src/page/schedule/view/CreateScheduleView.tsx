@@ -32,6 +32,7 @@ const CreateScheduleView = ({
         }`,
       })
     );
+    console.log(colorsArray);
   }, []);
   const dot = (color = "transparent") => ({
     alignItems: "center",
@@ -91,12 +92,15 @@ const CreateScheduleView = ({
         <p className="modal-employee">
           <span>직원</span>
 
-          <Select
-            value={colorsArray[0]}
-            options={colorsArray}
-            styles={colorStyles}
-            onChange={onChangeEmployee}
-          />
+          {colorsArray.length > 0 && (
+            <Select
+              defaultValue={colorsArray[0]}
+              options={colorsArray}
+              styles={colorStyles}
+              onChange={onChangeEmployee}
+            />
+          )}
+
           {/* <select name="employee" onChange={onChangeEmployee}>
             <option>직원 선택</option>
             {employeeList &&
