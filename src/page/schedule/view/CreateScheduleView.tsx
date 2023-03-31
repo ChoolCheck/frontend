@@ -42,14 +42,15 @@ const CreateScheduleView = ({
 
     ":before": {
       backgroundColor: color,
-      borderRadius: 10,
+      borderRadius: 8,
       content: '" "',
       display: "block",
       marginRight: 8,
-      height: 10,
-      width: 10,
+      height: 15,
+      width: 15,
     },
   });
+
   const colorStyles: StylesConfig<type.optionObj> = {
     control: (styles) => ({
       ...styles,
