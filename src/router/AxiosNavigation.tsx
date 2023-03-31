@@ -20,7 +20,6 @@ export default function AxiosNavigation() {
       },
       async function (error) {
         const originalConfig = error.config;
-        console.log(originalConfig);
         if (
           error.response.status == 401 &&
           error.response.data.message == "expired"
@@ -49,12 +48,13 @@ export default function AxiosNavigation() {
               navigate("/login");
               window.alert("토큰이 만료되어 자동으로 로그아웃 되었습니다.");
             });
-        } else if (error.response.data.message) {
-          window.alert(error.response.data.message);
-        } else {
-          window.alert("요청 처리에 실패하였습니다.");
+          // } else if (error.response.data.message) {
+          //   window.alert(error.response.data.message);
+          // } else {
+          //   window.alert("요청 처리에 실패하였습니다.");
+          // }
+          return Promise.reject(error);
         }
-        return Promise.reject(error);
       }
     );
 

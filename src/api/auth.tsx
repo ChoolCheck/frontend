@@ -20,7 +20,11 @@ export async function LoginApi({
       localStorage.setItem("refreshToken", res.data.refreshToken);
       navigate("/calendar");
     })
-    .catch((err) => {});
+    .catch((err) => {
+      console.log(err);
+      console.log(err.response);
+      window.alert(err.response.data.message);
+    });
 }
 
 export async function SignupApi({
