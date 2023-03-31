@@ -61,15 +61,9 @@ const CreateScheduleView = ({
           : isSelected
           ? data.color
           : isFocused
-          ? `${color.alpha(0.1)}`
+          ? `${color.alpha(0.05)}`
           : undefined,
-        color: isDisabled
-          ? "white"
-          : isSelected
-          ? chroma.contrast(color, "white") > 2
-            ? "white"
-            : "black"
-          : data.color,
+        color: "black",
         cursor: isDisabled ? "not-allowed" : "default",
 
         ":active": {
