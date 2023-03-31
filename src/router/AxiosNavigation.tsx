@@ -39,7 +39,7 @@ export default function AxiosNavigation() {
               })
               .then((res) => {
                 console.log(res);
-                // window.location.reload();
+                window.location.reload();
               })
               .catch((err) => {
                 localStorage.clear();

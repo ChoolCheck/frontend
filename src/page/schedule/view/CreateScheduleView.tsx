@@ -23,19 +23,34 @@ const CreateScheduleView = ({
 
   useEffect(() => {
     employeeList?.map((item) =>
-      setColorsArray([
-        ...colorsArray,
-        {
-          label: item.name,
-          value: scheduleForm.employee,
-          color: `#${
-            enumType.enumColor[item.color as keyof typeof enumType.enumColor]
-          }`,
-        },
-      ])
+      colorsArray.length == 0
+        ? setColorsArray([
+            {
+              label: item.name,
+              value: scheduleForm.employee,
+              color: `#${
+                enumType.enumColor[
+                  item.color as keyof typeof enumType.enumColor
+                ]
+              }`,
+            },
+          ])
+        : setColorsArray([
+            ...colorsArray,
+            {
+              label: item.name,
+              value: scheduleForm.employee,
+              color: `#${
+                enumType.enumColor[
+                  item.color as keyof typeof enumType.enumColor
+                ]
+              }`,
+            },
+          ])
     );
   }, []);
   console.log(colorsArray);
+  console.log(employeeList);
 
   const dot = (color = "transparent") => ({
     alignItems: "center",
