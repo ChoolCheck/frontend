@@ -16,9 +16,11 @@ export async function LoginApi({
     data: { email: email, password: password },
   })
     .then((res) => {
-      localStorage.setItem("token", res.data.accessToken);
-      localStorage.setItem("refreshToken", res.data.refreshToken);
-      navigate("/calendar");
+      if (res.data) {
+        localStorage.setItem("token", res.data.accessToken);
+        localStorage.setItem("refreshToken", res.data.refreshToken);
+        navigate("/calendar");
+      }
     })
     .catch((err) => {
       if (err.response) {
