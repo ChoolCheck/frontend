@@ -22,17 +22,17 @@ const CreateScheduleView = ({
   const [colorsArray, setColorsArray] = useState<Array<type.optionObj>>([]);
 
   useEffect(() => {
-    setColorsArray([]);
-    employeeList?.map((item) => {
-      colorsArray.push({
+    let list: Array<type.optionObj> = [];
+    employeeList?.map((item, i) => {
+      list.push({
         label: item.name,
         value: scheduleForm.employee,
         color: `#${
           enumType.enumColor[item.color as keyof typeof enumType.enumColor]
         }`,
       });
-      console.log(item);
     });
+    setColorsArray(list);
   }, [employeeList]);
   console.log(colorsArray);
 
@@ -77,7 +77,7 @@ const CreateScheduleView = ({
           backgroundColor: !isDisabled
             ? isSelected
               ? data.color
-              : color.alpha(0.3).css()
+              : color.alpha(0.2).css()
             : undefined,
         },
       };
@@ -100,6 +100,9 @@ const CreateScheduleView = ({
               options={colorsArray}
               styles={colorStyles}
               onChange={onChangeEmployee}
+              components={{
+                IndicatorSeparator: () => null,
+              }}
             />
           )}
 
