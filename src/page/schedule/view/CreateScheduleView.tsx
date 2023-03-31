@@ -22,31 +22,15 @@ const CreateScheduleView = ({
   const [colorsArray, setColorsArray] = useState<Array<type.optionObj>>([]);
 
   useEffect(() => {
+    setColorsArray([]);
     employeeList?.map((item) => {
-      colorsArray.length == 0
-        ? setColorsArray([
-            {
-              label: item.name,
-              value: scheduleForm.employee,
-              color: `#${
-                enumType.enumColor[
-                  item.color as keyof typeof enumType.enumColor
-                ]
-              }`,
-            },
-          ])
-        : setColorsArray([
-            ...colorsArray,
-            {
-              label: item.name,
-              value: scheduleForm.employee,
-              color: `#${
-                enumType.enumColor[
-                  item.color as keyof typeof enumType.enumColor
-                ]
-              }`,
-            },
-          ]);
+      colorsArray.push({
+        label: item.name,
+        value: scheduleForm.employee,
+        color: `#${
+          enumType.enumColor[item.color as keyof typeof enumType.enumColor]
+        }`,
+      });
       console.log(item);
     });
   }, [employeeList]);
