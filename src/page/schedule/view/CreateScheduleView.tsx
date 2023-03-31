@@ -22,7 +22,7 @@ const CreateScheduleView = ({
   const [colorsArray, setColorsArray] = useState<Array<type.optionObj>>([]);
 
   useEffect(() => {
-    employeeList?.map((item) =>
+    employeeList?.map((item) => {
       colorsArray.length == 0
         ? setColorsArray([
             {
@@ -46,8 +46,9 @@ const CreateScheduleView = ({
                 ]
               }`,
             },
-          ])
-    );
+          ]);
+      console.log(item);
+    });
   }, []);
   console.log(colorsArray);
   console.log(employeeList);
@@ -110,7 +111,7 @@ const CreateScheduleView = ({
         <p className="modal-employee">
           <span>직원</span>
 
-          {colorsArray.length > 0 && (
+          {employeeList && (
             <Select
               defaultValue={colorsArray[0]}
               options={colorsArray}
