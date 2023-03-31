@@ -1,3 +1,7 @@
+import { useEffect, useState } from "react";
+import Select, { StylesConfig } from "react-select";
+import chroma from "chroma-js";
+
 import * as type from "../type";
 import * as enumType from "../../../commonType/enum";
 
@@ -15,6 +19,71 @@ const CreateScheduleView = ({
   onClickCancelOnModal,
   onClickCreate,
 }: type.createScheduleViewProps) => {
+  const [colorsArray, setColorsArray] = useState<Array<type.optionObj>>([]);
+
+  useEffect(() => {
+    setColorsArray([]);
+    employeeList?.map((item) =>
+      colorsArray.push({
+        label: item.name,
+        value: scheduleForm.employee,
+        color: `#${
+          enumType.enumColor[item.color as keyof typeof enumType.enumColor]
+        }`,
+      })
+    );
+  }, []);
+  const dot = (color = "transparent") => ({
+    alignItems: "center",
+    display: "flex",
+
+    ":before": {
+      backgroundColor: color,
+      borderRadius: 10,
+      content: '" "',
+      display: "block",
+      marginRight: 8,
+      height: 10,
+      width: 10,
+    },
+  });
+  const colorStyles: StylesConfig<type.optionObj> = {
+    control: (styles) => ({ ...styles, backgroundColor: "white" }),
+    option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+      const color = chroma(data.color);
+      return {
+        ...styles,
+        // backgroundColor: isDisabled
+        //   ? undefined
+        //   : isSelected
+        //   ? data.color
+        //   : isFocused
+        //   ? color.alpha(0.1)
+        //   : undefined,
+        color: isDisabled
+          ? "#ccc"
+          : isSelected
+          ? chroma.contrast(color, "white") > 2
+            ? "white"
+            : "black"
+          : data.color,
+        cursor: isDisabled ? "not-allowed" : "default",
+
+        ":active": {
+          ...styles[":active"],
+          backgroundColor: !isDisabled
+            ? isSelected
+              ? data.color
+              : color.alpha(0.3).css()
+            : undefined,
+        },
+      };
+    },
+    input: (styles) => ({ ...styles, ...dot() }),
+    placeholder: (styles) => ({ ...styles, ...dot("#ccc") }),
+    singleValue: (styles, { data }) => ({ ...styles, ...dot(data.color) }),
+  };
+
   return (
     <div className="CreateSchedule-container">
       <h3>스케줄 추가</h3>
@@ -22,7 +91,13 @@ const CreateScheduleView = ({
         <p className="modal-employee">
           <span>직원</span>
 
-          <select name="employee" onChange={onChangeEmployee}>
+          <Select
+            value={colorsArray[0]}
+            options={colorsArray}
+            styles={colorStyles}
+            onChange={onChangeEmployee}
+          />
+          {/* <select name="employee" onChange={onChangeEmployee}>
             <option>직원 선택</option>
             {employeeList &&
               employeeList.map((item) => (
@@ -40,7 +115,7 @@ const CreateScheduleView = ({
                   {item.name}
                 </option>
               ))}
-          </select>
+          </select> */}
         </p>
         <p className="modal-date">
           <span>날짜</span>

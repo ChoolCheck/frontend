@@ -1,5 +1,7 @@
 import * as employeeType from "../../commonType/employee";
 import * as worktypeType from "../../commonType/worktype";
+import * as selectType from "./selectType";
+import { ActionMeta, MultiValue, SingleValue } from "react-select";
 
 export interface setScheduleListTypes {
   setWeekScheduleList: React.Dispatch<
@@ -18,6 +20,12 @@ export interface scheduleObjProps {
   hours: string | null;
   color: string;
   id: number;
+}
+
+export interface optionObj {
+  label: string;
+  value: string;
+  color: string;
 }
 
 export interface scheduleTotalViewProps {
@@ -63,7 +71,11 @@ export interface createScheduleViewProps
     startTime: string;
     endTime: string;
   };
-  onChangeEmployee: React.ChangeEventHandler<HTMLSelectElement>;
+  onChangeEmployee: (
+    newValue: MultiValue<optionObj> | SingleValue<optionObj>,
+    actionMeta: ActionMeta<optionObj>
+  ) => void;
+
   onChangeDate: React.ChangeEventHandler<HTMLInputElement>;
 
   onChangeWorkType: (

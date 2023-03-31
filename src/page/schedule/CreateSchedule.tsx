@@ -13,6 +13,8 @@ import * as employeeType from "../../commonType/employee";
 import * as worktypeType from "../../commonType/worktype";
 
 import CreateScheduleView from "./view/CreateScheduleView";
+import * as selectType from "./selectType";
+import { ActionMeta, MultiValue, SingleValue } from "react-select";
 
 const CreateSchedule = ({
   setWeekScheduleList,
@@ -70,27 +72,54 @@ const CreateSchedule = ({
     } else return;
   };
 
-  const onChangeEmployee = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    let employeeId = 0;
-    let employee = "";
-    const selectedOption =
-      e.currentTarget.options[e.currentTarget.options.selectedIndex].innerText;
+  // const onChangeEmployee = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  //   let employeeId = 0;
+  //   let employee = "";
+  //   const selectedOption =
+  //     e.currentTarget.options[e.currentTarget.options.selectedIndex].innerText;
 
-    if (employeeList) {
-      if (selectedOption == "직원 선택") {
-        setEmployee("");
-      } else {
-        for (let i = 0; i < employeeList.length; i++) {
-          if (employeeList[i].name == selectedOption) {
-            employeeId = employeeList[i].id;
-            employee = employeeList[i].name;
-            break;
-          }
-        }
-        setEmployee(employee);
-        setEmployeeId(employeeId.toString());
-      }
-    }
+  //   if (employeeList) {
+  //     if (selectedOption == "직원 선택") {
+  //       setEmployee("");
+  //     } else {
+  //       for (let i = 0; i < employeeList.length; i++) {
+  //         if (employeeList[i].name == selectedOption) {
+  //           employeeId = employeeList[i].id;
+  //           employee = employeeList[i].name;
+  //           break;
+  //         }
+  //       }
+  //       setEmployee(employee);
+  //       setEmployeeId(employeeId.toString());
+  //     }
+  //   }
+  // };
+
+  const onChangeEmployee = (
+    newValue: SingleValue<type.optionObj> | MultiValue<type.optionObj>,
+    actionMeta: ActionMeta<type.optionObj>
+  ) => {
+    console.log(newValue);
+    // let employeeId = 0;
+    // let employee = "";
+    // const selectedOption =
+    //   e.currentTarget.options[e.currentTarget.options.selectedIndex].innerText;
+
+    // if (employeeList) {
+    //   if (selectedOption == "직원 선택") {
+    //     setEmployee("");
+    //   } else {
+    //     for (let i = 0; i < employeeList.length; i++) {
+    //       if (employeeList[i].name == selectedOption) {
+    //         employeeId = employeeList[i].id;
+    //         employee = employeeList[i].name;
+    //         break;
+    //       }
+    //     }
+    //     setEmployee(employee);
+    //     setEmployeeId(employeeId.toString());
+    //   }
+    // }
   };
 
   const onChangeDate = (e: React.ChangeEvent<HTMLInputElement>) => {
