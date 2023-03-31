@@ -49,9 +49,8 @@ const CreateScheduleView = ({
           ]);
       console.log(item);
     });
-  }, []);
+  }, [employeeList]);
   console.log(colorsArray);
-  console.log(employeeList);
 
   const dot = (color = "transparent") => ({
     alignItems: "center",
