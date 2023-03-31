@@ -30,7 +30,7 @@ const CreateScheduleView = ({
                   value={scheduleForm.employee}
                   className="employee-option"
                   style={{
-                    backgroundColor: `#${
+                    color: `#${
                       enumType.enumColor[
                         item.color as keyof typeof enumType.enumColor
                       ]

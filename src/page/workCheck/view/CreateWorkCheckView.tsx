@@ -30,7 +30,7 @@ const CreateWorkCheckView = ({
                   className="employee-option"
                   value={workcheckForm.employee}
                   style={{
-                    backgroundColor: `#${
+                    color: `#${
                       enumType.enumColor[
                         item.color as keyof typeof enumType.enumColor
                       ]

@@ -21,42 +21,37 @@ export default function AxiosNavigation() {
       async function (error) {
         const originalConfig = error.config;
         console.log(originalConfig);
-        if (
-          error.response.status == 401 &&
-          error.response.data.message == "expired"
-        ) {
-          await axios({
-            url: `${config.api}/user/reissue`,
-            method: "Post",
-            headers: {
-              accesstoken: localStorage.getItem("token"),
-              refreshToken: localStorage.getItem("refreshToken"),
-            },
-          })
-            .then((res) => {
-              localStorage.setItem("token", res.data.accessToken);
-
-              originalConfig.headers["Authorization"] =
-                "Bearer " + res.data.accessToken;
-
-              // refreshAPI(originalConfig);
-              // window.location.reload();
-
-              return refreshAPI(originalConfig);
+        if (error.response.status == 401) {
+          if (error.response.data.message == "expired") {
+            await axios({
+              url: `${config.api}/user/reissue`,
+              method: "Post",
+              headers: {
+                accesstoken: localStorage.getItem("token"),
+                refreshToken: localStorage.getItem("refreshToken"),
+              },
             })
-            .then((res) => {
-              console.log(res);
-              window.location.reload();
-            })
-            .catch((err) => {
-              localStorage.clear();
-              navigate("/login");
-              window.alert("토큰이 만료되어 자동으로 로그아웃 되었습니다.");
-            });
-        } else if (error.response.data.message) {
-          window.alert(error.response.data.message);
-        } else {
-          window.alert("요청 처리에 실패하였습니다.");
+              .then((res) => {
+                localStorage.setItem("token", res.data.accessToken);
+
+                originalConfig.headers["Authorization"] =
+                  "Bearer " + res.data.accessToken;
+
+                // refreshAPI(originalConfig);
+                // window.location.reload();
+
+                return refreshAPI(originalConfig);
+              })
+              .then((res) => {
+                console.log(res);
+                window.location.reload();
+              })
+              .catch((err) => {
+                localStorage.clear();
+                navigate("/login");
+                window.alert("토큰이 만료되어 자동으로 로그아웃 되었습니다.");
+              });
+          } else window.alert("요청 처리에 실패하였습니다.");
         }
         return Promise.reject(error);
       }
