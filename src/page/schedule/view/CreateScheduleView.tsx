@@ -51,7 +51,12 @@ const CreateScheduleView = ({
     },
   });
   const colorStyles: StylesConfig<type.optionObj> = {
-    control: (styles) => ({ ...styles, backgroundColor: "white" }),
+    control: (styles) => ({
+      ...styles,
+      backgroundColor: "white",
+      boxShadow: "none",
+      borderRadius: "10px",
+    }),
     option: (styles, { data, isDisabled, isFocused, isSelected }) => {
       const color = chroma(data.color);
       return {
