@@ -73,28 +73,25 @@ const CreateSchedule = ({
   };
 
   const onChangeEmployee = (
-    newValue: SingleValue<type.optionObj> | MultiValue<type.optionObj>,
+    newValue: SingleValue<type.optionObj>,
     actionMeta: ActionMeta<type.optionObj>
   ) => {
-    console.log(newValue);
-    console.log(actionMeta);
-    console.log(typeof newValue);
     let employeeId = 0;
     let employee = "";
     // const selectedOption =
     //   e.currentTarget.options[e.currentTarget.options.selectedIndex].innerText;
 
-    // if (employeeList && newValue) {
-    //   for (let i = 0; i < employeeList.length; i++) {
-    //     if (employeeList[i].name == newValue.label) {
-    //       employeeId = employeeList[i].id;
-    //       employee = employeeList[i].name;
-    //       break;
-    //     }
-    //   }
-    //   setEmployee(employee);
-    //   setEmployeeId(employeeId.toString());
-    // }
+    if (employeeList && newValue) {
+      for (let i = 0; i < employeeList.length; i++) {
+        if (employeeList[i].name == newValue.label) {
+          employeeId = employeeList[i].id;
+          employee = employeeList[i].name;
+          break;
+        }
+      }
+      setEmployee(employee);
+      setEmployeeId(employeeId.toString());
+    }
   };
 
   const onChangeDate = (e: React.ChangeEvent<HTMLInputElement>) => {

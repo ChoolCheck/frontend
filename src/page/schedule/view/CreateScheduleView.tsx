@@ -99,6 +99,7 @@ const CreateScheduleView = ({
               defaultValue={colorsArray[0]}
               options={colorsArray}
               styles={colorStyles}
+              isMulti={false}
               onChange={onChangeEmployee}
               components={{
                 IndicatorSeparator: () => null,

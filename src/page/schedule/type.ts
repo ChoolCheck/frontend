@@ -72,7 +72,7 @@ export interface createScheduleViewProps
     endTime: string;
   };
   onChangeEmployee: (
-    newValue: MultiValue<optionObj> | SingleValue<optionObj>,
+    newValue: SingleValue<optionObj>,
     actionMeta: ActionMeta<optionObj>
   ) => void;
 
