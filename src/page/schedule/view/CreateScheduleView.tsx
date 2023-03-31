@@ -62,7 +62,7 @@ const CreateScheduleView = ({
       const color = chroma(data.color);
       return {
         ...styles,
-        backgroundColor: `${color.alpha(0.1)}`,
+        backgroundColor: `${color.alpha(0.3)}`,
         color: "black",
         cursor: isDisabled ? "not-allowed" : "default",
 
