@@ -78,7 +78,7 @@ const CreateScheduleView = ({
             ? isSelected
               ? data.color
               : color.alpha(0.2).css()
-            : undefined,
+            : "white",
         },
       };
     },
