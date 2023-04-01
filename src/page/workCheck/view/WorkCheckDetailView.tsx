@@ -20,9 +20,13 @@ const WorkCheckDetailView = ({
   );
 
   const totalWorkTime =
-    Math.round(
-      ((endDate.getTime() - startDate.getTime()) / 1000 / 60 / 60) * 10
-    ) / 10;
+    startDate.getTime() > endDate.getTime()
+      ? Math.round(
+          ((endDate.getTime() + 23 - startDate.getTime()) / 1000 / 60 / 60) * 10
+        ) / 10
+      : Math.round(
+          ((endDate.getTime() - startDate.getTime()) / 1000 / 60 / 60) * 10
+        ) / 10;
 
   return (
     <div className="employeeDetailView-container">
