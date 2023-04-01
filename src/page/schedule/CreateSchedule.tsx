@@ -11,6 +11,7 @@ import { CreateScheduleApi } from "../../api/schedule";
 import * as type from "./type";
 import * as employeeType from "../../commonType/employee";
 import * as worktypeType from "../../commonType/worktype";
+import * as enumType from "../../commonType/enum";
 
 import CreateScheduleView from "./view/CreateScheduleView";
 import { ActionMeta, SingleValue } from "react-select";
@@ -80,7 +81,15 @@ const CreateSchedule = ({
 
     if (employeeList && newValue) {
       for (let i = 0; i < employeeList.length; i++) {
-        if (employeeList[i].name == newValue.label) {
+        const color = `#${
+          enumType.enumColor[
+            employeeList[i].color as keyof typeof enumType.enumColor
+          ]
+        }`;
+        console.log(employeeList[i].color);
+        console.log(color);
+
+        if (employeeList[i].name == newValue.label && color == newValue.color) {
           employeeId = employeeList[i].id;
           employee = employeeList[i].name;
           break;

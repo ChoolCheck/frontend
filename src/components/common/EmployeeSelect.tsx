@@ -1,9 +1,6 @@
-import { useEffect, useState } from "react";
 import Select, { StylesConfig } from "react-select";
 import chroma from "chroma-js";
 
-import * as enumType from "../../commonType/enum";
-import * as employeeType from "../../commonType/employee";
 import { ActionMeta, SingleValue } from "react-select";
 
 export interface optionObj {

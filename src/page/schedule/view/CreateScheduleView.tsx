@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import Select, { StylesConfig } from "react-select";
-import chroma from "chroma-js";
 import EmployeeSelect from "../../../components/common/EmployeeSelect";
 import * as type from "../type";
 import * as enumType from "../../../commonType/enum";
