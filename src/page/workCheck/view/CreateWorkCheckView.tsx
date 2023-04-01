@@ -1,5 +1,8 @@
+import { useEffect, useState } from "react";
 import * as type from "../type";
 import * as enumType from "../../../commonType/enum";
+import EmployeeSelect from "../../../components/common/EmployeeSelect";
+import * as employeeSelectType from "../../../commonType/employeeSelectType";
 
 const CreateWorkCheckView = ({
   employeeList,
@@ -15,32 +18,33 @@ const CreateWorkCheckView = ({
   onClickCancelOnModal,
   onClickCreate,
 }: type.createWorkCheckViewProps) => {
+  const [optionList, setOptionList] = useState<
+    Array<employeeSelectType.optionObj>
+  >([]);
+
+  useEffect(() => {
+    let list: Array<employeeSelectType.optionObj> = [];
+    employeeList?.map((item, i) => {
+      list.push({
+        label: item.name,
+        color: `#${
+          enumType.enumColor[item.color as keyof typeof enumType.enumColor]
+        }`,
+      });
+    });
+    setOptionList(list);
+  }, [employeeList]);
+
   return (
     <div className="CreateWorkCheck-container">
       <h3>출근부 추가</h3>
       <div className="CreateWorkCheck-content">
         <p className="modal-employee">
           <span>직원</span>
-
-          <select name="employee" onChange={onChangeEmployee}>
-            <option>직원 선택</option>
-            {employeeList &&
-              employeeList.map((item) => (
-                <option
-                  className="employee-option"
-                  value={workcheckForm.employee}
-                  style={{
-                    color: `#${
-                      enumType.enumColor[
-                        item.color as keyof typeof enumType.enumColor
-                      ]
-                    }`,
-                  }}
-                >
-                  {item.name}
-                </option>
-              ))}
-          </select>
+          <EmployeeSelect
+            optionList={optionList}
+            onChangeEmployee={onChangeEmployee}
+          ></EmployeeSelect>
         </p>
         <p className="modal-date">
           <span>날짜</span>

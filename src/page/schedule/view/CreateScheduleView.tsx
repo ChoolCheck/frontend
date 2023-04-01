@@ -2,12 +2,11 @@ import { useEffect, useState } from "react";
 import EmployeeSelect from "../../../components/common/EmployeeSelect";
 import * as type from "../type";
 import * as enumType from "../../../commonType/enum";
+import * as employeeSelectType from "../../../commonType/employeeSelectType";
 
 const CreateScheduleView = ({
-  employeeList,
   workTypeList,
-  scheduleForm,
-
+  optionList,
   onChangeEmployee,
   onChangeDate,
   onChangeWorkType,
@@ -17,21 +16,6 @@ const CreateScheduleView = ({
   onClickCancelOnModal,
   onClickCreate,
 }: type.createScheduleViewProps) => {
-  const [optionList, setOptionList] = useState<Array<type.optionObj>>([]);
-
-  useEffect(() => {
-    let list: Array<type.optionObj> = [];
-    employeeList?.map((item, i) => {
-      list.push({
-        label: item.name,
-        color: `#${
-          enumType.enumColor[item.color as keyof typeof enumType.enumColor]
-        }`,
-      });
-    });
-    setOptionList(list);
-  }, [employeeList]);
-
   return (
     <div className="CreateSchedule-container">
       <h3>스케줄 추가</h3>

@@ -12,8 +12,11 @@ import { CreateWorkcheckApi } from "../../api/workcheck";
 import * as type from "./type";
 import * as employeeType from "../../commonType/employee";
 import * as worktypeType from "../../commonType/worktype";
+import * as enumType from "../../commonType/enum";
+import * as employeeSelectType from "../../commonType/employeeSelectType";
 
 import CreateWorkCheckView from "./view/CreateWorkCheckView";
+import { ActionMeta, SingleValue } from "react-select";
 
 const CreateWorkCheck = () => {
   const dispatch = useDispatch();
@@ -72,28 +75,56 @@ const CreateWorkCheck = () => {
     } else return;
   };
 
-  const onChangeEmployee = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const onChangeEmployee = (
+    newValue: SingleValue<employeeSelectType.optionObj>,
+    actionMeta: ActionMeta<employeeSelectType.optionObj>
+  ) => {
     let employeeId = 0;
     let employee = "";
-    const selectedOption =
-      e.currentTarget.options[e.currentTarget.options.selectedIndex].innerText;
 
-    if (employeeList) {
-      if (selectedOption == "직원 선택") {
-        setEmployee("");
-      } else {
-        for (let i = 0; i < employeeList.length; i++) {
-          if (employeeList[i].name == selectedOption) {
-            employeeId = employeeList[i].id;
-            employee = employeeList[i].name;
-            break;
-          }
+    if (employeeList && newValue) {
+      for (let i = 0; i < employeeList.length; i++) {
+        const color = `#${
+          enumType.enumColor[
+            employeeList[i].color as keyof typeof enumType.enumColor
+          ]
+        }`;
+        console.log(employeeList[i].color);
+        console.log(color);
+
+        if (employeeList[i].name == newValue.label && color == newValue.color) {
+          employeeId = employeeList[i].id;
+          employee = employeeList[i].name;
+          break;
         }
-        setEmployee(employee);
-        setEmployeeId(employeeId.toString());
       }
+      setEmployee(employee);
+      setEmployeeId(employeeId.toString());
     }
   };
+
+  // const onChangeEmployee = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  //   let employeeId = 0;
+  //   let employee = "";
+  //   const selectedOption =
+  //     e.currentTarget.options[e.currentTarget.options.selectedIndex].innerText;
+
+  //   if (employeeList) {
+  //     if (selectedOption == "직원 선택") {
+  //       setEmployee("");
+  //     } else {
+  //       for (let i = 0; i < employeeList.length; i++) {
+  //         if (employeeList[i].name == selectedOption) {
+  //           employeeId = employeeList[i].id;
+  //           employee = employeeList[i].name;
+  //           break;
+  //         }
+  //       }
+  //       setEmployee(employee);
+  //       setEmployeeId(employeeId.toString());
+  //     }
+  //   }
+  // };
 
   const onChangeDate = (e: React.ChangeEvent<HTMLInputElement>) => {
     setDate(e.target.value);

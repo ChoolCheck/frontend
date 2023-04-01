@@ -38,7 +38,6 @@ export default function AxiosNavigation() {
                 return refreshAPI(originalConfig);
               })
               .then((res) => {
-                console.log(res);
                 window.location.reload();
               })
               .catch((err) => {

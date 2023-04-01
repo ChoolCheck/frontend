@@ -1,5 +1,8 @@
 import * as employeeType from "../../commonType/employee";
 import * as worktypeType from "../../commonType/worktype";
+import * as employeeSelectType from "../../commonType/employeeSelectType";
+
+import { ActionMeta, SingleValue } from "react-select";
 
 export interface workcheckObjProps {
   name: string;
@@ -27,7 +30,10 @@ export interface createWorkCheckViewProps
     startTime: string;
     endTime: string;
   };
-  onChangeEmployee: React.ChangeEventHandler<HTMLSelectElement>;
+  onChangeEmployee: (
+    newValue: SingleValue<employeeSelectType.optionObj>,
+    actionMeta: ActionMeta<employeeSelectType.optionObj>
+  ) => void;
   onChangeDate: React.ChangeEventHandler<HTMLInputElement>;
 
   onChangeWorkType: (

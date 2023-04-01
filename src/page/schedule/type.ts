@@ -1,5 +1,7 @@
 import * as employeeType from "../../commonType/employee";
 import * as worktypeType from "../../commonType/worktype";
+import * as employeeSelectType from "../../commonType/employeeSelectType";
+
 import { ActionMeta, SingleValue } from "react-select";
 
 export interface setScheduleListTypes {
@@ -19,11 +21,6 @@ export interface scheduleObjProps {
   hours: string | null;
   color: string;
   id: number;
-}
-
-export interface optionObj {
-  label: string;
-  color: string;
 }
 
 export interface scheduleTotalViewProps {
@@ -59,19 +56,11 @@ export interface createScheduleProps extends setScheduleListTypes {
   >;
 }
 
-export interface createScheduleViewProps
-  extends employeeType.employeeList,
-    worktypeType.workTypeList {
-  scheduleForm: {
-    employee: string;
-    hoursId: string;
-    date: string;
-    startTime: string;
-    endTime: string;
-  };
+export interface createScheduleViewProps extends worktypeType.workTypeList {
+  optionList: employeeSelectType.optionObj[];
   onChangeEmployee: (
-    newValue: SingleValue<optionObj>,
-    actionMeta: ActionMeta<optionObj>
+    newValue: SingleValue<employeeSelectType.optionObj>,
+    actionMeta: ActionMeta<employeeSelectType.optionObj>
   ) => void;
 
   onChangeDate: React.ChangeEventHandler<HTMLInputElement>;

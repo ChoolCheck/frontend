@@ -12,6 +12,7 @@ import * as type from "./type";
 import * as employeeType from "../../commonType/employee";
 import * as worktypeType from "../../commonType/worktype";
 import * as enumType from "../../commonType/enum";
+import * as employeeSelectType from "../../commonType/employeeSelectType";
 
 import CreateScheduleView from "./view/CreateScheduleView";
 import { ActionMeta, SingleValue } from "react-select";
@@ -51,6 +52,23 @@ const CreateSchedule = ({
     employeeType.employeeProps[] | undefined
   >([]);
 
+  const [optionList, setOptionList] = useState<
+    Array<employeeSelectType.optionObj>
+  >([]);
+
+  useEffect(() => {
+    let list: Array<employeeSelectType.optionObj> = [];
+    employeeList?.map((item, i) => {
+      list.push({
+        label: item.name,
+        color: `#${
+          enumType.enumColor[item.color as keyof typeof enumType.enumColor]
+        }`,
+      });
+    });
+    setOptionList(list);
+  }, [employeeList]);
+
   useEffect(() => {
     GetWorktypeApi({ setWorkTypeList });
     GetEmployeeApi({ setEmployeeList });
@@ -63,8 +81,6 @@ const CreateSchedule = ({
   const [endTime, setEndTime] = useState("");
   const [date, setDate] = useState("");
 
-  const scheduleForm = { employee, hoursId, date, startTime, endTime };
-
   const onClickCancelOnModal = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (window.confirm("정말로 작성을 취소하시겠습니까?")) {
@@ -73,8 +89,8 @@ const CreateSchedule = ({
   };
 
   const onChangeEmployee = (
-    newValue: SingleValue<type.optionObj>,
-    actionMeta: ActionMeta<type.optionObj>
+    newValue: SingleValue<employeeSelectType.optionObj>,
+    actionMeta: ActionMeta<employeeSelectType.optionObj>
   ) => {
     let employeeId = 0;
     let employee = "";
@@ -124,6 +140,7 @@ const CreateSchedule = ({
   const onChangeStartTime = (e: React.ChangeEvent<HTMLInputElement>) => {
     setStartTime(e.target.value);
   };
+
   const onChangeEndTime = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEndTime(e.target.value);
   };
@@ -159,9 +176,8 @@ const CreateSchedule = ({
     <div>
       <CreateScheduleView
         workTypeList={workTypeList}
-        employeeList={employeeList}
+        optionList={optionList}
         onClickCancelOnModal={onClickCancelOnModal}
-        scheduleForm={scheduleForm}
         onChangeEmployee={onChangeEmployee}
         onChangeDate={onChangeDate}
         onChangeWorkType={onChangeWorkType}

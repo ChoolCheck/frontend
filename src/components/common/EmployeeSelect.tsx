@@ -1,20 +1,11 @@
 import Select, { StylesConfig } from "react-select";
 import chroma from "chroma-js";
+import * as employeeSelectType from "../../commonType/employeeSelectType";
 
-import { ActionMeta, SingleValue } from "react-select";
-
-export interface optionObj {
-  label: string;
-  color: string;
-}
-interface employeeSelect {
-  optionList: optionObj[];
-  onChangeEmployee: (
-    newValue: SingleValue<optionObj>,
-    actionMeta: ActionMeta<optionObj>
-  ) => void;
-}
-const EmployeeSelect = ({ optionList, onChangeEmployee }: employeeSelect) => {
+const EmployeeSelect = ({
+  optionList,
+  onChangeEmployee,
+}: employeeSelectType.employeeSelect) => {
   const dot = (color = "transparent") => ({
     alignItems: "center",
     display: "flex",
@@ -30,7 +21,7 @@ const EmployeeSelect = ({ optionList, onChangeEmployee }: employeeSelect) => {
     },
   });
 
-  const colorStyles: StylesConfig<optionObj> = {
+  const colorStyles: StylesConfig<employeeSelectType.optionObj> = {
     control: (styles) => ({
       ...styles,
       backgroundColor: "white",
