@@ -19,14 +19,12 @@ const WorkCheckDetailView = ({
       : "2023-01-01T00:00:00"
   );
 
+  const timeDifference =
+    Math.round(
+      (endDate.getTime() - startDate.getTime() / 1000 / 60 / 60) * 10
+    ) / 10;
   const totalWorkTime =
-    startDate.getTime() > endDate.getTime()
-      ? Math.round(
-          ((endDate.getTime() + 23 - startDate.getTime()) / 1000 / 60 / 60) * 10
-        ) / 10
-      : Math.round(
-          ((endDate.getTime() - startDate.getTime()) / 1000 / 60 / 60) * 10
-        ) / 10;
+    timeDifference < 0 ? timeDifference + 24 : timeDifference;
 
   return (
     <div className="employeeDetailView-container">
