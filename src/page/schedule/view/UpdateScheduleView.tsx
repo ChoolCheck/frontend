@@ -1,18 +1,16 @@
-import React, { useCallback, useEffect, useState } from "react";
 import * as type from "../type";
 import EmployeeSelect from "../../../components/common/EmployeeSelect";
 
 const UpdateScheduleView = ({
   onChangeEmployee,
-  optionList,
-  workTypeList,
   onChangeDate,
   onChangeWorkType,
   onChangeStartTime,
   onChangeEndTime,
   onClickCancelOnModal,
   onClickUpdate,
-
+  optionList,
+  workTypeList,
   defaultValueIndex,
   employeeId,
   date,

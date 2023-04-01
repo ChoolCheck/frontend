@@ -66,15 +66,20 @@ export interface updateWorkcheckProps {
   ) => void;
 }
 
-export interface updateWorkcheckViewProps
-  extends employeeType.employeeList,
-    worktypeType.workTypeList {
+export interface updateWorkcheckViewProps extends worktypeType.workTypeList {
   hoursId: string;
   employeeId: string;
   date: string;
   startTime: string;
   endTime: string;
-  onChangeEmployee: React.ChangeEventHandler<HTMLSelectElement>;
+
+  optionList: employeeSelectType.optionObj[];
+  defaultValueIndex: number;
+  onChangeEmployee: (
+    newValue: SingleValue<employeeSelectType.optionObj>,
+    actionMeta: ActionMeta<employeeSelectType.optionObj>
+  ) => void;
+
   onChangeDate: React.ChangeEventHandler<HTMLInputElement>;
 
   onChangeWorkType: (

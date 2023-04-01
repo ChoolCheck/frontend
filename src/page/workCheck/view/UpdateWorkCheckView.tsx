@@ -1,16 +1,17 @@
 import * as type from "../type";
+import EmployeeSelect from "../../../components/common/EmployeeSelect";
 
 const UpdateWorkCheckView = ({
   onChangeEmployee,
-  employeeList,
   onChangeDate,
-  workTypeList,
   onChangeWorkType,
   onChangeStartTime,
   onChangeEndTime,
   onClickCancelOnModal,
   onClickUpdate,
-
+  optionList,
+  workTypeList,
+  defaultValueIndex,
   employeeId,
   date,
   hoursId,
@@ -23,18 +24,11 @@ const UpdateWorkCheckView = ({
       <div className="CreateWorkCheck-content">
         <p className="modal-employee">
           <span>직원</span>
-
-          <select
-            name="employee"
-            value={employeeId}
-            onChange={onChangeEmployee}
-          >
-            <option>직원 선택</option>
-            {employeeList &&
-              employeeList.map((item) => (
-                <option value={item.id}>{item.name}</option>
-              ))}
-          </select>
+          <EmployeeSelect
+            defaultValueIndex={defaultValueIndex}
+            optionList={optionList}
+            onChangeEmployee={onChangeEmployee}
+          ></EmployeeSelect>
         </p>
         <p className="modal-date">
           <span>날짜</span>
