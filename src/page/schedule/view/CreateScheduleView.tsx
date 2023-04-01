@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Select, { StylesConfig } from "react-select";
 import chroma from "chroma-js";
-
+import EmployeeSelect from "../../../components/common/EmployeeSelect";
 import * as type from "../type";
 import * as enumType from "../../../commonType/enum";
 
@@ -19,68 +19,20 @@ const CreateScheduleView = ({
   onClickCancelOnModal,
   onClickCreate,
 }: type.createScheduleViewProps) => {
-  const [colorsArray, setColorsArray] = useState<Array<type.optionObj>>([]);
+  const [optionList, setOptionList] = useState<Array<type.optionObj>>([]);
 
   useEffect(() => {
     let list: Array<type.optionObj> = [];
     employeeList?.map((item, i) => {
       list.push({
         label: item.name,
-        value: scheduleForm.employee,
         color: `#${
           enumType.enumColor[item.color as keyof typeof enumType.enumColor]
         }`,
       });
     });
-    setColorsArray(list);
+    setOptionList(list);
   }, [employeeList]);
-  console.log(colorsArray);
-
-  const dot = (color = "transparent") => ({
-    alignItems: "center",
-    display: "flex",
-
-    ":before": {
-      backgroundColor: color,
-      borderRadius: 8,
-      content: '" "',
-      display: "block",
-      marginRight: 8,
-      height: 15,
-      width: 15,
-    },
-  });
-
-  const colorStyles: StylesConfig<type.optionObj> = {
-    control: (styles) => ({
-      ...styles,
-      backgroundColor: "white",
-      boxShadow: "none",
-      borderRadius: "10px",
-      borderColor: "gray",
-    }),
-    option: (styles, { data, isDisabled, isFocused, isSelected }) => {
-      const color = chroma(data.color);
-      return {
-        ...styles,
-        backgroundColor: `${color.alpha(0.2)}`,
-        color: "black",
-        cursor: isDisabled ? "not-allowed" : "default",
-
-        ":active": {
-          ...styles[":active"],
-          backgroundColor: !isDisabled
-            ? isSelected
-              ? data.color
-              : color.alpha(0.2).css()
-            : "white",
-        },
-      };
-    },
-    input: (styles) => ({ ...styles, ...dot() }),
-    placeholder: (styles) => ({ ...styles, ...dot("white") }),
-    singleValue: (styles, { data }) => ({ ...styles, ...dot(data.color) }),
-  };
 
   return (
     <div className="CreateSchedule-container">
@@ -88,39 +40,10 @@ const CreateScheduleView = ({
       <div className="CreateSchedule-content">
         <p className="modal-employee">
           <span>직원</span>
-
-          {employeeList && (
-            <Select
-              defaultValue={colorsArray[0]}
-              options={colorsArray}
-              styles={colorStyles}
-              isMulti={false}
-              onChange={onChangeEmployee}
-              components={{
-                IndicatorSeparator: () => null,
-              }}
-            />
-          )}
-
-          {/* <select name="employee" onChange={onChangeEmployee}>
-            <option>직원 선택</option>
-            {employeeList &&
-              employeeList.map((item) => (
-                <option
-                  value={scheduleForm.employee}
-                  className="employee-option"
-                  style={{
-                    color: `#${
-                      enumType.enumColor[
-                        item.color as keyof typeof enumType.enumColor
-                      ]
-                    }`,
-                  }}
-                >
-                  {item.name}
-                </option>
-              ))}
-          </select> */}
+          <EmployeeSelect
+            optionList={optionList}
+            onChangeEmployee={onChangeEmployee}
+          ></EmployeeSelect>
         </p>
         <p className="modal-date">
           <span>날짜</span>

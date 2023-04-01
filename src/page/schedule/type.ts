@@ -1,7 +1,6 @@
 import * as employeeType from "../../commonType/employee";
 import * as worktypeType from "../../commonType/worktype";
-import * as selectType from "./selectType";
-import { ActionMeta, MultiValue, SingleValue } from "react-select";
+import { ActionMeta, SingleValue } from "react-select";
 
 export interface setScheduleListTypes {
   setWeekScheduleList: React.Dispatch<
@@ -24,7 +23,6 @@ export interface scheduleObjProps {
 
 export interface optionObj {
   label: string;
-  value: string;
   color: string;
 }
 

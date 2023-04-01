@@ -13,8 +13,7 @@ import * as employeeType from "../../commonType/employee";
 import * as worktypeType from "../../commonType/worktype";
 
 import CreateScheduleView from "./view/CreateScheduleView";
-import * as selectType from "./selectType";
-import { ActionMeta, MultiValue, SingleValue } from "react-select";
+import { ActionMeta, SingleValue } from "react-select";
 
 const CreateSchedule = ({
   setWeekScheduleList,
@@ -78,8 +77,6 @@ const CreateSchedule = ({
   ) => {
     let employeeId = 0;
     let employee = "";
-    // const selectedOption =
-    //   e.currentTarget.options[e.currentTarget.options.selectedIndex].innerText;
 
     if (employeeList && newValue) {
       for (let i = 0; i < employeeList.length; i++) {
