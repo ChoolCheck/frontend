@@ -12,7 +12,10 @@ import { UpdateScheduleApi } from "../../api/schedule";
 import * as employeeType from "../../commonType/employee";
 import * as worktypeType from "../../commonType/worktype";
 import * as type from "./type";
+import * as enumType from "../../commonType/enum";
+import * as employeeSelectType from "../../commonType/employeeSelectType";
 
+import { ActionMeta, SingleValue } from "react-select";
 import UpdateScheduleView from "./view/UpdateScheduleView";
 
 const UpdateSchedule = ({
@@ -28,7 +31,6 @@ const UpdateSchedule = ({
     (readModalState: boolean) => dispatch(setWriteModalOpen(readModalState)),
     [dispatch]
   );
-
   const setReadModal = useCallback(
     (readModalState: boolean) => dispatch(setReadModalOpen(readModalState)),
     [dispatch]
@@ -38,7 +40,6 @@ const UpdateSchedule = ({
       dispatch(setTotalElements(totalElementState)),
     [dispatch]
   );
-
   const setTotalPage = useCallback(
     (totalPageState: number) => dispatch(setTotalPages(totalPageState)),
     [dispatch]
@@ -73,10 +74,31 @@ const UpdateSchedule = ({
   );
   const [date, setDate] = useState(scheduleDetail ? scheduleDetail.date : "");
 
+  const [optionList, setOptionList] = useState<
+    Array<employeeSelectType.optionObj>
+  >([]);
+
+  const [defaultValueIndex, setDefaultValueIndex] = useState(0);
+
   useEffect(() => {
     GetWorktypeApi({ setWorkTypeList, hours, setHoursid });
     GetEmployeeApi({ setEmployeeList, employee, setEmployeeId });
   }, []);
+
+  useEffect(() => {
+    let list: Array<employeeSelectType.optionObj> = [];
+    employeeList?.map((item, i) => {
+      if (Number(employeeId) == item.id) setDefaultValueIndex(i);
+
+      list.push({
+        label: item.name,
+        color: `#${
+          enumType.enumColor[item.color as keyof typeof enumType.enumColor]
+        }`,
+      });
+    });
+    setOptionList(list);
+  }, [employeeList]);
 
   const onClickCancelOnModal = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -86,22 +108,29 @@ const UpdateSchedule = ({
     } else return;
   };
 
-  const onChangeEmployee = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedOption =
-      e.currentTarget.options[e.currentTarget.options.selectedIndex].innerText;
+  const onChangeEmployee = (
+    newValue: SingleValue<employeeSelectType.optionObj>,
+    actionMeta: ActionMeta<employeeSelectType.optionObj>
+  ) => {
+    let employeeId = 0;
+    let employee = "";
 
-    if (employeeList) {
-      if (selectedOption == "직원 선택") {
-        setEmployee("");
-      } else {
-        for (let i = 0; i < employeeList.length; i++) {
-          if (employeeList[i].name == selectedOption) {
-            setEmployee(employeeList[i].name);
-            setEmployeeId(employeeList[i].id.toString());
-            break;
-          }
+    if (employeeList && newValue) {
+      for (let i = 0; i < employeeList.length; i++) {
+        const color = `#${
+          enumType.enumColor[
+            employeeList[i].color as keyof typeof enumType.enumColor
+          ]
+        }`;
+
+        if (employeeList[i].name == newValue.label && color == newValue.color) {
+          employeeId = employeeList[i].id;
+          employee = employeeList[i].name;
+          break;
         }
       }
+      setEmployee(employee);
+      setEmployeeId(employeeId.toString());
     }
   };
 
@@ -165,8 +194,9 @@ const UpdateSchedule = ({
   return (
     <div className="updateEmployeeView-container">
       <UpdateScheduleView
+        defaultValueIndex={defaultValueIndex}
+        optionList={optionList}
         workTypeList={workTypeList}
-        employeeList={employeeList}
         onClickCancelOnModal={onClickCancelOnModal}
         onChangeEmployee={onChangeEmployee}
         onChangeDate={onChangeDate}

@@ -58,13 +58,13 @@ export interface createScheduleProps extends setScheduleListTypes {
 
 export interface createScheduleViewProps extends worktypeType.workTypeList {
   optionList: employeeSelectType.optionObj[];
+
   onChangeEmployee: (
     newValue: SingleValue<employeeSelectType.optionObj>,
     actionMeta: ActionMeta<employeeSelectType.optionObj>
   ) => void;
 
   onChangeDate: React.ChangeEventHandler<HTMLInputElement>;
-
   onChangeWorkType: (
     id: number,
     startTime: string,
@@ -72,7 +72,6 @@ export interface createScheduleViewProps extends worktypeType.workTypeList {
   ) => (e: React.ChangeEvent<HTMLInputElement>) => void;
   onChangeStartTime: React.ChangeEventHandler<HTMLInputElement>;
   onChangeEndTime: React.ChangeEventHandler<HTMLInputElement>;
-
   onClickCancelOnModal: React.MouseEventHandler<HTMLButtonElement>;
   onClickCreate: React.MouseEventHandler<HTMLButtonElement>;
 }
@@ -85,15 +84,19 @@ export interface updateScheduleProps extends setScheduleListTypes {
   >;
 }
 
-export interface updateScheduleViewProps
-  extends employeeType.employeeList,
-    worktypeType.workTypeList {
+export interface updateScheduleViewProps extends worktypeType.workTypeList {
   hoursId: string;
   employeeId: string;
   date: string;
   startTime: string;
   endTime: string;
-  onChangeEmployee: React.ChangeEventHandler<HTMLSelectElement>;
+
+  optionList: employeeSelectType.optionObj[];
+  defaultValueIndex: number;
+  onChangeEmployee: (
+    newValue: SingleValue<employeeSelectType.optionObj>,
+    actionMeta: ActionMeta<employeeSelectType.optionObj>
+  ) => void;
   onChangeDate: React.ChangeEventHandler<HTMLInputElement>;
 
   onChangeWorkType: (

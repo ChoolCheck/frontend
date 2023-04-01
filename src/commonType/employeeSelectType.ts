@@ -11,4 +11,5 @@ export interface employeeSelect {
     newValue: SingleValue<optionObj>,
     actionMeta: ActionMeta<optionObj>
   ) => void;
+  defaultValueIndex?: number;
 }

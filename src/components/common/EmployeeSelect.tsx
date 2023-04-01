@@ -3,6 +3,7 @@ import chroma from "chroma-js";
 import * as employeeSelectType from "../../commonType/employeeSelectType";
 
 const EmployeeSelect = ({
+  defaultValueIndex,
   optionList,
   onChangeEmployee,
 }: employeeSelectType.employeeSelect) => {
@@ -51,11 +52,12 @@ const EmployeeSelect = ({
     placeholder: (styles) => ({ ...styles, ...dot("white") }),
     singleValue: (styles, { data }) => ({ ...styles, ...dot(data.color) }),
   };
-
   return (
     <div>
       <Select
-        defaultValue={optionList[0]}
+        defaultValue={
+          defaultValueIndex ? optionList[defaultValueIndex] : optionList[0]
+        }
         options={optionList}
         styles={colorStyles}
         isMulti={false}
