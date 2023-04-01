@@ -40,16 +40,13 @@ const Schedule = () => {
   const readModalState = useSelector(
     (state: RootState) => state.ReadModalReducer.readModalState
   );
-
   const paginationFocus = useSelector(
     (state: RootState) => state.PaginationFocus.paginationState
   );
-
   const setReadModal = useCallback(
     (readModalState: boolean) => dispatch(setReadModalOpen(readModalState)),
     [dispatch]
   );
-
   const setTotalElement = useCallback(
     (totalElement: number) => dispatch(setTotalElements(totalElement)),
     [dispatch]

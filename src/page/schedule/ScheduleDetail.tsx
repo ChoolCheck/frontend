@@ -25,18 +25,15 @@ const ScheduleDetail = ({
     (writeModalState: boolean) => dispatch(setWriteModalOpen(writeModalState)),
     [dispatch]
   );
-
   const setReadModal = useCallback(
     (readModalState: boolean) => dispatch(setReadModalOpen(readModalState)),
     [dispatch]
   );
-
   const setTotalElement = useCallback(
     (totalElementState: number) =>
       dispatch(setTotalElements(totalElementState)),
     [dispatch]
   );
-
   const setTotalPage = useCallback(
     (totalPageState: number) => dispatch(setTotalPages(totalPageState)),
     [dispatch]

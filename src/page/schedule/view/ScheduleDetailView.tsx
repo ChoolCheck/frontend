@@ -20,9 +20,13 @@ const ScheduleDetailView = ({
   );
 
   const totalWorkTime =
-    Math.round(
-      ((endDate.getTime() - startDate.getTime()) / 1000 / 60 / 60) * 10
-    ) / 10;
+    startDate.getTime() > endDate.getTime()
+      ? Math.round(
+          ((startDate.getTime() + 24 - endDate.getTime()) / 1000 / 60 / 60) * 10
+        ) / 10
+      : Math.round(
+          ((endDate.getTime() - startDate.getTime()) / 1000 / 60 / 60) * 10
+        ) / 10;
 
   return (
     <div className="employeeDetailView-container">
@@ -57,7 +61,7 @@ const ScheduleDetailView = ({
         <p className="modal-totalWorkTime">
           <span className="detail-title">총 근무시간</span>
           <span className="detail-content detail-totalWorkTime">
-            {Math.abs(totalWorkTime)}시간
+            {totalWorkTime}시간
           </span>
         </p>
       </div>
