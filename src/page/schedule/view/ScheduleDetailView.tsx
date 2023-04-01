@@ -19,10 +19,12 @@ const ScheduleDetailView = ({
       : "2023-01-01T00:00:00"
   );
 
+  // 오늘부터 다음날 새벽까지 근무하는 경우 시작시간이 종료시간보다 길기 때문에
+  // 24를 더한 후 시간 시간에서 종료 시간을 뺀다.
   const totalWorkTime =
     startDate.getTime() > endDate.getTime()
       ? Math.round(
-          ((startDate.getTime() + 24 - endDate.getTime()) / 1000 / 60 / 60) * 10
+          ((endDate.getTime() + 23 - startDate.getTime()) / 1000 / 60 / 60) * 10
         ) / 10
       : Math.round(
           ((endDate.getTime() - startDate.getTime()) / 1000 / 60 / 60) * 10
