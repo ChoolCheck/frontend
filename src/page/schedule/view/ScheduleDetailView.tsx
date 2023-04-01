@@ -57,7 +57,7 @@ const ScheduleDetailView = ({
         <p className="modal-totalWorkTime">
           <span className="detail-title">총 근무시간</span>
           <span className="detail-content detail-totalWorkTime">
-            {totalWorkTime}시간
+            {Math.abs(totalWorkTime)}시간
           </span>
         </p>
       </div>
