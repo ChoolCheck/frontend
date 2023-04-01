@@ -54,10 +54,27 @@ const CreateWorkCheck = () => {
     employeeType.employeeProps[] | undefined
   >([]);
 
+  const [optionList, setOptionList] = useState<
+    Array<employeeSelectType.optionObj>
+  >([]);
+
   useEffect(() => {
     GetWorktypeApi({ setWorkTypeList });
     GetEmployeeApi({ setEmployeeList });
   }, []);
+
+  useEffect(() => {
+    let list: Array<employeeSelectType.optionObj> = [];
+    employeeList?.map((item, i) => {
+      list.push({
+        label: item.name,
+        color: `#${
+          enumType.enumColor[item.color as keyof typeof enumType.enumColor]
+        }`,
+      });
+    });
+    setOptionList(list);
+  }, [employeeList]);
 
   const [employee, setEmployee] = useState("");
   const [employeeId, setEmployeeId] = useState("");
@@ -89,8 +106,6 @@ const CreateWorkCheck = () => {
             employeeList[i].color as keyof typeof enumType.enumColor
           ]
         }`;
-        console.log(employeeList[i].color);
-        console.log(color);
 
         if (employeeList[i].name == newValue.label && color == newValue.color) {
           employeeId = employeeList[i].id;
@@ -102,29 +117,6 @@ const CreateWorkCheck = () => {
       setEmployeeId(employeeId.toString());
     }
   };
-
-  // const onChangeEmployee = (e: React.ChangeEvent<HTMLSelectElement>) => {
-  //   let employeeId = 0;
-  //   let employee = "";
-  //   const selectedOption =
-  //     e.currentTarget.options[e.currentTarget.options.selectedIndex].innerText;
-
-  //   if (employeeList) {
-  //     if (selectedOption == "직원 선택") {
-  //       setEmployee("");
-  //     } else {
-  //       for (let i = 0; i < employeeList.length; i++) {
-  //         if (employeeList[i].name == selectedOption) {
-  //           employeeId = employeeList[i].id;
-  //           employee = employeeList[i].name;
-  //           break;
-  //         }
-  //       }
-  //       setEmployee(employee);
-  //       setEmployeeId(employeeId.toString());
-  //     }
-  //   }
-  // };
 
   const onChangeDate = (e: React.ChangeEvent<HTMLInputElement>) => {
     setDate(e.target.value);
@@ -182,9 +174,8 @@ const CreateWorkCheck = () => {
   return (
     <CreateWorkCheckView
       workTypeList={workTypeList}
-      employeeList={employeeList}
+      optionList={optionList}
       onClickCancelOnModal={onClickCancelOnModal}
-      workcheckForm={workcheckForm}
       onChangeEmployee={onChangeEmployee}
       onChangeDate={onChangeDate}
       onChangeWorkType={onChangeWorkType}

@@ -57,6 +57,11 @@ const CreateSchedule = ({
   >([]);
 
   useEffect(() => {
+    GetWorktypeApi({ setWorkTypeList });
+    GetEmployeeApi({ setEmployeeList });
+  }, []);
+
+  useEffect(() => {
     let list: Array<employeeSelectType.optionObj> = [];
     employeeList?.map((item, i) => {
       list.push({
@@ -68,11 +73,6 @@ const CreateSchedule = ({
     });
     setOptionList(list);
   }, [employeeList]);
-
-  useEffect(() => {
-    GetWorktypeApi({ setWorkTypeList });
-    GetEmployeeApi({ setEmployeeList });
-  }, []);
 
   const [employee, setEmployee] = useState("");
   const [employeeId, setEmployeeId] = useState("");
@@ -102,8 +102,6 @@ const CreateSchedule = ({
             employeeList[i].color as keyof typeof enumType.enumColor
           ]
         }`;
-        console.log(employeeList[i].color);
-        console.log(color);
 
         if (employeeList[i].name == newValue.label && color == newValue.color) {
           employeeId = employeeList[i].id;

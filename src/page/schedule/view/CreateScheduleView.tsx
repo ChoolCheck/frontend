@@ -1,8 +1,5 @@
-import { useEffect, useState } from "react";
 import EmployeeSelect from "../../../components/common/EmployeeSelect";
 import * as type from "../type";
-import * as enumType from "../../../commonType/enum";
-import * as employeeSelectType from "../../../commonType/employeeSelectType";
 
 const CreateScheduleView = ({
   workTypeList,

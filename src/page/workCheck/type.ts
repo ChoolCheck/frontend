@@ -20,16 +20,8 @@ export interface workcheckHeaderProps {
   onClickGetFile: () => void;
 }
 
-export interface createWorkCheckViewProps
-  extends employeeType.employeeList,
-    worktypeType.workTypeList {
-  workcheckForm: {
-    employee: string;
-    hoursId: string;
-    date: string;
-    startTime: string;
-    endTime: string;
-  };
+export interface createWorkCheckViewProps extends worktypeType.workTypeList {
+  optionList: employeeSelectType.optionObj[];
   onChangeEmployee: (
     newValue: SingleValue<employeeSelectType.optionObj>,
     actionMeta: ActionMeta<employeeSelectType.optionObj>
