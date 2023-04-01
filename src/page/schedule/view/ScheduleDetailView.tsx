@@ -20,15 +20,13 @@ const ScheduleDetailView = ({
   );
 
   // 오늘부터 다음날 새벽까지 근무하는 경우 시작시간이 종료시간보다 길기 때문에
-  // 24를 더한 후 시간 시간에서 종료 시간을 뺀다.
+  // 계산 결과가 음수인 경우 24를 더한다.
+  const timeDifference =
+    Math.round(
+      ((endDate.getTime() - startDate.getTime()) / 1000 / 60 / 60) * 10
+    ) / 10;
   const totalWorkTime =
-    startDate.getTime() > endDate.getTime()
-      ? Math.round(
-          ((endDate.getTime() + 23 - startDate.getTime()) / 1000 / 60 / 60) * 10
-        ) / 10
-      : Math.round(
-          ((endDate.getTime() - startDate.getTime()) / 1000 / 60 / 60) * 10
-        ) / 10;
+    timeDifference < 0 ? timeDifference + 24 : timeDifference;
 
   return (
     <div className="employeeDetailView-container">

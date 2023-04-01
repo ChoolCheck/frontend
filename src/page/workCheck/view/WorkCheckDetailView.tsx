@@ -21,11 +21,10 @@ const WorkCheckDetailView = ({
 
   const timeDifference =
     Math.round(
-      (endDate.getTime() - startDate.getTime() / 1000 / 60 / 60) * 10
+      ((endDate.getTime() - startDate.getTime()) / 1000 / 60 / 60) * 10
     ) / 10;
   const totalWorkTime =
     timeDifference < 0 ? timeDifference + 24 : timeDifference;
-
   return (
     <div className="employeeDetailView-container">
       <h3>출근부 정보</h3>
