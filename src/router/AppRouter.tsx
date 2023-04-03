@@ -36,7 +36,6 @@ const AppRouter = () => {
             <Route path="/manage" element={<Manage />} />
             <Route path="/mypage" element={<Mypage />} />
             <Route path="/updateUserInfo" element={<UpdateUser />} />
-            <Route path="/updatePassword" element={<UpdatePassword />} />
             <Route path="/checkToSendEmail" element={<CheckToSendEmail />} />
           </Route>
 
