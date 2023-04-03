@@ -7,10 +7,6 @@ import "./style/updatePassword.scss";
 const UpdatePassword = () => {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    localStorage.clear();
-  }, []);
-
   const mailtoken = new URLSearchParams(window.location.search).get("token");
   const [mailToken, setMailToken] = useState(mailtoken ? mailtoken : "");
 
