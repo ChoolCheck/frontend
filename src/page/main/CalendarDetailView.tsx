@@ -8,7 +8,8 @@ const CalendarDetailView = ({
   calendarDetailScheduleList,
   calendarDetailWorkcheckList,
   memo,
-  setDetailModalOpen,
+  onModalOpen,
+  onModalClose,
   setSelectedModal,
   onMemoClick,
 }: type.calendarDetailViewProps) => {
@@ -22,10 +23,7 @@ const CalendarDetailView = ({
   return (
     <div className="CalendarDetailView-top-container">
       <div className="CalendarDetailView-container">
-        <button
-          className="close-button"
-          onClick={() => setDetailModalOpen(false)}
-        >
+        <button className="close-button" onClick={() => onModalClose()}>
           닫기
         </button>
 
@@ -93,7 +91,7 @@ const CalendarDetailView = ({
           onClick={() => {
             setSelectedModal("createworkcheck");
             setWriteModal(true);
-            setDetailModalOpen(false);
+            onModalClose();
           }}
         >
           출근부 작성

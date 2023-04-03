@@ -7,9 +7,6 @@ const EmployeeSelect = ({
   optionList,
   onChangeEmployee,
 }: employeeSelectType.employeeSelect) => {
-  console.log(defaultValueIndex);
-  console.log(optionList);
-
   const dot = (color = "transparent") => ({
     alignItems: "center",
     display: "flex",

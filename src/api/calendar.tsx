@@ -7,6 +7,25 @@ import * as enumType from "../commonType/enum";
 
 import { GetDateMemoApi } from "./memo";
 
+export function getTotalworktime(
+  scheduleDetail?: scheduleType.scheduleObjProps,
+  workcheckDetail?: workcheckType.workcheckObjProps
+) {
+  let detailObj;
+  if (scheduleDetail) detailObj = scheduleDetail;
+  else detailObj = workcheckDetail;
+
+  if (detailObj) {
+    return (
+      Math.round(
+        ((new Date(detailObj.date + "T" + detailObj.endTime).getTime() -
+          new Date(detailObj.date + "T" + detailObj.startTime).getTime()) /
+          3600000) *
+          10
+      ) / 10
+    );
+  } else return 0;
+}
 export function handleSchedulelist(
   scheduleList: scheduleType.scheduleObjProps[],
   tempResultList: type.calendarListType[]
@@ -107,7 +126,7 @@ export async function GetTotalCalendarApi({
 }
 
 export async function GetDetailCalendarApi({
-  setDetailModalOpen,
+  onModalOpen,
   date,
   setCalendarDetailScheduleList,
   setCalendarDetailWorkcheckList,
@@ -152,23 +171,7 @@ export async function GetDetailCalendarApi({
                 scheduleDetailList[i].color as keyof typeof enumType.enumColor
               ]
             }`,
-            totalWorkTime:
-              Math.round(
-                ((new Date(
-                  scheduleDetailList[i].date +
-                    "T" +
-                    scheduleDetailList[i].endTime
-                ).getTime() -
-                  new Date(
-                    scheduleDetailList[i].date +
-                      "T" +
-                      scheduleDetailList[i].startTime
-                  ).getTime()) /
-                  1000 /
-                  60 /
-                  60) *
-                  10
-              ) / 10,
+            totalWorkTime: getTotalworktime(scheduleDetailList[i]),
             workType: scheduleDetailList[i].hours
               ? scheduleDetailList[i].hours
               : null,
@@ -188,23 +191,7 @@ export async function GetDetailCalendarApi({
                 workcheckDetailList[i].color as keyof typeof enumType.enumColor
               ]
             }`,
-            totalWorkTime:
-              Math.round(
-                ((new Date(
-                  workcheckDetailList[i].date +
-                    "T" +
-                    workcheckDetailList[i].endTime.substring(0, 5)
-                ).getTime() -
-                  new Date(
-                    workcheckDetailList[i].date +
-                      "T" +
-                      workcheckDetailList[i].startTime.substring(0, 5)
-                  ).getTime()) /
-                  1000 /
-                  60 /
-                  60) *
-                  10
-              ) / 10,
+            totalWorkTime: getTotalworktime(workcheckDetailList[i]),
             workType: workcheckDetailList[i].hours
               ? workcheckDetailList[i].hours
               : null,
@@ -218,7 +205,7 @@ export async function GetDetailCalendarApi({
       setCalendarDetailWorkcheckList(tempWorkcheckList);
     })
     .then((res) => {
-      setDetailModalOpen(true);
+      onModalOpen();
     })
     .catch((error) => {});
 }

@@ -82,7 +82,7 @@ const Main = () => {
     ).toString();
 
     GetDetailCalendarApi({
-      setDetailModalOpen,
+      onModalOpen,
       date,
       setCalendarDetailScheduleList,
       setCalendarDetailWorkcheckList,
@@ -102,10 +102,20 @@ const Main = () => {
 
   const onMemoClick = (item: type.memoProps) => {
     return (e: React.MouseEvent<HTMLParagraphElement>) => {
-      setDetailModalOpen(false);
+      onModalClose();
       setMemoDetail(item);
       setReadModal(true);
     };
+  };
+
+  const onModalOpen = () => {
+    setDetailModalOpen(true);
+    document.body.style.overflow = "hidden";
+  };
+
+  const onModalClose = () => {
+    setDetailModalOpen(false);
+    document.body.style.overflow = "unset";
   };
 
   return (
@@ -141,7 +151,8 @@ const Main = () => {
           calendarDetailScheduleList={calendarDetailScheduleList}
           calendarDetailWorkcheckList={calendarDetailWorkcheckList}
           memo={memo}
-          setDetailModalOpen={setDetailModalOpen}
+          onModalOpen={onModalOpen}
+          onModalClose={onModalClose}
           setSelectedModal={setSelectedModal}
           onMemoClick={onMemoClick}
         ></CalendarDetailView>

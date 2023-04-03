@@ -21,7 +21,7 @@ export interface getTotalCalendarProps {
 }
 
 export interface getDetailCalendarProps {
-  setDetailModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  onModalOpen: () => void;
   setCalendarDetailScheduleList: React.Dispatch<
     React.SetStateAction<calendarDetailType[] | undefined>
   >;

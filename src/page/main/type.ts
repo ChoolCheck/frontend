@@ -40,7 +40,8 @@ export interface calendarDetailViewProps {
   calendarDetailWorkcheckList: calendarDetailType[] | undefined;
   memo: memoProps[] | undefined;
   setSelectedModal: React.Dispatch<React.SetStateAction<string>>;
-  setDetailModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  onModalOpen: () => void;
+  onModalClose: () => void;
   onMemoClick: (
     item: memoProps
   ) => (e: React.MouseEvent<HTMLParagraphElement>) => void;
