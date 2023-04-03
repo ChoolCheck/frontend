@@ -14,6 +14,11 @@ const writeModalState = createReducer<type.writeModal, type.handleWriteModal>(
     [SETWRITEMODAL]: (state, action) =>
       produce(state, (draft) => {
         draft.writeModalState = action.payload;
+        if (action.payload) {
+          document.body.style.overflow = "hidden";
+        } else {
+          document.body.style.overflow = "unset";
+        }
       }),
   }
 );
