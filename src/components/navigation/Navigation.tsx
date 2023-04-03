@@ -15,10 +15,9 @@ const Navigation = () => {
     window.location.href == `${config.client}/login` ||
     window.location.href == `${config.client}/signup` ||
     window.location.href == `${config.client}/updatePassword`
-  ) {
-    localStorage.clear();
+  )
     return <></>;
-  } else
+  else
     return (
       <div className="Navigation-top-container">
         <button

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import UpdatePasswordView from "./view/UpdatePasswordView";
 import { UpdatePasswordApi } from "../../api/mypage";
@@ -6,6 +6,10 @@ import "./style/updatePassword.scss";
 
 const UpdatePassword = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    localStorage.clear();
+  }, []);
 
   const mailtoken = new URLSearchParams(window.location.search).get("token");
   const [mailToken, setMailToken] = useState(mailtoken ? mailtoken : "");
