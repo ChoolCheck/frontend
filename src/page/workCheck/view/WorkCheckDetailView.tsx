@@ -25,6 +25,7 @@ const WorkCheckDetailView = ({
     ) / 10;
   const totalWorkTime =
     timeDifference < 0 ? timeDifference + 24 : timeDifference;
+
   return (
     <div className="employeeDetailView-container">
       <h3>출근부 정보</h3>
