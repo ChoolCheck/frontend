@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../../../Redux/Reducers/rootReducer";
 import Pagination from "../../../components/common/Pagination";
+import TotalWorkTime from "../../../components/common/TotalWorkTime";
 
 import "../style/workCheckView.scss";
 import * as type from "../type";
@@ -79,7 +80,7 @@ const WorkCheckView = ({
                   </span>
 
                   <span className="totalList-li-hours">
-                    {item?.hours == null ? "없음" : item?.hours}
+                    {item.hours == null ? "없음" : item?.hours}
                   </span>
 
                   <span className="totalList-li-time">
@@ -88,15 +89,12 @@ const WorkCheckView = ({
                   </span>
 
                   <span className="totalList-li-totalWorkTime">
-                    {Math.round(
-                      ((new Date(item.date + "T" + item.endTime).getTime() -
-                        new Date(item.date + "T" + item.startTime).getTime()) /
-                        1000 /
-                        60 /
-                        60) *
-                        10
-                    ) / 10}
-                    시간
+                    <TotalWorkTime
+                      startDate={item.date}
+                      endDate={item.date}
+                      startTime={item.startTime}
+                      endTime={item.endTime}
+                    ></TotalWorkTime>
                   </span>
                 </li>
               ))}
