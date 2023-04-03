@@ -107,6 +107,7 @@ const UpdateWorkCheck = ({
     });
     setOptionList(list);
   }, [employeeList]);
+
   const onClickCancelOnModal = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (window.confirm("정말로 작성을 취소하시겠습니까?")) {
