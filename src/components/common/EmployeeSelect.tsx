@@ -62,7 +62,9 @@ const EmployeeSelect = ({
         defaultValue={
           defaultValueIndex ? optionList[defaultValueIndex] : undefined
         }
-        defaultInputValue={"직원선택"}
+        defaultInputValue={
+          defaultValueIndex ? optionList[defaultValueIndex].label : "직원선택"
+        }
         key={defaultValueIndex ? defaultValueIndex : 0}
         options={optionList}
         styles={colorStyles}
