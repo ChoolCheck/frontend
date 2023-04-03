@@ -16,14 +16,14 @@ export function getTotalworktime(
   else detailObj = workcheckDetail;
 
   if (detailObj) {
-    return (
+    const timeDifference =
       Math.round(
         ((new Date(detailObj.date + "T" + detailObj.endTime).getTime() -
           new Date(detailObj.date + "T" + detailObj.startTime).getTime()) /
           3600000) *
           10
-      ) / 10
-    );
+      ) / 10;
+    return timeDifference < 0 ? timeDifference + 24 : timeDifference;
   } else return 0;
 }
 export function handleSchedulelist(
