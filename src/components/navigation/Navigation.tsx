@@ -12,15 +12,10 @@ const Navigation = () => {
 
   if (
     window.location.href == `${config.client}/login` ||
-    window.location.href == `${config.client}/signup`
+    window.location.href == `${config.client}/signup` ||
+    window.location.href.includes(`${config.client}/updatePassword`)
   )
     return <></>;
-  else if (window.location.href == `${config.client}/updatePassword`)
-    return (
-      <div>
-        <p>비밀번호 변경</p>
-      </div>
-    );
   else
     return (
       <div className="Navigation-top-container">
