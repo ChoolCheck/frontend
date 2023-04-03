@@ -53,11 +53,14 @@ export async function UpdatePasswordApi({
     data: { password: password },
   })
     .then((res) => {
-      window.alert("비밀번호가 수정되었습니다.");
-      navigate("/mypage");
+      window.alert(
+        "비밀번호가 수정되었습니다. \n 수정 된 비밀번호로 다시 로그인해주세요."
+      );
+      localStorage.clear();
+      navigate("/login");
     })
     .catch((err) => {
-      navigate("/mypage");
+      navigate("/login");
     });
 }
 
