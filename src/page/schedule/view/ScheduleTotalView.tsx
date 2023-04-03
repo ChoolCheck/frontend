@@ -1,4 +1,5 @@
 import Pagination from "../../../components/common/Pagination";
+import TotalWorkTime from "../../../components/common/TotalWorkTime";
 import "../style/schedule-total.scss";
 import * as type from "../type";
 import * as enumType from "../../../commonType/enum";
@@ -71,13 +72,20 @@ const ScheduleTotalView = ({
                     {item.name}
                   </span>
                   <span className="totalList-li-hours">
-                    {item?.hours == null ? "없음" : item?.hours}
+                    {item.hours == null ? "없음" : item?.hours}
                   </span>
                   <span className="totalList-li-time">
-                    {item.startTime.substring(0, 5)} -{" "}
+                    {item.startTime.substring(0, 5)}-
                     {item.endTime.substring(0, 5)}
                   </span>
-                  <span className="totalList-li-totalWorkTime">시간</span>
+                  <span className="totalList-li-totalWorkTime">
+                    <TotalWorkTime
+                      startDate={item.date}
+                      endDate={item.date}
+                      startTime={item.startTime}
+                      endTime={item.endTime}
+                    ></TotalWorkTime>
+                  </span>
                 </li>
               ))}
             </ul>

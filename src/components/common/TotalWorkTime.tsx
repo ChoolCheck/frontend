@@ -1,6 +1,3 @@
-import React, { useState } from "react";
-import "./loading.scss";
-
 interface totalworktimeProps {
   startTime: string;
   endTime: string;
@@ -20,7 +17,9 @@ const TotalWorkTime = ({
       Math.round(
         ((new Date(startDate + "T" + endTime).getTime() -
           new Date(endDate + "T" + startTime).getTime()) /
-          3600000) *
+          1000 /
+          60 /
+          60) *
           10
       ) / 10;
   } else {
@@ -28,7 +27,9 @@ const TotalWorkTime = ({
       Math.round(
         ((new Date(startDate + "T" + endTime).getTime() -
           new Date(endDate + "T" + startTime).getTime()) /
-          3600000) *
+          1000 /
+          60 /
+          60) *
           10
       ) / 10;
   }
@@ -38,7 +39,7 @@ const TotalWorkTime = ({
   const totalWorkTime =
     timeDifference < 0 ? timeDifference + 24 : timeDifference;
 
-  return <span>{totalWorkTime}</span>;
+  return <span>{totalWorkTime}시간</span>;
 };
 
 export default TotalWorkTime;

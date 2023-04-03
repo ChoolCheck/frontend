@@ -9,13 +9,6 @@ const ScheduleDetailView = ({
 }: type.scheduleDetailViewProps) => {
   const day = ["일", "월", "화", "수", "목", "금", "토"];
 
-  const startDate = scheduleDetail
-    ? scheduleDetail.date + "T" + scheduleDetail.startTime
-    : "2023-01-01T00:00:00";
-  const endDate = scheduleDetail
-    ? scheduleDetail.date + "T" + scheduleDetail.endTime
-    : "2023-01-01T00:00:00";
-
   return (
     <div className="employeeDetailView-container">
       <h3>스케줄 정보</h3>
@@ -51,12 +44,11 @@ const ScheduleDetailView = ({
             <span className="detail-title">총 근무시간</span>
             <span className="detail-content detail-totalWorkTime">
               <TotalWorkTime
-                startDate={startDate}
-                endDate={endDate}
+                startDate={scheduleDetail.date}
+                endDate={scheduleDetail.date}
                 startTime={scheduleDetail.startTime}
                 endTime={scheduleDetail.endTime}
               ></TotalWorkTime>
-              시간
             </span>
           </p>
         </div>
