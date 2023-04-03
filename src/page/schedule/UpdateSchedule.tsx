@@ -87,8 +87,12 @@ const UpdateSchedule = ({
 
   useEffect(() => {
     let list: Array<employeeSelectType.optionObj> = [];
+    list.push({
+      label: "직원선택",
+      color: "gray",
+    });
     employeeList?.map((item, i) => {
-      if (Number(employeeId) == item.id) setDefaultValueIndex(i);
+      if (Number(employeeId) == item.id) setDefaultValueIndex(i + 1);
       list.push({
         label: item.name,
         color: `#${
