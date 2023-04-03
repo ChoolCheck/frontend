@@ -63,6 +63,11 @@ const CreateSchedule = ({
 
   useEffect(() => {
     let list: Array<employeeSelectType.optionObj> = [];
+    list.push({
+      label: "직원선택",
+      color: "gray",
+      isDisabled: true,
+    });
     employeeList?.map((item, i) => {
       list.push({
         label: item.name,
