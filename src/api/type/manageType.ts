@@ -49,7 +49,7 @@ export interface getEmployeeProps {
   setEmployeeList: React.Dispatch<
     React.SetStateAction<employeeProps[] | undefined>
   >;
-
+  color?: string;
   employee?: string;
   setEmployeeId?: React.Dispatch<React.SetStateAction<string>>;
 }

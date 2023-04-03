@@ -90,7 +90,12 @@ const UpdateWorkCheck = ({
 
   useEffect(() => {
     GetWorktypeApi({ setWorkTypeList, hours, setHoursid });
-    GetEmployeeApi({ setEmployeeList, employee, setEmployeeId });
+    GetEmployeeApi({
+      employee,
+      color: workcheckDetail ? workcheckDetail.color : "white",
+      setEmployeeId,
+      setEmployeeList,
+    });
   }, []);
 
   useEffect(() => {

@@ -169,9 +169,10 @@ export async function DeleteEmployeeApi({
     .catch((err) => {});
 }
 export async function GetEmployeeApi({
-  setEmployeeList,
   employee,
+  color,
   setEmployeeId,
+  setEmployeeList,
 }: type.getEmployeeProps) {
   await axios({
     method: "GET",
@@ -191,7 +192,12 @@ export async function GetEmployeeApi({
       setEmployeeList(res.data);
 
       for (let i = 0; i < employeeList.length; i++) {
-        if (employeeList[i].name == employee && setEmployeeId) {
+        if (
+          employeeList[i].name == employee &&
+          setEmployeeId &&
+          employeeList[i].color == color
+        ) {
+          console.log(employeeList[i].color + " " + color);
           setEmployeeId(employeeList[i].id);
         }
       }
