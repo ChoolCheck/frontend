@@ -10,13 +10,17 @@ const Navigation = () => {
   const navigate = useNavigate();
   const [userModalOpen, setUserModalOpen] = useState(false);
 
-  //배포환경
   if (
     window.location.href == `${config.client}/login` ||
-    window.location.href == `${config.client}/signup` ||
-    window.location.href == `${config.client}/updatePassword`
+    window.location.href == `${config.client}/signup`
   )
     return <></>;
+  else if (window.location.href == `${config.client}/updatePassword`)
+    return (
+      <div>
+        <p>비밀번호 변경</p>
+      </div>
+    );
   else
     return (
       <div className="Navigation-top-container">
