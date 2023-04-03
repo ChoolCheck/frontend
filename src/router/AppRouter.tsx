@@ -25,7 +25,7 @@ const AppRouter = () => {
           <Route element={<PublicLayout />}>
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
-            <Route path="/updateUserInfo" element={<UpdateUser />} />
+            <Route path="/updatePassword" element={<UpdatePassword />} />
           </Route>
 
           <Route element={<AuthLayout />}>
@@ -36,7 +36,7 @@ const AppRouter = () => {
             <Route path="/manage" element={<Manage />} />
             <Route path="/mypage" element={<Mypage />} />
             <Route path="/updateUserInfo" element={<UpdateUser />} />
-            <Route path="/updatePassword" element={<UpdatePassword />} />
+            {/* <Route path="/updatePassword" element={<UpdatePassword />} /> */}
             <Route path="/checkToSendEmail" element={<CheckToSendEmail />} />
           </Route>
 
@@ -45,7 +45,7 @@ const AppRouter = () => {
             element={
               localStorage.getItem("token") == null &&
               localStorage.getItem("token") == undefined ? (
-                <Navigate to="/login" replace={true} />
+                <Navigate to="/login" replace={false} />
               ) : (
                 <Navigate to="/calendar" replace={true} />
               )

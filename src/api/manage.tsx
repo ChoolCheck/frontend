@@ -181,29 +181,26 @@ export async function GetEmployeeApi({
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
-  })
-    .then((res) => {
-      const employeeList: {
-        id: string;
-        name: string;
-        role: string;
-        color: string;
-      }[] = res.data;
-      setEmployeeList(res.data);
+  }).then((res) => {
+    const employeeList: {
+      id: string;
+      name: string;
+      role: string;
+      color: string;
+    }[] = res.data;
+    setEmployeeList(res.data);
 
-      for (let i = 0; i < employeeList.length; i++) {
-        if (
-          employeeList[i].name == employee &&
-          setEmployeeId &&
-          employeeList[i].color == color
-        ) {
-          console.log(employeeList[i].color + " " + color);
-          setEmployeeId(employeeList[i].id);
-        }
+    for (let i = 0; i < employeeList.length; i++) {
+      if (
+        setEmployeeId &&
+        employeeList[i].name == employee &&
+        employeeList[i].color == color
+      ) {
+        setEmployeeId(employeeList[i].id);
+        break;
       }
-    })
-
-    .catch((err) => {});
+    }
+  });
 }
 
 export async function GetEmployeeDetailApi({

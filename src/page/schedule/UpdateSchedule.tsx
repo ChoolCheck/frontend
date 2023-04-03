@@ -82,7 +82,12 @@ const UpdateSchedule = ({
 
   useEffect(() => {
     GetWorktypeApi({ setWorkTypeList, hours, setHoursid });
-    GetEmployeeApi({ setEmployeeList, employee, setEmployeeId });
+    GetEmployeeApi({
+      employee,
+      color: scheduleDetail ? scheduleDetail.color : "white",
+      setEmployeeId,
+      setEmployeeList,
+    });
   }, []);
 
   useEffect(() => {

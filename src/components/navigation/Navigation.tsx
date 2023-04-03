@@ -13,7 +13,8 @@ const Navigation = () => {
   //배포환경
   if (
     window.location.href == `${config.client}/login` ||
-    window.location.href == `${config.client}/signup`
+    window.location.href == `${config.client}/signup` ||
+    window.location.href == `${config.client}/updatePassword`
   )
     return <></>;
   else
