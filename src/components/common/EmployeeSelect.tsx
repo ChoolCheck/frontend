@@ -8,8 +8,8 @@ const EmployeeSelect = ({
   onChangeEmployee,
 }: employeeSelectType.employeeSelect) => {
   console.log(defaultValueIndex);
-  console.log(optionList[0]);
-  console.log(optionList[1]);
+  console.log(optionList);
+
   const dot = (color = "transparent") => ({
     alignItems: "center",
     display: "flex",
@@ -55,6 +55,7 @@ const EmployeeSelect = ({
     placeholder: (styles) => ({ ...styles, ...dot("white") }),
     singleValue: (styles, { data }) => ({ ...styles, ...dot(data.color) }),
   };
+
   return (
     <div>
       <Select

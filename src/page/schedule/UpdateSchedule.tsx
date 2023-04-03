@@ -90,6 +90,7 @@ const UpdateSchedule = ({
     list.push({
       label: "직원선택",
       color: "gray",
+      isDisabled: true,
     });
     employeeList?.map((item, i) => {
       if (Number(employeeId) == item.id) setDefaultValueIndex(i + 1);
