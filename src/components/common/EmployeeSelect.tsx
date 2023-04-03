@@ -56,16 +56,9 @@ const EmployeeSelect = ({
     <div>
       <Select
         defaultValue={
-          defaultValueIndex
-            ? {
-                label: optionList[defaultValueIndex].label,
-                color: optionList[defaultValueIndex].color,
-              }
-            : {
-                label: optionList[0].label,
-                color: optionList[0].color,
-              }
+          defaultValueIndex ? optionList[defaultValueIndex] : optionList[0]
         }
+        key={defaultValueIndex ? defaultValueIndex : 0}
         options={optionList}
         styles={colorStyles}
         isMulti={false}

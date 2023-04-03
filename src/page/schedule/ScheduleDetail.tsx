@@ -68,12 +68,14 @@ const ScheduleDetail = ({
 
   return (
     <div className="employeeDetail-container">
-      <ScheduleDetailView
-        id={scheduleDetail ? scheduleDetail.id : 0}
-        scheduleDetail={scheduleDetail}
-        onUpdateClick={onUpdateClick}
-        onDeleteClick={onDeleteClick}
-      ></ScheduleDetailView>
+      {scheduleDetail && (
+        <ScheduleDetailView
+          id={scheduleDetail.id}
+          scheduleDetail={scheduleDetail}
+          onUpdateClick={onUpdateClick}
+          onDeleteClick={onDeleteClick}
+        ></ScheduleDetailView>
+      )}
     </div>
   );
 };

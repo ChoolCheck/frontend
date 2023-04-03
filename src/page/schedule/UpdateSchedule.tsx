@@ -89,7 +89,7 @@ const UpdateSchedule = ({
     let list: Array<employeeSelectType.optionObj> = [];
     employeeList?.map((item, i) => {
       if (Number(employeeId) == item.id) setDefaultValueIndex(i);
-
+      console.log(Number(employeeId) == item.id);
       list.push({
         label: item.name,
         color: `#${
