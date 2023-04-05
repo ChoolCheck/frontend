@@ -313,7 +313,7 @@ export async function integratedScheduleRender({
   const url2 = `${config.api}/schedule?page=${0}`;
   const url3 = `${config.api}/employee`;
 
-  const fetchURL = (url: string) => axios.get(url);
+  const fetchURL = (url: string) => axiosInstance.get(url);
 
   const promiseArray = [url1, url2, url3].map(fetchURL);
 
