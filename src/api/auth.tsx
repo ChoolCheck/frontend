@@ -22,17 +22,7 @@ export async function LoginApi({
         navigate("/calendar");
       }
     })
-    .catch((err) => {
-      // if (err.response) {
-      //   console.log(err.response.data);
-      //   console.log(err.response.status);
-      //   console.log(err.response.headers);
-      // } else if (err.request) {
-      //   console.log(err.request);
-      // } else {
-      //   console.log("Error", err.message);
-      // }
-    });
+    .catch((err) => {});
 }
 
 export async function SignupApi({
@@ -90,6 +80,7 @@ export async function CertificateEmailApi({
       setEmailCertificated(false);
     });
 }
+
 export async function LogoutApi({ navigate }: type.apiLogoutProps) {
   await axios({
     method: "Post",

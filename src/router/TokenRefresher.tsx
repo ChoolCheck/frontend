@@ -35,6 +35,7 @@ export default function TokenRefresher() {
 
                 originalConfig.headers["Authorization"] =
                   "Bearer " + res.data.accessToken;
+
                 return refreshAPI(originalConfig);
               })
               .then((res) => {

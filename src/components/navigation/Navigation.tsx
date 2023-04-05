@@ -24,7 +24,7 @@ const Navigation = () => {
           className="Navigation-logo"
           onClick={() => navigate("/calendar")}
         >
-          Choolcheck
+          Choolcheck✔
         </button>
 
         <div className="Navigation-menu">

@@ -110,9 +110,7 @@ export async function UpdateScheduleApi({
       setWriteModal(false);
       setReadModal(false);
     })
-    .catch((err) => {
-      window.alert("스케줄 수정에 실패했습니다.");
-    });
+    .catch((err) => {});
 }
 
 export async function DeleteScheduleApi({
@@ -158,9 +156,7 @@ export async function GetMonthScheduleApi({
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
-  })
-    .then((res) => {})
-    .catch((err) => {});
+  });
 }
 
 export async function GetWeekScheduleApi({
