@@ -265,30 +265,9 @@ export async function integratedScheduleRender({
   setTotalPage,
   setEmployeeList,
 }: type.integratedScheduleRenderProps) {
-  interface resProps {
-    res1: {
-      data: type.scheduleObjProps[][];
-    };
-    res2: {
-      data: {
-        totalPages: number;
-        setTotalElements: number;
-        content: type.scheduleObjProps[];
-      };
-    };
-    res3: {
-      data: employeeType.employeeProps[];
-    };
-  }
-  function handleResponse({ res1, res2, res3 }: resProps) {
-    setWeekScheduleList(res1.data);
-
-    setTotalPage(res2.data.totalPages);
-    setTotalElement(res2.data.setTotalElements);
-    setTotalScheduleList(res2.data.content);
-
-    setEmployeeList(res3.data);
-  }
+  const url1 = `${config.api}/schedule/week`;
+  const url2 = `${config.api}/schedule?page=${0}`;
+  const url3 = `${config.api}/employee`;
 
   const axiosInstance = axios.create({
     headers: {
@@ -297,30 +276,20 @@ export async function integratedScheduleRender({
     },
   });
 
-  // axios
-  //   .all([
-  //     axiosInstance.get(`${config.api}/schedule/week`),
-  //     axiosInstance.get(`${config.api}/schedule?page=${0}`),
-  //     axiosInstance.get(`${config.api}/employee`),
-  //   ])
-  //   .then(
-  //     axios.spread((res1, res2, res3) => {
-  //       handleResponse({ res1, res2, res3 });
-  //     })
-  //   );
+  axiosInstance
+    .get(url1)
+    .then((res) => {
+      setWeekScheduleList(res.data);
+    })
+    .then((res) => {
+      axios.all([axiosInstance.get(url2), axiosInstance.get(url3)]).then(
+        axios.spread((res1, res2) => {
+          setTotalPage(res1.data.totalPages);
+          setTotalElement(res1.data.setTotalElements);
+          setTotalScheduleList(res1.data.content);
 
-  const url1 = `${config.api}/schedule/week`;
-  const url2 = `${config.api}/schedule?page=${0}`;
-  const url3 = `${config.api}/employee`;
-
-  const fetchURL = (url: string) => axiosInstance.get(url);
-
-  const promiseArray = [url1, url2, url3].map(fetchURL);
-
-  Promise.all(promiseArray).then((data) => {
-    handleResponse({ res1: data[0], res2: data[1], res3: data[2] });
-
-    // data[0]; // first promise resolved
-    // data[1]; // second promise resolved
-  });
+          setEmployeeList(res2.data);
+        })
+      );
+    });
 }
