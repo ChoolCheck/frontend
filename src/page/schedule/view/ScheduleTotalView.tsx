@@ -8,10 +8,10 @@ const ScheduleTotalView = ({
   onShowNameButtonClick,
   onShowTotalButtonClick,
   onItemClick,
+  onPaginationClick,
   scheduleToShow,
   employeeList,
   totalScheduleList,
-  onPaginationClick,
   page,
 }: type.scheduleTotalViewProps) => {
   const totalList = scheduleToShow ? scheduleToShow : totalScheduleList;
