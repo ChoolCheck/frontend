@@ -13,13 +13,13 @@ import Mypage from "../page/User/Mypage";
 import UpdateUser from "../page/User/UpdateUser";
 import UpdatePassword from "../page/User/UpdatePassword";
 import CheckToSendEmail from "../page/User/CheckToSendEmail";
-import AxiosNavigation from "./AxiosNavigation";
+import TokenRefresher from "./TokenRefresher";
 
 const AppRouter = () => {
   return (
     <>
       <BrowserRouter>
-        <AxiosNavigation />
+        <TokenRefresher />
         <Navigation />
         <Routes>
           <Route element={<PublicLayout />}>

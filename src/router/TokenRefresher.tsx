@@ -3,7 +3,7 @@ import axios from "axios";
 import { config } from "../static/config";
 import { useNavigate } from "react-router-dom";
 
-export default function AxiosNavigation() {
+export default function TokenRefresher() {
   const navigate = useNavigate();
 
   useEffect(() => {

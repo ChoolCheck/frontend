@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
-import "./navigation.scss";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { config } from "../../static/config";
-import userIcon from "../../static/icon/user.png";
 
 import UserModal from "./UserModal";
+
+import { config } from "../../static/config";
+import userIcon from "../../static/icon/user.png";
+import "./navigation.scss";
 
 const Navigation = () => {
   const navigate = useNavigate();

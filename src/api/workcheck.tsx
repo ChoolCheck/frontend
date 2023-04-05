@@ -204,10 +204,10 @@ export async function GetEmployeeWorkcheckApi({
   startInput,
   endInput,
   employeeId,
+  page,
   setWorkcheckToShow,
   setTotalPage,
   setTotalElement,
-  page,
 }: type.getEmployeeWorkcheckProps) {
   let url;
   if (page && startInput && endInput) {
