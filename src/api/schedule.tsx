@@ -2,6 +2,7 @@ import axios from "axios";
 import { config } from "../static/config";
 import * as type from "./type/scheduleType";
 import { GetEmployeeApi } from "./manage";
+import * as employeeType from "../commonType/employee";
 
 export async function CreateScheduleApi({
   employeeId,
@@ -264,13 +265,30 @@ export async function integratedScheduleRender({
   setTotalPage,
   setEmployeeList,
 }: type.integratedScheduleRenderProps) {
-  GetWeekScheduleApi({ setWeekScheduleList });
-  GetTotalScheduleApi({
-    setTotalScheduleList,
-    setTotalElement,
-    setTotalPage,
-  });
-  GetEmployeeApi({ setEmployeeList });
+  interface resProps {
+    res1: {
+      data: type.scheduleObjProps[][];
+    };
+    res2: {
+      data: {
+        totalPages: number;
+        setTotalElements: number;
+        content: type.scheduleObjProps[];
+      };
+    };
+    res3: {
+      data: employeeType.employeeProps[];
+    };
+  }
+  function handleResponse({ res1, res2, res3 }: resProps) {
+    setWeekScheduleList(res1.data);
+
+    setTotalPage(res2.data.totalPages);
+    setTotalElement(res2.data.setTotalElements);
+    setTotalScheduleList(res2.data.content);
+
+    setEmployeeList(res3.data);
+  }
 
   const axiosInstance = axios.create({
     headers: {
@@ -279,21 +297,30 @@ export async function integratedScheduleRender({
     },
   });
 
-  axios
-    .all([
-      axiosInstance.get(`${config.api}/schedule/week`),
-      axiosInstance.get(`${config.api}/schedule?page=${0}`),
-      axiosInstance.get(`${config.api}/employee`),
-    ])
-    .then(
-      axios.spread((res1, res2, res3) => {
-        setWeekScheduleList(res1.data);
+  // axios
+  //   .all([
+  //     axiosInstance.get(`${config.api}/schedule/week`),
+  //     axiosInstance.get(`${config.api}/schedule?page=${0}`),
+  //     axiosInstance.get(`${config.api}/employee`),
+  //   ])
+  //   .then(
+  //     axios.spread((res1, res2, res3) => {
+  //       handleResponse({ res1, res2, res3 });
+  //     })
+  //   );
 
-        setTotalPage(res2.data.totalPages);
-        setTotalElement(res2.data.setTotalElements);
-        setTotalScheduleList(res2.data.content);
+  const url1 = `${config.api}/schedule/week`;
+  const url2 = `${config.api}/schedule?page=${0}`;
+  const url3 = `${config.api}/employee`;
 
-        setEmployeeList(res3.data);
-      })
-    );
+  const fetchURL = (url: string) => axios.get(url);
+
+  const promiseArray = [url1, url2, url3].map(fetchURL);
+
+  Promise.all(promiseArray).then((data) => {
+    handleResponse({ res1: data[0], res2: data[1], res3: data[2] });
+
+    // data[0]; // first promise resolved
+    // data[1]; // second promise resolved
+  });
 }

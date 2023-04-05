@@ -1,11 +1,5 @@
 import * as employeeType from "../../commonType/employee";
-
-export interface worktypeProps {
-  title: string;
-  startTime: string;
-  endTime: string;
-  id: number;
-}
+import * as workType from "../../commonType/worktype";
 
 export interface createWorktypeProps {
   worktypeForm: {
@@ -14,7 +8,7 @@ export interface createWorktypeProps {
     endTime: string;
   };
   setWorkTypeList: React.Dispatch<
-    React.SetStateAction<worktypeProps[] | undefined>
+    React.SetStateAction<workType.worktypeProps[] | undefined>
   >;
 
   setWriteModal: (readModalState: boolean) => {
@@ -25,7 +19,7 @@ export interface createWorktypeProps {
 
 export interface getWorktypeProps {
   setWorkTypeList: React.Dispatch<
-    React.SetStateAction<worktypeProps[] | undefined>
+    React.SetStateAction<workType.worktypeProps[] | undefined>
   >;
 
   hours?: string;
@@ -33,9 +27,9 @@ export interface getWorktypeProps {
 }
 
 export interface deleteWorktypeProps {
-  workTypeList: worktypeProps[] | undefined;
+  workTypeList: workType.worktypeProps[] | undefined;
   setWorkTypeList: React.Dispatch<
-    React.SetStateAction<worktypeProps[] | undefined>
+    React.SetStateAction<workType.worktypeProps[] | undefined>
   >;
   id: number;
 }
@@ -107,4 +101,13 @@ export interface deleteEmployeeProps {
     type: "handleReadModal/SETREADMODAL";
     payload: boolean;
   };
+}
+
+export interface integratedManageRenderProps {
+  setEmployeeList: React.Dispatch<
+    React.SetStateAction<employeeType.employeeProps[] | undefined>
+  >;
+  setWorkTypeList: React.Dispatch<
+    React.SetStateAction<workType.worktypeProps[] | undefined>
+  >;
 }

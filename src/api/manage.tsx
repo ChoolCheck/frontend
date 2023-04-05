@@ -168,6 +168,7 @@ export async function DeleteEmployeeApi({
     })
     .catch((err) => {});
 }
+
 export async function GetEmployeeApi({
   employee,
   color,
@@ -224,4 +225,28 @@ export async function GetEmployeeDetailApi({
       setReadModal(res);
     })
     .catch((err) => {});
+}
+
+export async function integratedManageRender({
+  setWorkTypeList,
+  setEmployeeList,
+}: type.integratedManageRenderProps) {
+  const axiosInstance = axios.create({
+    headers: {
+      "Content-Type": `application/json`,
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  });
+
+  axios
+    .all([
+      axiosInstance.get(`${config.api}/employee`),
+      axiosInstance.get(`${config.api}/hours`),
+    ])
+    .then(
+      axios.spread((res1, res2) => {
+        setEmployeeList(res1.data);
+        setWorkTypeList(res2.data);
+      })
+    );
 }

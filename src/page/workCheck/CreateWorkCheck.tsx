@@ -6,12 +6,16 @@ import { setTotalElements } from "../../Redux/Actions/handleTotalElement";
 import { setTotalPages } from "../../Redux/Actions/handleTotalPages";
 import { setPaginationFocus } from "../../Redux/Actions/handlePaginationFocus";
 
-import { GetWorktypeApi, GetEmployeeApi } from "../../api/manage";
+import {
+  GetWorktypeApi,
+  GetEmployeeApi,
+  integratedManageRender,
+} from "../../api/manage";
 import { CreateWorkcheckApi } from "../../api/workcheck";
 
 import * as type from "./type";
 import * as employeeType from "../../commonType/employee";
-import * as worktypeType from "../../commonType/worktype";
+import * as workType from "../../commonType/worktype";
 import * as enumType from "../../commonType/enum";
 import * as employeeSelectType from "../../commonType/employeeSelectType";
 
@@ -47,7 +51,7 @@ const CreateWorkCheck = () => {
     [dispatch]
   );
   const [workTypeList, setWorkTypeList] = useState<
-    worktypeType.worktypeProps[] | undefined
+    workType.worktypeProps[] | undefined
   >([]);
 
   const [employeeList, setEmployeeList] = useState<
@@ -59,8 +63,9 @@ const CreateWorkCheck = () => {
   >([]);
 
   useEffect(() => {
-    GetWorktypeApi({ setWorkTypeList });
-    GetEmployeeApi({ setEmployeeList });
+    integratedManageRender({ setWorkTypeList, setEmployeeList });
+    // GetWorktypeApi({ setWorkTypeList });
+    // GetEmployeeApi({ setEmployeeList });
   }, []);
 
   useEffect(() => {
