@@ -49,7 +49,6 @@ export function handleSchedulelist(
     };
     tempResultList.push(data);
   }
-  return true;
 }
 export function handleWorklist(
   workcheckList: workcheckType.workcheckObjProps[],
@@ -74,7 +73,6 @@ export function handleWorklist(
     };
     tempResultList.push(data);
   }
-  return true;
 }
 
 export async function GetTotalCalendarApi({
@@ -91,37 +89,41 @@ export async function GetTotalCalendarApi({
       : inputDate.getMonth() + 1;
   const inputStart = inputYear + "-" + inputMonth + "-01";
 
-  const axiosInstance = axios.create({
+  const tempResultList: type.calendarListType[] = [];
+
+  axios({
+    method: "Get",
+    url: `${config.api}/work/month?date=${inputStart}`,
     headers: {
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
-  });
-  const tempResultList: type.calendarListType[] = [];
-
-  axios
-    .all([
-      axiosInstance.get(`${config.api}/work/month?date=${inputStart}`),
-      axiosInstance.get(`${config.api}/schedule/month?date=${inputStart}`),
-    ])
-    .then(
-      axios.spread((res1, res2) => {
-        const workcheckList: workcheckType.workcheckObjProps[] = res1.data;
-        const scheduleList: scheduleType.scheduleObjProps[] = res2.data;
-
-        if (handleWorklist(workcheckList, tempResultList))
-          handleSchedulelist(scheduleList, tempResultList);
-
-        return tempResultList;
+  })
+    .then((res) => {
+      const workcheckList: workcheckType.workcheckObjProps[] = res.data;
+      handleWorklist(workcheckList, tempResultList);
+    })
+    .then((res) => {
+      axios({
+        method: "GET",
+        url: `${config.api}/schedule/month?date=${inputStart}`,
+        headers: {
+          "Content-Type": `application/json`,
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
       })
-    )
-    .then((res) => {
-      setCalendarTotalList(tempResultList);
-    })
-    .then((res) => {
-      renderData(tempResultList);
-    })
-    .catch((error) => {});
+        .then((res) => {
+          const scheduleList: scheduleType.scheduleObjProps[] = res.data;
+          handleSchedulelist(scheduleList, tempResultList);
+          return tempResultList;
+        })
+        .then((res) => {
+          setCalendarTotalList(tempResultList);
+        })
+        .then((res) => {
+          renderData(tempResultList);
+        });
+    });
 }
 
 export async function GetDetailCalendarApi({

@@ -305,29 +305,29 @@ export async function integratedWorkcheckRender({
   const monthEnd =
     yearmonth + new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
 
-  await axios({
-    method: "GET",
-    url: `${config.api}/work?dateFrom=${monthStart}&dateTo=${monthEnd}`,
+  axios({
+    method: "Get",
+    url: `${config.api}/employee`,
     headers: {
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
   })
     .then((res) => {
-      setTotalPage(res.data.totalPages);
-      setTotalElement(res.data.setTotalElements);
-      setTotalWorkCheckList(res.data.content);
+      setEmployeeList(res.data);
     })
     .then((res) => {
       axios({
-        method: "Get",
-        url: `${config.api}/employee`,
+        method: "GET",
+        url: `${config.api}/work?dateFrom=${monthStart}&dateTo=${monthEnd}`,
         headers: {
           "Content-Type": `application/json`,
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       }).then((res) => {
-        setEmployeeList(res.data);
+        setTotalPage(res.data.totalPages);
+        setTotalElement(res.data.setTotalElements);
+        setTotalWorkCheckList(res.data.content);
       });
     });
 }
