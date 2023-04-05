@@ -20,8 +20,9 @@ export default function TokenRefresher() {
       },
       async function (error) {
         const originalConfig = error.config;
+        const msg = error.response.data.message;
         if (error.response.status == 401) {
-          if (error.response.data.message == "expired") {
+          if (msg == "expired") {
             await axios({
               url: `${config.api}/user/reissue`,
               method: "Post",
@@ -40,12 +41,11 @@ export default function TokenRefresher() {
               })
               .then((res) => {
                 window.location.reload();
-              })
-              .catch((err) => {
-                localStorage.clear();
-                navigate("/login");
-                window.alert("토큰이 만료되어 자동으로 로그아웃 되었습니다.");
               });
+          } else if (msg == "만료된 refreshToken 입니다.") {
+            localStorage.clear();
+            navigate("/login");
+            window.alert("토큰이 만료되어 자동으로 로그아웃 되었습니다.");
           } else if (error.response.data.message) {
             window.alert(error.response.data.message);
           } else {
