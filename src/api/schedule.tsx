@@ -276,10 +276,17 @@ export async function integratedScheduleRender({
     },
   });
 
-  axiosInstance
-    .get(url1)
+  await axios({
+    method: "Get",
+    url: url1,
+    headers: {
+      "Content-Type": `application/json`,
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  })
     .then((res) => {
       setWeekScheduleList(res.data);
+      return true;
     })
     .then((res) => {
       axios.all([axiosInstance.get(url2), axiosInstance.get(url3)]).then(
@@ -291,5 +298,6 @@ export async function integratedScheduleRender({
           setEmployeeList(res2.data);
         })
       );
-    });
+    })
+    .catch((error) => {});
 }
