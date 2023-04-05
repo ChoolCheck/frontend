@@ -1,7 +1,9 @@
-import React, { useState } from "react";
 import "./loading.scss";
 
-const Loading = (message?: string) => {
+interface loadingProps {
+  message?: string;
+}
+const Loading = ({ message }: loadingProps) => {
   return (
     <div className="loading-container">
       {message ? <p>message</p> : <p>...loading</p>}

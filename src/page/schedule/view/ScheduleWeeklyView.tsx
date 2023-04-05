@@ -1,6 +1,7 @@
 import "../style/schedule-weekly.scss";
 import * as type from "../type";
 import * as enumType from "../../../commonType/enum";
+import Loading from "../../../components/common/Loading";
 
 const ScheduleWeeklyView = ({
   weekScheduleList,
@@ -28,9 +29,9 @@ const ScheduleWeeklyView = ({
 
   return (
     <div className="ScheduleWeeklyView-top-container">
-      <div className="card-container">
-        {weekScheduleList &&
-          weekScheduleList.map((item, idx) => (
+      {weekScheduleList ? (
+        <div className="card-container">
+          {weekScheduleList.map((item, idx) => (
             <div className="card">
               <p className="card-title">
                 {day[idx]}요일 ({thisWeek[idx]})
@@ -53,7 +54,7 @@ const ScheduleWeeklyView = ({
                     </span>
 
                     <span className="card-li-time">
-                      {listItem.startTime.substring(0, 5)} -{" "}
+                      {listItem.startTime.substring(0, 5)} -
                       {listItem.endTime.substring(0, 5)}
                     </span>
                   </li>
@@ -61,7 +62,10 @@ const ScheduleWeeklyView = ({
               </ul>
             </div>
           ))}
-      </div>
+        </div>
+      ) : (
+        <Loading></Loading>
+      )}
     </div>
   );
 };
