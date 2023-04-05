@@ -5,7 +5,7 @@ import { setTotalElements } from "../../Redux/Actions/handleTotalElement";
 import { setTotalPages } from "../../Redux/Actions/handleTotalPages";
 import { setPaginationFocus } from "../../Redux/Actions/handlePaginationFocus";
 
-import { GetWorktypeApi, GetEmployeeApi } from "../../api/manage";
+import { integratedManageRender } from "../../api/manage";
 import { CreateScheduleApi } from "../../api/schedule";
 
 import * as type from "./type";
@@ -57,8 +57,7 @@ const CreateSchedule = ({
   >([]);
 
   useEffect(() => {
-    GetWorktypeApi({ setWorkTypeList });
-    GetEmployeeApi({ setEmployeeList });
+    integratedManageRender({ setWorkTypeList, setEmployeeList });
   }, []);
 
   useEffect(() => {

@@ -1,5 +1,6 @@
 import * as reducerType from "../../Redux/Types";
 import * as paginationType from "../../commonType/pagination";
+import * as employeeType from "../../commonType/employee";
 
 export interface workcheckObjProps {
   name: string;
@@ -123,5 +124,19 @@ export interface getEmployeeWorkcheckProps
   page?: number;
   setWorkcheckToShow: React.Dispatch<
     React.SetStateAction<workcheckObjProps[] | undefined>
+  >;
+}
+
+export interface integratedWorkcheckRenderProps
+  extends paginationType.paginationProps {
+  setTotalWorkCheckList: (
+    totalWorkcheckList: workcheckObjProps[] | undefined
+  ) => {
+    type: "handleTotalWorkcheckList/SETTOTALWORKCHECKLIST";
+    payload: reducerType.workcheckObjProps[] | undefined;
+  };
+
+  setEmployeeList: React.Dispatch<
+    React.SetStateAction<employeeType.employeeProps[] | undefined>
   >;
 }

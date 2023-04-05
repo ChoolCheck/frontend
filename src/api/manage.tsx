@@ -43,13 +43,14 @@ export async function GetWorktypeApi({
     },
   })
     .then((res) => {
+      setWorkTypeList(res.data);
+
       const workTypeList: {
         id: string;
         title: string;
         startTime: string;
         endTime: string;
       }[] = res.data;
-      setWorkTypeList(res.data);
 
       for (let i = 0; i < workTypeList.length; i++) {
         if (workTypeList[i].title == hours && setHoursid) {
@@ -183,14 +184,14 @@ export async function GetEmployeeApi({
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
   }).then((res) => {
+    setEmployeeList(res.data);
+
     const employeeList: {
       id: string;
       name: string;
       role: string;
       color: string;
     }[] = res.data;
-    setEmployeeList(res.data);
-
     for (let i = 0; i < employeeList.length; i++) {
       if (
         setEmployeeId &&
@@ -230,23 +231,63 @@ export async function GetEmployeeDetailApi({
 export async function integratedManageRender({
   setWorkTypeList,
   setEmployeeList,
+  hours,
+  setHoursid,
+  color,
+  employee,
+  setEmployeeId,
 }: type.integratedManageRenderProps) {
-  const axiosInstance = axios.create({
+  await axios({
+    method: "Get",
+    url: `${config.api}/employee`,
     headers: {
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
-  });
+  })
+    .then((res) => {
+      const employeeList: {
+        id: string;
+        name: string;
+        role: string;
+        color: string;
+      }[] = res.data;
+      for (let i = 0; i < employeeList.length; i++) {
+        if (
+          setEmployeeId &&
+          employeeList[i].name == employee &&
+          employeeList[i].color == color
+        ) {
+          setEmployeeId(employeeList[i].id);
+          break;
+        }
+      }
+      setEmployeeList(res.data);
+      return true;
+    })
+    .then((res) => {
+      axios({
+        method: "Get",
+        url: `${config.api}/hours`,
+        headers: {
+          "Content-Type": `application/json`,
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }).then((res) => {
+        setWorkTypeList(res.data);
+        const workTypeList: {
+          id: string;
+          title: string;
+          startTime: string;
+          endTime: string;
+        }[] = res.data;
 
-  axios
-    .all([
-      axiosInstance.get(`${config.api}/employee`),
-      axiosInstance.get(`${config.api}/hours`),
-    ])
-    .then(
-      axios.spread((res1, res2) => {
-        setEmployeeList(res1.data);
-        setWorkTypeList(res2.data);
-      })
-    );
+        for (let i = 0; i < workTypeList.length; i++) {
+          if (workTypeList[i].title == hours && setHoursid) {
+            setHoursid(workTypeList[i].id);
+          }
+        }
+      });
+    })
+    .catch((error) => {});
 }

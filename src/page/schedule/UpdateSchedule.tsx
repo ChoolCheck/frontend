@@ -6,7 +6,7 @@ import { setTotalElements } from "../../Redux/Actions/handleTotalElement";
 import { setTotalPages } from "../../Redux/Actions/handleTotalPages";
 import { setPaginationFocus } from "../../Redux/Actions/handlePaginationFocus";
 
-import { GetWorktypeApi, GetEmployeeApi } from "../../api/manage";
+import { integratedManageRender } from "../../api/manage";
 import { UpdateScheduleApi } from "../../api/schedule";
 
 import * as employeeType from "../../commonType/employee";
@@ -81,8 +81,10 @@ const UpdateSchedule = ({
   const [defaultValueIndex, setDefaultValueIndex] = useState(0);
 
   useEffect(() => {
-    GetWorktypeApi({ setWorkTypeList, hours, setHoursid });
-    GetEmployeeApi({
+    integratedManageRender({
+      setWorkTypeList,
+      hours,
+      setHoursid,
       employee,
       color: scheduleDetail ? scheduleDetail.color : "white",
       setEmployeeId,

@@ -1,8 +1,6 @@
 import axios from "axios";
 import { config } from "../static/config";
 import * as type from "./type/scheduleType";
-import { GetEmployeeApi } from "./manage";
-import * as employeeType from "../commonType/employee";
 
 export async function CreateScheduleApi({
   employeeId,

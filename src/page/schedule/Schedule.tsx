@@ -93,13 +93,6 @@ const Schedule = () => {
       setTotalPage,
       setEmployeeList,
     });
-    // GetWeekScheduleApi({ setWeekScheduleList });
-    // GetTotalScheduleApi({
-    //   setTotalScheduleList,
-    //   setTotalElement,
-    //   setTotalPage,
-    // });
-    // GetEmployeeApi({ setEmployeeList });
   }, []);
 
   const onShowNameButtonClick = (id: number) => {

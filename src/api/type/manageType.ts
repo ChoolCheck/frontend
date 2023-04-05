@@ -110,4 +110,10 @@ export interface integratedManageRenderProps {
   setWorkTypeList: React.Dispatch<
     React.SetStateAction<workType.worktypeProps[] | undefined>
   >;
+
+  hours?: string;
+  setHoursid?: React.Dispatch<React.SetStateAction<string>>;
+  color?: string;
+  employee?: string;
+  setEmployeeId?: React.Dispatch<React.SetStateAction<string>>;
 }

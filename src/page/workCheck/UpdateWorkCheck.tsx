@@ -7,7 +7,7 @@ import { setTotalElements } from "../../Redux/Actions/handleTotalElement";
 import { setTotalPages } from "../../Redux/Actions/handleTotalPages";
 import { setPaginationFocus } from "../../Redux/Actions/handlePaginationFocus";
 
-import { GetWorktypeApi, GetEmployeeApi } from "../../api/manage";
+import { integratedManageRender } from "../../api/manage";
 import { UpdateWorkcheckApi } from "../../api/workcheck";
 
 import * as employeeType from "../../commonType/employee";
@@ -89,8 +89,10 @@ const UpdateWorkCheck = ({
   const [defaultValueIndex, setDefaultValueIndex] = useState(0);
 
   useEffect(() => {
-    GetWorktypeApi({ setWorkTypeList, hours, setHoursid });
-    GetEmployeeApi({
+    integratedManageRender({
+      setWorkTypeList,
+      hours,
+      setHoursid,
       employee,
       color: workcheckDetail ? workcheckDetail.color : "white",
       setEmployeeId,

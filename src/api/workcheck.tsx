@@ -284,3 +284,50 @@ export async function GetTotalWorkcheckApi({
     })
     .catch((err) => {});
 }
+
+export async function integratedWorkcheckRender({
+  setTotalWorkCheckList,
+  setTotalElement,
+  setTotalPage,
+  setEmployeeList,
+}: type.integratedWorkcheckRenderProps) {
+  const now = new Date();
+
+  const yearmonth =
+    now.getFullYear() +
+    "-" +
+    (now.getMonth() + 1 < 10
+      ? "0" + (now.getMonth() + 1)
+      : now.getMonth() + 1) +
+    "-";
+
+  const monthStart = yearmonth + "01";
+  const monthEnd =
+    yearmonth + new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+
+  await axios({
+    method: "GET",
+    url: `${config.api}/work?dateFrom=${monthStart}&dateTo=${monthEnd}`,
+    headers: {
+      "Content-Type": `application/json`,
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  })
+    .then((res) => {
+      setTotalPage(res.data.totalPages);
+      setTotalElement(res.data.setTotalElements);
+      setTotalWorkCheckList(res.data.content);
+    })
+    .then((res) => {
+      axios({
+        method: "Get",
+        url: `${config.api}/employee`,
+        headers: {
+          "Content-Type": `application/json`,
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }).then((res) => {
+        setEmployeeList(res.data);
+      });
+    });
+}

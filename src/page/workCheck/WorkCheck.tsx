@@ -10,6 +10,7 @@ import { setTotalPages } from "../../Redux/Actions/handleTotalPages";
 import { setPaginationFocus } from "../../Redux/Actions/handlePaginationFocus";
 
 import {
+  integratedWorkcheckRender,
   GetDetailWorkcheckApi,
   GetTotalWorkcheckApi,
   GetEmployeeWorkcheckApi,
@@ -90,12 +91,13 @@ const WorkCheck = () => {
 
   useEffect(() => {
     setPaginationfocus("total");
-    GetTotalWorkcheckApi({
+
+    integratedWorkcheckRender({
       setTotalWorkCheckList,
       setTotalElement,
       setTotalPage,
+      setEmployeeList,
     });
-    GetEmployeeApi({ setEmployeeList });
   }, []);
 
   const onChageStartInput = (e: React.ChangeEvent<HTMLInputElement>) => {
