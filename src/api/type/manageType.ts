@@ -1,3 +1,5 @@
+import * as employeeType from "../../commonType/employee";
+
 export interface worktypeProps {
   title: string;
   startTime: string;
@@ -38,16 +40,9 @@ export interface deleteWorktypeProps {
   id: number;
 }
 
-export interface employeeProps {
-  name: string;
-  role: string;
-  color: string;
-  id: number;
-}
-
 export interface getEmployeeProps {
   setEmployeeList: React.Dispatch<
-    React.SetStateAction<employeeProps[] | undefined>
+    React.SetStateAction<employeeType.employeeProps[] | undefined>
   >;
   color?: string;
   employee?: string;
@@ -56,7 +51,7 @@ export interface getEmployeeProps {
 
 export interface getEmployeeDetailProps {
   setEmployeeDetail: React.Dispatch<
-    React.SetStateAction<employeeProps | undefined>
+    React.SetStateAction<employeeType.employeeProps | undefined>
   >;
   setReadModal: (readModalState: boolean) => {
     type: "handleReadModal/SETREADMODAL";
@@ -71,7 +66,7 @@ export interface createEmployeeProps {
   color: string;
 
   setEmployeeList: React.Dispatch<
-    React.SetStateAction<employeeProps[] | undefined>
+    React.SetStateAction<employeeType.employeeProps[] | undefined>
   >;
 
   setWriteModal: (readModalState: boolean) => {
@@ -86,7 +81,7 @@ export interface updateEmployeeProps {
   color: string;
 
   setEmployeeList: React.Dispatch<
-    React.SetStateAction<employeeProps[] | undefined>
+    React.SetStateAction<employeeType.employeeProps[] | undefined>
   >;
 
   setWriteModal: (readModalState: boolean) => {
@@ -102,10 +97,10 @@ export interface updateEmployeeProps {
 export interface deleteEmployeeProps {
   id: number;
 
-  employeeList: employeeProps[] | undefined;
+  employeeList: employeeType.employeeProps[] | undefined;
 
   setEmployeeList: React.Dispatch<
-    React.SetStateAction<employeeProps[] | undefined>
+    React.SetStateAction<employeeType.employeeProps[] | undefined>
   >;
 
   setReadModal: (readModalState: boolean) => {

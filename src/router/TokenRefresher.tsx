@@ -18,11 +18,11 @@ export default function TokenRefresher() {
       function (response) {
         return response;
       },
-      function (error) {
+      async function (error) {
         const originalConfig = error.config;
         if (error.response.status == 401) {
           if (error.response.data.message == "expired") {
-            axios({
+            await axios({
               url: `${config.api}/user/reissue`,
               method: "Post",
               headers: {

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { config } from "../static/config";
 import * as type from "./type/scheduleType";
+import { GetEmployeeApi } from "./manage";
 
 export async function CreateScheduleApi({
   employeeId,
@@ -254,4 +255,45 @@ export async function GetEmployeeScheduleApi({
       setScheduleToShow(res.data.content);
     })
     .catch((err) => {});
+}
+
+export async function integratedScheduleRender({
+  setWeekScheduleList,
+  setTotalScheduleList,
+  setTotalElement,
+  setTotalPage,
+  setEmployeeList,
+}: type.integratedScheduleRenderProps) {
+  GetWeekScheduleApi({ setWeekScheduleList });
+  GetTotalScheduleApi({
+    setTotalScheduleList,
+    setTotalElement,
+    setTotalPage,
+  });
+  GetEmployeeApi({ setEmployeeList });
+
+  const axiosInstance = axios.create({
+    headers: {
+      "Content-Type": `application/json`,
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  });
+
+  axios
+    .all([
+      axiosInstance.get(`${config.api}/schedule/week`),
+      axiosInstance.get(`${config.api}/schedule?page=${0}`),
+      axiosInstance.get(`${config.api}/employee`),
+    ])
+    .then(
+      axios.spread((res1, res2, res3) => {
+        setWeekScheduleList(res1.data);
+
+        setTotalPage(res2.data.totalPages);
+        setTotalElement(res2.data.setTotalElements);
+        setTotalScheduleList(res2.data.content);
+
+        setEmployeeList(res3.data);
+      })
+    );
 }

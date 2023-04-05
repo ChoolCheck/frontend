@@ -50,15 +50,14 @@ const Statistics = () => {
   >();
 
   const [statisticsData, setStatisticsData] = useState<type.chartDataProps>();
-
-  useEffect(() => {
-    GetMonthStatisticsApi({ start, end, setStatisticsList, setStatisticsData });
-  }, []);
-
   const [startInput, setStartInput] = useState("");
   const [endInput, setEndInput] = useState("");
   const [yearToShow, setYearToShow] = useState(now.getFullYear());
   const [monthToShow, setMonthToShow] = useState(now.getMonth() + 1);
+
+  useEffect(() => {
+    GetMonthStatisticsApi({ start, end, setStatisticsList, setStatisticsData });
+  }, []);
 
   const onChageStartInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setStartInput(e.target.value);

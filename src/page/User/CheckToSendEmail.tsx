@@ -9,6 +9,7 @@ const CheckToSendEmail = () => {
   const onClickGetEmail = () => {
     SendEmailApi({ navigate });
   };
+
   return (
     <div className="checkToSendEmail-top-container">
       <div className="checkToSendEmail-content">

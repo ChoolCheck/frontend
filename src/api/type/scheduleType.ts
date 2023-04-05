@@ -1,4 +1,5 @@
 import * as paginationType from "../../commonType/pagination";
+import * as employeeType from "../../commonType/employee";
 
 export interface getMonthScheduleProps {
   date: string;
@@ -112,4 +113,24 @@ export interface deleteScheduleProps
   setScheduleToShow: (
     value: React.SetStateAction<scheduleObjProps[] | undefined>
   ) => void;
+}
+
+export interface integratedScheduleRenderProps {
+  setWeekScheduleList: React.Dispatch<
+    React.SetStateAction<scheduleObjProps[][] | undefined>
+  >;
+  setTotalScheduleList: React.Dispatch<
+    React.SetStateAction<scheduleObjProps[] | undefined>
+  >;
+  setTotalElement: (totalElementState: number) => {
+    type: "handleTotalElement/SET_TOTAL_ELEMENTS";
+    payload: number;
+  };
+  setTotalPage: (totalPageState: number) => {
+    type: "handleTotalPages/SET_TOTAL_PAGES";
+    payload: number;
+  };
+  setEmployeeList: React.Dispatch<
+    React.SetStateAction<employeeType.employeeProps[] | undefined>
+  >;
 }

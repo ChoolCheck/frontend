@@ -51,7 +51,6 @@ export function handleSchedulelist(
   }
   return true;
 }
-
 export function handleWorklist(
   workcheckList: workcheckType.workcheckObjProps[],
   tempResultList: type.calendarListType[]

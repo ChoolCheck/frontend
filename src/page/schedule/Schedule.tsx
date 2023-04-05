@@ -15,6 +15,7 @@ import {
   GetDetailScheduleApi,
   GetTotalScheduleApi,
   GetEmployeeScheduleApi,
+  integratedScheduleRender,
 } from "../../api/schedule";
 import { GetEmployeeApi } from "../../api/manage";
 
@@ -84,13 +85,21 @@ const Schedule = () => {
 
   useEffect(() => {
     setPaginationfocus("total");
-    GetWeekScheduleApi({ setWeekScheduleList });
-    GetTotalScheduleApi({
+
+    integratedScheduleRender({
+      setWeekScheduleList,
       setTotalScheduleList,
       setTotalElement,
       setTotalPage,
+      setEmployeeList,
     });
-    GetEmployeeApi({ setEmployeeList });
+    // GetWeekScheduleApi({ setWeekScheduleList });
+    // GetTotalScheduleApi({
+    //   setTotalScheduleList,
+    //   setTotalElement,
+    //   setTotalPage,
+    // });
+    // GetEmployeeApi({ setEmployeeList });
   }, []);
 
   const onShowNameButtonClick = (id: number) => {
