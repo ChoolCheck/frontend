@@ -14,7 +14,7 @@ const Navigation = () => {
   if (
     window.location.href == `${config.client}/login` ||
     window.location.href == `${config.client}/signup` ||
-    window.location.href.includes(`${config.client}/updatePassword`)
+    window.location.href.includes(`${config.client}/password`)
   )
     return <></>;
   else

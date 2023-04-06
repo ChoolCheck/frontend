@@ -25,7 +25,7 @@ const AppRouter = () => {
           <Route element={<PublicLayout />}>
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
-            <Route path="/updatePassword" element={<UpdatePassword />} />
+            <Route path="/password" element={<UpdatePassword />} />
           </Route>
 
           <Route element={<AuthLayout />}>
