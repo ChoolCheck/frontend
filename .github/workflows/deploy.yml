@@ -1,8 +1,11 @@
-name: deploy frontend
+name: Deploy React
 
 on:
   push:
     branches: main
+    
+env:
+  S3_BUCKET_NAME : choolcheck-front
 
 jobs:
   build:
@@ -40,4 +43,4 @@ jobs:
           aws s3 cp \
             --recursive \
             --region ap-northeast-2 \
-            build s3://choolcheck-frontend
+            build s3://$S3_BUCKET_NAME
