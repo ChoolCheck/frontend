@@ -46,6 +46,10 @@ export default function TokenRefresher() {
             localStorage.clear();
             navigate("/login");
             window.alert("토큰이 만료되어 자동으로 로그아웃 되었습니다.");
+          } else if (msg == "mail token expired") {
+            window.alert(
+              "비밀번호 변경 시간이 만료되었습니다. 다시 요청해주세요."
+            );
           } else if (error.response.data.message) {
             window.alert(error.response.data.message);
           } else {
