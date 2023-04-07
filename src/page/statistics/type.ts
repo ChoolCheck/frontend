@@ -23,6 +23,7 @@ export interface statisticListProps {
   totalTime: number;
   color: string;
 }
+
 export interface chartDataProps {
   labels: string[];
   datasets: {

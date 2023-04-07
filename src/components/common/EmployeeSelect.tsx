@@ -30,7 +30,7 @@ const EmployeeSelect = ({
       borderRadius: "10px",
       borderColor: "gray",
     }),
-    option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+    option: (styles, { data, isDisabled, isSelected }) => {
       const color = chroma(data.color);
       return {
         ...styles,
@@ -54,22 +54,20 @@ const EmployeeSelect = ({
   };
 
   return (
-    <div>
-      <Select
-        defaultValue={
-          defaultValueIndex ? optionList[defaultValueIndex] : undefined
-        }
-        placeholder={defaultValueIndex ? undefined : "직원선택"}
-        key={defaultValueIndex ? defaultValueIndex : 0}
-        options={optionList}
-        styles={colorStyles}
-        isMulti={false}
-        onChange={onChangeEmployee}
-        components={{
-          IndicatorSeparator: () => null,
-        }}
-      />
-    </div>
+    <Select
+      defaultValue={
+        defaultValueIndex ? optionList[defaultValueIndex] : undefined
+      }
+      placeholder={defaultValueIndex ? undefined : "직원선택"}
+      key={defaultValueIndex ? defaultValueIndex : 0}
+      options={optionList}
+      styles={colorStyles}
+      isMulti={false}
+      onChange={onChangeEmployee}
+      components={{
+        IndicatorSeparator: () => null,
+      }}
+    />
   );
 };
 
