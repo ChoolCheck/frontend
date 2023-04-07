@@ -22,7 +22,7 @@ export default function TokenRefresher() {
         const originalConfig = error.config;
         const msg = error.response.data.message;
         if (error.response.status == 401) {
-          if (msg == "expired") {
+          if (msg == "access token expired") {
             await axios({
               url: `${config.api}/user/reissue`,
               method: "Post",
@@ -42,7 +42,7 @@ export default function TokenRefresher() {
               .then((res) => {
                 window.location.reload();
               });
-          } else if (msg == "만료된 refreshToken 입니다.") {
+          } else if (msg == "refresh token expired") {
             localStorage.clear();
             navigate("/login");
             window.alert("토큰이 만료되어 자동으로 로그아웃 되었습니다.");
