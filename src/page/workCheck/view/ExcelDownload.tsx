@@ -40,7 +40,8 @@ const ExcelDownload = ({ data, onClickGetFile }: type.ExcelDownloadProps) => {
         newData.push({
           date: item.date,
           name: item.name,
-          time: item.startTime + "-" + item.endTime,
+          time:
+            item.startTime.substring(0, 5) + "-" + item.endTime.substring(0, 5),
           workType: item.hours ? item.hours : "없음",
           totalWorkTime: getTotalWorkTime(
             item.startTime,
