@@ -5,13 +5,13 @@ import * as type from "../type";
 
 const ExcelDownload = ({ data, onClickGetFile }: type.ExcelDownloadProps) => {
   const [excelData, setExcelData] = useState<
-    {
+    Array<{
       date: string;
       name: string;
       time: string;
       workType: string;
       totalWorkTime: string;
-    }[]
+    }>
   >([]);
 
   const csvLink = useRef<
@@ -27,9 +27,17 @@ const ExcelDownload = ({ data, onClickGetFile }: type.ExcelDownloadProps) => {
   ];
 
   const getWorkcheckData = async () => {
+    const newData: Array<{
+      date: string;
+      name: string;
+      time: string;
+      workType: string;
+      totalWorkTime: string;
+    }> = [];
+
     if (onClickGetFile() && data) {
       data.map((item) => {
-        excelData.push({
+        newData.push({
           date: item.date,
           name: item.name,
           time: item.startTime + "-" + item.endTime,
@@ -40,8 +48,9 @@ const ExcelDownload = ({ data, onClickGetFile }: type.ExcelDownloadProps) => {
           ).toString(),
         });
       });
-      csvLink?.current?.link.click();
+      setExcelData(newData);
     }
+    csvLink?.current?.link.click();
   };
 
   return (
