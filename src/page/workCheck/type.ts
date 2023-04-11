@@ -18,7 +18,8 @@ export interface workcheckHeaderProps {
   onChageEndInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onGetDateResultClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   onClickGetFile: () => boolean;
-  workcheckToShow: workcheckObjProps[] | undefined;
+  startTime: string;
+  endTime: string;
 }
 
 export interface createWorkCheckViewProps extends worktypeType.workTypeList {
@@ -113,18 +114,16 @@ export interface workcheckDetailViewProps {
   ) => (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-export interface ExcelDownloadProps {
-  data:
-    | {
-        name: string;
-        date: string;
-        startTime: string;
-        endTime: string;
-        hours: string | null;
-        color: string;
-        id: number;
-      }[]
-    | undefined;
+export interface excelDataProps {
+  date: string;
+  name: string;
+  time: string;
+  workType: string | null;
+  totalWorkTime: string;
+}
 
+export interface ExcelDownloadProps {
+  startTime: string;
+  endTime: string;
   onClickGetFile: () => boolean;
 }

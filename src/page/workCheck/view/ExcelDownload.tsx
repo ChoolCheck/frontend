@@ -1,18 +1,14 @@
 import { useState, useRef, useEffect } from "react";
-import { getTotalWorkTime } from "../../../components/common/TotalWorkTime";
 import { CSVLink } from "react-csv";
+import { GetExcelDataApi } from "../../../api/workcheck";
 import * as type from "../type";
 
-const ExcelDownload = ({ data, onClickGetFile }: type.ExcelDownloadProps) => {
-  const [excelData, setExcelData] = useState<
-    Array<{
-      date: string;
-      name: string;
-      time: string;
-      workType: string;
-      totalWorkTime: string;
-    }>
-  >([]);
+const ExcelDownload = ({
+  startTime,
+  endTime,
+  onClickGetFile,
+}: type.ExcelDownloadProps) => {
+  const [excelData, setExcelData] = useState<Array<type.excelDataProps>>([]);
 
   const csvLink = useRef<
     CSVLink & HTMLAnchorElement & { link: HTMLAnchorElement }
@@ -34,32 +30,8 @@ const ExcelDownload = ({ data, onClickGetFile }: type.ExcelDownloadProps) => {
   }, [excelData]);
 
   const getWorkcheckData = async () => {
-    const newData: Array<{
-      date: string;
-      name: string;
-      time: string;
-      workType: string;
-      totalWorkTime: string;
-    }> = [];
-
-    if (onClickGetFile() && data) {
-      data.map((item) => {
-        newData.push({
-          date: item.date,
-          name: item.name,
-          time:
-            item.startTime.substring(0, 5) + "-" + item.endTime.substring(0, 5),
-          workType: item.hours ? item.hours : "없음",
-          totalWorkTime: getTotalWorkTime(
-            item.startTime,
-            item.endTime
-          ).toString(),
-        });
-        console.log(getTotalWorkTime(item.startTime, item.endTime).toString());
-        console.log(getTotalWorkTime(item.startTime, item.endTime));
-      });
-      setExcelData(newData);
-      csvLink?.current?.link.click();
+    if (onClickGetFile()) {
+      GetExcelDataApi({ startTime, endTime, setExcelData });
     }
   };
 
@@ -68,16 +40,14 @@ const ExcelDownload = ({ data, onClickGetFile }: type.ExcelDownloadProps) => {
       <button className="getFileButton" onClick={getWorkcheckData}>
         출근부 엑셀 파일 다운로드
       </button>
-      {excelData.length > 0 && (
-        <CSVLink
-          data={excelData}
-          headers={header}
-          filename="출근부.csv"
-          className="hidden"
-          ref={csvLink}
-          target="_blank"
-        />
-      )}
+      <CSVLink
+        data={excelData}
+        headers={header}
+        filename="출근부.csv"
+        className="hidden"
+        ref={csvLink}
+        target="_blank"
+      />
     </div>
   );
 };

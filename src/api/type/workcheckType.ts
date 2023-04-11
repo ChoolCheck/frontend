@@ -1,6 +1,7 @@
 import * as reducerType from "../../Redux/Types";
 import * as paginationType from "../../commonType/pagination";
 import * as employeeType from "../../commonType/employee";
+import * as workcheckType from "../../page/workCheck/type";
 
 export interface workcheckObjProps {
   name: string;
@@ -138,5 +139,13 @@ export interface integratedWorkcheckRenderProps
 
   setEmployeeList: React.Dispatch<
     React.SetStateAction<employeeType.employeeProps[] | undefined>
+  >;
+}
+
+export interface getExcelDataProps {
+  startTime: string;
+  endTime: string;
+  setExcelData: React.Dispatch<
+    React.SetStateAction<workcheckType.excelDataProps[]>
   >;
 }

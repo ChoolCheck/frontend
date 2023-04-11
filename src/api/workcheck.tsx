@@ -1,6 +1,8 @@
 import axios from "axios";
 import { config } from "../static/config";
 import * as type from "./type/workcheckType";
+import * as workcheckType from "../page/workCheck/type";
+import { getTotalWorkTime } from "../components/common/TotalWorkTime";
 
 export async function CreateWorkcheckApi({
   employeeId,
@@ -281,6 +283,47 @@ export async function GetTotalWorkcheckApi({
       setTotalElement(res.data.setTotalElements);
       setWorkcheckToShow && setWorkcheckToShow(res.data.content);
       setTotalWorkCheckList(res.data.content);
+    })
+    .catch((err) => {});
+}
+
+export async function GetExcelDataApi({
+  startTime,
+  endTime,
+  setExcelData,
+}: type.getExcelDataProps) {
+  let url = `${
+    config.api
+  }/work?dateFrom=${startTime}&dateTo=${endTime}&size=${10000}`;
+
+  await axios({
+    method: "GET",
+    url: url,
+    headers: {
+      "Content-Type": `application/json`,
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  })
+    .then((res) => {
+      const resList: Array<workcheckType.workcheckObjProps> = res.data;
+      const newData: Array<workcheckType.excelDataProps> = [];
+
+      for (let i = 0; i < resList.length; i++) {
+        newData.push({
+          date: resList[i].date,
+          name: resList[i].name,
+          time:
+            resList[i].startTime.substring(0, 5) +
+            "-" +
+            resList[i].endTime.substring(0, 5),
+          workType: resList[i].hours ? "없음" : resList[i].hours,
+          totalWorkTime: getTotalWorkTime(
+            resList[i].startTime,
+            resList[i].endTime
+          ).toString(),
+        });
+      }
+      setExcelData(newData);
     })
     .catch((err) => {});
 }

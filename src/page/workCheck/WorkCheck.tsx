@@ -251,7 +251,8 @@ const WorkCheck = () => {
         onChageEndInput={onChageEndInput}
         onGetDateResultClick={onGetDateResultClick}
         onClickGetFile={onClickGetFile}
-        workcheckToShow={workcheckToShow}
+        startTime={startInput}
+        endTime={endInput}
       ></WorkCheckHeader>
 
       <WorkCheckView

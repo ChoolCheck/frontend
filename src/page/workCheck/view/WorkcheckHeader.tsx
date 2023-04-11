@@ -7,7 +7,8 @@ const WorkCheckHeader = ({
   onChageEndInput,
   onGetDateResultClick,
   onClickGetFile,
-  workcheckToShow,
+  startTime,
+  endTime,
 }: type.workcheckHeaderProps) => {
   return (
     <div className="WorkCheck-Header-container">
@@ -39,7 +40,8 @@ const WorkCheckHeader = ({
 
       <ExcelDownload
         onClickGetFile={onClickGetFile}
-        data={workcheckToShow}
+        startTime={startTime}
+        endTime={endTime}
       ></ExcelDownload>
     </div>
   );
