@@ -16,7 +16,6 @@ import {
   GetEmployeeWorkcheckApi,
   GetDateWorkcheckApi,
 } from "../../api/workcheck";
-import { GetEmployeeApi } from "../../api/manage";
 
 import WriteModal from "../../components/modal/WriteModal";
 import ReadModal from "../../components/modal/ReadModal";
@@ -39,9 +38,6 @@ const WorkCheck = () => {
   const readModalState = useSelector(
     (state: RootState) => state.ReadModalReducer.readModalState
   );
-  const totalWorkCheckList = useSelector(
-    (state: RootState) => state.TotalWorkcheckListReducer
-  );
 
   const setReadModal = useCallback(
     (readModalState: boolean) => dispatch(setReadModalOpen(readModalState)),
@@ -51,6 +47,7 @@ const WorkCheck = () => {
   const paginationFocus = useSelector(
     (state: RootState) => state.PaginationFocus.paginationState
   );
+
   const setPaginationfocus = useCallback(
     (paginationFocus: string) => dispatch(setPaginationFocus(paginationFocus)),
     [dispatch]
@@ -106,11 +103,6 @@ const WorkCheck = () => {
 
   const onChageEndInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEndInput(e.target.value);
-  };
-
-  const setDate = () => {
-    setStartInput("");
-    setEndInput("");
   };
 
   const onGetDateResultClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -184,7 +176,9 @@ const WorkCheck = () => {
     if (startInput == "") window.alert("시작일을 입력해주세요");
     else if (endInput == "") window.alert("마감일을 입력해주세요");
     else {
+      return true;
     }
+    return false;
   };
 
   const onPaginationClick = (item: number) => {
@@ -257,6 +251,7 @@ const WorkCheck = () => {
         onChageEndInput={onChageEndInput}
         onGetDateResultClick={onGetDateResultClick}
         onClickGetFile={onClickGetFile}
+        workcheckToShow={workcheckToShow}
       ></WorkCheckHeader>
 
       <WorkCheckView

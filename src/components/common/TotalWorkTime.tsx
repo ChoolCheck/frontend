@@ -4,6 +4,27 @@ interface totalworktimeProps {
   startDate: string;
   endDate: string;
 }
+export function getTotalWorkTime(
+  startTime: number,
+  endTime: number,
+  startDate?: string,
+  endDate?: string
+) {
+  const start = startDate ? startDate : "230101";
+  const end = endDate ? endDate : "230101";
+
+  const timeDifference =
+    Math.round(
+      ((new Date(start + "T" + endTime).getTime() -
+        new Date(end + "T" + startTime).getTime()) /
+        1000 /
+        60 /
+        60) *
+        10
+    ) / 10;
+  return timeDifference < 0 ? timeDifference + 24 : timeDifference;
+}
+
 const TotalWorkTime = ({
   startTime,
   endTime,

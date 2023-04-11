@@ -11,7 +11,7 @@ export const enumColor = {
 } as const;
 
 export const enumRole = {
+  MANAGER: "매니저",
   FULL_TIME: "직원",
   PART_TIME: "알바",
-  MANAGER: "매니저",
 } as const;

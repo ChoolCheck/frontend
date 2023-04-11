@@ -1,3 +1,4 @@
+import ExcelDownload from "./ExcelDownload";
 import * as type from "../type";
 import "../style/workCheck.scss";
 
@@ -6,6 +7,7 @@ const WorkCheckHeader = ({
   onChageEndInput,
   onGetDateResultClick,
   onClickGetFile,
+  workcheckToShow,
 }: type.workcheckHeaderProps) => {
   return (
     <div className="WorkCheck-Header-container">
@@ -35,9 +37,12 @@ const WorkCheckHeader = ({
         </button>
       </form>
 
-      <button className="getFileButton" onClick={onClickGetFile}>
-        출근부 엑셀 파일 다운로드
-      </button>
+      {workcheckToShow && (
+        <ExcelDownload
+          onClickGetFile={onClickGetFile}
+          data={workcheckToShow}
+        ></ExcelDownload>
+      )}
     </div>
   );
 };
