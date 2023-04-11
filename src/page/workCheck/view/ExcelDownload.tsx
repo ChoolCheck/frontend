@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { getTotalWorkTime } from "../../../components/common/TotalWorkTime";
 import { CSVLink } from "react-csv";
 import * as type from "../type";
@@ -25,6 +25,13 @@ const ExcelDownload = ({ data, onClickGetFile }: type.ExcelDownloadProps) => {
     { label: "근무 형태", key: "workType" },
     { label: "총 근무 시간", key: "totalWorkTime" },
   ];
+
+  useEffect(() => {
+    if (excelData.length > 0) {
+      csvLink?.current?.link.click();
+      setExcelData([]);
+    }
+  }, [excelData]);
 
   const getWorkcheckData = async () => {
     const newData: Array<{
