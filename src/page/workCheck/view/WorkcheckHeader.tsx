@@ -37,12 +37,10 @@ const WorkCheckHeader = ({
         </button>
       </form>
 
-      {workcheckToShow && (
-        <ExcelDownload
-          onClickGetFile={onClickGetFile}
-          data={workcheckToShow}
-        ></ExcelDownload>
-      )}
+      <ExcelDownload
+        onClickGetFile={onClickGetFile}
+        data={workcheckToShow}
+      ></ExcelDownload>
     </div>
   );
 };

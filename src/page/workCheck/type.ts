@@ -114,15 +114,17 @@ export interface workcheckDetailViewProps {
 }
 
 export interface ExcelDownloadProps {
-  data: {
-    name: string;
-    date: string;
-    startTime: string;
-    endTime: string;
-    hours: string | null;
-    color: string;
-    id: number;
-  }[];
+  data:
+    | {
+        name: string;
+        date: string;
+        startTime: string;
+        endTime: string;
+        hours: string | null;
+        color: string;
+        id: number;
+      }[]
+    | undefined;
 
   onClickGetFile: () => boolean;
 }
