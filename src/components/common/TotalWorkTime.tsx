@@ -10,8 +10,8 @@ export function getTotalWorkTime(
   startDate?: string,
   endDate?: string
 ) {
-  const start = startDate ? startDate : "230101";
-  const end = endDate ? endDate : "230101";
+  const start = startDate ? startDate : "2023-01-01";
+  const end = endDate ? endDate : "2023-01-01";
 
   const timeDifference =
     Math.round(

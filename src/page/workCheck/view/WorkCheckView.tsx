@@ -22,9 +22,6 @@ const WorkCheckView = ({
 
   const totalList = workcheckToShow ? workcheckToShow : totalWorkCheckList;
 
-  console.log(totalWorkCheckList);
-  console.log(workcheckToShow);
-
   const day = ["일", "월", "화", "수", "목", "금", "토"];
 
   return (

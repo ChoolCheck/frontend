@@ -48,9 +48,10 @@ const ExcelDownload = ({ data, onClickGetFile }: type.ExcelDownloadProps) => {
             item.endTime
           ).toString(),
         });
+        console.log(getTotalWorkTime(item.startTime, item.endTime).toString());
+        console.log(getTotalWorkTime(item.startTime, item.endTime));
       });
       setExcelData(newData);
-      console.log(newData);
       csvLink?.current?.link.click();
     }
   };
@@ -60,14 +61,16 @@ const ExcelDownload = ({ data, onClickGetFile }: type.ExcelDownloadProps) => {
       <button className="getFileButton" onClick={getWorkcheckData}>
         출근부 엑셀 파일 다운로드
       </button>
-      <CSVLink
-        data={excelData}
-        headers={header}
-        filename="출근부.csv"
-        className="hidden"
-        ref={csvLink}
-        target="_blank"
-      />
+      {excelData.length > 0 && (
+        <CSVLink
+          data={excelData}
+          headers={header}
+          filename="출근부.csv"
+          className="hidden"
+          ref={csvLink}
+          target="_blank"
+        />
+      )}
     </div>
   );
 };
