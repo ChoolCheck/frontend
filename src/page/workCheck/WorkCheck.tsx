@@ -172,15 +172,6 @@ const WorkCheck = () => {
     };
   };
 
-  const onClickGetFile = () => {
-    if (startInput == "") window.alert("시작일을 입력해주세요");
-    else if (endInput == "") window.alert("마감일을 입력해주세요");
-    else {
-      return true;
-    }
-    return false;
-  };
-
   const onPaginationClick = (item: number) => {
     return (e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
@@ -250,7 +241,6 @@ const WorkCheck = () => {
         onChageStartInput={onChageStartInput}
         onChageEndInput={onChageEndInput}
         onGetDateResultClick={onGetDateResultClick}
-        onClickGetFile={onClickGetFile}
         startTime={startInput}
         endTime={endInput}
       ></WorkCheckHeader>

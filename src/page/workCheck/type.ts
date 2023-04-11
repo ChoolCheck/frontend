@@ -17,7 +17,6 @@ export interface workcheckHeaderProps {
   onChageStartInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onChageEndInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onGetDateResultClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  onClickGetFile: () => boolean;
   startTime: string;
   endTime: string;
 }
@@ -125,5 +124,4 @@ export interface excelDataProps {
 export interface ExcelDownloadProps {
   startTime: string;
   endTime: string;
-  onClickGetFile: () => boolean;
 }

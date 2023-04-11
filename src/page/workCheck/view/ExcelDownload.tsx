@@ -3,11 +3,7 @@ import { CSVLink } from "react-csv";
 import { GetExcelDataApi } from "../../../api/workcheck";
 import * as type from "../type";
 
-const ExcelDownload = ({
-  startTime,
-  endTime,
-  onClickGetFile,
-}: type.ExcelDownloadProps) => {
+const ExcelDownload = ({ startTime, endTime }: type.ExcelDownloadProps) => {
   const [excelData, setExcelData] = useState<Array<type.excelDataProps>>([]);
 
   const csvLink = useRef<
@@ -30,7 +26,9 @@ const ExcelDownload = ({
   }, [excelData]);
 
   const getWorkcheckData = async () => {
-    if (onClickGetFile()) {
+    if (startTime == "") window.alert("시작일을 입력해주세요");
+    else if (endTime == "") window.alert("마감일을 입력해주세요");
+    else {
       GetExcelDataApi({ startTime, endTime, setExcelData });
     }
   };

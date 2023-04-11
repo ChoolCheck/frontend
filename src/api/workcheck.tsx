@@ -305,25 +305,30 @@ export async function GetExcelDataApi({
     },
   })
     .then((res) => {
-      const resList: Array<workcheckType.workcheckObjProps> = res.data;
-      const newData: Array<workcheckType.excelDataProps> = [];
+      if (res.data.content.length == 0) {
+        window.alert("해당 날짜에 출근부 데이터가 없습니다.");
+      } else {
+        const resList: Array<workcheckType.workcheckObjProps> =
+          res.data.content;
+        const newData: Array<workcheckType.excelDataProps> = [];
 
-      for (let i = 0; i < resList.length; i++) {
-        newData.push({
-          date: resList[i].date,
-          name: resList[i].name,
-          time:
-            resList[i].startTime.substring(0, 5) +
-            "-" +
-            resList[i].endTime.substring(0, 5),
-          workType: resList[i].hours ? "없음" : resList[i].hours,
-          totalWorkTime: getTotalWorkTime(
-            resList[i].startTime,
-            resList[i].endTime
-          ).toString(),
-        });
+        for (let i = 0; i < resList.length; i++) {
+          newData.push({
+            date: resList[i].date,
+            name: resList[i].name,
+            time:
+              resList[i].startTime.substring(0, 5) +
+              "-" +
+              resList[i].endTime.substring(0, 5),
+            workType: resList[i].hours ? "없음" : resList[i].hours,
+            totalWorkTime: getTotalWorkTime(
+              resList[i].startTime,
+              resList[i].endTime
+            ).toString(),
+          });
+        }
+        setExcelData(newData);
       }
-      setExcelData(newData);
     })
     .catch((err) => {});
 }
