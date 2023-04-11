@@ -51,12 +51,6 @@ export default function TokenRefresher() {
               "비밀번호 변경 시간이 만료되었습니다. 다시 요청해주세요."
             );
           }
-          // else if (error.response.data.message) {
-          //   window.alert(error.response.data.message);
-          // }
-          //  else {
-          //   window.alert("요청 처리에 실패하였습니다.");
-          // }
         }
         return Promise.reject(error);
       }
