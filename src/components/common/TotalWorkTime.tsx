@@ -5,8 +5,8 @@ interface totalworktimeProps {
   endDate: string;
 }
 export function getTotalWorkTime(
-  startTime: number,
-  endTime: number,
+  startTime: string,
+  endTime: string,
   startDate?: string,
   endDate?: string
 ) {

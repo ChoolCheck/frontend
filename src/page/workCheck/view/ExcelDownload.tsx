@@ -43,8 +43,8 @@ const ExcelDownload = ({ data, onClickGetFile }: type.ExcelDownloadProps) => {
           time: item.startTime + "-" + item.endTime,
           workType: item.hours ? item.hours : "없음",
           totalWorkTime: getTotalWorkTime(
-            Number(item.startTime),
-            Number(item.endTime)
+            item.startTime,
+            item.endTime
           ).toString(),
         });
       });
