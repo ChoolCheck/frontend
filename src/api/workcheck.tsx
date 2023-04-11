@@ -320,7 +320,7 @@ export async function GetExcelDataApi({
               resList[i].startTime.substring(0, 5) +
               "-" +
               resList[i].endTime.substring(0, 5),
-            workType: resList[i].hours ? "없음" : resList[i].hours,
+            workType: resList[i].hours ? resList[i].hours : "없음",
             totalWorkTime: getTotalWorkTime(
               resList[i].startTime,
               resList[i].endTime
