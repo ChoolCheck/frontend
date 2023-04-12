@@ -17,6 +17,7 @@ export const Calendar = ({
 }: type.calendarProps) => {
   const [currentMonth, setCurrentMonth] = useState<Date>(new Date());
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
+  const [memoFlagList, setMemoFlagList] = useState<boolean[]>();
 
   const now = new Date();
   const date =
@@ -50,6 +51,13 @@ export const Calendar = ({
       const cell = document.getElementById(calendarTotalList[i].date);
       let calendarItemContainer;
       if (cell) {
+        if (memoFlagList && memoFlagList[i]) {
+          const memoFlag = document.createElement("span");
+          memoFlag.className = "memoFlag";
+          memoFlag.innerText = "📌";
+          cell.childNodes[0].appendChild(memoFlag);
+        }
+
         if (cell.childNodes.length > 1) {
           calendarItemContainer = cell.childNodes[1];
         } else {
@@ -64,12 +72,15 @@ export const Calendar = ({
         const calendarItem = document.createElement("p");
         calendarItem.className = "calendarItem";
 
+        //스케줄
         if (now <= cellDate) {
           calendarItem.innerText = calendarTotalList[i].title;
           calendarItem.style.backgroundColor =
             calendarTotalList[i].backgroundColor;
           calendarItem.style.color = calendarTotalList[i].textColor;
-        } else {
+        }
+        //출근부
+        else {
           const colorSpan = document.createElement("span");
           const titleSpan = document.createElement("span");
           colorSpan.className = "colorSpan";

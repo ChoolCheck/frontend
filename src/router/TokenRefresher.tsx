@@ -21,7 +21,8 @@ export default function TokenRefresher() {
       async function (error) {
         const originalConfig = error.config;
         const msg = error.response.data.message;
-        if (error.response.status == 401) {
+        const status = error.response.status;
+        if (status == 401) {
           if (msg == "access token expired") {
             await axios({
               url: `${config.api}/user/reissue`,
@@ -51,11 +52,12 @@ export default function TokenRefresher() {
               "비밀번호 변경 시간이 만료되었습니다. 다시 요청해주세요."
             );
           }
+        } else if (status == 400 || status == 404 || status == 409) {
+          window.alert(msg);
         }
         return Promise.reject(error);
       }
     );
-
     return () => {
       axios.interceptors.response.eject(interceptor);
     };

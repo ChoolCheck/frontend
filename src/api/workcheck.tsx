@@ -294,7 +294,7 @@ export async function GetExcelDataApi({
 }: type.getExcelDataProps) {
   let url = `${
     config.api
-  }/work?dateFrom=${startTime}&dateTo=${endTime}&size=${10000}`;
+  }/work?dateFrom=${startTime}&dateTo=${endTime}&size=${1000}`;
 
   await axios({
     method: "GET",

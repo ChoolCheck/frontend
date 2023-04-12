@@ -101,9 +101,19 @@
 
       .col.cell {
         display: block;
-
         .text {
-          margin: 4px 0 4px 4px;
+          .day {
+            display: flex;
+            .formattedDate {
+              margin: 4px 0 4px 4px;
+              justify-content: start;
+            }
+            .memoFlag {
+              margin: 4px 4px 4px 0;
+              background-color: aqua;
+              justify-content: end;
+            }
+          }
         }
 
         .calendarItem {

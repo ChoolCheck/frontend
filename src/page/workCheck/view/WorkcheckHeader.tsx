@@ -36,7 +36,6 @@ const WorkCheckHeader = ({
           조회
         </button>
       </form>
-
       <ExcelDownload startTime={startTime} endTime={endTime}></ExcelDownload>
     </div>
   );
