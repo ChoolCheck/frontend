@@ -127,12 +127,13 @@ export async function GetTotalCalendarApi({
               "Content-Type": `application/json`,
               Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
-          }).then((res) => {
-            setMemoFlagList(res.data);
-          });
-        })
-        .then((res) => {
-          renderData(tempResultList);
+          })
+            .then((res) => {
+              setMemoFlagList(res.data);
+            })
+            .then((res) => {
+              renderData(tempResultList);
+            });
         });
     });
 }

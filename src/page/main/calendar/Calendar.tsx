@@ -51,6 +51,7 @@ export const Calendar = ({
     prevItemCells.forEach((cell) => {
       cell.remove();
     });
+    console.log(memoFlagList);
 
     for (let i = 0; i < calendarTotalList.length; i++) {
       const cell = document.getElementById(calendarTotalList[i].date);
@@ -63,7 +64,7 @@ export const Calendar = ({
               (value) => value.date == calendarTotalList[i].date
             )
           : [{ date: calendarTotalList[i].date, exist: false }];
-
+        console.log(memoFlagValue);
         if (memoFlagValue[0].exist) {
           const memoFlag = document.createElement("span");
           memoFlag.className = "memoFlag";
