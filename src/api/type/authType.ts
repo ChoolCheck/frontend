@@ -1,9 +1,8 @@
-import { NavigateFunction } from "react-router-dom";
+import * as navType from "../../commonType/navigate";
 
-export interface apiLoginProps {
+export interface apiLoginProps extends navType.navigateProps {
   email: string;
   password: string;
-  navigate: NavigateFunction;
 }
 
 export interface emailProps {
@@ -11,14 +10,9 @@ export interface emailProps {
   email: string;
 }
 
-export interface apiSignupProps {
+export interface apiSignupProps extends navType.navigateProps {
   email: string;
   password: string;
   storeName: string;
   code: string;
-  navigate: NavigateFunction;
-}
-
-export interface apiLogoutProps {
-  navigate: NavigateFunction;
 }

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { config } from "../static/config";
 import * as type from "./type/authType";
+import * as navType from "../commonType/navigate";
 
 export async function LoginApi({
   email,
@@ -81,7 +82,7 @@ export async function CertificateEmailApi({
     });
 }
 
-export async function LogoutApi({ navigate }: type.apiLogoutProps) {
+export async function LogoutApi({ navigate }: navType.navigateProps) {
   await axios({
     method: "Post",
     url: `${config.api}/user/logout`,

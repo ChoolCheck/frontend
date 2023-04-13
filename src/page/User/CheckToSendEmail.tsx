@@ -7,7 +7,9 @@ const CheckToSendEmail = () => {
   const navigate = useNavigate();
 
   const onClickGetEmail = () => {
-    SendEmailApi({ navigate });
+    window.alert("메일이 전송되었습니다. 메일함을 확인해주세요.");
+    navigate("/mypage");
+    SendEmailApi();
   };
 
   return (

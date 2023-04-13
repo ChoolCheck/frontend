@@ -1,7 +1,7 @@
 import axios from "axios";
 import { config } from "../static/config";
 import * as type from "./type/mypageType";
-import { LogoutApi } from "./auth";
+import * as navType from "../commonType/navigate";
 
 export async function GetUserInfoApi({ setUserInfo }: type.setUserInfoProps) {
   await axios({
@@ -64,7 +64,7 @@ export async function UpdatePasswordApi({
     });
 }
 
-export async function SendEmailApi({ navigate }: type.sendEmailProps) {
+export async function SendEmailApi() {
   await axios({
     method: "POST",
     url: `${config.api}/user/password`,
@@ -72,15 +72,10 @@ export async function SendEmailApi({ navigate }: type.sendEmailProps) {
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
-  })
-    .then((res) => {
-      window.alert("메일이 전송되었습니다. 메일함을 확인해주세요.");
-      navigate("/mypage");
-    })
-    .catch((err) => {});
+  }).then((res) => {});
 }
 
-export async function DeleteUserApi({ navigate }: type.sendEmailProps) {
+export async function DeleteUserApi({ navigate }: navType.navigateProps) {
   await axios({
     method: "Delete",
     url: `${config.api}/user`,

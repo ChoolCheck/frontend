@@ -51,7 +51,15 @@ export const Calendar = ({
       const cell = document.getElementById(calendarTotalList[i].date);
       let calendarItemContainer;
       if (cell) {
-        if (memoFlagList && memoFlagList[i]) {
+        // 특정 날에 대해 memo가 있으면 memoFlagValue[0].isMemo = true
+        // 특정 날에 대해 memo가 없으면 memoFlagValue[0].isMemo = false
+        const memoFlagValue = memoFlagList
+          ? memoFlagList.filter(
+              (value) => value.date == calendarTotalList[i].date
+            )
+          : [{ date: calendarTotalList[i].date, isMemo: false }];
+
+        if (memoFlagValue[0].isMemo) {
           const memoFlag = document.createElement("span");
           memoFlag.className = "memoFlag";
           memoFlag.innerText = "📌";
