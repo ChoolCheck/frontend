@@ -8,6 +8,7 @@ import RenderDays from "./RenderDays";
 import { GetTotalCalendarApi } from "../../../api/calendar";
 import "../style/calendar.scss";
 import * as type from "../type";
+import memoIcon from "../../static/icon/sticky-note.png";
 
 export const Calendar = ({
   onCalendarClick,
@@ -67,9 +68,9 @@ export const Calendar = ({
 
         //memo가 있을 때, memoFlag 넣을 span 태그가 없을 때
         if (memoFlagValue[0].exist && !cell.childNodes[0].childNodes[1]) {
-          const memoFlag = document.createElement("span");
+          const memoFlag = document.createElement("img");
           memoFlag.className = "memoFlag";
-          memoFlag.innerText = "📌";
+          memoFlag.src = memoIcon;
           cell.childNodes[0].appendChild(memoFlag);
         }
 
