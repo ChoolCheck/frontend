@@ -17,7 +17,6 @@ export const Calendar = ({
 }: type.calendarProps) => {
   const [currentMonth, setCurrentMonth] = useState<Date>(new Date());
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
-  const [memoFlagList, setMemoFlagList] = useState<type.memoFlagProps[]>();
 
   const now = new Date();
   const date =
@@ -33,7 +32,6 @@ export const Calendar = ({
     GetTotalCalendarApi({
       date,
       setCalendarTotalList,
-      setMemoFlagList,
       renderData,
     });
   }, []);
@@ -54,7 +52,6 @@ export const Calendar = ({
     prevItemCells.forEach((cell) => {
       cell.remove();
     });
-    console.log(memoFlagList);
 
     for (let i = 0; i < calendarTotalList.length; i++) {
       const cell = document.getElementById(calendarTotalList[i].date);
@@ -67,7 +64,7 @@ export const Calendar = ({
               (value) => value.date == calendarTotalList[i].date
             )
           : [{ date: calendarTotalList[i].date, exist: false }];
-        console.log(memoFlagValue);
+
         //memo가 있을 때, memoFlag 넣을 span 태그가 없을 때
         if (memoFlagValue[0].exist && !cell.childNodes[0].childNodes[1]) {
           const memoFlag = document.createElement("span");
@@ -133,7 +130,6 @@ export const Calendar = ({
     GetTotalCalendarApi({
       date,
       setCalendarTotalList,
-      setMemoFlagList,
       renderData,
     });
   };
@@ -151,7 +147,6 @@ export const Calendar = ({
     GetTotalCalendarApi({
       date,
       setCalendarTotalList,
-      setMemoFlagList,
       renderData,
     });
   };

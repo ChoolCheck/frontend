@@ -101,18 +101,16 @@
 
       .col.cell {
         display: block;
-        .text {
-          .day {
-            display: flex;
-            .formattedDate {
-              margin: 4px 0 4px 4px;
-              justify-content: start;
-            }
-            .memoFlag {
-              margin: 4px 4px 4px 0;
-              background-color: aqua;
-              justify-content: end;
-            }
+        .text.day {
+          display: flex;
+          .formattedDate {
+            margin: 4px 0 4px 4px;
+            justify-content: start;
+          }
+          .memoFlag {
+            margin: 4px 4px 4px 0;
+            background-color: aqua;
+            justify-content: end;
           }
         }
 

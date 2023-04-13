@@ -78,7 +78,6 @@ export function handleWorklist(
 export async function GetTotalCalendarApi({
   date,
   setCalendarTotalList,
-  setMemoFlagList,
   renderData,
 }: type.getTotalCalendarProps) {
   const inputDate = new Date(date);
@@ -128,7 +127,6 @@ export async function GetTotalCalendarApi({
               Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
           }).then((res) => {
-            // setMemoFlagList(res.data);
             renderData(tempResultList, res.data);
           });
         });

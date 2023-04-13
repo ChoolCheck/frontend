@@ -19,9 +19,7 @@ export interface getTotalCalendarProps {
   setCalendarTotalList: React.Dispatch<
     React.SetStateAction<calendarListType[] | undefined>
   >;
-  setMemoFlagList: React.Dispatch<
-    React.SetStateAction<calendarType.memoFlagProps[] | undefined>
-  >;
+
   renderData: (
     calendarTotalList: calendarType.calendarListType[],
     memoFlagList: calendarType.memoFlagProps[]
