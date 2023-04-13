@@ -119,6 +119,16 @@ export async function GetTotalCalendarApi({
         })
         .then((res) => {
           setCalendarTotalList(tempResultList);
+          axios({
+            method: "GET",
+            url: `${config.api}/memo/month?date=${inputStart}`,
+            headers: {
+              "Content-Type": `application/json`,
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }).then((res) => {
+            console.log(res);
+          });
         })
         .then((res) => {
           renderData(tempResultList);

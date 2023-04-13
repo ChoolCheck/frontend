@@ -17,7 +17,7 @@ export const Calendar = ({
 }: type.calendarProps) => {
   const [currentMonth, setCurrentMonth] = useState<Date>(new Date());
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
-  const [memoFlagList, setMemoFlagList] = useState<boolean[]>();
+  const [memoFlagList, setMemoFlagList] = useState<type.memoFlagProps[]>();
 
   const now = new Date();
   const date =

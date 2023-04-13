@@ -52,3 +52,8 @@ export interface memoProps {
   date: string;
   content: string;
 }
+
+export interface memoFlagProps {
+  date: string;
+  isMemo: boolean;
+}
