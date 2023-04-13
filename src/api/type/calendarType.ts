@@ -1,3 +1,5 @@
+import * as calendarType from "../../page/main/type";
+
 export interface calendarListType {
   title: string;
   date: string;
@@ -16,6 +18,9 @@ export interface getTotalCalendarProps {
   date: string;
   setCalendarTotalList: React.Dispatch<
     React.SetStateAction<calendarListType[] | undefined>
+  >;
+  setMemoFlagList: React.Dispatch<
+    React.SetStateAction<calendarType.memoFlagProps[] | undefined>
   >;
   renderData: (calendarTotalList: calendarListType[]) => void;
 }

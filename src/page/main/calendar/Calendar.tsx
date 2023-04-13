@@ -30,7 +30,12 @@ export const Calendar = ({
     (now.getDate() < 10 ? "0" + now.getDate() : now.getDate());
 
   useEffect(() => {
-    GetTotalCalendarApi({ date, setCalendarTotalList, renderData });
+    GetTotalCalendarApi({
+      date,
+      setCalendarTotalList,
+      setMemoFlagList,
+      renderData,
+    });
   }, []);
 
   const renderData = (calendarTotalList: type.calendarListType[]) => {
@@ -51,15 +56,15 @@ export const Calendar = ({
       const cell = document.getElementById(calendarTotalList[i].date);
       let calendarItemContainer;
       if (cell) {
-        // 특정 날에 대해 memo가 있으면 memoFlagValue[0].isMemo = true
-        // 특정 날에 대해 memo가 없으면 memoFlagValue[0].isMemo = false
+        // 특정 날에 대해 memo가 있으면 memoFlagValue[0].exist = true
+        // 특정 날에 대해 memo가 없으면 memoFlagValue[0].exist = false
         const memoFlagValue = memoFlagList
           ? memoFlagList.filter(
               (value) => value.date == calendarTotalList[i].date
             )
-          : [{ date: calendarTotalList[i].date, isMemo: false }];
+          : [{ date: calendarTotalList[i].date, exist: false }];
 
-        if (memoFlagValue[0].isMemo) {
+        if (memoFlagValue[0].exist) {
           const memoFlag = document.createElement("span");
           memoFlag.className = "memoFlag";
           memoFlag.innerText = "📌";
@@ -120,7 +125,12 @@ export const Calendar = ({
       "-01"
     ).toString();
 
-    GetTotalCalendarApi({ date, setCalendarTotalList, renderData });
+    GetTotalCalendarApi({
+      date,
+      setCalendarTotalList,
+      setMemoFlagList,
+      renderData,
+    });
   };
 
   const nextMonth = (e: React.MouseEvent<SVGSVGElement>) => {
@@ -133,7 +143,12 @@ export const Calendar = ({
       "-01"
     ).toString();
 
-    GetTotalCalendarApi({ date, setCalendarTotalList, renderData });
+    GetTotalCalendarApi({
+      date,
+      setCalendarTotalList,
+      setMemoFlagList,
+      renderData,
+    });
   };
 
   const onDateClick = (day: Date) => {
