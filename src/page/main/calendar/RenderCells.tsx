@@ -56,7 +56,6 @@ const RenderCells = ({
             }
           >
             <span className="formattedDate"> {formattedDate}</span>
-            {/* <span className="memoFlag"></span> */}
           </p>
         </div>
       );

@@ -51,6 +51,8 @@ export default function TokenRefresher() {
             window.alert(
               "비밀번호 변경 시간이 만료되었습니다. 다시 요청해주세요."
             );
+          } else if (msg == "비밀번호가 일치하지 않습니다.") {
+            window.alert(msg);
           }
         } else if (status == 400 || status == 404 || status == 409) {
           window.alert(msg);
