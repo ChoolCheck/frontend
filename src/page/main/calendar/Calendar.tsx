@@ -8,7 +8,7 @@ import RenderDays from "./RenderDays";
 import { GetTotalCalendarApi } from "../../../api/calendar";
 import "../style/calendar.scss";
 import * as type from "../type";
-import memoIcon from "../../static/icon/sticky-note.png";
+import memoIcon from "../../../static/icon/stickyNote.png";
 
 export const Calendar = ({
   onCalendarClick,
