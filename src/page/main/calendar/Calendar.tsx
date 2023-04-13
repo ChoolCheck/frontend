@@ -38,7 +38,10 @@ export const Calendar = ({
     });
   }, []);
 
-  const renderData = (calendarTotalList: type.calendarListType[]) => {
+  const renderData = (
+    calendarTotalList: type.calendarListType[],
+    memoFlagList: type.memoFlagProps[]
+  ) => {
     const prevItemContainerCells =
       document.querySelectorAll(".calendarContainer");
 
@@ -65,7 +68,8 @@ export const Calendar = ({
             )
           : [{ date: calendarTotalList[i].date, exist: false }];
         console.log(memoFlagValue);
-        if (memoFlagValue[0].exist) {
+        //memo가 있을 때, memoFlag 넣을 span 태그가 없을 때
+        if (memoFlagValue[0].exist && !cell.childNodes[0].childNodes[1]) {
           const memoFlag = document.createElement("span");
           memoFlag.className = "memoFlag";
           memoFlag.innerText = "📌";

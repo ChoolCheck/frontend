@@ -22,7 +22,10 @@ export interface getTotalCalendarProps {
   setMemoFlagList: React.Dispatch<
     React.SetStateAction<calendarType.memoFlagProps[] | undefined>
   >;
-  renderData: (calendarTotalList: calendarListType[]) => void;
+  renderData: (
+    calendarTotalList: calendarType.calendarListType[],
+    memoFlagList: calendarType.memoFlagProps[]
+  ) => void;
 }
 
 export interface getDetailCalendarProps {
