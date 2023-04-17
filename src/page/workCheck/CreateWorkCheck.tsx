@@ -141,6 +141,7 @@ const CreateWorkCheck = () => {
   const onChangeStartTime = (e: React.ChangeEvent<HTMLInputElement>) => {
     setStartTime(e.target.value);
   };
+
   const onChangeEndTime = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEndTime(e.target.value);
   };
