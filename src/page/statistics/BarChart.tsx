@@ -50,8 +50,8 @@ const BarChart = ({ statisticsList, statisticsData }: type.barChartProps) => {
               display: false,
             },
             datalabels: {
-              formatter: function (value, context) {
-                if (value == 0) return;
+              formatter: function (value) {
+                if (value == 0) return "";
                 else return value + "시간";
               },
               display: true,
@@ -77,6 +77,7 @@ const BarChart = ({ statisticsList, statisticsData }: type.barChartProps) => {
             },
             y: {
               ticks: {
+                padding: 5,
                 font: {
                   size: 18,
                 },

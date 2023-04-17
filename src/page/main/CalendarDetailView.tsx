@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
 import * as type from "./type";
 import "./style/calendarDetailView.scss";
+import threeDots from "../../../static/icon/three-dots.png";
 
 const CalendarDetailView = ({
   calendarDetailScheduleList,
@@ -53,6 +54,7 @@ const CalendarDetailView = ({
                     <span className="checkedWorkList-li-workType">
                       {item.workType != null ? item.workType : ""}
                     </span>
+                    <button>{threeDots}</button>
                   </li>
                 ))}
             </ul>
