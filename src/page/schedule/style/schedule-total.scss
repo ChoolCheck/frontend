@@ -61,21 +61,22 @@
     .totalList-ul {
       padding: 20px;
       .totalList-li {
-        // display: flex;
+        display: flex;
+        justify-content: space-between;
         padding: 20px;
         cursor: pointer;
         border-bottom: #d2d2d2 1px solid;
-        .totalList-li-date {
-          margin: 0 30px 0 0;
-        }
-        .totalList-li-time,
-        .totalList-li-hours,
-        .totalList-li-name {
-          margin: 0 30px 0 30px;
-        }
-        .totalList-li-totalWorkTime {
-          margin: 0 0 0 30px;
-        }
+        // .totalList-li-date {
+        //   margin: 0 30px 0 0;
+        // }
+        // .totalList-li-time,
+        // .totalList-li-hours,
+        // .totalList-li-name {
+        //   margin: 0 30px 0 30px;
+        // }
+        // .totalList-li-totalWorkTime {
+        //   margin: 0 0 0 30px;
+        // }
         .totalList-li-name {
           padding: 10px;
           border-radius: 15px;
