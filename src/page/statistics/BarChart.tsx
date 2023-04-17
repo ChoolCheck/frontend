@@ -50,6 +50,10 @@ const BarChart = ({ statisticsList, statisticsData }: type.barChartProps) => {
               display: false,
             },
             datalabels: {
+              formatter: function (value, context) {
+                if (value == 0) return;
+                else return value + "시간";
+              },
               display: true,
               color: "black",
               anchor: "end",
