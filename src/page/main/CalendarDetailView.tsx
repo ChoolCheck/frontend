@@ -54,7 +54,7 @@ const CalendarDetailView = ({
                     <span className="checkedWorkList-li-workType">
                       {item.workType != null ? item.workType : ""}
                     </span>
-                    <button>{threeDots}</button>
+                    <img className="" src={threeDots} onClick={() => {}}></img>
                   </li>
                 ))}
             </ul>
