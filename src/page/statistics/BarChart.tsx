@@ -40,6 +40,7 @@ const BarChart = ({ statisticsList, statisticsData }: type.barChartProps) => {
     const ctx = canvas.getContext("2d");
     if (ctx && !chartRef.current) {
       chartRef.current = new Chart(ctx, {
+        plugins: [ChartDataLabels],
         type: "bar",
         data: statisticsData,
         options: {
@@ -90,6 +91,17 @@ const BarChart = ({ statisticsList, statisticsData }: type.barChartProps) => {
     }
   };
 
-  return <BarChartView canvasCallback={canvasCallback}></BarChartView>;
+  return (
+    <>
+      {statisticsList ? (
+        <BarChartView
+          canvasCallback={canvasCallback}
+          height={statisticsList.length * 80}
+        ></BarChartView>
+      ) : (
+        <p> 데이터가 없습니다.</p>
+      )}
+    </>
+  );
 };
 export default BarChart;

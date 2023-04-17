@@ -37,5 +37,6 @@ export interface chartDataProps {
 }
 
 export interface barchartViewProps {
+  height: number;
   canvasCallback: (canvas: HTMLCanvasElement | null) => void;
 }
