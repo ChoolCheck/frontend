@@ -8,8 +8,7 @@ const ToggleButton = ({
   leftOrRight,
   setLeftOrRight,
 }: type.toggleButtonPrpos) => {
-  const [selectedButton, setSelectedButton] =
-    useState<String>("leftButtonTitle");
+  const [selectedButton, setSelectedButton] = useState<String>(leftButtonTitle);
 
   const onToggleButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
