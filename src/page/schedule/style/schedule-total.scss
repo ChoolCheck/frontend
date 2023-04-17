@@ -59,24 +59,28 @@
     overflow-y: auto;
 
     .totalList-ul {
-      padding: 20px;
+      padding: 20px 30px 20px 30px;
       .totalList-li {
         display: flex;
         justify-content: space-between;
-        padding: 20px;
+        align-items: center;
+        padding: 15px;
         cursor: pointer;
         border-bottom: #d2d2d2 1px solid;
-        // .totalList-li-date {
-        //   margin: 0 30px 0 0;
-        // }
-        // .totalList-li-time,
-        // .totalList-li-hours,
-        // .totalList-li-name {
-        //   margin: 0 30px 0 30px;
-        // }
-        // .totalList-li-totalWorkTime {
-        //   margin: 0 0 0 30px;
-        // }
+        .totalList-li-date {
+          // margin: 0 30px 0 0;
+        }
+
+        .totalList-li-name {
+          width: 150px;
+          text-overflow: ellipsis;
+        }
+        .totalList-li-hours,
+        .totalList-li-totalWorkTime {
+          // margin: 0 0 0 30px;
+          width: 100px;
+          text-overflow: ellipsis;
+        }
         .totalList-li-name {
           padding: 10px;
           border-radius: 15px;

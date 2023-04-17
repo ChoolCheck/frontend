@@ -34,13 +34,18 @@ const CalendarDetailView = ({
               {calendarDetailWorkcheckList &&
                 calendarDetailWorkcheckList.map((item) => (
                   <li className="checkedWorkList-li">
-                    <span
-                      className="checkedWorkList-li-color"
-                      style={{ backgroundColor: item.backgroundColor }}
-                    >
-                      &nbsp;&nbsp;&nbsp;
+                    <span>
+                      <span
+                        className="checkedWorkList-li-color"
+                        style={{ backgroundColor: item.backgroundColor }}
+                      >
+                        &nbsp;&nbsp;&nbsp;
+                      </span>
+                      <span className="checkedWorkList-li-name">
+                        {item.name}
+                      </span>
                     </span>
-                    <span className="checkedWorkList-li-name">{item.name}</span>
+
                     <span className="checkedWorkList-li-time">{item.time}</span>
                     <span className="checkedWorkList-li-totalWorkTime">
                       {item.totalWorkTime}시간
