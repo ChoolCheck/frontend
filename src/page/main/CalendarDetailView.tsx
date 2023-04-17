@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
 import * as type from "./type";
 import "./style/calendarDetailView.scss";
-import threeDots from "../../../static/icon/three-dots.png";
+import threeDots from "../../static/icon/three-dots.png";
 
 const CalendarDetailView = ({
   calendarDetailScheduleList,
