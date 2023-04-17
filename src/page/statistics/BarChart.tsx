@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import BarChartView from "./BarChartView";
+import ChartDataLabels from "chartjs-plugin-datalabels";
 
 import "./style/statisticsView.scss";
 import * as type from "./type";
@@ -47,6 +48,12 @@ const BarChart = ({ statisticsList, statisticsData }: type.barChartProps) => {
             legend: {
               display: false,
             },
+            datalabels: {
+              display: true,
+              color: "black",
+              anchor: "end",
+              align: "start",
+            },
           },
           indexAxis: "y",
           scales: {
@@ -83,13 +90,6 @@ const BarChart = ({ statisticsList, statisticsData }: type.barChartProps) => {
     }
   };
 
-  const chartHeight = statisticsList ? statisticsList.length * 100 : 600;
-
-  return (
-    <BarChartView
-      canvasCallback={canvasCallback}
-      height={chartHeight}
-    ></BarChartView>
-  );
+  return <BarChartView canvasCallback={canvasCallback}></BarChartView>;
 };
 export default BarChart;
