@@ -41,37 +41,36 @@ $opacity-zero: 0.3;
       .checkedWorkList-container {
         text-align: left;
         padding: 0 20px 20px 20px;
-        .checkedWorkList-ul {
+        .ul {
           margin-top: 10px;
-          .checkedWorkList-li {
+          .li {
             justify-content: space-between;
             display: flex;
             align-items: center;
             height: 45px;
           }
 
-          .checkedWorkList-li-color {
+          .li-color {
             margin: 0 20px 0 20px;
             padding: 4px 5px 4px 5px;
             border-radius: 10px;
           }
 
-          .checkedWorkList-li-name,
-          .checkedWorkList-li-totalWorkTime,
-          .checkedWorkList-li-workType {
-            // margin-right: 20px;
+          .li-name,
+          .li-totalWorkTime,
+          .li-workType {
             width: 100px;
           }
 
-          .checkedWorkList-li-time {
+          .li-time {
             margin-right: 20px;
             width: 130px;
           }
-          .checkedWorkList-li-totalWorkTime {
+          .li-totalWorkTime {
           }
           .seeMore-button {
-            width: 60px;
-            height: 60px;
+            width: 30px;
+            height: 30px;
           }
         }
       }
@@ -82,28 +81,34 @@ $opacity-zero: 0.3;
         padding-top: 20px;
         border-top: 1px solid rgb(208, 208, 208);
 
-        .scheduleList-ul {
+        .ul {
           margin-top: 10px;
-          .scheduleList-li {
+          .li {
             justify-content: left;
             display: flex;
             align-items: center;
             height: 45px;
           }
-          .scheduleList-li-color {
+          .li-color {
             margin: 0 20px 0 20px;
             padding: 4px 5px 4px 5px;
             border-radius: 10px;
           }
-          .scheduleList-li-name,
-          .scheduleList-li-workType {
+          .li-name,
+          .li-workType {
             margin-right: 20px;
             width: 100px;
           }
 
-          .scheduleList-li-time {
+          .li-time {
             margin-right: 20px;
             width: 130px;
+          }
+
+          .seeMore-button {
+            width: 30px;
+            height: 30px;
+            right: 0;
           }
         }
       }

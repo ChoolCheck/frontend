@@ -31,27 +31,25 @@ const CalendarDetailView = ({
         <div className="list-top-container">
           <div className="checkedWorkList-container">
             <h2>출근부</h2>
-            <ul className="checkedWorkList-ul">
+            <ul className="ul">
               {calendarDetailWorkcheckList &&
                 calendarDetailWorkcheckList.map((item) => (
-                  <li className="checkedWorkList-li">
+                  <li className="li">
                     <span>
                       <span
-                        className="checkedWorkList-li-color"
+                        className="li-color"
                         style={{ backgroundColor: item.backgroundColor }}
                       >
                         &nbsp;&nbsp;&nbsp;
                       </span>
-                      <span className="checkedWorkList-li-name">
-                        {item.name}
-                      </span>
+                      <span className="li-name">{item.name}</span>
                     </span>
 
-                    <span className="checkedWorkList-li-time">{item.time}</span>
-                    <span className="checkedWorkList-li-totalWorkTime">
+                    <span className="li-time">{item.time}</span>
+                    <span className="li-totalWorkTime">
                       {item.totalWorkTime}시간
                     </span>
-                    <span className="checkedWorkList-li-workType">
+                    <span className="li-workType">
                       {item.workType != null ? item.workType : ""}
                     </span>
                     <img
@@ -66,21 +64,26 @@ const CalendarDetailView = ({
 
           <div className="scheduleList-container">
             <h2>스케줄</h2>
-            <ul className="scheduleList-ul">
+            <ul className="ul">
               {calendarDetailScheduleList &&
                 calendarDetailScheduleList.map((item) => (
-                  <li className="scheduleList-li">
+                  <li className="li">
                     <span
-                      className="scheduleList-li-color"
+                      className="li-color"
                       style={{ backgroundColor: item.backgroundColor }}
                     >
                       &nbsp;&nbsp;&nbsp;
                     </span>
-                    <span className="scheduleList-li-name">{item.name}</span>
-                    <span className="scheduleList-li-time">{item.time} </span>
-                    <span className="scheduleList-li-workType">
+                    <span className="li-name">{item.name}</span>
+                    <span className="li-time">{item.time} </span>
+                    <span className="li-workType">
                       {item.workType != null ? item.workType : ""}
                     </span>
+                    <img
+                      className="seeMore-button"
+                      src={threeDots}
+                      onClick={() => {}}
+                    ></img>
                   </li>
                 ))}
             </ul>
