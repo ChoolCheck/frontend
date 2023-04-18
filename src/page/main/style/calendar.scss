@@ -129,7 +129,8 @@
           justify-content: left;
 
           .nameSpan {
-            max-width: 90px;
+            max-width: 4.9vw;
+            min-width: 40px;
             display: inline-block;
             white-space: nowrap;
             overflow: hidden;
