@@ -17,7 +17,7 @@ export interface rendercellProps {
   selectedDate: Date;
   onDateClick: (day: Date) => (e: React.MouseEvent<HTMLDivElement>) => void;
 }
-export interface calendarListType {
+export interface calendarListProps {
   title: string;
   date: string;
   textColor: string;

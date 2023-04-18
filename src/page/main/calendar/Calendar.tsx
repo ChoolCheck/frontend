@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { addMonths, subMonths } from "date-fns";
 
 import RenderHeader from "./RenderHeader";
@@ -38,10 +38,16 @@ export const Calendar = ({
     (state: RootState) => state.CalendarReducer.calendarList
   );
 
+  const setCalendarlist = useCallback(
+    (calendarList: type.calendarListProps[]) =>
+      dispatch(setCalendarList(calendarList)),
+    [dispatch]
+  );
+
   useEffect(() => {
     GetTotalCalendarApi({
       date,
-      setCalendarList,
+      setCalendarlist,
       renderData,
     });
   }, [calendarList]);
@@ -135,7 +141,7 @@ export const Calendar = ({
 
     GetTotalCalendarApi({
       date,
-      setCalendarList,
+      setCalendarlist,
       renderData,
     });
   };
@@ -152,7 +158,7 @@ export const Calendar = ({
 
     GetTotalCalendarApi({
       date,
-      setCalendarList,
+      setCalendarlist,
       renderData,
     });
   };
