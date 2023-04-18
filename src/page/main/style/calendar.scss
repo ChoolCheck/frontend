@@ -168,34 +168,3 @@
     }
   }
 }
-
-@include tablet {
-  .calendar {
-    .nameSpan {
-      max-width: 50px;
-      display: inline-block;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .titleSpan {
-      width: 100px;
-      margin-left: 2px;
-    }
-  }
-}
-@include mobile {
-  .calendar {
-    .nameSpan {
-      max-width: 50px;
-      display: inline-block;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .titleSpan {
-      width: 100px;
-      margin-left: 2px;
-    }
-  }
-}

@@ -59,15 +59,19 @@ $opacity: 0.8;
 }
 
 @include tablet {
-  .Navigation-menu {
-    min-width: 550px;
-    margin-right: 30px;
+  .Navigation-top-container {
+    .Navigation-menu {
+      min-width: 550px;
+      margin-right: 30px;
+    }
   }
 }
 
 @include mobile {
-  .Navigation-menu {
-    min-width: 650px;
-    margin-right: 50px;
+  .Navigation-top-container {
+    .Navigation-menu {
+      min-width: 650px;
+      margin-right: 50px;
+    }
   }
 }
