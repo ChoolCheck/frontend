@@ -222,11 +222,11 @@ const WorkCheck = () => {
 
   return (
     <div className="WorkCheck-top-container">
-      {writeModalState && (
+      {/* {writeModalState && (
         <WriteModal>
-          <CreateWorkCheck></CreateWorkCheck>
+          <CreateWorkCheck defaultDate={}></CreateWorkCheck>
         </WriteModal>
-      )}
+      )} */}
 
       {readModalState && (
         <ReadModal>
