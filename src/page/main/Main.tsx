@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useRef } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
@@ -31,6 +31,8 @@ const Main = () => {
     (now.getDate() < 10 ? "0" + now.getDate() : now.getDate())
   ).toString();
 
+  const defaultDate = useRef(today);
+
   const dispatch = useDispatch();
   const writeModalState = useSelector(
     (state: RootState) => state.WriteModalReducer.writeModalState
@@ -50,8 +52,6 @@ const Main = () => {
   const [detailModalOpen, setDetailModalOpen] = useState(false);
 
   const [selectedModal, setSelectedModal] = useState<string>("");
-
-  const [workcheckDate, setWorkcheckDate] = useState(today);
 
   const [calendarDetailScheduleList, setCalendarDetailScheduleList] = useState<
     type.calendarDetailType[] | undefined
@@ -85,7 +85,7 @@ const Main = () => {
       (nowDate.getDate() < 10 ? "0" + nowDate.getDate() : nowDate.getDate())
     ).toString();
 
-    setWorkcheckDate(date);
+    defaultDate.current = date;
 
     GetDetailCalendarApi({
       onModalOpen,
@@ -121,7 +121,7 @@ const Main = () => {
 
   const onModalClose = () => {
     setDetailModalOpen(false);
-    setWorkcheckDate(today);
+    defaultDate.current = today;
     document.body.style.overflow = "unset";
   };
 
@@ -142,7 +142,9 @@ const Main = () => {
         <>
           {selectedModal == "createworkcheck" && (
             <WriteModal>
-              <CreateWorkCheck defaultDate={workcheckDate}></CreateWorkCheck>
+              <CreateWorkCheck
+                defaultDate={defaultDate.current}
+              ></CreateWorkCheck>
             </WriteModal>
           )}
           {selectedModal == "creatememo" && (

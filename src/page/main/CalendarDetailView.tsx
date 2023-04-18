@@ -51,11 +51,6 @@ const CalendarDetailView = ({
                     <span className="li-workType">
                       {item.workType != null ? item.workType : ""}
                     </span>
-                    <img
-                      className="seeMore-button"
-                      src={threeDots}
-                      onClick={() => {}}
-                    ></img>
                   </li>
                 ))}
             </ul>

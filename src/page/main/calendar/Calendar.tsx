@@ -57,6 +57,10 @@ export const Calendar = ({
     });
   }, [totalWorkCheckList]);
 
+  useEffect(() => {
+    renderData();
+  }, [calendarList]);
+
   const renderMemo = (memoFlagList: type.memoFlagProps[]) => {
     for (let i = 0; i < memoFlagList.length; i++) {
       const cell = document.getElementById(memoFlagList[i].date);
@@ -96,20 +100,6 @@ export const Calendar = ({
         const cell = document.getElementById(calendarList[i].date);
         let calendarItemContainer;
         if (cell) {
-          // 특정 날에 대해 memo가 있으면 memoFlagValue[0].exist = true
-          // 특정 날에 대해 memo가 없으면 memoFlagValue[0].exist = false
-          // const memoFlagValue = memoFlagList
-          //   ? memoFlagList.filter((value) => value.date == calendarList[i].date)
-          //   : [{ date: calendarList[i].date, exist: false }];
-
-          // //memo가 있을 때, memoFlag 넣을 span 태그가 없을 때
-          // if (memoFlagValue[0].exist && !cell.childNodes[0].childNodes[1]) {
-          //   const memoFlag = document.createElement("img");
-          //   memoFlag.className = "memoFlag";
-          //   memoFlag.src = memoIcon;
-          //   cell.childNodes[0].appendChild(memoFlag);
-          // }
-
           if (cell.childNodes.length > 1) {
             calendarItemContainer = cell.childNodes[1];
           } else {
