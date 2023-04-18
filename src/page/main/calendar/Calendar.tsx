@@ -44,13 +44,17 @@ export const Calendar = ({
     [dispatch]
   );
 
+  const totalWorkCheckList = useSelector(
+    (state: RootState) => state.TotalWorkcheckListReducer.totalWorkcheckList
+  );
+
   useEffect(() => {
     GetTotalCalendarApi({
       date,
       setCalendarlist,
       renderData,
     });
-  }, [calendarList]);
+  }, [totalWorkCheckList]);
 
   const renderData = (memoFlagList: type.memoFlagProps[]) => {
     const prevItemContainerCells =

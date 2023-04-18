@@ -31,13 +31,11 @@ const CreateWorkCheck = ({ defaultDate }: type.createWorkcheckProps) => {
       dispatch(setTotalWorkcheckList(totalWorkcheckList)),
     [dispatch]
   );
-
   const setTotalElement = useCallback(
     (totalElementState: number) =>
       dispatch(setTotalElements(totalElementState)),
     [dispatch]
   );
-
   const setTotalPage = useCallback(
     (totalPageState: number) => dispatch(setTotalPages(totalPageState)),
     [dispatch]
