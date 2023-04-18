@@ -1,14 +1,23 @@
 import React, { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
+import { setMemoFlagList } from "../../Redux/Actions/handleMemoFlagList";
+
 import { CreateMemoApi } from "../../api/memo";
 import CreateMemoView from "./view/CreateMemoView";
+import * as reducerType from "../../Redux/Types";
 
 const CreateMemo = () => {
   const dispatch = useDispatch();
 
   const setWriteModal = useCallback(
     (readModalState: boolean) => dispatch(setWriteModalOpen(readModalState)),
+    [dispatch]
+  );
+
+  const setMemoFlaglist = useCallback(
+    (memoFlagList: reducerType.memoFlagListProps[]) =>
+      dispatch(setMemoFlagList(memoFlagList)),
     [dispatch]
   );
 
@@ -23,7 +32,6 @@ const CreateMemo = () => {
       setWriteModal(false);
     } else return;
   };
-
   const onChangeDate = (e: React.ChangeEvent<HTMLInputElement>) => {
     setDate(e.target.value);
   };
@@ -43,6 +51,7 @@ const CreateMemo = () => {
         date,
         content,
         setWriteModal,
+        setMemoFlaglist,
       });
   };
 

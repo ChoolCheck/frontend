@@ -49,7 +49,7 @@ export interface memoProps {
   content: string;
 }
 
-export interface memoFlagProps {
+export interface memoFlagListProps {
   date: string;
   exist: boolean;
 }

@@ -5,6 +5,7 @@ import TotalWorkcheckListReducer from "./TotalWorkcheckListReducer";
 import TotalElementReducer from "./TotalElementReducer";
 import TotalPageReducer from "./TotalPageReducer";
 import CalendarReducer from "./CalendarListReducer";
+import MemoFlagReducer from "./MemoFlagListReducer";
 import PaginationFocus from "./PaginationFocusReducer";
 
 const rootReducer = combineReducers({
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   TotalElementReducer,
   TotalPageReducer,
   CalendarReducer,
+  MemoFlagReducer,
   PaginationFocus,
 });
 

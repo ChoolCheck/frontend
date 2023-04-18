@@ -11,6 +11,8 @@ import * as type from "../type";
 import memoIcon from "../../../static/icon/stickyNote.png";
 
 import { setCalendarList } from "../../../Redux/Actions/handleCalendarList";
+import { setMemoFlagList } from "../../../Redux/Actions/handleMemoFlagList";
+
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../Redux/Reducers/rootReducer";
 
@@ -26,8 +28,14 @@ export const Calendar = ({
 
   const dispatch = useDispatch();
 
+  const totalWorkCheckList = useSelector(
+    (state: RootState) => state.TotalWorkcheckListReducer.totalWorkcheckList
+  );
   const calendarList = useSelector(
     (state: RootState) => state.CalendarReducer.calendarList
+  );
+  const memoFlagList = useSelector(
+    (state: RootState) => state.MemoFlagReducer.memoFlagList
   );
 
   const setCalendarlist = useCallback(
@@ -36,16 +44,17 @@ export const Calendar = ({
     [dispatch]
   );
 
-  const totalWorkCheckList = useSelector(
-    (state: RootState) => state.TotalWorkcheckListReducer.totalWorkcheckList
+  const setMemoFlaglist = useCallback(
+    (memoFlagList: type.memoFlagListProps[]) =>
+      dispatch(setMemoFlagList(memoFlagList)),
+    [dispatch]
   );
 
   useEffect(() => {
     GetTotalCalendarApi({
       date: currentMonth,
       setCalendarlist,
-      renderMemo,
-      renderData,
+      setMemoFlaglist,
     });
   }, [totalWorkCheckList]);
 
@@ -53,26 +62,33 @@ export const Calendar = ({
     renderData();
   }, [calendarList]);
 
-  const renderMemo = (memoFlagList: type.memoFlagProps[]) => {
-    for (let i = 0; i < memoFlagList.length; i++) {
-      const cell = document.getElementById(memoFlagList[i].date);
-      if (cell) {
-        // 특정 날에 대해 memo가 있으면 memoFlagValue[0].exist = true
-        // 특정 날에 대해 memo가 없으면 memoFlagValue[0].exist = false
-        const memoFlagValue = memoFlagList.filter(
-          (value) => value.date == memoFlagList[i].date
-        );
+  useEffect(() => {
+    renderMemo();
+  }, [memoFlagList]);
 
-        //memo가 있을 때, memoFlag 넣을 span 태그가 없을 때
-        if (memoFlagValue[0].exist && !cell.childNodes[0].childNodes[1]) {
-          const memoFlag = document.createElement("img");
-          memoFlag.className = "memoFlag";
-          memoFlag.src = memoIcon;
-          cell.childNodes[0].appendChild(memoFlag);
+  const renderMemo = () => {
+    if (memoFlagList) {
+      for (let i = 0; i < memoFlagList.length; i++) {
+        const cell = document.getElementById(memoFlagList[i].date);
+        if (cell) {
+          // 특정 날에 대해 memo가 있으면 memoFlagValue[0].exist = true
+          // 특정 날에 대해 memo가 없으면 memoFlagValue[0].exist = false
+          const memoFlagValue = memoFlagList.filter(
+            (value) => value.date == memoFlagList[i].date
+          );
+
+          //memo가 있을 때, memoFlag 넣을 span 태그가 없을 때
+          if (memoFlagValue[0].exist && !cell.childNodes[0].childNodes[1]) {
+            const memoFlag = document.createElement("img");
+            memoFlag.className = "memoFlag";
+            memoFlag.src = memoIcon;
+            cell.childNodes[0].appendChild(memoFlag);
+          }
         }
       }
     }
   };
+
   const renderData = () => {
     const prevItemContainerCells =
       document.querySelectorAll(".calendarContainer");
@@ -143,8 +159,7 @@ export const Calendar = ({
     GetTotalCalendarApi({
       date: currentMonth,
       setCalendarlist,
-      renderMemo,
-      renderData,
+      setMemoFlaglist,
     });
   };
 
@@ -154,8 +169,7 @@ export const Calendar = ({
     GetTotalCalendarApi({
       date: currentMonth,
       setCalendarlist,
-      renderMemo,
-      renderData,
+      setMemoFlaglist,
     });
   };
 

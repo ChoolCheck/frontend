@@ -5,6 +5,7 @@ import { setTotalElements } from "./Actions/handleTotalElement";
 import { setTotalPages } from "./Actions/handleTotalPages";
 import { setPaginationFocus } from "./Actions/handlePaginationFocus";
 import { setCalendarList } from "./Actions/handleCalendarList";
+import { setMemoFlagList } from "./Actions/handleMemoFlagList";
 
 export interface totalElement {
   totalElementState: number;
@@ -50,6 +51,15 @@ export interface calendarListProps {
   backgroundColor: string;
 }
 
+export interface memoFlagListProps {
+  date: string;
+  exist: boolean;
+}
+
+export interface memoFlagList {
+  memoFlagList: memoFlagListProps[] | undefined;
+}
+
 export type handleReadModal = ReturnType<typeof setReadModalOpen>;
 
 export type handleWriteModal = ReturnType<typeof setWriteModalOpen>;
@@ -63,3 +73,5 @@ export type handleTotalPage = ReturnType<typeof setTotalPages>;
 export type handlePaginationFocus = ReturnType<typeof setPaginationFocus>;
 
 export type handleCalendarList = ReturnType<typeof setCalendarList>;
+
+export type handleMemoFlagList = ReturnType<typeof setMemoFlagList>;

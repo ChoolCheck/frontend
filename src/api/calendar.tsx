@@ -5,7 +5,7 @@ import * as scheduleType from "./type/scheduleType";
 import * as workcheckType from "./type/workcheckType";
 import * as enumType from "../commonType/enum";
 
-import { GetDateMemoApi } from "./memo";
+import { GetDateMemoApi, GetMemoFlagApi } from "./memo";
 
 export function getTotalworktime(
   scheduleDetail?: scheduleType.scheduleObjProps,
@@ -78,8 +78,7 @@ export function handleWorklist(
 export async function GetTotalCalendarApi({
   date,
   setCalendarlist,
-  renderMemo,
-  renderData,
+  setMemoFlaglist,
 }: type.getTotalCalendarProps) {
   const inputDate = new Date(date);
 
@@ -120,19 +119,7 @@ export async function GetTotalCalendarApi({
         })
         .then((res) => {
           setCalendarlist(tempResultList);
-        })
-        .then((res) => {
-          // renderData();
-          axios({
-            method: "GET",
-            url: `${config.api}/memo/month?date=${inputStart}`,
-            headers: {
-              "Content-Type": `application/json`,
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          }).then((res) => {
-            renderMemo(res.data);
-          });
+          GetMemoFlagApi({ month: inputStart, setMemoFlaglist });
         });
     });
 }

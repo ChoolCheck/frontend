@@ -1,4 +1,3 @@
-import * as calendarType from "../../page/main/type";
 import * as reducerType from "../../Redux/Types";
 export interface calendarListType {
   title: string;
@@ -20,8 +19,10 @@ export interface getTotalCalendarProps {
     type: "handleCalendarList/SETCALENDARLIST";
     payload: reducerType.calendarListProps[] | undefined;
   };
-  renderMemo: (memoFlagList: calendarType.memoFlagProps[]) => void;
-  renderData: () => void;
+  setMemoFlaglist: (memoFlagList: reducerType.memoFlagListProps[]) => {
+    type: "handleMemoFlagList/SETMEMOLIST";
+    payload: reducerType.memoFlagListProps[] | undefined;
+  };
 }
 
 export interface getDetailCalendarProps {

@@ -2,10 +2,27 @@ import axios from "axios";
 import { config } from "../static/config";
 import * as type from "./type/memoType";
 
+export async function GetMemoFlagApi({
+  month,
+  setMemoFlaglist,
+}: type.getMemoFlagProps) {
+  axios({
+    method: "GET",
+    url: `${config.api}/memo/month?date=${month}`,
+    headers: {
+      "Content-Type": `application/json`,
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  }).then((res) => {
+    setMemoFlaglist(res.data);
+  });
+}
+
 export async function CreateMemoApi({
   date,
   content,
   setWriteModal,
+  setMemoFlaglist,
 }: type.createMemoProps) {
   await axios({
     method: "POST",
@@ -18,11 +35,9 @@ export async function CreateMemoApi({
       date: date,
       content: content,
     },
-  })
-    .then((res) => {
-      setWriteModal(false);
-    })
-    .catch((err) => {});
+  }).then((res) => {
+    setWriteModal(false);
+  });
 }
 
 export async function UpdateMemoApi({
