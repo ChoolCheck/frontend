@@ -77,7 +77,7 @@ export function handleWorklist(
 
 export async function GetTotalCalendarApi({
   date,
-  setCalendarList,
+  setCalendarlist,
   renderData,
 }: type.getTotalCalendarProps) {
   const inputDate = new Date(date);
@@ -118,7 +118,7 @@ export async function GetTotalCalendarApi({
           return tempResultList;
         })
         .then((res) => {
-          setCalendarList(tempResultList);
+          setCalendarlist(tempResultList);
           axios({
             method: "GET",
             url: `${config.api}/memo/month?date=${inputStart}`,
