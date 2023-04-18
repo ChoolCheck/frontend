@@ -10,7 +10,7 @@ import "../style/calendar.scss";
 import * as type from "../type";
 import memoIcon from "../../../static/icon/stickyNote.png";
 
-import { setCalendarList } from "../../../Redux/Actions/handleCalendarlist";
+import { setCalendarList } from "../../../Redux/Actions/handleCalendarList";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../Redux/Reducers/rootReducer";
 

@@ -4,7 +4,7 @@ import { setTotalWorkcheckList } from "./Actions/handleTotalWorkcheckList";
 import { setTotalElements } from "./Actions/handleTotalElement";
 import { setTotalPages } from "./Actions/handleTotalPages";
 import { setPaginationFocus } from "./Actions/handlePaginationFocus";
-import { setCalendarList } from "./Actions/handleCalendarlist";
+import { setCalendarList } from "./Actions/handleCalendarList";
 
 export interface totalElement {
   totalElementState: number;
@@ -62,4 +62,4 @@ export type handleTotalPage = ReturnType<typeof setTotalPages>;
 
 export type handlePaginationFocus = ReturnType<typeof setPaginationFocus>;
 
-export type handleCalendarlist = ReturnType<typeof setCalendarList>;
+export type handleCalendarList = ReturnType<typeof setCalendarList>;

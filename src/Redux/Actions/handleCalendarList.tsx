@@ -1,6 +1,6 @@
 import * as type from "../Types";
 
-export const SETCALENDARLIST = "handleCalendarlist/SETCALENDARLIST" as const;
+export const SETCALENDARLIST = "handleCalendarList/SETCALENDARLIST" as const;
 
 export const setCalendarList = (
   calendarList: type.calendarListProps[] | undefined
