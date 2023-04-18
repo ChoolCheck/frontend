@@ -42,6 +42,11 @@ export default function TokenRefresher() {
               })
               .then((res) => {
                 window.location.reload();
+              })
+              .catch((err) => {
+                localStorage.clear();
+                navigate("/login");
+                window.alert("토큰이 만료되어 자동으로 로그아웃 되었습니다.");
               });
           } else if (msg == "refresh token expired") {
             localStorage.clear();
