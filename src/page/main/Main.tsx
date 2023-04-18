@@ -72,10 +72,6 @@ const Main = () => {
       (nowDate.getDate() < 10 ? "0" + nowDate.getDate() : nowDate.getDate())
     ).toString();
 
-    setDefaultDate(() => {
-      return date;
-    });
-
     GetDetailCalendarApi({
       onModalOpen,
       date,
@@ -83,6 +79,8 @@ const Main = () => {
       setCalendarDetailWorkcheckList,
       setMemo,
     });
+
+    setDefaultDate(date);
   };
 
   const onCreateWorkcheckClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -110,10 +108,7 @@ const Main = () => {
 
   const onModalClose = () => {
     setDetailModalOpen(false);
-    setDefaultDate(() => {
-      return today;
-    });
-
+    setDefaultDate(today);
     document.body.style.overflow = "unset";
   };
 
