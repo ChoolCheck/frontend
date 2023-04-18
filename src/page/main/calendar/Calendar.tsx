@@ -23,14 +23,6 @@ export const Calendar = ({
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
 
   const now = new Date();
-  const date =
-    now.getFullYear() +
-    "-" +
-    (now.getMonth() + 1 < 10
-      ? "0" + (now.getMonth() + 1)
-      : now.getMonth() + 1) +
-    "-" +
-    (now.getDate() < 10 ? "0" + now.getDate() : now.getDate());
 
   const dispatch = useDispatch();
 
@@ -50,7 +42,7 @@ export const Calendar = ({
 
   useEffect(() => {
     GetTotalCalendarApi({
-      date,
+      date: currentMonth,
       setCalendarlist,
       renderMemo,
       renderData,
@@ -147,15 +139,9 @@ export const Calendar = ({
 
   const prevMonth = (e: React.MouseEvent<SVGSVGElement>) => {
     setCurrentMonth(subMonths(currentMonth, 1));
-    const date = (
-      currentMonth.getFullYear() +
-      "-" +
-      (currentMonth.getMonth() == 0 ? 12 : currentMonth.getMonth()) +
-      "-01"
-    ).toString();
 
     GetTotalCalendarApi({
-      date,
+      date: currentMonth,
       setCalendarlist,
       renderMemo,
       renderData,
@@ -165,15 +151,8 @@ export const Calendar = ({
   const nextMonth = (e: React.MouseEvent<SVGSVGElement>) => {
     setCurrentMonth(addMonths(currentMonth, 1));
 
-    const date = (
-      currentMonth.getFullYear() +
-      "-" +
-      (currentMonth.getMonth() + 2 == 13 ? 1 : currentMonth.getMonth() + 2) +
-      "-01"
-    ).toString();
-
     GetTotalCalendarApi({
-      date,
+      date: currentMonth,
       setCalendarlist,
       renderMemo,
       renderData,
