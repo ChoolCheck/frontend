@@ -2,9 +2,6 @@ export interface calendarProps {
   onCalendarClick: (nowDate: Date) => void;
   onCreateWorkcheckClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   onCreateMemoClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  setCalendarTotalList: React.Dispatch<
-    React.SetStateAction<calendarListType[] | undefined>
-  >;
 }
 
 export interface renderheaderProps {

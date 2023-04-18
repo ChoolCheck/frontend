@@ -1,5 +1,5 @@
 import * as calendarType from "../../page/main/type";
-
+import * as reducerType from "../../Redux/Types";
 export interface calendarListType {
   title: string;
   date: string;
@@ -16,14 +16,14 @@ export interface calendarDetailType {
 
 export interface getTotalCalendarProps {
   date: string;
-  setCalendarTotalList: React.Dispatch<
-    React.SetStateAction<calendarListType[] | undefined>
-  >;
+  setCalendarList: (
+    calendarList: reducerType.calendarListProps[] | undefined
+  ) => {
+    type: "handleCalendarlist/SETCALENDARLIST";
+    payload: reducerType.calendarListProps[] | undefined;
+  };
 
-  renderData: (
-    calendarTotalList: calendarType.calendarListType[],
-    memoFlagList: calendarType.memoFlagProps[]
-  ) => void;
+  renderData: (memoFlagList: calendarType.memoFlagProps[]) => void;
 }
 
 export interface getDetailCalendarProps {

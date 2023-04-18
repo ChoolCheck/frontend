@@ -4,6 +4,7 @@ import { setTotalWorkcheckList } from "./Actions/handleTotalWorkcheckList";
 import { setTotalElements } from "./Actions/handleTotalElement";
 import { setTotalPages } from "./Actions/handleTotalPages";
 import { setPaginationFocus } from "./Actions/handlePaginationFocus";
+import { setCalendarList } from "./Actions/handleCalendarlist";
 
 export interface totalElement {
   totalElementState: number;
@@ -38,6 +39,17 @@ export interface workcheckObjProps {
   id: number;
 }
 
+export interface calendarList {
+  calendarList: calendarListProps[] | undefined;
+}
+
+export interface calendarListProps {
+  title: string;
+  date: string;
+  textColor: string;
+  backgroundColor: string;
+}
+
 export type handleReadModal = ReturnType<typeof setReadModalOpen>;
 
 export type handleWriteModal = ReturnType<typeof setWriteModalOpen>;
@@ -49,3 +61,5 @@ export type handleTotalElement = ReturnType<typeof setTotalElements>;
 export type handleTotalPage = ReturnType<typeof setTotalPages>;
 
 export type handlePaginationFocus = ReturnType<typeof setPaginationFocus>;
+
+export type handleCalendarlist = ReturnType<typeof setCalendarList>;

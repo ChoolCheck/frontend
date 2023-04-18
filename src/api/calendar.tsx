@@ -77,7 +77,7 @@ export function handleWorklist(
 
 export async function GetTotalCalendarApi({
   date,
-  setCalendarTotalList,
+  setCalendarList,
   renderData,
 }: type.getTotalCalendarProps) {
   const inputDate = new Date(date);
@@ -118,7 +118,7 @@ export async function GetTotalCalendarApi({
           return tempResultList;
         })
         .then((res) => {
-          setCalendarTotalList(tempResultList);
+          setCalendarList(tempResultList);
           axios({
             method: "GET",
             url: `${config.api}/memo/month?date=${inputStart}`,
@@ -127,7 +127,7 @@ export async function GetTotalCalendarApi({
               Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
           }).then((res) => {
-            renderData(tempResultList, res.data);
+            renderData(res.data);
           });
         });
     });

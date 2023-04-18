@@ -1,9 +1,8 @@
 import React, { useState, useCallback } from "react";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
 import { setReadModalOpen } from "../../Redux/Actions/handleReadModal";
-import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/Reducers/rootReducer";
 
 import { GetDetailCalendarApi } from "../../api/calendar";
@@ -45,9 +44,9 @@ const Main = () => {
 
   const [selectedModal, setSelectedModal] = useState<string>("");
 
-  const [calendarTotalList, setCalendarTotalList] = useState<
-    type.calendarListType[] | undefined
-  >();
+  // const [calendarTotalList, setCalendarTotalList] = useState<
+  //   type.calendarListType[] | undefined
+  // >();
 
   const [calendarDetailScheduleList, setCalendarDetailScheduleList] = useState<
     type.calendarDetailType[] | undefined
@@ -159,7 +158,6 @@ const Main = () => {
       )}
 
       <Calendar
-        setCalendarTotalList={setCalendarTotalList}
         onCalendarClick={onCalendarClick}
         onCreateWorkcheckClick={onCreateWorkcheckClick}
         onCreateMemoClick={onCreateMemoClick}

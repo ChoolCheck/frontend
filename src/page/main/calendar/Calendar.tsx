@@ -10,11 +10,14 @@ import "../style/calendar.scss";
 import * as type from "../type";
 import memoIcon from "../../../static/icon/stickyNote.png";
 
+import { setCalendarList } from "../../../Redux/Actions/handleCalendarlist";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../../Redux/Reducers/rootReducer";
+
 export const Calendar = ({
   onCalendarClick,
   onCreateWorkcheckClick,
   onCreateMemoClick,
-  setCalendarTotalList,
 }: type.calendarProps) => {
   const [currentMonth, setCurrentMonth] = useState<Date>(new Date());
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
@@ -29,18 +32,21 @@ export const Calendar = ({
     "-" +
     (now.getDate() < 10 ? "0" + now.getDate() : now.getDate());
 
+  const dispatch = useDispatch();
+
+  const calendarList = useSelector(
+    (state: RootState) => state.CalendarReducer.calendarList
+  );
+
   useEffect(() => {
     GetTotalCalendarApi({
       date,
-      setCalendarTotalList,
+      setCalendarList,
       renderData,
     });
-  }, []);
+  }, [calendarList]);
 
-  const renderData = (
-    calendarTotalList: type.calendarListType[],
-    memoFlagList: type.memoFlagProps[]
-  ) => {
+  const renderData = (memoFlagList: type.memoFlagProps[]) => {
     const prevItemContainerCells =
       document.querySelectorAll(".calendarContainer");
 
@@ -54,67 +60,66 @@ export const Calendar = ({
       cell.remove();
     });
 
-    for (let i = 0; i < calendarTotalList.length; i++) {
-      const cell = document.getElementById(calendarTotalList[i].date);
-      let calendarItemContainer;
-      if (cell) {
-        // 특정 날에 대해 memo가 있으면 memoFlagValue[0].exist = true
-        // 특정 날에 대해 memo가 없으면 memoFlagValue[0].exist = false
-        const memoFlagValue = memoFlagList
-          ? memoFlagList.filter(
-              (value) => value.date == calendarTotalList[i].date
-            )
-          : [{ date: calendarTotalList[i].date, exist: false }];
+    if (calendarList) {
+      for (let i = 0; i < calendarList.length; i++) {
+        const cell = document.getElementById(calendarList[i].date);
+        let calendarItemContainer;
+        if (cell) {
+          // 특정 날에 대해 memo가 있으면 memoFlagValue[0].exist = true
+          // 특정 날에 대해 memo가 없으면 memoFlagValue[0].exist = false
+          const memoFlagValue = memoFlagList
+            ? memoFlagList.filter((value) => value.date == calendarList[i].date)
+            : [{ date: calendarList[i].date, exist: false }];
 
-        //memo가 있을 때, memoFlag 넣을 span 태그가 없을 때
-        if (memoFlagValue[0].exist && !cell.childNodes[0].childNodes[1]) {
-          const memoFlag = document.createElement("img");
-          memoFlag.className = "memoFlag";
-          memoFlag.src = memoIcon;
-          cell.childNodes[0].appendChild(memoFlag);
+          //memo가 있을 때, memoFlag 넣을 span 태그가 없을 때
+          if (memoFlagValue[0].exist && !cell.childNodes[0].childNodes[1]) {
+            const memoFlag = document.createElement("img");
+            memoFlag.className = "memoFlag";
+            memoFlag.src = memoIcon;
+            cell.childNodes[0].appendChild(memoFlag);
+          }
+
+          if (cell.childNodes.length > 1) {
+            calendarItemContainer = cell.childNodes[1];
+          } else {
+            calendarItemContainer = document.createElement("div");
+            calendarItemContainer.className = "calendarContainer";
+            cell?.appendChild(calendarItemContainer);
+          }
         }
 
-        if (cell.childNodes.length > 1) {
-          calendarItemContainer = cell.childNodes[1];
-        } else {
-          calendarItemContainer = document.createElement("div");
-          calendarItemContainer.className = "calendarContainer";
-          cell?.appendChild(calendarItemContainer);
+        const cellDate = new Date(calendarList[i].date);
+        if (!cell?.classList.contains("disabled")) {
+          const calendarItem = document.createElement("p");
+          calendarItem.className = "calendarItem";
+
+          //스케줄
+          if (now <= cellDate) {
+            calendarItem.innerText = calendarList[i].title;
+            calendarItem.style.backgroundColor =
+              calendarList[i].backgroundColor;
+            calendarItem.style.color = calendarList[i].textColor;
+          }
+          //출근부
+          else {
+            const colorSpan = document.createElement("span");
+            const titleSpan = document.createElement("span");
+            colorSpan.className = "colorSpan";
+            titleSpan.className = "titleSpan";
+
+            colorSpan.style.backgroundColor = calendarList[i].backgroundColor;
+            titleSpan.innerText = calendarList[i].title.substring(
+              0,
+              calendarList[i].title.length - 12
+            );
+
+            titleSpan.style.color = calendarList[i].textColor;
+
+            calendarItem.appendChild(colorSpan);
+            calendarItem.appendChild(titleSpan);
+          }
+          calendarItemContainer?.appendChild(calendarItem);
         }
-      }
-
-      const cellDate = new Date(calendarTotalList[i].date);
-      if (!cell?.classList.contains("disabled")) {
-        const calendarItem = document.createElement("p");
-        calendarItem.className = "calendarItem";
-
-        //스케줄
-        if (now <= cellDate) {
-          calendarItem.innerText = calendarTotalList[i].title;
-          calendarItem.style.backgroundColor =
-            calendarTotalList[i].backgroundColor;
-          calendarItem.style.color = calendarTotalList[i].textColor;
-        }
-        //출근부
-        else {
-          const colorSpan = document.createElement("span");
-          const titleSpan = document.createElement("span");
-          colorSpan.className = "colorSpan";
-          titleSpan.className = "titleSpan";
-
-          colorSpan.style.backgroundColor =
-            calendarTotalList[i].backgroundColor;
-          titleSpan.innerText = calendarTotalList[i].title.substring(
-            0,
-            calendarTotalList[i].title.length - 12
-          );
-
-          titleSpan.style.color = calendarTotalList[i].textColor;
-
-          calendarItem.appendChild(colorSpan);
-          calendarItem.appendChild(titleSpan);
-        }
-        calendarItemContainer?.appendChild(calendarItem);
       }
     }
   };
@@ -130,7 +135,7 @@ export const Calendar = ({
 
     GetTotalCalendarApi({
       date,
-      setCalendarTotalList,
+      setCalendarList,
       renderData,
     });
   };
@@ -147,7 +152,7 @@ export const Calendar = ({
 
     GetTotalCalendarApi({
       date,
-      setCalendarTotalList,
+      setCalendarList,
       renderData,
     });
   };
