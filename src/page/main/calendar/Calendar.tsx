@@ -157,7 +157,7 @@ export const Calendar = ({
     setCurrentMonth(subMonths(currentMonth, 1));
 
     GetTotalCalendarApi({
-      date: currentMonth,
+      date: subMonths(currentMonth, 1),
       setCalendarlist,
       setMemoFlaglist,
     });
@@ -167,7 +167,7 @@ export const Calendar = ({
     setCurrentMonth(addMonths(currentMonth, 1));
 
     GetTotalCalendarApi({
-      date: currentMonth,
+      date: addMonths(currentMonth, 1),
       setCalendarlist,
       setMemoFlaglist,
     });
