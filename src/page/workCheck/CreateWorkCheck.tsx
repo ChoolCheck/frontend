@@ -79,7 +79,6 @@ const CreateWorkCheck = ({ defaultDate }: type.createWorkcheckProps) => {
   const [endTime, setEndTime] = useState("");
   const [date, setDate] = useState(defaultDate);
 
-  console.log(date);
   const workcheckForm = { employee, hoursId, date, startTime, endTime };
 
   const onClickCancelOnModal = (e: React.MouseEvent<HTMLButtonElement>) => {

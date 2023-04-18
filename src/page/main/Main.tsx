@@ -72,6 +72,11 @@ const Main = () => {
       (nowDate.getDate() < 10 ? "0" + nowDate.getDate() : nowDate.getDate())
     ).toString();
 
+    setDefaultDate((defaultDate) => {
+      console.log(defaultDate);
+      return date;
+    });
+
     setDefaultDate(() => {
       return date;
     });
@@ -110,7 +115,10 @@ const Main = () => {
 
   const onModalClose = () => {
     setDetailModalOpen(false);
-    setDefaultDate(today);
+    setDefaultDate((defaultDate) => {
+      console.log(defaultDate);
+      return today;
+    });
     document.body.style.overflow = "unset";
   };
 
