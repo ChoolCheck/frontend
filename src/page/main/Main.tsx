@@ -73,13 +73,9 @@ const Main = () => {
     ).toString();
 
     setDefaultDate((defaultDate) => {
-      console.log(defaultDate);
       return date;
     });
-
-    setDefaultDate(() => {
-      return date;
-    });
+    console.log(defaultDate);
 
     GetDetailCalendarApi({
       onModalOpen,
@@ -116,9 +112,10 @@ const Main = () => {
   const onModalClose = () => {
     setDetailModalOpen(false);
     setDefaultDate((defaultDate) => {
-      console.log(defaultDate);
       return today;
     });
+    console.log(defaultDate);
+
     document.body.style.overflow = "unset";
   };
 

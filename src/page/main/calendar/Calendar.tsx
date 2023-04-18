@@ -124,10 +124,18 @@ export const Calendar = ({
 
           //스케줄
           if (now <= cellDate) {
+            const nameSpan = document.createElement("span");
+            const TimeSpan = document.createElement("span");
+            nameSpan.className = "nameSpan";
+            TimeSpan.className = "timeSpan";
+
             calendarItem.innerText = calendarList[i].title;
             calendarItem.style.backgroundColor =
               calendarList[i].backgroundColor;
             calendarItem.style.color = calendarList[i].textColor;
+
+            calendarItem.appendChild(nameSpan);
+            calendarItem.appendChild(TimeSpan);
           }
           //출근부
           else {
