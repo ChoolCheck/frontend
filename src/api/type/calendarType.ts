@@ -20,8 +20,8 @@ export interface getTotalCalendarProps {
     type: "handleCalendarList/SETCALENDARLIST";
     payload: reducerType.calendarListProps[] | undefined;
   };
-
-  renderData: (memoFlagList: calendarType.memoFlagProps[]) => void;
+  renderMemo: (memoFlagList: calendarType.memoFlagProps[]) => void;
+  renderData: () => void;
 }
 
 export interface getDetailCalendarProps {

@@ -158,7 +158,6 @@ const Main = () => {
           calendarDetailScheduleList={calendarDetailScheduleList}
           calendarDetailWorkcheckList={calendarDetailWorkcheckList}
           memo={memo}
-          onModalOpen={onModalOpen}
           onModalClose={onModalClose}
           setSelectedModal={setSelectedModal}
           onMemoClick={onMemoClick}

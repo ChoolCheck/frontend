@@ -9,7 +9,6 @@ const CalendarDetailView = ({
   calendarDetailScheduleList,
   calendarDetailWorkcheckList,
   memo,
-  onModalOpen,
   onModalClose,
   setSelectedModal,
   onMemoClick,

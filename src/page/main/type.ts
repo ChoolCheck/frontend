@@ -37,7 +37,6 @@ export interface calendarDetailViewProps {
   calendarDetailWorkcheckList: calendarDetailType[] | undefined;
   memo: memoProps[] | undefined;
   setSelectedModal: React.Dispatch<React.SetStateAction<string>>;
-  onModalOpen: () => void;
   onModalClose: () => void;
   onMemoClick: (
     item: memoProps
