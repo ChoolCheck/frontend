@@ -35,9 +35,16 @@ export async function CreateMemoApi({
       date: date,
       content: content,
     },
-  }).then((res) => {
-    setWriteModal(false);
-  });
+  })
+    .then((res) => {
+      let month;
+      if (date.substring(5, 6) == "0") month = date.substring(6, 7);
+      else month = date.substring(5, 7);
+      GetMemoFlagApi({ month, setMemoFlaglist });
+    })
+    .then((res) => {
+      setWriteModal(false);
+    });
 }
 
 export async function UpdateMemoApi({
