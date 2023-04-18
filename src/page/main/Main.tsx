@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef } from "react";
+import React, { useState, useCallback } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
@@ -31,8 +31,6 @@ const Main = () => {
     (now.getDate() < 10 ? "0" + now.getDate() : now.getDate())
   ).toString();
 
-  const defaultDate = useRef(today);
-
   const dispatch = useDispatch();
   const writeModalState = useSelector(
     (state: RootState) => state.WriteModalReducer.writeModalState
@@ -50,8 +48,8 @@ const Main = () => {
   );
 
   const [detailModalOpen, setDetailModalOpen] = useState(false);
-
   const [selectedModal, setSelectedModal] = useState<string>("");
+  const [defaultDate, setDefaultDate] = useState(today);
 
   const [calendarDetailScheduleList, setCalendarDetailScheduleList] = useState<
     type.calendarDetailType[] | undefined
@@ -60,19 +58,8 @@ const Main = () => {
   const [calendarDetailWorkcheckList, setCalendarDetailWorkcheckList] =
     useState<type.calendarDetailType[] | undefined>();
 
-  const [memo, setMemo] = useState<
-    {
-      id: number;
-      date: string;
-      content: string;
-    }[]
-  >();
-
-  const [memoDetail, setMemoDetail] = useState<{
-    id: number;
-    date: string;
-    content: string;
-  }>();
+  const [memo, setMemo] = useState<Array<type.memoProps>>();
+  const [memoDetail, setMemoDetail] = useState<type.memoProps>();
 
   const onCalendarClick = (nowDate: Date) => {
     const date = (
@@ -85,7 +72,9 @@ const Main = () => {
       (nowDate.getDate() < 10 ? "0" + nowDate.getDate() : nowDate.getDate())
     ).toString();
 
-    defaultDate.current = date;
+    setDefaultDate(() => {
+      return date;
+    });
 
     GetDetailCalendarApi({
       onModalOpen,
@@ -121,7 +110,7 @@ const Main = () => {
 
   const onModalClose = () => {
     setDetailModalOpen(false);
-    defaultDate.current = today;
+    setDefaultDate(today);
     document.body.style.overflow = "unset";
   };
 
@@ -142,9 +131,7 @@ const Main = () => {
         <>
           {selectedModal == "createworkcheck" && (
             <WriteModal>
-              <CreateWorkCheck
-                defaultDate={defaultDate.current}
-              ></CreateWorkCheck>
+              <CreateWorkCheck defaultDate={defaultDate}></CreateWorkCheck>
             </WriteModal>
           )}
           {selectedModal == "creatememo" && (
