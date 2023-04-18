@@ -75,11 +75,17 @@
         .totalList-li-name {
           width: 120px;
           margin: 0 20px 0 20px;
+          display: inline-block;
+          white-space: nowrap;
+          overflow: hidden;
           text-overflow: ellipsis;
         }
         .totalList-li-hours,
         .totalList-li-totalWorkTime {
           width: 100px;
+          display: inline-block;
+          white-space: nowrap;
+          overflow: hidden;
           text-overflow: ellipsis;
         }
         .totalList-li-name {

@@ -72,11 +72,9 @@ const Main = () => {
       (nowDate.getDate() < 10 ? "0" + nowDate.getDate() : nowDate.getDate())
     ).toString();
 
-    setDefaultDate((defaultDate) => {
-      defaultDate = date;
+    setDefaultDate(() => {
       return date;
     });
-    console.log(defaultDate);
 
     GetDetailCalendarApi({
       onModalOpen,
@@ -112,8 +110,7 @@ const Main = () => {
 
   const onModalClose = () => {
     setDetailModalOpen(false);
-    setDefaultDate((defaultDate) => {
-      defaultDate = today;
+    setDefaultDate(() => {
       return today;
     });
 
