@@ -119,6 +119,8 @@ export async function GetTotalCalendarApi({
         })
         .then((res) => {
           setCalendarlist(tempResultList);
+        })
+        .then((res) => {
           axios({
             method: "GET",
             url: `${config.api}/memo/month?date=${inputStart}`,

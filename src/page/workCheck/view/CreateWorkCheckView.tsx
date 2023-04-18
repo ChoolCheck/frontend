@@ -2,6 +2,7 @@ import * as type from "../type";
 import EmployeeSelect from "../../../components/common/EmployeeSelect";
 
 const CreateWorkCheckView = ({
+  date,
   workTypeList,
   optionList,
   onChangeEmployee,
@@ -9,7 +10,6 @@ const CreateWorkCheckView = ({
   onChangeWorkType,
   onChangeStartTime,
   onChangeEndTime,
-
   onClickCancelOnModal,
   onClickCreate,
 }: type.createWorkCheckViewProps) => {
@@ -26,7 +26,12 @@ const CreateWorkCheckView = ({
         </p>
         <p className="modal-date">
           <span>날짜</span>
-          <input type="date" name="date" onChange={onChangeDate}></input>
+          <input
+            type="date"
+            name="date"
+            value={date}
+            onChange={onChangeDate}
+          ></input>
         </p>
         <p className="modal-worktype">
           <span>근무형태</span>

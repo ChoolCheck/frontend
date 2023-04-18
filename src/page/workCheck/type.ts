@@ -26,13 +26,13 @@ export interface createWorkcheckProps {
 }
 
 export interface createWorkCheckViewProps extends worktypeType.workTypeList {
+  date: string;
   optionList: employeeSelectType.optionObj[];
   onChangeEmployee: (
     newValue: SingleValue<employeeSelectType.optionObj>,
     actionMeta: ActionMeta<employeeSelectType.optionObj>
   ) => void;
   onChangeDate: React.ChangeEventHandler<HTMLInputElement>;
-
   onChangeWorkType: (
     id: number,
     startTime: string,

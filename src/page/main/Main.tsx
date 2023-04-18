@@ -30,21 +30,18 @@ const Main = () => {
     "-" +
     (now.getDate() < 10 ? "0" + now.getDate() : now.getDate())
   ).toString();
-  const dispatch = useDispatch();
 
+  const dispatch = useDispatch();
   const writeModalState = useSelector(
     (state: RootState) => state.WriteModalReducer.writeModalState
   );
-
   const readModalState = useSelector(
     (state: RootState) => state.ReadModalReducer.readModalState
   );
-
   const setWriteModal = useCallback(
     (readModalState: boolean) => dispatch(setWriteModalOpen(readModalState)),
     [dispatch]
   );
-
   const setReadModal = useCallback(
     (readModalState: boolean) => dispatch(setReadModalOpen(readModalState)),
     [dispatch]

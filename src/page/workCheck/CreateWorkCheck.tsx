@@ -25,7 +25,6 @@ const CreateWorkCheck = ({ defaultDate }: type.createWorkcheckProps) => {
     (readModalState: boolean) => dispatch(setWriteModalOpen(readModalState)),
     [dispatch]
   );
-
   const setTotalWorkCheckList = useCallback(
     (totalWorkcheckList: type.workcheckObjProps[] | undefined) =>
       dispatch(setTotalWorkcheckList(totalWorkcheckList)),
@@ -80,6 +79,7 @@ const CreateWorkCheck = ({ defaultDate }: type.createWorkcheckProps) => {
   const [endTime, setEndTime] = useState("");
   const [date, setDate] = useState(defaultDate);
 
+  console.log(date);
   const workcheckForm = { employee, hoursId, date, startTime, endTime };
 
   const onClickCancelOnModal = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -171,6 +171,7 @@ const CreateWorkCheck = ({ defaultDate }: type.createWorkcheckProps) => {
 
   return (
     <CreateWorkCheckView
+      date={date}
       workTypeList={workTypeList}
       optionList={optionList}
       onClickCancelOnModal={onClickCancelOnModal}
