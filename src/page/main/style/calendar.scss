@@ -101,17 +101,20 @@
 
       .col.cell {
         display: block;
-        .text.day {
-          display: flex;
-          justify-content: space-between;
-
+        .text {
           .formattedDate {
             margin: 4px 0 4px 4px;
           }
-          .memoFlag {
-            width: 15px;
-            height: 15px;
-            margin: 4px 4px 4px 0;
+
+          .day {
+            display: flex;
+            justify-content: space-between;
+
+            .memoFlag {
+              width: 15px;
+              height: 15px;
+              margin: 4px 4px 0 0;
+            }
           }
         }
 
@@ -121,10 +124,10 @@
           border-radius: 7px;
           display: flex;
           align-items: center;
-          justify-content: space-between;
+          justify-content: left;
 
           .nameSpan {
-            max-width: 85px;
+            max-width: 90px;
             display: inline-block;
             white-space: nowrap;
             overflow: hidden;
@@ -137,7 +140,9 @@
 
           .colorSpan {
             border-radius: 5px;
-            padding: 2px 9px 2px 9px;
+            width: 5px;
+            height: 10px;
+            padding: 2px 5px;
           }
           .titleSpan {
             width: 140px;
@@ -162,28 +167,32 @@
 }
 
 @include tablet {
-  .nameSpan {
-    max-width: 45px;
-    display: inline-block;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .titleSpan {
-    width: 100px;
-    margin-left: 2px;
+  .calendar {
+    .nameSpan {
+      max-width: 50px;
+      display: inline-block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .titleSpan {
+      width: 100px;
+      margin-left: 2px;
+    }
   }
 }
 @include mobile {
-  .nameSpan {
-    max-width: 45px;
-    display: inline-block;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .titleSpan {
-    width: 100px;
-    margin-left: 2px;
+  .calendar {
+    .nameSpan {
+      max-width: 50px;
+      display: inline-block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .titleSpan {
+      width: 100px;
+      margin-left: 2px;
+    }
   }
 }
