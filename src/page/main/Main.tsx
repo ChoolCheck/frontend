@@ -108,6 +108,11 @@ const Main = () => {
     document.body.style.overflow = "hidden";
   };
 
+  const onModalCloseOpenCreateWorkcheck = () => {
+    setDetailModalOpen(false);
+    document.body.style.overflow = "unset";
+  };
+
   const onModalClose = () => {
     setDetailModalOpen(false);
     setDefaultDate(today);
@@ -148,6 +153,7 @@ const Main = () => {
           calendarDetailWorkcheckList={calendarDetailWorkcheckList}
           memo={memo}
           onModalClose={onModalClose}
+          onModalCloseOpenCreateWorkcheck={onModalCloseOpenCreateWorkcheck}
           setSelectedModal={setSelectedModal}
           onMemoClick={onMemoClick}
         ></CalendarDetailView>

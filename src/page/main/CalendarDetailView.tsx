@@ -10,6 +10,7 @@ const CalendarDetailView = ({
   calendarDetailWorkcheckList,
   memo,
   onModalClose,
+  onModalCloseOpenCreateWorkcheck,
   setSelectedModal,
   onMemoClick,
 }: type.calendarDetailViewProps) => {
@@ -94,7 +95,7 @@ const CalendarDetailView = ({
           onClick={() => {
             setSelectedModal("createworkcheck");
             setWriteModal(true);
-            onModalClose();
+            onModalCloseOpenCreateWorkcheck();
           }}
         >
           출근부 작성
