@@ -20,6 +20,16 @@ import * as type from "./type";
 import "./style/calendar.scss";
 
 const Main = () => {
+  const now = new Date();
+  const today = (
+    now.getFullYear() +
+    "-" +
+    (now.getMonth() + 1 < 10
+      ? "0" + (now.getMonth() + 1)
+      : now.getMonth() + 1) +
+    "-" +
+    (now.getDate() < 10 ? "0" + now.getDate() : now.getDate())
+  ).toString();
   const dispatch = useDispatch();
 
   const writeModalState = useSelector(
@@ -44,9 +54,7 @@ const Main = () => {
 
   const [selectedModal, setSelectedModal] = useState<string>("");
 
-  // const [calendarTotalList, setCalendarTotalList] = useState<
-  //   type.calendarListType[] | undefined
-  // >();
+  const [workcheckDate, setWorkcheckDate] = useState(today);
 
   const [calendarDetailScheduleList, setCalendarDetailScheduleList] = useState<
     type.calendarDetailType[] | undefined
@@ -79,6 +87,8 @@ const Main = () => {
       "-" +
       (nowDate.getDate() < 10 ? "0" + nowDate.getDate() : nowDate.getDate())
     ).toString();
+
+    setWorkcheckDate(date);
 
     GetDetailCalendarApi({
       onModalOpen,
@@ -114,6 +124,7 @@ const Main = () => {
 
   const onModalClose = () => {
     setDetailModalOpen(false);
+    setWorkcheckDate(today);
     document.body.style.overflow = "unset";
   };
 
@@ -134,7 +145,7 @@ const Main = () => {
         <>
           {selectedModal == "createworkcheck" && (
             <WriteModal>
-              <CreateWorkCheck></CreateWorkCheck>
+              <CreateWorkCheck defaultDate={workcheckDate}></CreateWorkCheck>
             </WriteModal>
           )}
           {selectedModal == "creatememo" && (

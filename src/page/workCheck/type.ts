@@ -21,6 +21,10 @@ export interface workcheckHeaderProps {
   endTime: string;
 }
 
+export interface createWorkcheckProps {
+  defaultDate: string;
+}
+
 export interface createWorkCheckViewProps extends worktypeType.workTypeList {
   optionList: employeeSelectType.optionObj[];
   onChangeEmployee: (

@@ -18,7 +18,7 @@ import * as employeeSelectType from "../../commonType/employeeSelectType";
 import CreateWorkCheckView from "./view/CreateWorkCheckView";
 import { ActionMeta, SingleValue } from "react-select";
 
-const CreateWorkCheck = () => {
+const CreateWorkCheck = ({ defaultDate }: type.createWorkcheckProps) => {
   const dispatch = useDispatch();
 
   const setWriteModal = useCallback(
@@ -80,7 +80,7 @@ const CreateWorkCheck = () => {
   const [hoursId, setHoursid] = useState("");
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState(defaultDate);
 
   const workcheckForm = { employee, hoursId, date, startTime, endTime };
 
