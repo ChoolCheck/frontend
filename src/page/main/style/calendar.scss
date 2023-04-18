@@ -101,20 +101,22 @@
 
       .col.cell {
         display: block;
-        .text {
+        .text.not-valid {
           .formattedDate {
             margin: 4px 0 4px 4px;
           }
+        }
 
-          .day {
-            display: flex;
-            justify-content: space-between;
-
-            .memoFlag {
-              width: 15px;
-              height: 15px;
-              margin: 4px 4px 0 0;
-            }
+        .text.day {
+          display: flex;
+          justify-content: space-between;
+          .formattedDate {
+            margin: 4px 0 4px 4px;
+          }
+          .memoFlag {
+            width: 15px;
+            height: 15px;
+            margin: 4px 4px 0 0;
           }
         }
 
