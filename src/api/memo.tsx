@@ -3,12 +3,12 @@ import { config } from "../static/config";
 import * as type from "./type/memoType";
 
 export async function GetMemoFlagApi({
-  month,
+  date,
   setMemoFlaglist,
 }: type.getMemoFlagProps) {
   axios({
     method: "GET",
-    url: `${config.api}/memo/month?date=${month}`,
+    url: `${config.api}/memo/month?date=${date}`,
     headers: {
       "Content-Type": `application/json`,
       Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -37,10 +37,9 @@ export async function CreateMemoApi({
     },
   })
     .then((res) => {
-      let month;
-      if (date.substring(5, 6) == "0") month = date.substring(6, 7);
-      else month = date.substring(5, 7);
-      GetMemoFlagApi({ month, setMemoFlaglist });
+      let inputDate = date.substring(0, 8) + "01";
+
+      GetMemoFlagApi({ date: inputDate, setMemoFlaglist });
     })
     .then((res) => {
       setWriteModal(false);

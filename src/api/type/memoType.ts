@@ -53,7 +53,7 @@ export interface getDetailMemoProps {
 }
 
 export interface getMemoFlagProps {
-  month: string;
+  date: string;
 
   setMemoFlaglist: (memoFlagList: reducerType.memoFlagListProps[]) => {
     type: "handleMemoFlagList/SETMEMOLIST";

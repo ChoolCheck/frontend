@@ -119,7 +119,7 @@ export async function GetTotalCalendarApi({
         })
         .then((res) => {
           setCalendarlist(tempResultList);
-          GetMemoFlagApi({ month: inputStart, setMemoFlaglist });
+          GetMemoFlagApi({ date: inputStart, setMemoFlaglist });
         });
     });
 }
