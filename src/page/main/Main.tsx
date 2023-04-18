@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
@@ -30,7 +30,6 @@ const Main = () => {
     "-" +
     (now.getDate() < 10 ? "0" + now.getDate() : now.getDate())
   ).toString();
-
   const dispatch = useDispatch();
   const writeModalState = useSelector(
     (state: RootState) => state.WriteModalReducer.writeModalState
@@ -50,6 +49,9 @@ const Main = () => {
   const [detailModalOpen, setDetailModalOpen] = useState(false);
   const [selectedModal, setSelectedModal] = useState<string>("");
   const [defaultDate, setDefaultDate] = useState(today);
+  useEffect(() => {
+    console.log(defaultDate);
+  }, [defaultDate]);
 
   const [calendarDetailScheduleList, setCalendarDetailScheduleList] = useState<
     type.calendarDetailType[] | undefined
