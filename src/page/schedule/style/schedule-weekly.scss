@@ -22,12 +22,15 @@
       .card-ul {
         font-size: 16px;
         .card-li {
+          display: flex;
           cursor: pointer;
           align-items: center;
           padding: 10px;
           .card-li-name {
-            width: 50px;
+            width: 60px;
             display: inline-block;
+            white-space: nowrap;
+            overflow: hidden;
             text-overflow: ellipsis;
             padding: 5px;
             border-radius: 10px;

@@ -56,13 +56,7 @@ export function handleWorklist(
 ) {
   for (let i = 0; i < workcheckList.length; i++) {
     const data: type.calendarListType = {
-      title: (
-        workcheckList[i].name +
-        " " +
-        workcheckList[i].startTime.substring(0, 5) +
-        "-" +
-        workcheckList[i].endTime.substring(0, 5)
-      ).toString(),
+      title: workcheckList[i].name.toString(),
       date: workcheckList[i].date,
       textColor: "#727272",
       backgroundColor: `#${

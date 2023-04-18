@@ -73,6 +73,7 @@ const Main = () => {
     ).toString();
 
     setDefaultDate((defaultDate) => {
+      defaultDate = date;
       return date;
     });
     console.log(defaultDate);
@@ -112,9 +113,9 @@ const Main = () => {
   const onModalClose = () => {
     setDetailModalOpen(false);
     setDefaultDate((defaultDate) => {
+      defaultDate = today;
       return today;
     });
-    console.log(defaultDate);
 
     document.body.style.overflow = "unset";
   };

@@ -125,17 +125,25 @@ export const Calendar = ({
           //스케줄
           if (now <= cellDate) {
             const nameSpan = document.createElement("span");
-            const TimeSpan = document.createElement("span");
+            const timeSpan = document.createElement("span");
             nameSpan.className = "nameSpan";
-            TimeSpan.className = "timeSpan";
+            timeSpan.className = "timeSpan";
 
-            calendarItem.innerText = calendarList[i].title;
+            nameSpan.innerText = calendarList[i].title.substring(
+              0,
+              calendarList[i].title.length - 12
+            );
+            timeSpan.innerText = calendarList[i].title.substring(
+              calendarList[i].title.length - 11,
+              calendarList[i].title.length
+            );
+
             calendarItem.style.backgroundColor =
               calendarList[i].backgroundColor;
             calendarItem.style.color = calendarList[i].textColor;
 
             calendarItem.appendChild(nameSpan);
-            calendarItem.appendChild(TimeSpan);
+            calendarItem.appendChild(timeSpan);
           }
           //출근부
           else {
@@ -145,11 +153,7 @@ export const Calendar = ({
             titleSpan.className = "titleSpan";
 
             colorSpan.style.backgroundColor = calendarList[i].backgroundColor;
-            titleSpan.innerText = calendarList[i].title.substring(
-              0,
-              calendarList[i].title.length - 12
-            );
-
+            titleSpan.innerText = calendarList[i].title;
             titleSpan.style.color = calendarList[i].textColor;
 
             calendarItem.appendChild(colorSpan);
