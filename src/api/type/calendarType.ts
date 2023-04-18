@@ -19,7 +19,7 @@ export interface getTotalCalendarProps {
   setCalendarList: (
     calendarList: reducerType.calendarListProps[] | undefined
   ) => {
-    type: "handleCalendarlist/SETCALENDARLIST";
+    type: "handleCalendarList/SETCALENDARLIST";
     payload: reducerType.calendarListProps[] | undefined;
   };
 
