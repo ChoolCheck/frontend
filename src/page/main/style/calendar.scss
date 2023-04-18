@@ -119,6 +119,9 @@
           margin: 0 0 3px 0;
           padding: 5px 0 5px 5px;
           border-radius: 7px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
 
           .nameSpan {
             max-width: 85px;
@@ -137,6 +140,7 @@
             padding: 2px 9px 2px 9px;
           }
           .titleSpan {
+            width: 140px;
             margin-left: 2px;
           }
         }
@@ -165,6 +169,10 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
+  .titleSpan {
+    width: 100px;
+    margin-left: 2px;
+  }
 }
 @include mobile {
   .nameSpan {
@@ -173,5 +181,9 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+  .titleSpan {
+    width: 100px;
+    margin-left: 2px;
   }
 }
