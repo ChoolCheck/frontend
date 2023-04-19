@@ -11,12 +11,12 @@
     align-items: center;
 
     .WorkCheck-Header {
-      padding: 0 10px 0 10px;
       font-weight: 600;
     }
-    .WorkCheck-getResultButton,
-    .getFileButton {
-      padding: 10px 15px 10px 15px;
+    .getResultBtn,
+    .getFileBtn,
+    .createWorkcheckBtn {
+      padding: 10px 13px 10px 13px;
       border-radius: 20px;
       background-color: rgb(238, 238, 238);
     }

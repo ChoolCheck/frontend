@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useCallback } from "react";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setReadModalOpen } from "../../Redux/Actions/handleReadModal";
 import { setTotalWorkcheckList } from "../../Redux/Actions/handleTotalWorkcheckList";
-import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/Reducers/rootReducer";
 import { setTotalElements } from "../../Redux/Actions/handleTotalElement";
 import { setTotalPages } from "../../Redux/Actions/handleTotalPages";
@@ -31,7 +30,16 @@ import * as employeeType from "../../commonType/employee";
 
 const WorkCheck = () => {
   const dispatch = useDispatch();
-
+  const now = new Date();
+  const today = (
+    now.getFullYear() +
+    "-" +
+    (now.getMonth() + 1 < 10
+      ? "0" + (now.getMonth() + 1)
+      : now.getMonth() + 1) +
+    "-" +
+    (now.getDate() < 10 ? "0" + now.getDate() : now.getDate())
+  ).toString();
   const writeModalState = useSelector(
     (state: RootState) => state.WriteModalReducer.writeModalState
   );
@@ -222,11 +230,11 @@ const WorkCheck = () => {
 
   return (
     <div className="WorkCheck-top-container">
-      {/* {writeModalState && (
+      {writeModalState && (
         <WriteModal>
-          <CreateWorkCheck defaultDate={}></CreateWorkCheck>
+          <CreateWorkCheck defaultDate={today}></CreateWorkCheck>
         </WriteModal>
-      )} */}
+      )}
 
       {readModalState && (
         <ReadModal>

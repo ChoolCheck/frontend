@@ -35,8 +35,8 @@ const ExcelDownload = ({ startTime, endTime }: type.ExcelDownloadProps) => {
 
   return (
     <div>
-      <button className="getFileButton" onClick={getWorkcheckData}>
-        출근부 파일 추출
+      <button className="getFileBtn" onClick={getWorkcheckData}>
+        엑셀 다운로드
       </button>
       <CSVLink
         data={excelData}

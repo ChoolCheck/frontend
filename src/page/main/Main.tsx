@@ -38,7 +38,7 @@ const Main = () => {
     (state: RootState) => state.ReadModalReducer.readModalState
   );
   const setWriteModal = useCallback(
-    (readModalState: boolean) => dispatch(setWriteModalOpen(readModalState)),
+    (writeModalState: boolean) => dispatch(setWriteModalOpen(writeModalState)),
     [dispatch]
   );
   const setReadModal = useCallback(

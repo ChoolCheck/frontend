@@ -57,9 +57,13 @@ $opacity: 0.8;
     }
   }
 }
-
+// $breakpoint-mobile: 335px;
+// $breakpoint-tablet: 758px;
+// $breakpoint-desktop: 1024px;
 @include tablet {
   .Navigation-top-container {
+    // min-width: 758px;
+
     .Navigation-menu {
       min-width: 550px;
       margin-right: 30px;
@@ -69,6 +73,7 @@ $opacity: 0.8;
 
 @include mobile {
   .Navigation-top-container {
+    // min-width: 335px;
     .Navigation-menu {
       min-width: 650px;
       margin-right: 50px;
