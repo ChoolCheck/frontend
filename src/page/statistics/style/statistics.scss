@@ -1,9 +1,12 @@
 @import "../../../static/style/reset.scss";
 @import "../../../static/style/mixin";
 
+@include desktop {
+  .Statistics-top-container {
+    width: 70%;
+  }
+}
 .Statistics-top-container {
-  // width: 70%;
-  // min-width: 890px;
   margin: 0 auto;
   .Statistics-top-Header {
     text-align: center;

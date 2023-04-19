@@ -11,7 +11,7 @@
   .WorkCheckView-right-container {
     font-size: 18px;
     min-height: 400px;
-    max-height: 720px;
+    max-height: 850px;
     background-color: rgb(238, 238, 238);
     border-radius: 20px;
     text-align: center;
@@ -54,9 +54,6 @@
 
   .WorkCheckView-right-container {
     margin-left: auto;
-    max-height: 720px;
-    // min-width: 750px;
-
     margin: 10px;
     overflow-y: auto;
 
@@ -145,7 +142,7 @@
       }
     }
     .WorkCheckView-right-container {
-      max-height: 750px;
+      max-height: 850px;
     }
   }
 }
@@ -195,7 +192,7 @@
       }
     }
     .WorkCheckView-right-container {
-      max-height: 750px;
+      max-height: 850px;
     }
   }
 }

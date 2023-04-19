@@ -3,8 +3,6 @@
 
 .Manage-top-container {
   z-index: 100;
-  width: 60%;
-  min-width: 850px;
   margin: 0 auto;
   .Manage-Header-container {
     display: flex;
@@ -16,7 +14,7 @@
 
       .addButton {
         font-size: 16px;
-        padding: 13px 25px 13px 25px;
+        padding: 13px 25px;
         border-radius: 20px;
         background-color: rgb(238, 238, 238);
       }
@@ -24,16 +22,22 @@
   }
 }
 
-@include tablet {
+@include desktop {
   .Manage-top-container {
     width: 60%;
-    min-width: 650px;
+    min-width: 850px;
   }
 }
+// @include tablet {
+//   .Manage-top-container {
+//     width: 60%;
+//     min-width: 650px;
+//   }
+// }
 
-@include mobile {
-  .Manage-top-container {
-    width: 60%;
-    min-width: 600px;
-  }
-}
+// @include mobile {
+//   .Manage-top-container {
+//     width: 60%;
+//     min-width: 600px;
+//   }
+// }
