@@ -18,63 +18,46 @@
       padding: 0 20px 0 20px;
       color: rgb(167, 167, 167);
     }
-    .prevButton {
-    }
-    .dateToShow {
-    }
-    .nextButton {
-    }
   }
   .Statistics-mid-Header {
     display: flex;
+    margin-right: auto;
+    align-items: center;
 
-    .Statistics-LeftHeader-container {
+    form {
       display: flex;
-      margin-right: auto;
-      margin-left: 30px;
+      justify-content: center;
       align-items: center;
-
-      .Statistics-LeftHeader {
-        padding: 0 10px 0 10px;
-        font-weight: 600;
-      }
-      form {
-        .Statistics-startInput,
-        .Statistics-endInput,
-        .Statistics-getResultButton {
-          margin: 0 10px 0 10px;
-        }
-      }
-      .Statistics-getResultButton {
-        padding: 10px 15px 10px 15px;
-        border-radius: 20px;
-        background-color: rgb(238, 238, 238);
+      .startInput,
+      .endInput {
+        margin: 0 3px;
       }
     }
-
-    .Statistics-RightHeader-container {
-      margin-left: auto;
-      margin-right: 30px;
-
-      .get-thismonth-statistics {
-        padding: 10px 15px 10px 15px;
-        border-radius: 20px;
-        background-color: rgb(238, 238, 238);
-      }
+    .getResultBtn,
+    .getThisMonthBtn {
+      padding: 10px 12px;
+      border-radius: 20px;
+      background-color: rgb(238, 238, 238);
+    }
+    .getResultBtn {
+      min-width: 55px;
+    }
+    .getThisMonthBtn {
+      min-width: 139px;
     }
   }
 }
 
-@include tablet {
-  .Statistics-top-container {
-    width: 70%;
-    min-width: 650px;
-  }
-}
+// @include tablet {
+//   .Statistics-top-container {
+//     width: 70%;
+//     min-width: 650px;
+//   }
+// }
 
-@include mobile {
-  .Statistics-top-container {
-    width: 70%;
-    min-width: 650px;
-  }
-}
+// @include mobile {
+//   .Statistics-top-container {
+//     width: 70%;
+//     min-width: 650px;
+//   }
+// }

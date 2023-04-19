@@ -18,42 +18,41 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      .WorkCheck-startInput,
-      .WorkCheck-endInput,
-      .WorkCheck-getResultButton {
-        margin: 0 10px 0 10px;
+      .startInput,
+      .endInput {
+        margin: 0 3px;
       }
     }
     .getResultBtn,
     .getFileBtn,
     .createWorkcheckBtn {
-      padding: 10px 13px 10px 13px;
+      padding: 10px 12px;
       border-radius: 20px;
       background-color: rgb(238, 238, 238);
       margin: 0 5px;
     }
     .getResultBtn {
-      min-width: 60px;
+      min-width: 55px;
     }
     .getFileBtn {
       min-width: 120px;
     }
     .createWorkcheckBtn {
-      min-width: 110px;
+      min-width: 100px;
     }
   }
 }
 
-@include tablet {
-  .WorkCheck-top-container {
-    width: 70%;
-    min-width: 650px;
-  }
-}
+// @include tablet {
+//   .WorkCheck-top-container {
+//     width: 70%;
+//     min-width: 650px;
+//   }
+// }
 
-@include mobile {
-  .WorkCheck-top-container {
-    width: 65%;
-    min-width: 500px;
-  }
-}
+// @include mobile {
+//   .WorkCheck-top-container {
+//     width: 65%;
+//     min-width: 500px;
+//   }
+// }

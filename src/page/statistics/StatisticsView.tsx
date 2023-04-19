@@ -47,41 +47,42 @@ const StatisticsView = ({
         <span>근무 통계</span>
       </h2>
       <div className="Statistics-mid-Header">
-        <div className="Statistics-LeftHeader-container">
-          <span className="Statistics-LeftHeader">기간 내 조회</span>
-          <form>
-            <input
-              className="Statistics-startInput"
-              onChange={onChageStartInput}
-              type="date"
-              required
-              aria-required="true"
-            ></input>
-            -
-            <input
-              className="Statistics-endInput"
-              onChange={onChageEndInput}
-              type="date"
-              required
-              aria-required="true"
-            ></input>
-            <button
-              type="button"
-              className="Statistics-getResultButton"
-              onClick={onGetResultClick}
-            >
-              조회
-            </button>
-          </form>
-        </div>
-        <div className="Statistics-RightHeader-container">
+        {/* <span className="Statistics-LeftHeader">기간 내 조회</span> */}
+        <form>
+          <input
+            className="startInput"
+            onChange={onChageStartInput}
+            type="date"
+            required
+            aria-required="true"
+          ></input>
+          -
+          <input
+            className="endInput"
+            onChange={onChageEndInput}
+            type="date"
+            required
+            aria-required="true"
+          ></input>
+          <button
+            type="button"
+            className="getResultBtn"
+            onClick={onGetResultClick}
+          >
+            조회
+          </button>
+        </form>
+        <button className="getThisMonthBtn" onClick={onGetThismonthClick}>
+          이번달 근무 조회
+        </button>
+        {/* <div className="Statistics-RightHeader-container">
           <button
             className="get-thismonth-statistics"
             onClick={onGetThismonthClick}
           >
             이번달 근무 통계 조회
           </button>
-        </div>
+        </div> */}
       </div>
     </div>
   );
