@@ -4,11 +4,19 @@ $color-none: #000000;
 $opacity-zero: 0.3;
 
 @include desktop {
-  width: 700px;
+  .CalendarDetailView-container {
+    width: 60%;
+  }
 }
 @include tablet {
+  .CalendarDetailView-container {
+    width: 80%;
+  }
 }
 @include mobile {
+  .CalendarDetailView-container {
+    width: 80%;
+  }
 }
 .CalendarDetailView-top-container {
   z-index: 200;
