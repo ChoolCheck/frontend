@@ -46,8 +46,10 @@
   }
 }
 @include desktop {
-  width: 80%;
-  margin: 0 auto;
+  .ScheduleWeeklyView-top-container {
+    width: 80%;
+    margin: 0 auto;
+  }
 }
 
 @include tablet {

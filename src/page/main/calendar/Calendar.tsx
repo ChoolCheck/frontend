@@ -122,8 +122,22 @@ export const Calendar = ({
           const calendarItem = document.createElement("p");
           calendarItem.className = "calendarItem";
 
+          //출근부
+          if (now > cellDate) {
+            const colorSpan = document.createElement("span");
+            const titleSpan = document.createElement("span");
+            colorSpan.className = "colorSpan";
+            titleSpan.className = "titleSpan";
+
+            colorSpan.style.backgroundColor = calendarList[i].backgroundColor;
+            titleSpan.innerText = calendarList[i].title;
+            titleSpan.style.color = calendarList[i].textColor;
+
+            calendarItem.appendChild(colorSpan);
+            calendarItem.appendChild(titleSpan);
+          }
           //스케줄
-          if (now <= cellDate) {
+          else if (now <= cellDate) {
             const nameSpan = document.createElement("span");
             const timeSpan = document.createElement("span");
             nameSpan.className = "nameSpan";
@@ -144,20 +158,6 @@ export const Calendar = ({
 
             calendarItem.appendChild(nameSpan);
             calendarItem.appendChild(timeSpan);
-          }
-          //출근부
-          else if (now > cellDate) {
-            const colorSpan = document.createElement("span");
-            const titleSpan = document.createElement("span");
-            colorSpan.className = "colorSpan";
-            titleSpan.className = "titleSpan";
-
-            colorSpan.style.backgroundColor = calendarList[i].backgroundColor;
-            titleSpan.innerText = calendarList[i].title;
-            titleSpan.style.color = calendarList[i].textColor;
-
-            calendarItem.appendChild(colorSpan);
-            calendarItem.appendChild(titleSpan);
           }
           calendarItemContainer?.appendChild(calendarItem);
         }
