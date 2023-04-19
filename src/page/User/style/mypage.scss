@@ -1,9 +1,13 @@
 @import "../../../static/style/reset.scss";
 @import "../../../static/style/mixin";
 
+@include desktop {
+  .mypage-top-container {
+    width: 70%;
+    min-width: 890px;
+  }
+}
 .mypage-top-container {
-  width: 70%;
-  min-width: 890px;
   margin: 0 auto;
 }
 
@@ -14,9 +18,9 @@
   }
 }
 
-@include mobile {
-  .mypage-top-container {
-    width: 65%;
-    min-width: 500px;
-  }
-}
+// @include mobile {
+//   .mypage-top-container {
+//     width: 65%;
+//     min-width: 500px;
+//   }
+// }

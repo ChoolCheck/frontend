@@ -2,8 +2,6 @@
 @import "../../../static/style/mixin";
 
 .checkToSendEmail-top-container {
-  width: 70%;
-  min-width: 890px;
   margin: 0 auto;
 
   .checkToSendEmail-content {
@@ -11,18 +9,16 @@
     display: block;
 
     height: 450px;
+    margin: 10px;
 
     font-size: 20px;
     background-color: rgb(238, 238, 238);
     border-radius: 20px;
-    margin: 10px;
-
     text-align: center;
 
     .checkToSendEmail-message {
-      width: 60%;
+      // width: 60%;
       margin: 0 auto;
-
       display: flex;
       align-items: center;
       justify-content: center;
@@ -40,16 +36,21 @@
   }
 }
 
-@include tablet {
+@include desktop {
   .checkToSendEmail-top-container {
     width: 70%;
-    min-width: 650px;
   }
 }
 
-@include mobile {
+@include tablet {
   .checkToSendEmail-top-container {
-    width: 65%;
-    min-width: 500px;
+    width: 70%;
   }
 }
+
+// @include mobile {
+//   .checkToSendEmail-top-container {
+//     width: 65%;
+//     min-width: 500px;
+//   }
+// }
