@@ -5,12 +5,12 @@ $opacity-zero: 0.3;
 
 @include desktop {
   .CalendarDetailView-container {
-    width: 60%;
+    width: 50%;
   }
 }
 @include tablet {
   .CalendarDetailView-container {
-    width: 80%;
+    width: 75%;
   }
 }
 @include mobile {
@@ -54,10 +54,7 @@ $opacity-zero: 0.3;
 
       .li-name {
         display: inline-block;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        min-width: 80px;
+        width: 150px;
         cursor: default;
       }
 
@@ -80,13 +77,13 @@ $opacity-zero: 0.3;
           }
 
           .li-totalWorkTime {
-            width: 65px;
+            width: 70px;
           }
           .li-workType {
-            width: 36px;
+            width: 40px;
           }
           .li-time {
-            width: 111px;
+            width: 120px;
           }
 
           .seeMore-button {
@@ -126,7 +123,7 @@ $opacity-zero: 0.3;
             width: 36px;
           }
           .li-time {
-            width: 111px;
+            width: 120px;
           }
 
           .seeMore-button {
