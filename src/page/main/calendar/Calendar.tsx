@@ -23,8 +23,7 @@ export const Calendar = ({
 }: type.calendarProps) => {
   const [currentMonth, setCurrentMonth] = useState<Date>(new Date());
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
-
-  const now = new Date();
+  const [now, setNow] = useState<Date>(new Date());
 
   const dispatch = useDispatch();
 
@@ -60,6 +59,7 @@ export const Calendar = ({
 
   useEffect(() => {
     renderData();
+    setNow(new Date());
   }, [calendarList]);
 
   useEffect(() => {

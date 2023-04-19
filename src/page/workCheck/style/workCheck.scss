@@ -12,6 +12,17 @@
 
     .WorkCheck-Header {
       font-weight: 600;
+      margin-right: 5px;
+    }
+    form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .WorkCheck-startInput,
+      .WorkCheck-endInput,
+      .WorkCheck-getResultButton {
+        margin: 0 10px 0 10px;
+      }
     }
     .getResultBtn,
     .getFileBtn,
@@ -19,14 +30,16 @@
       padding: 10px 13px 10px 13px;
       border-radius: 20px;
       background-color: rgb(238, 238, 238);
+      margin: 0 5px;
     }
-
-    form {
-      .WorkCheck-startInput,
-      .WorkCheck-endInput,
-      .WorkCheck-getResultButton {
-        margin: 0 10px 0 10px;
-      }
+    .getResultBtn {
+      min-width: 60px;
+    }
+    .getFileBtn {
+      min-width: 120px;
+    }
+    .createWorkcheckBtn {
+      min-width: 110px;
     }
   }
 }
