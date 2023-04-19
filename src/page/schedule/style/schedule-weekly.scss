@@ -45,11 +45,15 @@
     }
   }
 }
+@include desktop {
+  width: 80%;
+  margin: 0 auto;
+}
 
 @include tablet {
   .ScheduleWeeklyView-top-container {
-    width: 70%;
-    min-width: 650px;
+    margin: 0 auto;
+
     .card-container {
       grid-template-columns: 1fr 1fr 1fr;
       .card {
@@ -61,8 +65,7 @@
 
 @include mobile {
   .ScheduleWeeklyView-top-container {
-    width: 60%;
-    min-width: 500px;
+    margin: 0 auto;
     .card-container {
       grid-template-columns: 1fr 1fr;
       .card {

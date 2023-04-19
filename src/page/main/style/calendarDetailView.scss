@@ -3,6 +3,13 @@
 $color-none: #000000;
 $opacity-zero: 0.3;
 
+@include desktop {
+  width: 700px;
+}
+@include tablet {
+}
+@include mobile {
+}
 .CalendarDetailView-top-container {
   z-index: 200;
   position: fixed;
@@ -21,12 +28,11 @@ $opacity-zero: 0.3;
     left: 50%;
     transform: translate(-50%, -50%);
 
-    width: 700px;
     height: 450px;
     background-color: rgb(255, 255, 255);
     margin: 0 auto;
     border-radius: 30px;
-    padding: 40px 30px 40px 30px;
+    padding: 40px 30px;
 
     .close-button {
       float: right;
@@ -38,6 +44,15 @@ $opacity-zero: 0.3;
       overflow-y: auto;
       height: 230px;
 
+      .li-name {
+        display: inline-block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        min-width: 80px;
+        cursor: default;
+      }
+
       .checkedWorkList-container {
         text-align: left;
         padding: 0 20px 20px 20px;
@@ -47,27 +62,25 @@ $opacity-zero: 0.3;
             justify-content: space-between;
             display: flex;
             align-items: center;
-            height: 45px;
+            height: 40px;
           }
 
           .li-color {
-            margin: 0 20px 0 20px;
-            padding: 4px 5px 4px 5px;
+            margin: 0 10px;
+            padding: 2px 5px;
             border-radius: 10px;
           }
 
-          .li-name,
-          .li-totalWorkTime,
+          .li-totalWorkTime {
+            width: 65px;
+          }
           .li-workType {
-            width: 100px;
+            width: 36px;
+          }
+          .li-time {
+            width: 111px;
           }
 
-          .li-time {
-            margin-right: 20px;
-            width: 130px;
-          }
-          .li-totalWorkTime {
-          }
           .seeMore-button {
             width: 30px;
             height: 30px;
@@ -77,7 +90,7 @@ $opacity-zero: 0.3;
 
       .scheduleList-container {
         text-align: left;
-        margin: 0 20px 0px 20px;
+        margin: 0 20px;
         padding-top: 20px;
         border-top: 1px solid rgb(208, 208, 208);
 
@@ -87,22 +100,25 @@ $opacity-zero: 0.3;
             justify-content: left;
             display: flex;
             align-items: center;
-            height: 45px;
-          }
-          .li-color {
-            margin: 0 20px 0 20px;
-            padding: 4px 5px 4px 5px;
-            border-radius: 10px;
-          }
-          .li-name,
-          .li-workType {
-            margin-right: 20px;
-            width: 100px;
+            height: 40px;
           }
 
+          .li-color,
+          .li-name,
+          .li-workType,
           .li-time {
             margin-right: 20px;
-            width: 130px;
+          }
+          .li-color {
+            padding: 2px 5px;
+            border-radius: 10px;
+          }
+
+          .li-workType {
+            width: 36px;
+          }
+          .li-time {
+            width: 111px;
           }
 
           .seeMore-button {
