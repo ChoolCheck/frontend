@@ -2,8 +2,8 @@
 @import "../../../static/style/mixin";
 
 .Statistics-top-container {
-  width: 70%;
-  min-width: 890px;
+  // width: 70%;
+  // min-width: 890px;
   margin: 0 auto;
   .Statistics-top-Header {
     text-align: center;
@@ -21,7 +21,7 @@
   }
   .Statistics-mid-Header {
     display: flex;
-    margin-right: auto;
+    justify-content: center;
     align-items: center;
 
     form {
@@ -36,6 +36,7 @@
     .getResultBtn,
     .getThisMonthBtn {
       padding: 10px 12px;
+      margin: 0 3px;
       border-radius: 20px;
       background-color: rgb(238, 238, 238);
     }

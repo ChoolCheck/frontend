@@ -1,9 +1,14 @@
 @import "../../../static/style/reset.scss";
 @import "../../../static/style/mixin";
 
+@include desktop {
+  .Schedule-top-container {
+    width: 70%;
+    min-width: 890px;
+  }
+}
+
 .Schedule-top-container {
-  width: 70%;
-  min-width: 890px;
   margin: 0 auto;
 
   .Schedule-Header-container {
@@ -17,19 +22,5 @@
     .add-Schedule-button {
       margin-right: 3vw;
     }
-  }
-}
-
-@include tablet {
-  .Schedule-top-container {
-    width: 70%;
-    min-width: 650px;
-  }
-}
-
-@include mobile {
-  .Schedule-top-container {
-    width: 60%;
-    min-width: 500px;
   }
 }

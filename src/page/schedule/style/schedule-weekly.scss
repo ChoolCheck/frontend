@@ -48,6 +48,8 @@
 
 @include tablet {
   .ScheduleWeeklyView-top-container {
+    width: 70%;
+    min-width: 650px;
     .card-container {
       grid-template-columns: 1fr 1fr 1fr;
       .card {
@@ -59,6 +61,8 @@
 
 @include mobile {
   .ScheduleWeeklyView-top-container {
+    width: 60%;
+    min-width: 500px;
     .card-container {
       grid-template-columns: 1fr 1fr;
       .card {
@@ -67,10 +71,10 @@
         margin: 20px;
 
         .card-title {
-          font-size: 25px;
+          font-size: 22px;
         }
         .card-ul {
-          font-size: 20px;
+          font-size: 18px;
         }
       }
     }

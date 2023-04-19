@@ -75,14 +75,6 @@ const StatisticsView = ({
         <button className="getThisMonthBtn" onClick={onGetThismonthClick}>
           이번달 근무 조회
         </button>
-        {/* <div className="Statistics-RightHeader-container">
-          <button
-            className="get-thismonth-statistics"
-            onClick={onGetThismonthClick}
-          >
-            이번달 근무 통계 조회
-          </button>
-        </div> */}
       </div>
     </div>
   );
