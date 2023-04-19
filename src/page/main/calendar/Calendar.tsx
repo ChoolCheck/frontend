@@ -146,7 +146,7 @@ export const Calendar = ({
             calendarItem.appendChild(timeSpan);
           }
           //출근부
-          else {
+          else if (now > cellDate) {
             const colorSpan = document.createElement("span");
             const titleSpan = document.createElement("span");
             colorSpan.className = "colorSpan";

@@ -39,10 +39,11 @@
       margin-bottom: 10px;
 
       button {
-        padding: 10px 25px 10px 25px;
+        padding: 10px 15px;
         border-radius: 20px;
         background-color: rgb(238, 238, 238);
-        margin-right: 10px;
+        margin-right: 1vw;
+        min-width: 110px;
       }
     }
   }

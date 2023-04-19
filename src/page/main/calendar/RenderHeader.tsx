@@ -24,10 +24,10 @@ const RenderHeader = ({
           className="createWorkcheckButton"
           onClick={onCreateWorkcheckClick}
         >
-          출근부 작성하기
+          출근부 작성
         </button>
         <button className="createMemoButton" onClick={onCreateMemoClick}>
-          메모 작성하기
+          메모 작성
         </button>
       </div>
     </div>
