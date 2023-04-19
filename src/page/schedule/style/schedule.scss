@@ -2,9 +2,10 @@
 @import "../../../static/style/mixin";
 
 @include desktop {
-  .Schedule-top-container {
+  .Schedule-Header-container {
     width: 70%;
     min-width: 890px;
+    margin: 0 auto;
   }
 }
 
@@ -18,7 +19,6 @@
     .Schedule-Header-right {
       margin-left: auto;
     }
-
     .add-Schedule-button {
       margin-right: 3vw;
     }
