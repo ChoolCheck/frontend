@@ -23,7 +23,6 @@ export const Calendar = ({
 }: type.calendarProps) => {
   const [currentMonth, setCurrentMonth] = useState<Date>(new Date());
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
-  const [now, setNow] = useState<Date>(new Date());
 
   const dispatch = useDispatch();
 
@@ -59,7 +58,6 @@ export const Calendar = ({
 
   useEffect(() => {
     renderData();
-    setNow(new Date());
   }, [calendarList]);
 
   useEffect(() => {
@@ -118,26 +116,20 @@ export const Calendar = ({
         }
 
         const cellDate = new Date(calendarList[i].date);
+        const now = new Date();
+        let isToday = false;
+        if (
+          now.getFullYear() == cellDate.getFullYear() &&
+          now.getMonth() == cellDate.getMonth() &&
+          now.getDate() == cellDate.getDate()
+        )
+          isToday = true;
+
         if (!cell?.classList.contains("disabled")) {
           const calendarItem = document.createElement("p");
           calendarItem.className = "calendarItem";
 
-          //출근부
-          if (now > cellDate) {
-            const colorSpan = document.createElement("span");
-            const titleSpan = document.createElement("span");
-            colorSpan.className = "colorSpan";
-            titleSpan.className = "titleSpan";
-
-            colorSpan.style.backgroundColor = calendarList[i].backgroundColor;
-            titleSpan.innerText = calendarList[i].title;
-            titleSpan.style.color = calendarList[i].textColor;
-
-            calendarItem.appendChild(colorSpan);
-            calendarItem.appendChild(titleSpan);
-          }
-          //스케줄
-          else if (now <= cellDate) {
+          if (now < cellDate || isToday) {
             const nameSpan = document.createElement("span");
             const timeSpan = document.createElement("span");
             nameSpan.className = "nameSpan";
@@ -159,6 +151,22 @@ export const Calendar = ({
             calendarItem.appendChild(nameSpan);
             calendarItem.appendChild(timeSpan);
           }
+          //출근부
+          else if (now > cellDate) {
+            const colorSpan = document.createElement("span");
+            const titleSpan = document.createElement("span");
+            colorSpan.className = "colorSpan";
+            titleSpan.className = "titleSpan";
+
+            colorSpan.style.backgroundColor = calendarList[i].backgroundColor;
+            titleSpan.innerText = calendarList[i].title;
+            titleSpan.style.color = calendarList[i].textColor;
+
+            calendarItem.appendChild(colorSpan);
+            calendarItem.appendChild(titleSpan);
+          }
+          //스케줄
+
           calendarItemContainer?.appendChild(calendarItem);
         }
       }
