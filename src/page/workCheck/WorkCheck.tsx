@@ -232,7 +232,10 @@ const WorkCheck = () => {
     <div className="WorkCheck-top-container">
       {writeModalState && (
         <WriteModal>
-          <CreateWorkCheck defaultDate={today}></CreateWorkCheck>
+          <CreateWorkCheck
+            defaultDate={today}
+            setWorkcheckToShow={setWorkcheckToShow}
+          ></CreateWorkCheck>
         </WriteModal>
       )}
 

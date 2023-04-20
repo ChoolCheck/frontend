@@ -8,6 +8,7 @@ import { setPaginationFocus } from "../../Redux/Actions/handlePaginationFocus";
 
 import { integratedManageRender } from "../../api/manage";
 import { CreateWorkcheckApi } from "../../api/workcheck";
+import { GetTotalWorkcheckApi } from "../../api/workcheck";
 
 import * as type from "./type";
 import * as employeeType from "../../commonType/employee";
@@ -18,7 +19,10 @@ import * as employeeSelectType from "../../commonType/employeeSelectType";
 import CreateWorkCheckView from "./view/CreateWorkCheckView";
 import { ActionMeta, SingleValue } from "react-select";
 
-const CreateWorkCheck = ({ defaultDate }: type.createWorkcheckProps) => {
+const CreateWorkCheck = ({
+  defaultDate,
+  setWorkcheckToShow,
+}: type.createWorkcheckProps) => {
   const dispatch = useDispatch();
 
   const setWriteModal = useCallback(
@@ -153,7 +157,6 @@ const CreateWorkCheck = ({ defaultDate }: type.createWorkcheckProps) => {
     } else if (endTime == "") {
       window.alert("종료 시간을 선택해주세요.");
     } else {
-      setPaginationfocus("total");
       CreateWorkcheckApi({
         employeeId,
         date,
@@ -165,6 +168,15 @@ const CreateWorkCheck = ({ defaultDate }: type.createWorkcheckProps) => {
         setTotalPage,
         setTotalElement,
       });
+      if (setWorkcheckToShow) {
+        setPaginationfocus("total");
+        GetTotalWorkcheckApi({
+          setTotalWorkCheckList,
+          setTotalElement,
+          setTotalPage,
+          setWorkcheckToShow,
+        });
+      }
     }
   };
 

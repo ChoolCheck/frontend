@@ -23,6 +23,9 @@ export interface workcheckHeaderProps {
 
 export interface createWorkcheckProps {
   defaultDate: string;
+  setWorkcheckToShow?: (
+    value: React.SetStateAction<workcheckObjProps[] | undefined>
+  ) => void;
 }
 
 export interface createWorkCheckViewProps extends worktypeType.workTypeList {
