@@ -64,20 +64,23 @@ body {
 
   .email-input-container {
     width: 380px;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
     .inputEmail {
-      width: 65%;
+      width: 70%;
       padding: 13px;
       margin-top: 10px;
       border-radius: 20px;
       margin-right: 5px;
     }
     button {
+      background-color: rgb(255, 255, 255);
+      border-radius: 20px;
       cursor: pointer;
       font-size: 13px;
-      width: 35%;
-      border-radius: 15px;
-      background-color: rgb(255, 255, 255);
-      padding: 10px 15px;
+      padding: 15px 10px;
+      width: 25%;
     }
   }
 
