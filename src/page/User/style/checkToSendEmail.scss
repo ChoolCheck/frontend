@@ -17,7 +17,6 @@
     text-align: center;
 
     .checkToSendEmail-message {
-      // width: 60%;
       margin: 0 auto;
       display: flex;
       align-items: center;
@@ -47,10 +46,3 @@
     width: 70%;
   }
 }
-
-// @include mobile {
-//   .checkToSendEmail-top-container {
-//     width: 65%;
-//     min-width: 500px;
-//   }
-// }

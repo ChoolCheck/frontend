@@ -18,7 +18,7 @@
     .nextButton {
       background-color: rgb(255, 255, 255);
       font-size: 20px;
-      padding: 0 20px 0 20px;
+      padding: 0 20;
       color: rgb(167, 167, 167);
     }
   }
@@ -51,17 +51,3 @@
     }
   }
 }
-
-// @include tablet {
-//   .Statistics-top-container {
-//     width: 70%;
-//     min-width: 650px;
-//   }
-// }
-
-// @include mobile {
-//   .Statistics-top-container {
-//     width: 70%;
-//     min-width: 650px;
-//   }
-// }

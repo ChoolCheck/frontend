@@ -33,7 +33,7 @@
       .employee-list-li {
         height: 50px;
         .employee-list-li-color {
-          padding: 3px 5px 3px 5px;
+          padding: 3px 5px;
           border-radius: 8px;
         }
 
@@ -45,7 +45,7 @@
     .employee-totalView {
       font-size: 16px;
       font-weight: 700;
-      padding: 10px 20px 10px 20px;
+      padding: 10px 20px;
       margin: 30px 0 30px 0;
       border-radius: 20px;
       background-color: #d2d2d2;
@@ -71,7 +71,7 @@
 
         .totalList-li-name {
           width: 120px;
-          margin: 0 20px 0 20px;
+          margin: 0 20px;
           display: inline-block;
           white-space: nowrap;
           overflow: hidden;
@@ -108,11 +108,11 @@
       margin: 0 auto;
       margin: 10px;
       h2 {
-        padding: 40px 0 40px 0;
+        padding: 40px 0;
         font-size: 20px;
       }
       .employee-list-ul {
-        padding: 0 50px 0 50px;
+        padding: 0 50px;
         height: 100px;
         margin: 0 auto;
 
@@ -126,7 +126,7 @@
           align-items: center;
 
           .employee-list-li-color {
-            padding: 0 5px 0 5px;
+            padding: 0 5px;
             border-radius: 8px;
             height: 25px;
           }
@@ -175,7 +175,7 @@
           align-items: center;
 
           .employee-list-li-color {
-            padding: 0 5px 0 5px;
+            padding: 0 5px;
             border-radius: 8px;
             height: 25px;
           }
