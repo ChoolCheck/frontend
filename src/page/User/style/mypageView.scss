@@ -66,7 +66,7 @@
 }
 
 @include desktop {
-  .mypageview-content {
+  .mypageview.content {
     width: 70%;
     text-align: left;
   }
@@ -74,7 +74,7 @@
 @include tablet {
   .mypageview-top-container {
     margin: 10px;
-    .mypageview-content {
+    .mypageview.content {
       width: 70%;
       text-align: left;
     }
@@ -91,7 +91,7 @@
     font-size: 16px;
     margin: 10px;
   }
-  .mypageview-content {
+  .mypageview.content {
     width: 70%;
     text-align: left;
   }
