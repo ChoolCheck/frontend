@@ -157,6 +157,8 @@ const CreateWorkCheck = ({
     } else if (endTime == "") {
       window.alert("종료 시간을 선택해주세요.");
     } else {
+      setPaginationfocus("total");
+
       CreateWorkcheckApi({
         employeeId,
         date,
@@ -167,16 +169,8 @@ const CreateWorkCheck = ({
         setTotalWorkCheckList,
         setTotalPage,
         setTotalElement,
+        setWorkcheckToShow,
       });
-      if (setWorkcheckToShow) {
-        setPaginationfocus("total");
-        GetTotalWorkcheckApi({
-          setTotalWorkCheckList,
-          setTotalElement,
-          setTotalPage,
-          setWorkcheckToShow,
-        });
-      }
     }
   };
 

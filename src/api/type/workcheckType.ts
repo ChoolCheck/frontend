@@ -30,6 +30,10 @@ export interface createWorkcheckProps extends paginationType.paginationProps {
     type: "handleTotalWorkcheckList/SETTOTALWORKCHECKLIST";
     payload: reducerType.workcheckObjProps[] | undefined;
   };
+
+  setWorkcheckToShow?:
+    | ((value: React.SetStateAction<workcheckObjProps[] | undefined>) => void)
+    | undefined;
 }
 
 export interface updateWorkcheckProps extends paginationType.paginationProps {
