@@ -50,6 +50,7 @@ const UpdatePassword = () => {
     else if (password == "") window.alert("비밀번호를 입력해주세요.");
     else UpdatePasswordApi({ password, mailToken, navigate });
   };
+
   return (
     <div className="updatepassword-top-container">
       <UpdatePasswordView
