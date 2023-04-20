@@ -22,20 +22,20 @@ const SignupView = ({
 }: type.signupProps) => {
   return (
     <div className="Signup-Top-Container">
-      <div className="inputContainer">
-        <h1 className="TopHeader">Choolcheck</h1>
-        <h2 className="Header">회원가입</h2>
-        <div className="Email">
-          <p className="EmailHeader">이메일</p>
-          <p className="email-input-container">
+      <div className="signup inputContainer">
+        <h1 className="signup TopHeader">Choolcheck</h1>
+        <h2 className="signup Header">회원가입</h2>
+        <div className="signup Email">
+          <p className="signup EmailHeader">이메일</p>
+          <p className="signup email-input-container">
             <input
-              className="inputEmail"
+              className="signup inputEmail"
               placeholder="이메일 입력해주세요"
               onChange={onChangeEmail}
               name="email"
               type="email"
             />
-            <button id="emailCheckBtn" onClick={onEmailCheck}>
+            <button id="signup emailCheckBtn" onClick={onEmailCheck}>
               이메일인증
             </button>
           </p>
@@ -45,11 +45,11 @@ const SignupView = ({
           </p>
         </div>
         {emailCertificated && (
-          <div className="code">
-            <p className="codeHeader">인증번호</p>
+          <div className="signup code">
+            <p className="signup codeHeader">인증번호</p>
             <p>
               <input
-                className="inputCode"
+                className="signup inputCode"
                 placeholder="이메일 인증번호를 입력해주세요"
                 onChange={onChangeCode}
                 name="code"
@@ -58,10 +58,10 @@ const SignupView = ({
             </p>
           </div>
         )}
-        <div className="Password">
-          <p className="PasswordHeader">비밀번호</p>
+        <div className="signup Password">
+          <p className="signup PasswordHeader">비밀번호</p>
           <input
-            className="inputPassword"
+            className="signup inputPassword"
             placeholder="비밀번호를 입력해주세요(8자리 이상)"
             onChange={onChangePassword}
             name="password"
@@ -71,10 +71,10 @@ const SignupView = ({
             {passwordMessage}
           </p>
         </div>
-        <div className="PasswordCheck">
-          <p className="PasswordCheckHeader">비밀번호 확인</p>
+        <div className="signup PasswordCheck">
+          <p className="signup PasswordCheckHeader">비밀번호 확인</p>
           <input
-            className="inputPasswordCheck"
+            className="signup inputPasswordCheck"
             placeholder="비밀번호 확인"
             onChange={onChangePasswordCheck}
             name="password"
@@ -84,10 +84,10 @@ const SignupView = ({
             {passwordCheckMessage}
           </p>
         </div>
-        <div className="StoreName">
-          <p className="StoreNameHeader">가게명</p>
+        <div className="signup StoreName">
+          <p className="signup StoreNameHeader">가게명</p>
           <input
-            className="inputStoreName"
+            className="signup inputStoreName"
             placeholder="가게명을 입력해주세요"
             onChange={onChangeStoreName}
             name="storeName"
@@ -98,10 +98,18 @@ const SignupView = ({
           </p>
         </div>
 
-        <button type="button" className="signupButton" onClick={onSubmitForm}>
+        <button
+          type="button"
+          className="signup signupButton"
+          onClick={onSubmitForm}
+        >
           완료
         </button>
-        <button type="button" className="cancleButton" onClick={onCancleSignup}>
+        <button
+          type="button"
+          className="signup cancleButton"
+          onClick={onCancleSignup}
+        >
           취소
         </button>
       </div>

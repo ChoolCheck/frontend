@@ -7,7 +7,7 @@ body {
   position: relative;
   z-index: 200;
 
-  .inputContainer {
+  .signup.inputContainer {
     text-align: center;
     position: fixed;
     top: 50%;
@@ -15,27 +15,28 @@ body {
     transform: translate(-50%, -50%);
 
     width: 500px;
+    height: 600px;
     padding-bottom: 20px;
     border-radius: 20px;
     background-color: rgb(238, 238, 238);
     font-family: "nanum-regular";
   }
-  .TopHeader {
+  .signup.TopHeader {
     font-size: 25px;
     padding: 50px 0 40px 0;
     font-family: "nanum-extraBold";
   }
-  .Header {
+  .signup.Header {
     text-align: left;
     font-size: 20px;
     margin: 0 0 30px 60px;
   }
 
-  .Email,
-  .code,
-  .Password,
-  .PasswordCheck,
-  .StoreName {
+  .signup.Email,
+  .signup.code,
+  .signup.Password,
+  .signup.PasswordCheck,
+  .signup.StoreName {
     height: 90px;
     width: 70%;
     margin: 0 auto;
@@ -43,31 +44,31 @@ body {
     align-items: center;
   }
 
-  .EmailHeader,
-  .codeHeader,
-  .PasswordHeader,
-  .PasswordCheckHeader,
-  .StoreNameHeader {
+  .signup.EmailHeader,
+  .signup.codeHeader,
+  .signup.PasswordHeader,
+  .signup.PasswordCheckHeader,
+  .signup.StoreNameHeader {
     font-size: 14px;
     text-align: left;
   }
 
-  .inputCode,
-  .inputPassword,
-  .inputPasswordCheck,
-  .inputStoreName {
+  .signup.inputCode,
+  .signup.inputPassword,
+  .signup.inputPasswordCheck,
+  .signup.inputStoreName {
     width: 350px;
     padding: 13px;
     margin-top: 10px;
     border-radius: 20px;
   }
 
-  .email-input-container {
+  .signup.email-input-container {
     width: 380px;
     display: flex;
     justify-content: center;
     align-items: baseline;
-    .inputEmail {
+    .signup.inputEmail {
       width: 70%;
       padding: 13px;
       margin-top: 10px;
@@ -92,8 +93,8 @@ body {
   .message-error {
     width: 100%;
   }
-  .cancleButton,
-  .signupButton {
+  .signup.cancleButton,
+  .signup.signupButton {
     float: right;
     width: 70px;
     margin-top: 10px 0;
@@ -102,10 +103,10 @@ body {
     border-radius: 15px;
   }
 
-  .cancleButton {
+  .signup.cancleButton {
     margin-right: 20px;
   }
-  .signupButton {
+  .signup.signupButton {
     margin-right: 40px;
   }
 }
