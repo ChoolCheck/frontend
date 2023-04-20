@@ -7,7 +7,7 @@ body {
   position: relative;
   z-index: 200;
 
-  .Signup-inputContainer {
+  .inputContainer {
     text-align: center;
     position: fixed;
     top: 50%;
@@ -15,28 +15,27 @@ body {
     transform: translate(-50%, -50%);
 
     width: 500px;
-    // min-height: 600px;
     padding-bottom: 20px;
     border-radius: 20px;
     background-color: rgb(238, 238, 238);
     font-family: "nanum-regular";
   }
-  .Signup-TopHeader {
+  .TopHeader {
     font-size: 25px;
     padding: 50px 0 40px 0;
     font-family: "nanum-extraBold";
   }
-  .Signup-Header {
+  .Header {
     text-align: left;
     font-size: 20px;
     margin: 0 0 30px 60px;
   }
 
-  .Signup-Email,
-  .Signup-code,
-  .Signup-Password,
-  .Signup-PasswordCheck,
-  .Signup-StoreName {
+  .Email,
+  .code,
+  .Password,
+  .PasswordCheck,
+  .StoreName {
     height: 90px;
     width: 70%;
     margin: 0 auto;
@@ -44,19 +43,19 @@ body {
     align-items: center;
   }
 
-  .Signup-EmailHeader,
-  .Signup-codeHeader,
-  .Signup-PasswordHeader,
-  .Signup-PasswordCheckHeader,
-  .Signup-StoreNameHeader {
+  .EmailHeader,
+  .codeHeader,
+  .PasswordHeader,
+  .PasswordCheckHeader,
+  .StoreNameHeader {
     font-size: 14px;
     text-align: left;
   }
 
-  .Signup-inputCode,
-  .Signup-inputPassword,
-  .Signup-inputPasswordCheck,
-  .Signup-inputStoreName {
+  .inputCode,
+  .inputPassword,
+  .inputPasswordCheck,
+  .inputStoreName {
     width: 350px;
     padding: 13px;
     margin-top: 10px;
@@ -65,46 +64,45 @@ body {
 
   .email-input-container {
     width: 380px;
-    .Signup-inputEmail {
+    .inputEmail {
       width: 65%;
       padding: 13px;
       margin-top: 10px;
       border-radius: 20px;
       margin-right: 5px;
     }
-    span {
+    button {
       cursor: pointer;
       font-size: 13px;
       width: 35%;
       border-radius: 15px;
       background-color: rgb(255, 255, 255);
-      padding: 10px 15px 10px 15px;
+      padding: 10px 15px;
     }
   }
 
-  .message-success {
-    padding: 3px;
-    font-size: 13px;
-  }
+  .message-success,
   .message-error {
     padding: 3px;
     font-size: 12px;
+  }
+  .message-error {
     width: 100%;
   }
-  .Signup-cancleButton,
-  .Signup-signupButton {
+  .cancleButton,
+  .signupButton {
     float: right;
     width: 70px;
-    margin-top: 10px 0 10px 0;
+    margin-top: 10px 0;
     padding: 10px;
     background-color: rgb(255, 255, 255);
     border-radius: 15px;
   }
 
-  .Signup-cancleButton {
+  .cancleButton {
     margin-right: 20px;
   }
-  .Signup-signupButton {
+  .signupButton {
     margin-right: 40px;
   }
 }

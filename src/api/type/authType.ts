@@ -8,6 +8,11 @@ export interface apiLoginProps extends navType.navigateProps {
 export interface emailProps {
   setEmailCertificated: React.Dispatch<React.SetStateAction<boolean>>;
   email: string;
+  btn: React.BaseSyntheticEvent<
+    MouseEvent,
+    EventTarget & HTMLButtonElement,
+    EventTarget
+  >;
 }
 
 export interface apiSignupProps extends navType.navigateProps {

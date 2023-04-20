@@ -17,5 +17,5 @@ export interface signupProps {
   onChangePasswordCheck: React.ChangeEventHandler<HTMLInputElement>;
   onCancleSignup: React.MouseEventHandler<HTMLButtonElement>;
   onSubmitForm: React.MouseEventHandler<HTMLButtonElement>;
-  onEmailCheck: () => void;
+  onEmailCheck: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }

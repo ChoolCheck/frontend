@@ -59,6 +59,7 @@ export async function SignupApi({
 export async function CertificateEmailApi({
   email,
   setEmailCertificated,
+  btn,
 }: type.emailProps) {
   await axios({
     method: "POST",
@@ -78,6 +79,8 @@ export async function CertificateEmailApi({
     })
     .catch((err) => {
       window.alert("인증 메일 전송에 실패하였습니다.");
+      btn.currentTarget.disabled = true;
+      btn.currentTarget.style.color = "black";
       setEmailCertificated(false);
     });
 }
