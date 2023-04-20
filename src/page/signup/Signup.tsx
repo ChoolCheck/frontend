@@ -104,7 +104,7 @@ const Signup = () => {
     if (email == "") window.alert("이메일을 입력해주세요");
     else if (isEmail == false) window.alert("이메일 형식을 확인해주세요");
     else {
-      e.currentTarget.disabled = false;
+      e.currentTarget.disabled = true;
       e.currentTarget.style.color = "darkgrey";
       CertificateEmailApi({
         email,

@@ -4,58 +4,57 @@ body {
   background-color: rgb(157, 157, 157);
 }
 .Login-Top-Container {
-}
+  .login.inputContainer {
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
-.inputContainer {
-  text-align: center;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+    width: 400px;
+    height: 450px;
+    border-radius: 20px;
+    background-color: rgb(238, 238, 238);
+    p {
+      display: flex;
+      height: 70px;
+      margin: 0 auto;
+      justify-content: center;
+      align-items: center;
+    }
+    .login.Header {
+      font-size: 25px;
+      padding: 60px 0 50px 0;
+      font-family: "nanum-extraBold";
+    }
 
-  width: 400px;
-  height: 450px;
-  border-radius: 20px;
-  background-color: rgb(238, 238, 238);
-}
-.Login-Header {
-  font-size: 25px;
-  padding: 60px 0 50px 0;
-  font-family: "nanum-extraBold";
-}
-.inputContainer > p {
-  display: flex;
-  height: 70px;
-  margin: 0 auto;
-  justify-content: center;
-  align-items: center;
-}
+    .login.EmailHeader,
+    .login.PasswordHeader {
+      font-size: 30px;
+      margin: 20px 0;
+    }
 
-.EmailHeader,
-.PasswordHeader {
-  font-size: 30px;
-  margin: 20px 0 20px 0;
-}
+    .login.inputEmail,
+    .login.inputPassword {
+      width: 250px;
+      padding: 15px;
+      border-radius: 20px;
+    }
 
-.inputEmail,
-.inputPassword {
-  width: 250px;
-  padding: 15px;
-  border-radius: 20px;
-}
+    .loginButton,
+    .signupButton {
+      width: 220px;
+      padding: 10px;
+      background-color: rgb(255, 255, 255);
+      border-radius: 15px;
+    }
 
-.loginButton,
-.signupButton {
-  width: 220px;
-  padding: 10px;
-  background-color: rgb(255, 255, 255);
-  border-radius: 15px;
-}
+    .loginButton {
+      margin-top: 30px;
+    }
 
-.loginButton {
-  margin-top: 30px;
-}
-
-.signupButton {
-  margin-top: 10px;
+    .signupButton {
+      margin-top: 10px;
+    }
+  }
 }

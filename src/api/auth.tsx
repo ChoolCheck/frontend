@@ -79,7 +79,7 @@ export async function CertificateEmailApi({
     })
     .catch((err) => {
       window.alert("인증 메일 전송에 실패하였습니다.");
-      btn.currentTarget.disabled = true;
+      btn.currentTarget.disabled = false;
       btn.currentTarget.style.color = "black";
       setEmailCertificated(false);
     });

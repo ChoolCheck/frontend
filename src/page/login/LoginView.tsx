@@ -12,7 +12,7 @@ const LoginView = ({
   return (
     <div className="Login-Top-Container">
       <div className="login inputContainer">
-        <h1 className="Login-Header">Choolcheck</h1>
+        <h1 className="login Header">Choolcheck</h1>
         <p>
           <span className="login EmailHeader">💻</span>
           <input
