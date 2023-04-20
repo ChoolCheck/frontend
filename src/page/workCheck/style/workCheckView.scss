@@ -103,7 +103,6 @@
     display: block;
 
     .WorkCheckView-left-container {
-      // min-width: 750px;
       min-height: 300px;
       max-height: 300px;
       margin: 0 auto;
@@ -133,7 +132,7 @@
           }
           .employee-list-li-name {
             padding: 10px;
-            width: 80px;
+            max-width: 100px;
           }
         }
       }
@@ -153,17 +152,16 @@
     display: block;
 
     .WorkCheckView-left-container {
-      // min-width: 750px;
       min-height: 300px;
       max-height: 300px;
       margin: 0 auto;
       margin: 10px;
       h2 {
-        padding: 40px 0 40px 0;
+        padding: 40px 0;
         font-size: 20px;
       }
       .employee-list-ul {
-        padding: 0 50px 0 50px;
+        padding: 0 50px;
         height: 100px;
         margin: 0 auto;
 
@@ -183,7 +181,7 @@
           }
           .employee-list-li-name {
             padding: 10px;
-            width: 80px;
+            max-width: 100px;
           }
         }
       }

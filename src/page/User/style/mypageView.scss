@@ -16,10 +16,9 @@
 
   .mypageview-header {
     text-align: left;
-    height: 100px;
     align-items: center;
     display: flex;
-    padding-left: 70px;
+    padding: 50px 0 30px 70px;
 
     font-size: 22px;
     font-weight: 600;
@@ -41,7 +40,7 @@
       .joindate-title {
         font-weight: 600;
         font-family: "nanum-bold";
-        padding: 0 30px;
+        padding: 0 1vw;
         min-width: 60px;
       }
       .email-content,
@@ -59,7 +58,7 @@
   }
   .button-container {
     text-align: right;
-    margin-right: 60px;
+    margin-right: 5vw;
     button {
       margin-left: 20px;
     }
@@ -79,15 +78,25 @@
       width: 70%;
       text-align: left;
     }
+    .button-container {
+      button {
+        margin-left: 20px;
+      }
+    }
   }
 }
 
 @include mobile {
   .mypageview-top-container {
+    font-size: 16px;
     margin: 10px;
   }
   .mypageview-content {
     width: 70%;
-    text-align: center;
+    text-align: left;
+  }
+  .button-container {
+    button {
+    }
   }
 }
