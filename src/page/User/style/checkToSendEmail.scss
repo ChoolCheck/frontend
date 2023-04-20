@@ -4,7 +4,7 @@
 .checkToSendEmail-top-container {
   margin: 0 auto;
 
-  .checkToSendEmail-content {
+  .checkToSendEmail.content {
     position: relative;
     display: block;
 
@@ -16,7 +16,7 @@
     border-radius: 20px;
     text-align: center;
 
-    .checkToSendEmail-message {
+    .checkToSendEmail.message {
       margin: 0 auto;
       display: flex;
       align-items: center;
