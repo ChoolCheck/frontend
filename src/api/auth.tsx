@@ -52,7 +52,6 @@ export async function SignupApi({
     })
     .catch((err) => {
       window.alert("회원가입에 실패했습니다.");
-      console.log(err);
     });
 }
 

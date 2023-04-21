@@ -2,10 +2,9 @@ import React, { useCallback } from "react";
 import * as type from "./type";
 
 import { DeleteMemoApi } from "../../api/memo";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setWriteModalOpen } from "../../Redux/Actions/handleWriteModal";
 import { setReadModalOpen } from "../../Redux/Actions/handleReadModal";
-import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/Reducers/rootReducer";
 
 import WriteModal from "../../components/modal/WriteModal";

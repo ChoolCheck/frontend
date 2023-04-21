@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useNavigate, Outlet } from "react-router-dom";
-import "./publiclayout.scss";
 
 const PublicLayout = () => {
   const navigate = useNavigate();

@@ -18,7 +18,7 @@ $opacity: 0.8;
   display: flex;
   align-items: center;
 
-  .Navigation-logo {
+  .Navigation.logo {
     color: white;
     background-color: rgba($color-none, $opacity-zero);
     font-size: 30px;
@@ -26,11 +26,7 @@ $opacity: 0.8;
     margin-left: 20px;
   }
 
-  .usermodal-container {
-    position: absolute;
-    right: 10px;
-  }
-  .Navigation-menu {
+  .Navigation.menu {
     font-family: "nanum-regular";
 
     display: flex;
@@ -52,37 +48,33 @@ $opacity: 0.8;
       margin: 0 10px;
       width: 35px;
     }
-  }
-}
-// $breakpoint-mobile: 335px;
-// $breakpoint-tablet: 758px;
-// $breakpoint-desktop: 1024px;
-@include tablet {
-  .Navigation-top-container {
-    .Navigation-logo {
-      font-size: 25px;
-    }
-    .Navigation-menu {
+    .usermodal-container {
+      position: absolute;
+      right: 10px;
     }
   }
 }
 
+@include tablet {
+  .Navigation.logo {
+    font-size: 25px;
+  }
+}
+
 @include mobile {
-  .Navigation-top-container {
-    .Navigation-logo {
-      font-size: 23px;
+  .Navigation.logo {
+    font-size: 23px;
+  }
+  .Navigation.menu {
+    button {
+      font-size: 18px;
+      margin: 0;
+      padding: 5px;
     }
-    .Navigation-menu {
-      button {
-        font-size: 18px;
-        margin: 0;
-        padding: 5px;
-      }
-      .userIcon {
-        margin: 5px;
-        padding: 5px;
-        width: 28px;
-      }
+    .userIcon {
+      margin: 5px;
+      padding: 5px;
+      width: 28px;
     }
   }
 }

@@ -21,13 +21,13 @@ const Navigation = () => {
     return (
       <div className="Navigation-top-container">
         <button
-          className="Navigation-logo"
+          className="Navigation logo"
           onClick={() => navigate("/calendar")}
         >
           Choolcheck✔
         </button>
 
-        <div className="Navigation-menu">
+        <div className="Navigation menu">
           <button
             onClick={() => {
               navigate("/schedule");

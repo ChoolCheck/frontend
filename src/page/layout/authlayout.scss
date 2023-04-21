@@ -2,17 +2,14 @@
 @import "../../static/style/mixin";
 
 .AuthLayout-container {
-  padding: 50px 0 50px 0;
+  padding: 50px 0;
   margin: 0 auto;
   min-width: 1023px;
 }
-// $breakpoint-mobile: 335px;
-// $breakpoint-tablet: 758px;
-// $breakpoint-desktop: 1024px;
 
 @include tablet {
   .AuthLayout-container {
-    padding: 50px 0 50px 0;
+    padding: 50px 0;
     margin: 0 auto;
     min-width: 758px;
   }
@@ -20,7 +17,7 @@
 
 @include mobile {
   .AuthLayout-container {
-    padding: 50px 0 50px 0;
+    padding: 50px 0;
     margin: 0 auto;
     min-width: 335px;
   }

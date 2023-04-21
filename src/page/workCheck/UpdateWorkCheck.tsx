@@ -107,13 +107,8 @@ const UpdateWorkCheck = ({
       color: "gray",
       isDisabled: true,
     });
-    console.log("employeeId : " + employeeId);
     employeeList?.map((item, i) => {
       if (Number(employeeId) == item.id) setDefaultValueIndex(i + 1);
-
-      console.log({
-        item: item.id + " " + item.name + " " + item.color,
-      });
 
       list.push({
         label: item.name,

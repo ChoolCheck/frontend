@@ -11,7 +11,7 @@ $opacity-usermodal: 0.8;
     background-color: rgba($color-none, $opacity-zero);
   }
   width: 130px;
-  padding: 5px 10px 5px 10px;
+  padding: 5px 10px;
   border-radius: 10px;
   background-color: rgba($color-usermodal, $opacity-usermodal);
   color: rgb(84, 84, 84);
@@ -28,7 +28,7 @@ $opacity-usermodal: 0.8;
     .userInfo,
     .logout {
       cursor: pointer;
-      padding: 10px 0 10px 0;
+      padding: 10px 0;
     }
   }
 }

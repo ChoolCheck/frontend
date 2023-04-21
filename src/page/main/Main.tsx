@@ -49,9 +49,6 @@ const Main = () => {
   const [detailModalOpen, setDetailModalOpen] = useState(false);
   const [selectedModal, setSelectedModal] = useState<string>("");
   const [defaultDate, setDefaultDate] = useState(today);
-  useEffect(() => {
-    console.log(defaultDate);
-  }, [defaultDate]);
 
   const [calendarDetailScheduleList, setCalendarDetailScheduleList] = useState<
     type.calendarDetailType[] | undefined
