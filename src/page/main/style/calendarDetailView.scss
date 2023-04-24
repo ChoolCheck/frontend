@@ -9,6 +9,9 @@ $opacity-zero: 0.3;
   }
   .CalendarDetailView-container {
     width: 50%;
+    .li-name {
+      width: 150px;
+    }
   }
 }
 @include tablet {
@@ -17,6 +20,9 @@ $opacity-zero: 0.3;
   }
   .CalendarDetailView-container {
     width: 75%;
+    .li-name {
+      width: 90px;
+    }
   }
 }
 @include mobile {
@@ -28,6 +34,12 @@ $opacity-zero: 0.3;
     .list-top-container {
       .checkedWorkList-container {
         .ul {
+          .li-name {
+            min-width: 50px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+          }
           .li-time {
             min-width: 45px;
           }
@@ -76,7 +88,6 @@ $opacity-zero: 0.3;
 
       .li-name {
         display: inline-block;
-        width: 150px;
         cursor: default;
       }
 
