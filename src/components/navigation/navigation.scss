@@ -50,7 +50,7 @@ $opacity: 0.8;
   }
 }
 
-@include deskop {
+@include desktop {
   .Navigation.logo {
     font-size: 30px;
     padding: 10px;
@@ -72,6 +72,18 @@ $opacity: 0.8;
 @include tablet {
   .Navigation.logo {
     font-size: 25px;
+  }
+  .Navigation.menu {
+    button {
+      font-size: 20px;
+      padding: 10px;
+      margin: 0 10px;
+    }
+    .userIcon {
+      padding: 10px;
+      margin: 0 10px;
+      width: 35px;
+    }
   }
 }
 
