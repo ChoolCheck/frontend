@@ -31,25 +31,21 @@ $opacity-zero: 0.3;
   }
   .CalendarDetailView-container {
     width: 90%;
-    .list-top-container {
-      .checkedWorkList-container {
-        .ul {
-          .li-name {
-            min-width: 50px;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            overflow: hidden;
-          }
-          .li-time {
-            min-width: 45px;
-          }
-          .li-workType {
-            min-width: 27px;
-          }
-          .li-totalWorkTime {
-            min-width: 48px;
-          }
-        }
+    .ul {
+      .li-name {
+        min-width: 50px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+      .li-time {
+        min-width: 45px;
+      }
+      .li-workType {
+        min-width: 27px;
+      }
+      .li-totalWorkTime {
+        min-width: 48px;
       }
     }
   }
@@ -71,7 +67,6 @@ $opacity-zero: 0.3;
     left: 50%;
     transform: translate(-50%, -50%);
 
-    height: 450px;
     background-color: rgb(255, 255, 255);
     margin: 0 auto;
     border-radius: 30px;
@@ -181,7 +176,7 @@ $opacity-zero: 0.3;
       overflow-y: auto;
       height: 90px;
 
-      margin: 20px 40px;
+      margin: 0vw 1vw;
       padding: 20px;
       border-top: 1px solid rgb(208, 208, 208);
 
