@@ -8,7 +8,7 @@ $opacity-zero: 0.3;
     font-size: 18px;
   }
   .CalendarDetailView-container {
-    width: 50%;
+    width: 60%;
     .li-name {
       width: 150px;
     }
@@ -106,6 +106,7 @@ $opacity-zero: 0.3;
           .li-colorname {
             display: flex;
             justify-content: left;
+            padding-bottom: 10px;
           }
 
           .li-color {
@@ -146,6 +147,10 @@ $opacity-zero: 0.3;
             height: 40px;
           }
 
+          .li-color,
+          .li-name {
+            margin-right: 10px;
+          }
           .li-color,
           .li-name,
           .li-workType,
