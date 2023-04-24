@@ -8,6 +8,7 @@ $opacity-zero: 0.3;
     font-size: 18px;
   }
   .CalendarDetailView-container {
+    height: 460px;
     width: 60%;
     .li-name {
       width: 150px;
@@ -30,7 +31,7 @@ $opacity-zero: 0.3;
     font-size: 14px;
   }
   .CalendarDetailView-container {
-    width: 90%;
+    width: 80%;
     .ul {
       .li-name {
         min-width: 50px;
@@ -66,7 +67,6 @@ $opacity-zero: 0.3;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
     background-color: rgb(255, 255, 255);
     margin: 0 auto;
     border-radius: 30px;
@@ -93,6 +93,7 @@ $opacity-zero: 0.3;
         .header {
           display: flex;
           justify-content: space-between;
+          padding-bottom: 2vw;
         }
         .ul {
           margin-top: 10px;
@@ -106,7 +107,6 @@ $opacity-zero: 0.3;
           .li-colorname {
             display: flex;
             justify-content: left;
-            padding-bottom: 10px;
           }
 
           .li-color {
@@ -151,15 +151,13 @@ $opacity-zero: 0.3;
           .li-name {
             margin-right: 10px;
           }
-          .li-color,
-          .li-name,
-          .li-workType,
-          .li-time {
-            margin-right: 20px;
-          }
           .li-color {
             padding: 2px 5px;
             border-radius: 10px;
+          }
+          .li-workType,
+          .li-time {
+            margin-right: 20px;
           }
 
           .li-workType {
@@ -181,7 +179,7 @@ $opacity-zero: 0.3;
       overflow-y: auto;
       height: 90px;
 
-      margin: 0vw 1vw;
+      margin: 0 1vw;
       padding: 20px;
       border-top: 1px solid rgb(208, 208, 208);
 
