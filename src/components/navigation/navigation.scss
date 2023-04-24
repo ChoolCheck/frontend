@@ -21,14 +21,12 @@ $opacity: 0.8;
   .Navigation.logo {
     color: white;
     background-color: rgba($color-none, $opacity-zero);
-    font-size: 30px;
-    padding: 10px;
+
     margin-left: 20px;
   }
 
   .Navigation.menu {
     font-family: "nanum-regular";
-
     display: flex;
     justify-content: end;
     align-items: center;
@@ -39,6 +37,26 @@ $opacity: 0.8;
     button {
       color: white;
       background-color: rgba($color-none, $opacity-zero);
+    }
+    // .userIcon {
+    //   padding: 10px;
+    //   margin: 0 10px;
+    //   width: 35px;
+    // }
+    .usermodal-container {
+      position: absolute;
+      right: 10px;
+    }
+  }
+}
+
+@include deskop {
+  .Navigation.logo {
+    font-size: 30px;
+    padding: 10px;
+  }
+  .Navigation.menu {
+    button {
       font-size: 20px;
       padding: 10px;
       margin: 0 10px;
@@ -47,10 +65,6 @@ $opacity: 0.8;
       padding: 10px;
       margin: 0 10px;
       width: 35px;
-    }
-    .usermodal-container {
-      position: absolute;
-      right: 10px;
     }
   }
 }
