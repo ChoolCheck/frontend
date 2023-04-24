@@ -24,18 +24,19 @@ const CalendarDetailView = ({
   return (
     <div className="CalendarDetailView-top-container">
       <div className="CalendarDetailView-container">
-        <button className="close-button" onClick={() => onModalClose()}>
-          닫기
-        </button>
-
         <div className="list-top-container">
           <div className="checkedWorkList-container">
-            <h2>출근부</h2>
+            <p className="header">
+              <h2>출근부</h2>
+              <button className="close-button" onClick={() => onModalClose()}>
+                닫기
+              </button>
+            </p>
             <ul className="ul">
               {calendarDetailWorkcheckList &&
                 calendarDetailWorkcheckList.map((item) => (
                   <li className="li">
-                    <span>
+                    <span className="li-colorname">
                       <span
                         className="li-color"
                         style={{ backgroundColor: item.backgroundColor }}
@@ -63,13 +64,15 @@ const CalendarDetailView = ({
               {calendarDetailScheduleList &&
                 calendarDetailScheduleList.map((item) => (
                   <li className="li">
-                    <span
-                      className="li-color"
-                      style={{ backgroundColor: item.backgroundColor }}
-                    >
-                      &nbsp;&nbsp;&nbsp;
+                    <span className="li-colorname">
+                      <span
+                        className="li-color"
+                        style={{ backgroundColor: item.backgroundColor }}
+                      >
+                        &nbsp;&nbsp;&nbsp;
+                      </span>
+                      <span className="li-name">{item.name}</span>
                     </span>
-                    <span className="li-name">{item.name}</span>
                     <span className="li-time">{item.time} </span>
                     <span className="li-workType">
                       {item.workType != null ? item.workType : ""}

@@ -4,18 +4,42 @@ $color-none: #000000;
 $opacity-zero: 0.3;
 
 @include desktop {
+  .CalendarDetailView-top-container {
+    font-size: 18px;
+  }
   .CalendarDetailView-container {
     width: 50%;
   }
 }
 @include tablet {
+  .CalendarDetailView-top-container {
+    font-size: 16px;
+  }
   .CalendarDetailView-container {
     width: 75%;
   }
 }
 @include mobile {
+  .CalendarDetailView-top-container {
+    font-size: 14px;
+  }
   .CalendarDetailView-container {
-    width: 80%;
+    width: 90%;
+    .list-top-container {
+      .checkedWorkList-container {
+        .ul {
+          .li-time {
+            min-width: 45px;
+          }
+          .li-workType {
+            min-width: 27px;
+          }
+          .li-totalWorkTime {
+            min-width: 48px;
+          }
+        }
+      }
+    }
   }
 }
 .CalendarDetailView-top-container {
@@ -28,7 +52,6 @@ $opacity-zero: 0.3;
   background-color: rgba($color-none, $opacity-zero);
 
   display: block;
-  font-size: 19px;
 
   .CalendarDetailView-container {
     position: absolute;
@@ -40,17 +63,16 @@ $opacity-zero: 0.3;
     background-color: rgb(255, 255, 255);
     margin: 0 auto;
     border-radius: 30px;
-    padding: 40px 30px;
-
-    .close-button {
-      float: right;
-      background-color: white;
-    }
+    padding: 20px 30px;
 
     .list-top-container {
-      margin: 40px 20px 20px 20px;
+      margin: 3vw 1vw;
       overflow-y: auto;
       height: 230px;
+      .close-button {
+        float: right;
+        background-color: white;
+      }
 
       .li-name {
         display: inline-block;
@@ -61,6 +83,11 @@ $opacity-zero: 0.3;
       .checkedWorkList-container {
         text-align: left;
         padding: 0 20px 20px 20px;
+
+        .header {
+          display: flex;
+          justify-content: space-between;
+        }
         .ul {
           margin-top: 10px;
           .li {
@@ -68,6 +95,11 @@ $opacity-zero: 0.3;
             display: flex;
             align-items: center;
             height: 40px;
+          }
+
+          .li-colorname {
+            display: flex;
+            justify-content: left;
           }
 
           .li-color {
@@ -149,7 +181,6 @@ $opacity-zero: 0.3;
       .memo-container-content {
         line-height: 150%;
         text-align: left;
-        font-size: 18px;
         margin-bottom: 10px;
         color: rgb(100, 100, 100);
       }
