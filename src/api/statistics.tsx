@@ -27,15 +27,17 @@ export async function GetMonthStatisticsApi({
       const resultList = res.data;
 
       for (let i = 0; i < resultList.length; i++) {
-        statisticsDataLabels.push(resultList[i].name);
-        statisticsDataColor.push(
-          `#${
-            enumType.enumColor[
-              resultList[i].color as keyof typeof enumType.enumColor
-            ]
-          }`
-        );
-        statisticsDataContent.push(resultList[i].totalTime);
+        if (resultList[i].totalTime != 0) {
+          statisticsDataLabels.push(resultList[i].name);
+          statisticsDataColor.push(
+            `#${
+              enumType.enumColor[
+                resultList[i].color as keyof typeof enumType.enumColor
+              ]
+            }`
+          );
+          statisticsDataContent.push(resultList[i].totalTime);
+        }
       }
 
       return {
@@ -81,15 +83,17 @@ export async function GetDateStatisticsApi({
       const resultList = res.data;
 
       for (let i = 0; i < resultList.length; i++) {
-        statisticsDataLabels.push(resultList[i].name);
-        statisticsDataColor.push(
-          `#${
-            enumType.enumColor[
-              resultList[i].color as keyof typeof enumType.enumColor
-            ]
-          }`
-        );
-        statisticsDataContent.push(resultList[i].totalTime);
+        if (resultList[i].totalTime != 0) {
+          statisticsDataLabels.push(resultList[i].name);
+          statisticsDataColor.push(
+            `#${
+              enumType.enumColor[
+                resultList[i].color as keyof typeof enumType.enumColor
+              ]
+            }`
+          );
+          statisticsDataContent.push(resultList[i].totalTime);
+        }
       }
 
       return {
