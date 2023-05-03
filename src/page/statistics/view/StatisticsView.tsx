@@ -1,5 +1,5 @@
-import "./style/statistics.scss";
-import * as type from "./type";
+import "../style/statistics.scss";
+import * as type from "../type";
 
 import Chart from "chart.js/auto";
 

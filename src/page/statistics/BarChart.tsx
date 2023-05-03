@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import BarChartView from "./BarChartView";
+import BarChartView from "./view/BarChartView";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 
 import "./style/statisticsView.scss";

@@ -1,5 +1,5 @@
-import "./style/statisticsView.scss";
-import * as type from "./type";
+import "../style/statisticsView.scss";
+import * as type from "../type";
 
 import {
   Chart as ChartJS,

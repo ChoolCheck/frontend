@@ -6,6 +6,11 @@ import { SignupApi, CertificateEmailApi } from "../../api/auth";
 const Signup = () => {
   const navigate = useNavigate();
 
+  const emailRegex =
+    /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+  const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
+  var spaceRegex = /\s/; // 공백체크
+
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -28,11 +33,6 @@ const Signup = () => {
   const [isPasswordCheck, setIsPasswordCheck] = useState(false);
 
   const [emailCertificated, setEmailCertificated] = useState(false);
-
-  const emailRegex =
-    /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
-  const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
-  var spaceRegex = /\s/; // 공백체크
 
   const onChangeForm = (name: string, value: string) => {
     setForm({

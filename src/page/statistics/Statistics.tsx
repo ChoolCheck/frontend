@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import BarChart from "./BarChart";
-import StatisticsView from "./StatisticsView";
+import StatisticsView from "./view/StatisticsView";
 
 import {
   GetDateStatisticsApi,
