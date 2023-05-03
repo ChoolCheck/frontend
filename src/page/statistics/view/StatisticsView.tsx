@@ -47,7 +47,6 @@ const StatisticsView = ({
         <span>근무 통계</span>
       </h2>
       <div className="Statistics-mid-Header">
-        {/* <span className="Statistics-LeftHeader">기간 내 조회</span> */}
         <form>
           <input
             className="startInput"
