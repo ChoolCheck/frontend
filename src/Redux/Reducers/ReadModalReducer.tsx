@@ -7,7 +7,6 @@ export const initialState: type.readModal = {
   readModalState: false,
 };
 
-//draft : 기존의 state, action : 새로운 action
 const readModalState = createReducer<type.readModal, type.handleReadModal>(
   initialState,
   {

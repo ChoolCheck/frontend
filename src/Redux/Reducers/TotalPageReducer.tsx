@@ -7,7 +7,6 @@ export const totalPageInitialState: type.totalpage = {
   totalpageState: 0,
 };
 
-//draft : 기존의 state, action : 새로운 action
 const totalpageState = createReducer<type.totalpage, type.handleTotalPage>(
   totalPageInitialState,
   {

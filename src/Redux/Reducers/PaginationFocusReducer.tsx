@@ -7,7 +7,6 @@ export const paginationInitialState: type.pagination = {
   paginationState: "total",
 };
 
-//draft : 기존의 state, action : 새로운 action
 const paginationState = createReducer<
   type.pagination,
   type.handlePaginationFocus

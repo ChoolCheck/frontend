@@ -7,7 +7,6 @@ export const totalElementInitialState: type.totalElement = {
   totalElementState: 0,
 };
 
-//draft : 기존의 state, action : 새로운 action
 const totalElementState = createReducer<
   type.totalElement,
   type.handleTotalElement

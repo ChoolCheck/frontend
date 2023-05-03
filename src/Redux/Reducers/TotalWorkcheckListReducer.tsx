@@ -7,7 +7,6 @@ export const initialState: type.totalWorkcheckList = {
   totalWorkcheckList: undefined,
 };
 
-//draft : 기존의 state, action : 새로운 action
 const totalWorkcheckList = createReducer<
   type.totalWorkcheckList,
   type.handleTotalWorkcheckList

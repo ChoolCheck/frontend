@@ -7,7 +7,6 @@ export const initialState: type.writeModal = {
   writeModalState: false,
 };
 
-//draft : 기존의 state, action : 새로운 action
 const writeModalState = createReducer<type.writeModal, type.handleWriteModal>(
   initialState,
   {

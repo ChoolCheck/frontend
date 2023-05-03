@@ -97,6 +97,12 @@
   }
 }
 
+@include desktop {
+  .WorkCheckView-right-container {
+    min-width: 600px;
+  }
+}
+
 @include tablet {
   .WorkCheckView-top-container {
     margin: 10px;
