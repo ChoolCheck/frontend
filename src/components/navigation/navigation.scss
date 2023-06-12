@@ -21,7 +21,6 @@ $opacity: 0.8;
   .Navigation.logo {
     color: white;
     background-color: rgba($color-none, $opacity-zero);
-
     margin-left: 20px;
   }
 
@@ -38,11 +37,6 @@ $opacity: 0.8;
       color: white;
       background-color: rgba($color-none, $opacity-zero);
     }
-    // .userIcon {
-    //   padding: 10px;
-    //   margin: 0 10px;
-    //   width: 35px;
-    // }
     .usermodal-container {
       position: absolute;
       right: 10px;

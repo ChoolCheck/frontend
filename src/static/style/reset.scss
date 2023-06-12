@@ -198,13 +198,3 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   width: 20px;
   height: 20px;
 }
-
-@include tablet {
-  .page-header-button {
-  }
-}
-
-@include mobile {
-  .page-header-button {
-  }
-}
