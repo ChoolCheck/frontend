@@ -20,7 +20,6 @@ const WorkCheckHeader = ({
   );
   return (
     <div className="WorkCheck-Header-container">
-      {/* <span className="WorkCheck-Header">기간 내 조회</span> */}
       <form>
         <input
           className="startInput"

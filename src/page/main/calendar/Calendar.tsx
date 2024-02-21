@@ -128,7 +128,7 @@ export const Calendar = ({
         if (!cell?.classList.contains("disabled")) {
           const calendarItem = document.createElement("p");
           calendarItem.className = "calendarItem";
-
+          //스케줄
           if (now < cellDate || isToday) {
             const nameSpan = document.createElement("span");
             const timeSpan = document.createElement("span");
@@ -165,7 +165,6 @@ export const Calendar = ({
             calendarItem.appendChild(colorSpan);
             calendarItem.appendChild(titleSpan);
           }
-          //스케줄
 
           calendarItemContainer?.appendChild(calendarItem);
         }
